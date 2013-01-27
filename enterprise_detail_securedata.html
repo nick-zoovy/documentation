@@ -1,0 +1,160 @@
+<meta type="filename" id="enterprise/detail/securedata">
+<h1>Zoovy System Security Policy</h1>
+<article>
+<h2>Disclosure Statement</h2>
+
+This secure information policy was prepared by the Zoovy systems engineering staff and is 
+intended to provide adequate disclosure to facilitate an evaluation of Zoovy infrastructure.  
+Because this is a publicly disclosed document dealing with security policies it is intentionally vague. 
+We will provide additional detail only after an approved confidentiality agreement has been received.
+
+</article>
+<article>
+<h2>Summary</h2>
+
+All transmissions of sensitive information is done over SSL using a 128bit certificate. 
+Secure data is stored on servers based on internal addresses which do not have outside routes. Multiple levels of hardended systems and ip filters are designed to strictly regulate where traffic can go on the network and which applications can access which data.
+
+Onsite backups are stored in a locked cabinet in a secured data center with limited employee access. 
+
+</article>
+
+<article>
+<h2>Media Destruction Policy</h2>
+Failed disks/tapes are labelled as failed, and removed from our IDC's by authorized personnel and are stored at our corporate office with other spare equipment. 
+If a hard disk fails in a computer at our corporate office the drive is removed and placed with the drives from the data center.  Quarterly an authorized member of our staff opens each drive with a screwdriver or torx wrench, and then smashes the platters with a hammer. The platters are discarded into the trash, the remaining drive electronics are taken to a California Certified E-Waste recycling center.
+</article>
+
+<article>
+<h2>Physical Security</h2>
+
+Zoovy's primary servers are located in a locked private cage at the Complex Drive facility in San Diego.
+The Complex Drive facility requires access badges, in addition to biometric hand-scan (not fingerprint) authentication to gain access ot the facility. 
+Zoovy also monitors our cabinets remotely via an IP based video feed.
+The facility is staffed 24/7/365. 
+
+All movement through the data center is restricted. While in the data center you cannot even go to the bathroom without being accompanied by data center personnel.
+
+In addition the Complex Drive staff are familiar with the limited number of Zoovy employees who have access to the building. 
+The access list also specifies if a person is allowed to bring other people in to the facility and which cabinets they are physically allowed to access. 
+
+Complex Drive performs background checks on all employees prior to hire. In addition most employees work two man shifts so it limits the ability for a single employee to get into an "mischief". In either case the servers are all secured with passwords, the only way to recover a password is to reboot the server, which triggers a page by the monitoring system. 
+
+Once an employee has been permitted access, they are physically escorted to the servers,
+and their actions while in the data center are monitored by the data center staff via a closed circuit television system. 
+
+</article>
+
+
+
+<article>
+<h2>Advisory Awareness</h2>
+
+On a daily basis Zoovy monitors Bugtraq, and is on the advisory list for both Cisco and HP. 
+We also maintain strong relationships with numerous other "White Hat" system and network 
+administrators who work for other security minded companies which have similar infrastructures. 
+
+Each advisory is evaluated to see if it affects us, and to what extent, 
+and if an exploit is available - and then a decision is made if the patch can wait until the next system 
+update or if it will be deployed immediately. In most cases because the servers run a minimal set of 
+services, we either disable or patch the affected service. In all cases Zoovy keeps standby systems 
+available for all core services, this enables us to perform patching at anytime without needing to 
+schedule downtime.
+
+</article>
+<article>
+<h2>Ongoing Monitoring</h2>
+
+Zoovy utilizes tripwire, on each host to verify MD5 checksums. 
+We also closely monitor loads on each server, disk space.  
+Access lists, both in and out of the hosts, restrict traffic. 
+This is used in conjunction with a series of publicly available, 
+and privately developed IDS (intrusion detection systems) and packet monitoring tools 
+that monitor traffic throughout our network. 
+
+</article>
+<article>
+<h2>Password Policy</h2>
+
+Zoovy system password policy states passwords must be mixed case alphanumeric, 
+randomly generated and rotated a minimum of every 45 days. Passwords are different for each host.  
+All authentication and file transfers are performed via SSH2 & SCP. Only authorized keys, 
+on authorized hosts are allowed to authenticate, using a 768 bit length keys, we only allow DSA connections.
+
+</article>
+<article>
+<h2>Encryption</h2>
+
+
+We currently utilize the Blowfish algorithm for most internal encryption needs because of its speed, 
+and ability to use key strengths of varying sizes.  In all cases we use keys of ample length. <br>
+<br>
+All data transfers between hosts are encrypted using ssh/scp.
+For compatibility the Zoovy sshd is currently compiled to support several major cryptographic 
+algorithms including 128 bit AES, Blowfish, CAST128, Arcfour, 192 bit AES, or 256 AES.  
+This has the added advantage of using a non-specified algorithm, since the client selects 
+the appropriate encryption algorithm to use from its list based on what is being offered by the server. 
+Additionally, session integrity is provided through a cryptographic message authentication code hmac-md5.  
+SSH1 is disabled due to numerous vulnerabilities (although we believe we would not be vulnerable to any 
+ssh exploits because of tcp wrappers and access lists which are also installed).
+
+</article>
+<article>
+<h2>SSL Encryption</h2>
+
+For checkout, and all customer interfaces a 128bit SSL certificate issued by Thawte.com is used.
+This certificate is issued for ssl.zoovy.com.  This certificate is also used whenever the customer logs 
+into their account to update their privacy settings. <br>
+
+</article>
+<article>
+<h2>Merchant Processing</h2>
+
+The Zoovy servers do processing of the credit card information over the secure 
+connection specified by the customer's processing gateway. 
+All gateways supported by Zoovy utilize either a 128bit SSL tunnel, or private leased line. 
+The Zoovy software restricts payment information disclosure to only authorized employees and assigns and logs all 
+access to customer data by employees. Additionally, information that is no longer needed for order processing may 
+be periodically purged with the system based on the merchants's information retention policies. 
+
+</article>
+<article>
+<h2>Customer Mirroring</h2>
+
+In many cases information is mirrored to a workstation or physical server at 
+the merchant's location to provide faster access to data. 
+Data synchronization between the merchant's server and the 
+Zoovy servers is done via the HTTP protocol over a 128bit SSL connection. <br>
+<br>
+The merchant's server is protected against unauthorized access using by utilizing 
+packet filters that restrict access to only authorized networks. 
+All management and file transfers are done via SSH.<br>
+
+</article>
+<article>
+<h2>Additional Measures</h2>
+
+In addition to the security measures described above Zoovy recommends, and often assists merchants
+who opt to install additional firewalls and/or other physical security devices that will 
+enhance the overall security of their system.
+
+</article>
+<article>
+<h2>Contacting Us</h2>
+
+If you have any questions about the statements above, please contact support@zoovy.com.
+While the disclosures above may seem sensitive, we believe that all the information provided 
+in this document could be independently deduced by using widely available security sniffers, 
+a few conservative guesses, and a quick phone call with any salesperson from our data center. 
+This is by no means a comprehensive guide to the security measures taken by Zoovy to protect 
+our customers businesses.
+</article>
+
+
+
+
+
+
+
+
+

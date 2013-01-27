@@ -1,0 +1,151 @@
+<meta type="filename" id="pkg-media/detail/catalog-cd">
+<h1>CD Catalog</h1>
+<article>
+<h2>Overview</h2>
+
+The book catalog contains information indexed by UPC.
+When uploading to the CD catalog you must use the manufacturer assigned UPC.
+
+</article>
+<article>
+<h2>Point System</h2>
+
+
+<table>
+	<tr>
+		<td valign="top"><b>Contributor</td>
+		<td>&nbsp;&nbsp;&nbsp;</td>
+		<td valign="top"><b>Recipient</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			Upload all required fields: +20<br>
+			Upload Chapter List: +10<br>
+			Upload Optional field: +3 each<br>
+			Per Download: +5 each<br>
+		</td>
+		<td>&nbsp;&nbsp;&nbsp;</td>
+		<td valign="top">
+			Per Download: -5 points<br>
+		</td>
+	</tr>
+</table>
+
+</article>
+<article>
+<h2>Fields</h2>
+
+<table>
+	<tr>
+		<td valign="top"><b>Field Name</b></td>
+		<td valign="top"><b>Required</b></td>
+		<td valign="top"><b>Description</b></td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">UPC</td>
+		<td valign="top"><b>Y</b></td>
+		<td valign="top">This field must contain a valid UPC or UPC/A barcode value.
+		<br><i>Attribute: zoovy:prod_upc</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Product Format</td>
+		<td valign="top"><b>Y</b></td>
+		<td valign="top">The list of available formats is maintained by Zoovy.
+			Currently the following CD Formats are supported: CD, CD Single, CD Compliation (contains more than one artist)
+		<br><i>Attribute: zoovy:prod_format</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Product Language</td>
+		<td valign="top"><b>Y</b></td>
+		<td valign="top">The list of available CD languages is maintained by Zoovy.
+		<br><i>Attribute: zoovy:prod_language</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">CD Title</td>
+		<td valign="top"><b>Y</b></td>
+		<td valign="top">The album title as it appears on the compact disc.
+		<br><i>Attribute: zoovy:prod_name</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Description</td>
+		<td valign="top"><b>Y</b></td>
+		<td valign="top">Text about the album.
+		<br><i>Attribute: zoovy:prod_desc</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">CD Cover</td>
+		<td valign="top"><b>Y</b></td>
+		<td valign="top">An image of the front of the CD - minimum: 75x50 maximum: 640x400
+		<br><i>Attribute: zoovy:prod_image1</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+
+	<tr>
+		<td valign="top">Artist</td>
+		<td valign="top">Y</td>
+		<td valign="top">The band or individual which recorded the album. If the CD is a compilation please put "Various"
+		<br><i>Attribute: zoovy:prod_artist</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Label/Studio</td>
+		<td valign="top">N</td>
+		<td valign="top">The studio which produced the album (e.g. Geffen, Columbia)
+		<br><i>Attribute: zoovy:prod_label</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Release Date</td>
+		<td valign="top">N</td>
+		<td valign="top">Format: MM/DD/YYYY if (month and/or day are not known put 00/00/YYYY)
+		<br><i>Attribute: zoovy:prod_release</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Tracks</td>
+		<td valign="top">N</td>
+		<td valign="top">The number of tracks the CD contains (note you can leave this blank if you also supply tracks, we'll figure it out)
+		<br><i>Attribute: zoovy:prod_tracks</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Advisory</td>
+		<td valign="top">N</td>
+		<td valign="top">If the CD contains explicit lyrics as defined by the RIAA. (possible values 0/1)
+		<br><i>Attribute: zoovy:prod_advisory</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Genre (Unstructured)</td>
+		<td valign="top">N</td>
+		<td valign="top">The unstructured genre contains a category for the cd. For example "Pop", "Rock", "Jazz", or "Classical"
+			NOTE: At this time Zoovy is in the process of developing a structured Genre field based on feedback from sellers.
+		
+		<br><i>Attribute: zoovy:prod_ugenre</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>	
+		<td valign="top">List of Tracks</td>
+		<td valign="top">N</td>
+		<td valign="top">This field should contain each track, in order, one per line.
+		<br><i>Attribute: zoovy:prod_tracklist</i>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">Reviews</td>
+		<td valign="top">N</td>
+		<td valign="top">A list of reviews (ideally formatted with HTML) for the particular product.
+		<br><i>Attribute: zoovy:prod_detail</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+</table>
+
+</article>
+
+
+

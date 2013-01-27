@@ -1,0 +1,231 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/guide/customerlogin">
+<h1>Linking to a Domain: Customer Facing Urls (Customer Login)</h1>
+
+<article>
+<h2>Concept Overview</h2>
+
+
+
+
+
+
+
+Every Zoovy site comes with the ability for customers to login and check order status.
+This guide outlines some of the finer configuration details. 
+Customers have the options of creating an account (or having an account automatically created
+for them) based on the Account Creation settings in Setup / Checkout Properties. 
+In addition any customers who have signed up for the mailing list will also have an account.
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+Customizing your default emails to encourage customers to use the online customer login area
+can substantially reduce the amount time you spend handling customer service.
+
+</div>
+</aside>
+
+
+Zoovy provides a series of customer facing URL's that you can provide to your clients in various email templates, etc.   All customer account functionality is located at www.yourdomain.com/customer
+
+
+</article>
+
+<article>
+<h2>Logging In</h2>
+
+Customers may login at either of the following URLs:
+<aside class="html">
+<h6></h6>
+<code>
+
+http://www.yourdomain.com/customer/login
+http://www.yourdomain.com/customer/
+
+
+</code>
+</aside>
+
+
+</article>
+
+<MODULE CODE="PAGE::customer" />
+
+
+<article>
+<h2>Example: Change Password Link</h2>
+If the customer does not remember their password they may reset it by simply entering their email address
+at http://www.yourdomain.com/customer/password/ by default a link to the recovery page is provided on the 
+login page, and in the failed login message.<br>
+<br>
+If the customer has configured a hint (which is only specified if the customer opted to create an account
+during checkout) then they must enter the hint before the password will be reset.
+<br>
+</article>
+
+
+
+
+
+
+<article>
+<h2>Recipe: Show Order Status / Tracking URL - Bypassing login</h2>
+
+
+If you want to include a link in your outbound system emails such as OCREATE or TRACKING, a macro for ORDERURL is supported.
+Use this macro to drive the user back to your storefront to obtain their tracking information. No login is required for this url.
+
+<br>
+
+If you need a URL and are working outside the auto-emails, you can use another method.  It requires a change to checkout settings to enable: 
+In Setup / Checkout Settings there is an option titled "Disable login/password requirement to check order status." If this feature is enabled you may link customers directly to:
+
+<aside class="html">
+<h6></h6>
+<code>
+http://www.yourdomain.com/customer/order/status?email=joe@whatever.com&order_id=2002-02-1000
+
+</code>
+</aside>
+
+
+It's worth mentioning that using either of the methods above, customers won't be able to view order history, update payment status, or modify the order or really do anything but examine the order till they login (all the buttons will still appear but clicking a button which requires authentication will simply redirect the customer to a login screen before they will be allowed to proceed).<br>
+
+<aside class="html">
+<h6></h6>
+<code>
+http://www.yourdomain.com/customer/order/status?email=%bill_email%&order_id=%ORDERID%
+
+</code>
+</aside>
+
+
+
+<section>
+<h3>Linking directly to the third party provider</h3>
+
+All the information from the providers (UPS, FedEx and/or USPS) is included on your own website, so why drive the traffic elsewhere? By bringing the visitor back to your own website you reinforce your brand and increase the likelihood of generating additional sales.
+
+</section>
+
+</article>
+
+
+<article>
+<h2>Tricks: Customer Options Page</h2>
+
+Once a customer has authenticated they are placed at the "Customer Options" page. 
+This displays a list of all the orders they have placed, sorted by date. 
+At the bottom of the page there is a tools section which lets the customer change their
+password, and opt in/out of the email newsletter. The URL for this page is:
+<aside class="html">
+<h6></h6>
+<code>
+
+http://www.yourdomain.com/customer/
+
+</code>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Order Status Page</h2>
+
+
+<section>
+<h3>Tracking</h3>
+
+If available Zoovy will display tracking links for the following shipping types: UPS, FEDEX, USPS<br>
+If you have UPS Online Tools configured on your account then Zoovy will display the actual
+tracking information that would normally appear on the UPS site. 
+<aside class="hint">
+<h6></h6>
+<div>
+
+The advantage of displaying tracking information on your website rather than UPS.com
+not only increases your customer exposure, it gives the customer the sense you are 
+tracking the package to ensure it arrives safely at their doorstep.
+
+</div>
+</aside>
+
+
+
+</article>
+<section>
+<h3>Events</h3>
+
+
+The order status page can also display the order events - although this behavior can be enabled/disabled
+by going into Setup / Checkout Properties and checking the "Suppress display of event messages to customers".
+Events often contain sensitive information which you may not want disclosed to customers.<br>
+<br>
+On the other hand Events are extremely useful - especially if you have a complicated order process 
+where multiple things must happen for an order to ship. For example if products are built to order and
+take 3-4 weeks for construction, and then 1 week to be packaged, and typically 7-10 days to arrive - you might
+tell customers that orders in PENDING are being built, orders in APPROVED are being packaged, and orders that
+are COMPLETED have shipped. Customers can then goto the website and view the events to see the dates as the
+order moves through the process. Not only does this make your customer service department open 7/24/365 - it also
+reduces the number of inbound customer phone calls asking "where's my order?"
+
+</article>
+<section>
+<h3>Notes</h3>
+
+You can enable/disable the customers ability to view notes. The option
+"Disable viewing of order notes in customer order status." is located in Setup / Checkout Properties.
+If you allow customers to update Recent orders (see Cancelling orders section) then customers will be
+able to add notes to the order while the order is in recent status (even if you have order notes
+disabled in checkout)
+
+</article>
+<section>
+<h3>Cancelling Orders</h3>
+
+The option "Disable customer cancellation from order status" is located in Setup / Checkout Properties.
+By default customers can cancel an order until you have changed it from 'Recent'. 
+
+</article>
+<section>
+<h3>Change/Update Payment</h3>
+
+If an order has a denied credit card payment status (e.g. 2xx) and is in RECENT status the customers can login and 
+update the card number and expiration and cvv/cid.  
+If the customer chose to pay by paypal there is will be a Paypal "pay now" button until the payment notification
+has been received by paypal.
+
+</article>
+<section>
+<h3>Contact Us</h3>
+
+Zoovy provides a handy link to the contact us form, which autopopulates the order number. If the customer places
+the order order # in the form then you will receive their email with a link at the bottom so you can quickly
+look up the customers order status.
+
+</article>
+
+
+</article>
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

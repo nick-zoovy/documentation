@@ -1,0 +1,114 @@
+<meta type="filename" id="ship/insurance">
+<h1>Shipping Insurance</h1>
+<article>
+<h2>Overview</h2>
+
+Unlike Handling the Shipping Insurance feature allows you to prompt the customer to optionally purchase insurance.
+Insurance can be computed in a variety of ways including based on the weight, the total price, the total weight, or 
+based on a flat fee per item. Insurance is calculated independently of the shipping method (Zoovy assumes that the shipping
+methods being offered do not include insurance)<br>
+<br>
+The rest of this feature is very self explanatory.
+Insurance fees can be in one of the following states:
+<table>
+	<tr>
+		<td>Not Used/Disabled.</td>
+	</tr>
+	<tr>
+		<td>Included as part of the shipping total.</td>
+	</tr>
+	<tr> 
+		<td>Displays as it's own line item under shipping.</td>
+	</tr>
+</table>
+In addition you may choose to make insurance either optional or mandatory. 
+
+</article>
+<article>
+<h2>Optional vs. Mandatory</h2>
+
+
+If you use the Paypal Instant Payment button on the checout you must have your insurance as mandatory or customers
+paying via Paypal will NOT be prompted for insurance. This is not a feature currently supported by Paypal.<br>
+<br>
+
+</article>
+<article>
+<h2>Insurance Mode: Flat Insurance Per Item</h2>
+
+This mode allows you to differentiate between three destination zones: Domestic (50 states), Canada, and International.
+You can configure a price for a single item, and an optional surcharge for each additional item - this is the easiest way to go
+if all your products are similarly priced because it means you can easily make changes. 
+</article>
+<article>
+<h2>Insurance Mode: Per Product</h2>
+
+This enables a special field in the web based product manager that lets you set a insurance amount per product. 
+The insurance rate must be the same for domestic or international (although you can use this method in conjunction with other methods
+to add surcharges to international orders)
+
+</article>
+<article>
+<h2>Insurance Mode: Weight Based</h2>
+
+This mode allows you to differentiate between three destination zones: Domestic (50 states), Canada, and International.
+You may input a table of weights and prices.
+
+</article>
+<article>
+<h2>Insurance Mode: Price Based</h2>
+
+Similar to weight based method, the Price Based method allows you to ship to three zones, but the table works from the order subtotal. 
+<aside class="hint">
+<h6></h6>
+<div>
+
+When using price based, be certain to create an "empty cart" rule, which is if the total is $0.00, Insurance is $0.00. If you 
+don't add this rule when someone empties the cart the previously quoted insurance amount will still display.
+
+</div>
+</aside>
+
+
+</article>
+<article>
+<h2>Insurance Mode: Special Rules</h2>
+
+Using rules you can add special handling fees (or discounts) just like you would for any shipping rate. 
+Rules are run at the end of the insurance calculation process once all enabled methods have been summed together.
+Using Rules it possible to add a surcharge as a percentage of the insurance total to select destinations.
+</article>
+<article>
+<h2>Advanced Users</h2>
+
+You can combine multiple insurance methods together to arrive at a composite total. The most common example of this is using the
+Flat Insurance per Item in Conjunction with the Per Product insurance mode. 
+Since the Per Product mode does not give you the abilty to configure insurance based on a zone you can set a base insurance amount on a per
+item basis - and then add a surcharge for Canada or International destinations using the Flat Insurance Per Item.
+
+
+
+</article>
+
+<article>
+<h2>Requirements</h2>
+You much have the Shipping Bundle on your account to use this feature.  You can add this bundle by going to Setup >> Add/Remove Features. <br>
+
+The "Shipping Bundle" includes:<br>
+
+<li> Customer Pickup Shipping Method - allow customers in select zip codes to choose a local pickup.
+<li> Local Delivery Shipping Method - allow customers in select zip codes to opt for local delivery.
+<li> Shipping Rules - delivers the ability to fine tune shipping rates in a variety of ways using selective matching on products, zip codes, countries and more.
+<li> Handling Fees - create special handling fees which apply to all shipping methods.
+<li> Insurance Fees - allow customers to choose insurance, or make it mandatory for all orders. Insurance can be computed based on a flat per item fee, by the total price of the order, by the total weight of the order, or on a per product basis - ultimately you can also modify the final insurance result using shipping rules. 
+</article>
+
+
+
+
+
+
+
+
+
+

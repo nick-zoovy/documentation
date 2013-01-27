@@ -1,0 +1,175 @@
+<meta type="filename" id="info/guide/convert-andale">
+<h1>Converting from Andale to Zoovy</h1>
+<article>
+<h2>Data Import</h2>
+
+Data import can be accomplished by exporting your listings using the Andale Lister Pro.
+<aside class="caution">
+<h6></h6>
+<div>
+
+Andale Lister Pro does not properly handle CR/LFs when exporting to a CSV format.
+Instead export to Excel first and then use Excel to export to a CSV. (bug confirmed: version 2.6 build 153)
+
+</div>
+</aside>
+
+
+
+<table>
+	<tr>
+		<td><b>Andale Column</b></td>
+		<td><b>Zoovy Column</b></td>
+	</tr>
+	<tr>
+		<td>SKU</td>
+		<td>%SKU</td>
+	</tr>
+	<tr>
+		<td>Item Name</td>
+		<td>zoovy:prod_name</td>
+	</tr>
+	<tr>
+		<td>Title</td>
+		<td>ebay:title</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>zoovy:prod_desc</td>
+	</tr>
+	<tr>
+		<td>Qty In Stock</td>
+		<td>%INVENTORY</td>
+	</tr>
+	<tr>
+		<td>Cost Price</td>
+		<td>zoovy:cost</td>
+	</tr>
+	<tr>
+		<td>Quantity</td>
+		<td>ebay:quantity</td>
+	</tr>
+	<tr>
+		<td>Minimum Bid</td>
+		<td>ebay:startprice</td>
+	</tr>
+	<tr>
+		<td>Reserve Price</td>
+		<td>ebay:reserve</td>
+	</tr>
+	<tr>
+		<td>Buy It Now</td>
+		<td>ebay:buyitnow</td>
+	</tr>
+	<tr>
+		<td>Duration</td>
+		<td>ebay:duration</td>
+	</tr>
+	<tr>
+		<td>Category</td>
+		<td>ebay:category</td>
+	</tr>
+	<tr>
+		<td>Image1</td>
+		<td>%IMAGE=zoovy:prod_image1</td>
+	</tr>
+	<tr>
+		<td>Image2</td>
+		<td>%IMAGE=zoovy:prod_image2</td>
+	</tr>
+	<tr>
+		<td>Domestic Shipping Charge</td>
+		<td>zoovy:ship_cost1</td>
+	</tr>
+	<tr>
+		<td>Ebay Category2</td>
+		<td>ebay:category2</td>
+	</tr>
+	<tr>
+		<td>Image3</td>
+		<td>%IMAGE=zoovy:prod_image3</td>
+	</tr>
+	<tr>
+		<td>Image4</td>
+		<td>%IMAGE=zoovy:prod_image4</td>
+	</tr>
+	<tr>
+		<td>Image5</td>
+		<td>%IMAGE=zoovy:prod_image5</td>
+	</tr>
+	<tr>
+		<td>Item Condition</td>
+		<td>zoovy:prod_condition</td>
+	</tr>
+	<tr>
+		<td>UPC</td>
+		<td>zoovy:prod_upc</td>
+	</tr>
+	<tr>
+		<td>ISBN</td>
+		<td>zoovy:prod_isbn</td>
+	</tr>
+	<tr>
+		<td>eBay Store Category</td>
+		<td>ebay:storecat</td>
+	</tr>
+</table>
+
+If you recieve errors during the export to excel you are pretty much screwed.<br>
+<br>
+Since Andale does not properly escape tabs or commas in it's export
+if either character appears in your data you will not be able to
+import the data into any other application. We'd like to a take a second
+and point out that this is not a "zoovy thing" it's a standard escaping sequence that Andale isn't following,
+and because of it you will not be able to import the data into either
+Microsoft Access or Microsoft Excel either (NOTE: if you get the data into either of those
+applications, it's a snap to get it into Zoovy).<br>
+<br>
+Our advice is contact Andale Technical support - thats about all you can do.
+NOTE1: it seems if you have HTML in your data, you will not be able to
+export to Excel. <br>
+NOTE2: you cannot export selected workbooks because the Andale lister can
+only display 250 items at a time (so if any folders have>250 items those
+will be lost)<br>
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+You can also simply request an import of your running eBay auctions.
+Please read the details on importing listings from eBay.com
+<a taget="_top" href="http://webdoc.zoovy.com/info/index.php?GOTO=guide/convert-ebay.php">Click Here</a>
+This probably won't get all your data, but at least it will provide a starting point.
+
+</div>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Getting Acclimated</h2>
+
+A few helpful hints to get you started using Zoovy:<br>
+<li> Zoovy manages everything as products and orders orders rather than simply listings.
+An order contains one or more products, along with a single shipping, and payment type.
+<li> What Andale calls "Pending Sales" are called "Incomplete Items" in Zoovy.<br>
+<li> eBay listings are created from channels, and channnels are created from products.
+(A product is a container for multiple channels)
+
+</article>
+<article>
+<h2></h2>
+
+</article>
+<article>
+<h2></h2>
+
+</article>
+<article>
+<h2></h2>
+
+</article>
+
+
+

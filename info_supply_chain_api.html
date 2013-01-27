@@ -1,0 +1,80 @@
+<meta type="filename" id="info/supply_chain_api">
+<h1>Supply Chain API Integration Documentation</h1>
+
+<article>
+<h2>Concept Overview</h2>
+
+The zoovy supply chain bundle allows a merchant to establish one or more supplier profiles. There are multiple types of prof A supplier profile is referenced by an 8 digit alphanumeric code, which is then put product attribute zoovy:virtual with the type separated by a colon e.g EXAMPLE:API -- where EXAMPLE is the supplier id and API is the type.
+
+</article>
+
+<article>
+<h2>Order Notification</h2>
+
+Zoovy sends order notifications via a REST based API.
+Two parameters are sent: Method=Order&Contents=[xml order payload]
+
+<br>
+
+The response is un-important, but it must be of content-type text/xml. Anything other than text/xml will result in the order being retransmitted.
+
+<br>
+
+For more information on the XML payload please read:
+<a class="linkdoc" href="#?doc=50213">Doc 50213</a>
+
+</article>
+
+<article>
+<h2>Shipping Rate Requests</h2>
+
+Zoovy sends shipping notifications via a REST based API.
+Two parameters are sent: Method=ShipQuote&Contents=<xml order payload>
+
+The response should be of type text/xml - and should contain:
+
+<aside class="html">
+<h6></h6>
+<code>
+&lt;SHIPQUOTE&gt;
+&lt;METHOD ID="XYZ" VALUE="10.00" HANDLING="0.00" INSURANCE="0.00"&gt;Description 1&lt;/METHOD&gt;
+&lt;METHOD ID="ABC" VALUE="15.00" HANDLING="0.00" INSURANCE="0.00"&gt;Description 2&lt;/METHOD&gt;
+&lt;/SHIPQUOTE&gt;
+
+</code>
+</aside>
+
+
+</article>
+
+<article>
+<h2>Inventory Download</h2>
+
+Your supplier can be configured for automatic inventory updates.  A Generic download allows you to configure a CSV location and header arrangement to pull up to date inventory counts automatically once a day.
+
+To start, set your Inventory Download Connector to "Generic".  Configuration options will be made available to you at this point.  Considering that you may already have an FTP location set up with your supplier, you will need to provide a secure FTP URL and file name to reference for your inventory information.
+
+<aside class="hint">
+<h6></h6>
+<div>
+Formatting for your FTP URL should follow:
+ftp://(FTPUsername):(FTPPassword)@ftp.(supplierurl).com/INVENTORYFILE.csv
+
+You can test this by dropping the URL into a browser (Firefox).  It will grant you access to your FTP directory index.
+
+</div>
+</aside>
+
+
+Import Frequency allows you to configure a once a day automatic import, or a manual import.  If you manual import, you will need to click "Start Import" for any and all inventory updates.
+
+<section>
+<h3>Inventory Header</h3>
+
+The Inventory Header box is necessary for detailing the file you will be importing.  Often a supplier will provide you with a single file that cannot be edited, and will contain product information that you either do not need or do not wish to use.  Use this field to set which columns are to be read, and which are to be ignored.
+
+For example, your supplier file has 6 columns but you only need the SKU, price, and quantity, you can format your header file as:
+
+%SKU,,%COST,,,%QTY
+
+The double commas will ignore the columns in between.

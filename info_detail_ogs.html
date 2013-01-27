@@ -1,0 +1,192 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/detail/ogs">
+<h1>Option Groups</h1>
+<article>
+<h2>Overview</h2>
+
+
+
+
+An option is simply a list of choices that the customer must make before they are able to purchase the product. 
+
+<br>
+
+
+Option groups are setup and maintained from [Options] link inside the online product editor or from the option groups 
+tab in Product Manager. Store Wide options (discussed later) are created by clicking the "Store Wide Options" link
+in the online product editor.
+
+</article>
+<article>
+<h2>Presentation of Options</h2>
+
+
+The way the choices (options) are presented to the customer is selectable, you can use select lists (drop down boxes), 
+radio buttons, checkboxes, or simply provide the customer with a text entry field. You can also associate 
+images with each choice to make it easier for the customer to feel confident they are choosing the correct 
+option.
+
+</article>
+<article>
+<h2>Option Groups vs. Options</h2>
+
+
+An "Option Group" is a term used to refer to a set of choices (e.g. "Size" is the option group, 
+while "Small, Medium, and Large" are the options in that group. Each option group may have a 
+maximum of 1296 options. Each option has a modifier that may affect the price and/or weight 
+of the item by either a fixed number (e.g. +$3.00) or a percentage  (+%10). When configuring 
+an option it is important you always be sure to have the + or . in front of the modifier. 
+If you say .$3.00. instead of .+$3.00. the system will interpret that as a mandate to SET 
+the price to .3.00. instead of adding $3.00 to whatever the base price of the item is. 
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+It is critical you understand the difference between an option, and an option group 
+before proceeding or you may get confused by the remainder of this document.
+
+</div>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Inventory and Options</h2>
+
+
+Besides the presentation, each option group has two important properties that must be set 
+correctly when the option group is created they are: Inventoriable/Non-Inventoriable, and 
+Product Specific or Store Wide.  An Inventoriable option group affects inventory, meaning 
+inventory is tracked separately for each option in the group. Each option (or combination 
+of inventoriable options) may have a unique in stock quantity, reserve quantity, and location.  
+A non-inventoriable option does not affect inventory. You may have a maximum of three 
+distinct inventoriable option groups associated with a single product. However  you can 
+have nearly unlimited (1332) non-inventoriable option groups associated with a single product. 
+You want to use an inventoriable option whenever the option physically affects the product, 
+for example two different size shirts are physically unique, 
+in this example you simply can't change a small into an extra large by adding more fabric to it.
+
+<br>
+
+
+Whereas a non-inventoriable option is more appropriate for things which can be added after the sale.
+Examples of non-inventoriable options might include the type of handle for a golf club, or the 
+optional bundled upgrades such as golf balls with a golf bag. 
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+WARNING: You can only set the inventoriable property when the option group is being created.
+If you do not set the inventoriable setting correctly, you will need to delete the option group and re-create it.
+
+</div>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Product Specific vs. Store Wide</h2>
+
+
+The other choice which must be configured when you setup an option group is the system wide or product specific setting. 
+As the name indicates a system wide group can be shared across multiple products, whereas a product specific group 
+must be configured for each product. Even though an option group is system wide, you may still select which 
+specific options you want to include for a specific product. For example if you sell shirts, then you would 
+want to configure "Size" as a system wide group and add all possible sizes. even though you may only stock 
+Large and Extra large of some particular styles. Whereas if you sell automotive parts, and you have a single 
+shirt with your company logo then it's probably more appropriate to create that as a product specific group 
+since it's likely you won't be reusing that option group on other products. 
+
+<br>
+
+
+You may have up to 36 product specific option groups associated with an individual product, 
+and you may have up to 1296 store wide option groups associated with the same product.  
+Even though you can have 1332 option groups on a single product - it's worth mentioning 
+that requesting a customer make more than 30 choices on a single product will likely hurt sales.
+This applies even if you selling incredibly complicated products such as build to order computers.
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+Zoovy staff internally refers to Product specific option groups as "POGs" and Store Option Groups as "SOGs" - if you're 
+dealing with a developers, or high level technicians don't be surprised if they use this abbreviated notation.
+
+</div>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Options and eBay</h2>
+
+When launching an auction you must select which specific inventoriable option you want to use. 
+If you do not do this, then your reserve inventory will not be tracked correctly. 
+
+<br>
+
+
+In addition once you have launched auctions attempting to change the inventoriable option groups 
+will result in some potentially serious inventory side-effects, such as overselling, or underselling. 
+Do not change your inventoriable options if you have active listings on any marketplace. 
+If you plan to change the inventoriable options regularly, make sure to exclude the 
+product from launching to any marketplace. When a product is launched to a marketplace, 
+the reserve inventory will be selected for the specific inventoriable option you chose. 
+The customer will NOT have the option to change the specific inventoriable option at 
+checkout (customers using eBay checkout will not have the option to select any options).
+
+<br>
+
+
+The customer will be prompted to select non-inventoriable options during checkout.
+eBay has a rule about choice listings: you may not sell listing with choices, it is against eBay rules. 
+However what Zoovy does is not technically in violation of that rule, because with Zoovy you should be 
+advertising a specific distinct inventoriable product. If a customer contacts you after the listing is 
+over and asks for another size and you give it to them . then there is nothing against eBay rules 
+with that provided you don't change the closing price (in fact we'd argue that it is contrary to the 
+very principles eBay's community is built upon.) As long as you don't mention the customer will have 
+the ability to choose a size after the listing is over, you shouldn't run afoul of eBays safeharbor dept.
+
+It is important to realize the following things: It is against eBay rules to change the price of an item 
+after the sale, so offering eBay users the ability to upgrade/downgrade specific choices is against 
+eBay rules. Zoovy will let you do this, but you shouldn't, and if you do it long enough you'll probably 
+get a warning from the eBay police.
+
+</article>
+<article>
+<h2>Reporting</h2>
+
+
+POGs also consolidate reporting, since grouping of sales is done by product. 
+In addition order manager lets you run sales reports for orders that contain (or exclude) specific store wide option groups.
+
+</article>
+<article>
+<h2>Custom Product SKUs</h2>
+
+
+The work around to mapping to your own part numbers is to put your part # into the location field, and then print packing slips instead of invoices. (Packing slips contain the location field) - then you can create a completely unique part # for every inventoriable sku.  
+
+
+</article>
+<article>
+<h2>The Future</h2>
+
+
+Also it's worth mentioning there will be an announcement in Feb. that Zoovy through a special program with eBay called .Configurator. will start supporting "choice" listings in select categories (e.g. apparel) but that feature will only be available to 2.0 customers - so you won't be eligible with the type of account you have. 
+the operation and interaction of OG's and POG's you'll realize they are very powerful assets.
+
+</article>
+
+
+
+
+
+
+

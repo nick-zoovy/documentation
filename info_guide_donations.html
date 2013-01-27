@@ -1,0 +1,43 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/guide/donations">
+<h1>Accepting Donations</h1>
+<article>
+<h2>Overview</h2>
+
+
+
+
+Donations are a bit tricky, but can absolutely be done.
+
+Zoovy normally requires that each item in a store have a set price, the only way to circumvent this is to use a soft cart setting that is a Developer option. If you do not have developer on your account then you cannot allow customers to configure the amount, however this should not stop you - just create donation products in the most common donation amounts ($5, $10, $25, $50, $100, $250, $500, $1000, etc.)  Name each of the products with a unique identifier.  For example, start each one with the letters DON and then verify that no products in your store also start with DON. 
+
+Make sure the DON series of products are not taxable.
+
+You should also make sure the products have a product id that separates them from the other products in your store (e.g. DON*). 
+Then create a simple shipping method for zero dollars, name it Donation  no shipping. 
+Then configure a rule so that if the cart contains only DON* then rule processing is stopped. 
+Then configure a second rule that disables the shipping method (this will have the effect of 
+ensuring that free shipping is not available when a customer purchases a donation and another item.) 
+
+
+
+</article>
+<article>
+<h2>Custom Amounts</h2>
+
+Using custom HTML and a modified buy me button (with a variable price) you can allow a customer to enter a custom amount.
+</article>
+<article>
+<h2>Special considerations</h2>
+
+
+If you normally use simple shipping in your store then please note that donation items 
+will count as items in the cart, and will increase the shipping price. To counter-act this 
+effect you should reduce the price for each discount item using shipping rules.
+
+NOTE: using promotion rules you can also automatically add free gifts to the customers cart when donations of a certain amount are purchased. 
+
+</article>
+
+
+ 

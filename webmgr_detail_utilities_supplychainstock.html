@@ -1,0 +1,70 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="webmgr/detail/utilities-supplychainstock">
+<h1>Supply Chain STOCK</h1>
+<article>
+<h2>STOCK Overview</h2>
+
+
+
+
+
+The supply chain integration currently allows you to easily add inventory and/or subscribe to direct product feeds from suppliers.  
+
+
+More information about the entire Supply Chain Featureset can be found:
+<a class="linkdoc" href="#?doc=50694">Doc 50694</a>
+
+<aside class="cbc">
+<h6>Step by Step process for Stock Order Dispatches</h6>
+<div>
+<li>Step 1 - product's inventory decremented<br>
+- customer buys product from your website (or Amazon, ebay, etc) OR<br>
+- csv inventory import OR<br>
+- manually thru the Product Editor<br>
+<aside class="hint">
+<h6></h6>
+<div>If you have Stock Supplier Items that have been created with zero (0) inventory and a minimum stock qty greater than zero, these items will NOT be automatically added to your Stock Order. (ie inventory must change to alert the system that these items should be ordered.) In this case, go to Zoovy: Utilities: Supply Chain Management: STOCK Supplier: Inventory Update Configuration and press UPDATE.
+</div>
+</aside>
+
+
+
+
+
+<li>Step 2 - inventory decrement is finalized<br>
+- script finalizes this inventory decrement<br>
+- script analyzes in-stock qty and min stock qty<br>
+- (this process can be long, 6hrs+)<br>
+
+<li>Step 3 - inventory finalization script adds Supplier Order Item (as appropriate)<br>
+- inventory finalization finds in-stock qty lower than min stock qty<br>
+- adds supplier order item, status of item is NEW<br>
+
+<li>Step 4 - script adds order item to Supplier Order<br>
+- if an existing order is OPEN, item gets added to order<br>
+- if not, a new order is OPENed<br>
+
+<li>Step 5 - limits are analyzed<br>
+- days of the week, cost minimum and max days for open order are all analyzed to determine if order is ready to be dispatched<br>
+- Order is dispatched/emailed to supplier when limits are met
+
+</div>
+</aside>
+
+<br>
+
+
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+

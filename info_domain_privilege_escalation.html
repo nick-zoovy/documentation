@@ -1,0 +1,97 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/domain_privilege_escalation">
+<h1>Domain Privilege Escalation</h1>
+
+<article>
+<h2>Concept Overview</h2>
+
+
+This document describes the requirements for a client to request "Domain Privilege Escalation".  Domain Privilege Escalation is necessary for clients who intend to use
+a non-Zoovy registrar for their domain name but who also wish to access features 
+which are reserved for Zoovy registered domain names.
+
+</article>
+
+<article>
+<h2>Rationale</h2>
+Many IT people argue that it is not necessary for Zoovy to be the registrar for a domain name, and that NS delegation should be sufficient. Regrettably in this suggested configuration there is no reliable way for Zoovy to detect a change in the authoritative nameservers.  If a change in the authoritative nameserver occurred this would leave Zoovy with mis-configured A, CNAME, MX, SPF, and DKIM records creating an "alternate" world view. Since Zoovy is actively sending mail on our clients behalf - an authoritative nameserver change would cause our associated IP addresses to be tagged as spammers.  This is unacceptable and ramifications of these decisions are far reaching. 
+
+<br>
+All quoted prices through the system for services such as SSL provisioning assume dnsadmin@zoovy.com has been established as the Technical Contact for a domain.  Having technical contact is important for operations such as expeditiously (cost effectively) authorizing SSL Registrations, and Trusted Sender Email Feedback loop requests.  
+
+<br>
+
+We are also aware that many clients do not consider the security implications/considerations for non-Zoovy registrared domains. The number of keystroke loggers which record/transmit credentials for other registrars is alarming, and domain hijacking and presents a very real threat to business owners.  Criminals use compromised account credentials to redirect traffic to hostile sites which install mal-ware on unsuspecting customers computers. In fact prior to the implementation of the "Zoovy Registrar" we saw very alarming trends.  Recovering a hijacked domain is incredibly difficult and the damaged caused to client (buyer) trust when it occurs often cannot be repaired - as such we believe it would be irresponsible for Zoovy to not "make good security mandatory". 
+
+<br>
+Zoovy utilizes EV1 servers an ICANN accredited registrar. As registrar Zoovy does not claim ownership to a domain name in anyway (aside from our role as technical contact).  Provided an account is in good standing, and the designated support contact has authorized the transfer - Zoovy staff will unlock, and provide transfer codes within 1 business day of a clients request (we will also disable any features which require Zoovy be the registrar). 
+
+<br>
+Zoovy does not offer domain privacy. Domains having privacy causes email to be tagged as spam by a variety of spam filters.  This is understandable as no reputable large organization uses domain privacy, and it is almost used exclusively by spammers. 
+
+</article>
+
+
+<article>
+<h2>Solutions</h2>
+
+<section>
+<h3>Option 1: Transfer</h3>
+Transfer your existing domain to Zoovy. We will lock down the email configuration to ensure the highest possible level of mail delivery, we will also ensure that scammers stay clear of your domain name and prevent hijacking of your account.  This is the recommended solution. 
+</section>
+
+<section>
+<h3>Option 2: Register a separate name</h3>
+Zoovy offers $10/yr. domain registration. Unlike other discount domain registrars like GoDaddy we do not sell our client information to spammers and direct mailers. 
+If you cannot transfer your domain name then we recommend registering a new domain name for your newsletter/email campaigns. 
+</section>
+
+
+<section>
+<h3>Option 3: Request Domain Privilege Escalation</h3>
+
+For clients who are unable to transfer domain control due to what are generally administrative issues we do offer Domain Privilege Escalation (PE).  Privilege Escalation allows Zoovy to believe the domain is registered through us when in fact it is actually registered through another registrar.  It enables the functionality which is missed from a linked domain. 
+
+<br>
+
+Escalated Privilege is commonly necessary for organizations which operate their own mail infrastructures such as Exchange server, or GoogleMail.  
+There is no requirement Zoovy be the authoritative nameserver, or even that Zoovy be listed as the technical contact, or participate in the domain name infrastructure in any way. We will tailor our solution to fit your infrastructure. 
+
+</section>
+
+</article>
+
+
+<article>
+<h2>Domain Privilege Escalation Requirements</h2>
+
+<section>
+<h3>Setup + Certification</h3>
+There is a $1,500 per domain non-refundable escalation setup minimum-fee this includes the initial configuration and testing of SPF, and DKIM Public/Private keys to ensure interoperability with your DNS/mail infrastructure.  The process normally takes 2-3 weeks to complete from start to finish but could take longer for organizations which have either very complex dns/mail infrastructures or for organizations which lack the technical expertise &amp; documentation on their existing infrastructure. 
+
+<aside class="hint">
+<h6></h6>
+<div>
+The $1,500 setup minimum-fee assumes 10 hours of system operator time which is applied to the project. If the project requires more than 10 hours the client will be charged for additional time.  Any modifications or subsequent de-provisioning will be billable as well and will go against the initial 10 hours allocated. 
+
+</div>
+</aside>
+
+
+</section>
+
+<section>
+<h3>Security Deposit</h3>
+
+In addition to the setup fee domain escalation participants are required to provide a security deposit of $5,000.  Owners of Escalated Privilege Domains will (during the setup phase) agree to liable for $500 per day plus $50 per email message sent if the domain server configuration is modified without at least 3 business days advance notice to Zoovy.  The $5,000 security deposit covers all domains under a single account.  The deposit will be refunded within 10 business days once the client has notified Zoovy that  all associated domains have been de-provisioned. 
+
+</section>
+
+<section>
+<h3>Technical Contact Designation</h3>
+
+Domains with Privilege Escalation domains should designate Zoovy dnsadmin@zoovy.com as the technical contact for the domain.  Clients who fail to designate dnsadmin@zoovy.com as the technical contact will be responsible for hourly rates on-top of normally quoted prices for the extra coordination required to obtain domain level authorizations. For obvious reasons all prices quoted by Zoovy assume we are already the authorized domain technical contact.
+
+</section>
+
+</article>

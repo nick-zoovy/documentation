@@ -1,0 +1,108 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/sc_products">
+<h1>Supply Chain Products</h1>
+
+<article>
+<h2>Supply Chain Products</h2>
+
+
+
+
+These are instructions for how to enter and manage your products used with Supply Chain in Zoovy.
+<aside class="hint">
+<h6></h6>
+<div>One way to tell if a product is associated to a dropship supplier is by going to the Product Editor and looking in the Shipping section. If the product is associated to a supplier you will see italicized text stating: "This is a virtual product from (Supplier). Shipping settings from the supplier will be used."
+</div>
+</aside>
+
+</article>
+<article>
+<h2>Generic Supply Chain Products</h2>
+If you are using Generic Supply Chain, you have a number of methods to associate your products to a supplier.<br>
+<section>
+<h3>Add Individual</h3>
+In Utilities > Supply Chain Management, you can add in products that will be associated to that supplier one by one. Use this interface to associate products that are already in your Zoovy database or create them.<br>
+The only field you must populate when Adding Individual is "Your SKU." Your SKU is the Product ID that you intend on using for the product in your Zoovy database.
+</section>
+<section>
+<h3>Import Batch</h3>
+Add Batch allows you to upload a spreadsheet of products all at once.
+<aside class="caution">
+<h6></h6>
+<div>Import Batch is intended for importing NEW products only.  Please DO NOT use this tool to update existing products in your store as you will lose some of that product data.
+</div>
+</aside>
+
+The interface for Import Batch allows you to designate which column in your spreadsheet corresponds to a matching database fields in Zoovy. For example, if the third column from the left was the name of the product, you would populate the box adjacent to "Column #3" with "zoovy:prod_name".
+<aside class="hint">
+<h6></h6>
+<div>File Format: "Other" allows you to use the text box to designate a symbol used to delimit information in your file.
+</div>
+</aside>
+
+</section>
+<section>
+<h3>Product Power Tool</h3>
+You can also use the Product Power Tool to set database fields to associate a product to a supplier.<br>
+
+To do this you will want to set:
+<li>zoovy:prod_supplier
+<li>zoovy:virtual<br>
+
+The best way to get the values for these fields is to set one supply chain product manually and then click the Debug button at the bottom of the Product Edit screen. For more information on the Product Power Tool consult this webdoc: <a class="linkdoc" href="#?doc=50287">Doc 50287</a>.
+</section>
+<aside class="hint">
+<h6></h6>
+<div>Each supplier has a Products tab at the top of the screen where you can see which products are currently associated to it.
+</div>
+</aside>
+
+</article>
+<article>
+<h2>JEDI Supply Chain Products</h2>
+Although you can use any of the Generic methods to associate products with JEDI, you have one additional method that makes Supply Chain between two Zoovy stores especially easy. If your supplier agrees to publish a list you can log into your account on his or her website and "subscribe" to that list. A subscribed list automatically brings over the product data from your supplier's account into your account.
+
+<aside class="caution">
+<h6></h6>
+<div>A list published to supply chain should be no larger than 100 products.
+</div>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Removing Products from Supply Chain</h2>
+To remove the association between a product and a supplier you will need to use the Product Power Tool to delete the following attributes:<br>
+<li>zoovy:prod_supplier
+<li>zoovy:virtual
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

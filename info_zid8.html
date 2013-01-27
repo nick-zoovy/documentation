@@ -1,0 +1,186 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/zid8">
+<h1>Zoovy Integrated Desktop version 11</h1>
+
+<article>
+<h2>Concept Overview</h2>
+
+
+
+This document outlines the options with version 11 of the Zoovy Integrated Desktop application It also contains a FAQ at the bottom of the document for some of the most common questions.
+
+</article>
+
+
+<article>
+<h2>Deployment Options</h2>
+
+<section>
+<h3>Standalone</h3>
+Standalone is suited for small companies with only one station processing orders and is included free with most accounts.
+</section>
+
+<section>
+<h3>Network</h3>
+Suited for companies needing multiple concurrent or non-concurrent users, requires one PC to be designated as the "server", and not used for normal operations.  $50/mo. added to monthly minimum + additional per user fees which vary depending on account type.  
+</section>
+
+<section>
+<h3>Internet</h3>
+Currently undergoing testing.  We plan to eventually release a hosted server solution titled "Internet Deployment" for geographically distributed companies, requires renting a server on the Internet to host the database.  Internet will be available in 2009.  Pricing To Be Determined. Please let us know if you are interested in participating in a pilot. We expect the server leases to be approximately $100/mo. for a basic server. 
+</section>
+
+</article>
+
+
+
+<article>
+<h2>Software Components</h2>
+
+<section>
+<h3>Integrated Desktop Client</h3>
+This is the software which includes both the warehouse manager and order manager applications.  
+
+</section>
+
+<section>
+<h3>Sync Manager</h3>
+This application is for network installs and runs on the Network Server as a service and transmits changes and receives updates automatically once every hour. 
+<aside class="hint">
+<h6></h6>
+<div>
+Stand Alone deployments have a "Sync" button which must be pressed to send/receive updates.
+
+</div>
+</aside>
+
+<aside class="hint">
+<h6></h6>
+<div>
+You can use any workstation as a server, however for high volume deployments (+300 orders per day), or a lot of concurrent users we recommend a dedicated server. Contact Zoovy Support for our current recommendations about a dedicated server. 
+
+</div>
+</aside>
+
+</section>
+
+<section>
+<h3>Database Engine</h3>
+The Database Engine stores your data. Each supported database engine has it's own performance characteristics and licensing models. Standalone installations use a Microsoft Access database exclusively.  Network installations can choose between MySQL 5.1 and Microsoft SQL Server 2008. 
+<br>
+Sync Manager, and each of the clients connect to the database engine. Each of the clients also connects directly to the database engine using TCP/IP in a true client/server model. 
+</section>
+
+</article>
+
+
+<article>
+<h2>Support Options</h2>
+
+<section>
+<h3>Basic Support</h3>
+Included with all accounts, support during normal business hours. Installation/Upgrade appointments should be scheduled via the support interface and will be billed as an hourly SOP (System Operations). 
+
+<aside class="caution">
+<h6></h6>
+<div>
+If you choose to upgrade without the assistance of Zoovy Support and miss-configure or corrupt your database. The troubleshooting and repair time can easily surpass the amount of time a tech would spend installing the upgrade properly. This time would definitely be billable as well. 
+</div>
+</aside>
+<br>
+
+Keep in mind that the higher volume your stores will take more time to install the upgrade. Please schedule when you can have Order Manager down for multiple hours.
+<br><br>
+
+<aside class="hint">
+<h6></h6>
+<div>
+Technically savvy clients may choose to perform unassisted upgrades at their own risk. Emergency/escalated support rates apply for assistance during non-business business hours.  Standalone upgrades can be done unassisted.
+
+</div>
+</aside>
+
+</section>
+
+<section>
+<h3>Enterprise Support</h3>
+A Premium level support offering allows our staff to remotely access the on-site server via a secure connection 24x7x365 in order to diagnose problems and implement resolutions much more quickly. Enterprise Support is not available for standalone deployments. 
+Includes free scheduled installation/upgrade maintenance appointments. 
+24x7x365 emergency developer support. 
+Customized enhancements to the software that include:
+<ul>
+<li> customized invoices & packing slips
+<li> customized reports
+<li> integration assistance/support with other software packages
+</ul>
+Monthly fee of $350/mo. + one time provisioning setup fee of $500.
+</section>
+
+</article>
+
+<article>
+<h2>Supported Database Engines</h2>
+
+<section>
+<h3>Microsoft Access</h3>
+<li> Recommended stand-alone deployments because it is simple and easy to upgrade. 
+<li> Not recommended beyond 500mb databases.
+<li> Not supported in a network environment.
+<li> Will not support GaussSoft Reporting Engine
+</section>
+
+<section>
+<h3>MySQL community server</h3>
+<li> Recommended for databases which may exceed 4gb 
+<li> Ideal for Linux based environments (Sync Manager still requires a Windows Desktop at this time).
+<li> MySQL is the same back-end database used by Zoovy. 
+<li> Recommended for users who do not have expertise in Microsoft SQL Server. 
+</section>
+
+<section>
+<h3>Microsoft SQL Server 2008</h3>
+<li> Express edition (which is free) will be included. 
+<li> Express edition supports only a single cpu, 1gb ram, up to 4gb max database size. 
+<li> SQL Server Database license is required from Microsoft for larger installations.
+<li> Recommended for companies who have an existing MS-SQL database and expertise to manage that database. 
+</section>
+
+<aside class="hint">
+<h6></h6>
+<div>
+In version 8.0 the Sync Manager application will be broken out into it's own installer and will run as a system service.
+
+</div>
+</aside>
+
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

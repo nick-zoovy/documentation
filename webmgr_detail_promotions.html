@@ -1,0 +1,202 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="webmgr/detail/promotions">
+<h1>Configuring Coupons and Promotions with Zoovy</h1>
+
+
+
+
+
+
+<article>
+<h2>Overview</h2>
+This document will cover how to setup and implement promotions and coupons within your zoovy webstore.
+</article>
+
+<article>
+<h2>General Disclaimer</h2>
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+CAVEOT EMPTOR -Buyer Beware: Promotions can be tricky, it is best to sit down and plan out exactly what you want to do, and exactly how it would work before you get started. Make sure you throughly test any and all promotions you install BEFORE distributing it to customers.
+
+</div>
+</aside>
+
+
+</article>
+
+<article>
+<h2>Introduction:</h2>
+Promotions are currently broken into three type within Zoovy, not including shipping based promotions which can be setup and configured with shipping rules (covered briefly below).
+<br>
+<li> Simple Promotions - adequate for most users and are the easiest to setup and understand.
+<li> Coupons - used to offer your customers a special promotional "code" that they can enter into the shopping cart to obtain a discount.
+<li> Uber Promotions - veteran customers will probably recognize this area of promotions.  This is where you can setup and enable complex promotional rules based on the contents of the shopping cart.  This is only for advanced users and we HIGHLY recommend that you schedule an appointment with a member of the Zoovy Implementation Team to assist you with this.
+
+<aside class="caution">
+<h6></h6>
+<div>
+For best results merchants should only use coupons or uber promotions which is usually what they want anyway, rather than both. Either keep promotions more hidden and require a code, or make them automatic and announce them on the site.
+It can be possible to use both, but we don't recommend it because when they are both used in the same cart one could be disabled or depending on the configuration they could produce even less desirable results (eg. 500% off).
+
+</div>
+</aside>
+
+<br>
+You can find the promotion setup interface by going to SETUP > PROMOTIONS when logging into the Zoovy Web Manager.
+<aside class="hint">
+<h6></h6>
+<div>
+Do you have wholesale pricing schedules?  Wholesale pricing schedules have rules that effect promotions, and quite often a merchant will forget they they have these rules applied. Please read the webdoc below for more information:
+<a class="linkdoc" href="#?doc=50512">Doc 50512</a>
+
+</div>
+</aside>
+
+</article>
+
+<article>
+<h2>Simple Promotions:</h2>
+
+Simple promotions are exactly what they sound like, general broad based offers that are offered to all customers based on a total dollar value purchased. For example: purchase $100 and receive free shipping, or purchase over $50 and receive 10% off your entire order. 
+<br>
+Simple promotions can be accessed by all accounts which have the XSELL bundle and can be configured by going into Setup > Promotions and checking either the "offer free shipping after ___ dollars" box, or "offer a ____ discount after ____ dollars purchased". 
+<br>
+Discounts can be either fixed dollars, or a percentage depending on if a % is included in the discount amount. 
+<br>
+You can also allow or disallow the use of promotions in the cart when incomplete items (i.e. products purchased in an auction marketplace such as Ebay) are present.
+</article>
+
+</article>
+<article>
+<h2>Coupons</h2>
+Zoovy has completely redone the way that coupons are setup and handled by the system.  This should be a much more robust and easy to understand system.
+<br>
+<aside class="cbc">
+<h6>To create a coupon item follow these steps:</h6>
+<div>
+<li> Go to SETUP > PROMOTIONS > COUPONS in Web Manager
+<li> Enter in a 5 didgit code under "Add New Coupon" and click "Add" (leave blank for a system generated code).  This is what the customer will enter into the coupon field in the shopping cart coupon field.
+<li> Enter the "Coupon Title" in the textbox.  This title will appear in the cart below the subtotal.
+<li> If you want to use an image for the coupon (when using an "image cart" layout), click the "Edit" and select the image that you wish to use.
+<li> Enter a Valid From/Until date range that the coupon will be good for (leave blank for never expire).
+<li> Select the profile that you wish this coupon to be valid for, or choose "ALL" to have it effect all of your profiles.  These are the same profiles that you will see in SETUP > SITE BUILDER area of Web Manager.
+<li> Under "Behavior" click on "Add New" to add behavior rules to the coupon (when the coupon will and will not be applied).
+<li> NOTE: When the coupon has expired, there is a checkbox to "Disable/Expire" the coupon. Check this when the promotion is finished so customers receive a message "this coupon has expired".
+<li> "Save" and "Exit" to save the coupon and return to the main coupon interface.
+
+</div>
+</aside>
+
+
+At this point you can distribute the coupon code to your customers via the Zoovy Newsletter feature or other means.  The customers will just proceed through the shopping experience until they are to the cart area, enter the code in the coupon field, and the discount will be applied based on the rules that you have enabled.  Again, TEST all promotions, including coupons thoroughly before pushing them out to the customer!
+<br>
+<section>
+<h3>Getting the Coupon Code field to display in the Shopping Cart</h3>
+There are two things that need to be done in order to get the coupon code field to show up in the shopping cart and allow the customer to enter in a coupon code for the order.  First, you will need to use a supported shopping cart layout.  Currently these are the image cart layouts numbered 3006-3009.  To enable the cart layout, you go to: 
+<br>
+SETUP > SITE BUILDER > SHOPPING CART PAGE (Edit) 
+<br>
+then click "Layout" and choose one of those listed above. The other step to ensure that the coupon code box appears is after you select the correct layout, in the "Page Edit" area of the Shopping Cart page editor, you will see an element called "Display coupon entry form in cart:", set this value to "ON".
+</section>
+
+</article>
+
+<article>
+<h2>Uber Promotions</h2>
+This is where you can setup and enable complex promotional rules based on the contents of the shopping cart.  This is only for advanced users and we HIGHLY recommend that you schedule an appointment with a member of the Zoovy Implementation Team to assist you with this.
+<br>
+<aside class="cbc">
+<h6>To create an "Uber Promotion" follow these steps:</h6>
+<div>
+<li> Go to SETUP > PROMOTIONS > UBER PROMOTIONS in Web Manager
+<li> Check the "Enable Uber (Advanced) Promotions" checkbox and save.
+<li> Click the "Add New" button
+<li> Enter in the information in the form to build a promotional rule that you desire.  There are many settings and combinations available to you.  
+<li> NOTE: The advanced rules possible with "Uber Promotions" all interact with eachother and are processed from the top-down, building on the previous rules changes, if any.  Layering rules and various interactions between the rules can cause sometimes unexpected and undesired behavior. We suggest you keep it as simple as possible and test any new rule exhaustively before leaving it in place for your customers to interact with.  If you have technical questions, contact Zoovy Technical Support.  If you have "how to" configuration questions, we again recommend that you schedule an appointment with a member of the Zoovy Implementation Team to assist you with this.
+
+</div>
+</aside>
+
+
+</article>
+
+<article>
+<h2>Shipping Rules</h2>
+
+Rules Based Shipping allows merchants to intelligently evaluate the contents of the cart to see if a customer qualifies for free or discounted shipping. Most commonly rules based shipping is configured as a simple shipping method with a title like "Free Shipping" and then the rule will look at the cart and if the necessary items are purchased then the rule will stop running, otherwise it will disable the "Free Shipping" method and remove it from the list of available options. 
+<br>
+<li>Rules based shipping is only available on non-zipcode based shipping methods such as simple shipping, weight based, but not on types such as Fedex, UPS or USPS. To configure rules based shipping go to Setup | Shipping > select a shipping method > and then click the rules based shipping link if available.
+<li>For specific examples and help with Rules Based Shipping review the documentation available when configuring it. Rules based processing requires the Advanced Shipping bundle. Zoovy technical support will only provide general assistance with Rules Based Processing (such as clarifying the documentation), for assistance with your specific rules you must schedule an appointment with the Zoovy Implementation Team.
+</article>
+
+
+<article>
+<h2>Enabling the prompt so your customers can enter their coupon code</h2>
+Once you activate a coupon, you will need to enable the 'enter coupon here' prompt on the cart page so that your customers have a place to add it to their cart.
+
+<aside class="cbc">
+<h6></h6>
+<div>
+<li>log in to your account at www.zoovy.com</li>
+<li>Click on the setup tab</li>
+<li>Click on the site builder link</li>
+<li>Click 'edit' next to the cart page for the profile you want to work on</li>
+<li>Click 'edit' next to the 'display coupon entry form...' prompt (you must have a layout 3006 or newer for this to work).</li>
+<li>Enable the checkbox and Save</li>
+
+
+</div>
+</aside>
+
+
+</article>
+
+
+
+<article>
+<h2>Custom Programming - Your Idea Here.</h2>
+
+Special types of coupons can be built with a little custom programming help from Zoovy, or your own XML developer. Most commonly these types of coupons involve the user completing some task (such as filling in a custom form, or entering a secret promotion code - which is then deactivated later) once the customer has met the requirements to receive the promotion then the actual checkout is accomplished by either creating an external item at a specific price (or even free), or simply linking the customer to a hidden project. 
+<br><br>
+The ability to create specialized promotion code make an excellent way to run a highly measurable and intelligent marketing campaign. These techniques combined with Smart Cart promotions can quickly and affordably produce virtually any type of marketing campaign conceivable. You can either hire your own developer or Zoovy offers consulting services at a flat rate of $80 per hour, most projects take between 2 to 10 hours to complete. If you are interested in obtaining a quote please contact your Zoovy salesperson. 
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

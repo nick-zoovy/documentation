@@ -1,0 +1,231 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="webmgr/detail/import-customer">
+<h1>Advanced Customer Import Guide</h1>
+<article>
+<h2>Advanced Customer Import Guide</h2>
+
+<section>
+<h3>Overview</h3>
+
+Please note: This is an advanced feature and requires that you first schedule training before you submit a technical support ticket.  If you are a new Zoovy merchant and wish to use this feature, please schedule training.<br><br>
+
+The Advanced Customer Import is easy to use. Just export your data to a CSV file (ie go to Utilities -> Customer Manager -> List All Customers -> Click on the Excel button), then put the appropriate headings in the first row (called the Header).
+Place one attribute in the following format in each column of the header to denote which field you will be saving,
+the import process is case sensitive. Also remember that spaces are not allowed between each header column.
+<br>
+Example CSV File:<br>
+<aside class="html">
+<h6></h6>
+<code>
+
+%EMAIL,bill_full_name,bill_phone,bill_address1,bill_city,bill_state,bill_zip
+homer@simpsons.com,"Homer Simpson",555-555-5680,"123 Some Street",Springfield,MG,12345
+
+</code>
+</aside>
+
+
+<br>
+The example above would create one customer record for customer Homer Simpson with billing contact information. Yes, we know "MG" is not a state,
+but do you know where the Springfield of the Simpson's is?  Bonus question, what does "MG" indicate? 
+<br>
+<aside class="caution">
+<h6></h6>
+<div> Merchants' customers with blank emails have been removed from the system. 
+</div>
+</aside>
+
+</section>
+<section>
+<h3>Column Headings</h3>
+
+<table border="0" cellpadding="3" cellspacing="2" width="500">
+  <tr>
+    <td width="123">%EMAIL</td>
+    <td width="377">Customer's email address, this is the unique identifier for 
+    the customer record.  This should be the first column in your CSV file.</td>
+  </tr>
+  <tr>
+    <td width="123">%FULLNAME</td>
+    <td width="377">Customer's full name (first and last)</td>
+  </tr>
+  <tr>
+    <td width="123">bill_company</td>
+    <td width="377">Billing company name (if applicable)</td>
+  </tr>
+  <tr>
+    <td width="123">bill_full_name</td>
+    <td width="377">Billing first and last name</td>
+  </tr>
+  <tr>
+    <td width="123">bill_phone</td>
+    <td width="377">Billing phone number</td>
+  </tr>
+  <tr>
+    <td width="123">bill_address1</td>
+    <td width="377">Billing street address</td>
+  </tr>
+  <tr>
+    <td width="123">bill_address2</td>
+    <td width="377">Billing additional address</td>
+  </tr>
+  <tr>
+    <td width="123">bill_city</td>
+    <td width="377">Billing city</td>
+  </tr>
+  <tr>
+    <td width="123">bill_state</td>
+    <td width="377">Billing state</td>
+  </tr>
+  <tr>
+    <td width="123">bill_zip</td>
+    <td width="377">Billing Zip Code</td>
+  </tr>
+  <tr>
+    <td width="123">bill_country</td>
+    <td width="377">Billing Country</td>
+  </tr>
+    <tr>
+    <td width="123">ship_company</td>
+    <td width="377">Company Name (if applicable)</td>
+  </tr>
+  <tr>
+  <tr>
+    <td width="123">ship_full_name</td>
+    <td width="377">Shipping first and last name</td>
+  </tr>
+  <tr>
+    <td width="123">ship_phone</td>
+    <td width="377">Shipping phone number</td>
+  </tr>
+  <tr>
+    <td width="123">ship_address1</td>
+    <td width="377">Shipping street address</td>
+  </tr>
+  <tr>
+    <td width="123">ship_address2</td>
+    <td width="377">Shipping&nbsp; additional address</td>
+  </tr>
+  <tr>
+    <td width="123">ship_city</td>
+    <td width="377">Shipping city</td>
+  </tr>
+  <tr>
+    <td width="123">ship_state</td>
+    <td width="377">Shipping state</td>
+  </tr>
+  <tr>
+    <td width="123">ship_zip</td>
+    <td width="377">Shipping Zip Code (Domestic)</td>
+  </tr>
+    <tr>
+    <td width="123">ship_int_zip</td>
+    <td width="377">Shipping Zip Code (International)</td>
+  </tr>
+  <tr>
+    <td width="123">ship_province</td>
+    <td width="377">Shipping Province (International)</td>
+  </tr>
+  <tr>
+    <td width="123">ship_country</td>
+    <td width="377">Shipping Country</td>
+  </tr>
+  <tr>
+    <td width="123">#PRT=1</td>
+    <td width="377">Replace "1" with the relevant number of the partition to which you wish to import.</td>
+  </tr>
+  <tr>
+    <td width="123">%PASSWORD</td>
+
+    <td width="377">Customer's login password (importing with a value of * in the column will automatically generate a password)</td>
+  </tr>
+  <tr>
+    <td width="123">%SCHEDULE</td>
+    <td width="377">Schedule Code</td>
+  </tr>
+  <tr>
+    <td width="123" valign="top">%NEWSLETTER</td>
+    <td width="377" valign="top">
+	If you are using the newsletter tool and have multiple lists, import is configured as follows:</p></td>
+  </tr>
+  <tr>
+  <td width="123">&nbsp;</td>
+  <td width="377">
+    Not subscribed - 0<br>
+	List 1  - 1<br>
+	List 2  - 2<br>
+	List 3  - 4<br>
+	List 4  - 8<br>
+	List 5  - 16<br>
+	List 6  - 32<br>
+	List 7  - 64<br>
+	List 8  - 128<br>
+	List 9  - 256<br>
+	List 10 - 512<br>
+	List 11 - 1024<br>
+	List 12 - 2048<br>
+	List 13 - 4096<br>
+	List 14 - 8192<br>
+	List 15 - 16384<p>
+	If you want to add the customer to list #1, set the value to 1<br>
+	If you want to add the customer to list #5, set the value to 16<br>
+	if you want to add them to list #1, #4 and #5 then you'd do the following: 
+1 + 8 + 16 = 25
+  </td>
+  </tr>
+</table>
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+The %NEWSLETTER field can NOT be changed for existing customers by CSV import. 
+%NEWSLETTER will only be added to new customer records being created.
+
+</div>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Frequently Asked Questions</h2>
+
+
+<b>Q: Why can't I change the value for %NEWSLETTER when updating existing customers?</b><br>
+A: Because the customer must have chosen to receive email from you, which they can do in their
+account management area.  Any email sent without their direct consent would be spam and is strictly
+against Zoovy Terms of Service (TOS) as well as all applicable anti-spam laws.<br>
+<br>
+
+</section>
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,77 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="webmgr/detail/payment-cardservice">
+<h1>Cardservice Gateway Configuration</h1>
+<article>
+<h2>Overview</h2>
+
+This document deals specifically with Linkpoint. For more general information about gateways please visit:
+<a class="linkdoc" href="#?doc=50611">Doc 50611</a>
+
+
+Linkpoint gateway is a service by Cardservice that allows you to conduct real-time credit card and 
+automatic check processing services over the Internet. Zoovy supports the linkpoint API from Cardservice, 
+in addition to several other gateways which are compatible with other processors.<br>
+<Br>
+Zoovy supports both AVS (Address Verification System) and CVV (Card Verification Value) via the Cardservice Linkpoint gateway.
+
+</article>
+<article>
+<h2>CVV/AVS Codes</h2>
+
+In the order events you will find an auth code it will appear as a string of numbers and letters separated by colons e.g. 12354:ABCD:5789:.
+The second 4 digit alphanumeric code represents that AVS transaction.<br>
+<br>
+The first 3 digits indicate AVS code:
+<li> YY* Address matches, zip code matches
+<li> YN* Address matches, zip code does not match
+<li> YX* Address matches, zip code comparison not available
+<li> NY* Address does not match, zip code matches
+<li> XY* Address comparison not available, zip code matches
+<li> NN* Address comparison does not match, zip code does not match
+<li> NX* Address does not match, zip code comparison not available
+<li> XN* Address comparison not available, zip code does not match
+<li> XX* Address comparisons not available, zip code comparison not available
+<li> (*) -- This is the one character response code sent by the authorizing bank and it varies by card type (e.g., Y,Z,A,N,U,R,S,E,G are valid responses for Visa.;
+ Y,Z,A,N,X,W,U,R,S are valid for MasterCard.; Y,Z,A,N,U,R,S are valid for American Express. and A,Z,Y,N,W,U are valid for Discover.).
+<br>
+If Full AVS validation is required then anything besides a YY, YX, XY, and XX is treated as a failure.<br>
+If Partial AVS validation is required then only an NN will be treated as a failure.<br>
+<br>
+The last digit incidates CVV code:<br>
+<li> M Card Code Match
+<li> N Card code does not match
+<li> P Not processed
+<li> S Merchant has indicated that the card code is not present on the card
+<li> U Issuer is not certified and/or has not provided encryption keys
+<li> A blank response should indicate that no code was sent and that there was no indication that the code was not present on the card.
+<br>
+If CVV indicator is present then an N will result in a failure. (All other codes indicate the CVV could not be processed).
+<br>
+
+</article>
+<article>
+<h2>Handling CVV/AVS failures</h2>
+
+The cardservice gateway does not support the ability to reject authorization if AVS or CVV values fail. (This is currently only supported
+by Authorize.Net). For this reason if you receive a failure you should go an void the transaction via linkpoint.com.
+<br>
+
+</article>
+<article>
+<h2>Cardservice Configuration on Zoovy</h2>
+
+Cardservice will provide you with a file (usually referred to as a "PEM" file) which needs to be linked to your account.  If Web Manager is telling you that there is a configuration error,
+open a support ticket at http://support.zoovy.com, attach the PEM file to the ticket and we will install the file for you.
+
+</article>
+
+
+
+
+
+
+
+
+
+
+

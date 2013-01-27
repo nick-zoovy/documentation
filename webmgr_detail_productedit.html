@@ -1,0 +1,610 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="webmgr/detail/productedit">
+<h1>Product Edit</h1>
+<article>
+<h2>Overview</h2>
+
+
+
+
+
+
+
+
+This document will provide an overview on how to edit products in the Product Editor interface on the web, and includes a detail of each section of this functionality.
+</article>
+
+<article>
+<h2></h2>
+When editing a product through the web interface, you'll notice that the page is divided into sections.  The 'General Information' section is at the top and always open.  Below that are several others which can be expanded or collapsed by clicking on the triangle to the right of the section header.<br>
+<i>Note: depending on your account level, some of the options listed here may not be available.</i><br>
+<aside class="caution">
+<h6>Product editor load times.</h6>
+<div>
+Closing Product Editor sections when they're not in use, such as Amazon Marketplace, will dramatically speed up the editor interface. Whenever a section such as Amazon Marketplace is left open, that information must also be pulled from the database when displaying current or subsequent products. Closed sections do not load their data at the moment the product is displayed on the Product Editor, therefore load times are faster.
+Closing the Amazon Marketplace section after you're done working on a product will allow you to move on to other products faster.
+
+</div>
+</aside>
+
+
+</article>
+
+
+<article>
+<h2>Adding/creating a new product</h2>
+There are several ways to add a new product to your Zoovy store.  You could create a new product, clone an existing, use a csv import, or use Warehouse Manager.  Below is a step-by-step process for creating a new product.  The other methods are detailed elsewhere in Zoovy.
+
+<aside class="cbc">
+<h6>Creating a New Product</h6>
+<div>
+<li>Log in to your account at www.zoovy.com</li>
+<li>Click on the Products tab</li>
+<li>Click the 'create new' link on the left</li>
+<li>Fill in the appropriate fields (detailed below - selecting images will come later)</li>
+<li>Save your changes</li>
+
+</div>
+</aside>
+
+
+<aside class="caution">
+<h6>Cut and Pasting Data</h6>
+<div>Use caution when cutting and pasting information into product data fields.  You should not use MSWord, Excel, or internet browsers as your source from which to paste from, as these all can contain symbols and extended, high-range ascii characters that can cause corruption in your products table. If you are going to bring in blocks of data, rather than entering it via a keyboard, make sure you use notepad or some other flat text based editor. If you "need" to use a symbol, such as copywrite or registered trademark, replace the symbol with the HTML coding for that symbol.  Rule of thumb, if you don't find it on your keyboard, don't use it in a data field.<br>
+Result of this corruption downstream varies, but one place you will see it is when your product shows up "blank" and in the product name field you now see a message similar to "PRODUCT CORRUPTION - Product size exceeds 1mb".  At this stage the corruption has caused the system to expel the product record data and your only option is to enter the data manually a second time for these products (this time without the corrupting characters!).
+
+</div>
+</aside>
+
+
+
+</article>
+
+
+<article>
+<h2>General Product Information</h2>
+
+<section>
+<h3>Product ID's</h3>
+The product id is a unique identifyer for this paticular item.  No two products can share the same ID. The ID allows you to easily reference and track products. This id may, at times, be displayed to your customers.
+
+</section>
+
+<section>
+<h3>Product Name</h3>
+A short name describing your  product  should be entered here. The name will be used throughout your store on category pages, on the product page itself, and in the cart.  The product name is also used in invoices and packing slips.  The name should be short and to the point.  Zoovy has separate fields for longer descriptions.  In most cases, you should leave the product ID and manufacturer out of the name.
+<br>
+field name = product:zoovy:prod_name
+
+<aside class="hint">
+<h6></h6>
+<div>
+Your product name is going to appear frequently so you should:<ul>
+	<li>Spell check.</li>
+	<li>Not add any html formatting.</li>
+	<li>Treat the name like you would a book title, uppercasing the first letter of each major word.</li>
+	<li>Do NOT uppercase every character. It makes the text harder to read and looks very unprofessional.</li>
+	<li>Although there is no limit on the number of characters you can enter here, it is recommended you keep this between 45 and 60 characters for compatibility with other systems.</li>
+</ul>
+
+</div>
+</aside>
+
+
+</section>
+
+<section>
+<h3>Default Description</h3>
+
+This text box should adequately describe your product. On the web, a good product description can really help sales.
+It should contain all the information necessary for your customer to make an informed decision. You will see this field
+ used on product pages, product lists (category pages) and auctions.  In some cases, it helps to have two descriptions per product; a short description and a long one.  If that is the case for you, default description should be your short description and detailed description should be your long one.  Default description is what is used in most product lists.  Not all product layouts support detailed description though, so make sure you choose the correct one.
+<br>
+field name = product:zoovy:prod_desc
+
+<aside class="caution">
+<h6></h6>
+<div>
+If you are cutting and pasting HTML, do not use Microsoft Office HTML (Word). The Office specific unicode
+tags will cause garbage (foreign characters such as "æquot; to be entered into your HTML.  This is also true if
+you add HTML to your auction HTML descriptions.  You are much better off using WikiText, for forward compatibility.
+
+</div>
+</aside>
+
+<aside class="caution">
+<h6></h6>
+<div>
+Some merchants use this area to provide a list of model numbers or other long lists of comma separated values.  This is ok, but make sure to add a space after the comma (i.e. 1, 2, 3, 4... rather than 1,2,3,4...).  Not doing this will cause some browsers to display the list all on one line, which will distort the width of your product and/or category layout page significantly.
+
+</div>
+</aside>
+
+
+</section>
+
+<section>
+<h3>Base or Sale Price</h3>
+
+The base/sale price is the price in US dollars that the product is going to sell for in your store.  This is the 'pre-option' price, so it will be computed in as the base cost, if options are present.  You do not/should not add any special characters, such as a dollar sign, to this field.  Decimal points are fine.
+<br>
+field name = product:zoovy:base_price
+
+</section>
+
+<section>
+<h3>MSRP - Manufacturer's Suggested Retail Price</h3>
+This is an optional field that you can populate.  Some product layouts and product lists display this field and will use it to compute a 'you save' amount to let the customer know how inexpensively they're getting that item from you.
+<br>
+field name = product:zoovy:prod_msrp
+</section>
+
+<section>
+<h3>Cost</h3>
+This is the amount the item costs you.  This is used for internal purposes only in reporting.
+</section>
+
+<section>
+<h3>Taxable</h3>
+If sales tax should be applied to this item, check the checkbox or set field to 1 in csv import.  Your store payment options must be configured properly as well to apply sales tax.
+</section>
+
+</article>
+
+<article>
+<h2>How to edit an existing product</h2>
+Once a product is created, it may become necessary to make changes to it at some point.  To do so, follow these steps:
+
+<aside class="cbc">
+<h6>Editing an existing product</h6>
+<div>
+<li>Log in to your account at www.zoovy.com</li>
+<li>Click on the product tab</li>
+<li>Use the folders on the left to locate the product or do a search<li>
+<li>Edit the necessary pieces of product information and save.</li>
+<li>The lower portion of the page has headers which can be opened to edit a specific section.  Click the triangle in the colored header</li>
+<li>Save your changes</li>
+
+</div>
+</aside>
+
+</article>
+
+<article>
+<h2>Images</h2>
+The Zoovy Product editor allows you to set up to five primary images for a product as well as a thumbnail.  Through a csv import, you can add up to 99 images per product, if you need to.  You can also select a product layout that has more than five images and add more images to a product that way.
+
+<aside class="hint">
+<h6></h6>
+<div>
+<strong>Thumbnail Image</strong>:  By default, product image 1 will be used as the thumbnail if no thumb is specified.  If your product images are mostly horizontal rectangles in nature, then you should consider using a cropped version (set to a square) for the  thumbnail, as most of the default product lists in Zoovy are designed for square thumbnails.
+
+</div>
+</aside>
+
+<aside class="hint">
+<h6></h6>
+<div>
+<strong>Thumbnail Image</strong>:  Thumbnail image is used for the for the webstore gallery features and product displays on category web page layouts.  If you've changed the primary image, but the image for the product that is being displayed on the category page is still the old one, make sure that you have also pointed the thumbnail at the new image.
+
+</div>
+</aside>
+
+<br>
+field name = product:zoovy:prod_image1, product:zoovy:prod_image2, product:zoovy:prod_image99 
+</article>
+
+
+<article>
+<h2>Shipping</h2>
+<section>
+<h3>Base Weight</h3>
+The base weight is measured in ounces, and is the shipping weight of the product. If you add options later those may modify the weight, so if you sell a small, medium and large version of a single product then it is probably safe to enter either the large or small weight and then have the product options either raise or lower the weight respectively.<br>
+
+<br>
+<b>TIP</b>: If your shipping method does not require weight, then you can ignore the weight field, a value of
+ZERO ounces will be assumed.<br>
+<br>
+<b>TRICK</b>: If you know how many pounds (lbs) a product is, then enter the number of pounds and then press
+the # key, then press tab and weight will be converted to ounces. Example: if you have a product that is three
+pounds, simply type 3 then press #, then press TAB and you'll see the field change to 48 ounces.<br>
+<aside class="caution">
+<h6></h6>
+<div>Please be careful when using this convention, because #10 is the same as saying 10 ounces. You are welcome to leave the value in pounds, but make sure your "#" symbol is on the correct side of the value (10# = 10 pounds, #10 = 10 ounces). 
+</div>
+</aside>
+
+<aside class="caution">
+<h6></h6>
+<div>NOTE: If you are using pounds(#), you must use whole pounds only for the conversion to work.  For instance, if you have a product that is 1.5 pounds, you must either use 1# or 2# or you must use ounces instead.  Zoovy does not convert fractions of pounds. 
+</div>
+</aside>
+
+</section>
+
+</article>
+
+<article>
+<h2>Website Navigation</h2>
+Use the checkboxes to the left of the category/list names to add your product to your website.  You can also create new categories and lists through this interface.  If your product is not in a category, it will not appear in the search results page.
+</article>
+
+<article>
+<h2>Cross Selling</h2>
+
+There are, typically, two 'lists' of products that can be set for any given product.  They are 'related items' and 'accessories'. The related items list is typically used for 'you might like this instead'. Most product layouts that support this feature will direct the customer away from the focus product page when a related items product is clicked.  The 'accessories' list of items is typically used for upselling.  Most often, the list style associated with accessories allows the shopper to add them to the cart at the same time as the focus products. For example, on an XBox 360 page, you might have extra controllers, games, batteries or other accessories in the accessories list.
+
+<section>
+<h3>Related Items</h3>
+
+To show related products on a product page, you must select a page layout that allows for related products. Most of the newer product layouts (anything after 2006) have this feature present.  To set the related items, open the desired product in the editor and scroll down to the cross selling panel.  
+
+
+<br>
+
+If a layout with related items is selected for an item, but no products have been set, the system will use the homepage products by default.  It was designed this way so that a default list of products could be used for merchants who wanted related items, but didn't want to assign them for every product (at the time, 'lists' were not available).  There is no way to turn off that behavior without a custom product layout,  however there is a workaround:
+
+<aside class="cbc">
+<h6>'Disabling homepage products as default for related items'</h6>
+<div>
+<li>Create a new 'list' of products called something like 'homepage products'.  Instructions on creating a list can be found here: <a class="linkdoc" href="#?doc=50325|filename">Doc 50325|filename</a> </li>
+<li>Populate your new list with product that you want to appear on your homepage.</li>
+<li>Click setup</li>
+<li>Click website builder</li>
+<li>Click edit next to the homepage</li>
+<li>Click on the 'products' link and remove all the products</li>
+<li>Now, click the 'edit' link for the product list</li>
+<li>For the source, select the list you  just created.</li>
+Now, you have products on your homepage, but system doesn't recognize them as the store default and won't use them on the product pages. 
+
+</div>
+</aside>
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+You can also use this method to have the default related items different than the items on your homepage, simply do not clear the items on your homepage, just assign a list as the source
+
+</div>
+</aside>
+
+
+
+
+
+
+Related products can be displayed on the shopping cart page either automatically, or by manually specifying related products.
+In order for the related items to display properly on the cart page, your cart page must contain a product list and be configured properly.  Follow the steps below to set this up.
+
+<aside class="cbc">
+<h6>'Setting up the cart page to display related items'</h6>
+<div>
+<ol>
+<li>Click the setup tab.</li>
+<li>Click the site builder link</li>
+<li>Click edit next to the cart page at the bottom of the builder.</li>
+<li>If you are prompted to choose a layout, select a layout that has a product list.  If you are not prompted automatically, click the layout link.</li>
+<li>Once you have selected a layout, click the edit link next to the product list.</li>
+<li>Set the 'load products from' option to 'dynamic, related products'</li>
+<li>Save your changes</li>
+</ol>
+
+</div>
+</aside>
+
+
+</section>
+
+<section>
+<h3>Accessories</h3>
+Accessories is designed specifically for 'add on' items, such as batteries, if you sell electronics.  The items added to the accessories list for any given product should simple products (ie - products with NO options) so that customers can simply click a checkbox to add them and need to make any difficult decisions more than 'do i need this'.  Essentially, these are upsells/impulse buys that are directly related to the product page the customer is on. Not all layouts support this feature, however most after 2007 do.
+
+<br>
+
+To set the accessories, open the desired product in the editor and scroll down to the cross selling panel.  
+
+<br>
+
+Accessories can also be used to upsell on the shopping cart page.  See the instructions in related items and set in the same manner, except choose 'dynamic, accessories' as the 'load products from'.
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+<b>An product should NEVER have itself as an accessory!</b><br>
+In most cases, the accessories are presented as part of a form so they can be added to the cart at the same time as the focus sku.  The quantity box defaults to 0 on accessories, so if the focus sku is also in the accessory list, the quantity will get set to 0 and it CAN NOT BE ADDED TO THE CART.
+
+</div>
+</aside>
+
+
+
+</section>
+</article>
+
+
+
+
+
+
+
+<article>
+<h2>Apply Tax</h2>
+
+When the Apply Tax radio button is set to Yes, tax is computed using your settings. Tax can be configured by state or state and zip code,
+by clicking the Setup tab and then the Sales Tax Setup link.<br>
+
+</article>
+
+<article>
+<h2>Put on Homepage</h2>
+
+This radio button adds the product to the main page of your site. This can be used to feature items outside of your regular categories,
+or exclusively when you have a small selection of items.<br>
+<br>
+</article>
+<article>
+<h2>Create Channel</h2>
+
+Create Channel allows you easily put your items up for sale on Ebay the worlds largest trading community.
+Zoovy will automatically place the item on Ebay, and will track the items progress during the bidding cycle,
+finally when the auction is over the Zoovy system will automatically create an external sale, and
+contact the winners with instructions necessary to complete the purchase of the external sale. Once the
+winner has placed the external sale into his or her shopping cart they will be able to either buy more
+items or proceed through a normal checkout.<br>
+<br>
+
+</article>
+<article>
+<h2>Traffic Details</h2>
+
+Zoovy records all traffic to you store. The page views for a specific item is available threw this button.
+Use this information compared to you other products to tell the effectiveness of your descriptions, pictures, placement, and general
+product popularity.<br>
+<br>
+
+</article>
+<article>
+<h2>Design Web Page</h2>
+
+The "Design Web Page" choice lets you configure a layout that determines how the product will be viewed on your website.  There are several default layouts available in the system that offer a variety of features and formats.  Custom layouts are also supported.  You can make your own custom layouts, or have Zoovy create them for you.<br>
+
+<aside class="cbc">
+<h6>Choosing a new Product Layout</h6>
+<div>
+<li>Log into your account at www.zoovy.com.</li>
+<li>Click on the 'products' tab.</li>
+<li>Click on the product you wish to modify from the chooser on the left.</li>
+<li>Push the 'edit web page' button.</li>
+<li>If you have not selected a layout previously, you will be prompted now.  Otherwise, click the 'layout' link at the top.</li>
+<li>Select a layout from the list of choices.</li>
+
+</div>
+</aside>
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+If you select a product layout with Tell a Friend, and when you visit your store, click the taf button, you get this error:<br>
+There was an error loading
+wrapper %WRAPPER_FILE%. Please check your wrapper configuration.<br>
+It means you have no popup wrapper selected.
+
+</div>
+</aside>
+
+
+<br>
+
+<aside class="hint">
+<h6></h6>
+<div>
+To determine what product layout a paticular product is using, click on the products tab, open that product and push the edit web page button.  If you are prompted to choose a layout, that means your product has no layout selected and is using the system default (currently #100).  Otherwise, push the layout link at the top and when the list appears, the currently selected layout will have a pink background color behind the description and read 'currently selected'.
+
+</div>
+</aside>
+
+
+<br>
+
+<aside class="hint">
+<h6></h6>
+<div>
+If you cannot find a particular Page Layout that you have used in the past, this Layout has probably been depreciated (works but is no longer available).  We would strongly recommend you use one of the new product layouts that is available, as they are more functional and feature rich.
+<br>
+Reference the <a class="linkdoc" href="#?doc=50287">Doc 50287</a> for information on changing all your Products' Page Layouts at the same time.
+
+</div>
+</aside>
+
+
+
+<section>
+<h3>Setting product specific meta information</h3>
+Once you are in the web page editor (see click-by-click above), there will be a link at the top that will allow you to set the meta information for this product.  You can enter the page title, keywords and description.  By default, the title will be the product name, and the meta description will be the product description.
+</section>
+
+</article>
+
+<article>
+<h2>View on Website</h2>
+
+View on website is simply a link to your product on your website. This is how it will appear to
+customers on your website.<br>
+<br>
+</article>
+
+<article>
+<h2>Website Categories</h2>
+
+If you have a lot of products you will need to create categories to help customers find the products quickly
+and easily. The Website Categories tool lets you create and add your product to one or more sub categories on your website.<br>
+<br>
+</article>
+
+<article>
+<h2>Manage Options Button</h2>
+
+Product Option Groups allow you to prompt the user for additional information about the product before
+being allowed to place the items in their cart. Typical examples of Product Options are Size, Color, or
+Gift Packaging. Product Options can also modify the base price and base weight of an item. For more
+information about product options <a href="http://www.zoovy.com/webdoc/index.cgi?VERB=DOC&DOCID=50541">Click Here</a><br>
+<br>
+
+</article>
+
+<article>
+<h2>Manage Inventory</h2>
+
+Inventory allows you keep track of the inventory you have on hand, remove products from your site when you are out, and
+warn customers when a product is nearing a point where their may not be any left. This button allows for changing the
+behavior of out of stock or nearly gone items, as well as entering or updating quantities. <br>
+<br>
+<aside class="hint">
+<h6></h6>
+<div>When using auctions or syndication, each listing will reserve for sale a quantity of the product.  This helps to insure that should the listing have a buyer, there is inventory on hand and available to deliver to the buyer.  You may see a note in this section looking something like "Total   (Incomplete: 3 Other: 5)".  "Incomplete" indicates how many listings have completed but the buyer has not yet completed the purchase (thus holding the inventory in reserve).  "Other" indicates current reserve being held for active auction or syndication listings.
+</div>
+</aside>
+
+<br>
+<br>
+</article>
+
+<article>
+<h2>Debug</h2>
+The Debug button opens a troubleshooting information screen that is usually used by Support to diagnose product related issues.  While this area is primarily used by Support, it maybe helpful to those advanced customer users.  The information on this screen is divided into three general areas: Reserve Information, Inventory Log, Product Record Attribute Dump. <br><br>
+<li> Reserve Information - this area at the top of the screen lists current active channels holding inventory in reserve, any incomplete items holding inventory in reserve, or any "other" inventory reserve being held, such as for syndication or auctions.
+<li> Inventory Log - this lists the recent inventory events for this product including but not limited to imports, sales, or release of reserve amounts.
+<li> Product Record Attribute Dump - this area lists all the attributes for the product that currently exists in the product table record.  This can be used to quickly check an attribute without having to perform a product export of that record.
+<br>
+</article>
+
+<article>
+<h2>Clone Product</h2>
+The clone button creates an identical copy of your product, complete with all product options, images, etc. <br>
+<aside class="caution">
+<h6></h6>
+<div>
+You should only use cloning if you have NOT syndicated or launched the product to auctions.  When a product is sent to a marketplace (such as an ebay auction) a set of attributes will get populated to that product specific to that auction.  When you clone, these attributes are also cloned, but are not easily changed in the new product and will usually not be overwriten by changes made in the product editor.  If you plan to clone, you should either clone before the product has been launched to a marketplace, or setup a "template" product to use as your base to clone from.  If you have already cloned from products that have been launched, you are likely to see abnormalities in your listings, i.e. you set the ebay price to $5.99 but it listed as $34.95.  If you see this type behavior, it can be corrected using the product power tool to edit or remove the ebay attributes, but beware that untrained use of that tool can turn a small problem into a large one.  Make sure to schedule time with one of our training staff.  For more information on the Product Power Tool: <a class="linkdoc" href="#?doc=50287">Doc 50287</a>.
+
+</div>
+</aside>
+
+</article>
+
+<article>
+<h2>Delete Product</h2>
+Deletes your product! If your account is in beginner mode you will be asked to confirm your delete.<br>
+If you haven't tried it yet, you should also take a look at the Zoovy Product Manager for your Windows PC, it is a much faster way to delete lots of products.
+<br>
+
+<aside class="caution">
+<h6></h6>
+<div>
+By deleting your product does not mean that it will be automaticly removed from channels, syndication, and or related items (i.e. cross selling lists). You must first remove the product from all of its verticals prior to deleting the product. Also remember if you check the box that says delete image this will delete the image, but if you have more than one product using that image your other live products will loose there image.
+
+</div>
+</aside>
+
+<aside class="cbc">
+<h6>Steps to remove a product from Related Products</h6>
+<div>
+These steps will also work for product accessories, simply replace the attribute zoovy:related_products with zoovy:accessory_products.
+<li>Step 1 - Go to Utilities > Product Power Tool
+<li>Step 2 - Select Products : select all products
+<li>Step 3 - Select Attribute : drop down and choose "custom attribute", in the Custom Attrib field enter zoovy:related_products
+<li>Step 4 - Select Action : choose Search and Replace with the following parameters<br>
+Search For: ,productid  (use the product ID for the product you will be deleting)<br>
+Replace With: leave blank <br>
+<li>Step 5 - Select Update Type : choose Products + Channels
+<li>Step 6 - "Save" <br>
+You can preview if you wish before making the changes to see which products will be effected, but previewing will take substantially longer to render. Be aware that the power tool is an advanced feature and using it without training can quickly get you in a bad situation from which recovery will be billable.  For more information please read: <a class="linkdoc" href="#?doc=50287">Doc 50287</a>.
+
+</div>
+</aside>
+
+</article>
+
+<article>
+<h2>Changing Product IDs</h2>
+Product Identifiers (Product Id's for short) are unique alphanumeric codes
+that identify you products. Product ID's can be a combination of numbers and letters, are case
+insensitive, so for example ABC1 is the same as abc1. Throughout the system everything comes down to a
+single product ID. Changing product ID's changes the URL of the product and shouldn't be done on a regular basis.
+
+<aside class="cbc">
+<h6>Changing a product id</h6>
+<div>
+<li>Click on the Product tab</li>
+<li>Open the product you wish to modify</li>
+<li>Open the Tools panel (at the bottom)</li>
+<li>In the 'change product id' section, enter a new product id and push the 'Change PID' button.</li>
+
+</div>
+</aside>
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+Related items and accessories for a product save to a static field that is not automatically updated when changes of this nature occur.  Therefore, if you change a product ID, you need to update the other products that use this product as a related item.
+
+</div>
+</aside>
+
+
+</article>
+
+<article>
+<h2>Adding Pictures</h2>
+You may modify/edit the pictures for an image in the "Associated Pictures" section of the product management tool.<br>
+</article>
+
+<article>
+<h2>Creating Products & Syncing - Important Notes</h2>
+
+When you create products or make changes to products, it's important to recoginize that the system was designed to use the online Product Editor or the Windows Product
+Manager, but not both.  If you are using both, you can easily ovewrite your own data if you are not careful with the process you use even though the syncing process has several safeguards to prevent overwriting data.<br><br>
+
+If you must make changes both online and with the Windows Product Manager then please follow these steps:
+
+<ol><li>Always sync first in Zoovy Product Manager before you do anything else.  This will ensure that your product changes you made online
+will come down to Product Manager correctly.
+<li> Never edit your products on Zoovy.com while you are making changes with Product Manager.  You can overwrite your own data if you do this.
+</ol>
+
+If you do find that your product descriptions are prices are being "mysteriously changed" or reverting back to some prior state, please double
+check your process as this is always caused by a process error.
+
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

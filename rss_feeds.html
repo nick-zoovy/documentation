@@ -1,0 +1,187 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="RSS Feeds">
+<h1>Creating an RSS Feed</h1>
+
+
+<article>
+<h2>About RSS Feeds</h2>
+
+
+RSS, or Rich Site Summary, is a format for delivering changing web content. Many news, sports or financial websites, weblogs and other 
+
+online publishers syndicate their content as an RSS Feed to viewers.
+<br>
+As a merchant you can create RSS Feeds to easily share your product lists with affiliate sites such as blogs. They can also be used on 
+
+your own site in conjunction with design features like <a 
+
+href="http://proshop.zoovy.com/product/CSTM_EXHIBITOR/Zoovy_Product_Exhibitor.html">Zoovy Product Exhibitors</a> (Deal of the Day Flash 
+
+Applets) An Exhibitor is a Flash animation dynamically displaying time sensitive deals to your customers.
+<br>
+Read on for a walk through on setting up your RSS feed.
+
+</article>
+
+
+<article>
+<h2>How to create your RSS Feed</h2>
+Follow the steps below: 
+
+<aside class="cbc">
+<h6>How to configure your feed: General Properties</h6>
+<div>
+<li>Log in to Zoovy and go to Setup >> RSS Feeds >> Create New.</li>
+<li>Select a Domain/Profile from the dropdown list.</li>
+<li>In 'Feed Campaign Code' enter a 6 digit number or leave it blank to generate one automatically.</li>
+<li>'Image WxH' fields determine a product's image size. Generally this should be left alone unless this is specified differently by designers during the implementations of an Exhibitor.</li>
+<li>For 'Feed Title' enter a title you'll use to identify this feed.</li>
+<li>In 'Feed Link' you can specify your site's URL. The 'Feed Link Override' check box below that will force the feed links to send viewers to your 'Feed Link' instead of to your inividual products.</li>
+<li>'Feed Subject/Category' is a category for your RSS Feed's products. You can go to <a href="http://www.dmoz.org/" target="_blank">dmoz.org</a> to find something to categorize your products under.</li>
+<li>'Source List' lets you select one of your product lists. These will be the products the RSS Feed will list. See the following WebDoc for information on creating Product Lists: <a class="linkdoc" href="#?doc=50796">Doc 50796</a></li>
+
+</div>
+</aside>
+
+
+<br>
+
+<aside class="cbc">
+<h6>How to configure your feed: Promotion Settings</h6>
+<div>
+<li> 'Pricing Schedule' can be specified if you want your feed to reflect special pricing. (This feature requires the Wholesale Bundle, see this WebDoc for more information on this bundle: <a class="linkdoc" href="#?doc=50512">Doc 50512</a></li>
+<li> For 'Max Products' set this number to the highest number of products you want shown on your feed. Use 'unlimited' to show your entire list.</li>
+<li> The 'Cycle Interval' is shown in minutes and specifies the amount of time the between cycles. Keep in mind that the cycle begins when you click the 'Save' button.</li>
+
+</div>
+</aside>
+
+
+<aside class="caution">
+<h6></h6>
+<div>If you apply a Wholesale Schedule to an RSS feed that schedule will apply to all products added to the cart, even those not in the RSS feed. For this reason, it is usually a good idea to create a unique Wholesale Schedule for your RSS feeds and not use a pricing formula, but instead set prices per product.  Set the prices for the products that are going to be in the feed for the next week or so, then at the end of that period, remove the schedule price and set it for the next weeks products.
+</div>
+</aside>
+
+
+
+</article>
+
+
+<article>
+<h2>Additional notes</h2>
+If your product titles or descriptions contain special formatting such as HTML or WIKI then you'll want to populate the product's 'RSS Properties' at the product level since HTML can break the feed.
+<br>
+
+<aside class="caution">
+<h6></h6>
+<div>Adding "Add To Cart" Buttons to an RSS Feed is not recommended.<br>
+IE 8 does not appear to support form buttons inside RSS feeds.
+This is almost CERTAINLY for security reasons - since it's a really bad idea to
+support form actions and javascript in RSS feeds since you could remotely
+control a browser.
+</div>
+</aside>
+
+
+
+
+
+
+<aside class="cbc">
+<h6>Configuring RSS Properties per product</h6>
+<div>
+<li>In Zoovy, click the Products tab and open the product you wish to edit.</li>
+<li>Scroll down to the 'SEO & RSS Properties' section.</li>
+<li>'RSS Feed Title' would be your product's title as it will appear on the RSS Feed.</li>
+<li>'RSS/Meta Short Description' would be your product's description. No special formatting should be use in any of these fields. Linebreaks are fine, but may or may not be interpreted during display.</li>
+
+</div>
+</aside>
+
+
+</article>
+
+
+<article>
+<h2>What coolness can be accomplished with RSS</h2>
+
+<section>
+<h3>Facebook 'shop' tab using the fshopper app</h3>
+
+Get a few of your product onto your facebook page and let them load automatically from zoovy using the fshopper app.  Set your RSS feed up to change daily and show a max of 10 products, then throw a few dozen items into the list.  This will load fresh products into the page daily.  Shorten the interval to have the list update more often.
+
+<br>
+
+Remember, showing a bunch of items up there that never change lessens the impact that this will have.  Keeping things in rotation encourages people to come back and see what's fresh or new.
+
+<aside class="cbc">
+<h6></h6>
+<div>
+<ol>
+<li>go here: http://www.facebook.com/apps/application.php?id=127434233959593&v=wall </li>
+<li>Click 'add to my page'  (under the 'go to application' button)</li>
+<li>Go to your store page on facebook.</li>
+<li>click the 'shop' tab that now appears.</li>
+<li>click the 'settings' link.</li>
+<li>Click the 'add rss' tab.</li>
+<li>add an rss feed.</li>
+<li>choose a list style.</li>
+<li>if appropriate, set your header settings and the message box.</li>
+<li>For shopping cart, select Zoovy</li>
+<li>push the 'submit' button at the top to submit your feed.</li>
+<li>Review your feed and push the submit button again.</li>
+</ol>
+
+Go back to you page store and click the shop tab.  Product should now show up.
+
+</div>
+</aside>
+
+
+</section>
+
+
+<section>
+<h3>Flash based 'deal of the day'</h3>
+This technology is a flash based (plug-in required) that periodically pulls from an RSS feed generated by a Zoovy store. These easily deployed yet highly versatile little objects can be used to supercharge holiday sales and spruce up any on/off site advertising campaign.
+
+
+Suggested Uses
+
+	<li>On your website: These handy flash objects can be embedded into your wrapper, OR placed on your blog, forum, or myspace page.</li>
+	<li>On others websites: Zoovy can show you how to embed optional affiliate tracking codes to track which sites referrer your sales - and Zoovy support can assist in generating sales reports based on this data for paying commissions.</li>
+
+<br>
+
+Features and Functionality
+
+	<li>Thumbnails and product descriptions are automatically loaded from your website</li>
+	<li>Items can be added/removed from the rotation by simply updating a navigation category/list.</li>
+	<li>Items which go out of stock are automatically removed just like they were on your website.</li>
+	<li>Cheat Proof: All buyers are synchronized to the same 'countdown' clock</li>
+	<li>Offer exclusive discounts (without the use of coupon codes) via the Wholesale bundle</li>
+	<li>Robust configuration settings with regard to time intervals, and number of products displayed at the same time allow for easy adaptation to offer optimum incentives to your buyers.</li>
+
+
+</section>
+
+</article>
+
+
+
+<article>
+<h2>Further Details</h2>
+<a class="linkdoc" href="#?doc=50911">Doc 50911</a>
+<br>
+<a class="linkdoc" href="#?doc=50973">Doc 50973</a>
+
+</article>
+
+
+
+
+
+
+
+

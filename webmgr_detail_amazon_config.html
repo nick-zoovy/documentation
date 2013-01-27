@@ -1,0 +1,384 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="webmgr/detail/amazon-config">
+<h1>Amazon Part 3 - Product Configuration</h1>
+<article>
+<h2>Amazon Configuration</h2>
+
+
+
+
+There are several steps to implement Amazon Syndication.<br><br>
+
+<li>Pick a product that you would like syndicated to Amazon.
+<li>Go to https://sellercentral.amazon.com
+<li>Find the Item Classification Guide inside of Seller Central.  We suggest that you use the Online Item Classified Guide (https://sellercentral.amazon.com/gp/icg/icg.html)
+<li>Within the Online Classification Guide, you can either select Category and Sub-category OR you can search for an Item Type Keyword. This Category will be used as your Amazon Product Type in Zoovy.
+<li>The Online Classification Guide generates an Item Type in the text box area. The Item Type will be used in your Thesaurus. You want to copy and paste this value exactly into your Thesaurus. 
+<li>The additional fields (such as "What is the item used for", "Target Audience", etc.) can also be populated in your Thesaurus using this screen for optimized search results.
+<li>Once you have your Thesaurus created, you can map the categories to be submitted under Syndication > Amazon > Categories.
+<li>Then go to a product that is in a category that you would like to syndicate to Amazon.
+<li>Specify the Amazon Product Type so that its valid for your Item Type. It has to be a valid listed Product Type found in the Amazon Merchant Center. It can be set through CSV or the Product Power Tool en masse by using the database field "amz:catalog"
+<li>From Syndication >> Amazon you can set Automatically Create UPCs if your products do not have UPCs.  If your products do have UPCs enter them at the product level and do not use this feature, as your products would always be
+associated (incorrectly) with that UPC. So if a customer searches on Amazon.com
+using a correct UPC, they wouldn't find your product.
+<br><br>
+
+<aside class="hint">
+<h6></h6>
+<div>
+If you choose Amazon Apparel as your Product Type then you must enter information under the Enter Specifics button including Clothing Type, Department_1, and Style Keywords_1. Again, you must use Amazon terminology. You cannot enter your own keywords. (<a href="http://g-images.amazon.com/images/G/01/rainier/help/btg/apparel_merchant_classification_guide.xls">Apparel Item Classification Guide</a>)<br><br>
+
+</div>
+</aside>
+
+<br>
+<aside class="hint">
+<h6></h6>
+<div>
+<b>(Re)Setting products for syndication on Amazon</b>
+<br>
+After listing a product on Amazon, if you make changes to the images, Amazon will not be aware of the change.  To get the product to relaunch with the changes, you can use the "Save" button on any of the sections of the product in the Product Editor, and that will let the system know there is new information and to relaunch the product.
+<br>
+As a general rule of thumb, if you edit any product information and use the "Save" button to save the change, the new information will get moved out to Amazon the next listing cycle.  
+<br>
+If you want to (re)syndicate a lot of products you can use the Product Power Tool to set the <b>amz:ts</b> attribute to equal 1 for those products.  As stated elsewhere, EXPERIMENTAL WARNING: the Product Power Tool allows you to make a lot of changes all at once. Just like any Power Tool, it should be used responsibly, and only be experienced folks with proper training. <br><br>
+
+</div>
+</aside>
+
+<aside class="caution">
+<h6></h6>
+<div>
+<b>
+If you delete a product in Zoovy your product will be orphaned on Amazon. You must first uncheck your product's Amazon checkbox (or set amz:ts -1 in the Product Power Tool) and let Amazon syndication run once before you delete the product from your Zoovy Store. If this is not done customers will be able to still purchase those products from Amazon.</b>
+
+</div>
+</aside>
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+<b><u>You must use Amazon terminology for every Amazon field.</u></b><br><br>
+
+Values you put into Product Specifics and the Amazon Thesaurus need to come directly from Amazon.com The Item Type MUST match what comes from Amazon. Your Item Type must match your Amazon Product Type. <br>
+
+</div>
+</aside>
+
+
+<br>
+
+<section>
+<h3>Amazon Errata</h3>
+
+Some products for Amazon will require volumes. Valid volume types for Amazon include:  cubic-cm, cubic-ft, cubic-in, cubic-m, cubic-yd, cup, gallon, liter, ounce, pint, quart. Anything else will return an error.<br><br>
+Amazon does not allow <b>html markup</b> or <b>wiki text</b> on products. Consider using the wiki text to list bullet points in your Zoovy Product Description/Detail. These bullet points (the first 5) are automatically pulled out by the Zoovy and Amazon "Key Product Features" are created.<br><br>
+You can setup a <b>Pricing Schedule</b> on your Amazon products. Set Amazon products to sell for more/less than your products on your Zoovy store. The schedule can be a formula based on your COST or BASE price. This feature requires the "Wholesale Bundle".
+</section>
+
+<section>
+<h3>Using Options/Variations in Amazon</h3>
+If you would like to use options in Amazon, you will need to setup Store Options Group. As you create a new Store Option Group, you will notice at the bottom of the screen a field: "Amazon Variation Keyword." The keywords you enter must be valid for use in your Amazon category of choice. 
+<br>
+If you have images associated with your options, Amazon will use the first option (as displayed in Seller Central, not Zoovy) as the thumbnail and main image for your product. Be sure that you have high quality images for each of your options for best results. 
+<br>
+<aside class="cbc">
+<h6>'Options in Amazon'</h6>
+<div><b>How do I add products with options onto Amazon?</b>
+<li>Create a "Store Option Group" (SOG) for your products. <br>
+- Only products with SOGs (vs Product Options Groups) are allowed to syndicate
+onto Amazon.<br>
+- Make sure the SOG is set to inventoriable. <br>
+- Make sure a valid Amazon Variation Keyword is associated with this SOG.<br>
+<li>Associate this SOG to the product you would like to syndicate.
+<li>Confirm that all options have inventory.
+<li>Make sure you have the rest of the product setup to syndicate on Amazon
+(Thesaurus, Item Specifics, etc)
+
+</div>
+</aside>
+
+
+<aside class="hint">
+<h6></h6>
+<div> It is very important to ensure that your options are configured correctly for Amazon. If your options do not affect inventory, are not SOGS (i.e. they are Product Option Groups), or both, they will not syndicate. The parent product will still syndicate but will not have options assigned to it on Amazon. If the parent is then purchased, when the order is downloaded to Zoovy it will simply select the default option. This could lead to many issues including the customer not receiving the correct item.
+<BR><BR>
+If there is an item missing from the order when it is downloaded to Zoovy, it is very likely that the option chosen (or selected by default)is corrupt. If this happens, you should first attempt to purchase it on your website to confirm whether or not the issue is limited to Amazon, or is store-wide.
+<BR><BR>
+Please also be aware that you should not syndicate a product with more than 99 options per Amazon's guidelines. If you do, Zoovy will not be able to troubleshoot any issues the product may encounter.
+
+</div>
+</aside>
+<BR><BR>
+
+<aside class="hint">
+<h6></h6>
+<div>
+Below is a complete list of valid Amazon Variation Keywords. Some of the variations listed below are NOT available when choosing an Amazon Variation Keyword under Option Group configuration. This is because they are "combination" variations.<br><br>
+For example: "APPAREL: SizeColor" cannot be assigned to one Zoovy option. But "APPAREL: Size" can be assigned to one product option and "APPAREL: Color" can be assigned to the same product on a different option.<br><br>
+
+<aside class="html">
+<h6></h6>
+<code>
+      APPAREL: Size
+      APPAREL: Color
+      AUTO: Size
+      AUTO: Color
+      CAMERA: None
+      CE: None
+      JEWELRY: Length
+      JEWELRY: MetalType
+      JEWELRY: RingSize
+      JEWELRY: SizePerPearl
+      JEWELRY: TotalDiamondWeight
+      FOOD: Size
+      FOOD: Color
+      HEALTH: Size
+      HEALTH: Color
+      HEALTH: Count
+      HEALTH: Flavor
+      HOME: Color
+      HOME: ItemPackageQuantity
+      HOME: Material
+      HOME: Scent
+      HOME: Size
+      OFFICE: None
+      SOFTWARE: None
+      SPORTS: AgeGenderCategory
+      SPORTS: Amperage
+      SPORTS: BikeRimSize
+      SPORTS: BootSize
+      SPORTS: CalfSize
+      SPORTS: Caliber
+      SPORTS: Capacity
+      SPORTS: Color
+      SPORTS: Curvature
+      SPORTS: Design
+      SPORTS: Diameter
+      SPORTS: DivingHoodThickness
+      SPORTS: Flavor
+      SPORTS: GolfFlex
+      SPORTS: GolfLoft
+      SPORTS: GripSize
+      SPORTS: GripType
+      SPORTS: Hand
+      SPORTS: HeadSize
+      SPORTS: Height
+      SPORTS: ItemThickness
+      SPORTS: Length
+      SPORTS: LensColor
+      SPORTS: LineCapacity
+      SPORTS: LineWeight
+      SPORTS: Material
+      SPORTS: Quantity
+      SPORTS: Rounds
+      SPORTS: ShaftMaterial
+      SPORTS: ShaftType
+      SPORTS: Shape
+      SPORTS: Size
+      SPORTS: Style
+      SPORTS: TemperatureRating
+      SPORTS: TensionLevel
+      SPORTS: Wattage
+      SPORTS: Weight
+      SPORTS: WeightSupported
+      SPORTS: WheelSize
+      SPORTS: Width
+      TOOLS: None
+      TOYSBABY: None
+      WIRELESS: None
+
+
+</code>
+</aside>
+
+
+<aside class="hint">
+<h6></h6>
+<div> ***  The Variation Keywords for TOOLS and TOYSBABY have been added so that the individual options can now be pushed over to Amazon as their own product. For example, if TOY has three options of color (red, blue, yellow) it will go over to Amazon as Toy Red, Toy Blue, Toy Yellow, with their own unique SKUs, NOT as TOY with a color dropdown box.
+</div>
+</aside>
+<BR>
+
+
+</div>
+</aside>
+
+
+</section>
+
+<section>
+<h3>Setting Up Related Items, or "Buy This Product and Related Accessories" on Amazon</h3>
+Often, you can increase sales by upselling related items to the one that the customer is viewing. You can upsell on Amazon as well - simply configure some related items within Zoovy and be sure that those items are configured to syndicate to Amazon, too. After all have syndicated, you will see them on the same page under "Buy This Product and Related Accessories". If the customer is interested in the item, he or she may also be interested in accessories/related items and buy those at the same time. 
+
+<aside class="hint">
+<h6></h6>
+<div>
+See <A HREF="http://www.amazon.com/gp/product/B0015ZC9NU">This listing</A> for an example of relating items on Amazon. 
+</div>
+</aside>
+
+</section>
+
+
+<section>
+<h3>Fulfillment Latency or Shipping Time Setup</h3>
+To alter the Fulfillment Latency of your Amazon products (i.e., the time from order placement to shipment), go to Zoovy -> Setup -> Shipping. The Fulfillment Latency is set for all your products. Values must be a specific amount of days, i.e., ranges are NOT allowed. If this field is not set, Amazon defaults the time to 2 days.
+<br>
+<aside class="hint">
+<h6></h6>
+<div>
+If shipping latency needs to be set at a product level, the variable zoovy:ship_latency can be set using the Product Power Tool or a CSV import.
+
+</div>
+</aside>
+
+</section>
+
+<section>
+<h3>Item Suppression Reports from SellerCentral</h3>
+SellerCentral may send emails regarding Item Suppression Reports. The Item Relationship Suppression report displays products that have a variation theme but not a parent ASIN relationship. Because of this incomplete information, these "orphan" products are invalid. Though they appear in your Seller Central inventory, they are suppressed so that they do not appear on the Amazon.com Web site.
+<br>
+Please reference the <a href="https://sellercentral.amazon.com/gp/help/help-page.html/104-4134742-3788709?ie=UTF8&itemID=47371"> SellerCentral help pages</a> for more information.
+<br>
+To fix these "orphan" products, please delete them from SellerCentral and then reset them in your Product Editor. This will cause the product to be completely reloaded and fix the relationship problem. 
+</section>
+
+
+</article>
+
+<aside class="caution">
+<h6> Attention Toy Sellers</h6>
+<div>
+As of December 2008, the Consumer Product Safety Commission is requiring warnings to be placed on webpage listings <br>
+to denote safety warnings that appear on the packages of toys with cautionary statements.
+ A field has been put in place<br> to address this requirement, and may be added as a part of the flex edit fields. <br>
+Set up an implementation appointment or open a support ticket to have the variable,<br> zoovy:prod_warning, added to your account.
+
+For more information on this field and how to use it, see <a class="linkdoc" href="#?doc=51324">Doc 51324</a>
+
+
+</div>
+</aside>
+
+
+<article>
+<h2>Related Topics</h2>
+<ol>
+<li> <a class="linkdoc" href="#?doc=50391">Doc 50391</a>
+<li> <a class="linkdoc" href="#?doc=50390">Doc 50390</a>
+<li> <a class="linkdoc" href="#?doc=50392">Doc 50392</a>
+<li> <a class="linkdoc" href="#?doc=50393">Doc 50393</a>
+<li> <a class="linkdoc" href="#?doc=50828">Doc 50828</a>
+</ol>
+</article>
+<?
+
+webdoc_detail_content_end();
+webdoc_detail_footer();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

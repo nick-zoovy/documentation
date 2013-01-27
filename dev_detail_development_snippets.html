@@ -1,0 +1,159 @@
+<meta type="filename" id="dev/detail/development-snippets">
+<h1>Code Snippets for Zoovy Developers</h1>
+<article>
+<h2>Product Search Forms</h2>
+<section>
+<h3>Simple Search</h3>
+
+<p>By default, the search catalog is set up to search product id, name and description.   To retain control through the User Interface (UI) of which default catalog is used, leave the hidden catalog field blank, as it is in the example below.</p> 
+<aside class="html">
+<h6></h6>
+<code>
+
+<form action="%RESULTS_URL%" method="get" style="margin:0px;">
+<input type="hidden" name="catalog" value="">
+<input type="text" name="keywords" value="">
+<input type="submit" class="button" value="search">
+</form>
+
+</code>
+</aside>
+
+</article>
+<section>
+<h3>Dropdown Search Form with Catalogs</h3>
+
+<p>For advanced search, catalogs can be created, the help files for that are located <a href="http://webdoc.zoovy.com/webmgr/detail/sitesearch.php">here</a>. If you have search catalogs set up and want to allow your customers the ability to search those catalogs, you can turn the hidden 'catalog' field into a select menu.  Each value of the select menu must be set to the catalog ID and needs to be upper case, as in the example below.</p>
+
+<aside class="html">
+<h6></h6>
+<code>
+
+<form action="%RESULTS_URL%" method="get" style="margin:0px">
+<select name="catalog">
+<option value="DEFAULT">Default</option>
+<option value="NAME">Product Name</option>
+<option value="MANF">Manufacturer</option>
+<option value="SKU">Product ID</option>
+</select>
+<input type="text" name="keywords" value="">
+<input type="submit" value=" Search -> ">
+</form>
+
+</code>
+</aside>
+
+</article>
+</article>
+<article>
+<h2>Newsletter Signup Form</h2>
+
+<p>If you want to offer your customers a way to sign up for your Zoovy mailing list, just paste this code into your wrapper. Zoovy does not store a customers first and last name separately, so if you change your signup form and try to collect those separately, you will need to use javascript or some other means of merging them together before passing these to the subscribe.cgi page.</p>
+<aside class="html">
+<h6></h6>
+<code>
+
+<form action="%SUBSCRIBE_URL%" method="post">
+<input type="hidden" name="check" value="1">
+Email Address: <input type="text" class="formed" maxlength="50" name="email" value=""><br>
+Full Name: <input type="text" class="formed" maxlength="50" name="fullname" value=""><br>
+<input type="submit" class="button" value="Subscribe">
+</form>
+
+
+
+
+</code>
+</aside>
+
+</article>
+<article>
+<h2>Tell A Friend</h2>
+
+<p>There are multiple parts to tell a friend.  First, you must have some SUB elements and javascript at the top of your layout.  Put this code there:</p>
+<aside class="html">
+<h6></h6>
+<code>
+
+
+<!-- global vars -->
+<ELEMENT TYPE="READONLY"  ID="VAR_POPUPTHEME" SUB="POPUP_THEME" LOAD="profile:zoovy:popup_wrapper" RAW="1"></ELEMENT>
+<ELEMENT TYPE="READONLY"  ID="VAR_SKU" SUB="SKU" LOAD="FLOW::PROD" RAW="1"></ELEMENT>
+<ELEMENT TYPE="READONLY" SUB="HOME_URL" LOAD="URL::HOME_URL" RAW="1"></ELEMENT>
+
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--//
+function openWindow(url) {
+	adviceWin = window.open(url,'advice','status=no,width=420,height=400,menubar=no,scrollbars=yes');
+	adviceWin.focus(true);
+}
+//-->
+</script>
+
+</code>
+</aside>
+
+
+
+<p>Now, place the following piece of code into your HTML where you want the tell a friend button/text to appear.  If you want a button instead of text, just replace the text in the html snippet below with an img src tag.  Alternatively, you can also use the onclick event on a form button or image.</p>
+
+<aside class="html">
+<h6></h6>
+<code>
+
+<a href="#" onclick="openWindow('%HOME_URL%popup.pl?verb=INIT_TAF&amp;pg=*taf&amp;fl=pop_taf1&amp;product=%PRODUCTID%&amp;wrapper=%POPUP_THEME%');">Tell a Friend</a>
+
+</code>
+</aside>
+
+</article>
+<article>
+<h2>Account Login Form</h2>
+
+<p>To add a login form to your wrapper or page layout, paste in the code below:</p><aside class="html">
+<h6></h6>
+<code>
+
+<form action="%LOGIN_URL%" method="post" style="margin:0px;">
+<input type="hidden" name="mode" value="check">
+<input type="hidden" name="url" value="%CUSTOMER_MAIN_URL%">
+Login: <input type="text" class="formed" maxlength="50" name="login" value=""> <br>
+Password: <input type="password" class="formed" maxlength="50" name="password" value=""><br>
+<input type="submit" name="submit" class="button" value="Login"><br>
+</form>
+
+</code>
+</aside>
+
+</article>
+<article>
+<h2>Savings Calculation</h2>
+
+The following piece of code is intended for use on a product page.  The same code could be use in a product list by modifying the variable load/loadurps.
+<aside class="html">
+<h6></h6>
+<code>
+
+<ELEMENT ID="SPECL_PROD_PRICING" TYPE="SPECL"><HTML><![CDATA[
+<%
+loadurp("product:zoovy:prod_msrp"); format(hidezero); format(money); format(pretext=>"<div class='ztxt'>MSRP: <span style='text-decoration:line-through;'>",posttext=>"</span></div>"); print();
+
+loadurp("product:zoovy:base_price");
+set($price=>$_);
+format(hidezero); format(money); format(pretext=>"<div class='ztxt' style='font-weight:bold;'>Our Price: ",posttext=>"</div>"); print();
+
+
+loadurp("product:zoovy:prod_msrp");
+
+math(op=>"subtract",var=>$price); format(hidezero); format(money); format(pretext=>"<div class='ztxt'>Your Savings: ",posttext=>"</div>"); print();
+%>
+]]></HTML>
+</ELEMENT>
+
+
+
+</code>
+</aside>
+
+</article>

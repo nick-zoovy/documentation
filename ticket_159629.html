@@ -1,0 +1,90 @@
+<meta type="filename" id="ticket/159629">
+
+<h1>Issue #159629: ScanAlert XSS (Cross Site Scripting) Vulnerability</h1>
+
+<article>
+<h2>Issue</h2> 
+Issue: ScanAlert XSS (Cross Site Scripting) Vulnerability
+
+<br>
+
+<aside class="html">
+<h6></h6>
+<code>
+Name WebApp Cross Site Scripting  
+Category HTTP - Web Application Severity  Medium       High In PCI 
+Impact Cross Site Scripting (XSS)  Fix Difficulty  Medium    
+
+</code>
+</aside>
+
+</article>
+
+<article>
+<h2>Response from Zoovy</h2>
+This does not provide the sufficient level of detail to do a threat analysis.
+I know there are cases where scan alert reports a false positive.
+Please attach the full report to this ticket.
+
+</article>
+
+<article>
+<h2>Resolution</h2>
+
+<aside class="html">
+<h6></h6>
+<code>
+26-OCT-2007 01:18
+Overview 
+    
+Name WebApp Cross Site Scripting  
+Category HTTP - Web Application Severity  Medium       High In PCI 
+Impact Cross Site Scripting (XSS)  Fix Difficulty  Medium    
+ 
+Description 
+The remote web application appears to be vulnerable to cross site scripting (XSS). 
+
+The cross-site scripting attack is one of the most common, yet overlooked, security problems facing web developers today. A web site is vulnerable if it displays user-submitted content without checking for malicious script tags.
+
+The target of cross-site scripting attacks is not the server itself, but the user files on the server, such as forms and other dynamic content. All a malicious attacker needs to do is find a page that does not properly sanitize user input, but returns the scripting code verbatim to the browser of a visitor to that website. It is important to note that websites that use SSL are just as vulnerable as websites that do not encrypt browser sessions. 
+
+The damage caused by such an attack can range from stealing session and cookie data from your customers to loading a virus payload onto their computer via browser. 
+
+The pages listed in the vulnerability output will display embedded javascript with no filtering back to the user. 
+ 
+General Solution 
+Ensure you turn the > and < into their HTML encoded equivalents before sending it back to the browser. 
+
+Ensure that parameters and user input are stripped of HTML tags before using.
+
+Remove <: input = replace( input, "<", "" ) 
+Remove >: input = replace( input, ">", "" ) 
+Remove ' : input = replace( input, "'", "" ) 
+Filtering < and > alone will not solve all cross site scripting attacks and it is suggested you also attempt to filter out ( and ) by translating them to their encoded equivalents as well.
+----------
+
+I think maybe it was a false positive - a set it to rescan and now there are no vulnerabilities found.
+
+
+</code>
+</aside>
+
+
+</article>
+
+<article>
+<h2>Response from Zoovy</h2>
+
+I think their tool has bugs. :-)
+
+<br>
+
+I assure you, on behalf of all developers here -- we are *acutely* aware of XSS possibilities, those mistakes are made by amateurs.
+
+<br>
+
+In the future if you can get me a URL along with what was transmitted we can investigate further.
+
+
+</article>
+

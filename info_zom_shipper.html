@@ -1,0 +1,71 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/zom_shipper">
+<h1>Shipper File In ZOM</h1>
+
+
+
+
+
+
+
+
+
+
+<article>
+<h2>Creating Shipper Import File In Order Manager</h2>
+Zoovy Order Manager supports the importing of order information using the "Shipper Import File".  This creates venue to where tracking for orders can be imported from external sources that are not supported directly by Zoovy.
+</article>
+
+<article>
+<h2>Creating an Import Shipper File</h2>
+You need to create a file in CSV format. The order of the fields is critical when preparing this file.  Here are the available fields:<br>
+<aside class="html">
+<h6></h6>
+<code>
+* tracking # - example: 123456789
+* order # - example: 2008-01-12345
+* method - example options: UPS, USPS, FEDEX
+* cost 
+* actual wt
+* notes
+
+</code>
+</aside>
+
+<aside class="hint">
+<h6></h6>
+<div>
+Note that you don't need any headers, just the fields in the correct order.
+
+</div>
+</aside>
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+You do not have to use all the columns, but you will want to leave spacers (double comma)if you are leaving a middle field empty to hold the place.  Example - if I only want tracking and order number (required), my file would be:<br>
+<aside class="html">
+<h6></h6>
+<code>
+123456789,2008-01-12345
+987654321,2008-01-12346
+...etc.
+
+</code>
+</aside>
+
+If I wanted to not put in the method, but put in cost it would be:
+<aside class="html">
+<h6></h6>
+<code>
+123456789,2008-01-12345,,5.67  <<--- NOTE THE DOUBLE COMMA
+987654321,2008-01-12346,,3.92
+...etc.
+
+</code>
+</aside>
+
+
+
+</article>

@@ -1,0 +1,130 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="ordermgr/detail/subpools">
+<h1>Sub Order Status</h1>
+
+
+
+
+
+
+<article>
+<h2>Overview</h2>
+The sub order status feature allows you to create custom statuses for your orders.
+With sub statuses the orders still exist in the primary status such as Recent, Pending, Approved, Completed, etc. but you can also assign one custom status to the order as a "child" of these default status conditions. 
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+Sub Order Status is an Order Manager ONLY feature, the sub statuses will NOT appear on the web, the orders will simply appear as Recent, Completed, Pending, etc.
+
+</div>
+</aside>
+
+
+</article>
+
+
+<aside class="cbc">
+<h6>Creating/Editing Sub Statuses - Click by Click</h6>
+<div>
+<li> Step 1 - log into ZOM
+<li> Step 2 - click on Admin > Sub Order Status Editor
+<br>
+<li> Step 3 - To CREATE:
+<li> Step 3.1 - Order: Select Order from drop-down menu, this is the "parent" status of the new sub order status you are creating
+<li> Step 3.2 - Routing Code: this is a number (numberic digits only, i.e. 2, 25, 300, etc.), created by you, that will represent the new sub order status you are creating. This number will carry over and tie common sub order status to different parent status.  Example, an order marked with status RECENT and moved to PENDING will remain marked with the sub order status of "NEXTDAY" if the sub order status RECENT|NEXTDAY and PENDING|NEXTDAY both share the same routing code.
+<li> Step 3.3 - Name: this is any alphanumeric name that you with to use to designate for this sub order status.
+<li> Step 3.4 - Action: here you have 4 options.  If you are creating your own subdivision that isn't standard you will use "Custom".  If you want to create a sub order status that displays all orders with only one item in the invoice you will choose "Single Item".  If you want to filter the orders either by shipping type or payment type, you would choose the option appropriate for that type and add a filter in the next step.
+<li> Step 3.5 - Filter BY: this is used if you selected an "Action" of Filter by Shipping Type or Product Type above in step 3.4.  For example, if I'm creating a sub order status to filter all my orders that the customer has selected to ship with FedEx, I would place FedEx in this box.
+<li> Step 3.6 - Click on the "Add" button, and "Save", then "Exit" if you are finished, or go on to create/edit the next sub order status.
+<br>
+<li> Step 4 - To EDIT/DELETE:
+<li> Step 4.1 - Select the sub order status you wish to edit/delete from the lower portion of the Sub Order Status window
+<li> Step 4.2 - Click on the "Delete" button
+<li> Step 4.3 - Follow the steps to create the sub order status with the modified settings if you are editing the status.  Note that this isn't truly an "edit" obviously.  At this time the only way to edit a saved status is to recreate it with the new settings and remove the old.
+<li> Step 4.4 - "Save", then "Exit" if you are finished, or go on to create/edit the next sub order status.
+<br>
+
+
+<aside class="hint">
+<h6></h6>
+<div>This procedure will vary slightly with ZOM Enterprise configuration.  As with other Enterprise settings, Sub Order Status are created/edited via the Sync Manager.
+
+</div>
+</aside>
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+If you assign two statuses with the same number, in two different pools then when you drag and drop 
+an order from one pool to the next status, the order will remain in the same sub pool. This becomes important in the future as we integrate additional workflow elements into the Order Manager client.
+
+</div>
+</aside>
+
+
+
+</div>
+</aside>
+
+
+
+<article>
+<h2>Moving orders into a Sub Status</h2>
+To move one or more orders into a sub status simply select the orders and right click then select change status, and select the appropriate status and sub status. After this, the order will reside in the new sub order status as well as the parent status. (i.e. the order flagged as RECENT|NEXTDAY will display in both RECENT orders and RECENT|NEXTDAY orders.
+
+<aside class="hint">
+<h6></h6>
+<div>
+If you are using ZOM Enterprise and have created the sub order status in Sync Manager, to get them to display in the clients you will need to click onto a new status tab.
+
+</div>
+</aside>
+
+
+</article>
+
+<article>
+<h2>Displaying orders in the Sub Order Status</h2>
+To display the orders that are in the sub order status you created and assigned them to in the steps above, simply move your cursor over the Sub Order Status tab (left side of the ZOM window) and select the radio button of the status you wish to filter by. Notice that the filter "All Orders" and "Paid Orders" are already built into the functionality.
+
+<aside class="hint">
+<h6></h6>
+<div>
+You can lock the window display for the sub order status window by clicking on the thumb tack in the upper right corner of this window.  You can close/unlock the display by again clicking on this same thumb tack.
+
+</div>
+</aside>
+
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

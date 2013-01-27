@@ -1,0 +1,263 @@
+<meta type="filename" id="pkg-media/detail/catalog-dvd">
+<h1>DVD Catalog</h1>
+<article>
+<h2>Overview</h2>
+
+The book catalog contains information indexed by UPC.
+When uploading to the DVD catalog you must use the manufacturer assigned UPC.
+
+</article>
+<article>
+<h2>Point System</h2>
+
+
+<table>
+	<tr>
+		<td valign="top"><b>Contributor</td>
+		<td>&nbsp;&nbsp;&nbsp;</td>
+		<td valign="top"><b>Recipient</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			Upload all required fields: +20<br>
+			Upload Optional field: +3 each<br>
+			Per Download: +5 each<br>
+		</td>
+		<td>&nbsp;&nbsp;&nbsp;</td>
+		<td valign="top">
+			Per Download: -5 points<br>
+		</td>
+	</tr>
+</table>
+
+</article>
+<article>
+<h2>Fields</h2>
+
+<table>
+	<tr>
+		<td valign="top"><b>Field Name</b></td>
+		<td valign="top"><b>Required</b></td>
+		<td valign="top"><b>Description</b></td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">UPC</td>
+		<td valign="top"><b>Y</b></td>
+		<td valign="top">This field must contain a valid UPC or UPC/A barcode value.
+		<br><i>Attribute: zoovy:prod_upc</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Movie Title</td>
+		<td valign="top"><b>Y</b></td>
+		<td valign="top">The title as it appears on the DVD Box
+		<br><i>Attribute: zoovy:prod_name</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Description</td>
+		<td valign="top"><b>Y</b></td>
+		<td valign="top">Text about the DVD
+		<br><i>Attribute: zoovy:prod_desc</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">DVD Cover</td>
+		<td valign="top"><b>Y</b></td>
+		<td valign="top">An image of the front of the DVD - minimum: 75x50 maximum: 640x400
+		<br><i>Attribute: zoovy:prod_image1</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">DVD Back Cover</td>
+		<td valign="top">N</td>
+		<td valign="top">An image of the back of the DVD - minimum: 75x50 maximum: 640x400
+		<br><i>Attribute: zoovy:prod_image2</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+
+	<tr>
+		<td valign="top">Reviews</td>
+		<td valign="top">N</td>
+		<td valign="top">A list of reviews (ideally formatted with HTML) for the particular product.
+		<br><i>Attribute: zoovy:prod_detail</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>	
+		<td valign="top">List of Special Features</td>
+		<td valign="top">N</td>
+		<td valign="top">This field should contain each special feature in order on the box, one per line.
+	Please do not duplicate the sound encoding options below.
+		<br><i>Attribute: zoovy:prod_features</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+
+
+
+	<tr>
+		<td valign="top">Producer</td>
+		<td valign="top">N</td>
+		<td valign="top">The person who produced the movie. Last, First OR First Last 
+		if more than one producer exists please separate them by ampersands (&amp;)
+		<br><i>Attribute: zoovy:prod_producer</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Director</td>
+		<td valign="top">N</td>
+		<td valign="top">The person who directed the movie. Format: Last, First OR First Last 
+		if more than one producer exists please separate them by ampersands (&amp;)
+		<br><i>Attribute: zoovy:prod_director</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Written By</td>
+		<td valign="top">N</td>
+		<td valign="top">The person who wrote the movie. Last, First OR First Last 
+		if more than one writer exists please separate them by ampersands (&amp;)
+		<br><i>Attribute: zoovy:prod_writer</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Starring</td>
+		<td valign="top">N</td>
+		<td valign="top">The person(s) who starred in the movie, each on their own line. 
+		Format: Last, First OR First Last 
+		We recommend not having more then 3 stars per title.
+		<br><i>Attribute: zoovy:prod_starring</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Cast</td>
+		<td valign="top">N</td>
+		<td valign="top">Other less well known actors who were in the movie. Please put each person on their own line.
+		Format: Last, First OR First Last 
+		<br><i>Attribute: zoovy:prod_starring</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Genre (Unstructured)</td>
+		<td valign="top">N</td>
+		<td valign="top">The unstructured genre contains a category for the cd. For example "Pop", "Rock", "Jazz", or "Classical"
+			NOTE: At this time Zoovy is in the process of developing a structured Genre field based on feedback from sellers.
+		
+		<br><i>Attribute: zoovy:prod_ugenre</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+
+
+
+	<tr>
+		<td valign="top">Running Time</td>
+		<td valign="top">N</td>
+		<td valign="top">The length of the movie in MMM:SS
+		<br><i>Attribute: zoovy:prod_runtime</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Screen Format</td>
+		<td valign="top">N</td>
+		<td valign="top">The screen format of the movie. 		
+		<br><i>Attribute: zoovy:prod_screen</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Original Release Year</td>
+		<td valign="top">N</td>
+		<td valign="top">	The 4 digit year the movie was originally released in theaters.
+		<br><i>Attribute: zoovy:prod_originalyear</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Video/DVD Release Year</td>
+		<td valign="top">N</td>
+		<td valign="top"> The 4 digit year the movie was released (or re-released) onto DVD.
+		<br><i>Attribute: zoovy:prod_releaseyear</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">MPAA Rating</td>
+		<td valign="top">N</td>
+		<td valign="top">Zoovy maintains the list of ratings, please select the MPAA designated rating for the movie.
+		<br><i>Attribute: zoovy:prod_rating</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Country</td>
+		<td valign="top">N</td>
+		<td valign="top">Zoovy maintains the list of countries, please select the country the movie was produced in.
+		<br><i>Attribute: zoovy:prod_country</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Product Language</td>
+		<td valign="top"><b>Y</b></td>
+		<td valign="top">The list of available book languages is maintained by Zoovy.
+		<br><i>Attribute: zoovy:prod_language</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Color</td>
+		<td valign="top">N</td>
+		<td valign="top">If the movie is in color or black and white.	
+		<br><i>Attribute: zoovy:prod_color</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Region</td>
+		<td valign="top">N</td>
+		<td valign="top">If the movie is region encoded, the region it is encoded for.
+		<br><i>Attribute: zoovy:prod_region</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+
+	<tr>
+		<td valign="top">Sound: Stereo Encoding</td>
+		<td valign="top">N</td>
+		<td valign="top">If the movie has stereo encoding.
+		<br><i>Attribute: zoovy:prod_sound_stereo</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Sound: AC3 Encoding</td>
+		<td valign="top">N</td>
+		<td valign="top">If the movie has AC3 encoding.
+		<br><i>Attribute: zoovy:prod_sound_stereo</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Sound: CX Encoding</td>
+		<td valign="top">N</td>
+		<td valign="top">If the movie has CX encoding.
+		<br><i>Attribute: zoovy:prod_sound_cx</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Sound: DTS Encoding</td>
+		<td valign="top">N</td>
+		<td valign="top">If the movie has DTS encoding.
+		<br><i>Attribute: zoovy:prod_sound_dts</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Sound: Dolby Encoding</td>
+		<td valign="top">N</td>
+		<td valign="top">If the movie has dolby encoding.
+		<br><i>Attribute: zoovy:prod_sound_dolby</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Sound: THX Mastered</td>
+		<td valign="top">N</td>
+		<td valign="top">If the movie was THX mastered.
+		<br><i>Attribute: zoovy:prod_sound_thx</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+
+
+</table>
+
+</article>
+
+
+

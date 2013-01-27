@@ -1,0 +1,39 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="ticket/161352">
+
+
+
+
+<h1>Logging Into Zoovy</h1>
+
+<article>
+<h2>Issue</h2>
+Invalid Username/Password in the desktop client
+
+<br>
+
+I am trying to log into the zoovy system (web manager/desktop client) but it keeps giving me an invalid username/password. What I am doing wrong?
+
+</article>
+
+<article>
+<h2>Resolution</h2>
+
+This depends on where are you getting the message, and what are you using for your username and password.  
+
+There are two types of "users" in Zoovy, the fisrt is what is considered what you will heard referred to as your "Account", "Master", or "Admin" username and it's associated password.  This is your account name and it's associated password. You can and will only ever have one set of these at a given time.
+
+The second type of user is what is referred to as a "managed" or "sub-user" on the account.  You can have multiples of these and they are created/managed inside your Zoovy web manager under: 
+
+Setup > Manage User Logins
+
+These created users with the associated passwords, can be used to log into the online web manager or the desktop clients.  Note that on the web you will need the whole username, i.e. "merchant*username", in the desktop client, since we already know what merchant account you are logging into, you will only need to use the "username" portion and can leave off the "merchant*" portion of the username.
+
+"When Do I Use Which Username?
+
+For Online Web Manager you can use either the Admin or a Managed User to login.  For security purposes we recommend that you create managed sub-users if you have multiple employees using the system so that you don't need to have everyone having a login with full admin privileges.
+
+For the Desktop Application, you will need the right type login in the right place.  If you are at the "Login" screen, where is displays your company name and has two fields for "Username" and "Password", you will need to use a managed, or sub-user" in this screen.  Every other screen where you will be asked to enter username/password are administrative function screens and you will need your master account login (i.e. your account name and the associated password).
+
+</article>
+

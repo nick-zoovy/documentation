@@ -1,0 +1,32 @@
+<meta type="filename" id="ticket/161529">
+
+<h1>Issue #161529: POWERLISTER and FIXED auction with quantity of 2 and more</h1>
+
+<article>
+<h2>Issue #161529: POWERLISTER and FIXED auction with quantity of 2 and more</h2>
+
+I have been using powerlister in fixed auctions. But I am listing 2 or more items per listing. Somehow the other the powerlister is not performing correctly.
+
+<br>
+
+Also in few other examples which i do not have the number right now it went ahead and still listed 2 items per auction when I was left with only 1. I was hoping it would stop launching auctions if the quantity of the item  listed is more then inventory. However it did not. 
+If you can make it work in a way that it only lists what is available instead of listing what was originally entered. Like if it was suppose to list 2 of the items but the inventory only has 1, it will list only 1. this would be a great feature.
+
+</article>
+
+<article>
+<h2>Resolution</h2>
+
+All powerlister features assume a quantity of 1.  The inventory behaviors behave as you have described when you have a quantity of 2 or more.   If you review the documentation it says "listings" .. not "items".  There are no plans to change this behavior in the future.
+
+<aside class="hint">
+<h6></h6>
+<div>
+There is a note when listing which recommends a quantity of 1.
+
+</div>
+</aside>
+
+
+</article>
+

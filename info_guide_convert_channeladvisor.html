@@ -1,0 +1,177 @@
+<meta type="filename" id="info/guide/convert-channeladvisor">
+<h1>Converting from Channel Advisor to Zoovy</h1>
+<article>
+<h2>About this Document</h2>
+
+This document is designed to assist customers who are planning to transition from Channel Advisor to Zoovy.com.
+We hope to outline the differences between the two services, and provide customers with a clean transition plan.<br>
+<br>
+<b>The information in this document was last updated March 20th, 2004.
+Zoovy takes no responsibility for the accuracy of this information.
+If you find any errors or omissions then please use the "User Comments" area at the bottom of the form.</b><br>
+
+
+</article>
+<article>
+<h2>Data Importing</h2>
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+To migrate from Channel Advisor you should simply request an import of your running eBay auctions.
+Please read the details on importing listings from eBay.com
+<a taget="_top" href="http://webdoc.zoovy.com/info/index.php?GOTO=guide/convert-ebay.php">Click Here</a>
+This probably won't get all your data, but at least it will provide a starting point.
+
+</div>
+</aside>
+
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+A screen scraper is a program that acts like a user with a web browser and goes through each page attempting to pull out relevant information.
+The channel advisor site is extremely dynamic, and contains a lot of javascript which is difficult to screen-scrape around.
+Each time channel advisor makes an update the screen scraper breaks and must be re-programmed to deal with the new site.
+The re-programming typically takes a week or more and is very intensive in developer time.
+
+</div>
+</aside>
+
+
+
+Zoovys scraping program was last updated on March 1st, 2004.<br>
+It is also very slow, it takes approximately 7 seconds per product (this is due to the horribly slow Channel Advisor Web interface).<br>
+<br>
+<b>The following caveats apply:</b><br>
+The scraper imports all "ADs", or more specifically the scraper simply creates a CSV file for all ADs that can then be imported into Zoovy.
+Because it is converted into a CSV, all newlines (Enters) must be stripped from the description - but this probably isn't a big deal since
+the field contains HTML (All CR/LFs are replaced by a space).<br>
+<br>
+The CSV Import tool will automatically download/copy images both in the product description, as well as the others images and will substitute link tags
+in the HTML for the equivalent images on Zoovy.<br>
+<br>
+At this time the following fields are imported:<br>
+<table>
+	<tr>
+		<td><b>Zoovy Field</b></td>
+		<td><b>Zoovy Name</b></td>
+		<td><b>Channel Advisor</td>
+	</tr>
+	<tr>
+		<td>zoovy:prod_name</td>
+		<td>Product Name</td>
+		<td>Ad Title</td>
+	</tr>
+	<tr>
+		<td>zoovy:prod_desc</td>
+		<td>Product Description</td>
+		<td>Text #1</td>
+	</tr>
+	<tr>
+		<td>zoovy:prod_detail</td>
+		<td>Product Detail Description</td>
+		<td>Text #2</td>
+	</tr>
+	<tr>
+		<td>%IMGURL=zoovy:prod_image1</td>
+		<td>Image 1 + Default Thumbnail URL</td>
+		<td>Add Image 1</td>
+	</tr>
+	<tr>
+		<td>ebay:storecat</td>
+		<td>eBay Stores Category</td>
+		<td>eBay Storefront Category</td>
+	</tr>
+	<tr>
+		<td>ebay:category</td>
+		<td>eBay Category</td>
+		<td>Category</td>
+	</tr>
+	<tr>
+		<td>zoovy:ship_cost1</td>
+		<td>Domestic Shipping Cost - 1st item</td>
+		<td>First Item Shipping/Handling Cost </td>
+	</tr>
+	<tr>
+		<td>zoovy:ship_cost2</td>
+		<td>Domestic Shipping Cost - additional item</td>
+		<td>Additional Item Shipping/Handling Cost </td>
+	</tr>
+	<tr>
+		<td>zoovy:base_weight</td>
+		<td>Product Weight</td>
+		<td>Weight in Pounds</td>
+	</tr>
+	<tr>
+		<td>%IMGURL=zoovy:prod_image2</td>
+		<td>Product Image 2</td>
+		<td>Add Image 2</td>
+	</tr>
+	<tr>
+		<td>%IMGURL=zoovy:prod_image3</td>
+		<td>Product Image 3</td>
+		<td>Add Image 3</td>
+	</tr>
+</table>
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+If you have a specific piece of information you'd like to see added to this list please let us know and we'll see if we can help.
+Be aware that any other fields will require additional custom programming, and could be very expensive - of course having us do it may be cheaper
+than entering all the information by hand so it's at least worth getting a quote.
+
+</div>
+</aside>
+
+
+
+At this time we do not import Inventory, Invoices, Images (unless they are associated with an Ad), or anything else that was not
+specifically mentioned above. In addition we don't guarantee the Scraper will be working when you need it - and if it's broken it could take
+multiple weeks to fix, AND it may never get fixed. This is strictly a convenience that we try to provide to customers converting to Zoovy - please
+give yourself ample time to convert. <br>
+<br>
+Due to its highly technical nature the scraper program can only be operated by a Technician.
+We do this by request only - and only for live accounts (not trials).
+There is a one-time $100 fee [in addition to your account setup fee] each time we import your data - we give you the CSV when we're done.
+(Unless you plan on using Zoovy and Channel Advisor for a while you should only need to import your data once.)
+If we cannot import the data specified above then we give you the $100 back and there is no charge.<br>
+<br>
+<i>In the event you choose not to use Zoovy the $100 fee + the sign up fee is non-refundable.
+BUT you will be able to use the CSV data we've provided to move to any other service or tool you like.</i>
+
+
+</article>
+<article>
+<h2>Getting Acclimated</h2>
+
+A few helpful hints to get you started using Zoovy:<br>
+<br>
+<li> Zoovys interface is a bit more "raw" than channel advisor equivalent - we use icons for anything (vs channel advisor which seems to have an icon for everything).
+(NOTE: We don't intend to knock Channel Advisor, they are a great tool for entry level sellers and their interface is designed as such.)
+
+<li> Channel advisor creates "Auctions", Zoovy creates "Channels" which then create "Listings".
+<li> You can import inventory items into Zoovy using a CSV just like you do at Channel Advisor, but you will need to purchase the CSV package if you plan to use this feature after 90 days.
+<li> Channel Advisor has "Ads" and "Layouts", the closest Zoovy equivalent is "Products" and "HTML Wizards".
+Inventory is a property of a product, and a product can only have one Ad associated with it (but multiple channels, we'll explain that in a second).
+<li> Each time you create a channel a copy of your Ad is saved in it, there are a variety of different channels which can be used to suit a variety of launching styles.
+Scheduled listings are done by creating a "Scheduled" Channel.
+<li> Channel Advisor lets you "Repost" a listing, Zoovy simply has you create a new channel (the one-time relist fee credit on eBay is handled by a feature Zoovy calls the "Recycling bin" - but the relist item happens automatically).
+<li> Channel Advisor lets you import open auctions on eBay, Zoovy only tracks items it's listed.
+<li> The layout functionality in Channel Advisor is really remedial compared to a Zoovy HTML Wizard, so if you want to bring across your auction layout it certainly won't be a problem
+- you can either do this yourself, or have our professional services department do it for you.
+<li> Zoovy is much more "data focused" than Channel Advisor - meaning that we give you a lot more raw access to the data and we expect you to know
+what you want to do.
+<li> Zoovy does not support adding images by FTP. However you can batch import images using the Product Manager windows client.
+<li> Zoovy doesn't support archiving products, but we do supporting archiving orders.
+
+</article>
+
+
+

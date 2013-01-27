@@ -1,0 +1,51 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="Reorder">
+<h1>Reorder Option</h1>
+
+
+
+<article>
+<h2>Overview</h2>
+
+Merchants can give customers the option of reordering one of their previous orders by selecting the Enable re-order feature in customer order status feature at Setup > Customer Admin Config.
+</article>
+
+
+<article>
+<h2>Changes to options groups can cause unexpected results</h2>
+Changes in price modifiers, weight modifiers or the base price on a SKU will be recognized
+and automatically updated in the new order. However, if a merchant makes changes to the structure of the options in a group, the customer may order something different than they were expecting.<br>
+<br>
+Consider the following scenario:<br>
+<br>
+OLD SKUs:<br>
+<br>
+ABC123:A00 = Red<br>
+ABC123:A01 = White<br>
+ABC123:A02 = Blue<br>
+<br>
+New SKUs are created after the supplier's names are changed for colors. The new color list  mixes in different colors.<br>
+<br>
+ABC123:A00 = Ivory<br>
+ABC123:A01 = Forest Green<br>
+ABC123:A02 = Scarlet<br>
+<br>
+If the customer had ordered ABC123:A00 previously and now they are re-ordering,
+they click the re-order button and the system recognizes the SKU ABC123:A00 =
+Ivory. Zoovy will choose the product based on SKU, not the name of the
+color. So, when the customer receives a ABC123:A00 = Ivory product, they may be
+upset that they got a white one instead of a red. The updated name will appear
+on the invoice, however, customers don't always read the fine print.<br>
+<br>
+Also, SKUs that have been deleted will be removed from the new order. An error
+message warns the customer of this, but if the customer is not paying attention
+they might miss that the item is not present in their new cart.<br>
+<br>
+Merchants considering activating this feature are encouraged to try it out with test orders and changing products until they feel comfortable with the decision.<br>
+
+
+</article>
+
+
+
+

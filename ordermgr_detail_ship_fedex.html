@@ -1,0 +1,617 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="ordermgr/detail/ship-fedex">
+<h1>Order Manager: FedEx Shipping</h1>
+<article>
+<h2>Overview</h2>
+
+
+
+
+
+
+
+
+
+
+The FedEx&reg; Shipping Manager in Order Manager (FSMOM) functionality provides the ability to print airbills based on orders received in your Zoovy store.
+<br>
+<br>
+There are several key advantages that this feature provides to your business:<br>
+<li> Zero Integration Effort - this feature requires no technical expertise to setup or get working. 
+Simply designate FedEx&reg; as your primary shipping provider on Zoovy.com and this feature is automatically setup. 
+
+<li> Faster Shipping - because you print the airbills from directly within order manager, 
+there is no need to export shipping information, or switch applications, it means you can ship more packages in the same 
+amount of time.
+
+<li> Automatic Tracking Import - Tracking numbers are automatically stored in Order Manager, and the orders are automatically
+moved to completed once they are shipped. 
+Because the tracking numbers are automatically imported back into Zoovy it means the customer can then lookup tracking information 
+using their order number on your website rather than going to the FedEx site. 
+
+<li> More Professional Emails - Order Manager can automatically send out HTML Emails that include tracking numbers, 
+graphics such as your company logo, links to your website, and personalized marketing messages to your customers. 
+This leaves a much more professional impact on your customer than the plain-text emails sent by the FedEx ShipAlert&reg; service.
+
+<li> User Accountability - for multi-user versions of order manager, you can know exactly which employee shipped each package.
+Use this information to create reports to gauge employee productivity, and to back-track employee errors. 
+
+<li> More Accurate - No more waiting till the end of the day to import your tracking numbers.
+The FSMOM feature automatically sets the ship date in the order file to the actual date and time the airbill was printed.
+
+</article>
+<article>
+<h2>Eligibility</h2>
+
+
+
+
+In order to use FSMOM feature you must have a FedEx&reg; account.
+This feature is only compatible with customers who have daily pickup accounts.<br>
+<br>
+In addition you must have a FedEx&reg; supplied Zebra/Eltron EPL2 based label printer such as the Orion, Zebra 500, LP2342 or LP2844 printers, 
+and be using the FedEx&reg; supplied labels - or more specifically supplies part #156148 Format #434 - 6 1/4" x 4" label stock. Endicia 4 x 6 labels are supported for both USPS and FedEx. They can be purchased from http://www.endicia.com/Store/Detail/?ID=40
+
+<aside class="caution">
+<h6></h6>
+<div>
+If you are using FedEx and your labels are not printing correctly, specifically some information is printing onto the next label, you probably are not using the correct type of labels.  FedEx has labels with and without the "doc tab" labels, and you need the version with, which is referenced by the part number above.  Only this type of label will work.
+
+</div>
+</aside>
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+At this time Zoovy does not provide label printers or labels to customers - 
+customers who need assistance in obtaining these items should contact their Zoovy account manager 
+who can then help you locate your FedEx Account Manager and ensure you get the proper equipment and supplies.
+
+</div>
+</aside>
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+If your printer does not generate an error, but also does not respond when attempting to process a shipment, it's possible the wrong printer language is enabled.<br>
+Login to ZID Order Manager:  Admin >> Setup >> UPS (or FedEx) Account Setup >> Printer Language.   Select the EPL2 radio button.
+
+</div>
+</aside>
+
+</article>
+<article>
+<h2>Supplies</h2>
+</article>
+
+
+<article>
+<h2>Configuration [Enabling this Feature</h2>]
+
+If you already have FedEx&reg; Rating enabled on your Zoovy account then there is no configuration.<br>
+<Br>
+<aside class="cbc">
+<h6>'To Enable Fedex&reg; Rating in your Zoovy Account'</h6>
+<div>
+<li> Using your web browser login to Zoovy.com
+<li> Go to Setup / Shipping 
+<li> Select FedEx&reg; 
+<li> Agree to the license and provide your FedEx&reg; account number.
+*NOTE: You do not need to use FedEx&reg; Rating for this feature to work - you simply need to enable it, then disable it.
+<li> Under the "Airbill printing" header - Check the box which says "Designate FedEx&reg; as my primary shipping provider"
+<li> Switch back to Order manager
+<li> Re-download your Website configuration into order manager by loading Order Manager and going to Admin | Company Synchronization
+<li> Click the "Synchronize" button
+
+</div>
+</aside>
+
+
+</article>
+
+
+<article>
+<h2>Using non-FedEx rating with FedEx Airbill Printing</h2>
+
+By default any FedEx service which is rated by Zoovy will automatically be mapped to the appropriate shipping type in order manager during printing.  However you may choose to use a Rating service other than FedEx (for example if you offer free shipping) -- in
+these circumstances you will want to map your shipping description to a FedEx service so you don't need to select the shipping
+service for every airbill.. <br>
+<br>
+It is possible to map any shipping method (with the exception of USPS/UPS or DHL services) to FedEx service types. 
+To do this simply prepend a code to the front of the shipping description (the 4 digit code and pipe symbol will NOT be displayed the customers).
+A list of valid codes along with their FedEx service names are as follows:
+<table border=1>
+<tr><td>FXIG|FedEx International Ground</td></tr>
+<tr><td>FXIE|FedEx International Economy</td></tr>
+<tr><td>FXIP|FedEx International Priority</td></tr>
+<tr><td>FXIF|FedEx International First</td></tr>
+
+<tr><td>FXGR|FedEx Ground</td></tr>
+<tr><td>FXHD|FedEx Home Delivery</td></tr>
+<tr><td>FXHE|FedEx Evening Home</td></tr>
+<tr><td>FXES|FedEx Express Saver: 3 Day</td></tr>
+<tr><td>FX2D|FedEx 2 Day</td></tr>
+<tr><td>FXSO|FedEx Standard Overnight: 3pm next day</td></tr>
+<tr><td>FXPO|FedEx Priority Overnight: 10:30am next day</td></tr>
+<tr><td>FXFO|FedEx First Overnight: 8:30am next day</td></tr>
+</table>
+
+<aside class="html">
+<h6></h6>
+<code>
+
+Example: to create a weight based shipping type named "Regular Shipping" and 
+map it to the FedEx Domestic Ground service simply enter the shipping 
+description as: FXGR|Regular Shipping
+
+</code>
+</aside>
+
+
+</article>
+
+
+<article>
+<h2>Using this Feature</h2>
+From the main order manager view, 
+select one or more orders and either Right click, or from the Menu Bar select File | Shipping Labels.
+Select the "FedEx&reg;" menu choice.
+All the information will be automatically populated from your order.
+The residential/commercial address will automatically be populated based on the presence of a company name.
+The required fields are in blue, when you are ready to ship the package select "Process Shipment"
+If you have selected multiple orders the next order will automatically come up.
+
+</article>
+
+<article>
+<h2>FedEx Rate Button</h2>
+
+ As a courtesy to our customers, FedEx provides an estimated rate for a shipment if requested. The courtesy rates returned are estimates and may differ from the actual amount invoiced depending upon the specific circumstances regarding the shipment. <br><br>
+ This is only an estimate. The actual amount may differ.<br><br>
+ When rate button is pressed we send a request for Gross amount, surchage amount, discount amount, net amount. Again, only the net amount is returned, as per FedEx, they do not return the amount with the discount in place all the time.
+
+</article>
+
+<article>
+<h2>Keyed Lookup Mode</h2>
+The Keyed Lookup Mode is intended for use by customers who print out their invoices or 
+packing slips in order manager, then pick out the items, and who want to avoid the extra step of finding the 
+invoice to print out the shipping label.
+
+The Keyed Lookup Mode allows you to simply enter a fully qualified order # (e.g. 2004-10-1234), which can be done
+either via the keyboard or more commonly by using a barcode scanner connected to the shipping pc. 
+
+By default the invoices and packing slips printed by Zoovy automatically contain a industry standard "3 of 9" barcode 
+at the bottom which can be scanned by virtually any PS2 or USB Barcode scanner.<br>
+<br>
+Keyed Lookup Mode simply saves the extra step of re-finding the order # in order manager if you already have the invoice
+or packing slip in front of you (e.g. you have different people picking and shipping). If you ship dozens of packages a day
+this probably isn't a big deal, if you ship thousands of packages a day this is a huge time saver.<br>
+<br>
+<br>
+To enable keyed lookup mode simply go to Tools on the menu bar and select "Keyed Lookup".
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+To purchase a compatible barcode scanner please visit:
+http://proshop.zoovy.com/product/SYMBOL2208USB<br>
+*NOTE: For customers who do sufficient shipping volume with FedEx 
+it is common practice for FedEx to provide barcode scanners 
+along with free personal computers and label printers along with labels for shipping (even ground). 
+Contact your FedEx&reg; Account manager for more information.
+
+</div>
+</aside>
+
+
+</article>
+
+
+<article>
+<h2>Supported Services</h2>
+
+The FedEx Shipping Manager inside the Zoovy Order Manager supports the following services:<br>
+<table>
+	<tr><td colspan='2'><b>FEDEX EXPRESS DOMESTIC</b></td></tr>
+	<tr>
+		<td valign='top'>FedEx First Overnight&reg;</td>
+		<td valign='top'>Overnight delivery to major markets by 8:00 or 8:30 a.m., depending on destination ZIP code. Not available to or from Hawaii. Verify destination availability by ZIP code or by calling 1.800.Go.FedEx&reg; (800.463.3339).</td>
+	</tr>
+	<tr>
+		<td valign='top'>FedEx Priority Overnight&reg;</td>
+		<td valign='top'>Overnight delivery by 10:30 a.m. to most US addresses; by noon or 4:30p.m. in remote areas. Delivery to and from many areas of Alaska and Hawaii in 1 or 2 business days (by 5:00 p.m. in Hawaii)</td>
+	</tr>
+	<tr>
+		<td valign='top'>FedEx Standard Overnight&reg;</td>
+		<td valign='top'>Overnight delivery by 3 p.m. to most US addresses; by 4:30 to rural areas.</td>
+	</tr>
+	<tr>
+		<td valign='top'>FedEx 2Day&reg;</td>
+		<td valign='top'>By 4:30 pm in 2 business days to most areas (by 7:00 p.m. to residences). Delivery to and from many areas of Alaska and Hawaii in 2 or 3 business days, depending on destination zip code. Delivery to and from Hawaii by 5p.m. or 7p.m. in 3 business days.</td>
+	</tr>
+	<tr>
+		<td valign='top'>FedEx Express Saver&reg;</td>
+		<td valign='top'>Delivery to businesses by 4:30 p.m.; to residences by 7 p.m. Delivery in 3 business days. Not available to Hawaii or Alaska.</td>
+	</tr>
+	<tr>
+		<td colspan='2'><b>FEDEX GROUND AND FEDEX HOME DELIVERY</td>
+	</tr>
+	<tr>
+		<td valign='top'>FedEx Ground&reg;</td>
+		<td valign='top'>Door-to-door delivery in 1-5 business days, depending on distance to recipient. Delivery to Alaska and Hawaii in 3 - 7 business days.</td>
+	</tr>
+	<tr>
+		<td valign='top'>FedEx International Ground&reg;</td>
+		<td valign='top'>FedEx Ground International provides business-to-business, daydefinite delivery throughout Canada and Puerto Rico.</td>
+	</tr>
+	<tr>	
+		<td valign='top'>FedEx Home Delivery&reg;</td>
+		<td valign='top'> FedEx Home Delivery service - the only one of its kind dedicated to residential customers - 
+				now connects to virtually 100% of the U.S. population. What makes this service special is its residentialonly delivery network, 
+				the flexibility to customize delivery to suit your recipient, and a money-back guarantee. 
+				Delivery commitment is 1 - 5 business days; from 9 a.m. to 8 p.m.
+		</td>
+	</tr>
+	<tr>
+		<td valign='top'>FedEx&reg; Signature Home Delivery</td>
+		<td valign='top'>If the delivery needs a signature, such as for high-value items, pharmaceuticals or perishables, this option is ideal. Signature images and delivery date will be available at fedex.com or by
+			calling 1.800.Go.FedEx&reg; 800.463.3339.	
+		</td>
+	</tr>
+	<tr>
+		<td valign='top'>FedEx&reg; Date Certain Home Delivery</td>
+		<td valign='top'>With this option, recipients pick the exact date to take delivery of their shipments, Monday through Saturday, excluding holidays.</td>
+	</tr>
+	<tr>
+		<td valign='top'>FedEx&reg; Evening Home Delivery</td>
+		<td valign='top'>Offering delivery after 5 p.m. and up to 8 p.m. on the scheduled day of delivery - recipients choose which option will work best for them.</td>
+	</tr>
+	<tr>
+		<td valign='top'>FedEx&reg; Appointment Home Delivery</td>
+		<td valign='top'>When the recipient wants to arrange for a specific date and time for package delivery. Available Monday through Saturday, 9 a.m. 
+		to 8 p.m., excluding holidays, delivery will be made within one hour of the agreed-upon delivery time, and a delivery signature is included.
+		</td>
+	</tr>
+	<tr><td valign='top' colspan='2'><b>FEDEX EXPRESS INTERNATIONAL</td></tr>
+	<tr>
+		<td valign='top'>FedEx International First&reg;</td>
+		<td valign='top'>Delivery by 8 a.m. in 2 business days. Inbound delivery to selected US ZIP codes from nearly 50 countries and Caribbean islands in 1 or 2 business days, by 8 or 8:30 a.m.</td>
+	</tr>
+	<tr>
+		<td valign='top'>FedEx International Priority&reg;</td>
+		<td valign='top'>Time-definite delivery typically in 1, 2 or 3 business days. Reach major cities in Europe by 10:30 a.m. typically in 2 business days.</td>
+	</tr>
+	<tr>
+		<td valign='top'>FedEx International Economy&reg;</td>
+		<td valign='top'>Delivery typically in 4-5 business days (2-3 to Canada, 3 to Mexico).</td>
+	</tr>
+	<tr>
+		<td valign='top'>FedEx International Priority&reg;</td>
+		<td valign='top'>Freight Time-definite delivery in 1 - 3 business days to more than fifty countries.</td>
+	</tr>
+	<tr>
+		<td valign='top'>FedEx International Economy&reg;</td>
+		<td valign='top'> Freight Time-definite service, typically within 5 business days, to 45 countries.</td>
+	</tr>
+	<tr>
+		<td valign='top'>FedEx&reg; International Next Flight</td>
+		<td valign='top'>FedEx International Next Flight offers the fastest possible delivery of your urgent shipments to more than 210 countries, 24 hours a day, 365 days a year, including holidays.</td>
+	</tr>
+	<tr>
+		<td valign='top'>FedEx International Priority Plus&reg;</td>
+		<td valign='top'>FedEx International Priority Plus provides New York City shippers overnight delivery to and from key world markets.</td>
+	</tr>
+	<tr><td colspan='2' valign='top'><b>FEDEX EXPRESS FREIGHT</td></tr>
+	<tr>
+		<td valign='top'>FedEx 1Day&reg; Freight</td>
+		<td valign='top'>Next-business-day delivery by 10:30 a.m. for most shipments; by noon for many others. No Hawaii service.  Advance confirmation required (call (800) 332-0807).</td>
+	</tr>
+	<tr>
+		<td valign='top'>FedEx 2Day&reg; Freight</td>
+		<td valign='top'>Delivery by noon for most shipments; by 3 p.m. in many other parts of the U.S. Hawaii service is to/from Oahu only. 
+			The commitment for deliveries to more remote destinations, which are handled by cartage agents, remains at 4:30 p.m. to the FedEx ramp location.
+		</td>
+	</tr>
+	<tr>
+		<td valign='top'>FedEx 3Day&reg; Freight</td>
+		<td valign='top'> By 3 p.m. in 3 business days for most shipments. The commitment for deliveries to more remote destinations, 
+			which are handled by cartage agents, remains at 4:30 p.m. to the FedEx ramp location.
+		</td>
+	</tr>
+</table>
+
+<section>
+<h3>Printing on Weekends, and Holidays</h3>
+In FedEx on the Options Tab there is a checkbox that says "Saturday Pickup" -
+there is also a setting which says "Future Date" -- can you tell me how you've
+configured those?
+</section>
+
+
+</article>
+<article>
+<h2>Supported Special Services</h2>
+
+<table>
+	<tr>
+		<td valign='top'>Signature Release</td>
+		<td valign='top'>Allows FedEx couriers to deliver a U.S. package when no one is available to sign for it.</td>
+	</tr>
+	<tr>
+		<td valign='top'>Inside Pick-up and Delivery</td>
+		<td valign='top'>FedEx will pick up a freight shipment inside or outside your building.</td>
+	</tr>
+	<tr>
+		<td valign='top'>Residential Delivery</td>
+		<td valign='top'>Package and freight shipments destined for a private residence (defined as a home or place of dwelling), including a business operated out of the home. 
+			A Residential Delivery Charge will apply.</td>
+	</tr>
+	<tr>
+		<td valign='top'>FedEx International Broker Select&reg;</td>
+		<td valign='top'>Flexibility to use your own broker to clear your FedEx Express shipment. Use with FedEx International Priority&reg;, FedEx International Economy&reg;, FedEx International Priority
+Freight&reg; and FedEx International Economy Freight&reg; services.
+		</td>
+	</tr>
+	<tr>
+		<td valign='top'>Shipper's Export Declaration (SED)</td>
+		<td valign='top'>U.S. Customs and Bureau or Census require U.S. exporters to submit, under certain conditions a completed SED. 
+			The SED is used to compile export statistics and enforce U.S. export laws.
+		</td>
+	</tr>
+	<tr>
+		<td valign='top'>Saturday Service FedEx Priority Overnight</td>
+		<td valign='top'>Offers Saturday delivery by noon to A1, A2 and AA areas; by 1:30 p.m. to A3 and AM areas; and by 4:30 p.m. to selected ZIP codes in PM areas.
+			Surcharges Additional charges that may be applied to a shipment in certain situations such as a Residential Delivery or a Fuel Surcharge.
+		</td>
+	</tr>
+        <tr>
+		<td valign='top'>Commercial Invoice Upload</td>
+		<td valign='top'>On ALL international orders, the US government requires that a Commercial Invoice form be filled out.  This can be accomplished under the "International" tab of the FedEx Label printing interface by checking "Commercial Invoice Print and Upload Flag".  Checking this box will upload the information required in this form directly to FedEx, negating the requirement to fill this form and print it locally.  FedEx instead will have it on file for reference.
+
+<aside class="hint">
+<h6></h6>
+<div>Your FedEx carrier maybe expecting a "customs form" or "commercial invoice".  You can inform him that as you are using software that sends this information up to FedEx directly, and it is on file for the package already.<br>
+<br>
+
+We have the Certified Solution Provider certification from FedEx. This takes extensive testing to get this and maintain it. They not require a Commercial Invoice for international shipping with this certification. If they did, it would be required in our interface.  <br>
+<br>
+
+It is not at all uncommon to talk to a FedEx driver, support rep, manager, or even higher up who is not familiar with Certified Solution Provider or perhaps has never even heard of it.<br>
+<br>
+
+Commercial Invoices (customs forms) are required for international shipping.  Most countries require 3, some 5. We automatically send an electronic version to FedEx who then prints the appropriate number. FedEx Shipping Manager (their shipping software, of which there are 37 versions such as Server or Frozen Ice, each with their own specialized support reps) does require a paper version.  This is why you often will hear from FedEx employees that it always must be there to ship.  <br>
+<br>
+
+If you do speak to a FedEx employee who will not let you ship without the physical paperwork there are two options: <br>
+1. Try to escalate through FedEx to get it approved. <br>
+2. Configure a printer for Commercial Invoices (Tools >> Commercial Printer Setup). The default number of copies (3) can be changed here as well. Check the Print CI box in the International Tab of the FedEx Interface. ("Print CI" is a little vague on purpose.  If it was "Print Customs Paperwork" many merchants would be needlessly printing this info for every international order.)
+</div>
+</aside>
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+Should you need to void a label / tracking number, you can do this via the Zoovy Order Manager interface:  Tools >> Void FedEx Package >> (enter the correct tracking number) and click the Void Tracking button. 
+
+Note:  This can only be done within 24 hrs of printing the label.  If it has been longer than 24 hrs since the label was printed, you will need to contact FedEx to void the transaction.
+
+</div>
+</aside>
+
+
+
+		</td>
+	</tr>
+
+</table>
+<br>
+<br>
+</article>
+<article>
+<h2>Supported Packaging</h2>
+
+<table>
+	<tr>
+		<td valign='top'>FedEx&reg; Envelope</td>
+		<td valign='top'> Holds up to 30 unfolded 8 1-2" X 11" pages. Total weight (including envelope) should not exceed 8 oz. Inside dimensions: 9 1-2" X 12 1-2"</td>
+	</tr>
+	<tr>
+		<td valign='top'>FedEx&reg; Pak</td>
+		<td valign='top'>Tear and water-resistant envelope for heavier, bulkier documents that are typically sent via FedEx Envelope.
+			Inside dimensions: 12 1-4" X 15 1-2"
+		</td>
+	</tr>
+	<tr>
+		<td valign='top'>FedEx7reg; Box</td>
+		<td valign='top'>Self-sealing box available in small, medium and large sizes</td>
+	</tr>
+	<tr>
+		<td valign='top'>FedEx&reg; Tube</td>
+		<td valign='top'>Self-sealing triangular package for plans, posters, photos, blueprints, charts, fabric samples, etc. Inside dimensions: 38" X 6" X 6" X 6"</td>
+	</tr>
+	<tr>
+		<td valign='top'>FedEx 10kg Box</td>
+		<td valign='top'>Transported via FedEx International Priority for a flat rate. Weight limit is 22 lbs. Dimensions: 16" X 13" X 10"</td>
+	</tr>
+	<tr>
+		<td valign='top'>FedEx 25kg Box</td>
+		<td valign='top'>Transported via FedEx Box for international shipments up to 55 lbs. Dimensions: 20" X 17" X 13"</td>
+	</tr>
+	<tr>
+		<td valign='top'>FedEx&reg; Sleeve</td>
+		<td valign='top'>Plastic overwrap to ship such items as skis, blueprints, rolls of fabric and carpet. 
+		Place a shipment in your own protective outer packaging or cushioning material before using. 
+		A tie-on airbill tag should be used with this sleeve.
+		Dimensions: 92" X 12" (for items up to 85" X 7 1-2")
+		</td>
+	</tr>
+	<tr>
+		<td valign='top'>Customer Package</td>
+		<td valign='top'>Any shipping packaging that is not provided by FedEx</td>
+	</tr>
+</table>
+
+
+</article>
+<article>
+<h2>Compatible Thermal Label Printers</h2>
+
+Zoovy only certified the "Fedex" EPL2 label printers (which are either Eltron 2348's or Zebra 2844ps's) - no other label printers are certified.
+Zoovy opted NOT to build laser printer support for FedEx into our product, and at this time there are no plans to add this as a feature.<br>
+<br>
+Most Zoovy customers already use, or *SHOULD* use thermal printers - we really encourage them.
+If you don't already have one, there are a number of reasons why a company should choose thermal over laser/inkjet:
+<li> The cost per print is so much less (explained below)
+<li> The professionalism is so much higher
+<li> The printers (when purchased from FedEx) are only about $350 w/shipping and tax.
+<br>
+Why Thermal are Cheaper: A laser and/or inkjet adds anywhere from 10-30 seconds per label - 
+if you assume an employee is $10/hr. so it's like $0.083 per label savings on a thermal printer so after 4,000 packages 
+(~ 10 rolls of labels) the printer has paid for itself. <br>
+<br>
+Now if you factor in the cost of the inkjet cartridge ($40) or the toner in a laser printer ($100), 
+or the additional time involved to separate a large adhesive laser/inkjet labels, and/or the time+cost to tape the plain-paper label to the package - 
+it doesn't take a math genius to figure out that Thermal printers typically pay for themselves in 3-6 months even for very low volume merchants.<br>
+<br>
+Even on the trivial costs the power consumption per print on a thermal printer is less (*way* less than a laser).
+The laser printers (when printing on adhesive labels) also generate substantially more garbage (2x-3x) -- worse for the environment, and also
+depending on your county the paper goods must be recycled separately.
+<br>
+Also residential inkjet and/or laser printers tend to break down after a year or less in a warehouse/continuous use situation, 
+especially in situations with extreme temperatures. 
+As near as we can tell laser labels are really only right for multi-use scenarios, and/or infrequent shippers 
+(and honestly, if you're an infrequent shipper why are you using Zoovy?). 
+Not only are the print mechanisms much more reliable but the entire paper path, and feed mechanism on a thermal printer 
+is much more reliable since it has dramatically less moving parts -- this means less re-prints, less hassle, more productivity.<br>
+<br>
+You can purchase the Printers directly from:
+<a target="zebra" href="http://pcchoice.zebra.com">http://pcchoice.zebra.com</a>
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+If you also ship USPS - 
+the FedEx printer and drivers are also compatible with Endicia Dazzle.
+
+</div>
+</aside>
+
+
+
+</article>
+<article>
+<h2></h2>
+
+
+
+FedEx logos used by permission. All rights reserved.
+A FedEx Certified Solution means the FedEx functionality within the Zoovy has passed FedEx certification testing.
+
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

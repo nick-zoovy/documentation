@@ -1,0 +1,240 @@
+<meta type="filename" id="ordermgr/detail/smtperrorcode">
+<h1>SMTP Error Codes</h1>
+<article>
+<h2>Troubleshooting Steps</h2>
+
+
+The first step in troubleshooting an SMTP mail problem is to determine the type of error you are receiving when synching. This will be a number between 10000 and 15000.
+
+</article>
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+
+The exact code is very important because each code has a different meaning useful in troubleshooting the problem.<br><br> <b>Comcast Users:</b>
+
+ Comcast is currently limiting outbound SMTP traffic to a small number of messages per connection. When you reach that connection limit, Order Manager will generate a 1005x error and terminate your smtp connection. If you are using Comcast, you will need to purchase a seperate SMTP transport service. Zoovy does provide this service; please check out Zoovymail or contact your Account Executive for more information.
+
+
+
+
+</div>
+</aside>
+
+
+
+<article>
+<h2>Networks and server configuration</h2>
+
+
+A comprehensive matrix of SMTP debug errors is provided at the end of this document. Generally 10xxx and 11xxx error codes are related to network connectivity, whereas 12xxx are issues with the specific mail server configuration and authentication.
+
+</article>
+<article>
+<h2>10xxx and 11xxx errors</h2>
+
+
+To troubleshoot 10xxx and 11xxx errors you should take the following steps:
+
+</article>
+
+
+<aside class="cbc">
+<h6>'Troubleshooting Steps'</h6>
+<div>
+
+	<li>1. Disable any firewall and anti-virus software.  Norton AntiVirus has known incompatibilites
+
+	<li>2. If you have a hub, or a personal gateway, or firewall you should attempt to connect your computer directly to the Internet.
+
+	<li>3. If you are running Windows XP Professional make sure you do not have the IP filtering service enabled.
+
+	<li>4. Verify that all other mail software is closed.
+
+	<li>5. Verify the IP Address of your SMTP Mail server (from your ISP). An IP address is a number consisting of four octets in the format: 1.2.3.4. You can attempt to "ping" a remote server to verify that it is reachable from your computer. To do this go to Start / Run / and type in "command" in the box which says open. This will load a DOS prompt. From there type "ping 1.2.3.4" (replacing 1.2.3.4 with the numbers given to you by your ISP).  If you see "timeout errors" or anything other than a "reply from 1.2.3.4" then your Internet connectivity is currently having issues. There should be absolutely no timeout issues - if you receive network errors then contact your ISP technical support and report that you are experiencing an outage.
+
+	<li>6. Finally look up the error code you are receiving from Order Manager and look up the explanation from the error code matrix below. Contact your ISP with the error message and explain the problem. Often this document can be useful to ISP's in determining the cause of the problem.
+
+	<li>7. If the problem persists and you are receiving a 10xxx and 11xxx series error code then you should contact Zoovy technical support and arrange a conference call between a Zoovy, your ISP and yourself. To make the call short please obtain the name and phone number for a level two technician who has access to the SMTP mail server at your ISP.
+
+
+</div>
+</aside>
+
+
+<article>
+<h2>12xxx errors</h2>
+
+
+If you are receiving a 12xxx series error, this typically means you are experiencing some form of authentication or SMTP protocol error. Zoovy Order Manager utilizes the PowerTCP SMTP control from Dart Communications that is regarded as one of the highest quality and compliant 3rd party Internet protocol toolkits available. Consequently it is rarely a protocol error since many of the most popular third party applications use it - any ISP who tells you it is, is basically admitting that probably 20% of the mail clients on the Internet don't work.
+
+</article>
+<article>
+<h2>Troubleshooting 12xxx errors</h2>
+
+
+For troubleshooting 12xxx errors Zoovy provides a way of seeing the actual data that is transmitted between order manager and your ISP's SMTP mail server. To see this handshake you should enable SMTP Debugging.
+
+</article>
+
+
+<aside class="cbc">
+<h6>'SMTP debug file'</h6>
+<div>
+
+<li>To do this Load Order Manager,
+
+<li>Go to Admin, Technical Support, Log Sent Email.
+
+<li>Synch again
+
+<li>A file named "smtpdebug.txt" will be created in the order manager directory <br><br>
+
+typically C:\program files\zoovy\ordermgr. <br><br>
+
+<li>Often sending this file to your ISP's technical support will provide them with valuable insight as to what might be happening. If you intend to fill out a support ticket with Zoovy then you should always attach the smtpdebug.txt file.
+
+
+</div>
+</aside>
+
+
+<article>
+<h2>SMTP Error Codes</h2>
+
+
+<li>10042	ptOptionNotSupported	The specified socket option is not supported by the system. INFO.<br><br>
+
+<li>10048	ptAddressInUse	Address already in use. Only one usage of each socket address (protocol/IP address/port) is normally permitted. This error occurs if an application attempts to bind() a socket to an IP address/port that has already been used for an existing socket, or a socket that wasn't closed properly, or one that is still in the process of closing. For server applications that need to bind() multiple sockets to the same port number, the ReuseAddress property can be used. FATAL.<br><br>
+
+<li>10049	ptAddressNotAvailable	Cannot assign requested address. The requested address is not valid in its context. Normally results from an attempt to bind() to an address that is not valid for the local machine. This may also result from connect(), sendto(), WSAConnect(), WSAJoinLeaf(), or WSASendTo() when the remote address or port is not valid for a remote machine (for example, address or port 0). FATAL.<br><br>
+
+<li>10050	ptNetworkDown	Network is down. A socket operation encountered a dead network. This could indicate a serious failure of the network system (for example,. the protocol stack that the Winsock DLL runs over), the network interface, or the local network itself. FATAL.<br><br>
+
+<li>10051	ptNetworkUnreachable	Network is unreachable. A socket operation was attempted to an unreachable network. This usually means the local software knows no route to reach the remote host. FATAL.<br><br>
+
+<li>10052	ptNetworkReset	Network dropped connection on reset. The connection has been broken due to keep-alive activity detecting a failure while the operation was in progress. FATAL.<br><br>
+
+<li>10053	ptConnectionAborted	Software caused connection abort. An established connection was aborted by the software in your host machine, possibly due to a data transmission timeout or protocol error. FATAL.<br><br>
+
+<li>10054	ptConnectionReset	Connection reset by peer. An existing connection was forcibly closed by the remote host. This normally results if the peer application on the remote host is suddenly stopped, the host is rebooted, or the remote host used a "hard close" (see Abort method) on the remote socket. This error may also result if a connection was broken due to keep-alive activity detecting a failure while one or more operations are in progress. Operations that were in progress fail with ptNetworkReset. Subsequent operations fail with ptConnectionReset. FATAL.<br><br>
+
+</article>
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+
+If you are trying to sync with Order Manager and are receiving a runtime error that references port 10054 it means the SMTP server is denying our request.  Please contact your Internet Service Provider and verify that you have the correct SMTP address and verify that they accept non-authenticated requests. (In other words, do they require a login in order to send mail?).
+
+
+</div>
+</aside>
+
+
+
+<article>
+<h2>Error Codes</h2>
+
+
+
+
+<li>10055	ptNoBufferSpace	No buffer space available. An operation on a socket could not be performed because the system lacked sufficient buffer space or because a queue was full. FATAL.<br><br>
+
+<li>10057	ptNotConnected	Socket is not connected. A request to send or receive data was disallowed because the socket is not connected or allocated. Any other type of operation might also return this error. FATAL.<br><br>
+
+<li>10060	ptTimeout	Timed out. A connection attempt failed because the connected party did not properly respond after a period of time, or an established connection failed because connected host has failed to respond. Alternatively, a blocked method failed to return within the period specified by the Timeout property. FATAL.<br><br>
+
+<li>10061	ptConnectionRefused	Connection refused. No connection could be made because the target machine actively refused it. This usually results from trying to connect to a service that is inactive on the foreign host (for example,. one with no server application running). May also be generated by a Daemon that refuses a connection because its resources have been exhausted. FATAL.<br><br>
+
+<li>10065	ptHostUnreachable	Remote host does not exist<br><br>
+
+<li>10093	ptNotInitialized	Network interface could not be initialized. FATAL.<br><br>
+
+<li>11001	ptHostNotFound	Host not found. No such host is known. The name is not an official hostname or alias, or it cannot be found in the database(s) being queried. This error may also be returned for protocol and service queries, and means the specified name could not be found in the relevant database. FATAL.<br><br>
+
+<li>11002	ptTryAgain	Non-authoritative host not found. This is usually a temporary error during hostname resolution and means that the local server did not receive a response from an authoritative server. A retry at some time later may be successful. FATAL.<br><br>
+
+<li>11003	ptNoRecovery	This is a non-recoverable error. This indicates some sort of non-recoverable error occurred during a database lookup. This may be because the database files (for example, BSD-compatible HOSTS, SERVICES or PROTOCOLS files) could not be found, or a DNS (Domain Name Server) request was returned by the server with a severe error. FATAL.<br><br>
+
+<li>11004	ptNoData	Valid name, no data record of requested type. The requested name is valid and was found in the database, but it does not have the correct associated data being resolved for. The usual example for this is a hostname -> address translation attempt which uses the DNS, and an MX record is returned but no A record - indicating the host itself exists but is not directly reachable. FATAL.<br><br>
+
+<li>11100	ptError	Unexpected general error. FATAL.<br><br>
+
+<li>11101	ptProtocol	Unexpected protocol error. FATAL.<br><br>
+
+<li>11102	ptFile	Error accessing local file storage. FATAL.<br><br>
+
+<li>11103	ptAbort	The Abort method was called. FATAL.<br><br>
+
+<li>12005	ptHttpInvalidUrl	The Url is unspecified or invalid.<br><br>
+
+<li>12011	ptBlocked	User thread is blocking in another method. INFO.<br><br>
+
+<li>12012	ptAuthentication	Authentication with the server failed. FATAL.<br><br>
+
+<li>12013	ptCompile	MIB file could not be compiled. INFO.<br><br>
+
+<li>12014	ptConnected	A connection already exists.<br><br>
+
+<li>12015	ptFormatError	The server was unable to interpret the query.<br><br>
+
+<li>12016	ptServerError	There was a failure on the server.<br><br>
+
+<li>12017	ptNotFound	The name referred to in the query does not exist.
+
+<li>12018	ptNotImplemented	The server does not support the request type of query.<br><br>
+
+<li>12019	ptOperationRefused	The server refused to perform the specified operation.<br><br>
+
+<li>12020	ptNoCertificate	There was an error in creating credentials.<br><br>
+
+<li>12021	ptInvalidMailAddress	The Email address specified was not valid.<br><br>
+
+<li>12022	ptNoSecurity	Secure communications is not available on this machine.<br><br>
+
+<li>12101	ptHeader	Occurs when a proper termination (usually a CRLFCRLF) is not found in the header.<br><br>
+
+<li>14001	zipError	An error has occurred during file compression/decompression.<br><br>
+
+
+
+<article>
+<h2>SMTP Error Codes - Error Code 11101</h2>
+
+
+Since most people send mail through Outlook, many ISP's have their filters written
+so it lets Outlook send email but not other software. Most SPAM is sent other
+software than Outlook. You have a three possible options to solve this issue.
+They are listed in order of preference as to the most reliable solution.<br><br>
+
+<ol>
+
+<li>Add the CRM bundle to your account, next in Zoovy Order Manager, choose
+Email > Email Preferences > Servers tab - then select Use Zoovy Mail as Transport.</li>
+
+<li>Call your ISP and see if they prevent blocking of email that is not sent
+through Outlook or if the prevent relaying to external mail servers (is port 25 restricted or blocked?). 
+If this case, see if they allow it through the business level of service.</li>
+
+<li>Use the Outlook setting in the Windows Order Manager</li>
+
+</ol>
+
+
+
+</article>
+
+
+
+
+
+
+
+
+

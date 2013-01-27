@@ -1,0 +1,261 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="webmgr/detail/setup-ebay syndication">
+<h1>eBay Syndication Feed Setup</h1>
+<article>
+<h2>Overview</h2>
+
+Syndicated ebay listings are an automated way to establish a steady long term presence for product listings, which will lead to improved search rankings using the ebay algorithm.  This feature allows products to list(and re-list)automatically to ebay, and any sales from those listings to be processed through the Zoovy order system.<br>
+<br>
+Syndicated listings work differently from manually created listings.<br>
+<li>1.  All available inventory is displayed for syndicated listings.  The number available displayed in the ebay listing is updated as product inventory is edited in the Zoovy interface (usually within ten minutes).  If inventory reaches zero, the ebay listing will be ended.<br>
+<li>2.  Inventory reserves are not created for syndicated listings.  This allows merchants with limited inventory to list their products to multiple marketplaces.<br>
+<li>Note:  Listing products with limited inventory can lead to overselling, especially when the product is a "fast mover".  The merchant accepts all responsibility should a product oversell due to limited inventory, and over exposure.<br>
+<li>3.  Changes made to product or listing configuration are automatically applied to existing ebay listings (usually within ten minutes.  There is no way (or need) to Refresh syndicated listings.<br>
+<li>4.  Products with up to two inventoriable options can be listed to ebay ONLY by using ebay syndication. Other listing methods do not support product options.
+<li>5.  ALL syndicated ebay listings are Fixed Price, and GTC (Good 'Til Cancelled).<br>
+<aside class="hint">
+<h6></h6>
+<div>
+Enabling ebay syndication at the product level will remove the Fixed Price configuration from the ebay 2.0 panel.  Conversely, disabling syndication at the product level will remove the Syndication Test feature from the ebay 2.0 panel.<br>
+This is to protect against the accidental creation of duplicate fixed price listings, which is in violation of ebay regulations, and can lead to disciplinary action.
+
+</div>
+</aside>
+
+<aside class="hint">
+<h6></h6>
+<div>
+Auction type listings can be created either manually using Product Editor, or with automatic re-list functionality using the Powerlister feature.
+
+</div>
+</aside>
+
+</article>
+
+<article>
+<h2>Requirements</h2>
+<li>1.  The Auction bundle.  An account must have Auction bundle functionality.  Setup >> Add/Remove Features >> Auction Bundle [Add],
+<li>2.  An ebay account / Token must be configured / enabled.  Setup >> Ebay Configuration.<br>
+<li>3.  At least one ebay Profile must be created (both Config & Shipping).<br>
+<li>4.  Ebay Syndication must be enabled at the Syndication level.  Syndication >> Ebay.<br>
+<li>5.  Ebay syndication must be enabled at the Product level.  This can be done by checking the box for Ebay Syndication in the Syndication Panel of Product Editor, or by setting the ebay:ts product attribute to a value of 1, using either the Product Power Tool or a CSV import.  (setting the ebay:ts attribute to 0 disables ebay syndication for that product).<br>
+<li>6.  Products must reference a valid ebay profile and ebay category.  Both of these can be selected in the ebay 2.0 panel of Product Editor.<br>
+<aside class="hint">
+<h6></h6>
+<div>
+If you have an ebaystore, and an ebaystore category is configured at the product level, the syndicated listing will also be displayed in your ebaystore.
+
+</div>
+</aside>
+
+</article>
+
+<article>
+<h2>Ebay Syndication Configuration</h2>
+<b><u>Edit Partition:</u></b><br>
+The Edit Partition sub-tab is where you will view the current status of your syndication and configure some of the basic syndication settings.<br>
+<br>
+Activating Syndication<br>
+If your syndication status is inactive, just click the 'save' button to activate it. Clicking save again should bring up a Status message like the one in the window below.<br>
+<br>
+<aside class="hint">
+<h6></h6>
+<div>
+If your syndication is inactive for any reason, the status bar will show the following:<br>
+<br>
+<b>Status:</b> Inactive - no feeds will be transmitted.<br>
+<br>
+When your syndication is active and running normally, you should see something like this:<br>
+<br>
+<b>Status:</b><br>
+Last PRODUCTS Update: Thu 17-Nov-2011 <br>
+Next PRODUCTS Update: Fri 18-Nov-2011 13:51 PST <br>
+Products Sent: 52 <br>
+Product Errors: 0 <br>
+Last INVENTORY Update: Fri 18-Nov-2011 <br>
+Next INVENTORY Update: Fri 18-Nov-2011 8:36 PST <br>
+Last Diagnostic Message:<br>
+Last Action: inventory at 20111118 06:31:46<br>
+Inventory 12992 at 20111118 06:31:46<br>
+
+</div>
+</aside>
+
+
+Submit New Products:<br>
+Checking this box enables ebay syndication for your account.<br>
+<br>
+Use AutoPilot on New Items:<br>
+Enabling this feature allows the system to make "best guess" decisions when a required product field has not been defined.<br>
+Example:  If AutoPilot is enabled, and the Fixed Price field for a product is left undefined, the system will use the zoovy:base_price amount for the ebay listing.  If Autopilot were not enabled in this scenario, the listing attempt would generate an error, and the product would fail to list.<br>
+<br>
+Detailed Logging:<br>
+This feature should only be enabled if instructed to do so by Zoovy Technical Support.  This feature implements extensive logging of ebay listing events which are used to trouble shoot possible system, or configuration issues.<br>
+<aside class="caution">
+<h6></h6>
+<div>
+Enabling Detailed Logging is NOT recommended, as the amount of data collected by this feature is extensive, and can easily generate additional charges for the merchant due to the amount of disc space required to store so much additional data.
+
+</div>
+</aside>
+
+<article>
+<h2>Ebay Syndication for Products with Options</h2>
+<b>ONLY inventoriable product options are valid for ebay syndication.</b><br>
+<br>
+<li>1.  A product can have up to two inventoriable option groups display on a syndicated ebay listing.  For example, you could have a shirt display with color and size options, or just size options, but not color, size *and* style options at the same time. All options with available inventory will be displayed in the ebay listing.<br>
+<li>2.  A listing will stay active as long as at least one of the SKUs has available inventory.<br>
+<li>3.  As available inventory for specific options is adjusted in Zoovy, that change will be reflected on the ebay listing (usually within ten minutes).  If a specific option reaches zero inventory, that option will no longer display in the listing, but options with positive inventory will continue to be available to shoppers.
+
+</article>
+
+<article>
+<h2>Ebay Syndication Tools</h2>
+<b><u>ebay categories:</u></b><br>
+This is where merchants who have an ebaystore can map their ebaystore categories to valid ebay categories.<br>
+<br>
+<b><u>Webdoc:</u></b><br>
+A link to this webdoc.<br>
+<br>
+<b><u>History:</u></b><br>
+Here you can see a timeline of some basic data about your syndication feeds to Ebay. The History sub-tab Has information on:<br>
+<br>
+-DATE: The date that the syndication event took place.<br>
+-TYPE: The type of syndication event.<br>
+-TOTAL: How many products you have (account wide) that are set for syndication based on ebay:ts setting.<br>
+-VALIDATED: How many products you have (account wide) that are set for syndication based on ebay:ts setting.<br>
+-TRANSMITTED: How many products you have still ready to go after removing products with zero inventory, suspended products, products already on eBay, and products that are configured incorrectly and will get eBay errors.<br>
+<br>
+<b><u>Feed Errors:</u></b><br>
+a readout of your most recent feed errors on individual products. Use this sub-tab to correct your product errors and get the products back onto Ebay. For a list of common Ebay errors and how to fix them, go to <a class="linkdoc" href="#?doc=50752">Doc 50752</a><br><br>
+<br>
+<b><u>Diagnostics:</u></b><br>
+This tool will show you VERY detailed information about your syndication feed. You can enter one product ID to diagnose a single product, or leave the field blank to diagnose your whole store. Some of the checks that the diagnostics tool performs are:<br>
+<br>
+-How many products you have (account wide) that are set for syndication based on ebay:ts setting.<br>
+-Products with zero inventory.<br>
+-Products that are suspended from eBay syndication.<br>
+-Filter Launch: Products already on eBay.<br>
+-Validation: Products that are configured incorrectly and will get eBay errors.<br>
+</article>
+<br>
+<article>
+<h2>Ebay Tools in Product Editor</h2>
+<b>Syndication Test</b>:  This will run a test syndication for that product, and display any errors or warning detected during the test.<br>
+Warnings will generally not prevent a listing.<br>
+Errors will prevent a product from listing successfully.<b><br>
+<br>
+<b>Listing Events</b>:  The Listing Events panel will show all attempts to create a listing for a product.  Failed attempts will display the error that prevented the listing, while successful attempts will display the resulting live listing.<br>
+<br>
+</article>
+
+
+
+<article>
+<h2></h2>
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,219 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="ordermgr/detail/fedexcafe">
+<h1>FedEx Ship Manager Cafe</h1>
+<article>
+<h2>Overview</h2>
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+EFFECTIVE  1/1/05 -- THIS FEATURE IS DEPRECATED AND IS NO LONGER SUPPORTED.<br>
+<br>
+You may be interested in <a class="linkdoc" href="#?doc=50956">Doc 50956</a><br>
+<br>
+Support will be provided for EXISTING installations only, 
+no support will be provided on new installations - 
+in addition no feature requests will be implemented. <br>
+<br>
+Customers who ship via FedEx and are looking for the best integration should visit:<br>
+<a target="_top" href="http://webdoc.zoovy.com/index.cgi?VERB=DOC&DOCID=50496">
+Order Manager: FedEx Shipping
+</a> for more information on the Native FedEx integration inside Zoovy 
+Order Manager.<br>
+<br>
+This documentation/instructions is designed for FedEx Cafe Builds 2180.
+Newer builds of Cafe are dramatically different and are not compatible.
+Please do not contact FedEx for integration support on Cafe builds newer
+than 2180 (pretty much any version received after Nov 2004.)
+
+</div>
+</aside>
+
+
+
+
+<hr>
+<b>DEPRECATED FEATURE:</b><br>
+
+The FedEx ShipManager Cafe client software is available by contacting your FedEx account manager.
+At this time the Cafe software is only available to customers who have a daily pickup arrangement with FedEx,
+however FedEx has announced its intentions to release a version of ShipManager Cafe for customers who do not have Daily Pickup accounts.
+If you use a drop off location we encourage you to contact FedEx to see if you are eligible to receive a copy of ShipManager Cafe.<br>
+<br>
+<aside class="hint">
+<h6></h6>
+<div>
+
+Zoovy has verified compatibility with FedEx ShipManager build 2180 and later.
+This feature requires Order Manager build 4.39 beta 2 which can be downloaded from: http://support.zoovy.com/beta
+
+</div>
+</aside>
+
+
+
+
+</article>
+<article>
+<h2>Setup</h2>
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+This document is intended for use by a FedEx Customer Integration Consultant (CIC).
+While you may be able to configure this without the assistance of a FedEx CIC - Zoovy does not recommend this.
+
+</div>
+</aside>
+
+
+
+Zoovy Order Manager creates CTS export files formatted for use with the FedEx Passport feature of Ship Manager Cafe.
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+<b>The FedEx "Secret" Daily Password</b><br>
+ShipManager Cafe does not have the required Passport functionality by default.
+So as part of the installation you must enable Passport in your ShipManager Cafe software.
+Since FedEx considers this configuration of Passport to be too technical for your average user, you're going to need the secret "Daily" password.
+Fortunately, the password isn't that secret - in fact it can be easily obtained by calling FedEx ShipManager Automation Support,
+who will give you a password that is good for one day.<br>
+<br>
+First call 1-800-GO-FEDEX and say "FedEx ShipManager Automation Support" at the first menu prompt when digital-attendant asks what service you'd like.
+Then select 1 for Ship Manager Support, then select 1 again for Installation Issues.
+Simply tell the friendly FedEx representative you wish to enable the Passport functionality and you need the password.
+The representative will likely ask you for your system id, this is NOT your FedEx account number -
+it is the meter number which is in the menu bar of your Cafe software (hint: it is a six digit number adjacent to the version number of the software).
+If in doubt, the FedEx Tech can probably help you find it.
+Once you have the password, then you may proceed with the steps below.
+PLEASE NOTE - FEDEX PASSWORDS ARE ALWAYS IN UPPER CASE, if you type the password in lower case it won't work!
+(we mention it here only because FedEx techs love to forget to mention this little detail)<br>
+<br>
+On a final note: Please don't call Zoovy and ask what the ShipManager password is, we don't know - it changes every day, and we don't have it.
+
+</div>
+</aside>
+
+
+
+<!-- HHTXBR93 -->
+<!-- MASTER: ZENA -->
+First we need to do is configure Order Manager to create Passport files.
+
+<aside class="cbc">
+<h6>'Configuring Order Manager to export FedEx Passport files'</h6>
+<div>
+<li> Load the Zoovy Order Manager
+<li> Go to Tools | FedEx ShipManager Setup
+<li> Verify that your FedEx account # appears in the screen, if it does not then enter it.
+<li> Meter number can be left blank (it is not currently used)
+<li> Select the Default Service - this is the FedEx service which will be most commonly used. (NOTE: Zoovy will automatically flip between
+Home Delivery and FedEx ground for residential / non-residential addresses)
+<li> Select the Default Package Type - typically this will be customer packaging.
+<li> Specify the FedEx Passport File, we recommend you set this to C:\zoovy-passport.in (note: you must end the file with a .in extension)
+<li> Click the okay button to save.
+
+</div>
+</aside>
+
+
+Then all we do is configure the PassPort functionality in the FedEx Ship Manager Cafe software.
+(If you are doing this without a CIC and didn't read the hint above about the FedEx Daily Password, we recommend you stop here and go back and read it!)
+
+<aside class="cbc">
+<h6>'Enabling Passport in FedEx Ship Manager'</h6>
+<div>
+<li> Select Customize from the menu along the top
+<li> Select System Settings
+<li> Highlight your system profile
+<li> Click the modify button
+<li> Select tab #4 "FedEx Express Admin"
+<li> At this point you will be prompted for the daily password - instructions for getting the password are above. (this password changes every day, or we'd give it to you here)
+<li> At this point you should enable the three checkboxes for Passport System. Specifically "Batch", "Auto Listening", and "Label Transfer"
+<li> PLEASE - [NO MATTER HOW MUCH YOU THINK IT WILL HELP] - DO NOT MAKE ANY OTHER CHANGES TO YOUR SHIP MANAGER SOFTWARE WITHOUT CONSULTING A FEDEX CIC FIRST!
+<li> Now cross your fingers and click the okay button to save.
+
+</div>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Usage</h2>
+
+Getting setup is a bit tricky, fortunately using the Passport integration on a day to day basis isn't. Just follow the simple steps below.
+<aside class="cbc">
+<h6>'Shipping with FedEx Ship Manager'</h6>
+<div>
+<li> In Order Manager select one or more orders and then right click and select Export to FedEx Ship Manager.
+<li> The C:\zoovy-passport.in file will be automatically overwritten with the new data.
+<li> Load the FedEx Ship Manager window (if you already have it open, thats fine too)
+<li> Click on "Passport" in the menu area.
+<li> We recommend you enable the "Batch Edit" in the processing mode area (this will let you verify the weight, and shipping type of each package)
+<li> Set the input file to C:\zoovy-passport.in
+<li> Set the export file to C:\passport-export.in
+<li> NOTE: While doing a test run you may want to click the Test Mode, this will prevent any real airbills from being printed.
+<li> Click the "Start Input" button to start reading from the input file
+<li> Each airbill will be displayed, you will probably want to verify the weight of each package as well as the service type.
+<li> NOTE: If you are using FedEx Ground as your default service type then the system will automatically check the residential box and select
+FedEx home delivery for any order which does not contain a company name in the ship to field.
+
+</div>
+</aside>
+
+
+</article>
+<article>
+<h2>Mapping Fields</h2>
+
+
+Fields that you can mapped to for reports/email include:<br><br>
+<li>Field 1204 - Ship Alert Email ID 1 - max length 35
+<li>Field 3002 - Ground Invoice Number (35) - order number
+<li>Field 25 - Express Reference Info (35) - order number
+
+</article>
+<article>
+<h2>Troubleshooting</h2>
+
+At this time we are aware that this integration does not support International Addresses.
+This is probably fine, we don't think any of our customers ship internationally with FedEx, if you plan to - please let us know and we'll add it.<br>
+<br>
+If you receive a parsing error please make a note of the error and
+open a Zoovy support ticket and MAKE SURE you attach the zoovy-passport.in file to the ticket.
+Please also include the version # of the Cafe software and if there was more than one transaction see if you can identify which order # it occurred on.
+(HINT: the zoovy-passport.in file gets overwritten each time you export a new order, so don't wait until your done processing orders.)<br>
+<br>
+
+If you receive a "Runtime Error 76" exporting to Fedex Ship Manager, please check your configuration to make sure your mapping is correct.  If you
+are mapping to a network drive, make sure the drive is mounted. <br><br>
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+This is currently an experimental feature, you're welcome to use it, and we think it works great -
+but please be aware that any fixes will likely require a new release of the Order Manager client and could take a week [or longer] to implement.
+We are actively seeking comments on how we can enhance this feature.
+
+</div>
+</aside>
+
+
+
+
+</article>
+
+
+
+
+
+
+

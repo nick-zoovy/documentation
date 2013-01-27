@@ -1,0 +1,207 @@
+<meta type="filename" id="webmgr/detail/builder-navigation">
+<h1>Site Builder / Navigation Categories</h1>
+<article>
+<h2>Overview</h2>
+
+You can easily customize the look of each category, by adding text and images. 
+Finally you can determine how each category appears (for instance do they have picture thumbnails, 
+if so are they big or small, etc..) it's a very flexible system. 
+To setup these categories simply create a product and then click the "Add New" link, 
+then follow the directions. Oh and incase your wondering - yes you can have categories inside of 
+categories inside of categories inside of categories. You can also have as many categories in each 
+sub category as you like.
+
+<aside class="cbc">
+<h6>How to add a new category</h6>
+<div>
+<li>Log in to your account at www.zoovy.com</li>
+<li>Click on the setup tab</li>
+<li>Click on the 'categories and lists' link</li>
+<li>Under homepage, push the 'add new' button</li>
+<li>Enter the name of your category</li>
+<li>Save your new category</li>
+
+</div>
+</aside>
+
+
+
+</article>
+
+<article>
+<h2>Naming/creating categories and specifying the order</h2>
+
+Categories are listed in alphabetical order, based on their 'safe name', which is the original name you gave it, minus all the spaces, special characters, and case's. For instance, a category created as "My Favorite Shoes & Sandals" would have a safe name of "my_favorite_shoes_sandals".  That safe name is going to be used for as long as that category exists. So the link to that category, even if you rename it, will always be "www.domain.com/category/my_favorite_shoes_sandals".  For this reason, you should never rename your categories from one product line, such as shoes, to another, such as dresses.  If you did, your category url would contain the word 'shoes' but the subject matter of the page would be dresses.  This is not very search engine friendly.
+
+<br>
+
+Some merchants adopt the strategy of beginning their categories with an integer, followed by keywords, so that they can determine a specific order.  In most cases, we recommend against this.  Your categories should be listed in alphabetical order to make it easy for your customers to find what they're looking for.  I know that you're thinking "widgets are my best seller and they MUST be at the top of my list".  Wrong for more reasons than one.  If widgets are your best seller, your customers are going to instinctively look at the bottom of your categories and not see it there.  They may just leave at that point.  Two, if the customer does scan the list looking for it, you want them to read the entire list, working their way down, so that they see what else you sell.  If you want widgets to stand out, use a banner in the theme to promote that product line.
+<br>
+
+If you insist on determining a specific order for your categories, use a combination of numbers AND words, so that there are some search engine friendly keywords in your url.  WHich do you think looks better to search engines:  mydomain.com/category/2 or mydomain.com/category/sony_plasma_hdtv
+<br>
+To do so, create your categories with a numeric key at the beginning, such as '010_shoes_and_skirts' and then rename it 'My Favorite Shoes and Skirts ".  That way, it will appear at the top of list list.  Create the next category with 020_ at the beginning and it will be second.   Use a three digit numeric key so that later you can add new categories between the old (010 can later have a 005 added to be in front or a 015 to appear between 010 and 020).
+
+<br>
+
+Categories are one of the most important things you'll set up that has long term consequences.  You should not set up your categories without first speaking to an implementation specialist.
+
+<aside class="caution">
+<h6></h6>
+<div>
+Once your categories are created, you have two options if you want to rename the 'safe name'.  1. If you don't feel comfortable with CSV imports, you would have to create a new category, migrate over all your content (including any subcategories) and then delete the old category. 2. You could accomplish this through a category CSV import.  See http://www.zoovy.com/webdoc/index.cgi?VERB=DOC&DOCID=50326  Please book an Implementation appointment if you are not familiar with CSV Imports.
+
+</div>
+</aside>
+
+
+
+</article>
+
+<article>
+<h2>Category Product Sort Order</h2>
+Each product list has a sort order, you can change the sort order of a product by going to 
+Setup | Website Builder | selecting the Page you want to edit | then selecting the [Edit] 
+link on the Product List and finally changing the sort order. If you plan to manually sort 
+the products then you should select "Manual Sort" and then use the [Products] link on the 
+Product List to re-order the products.
+<p>
+<br>
+A Default Sort order can be set by "Editing" any Product List and clicking the default checkbox (as seen below):
+<br>
+Save settings system wide:
+<br>
+ Save these settings as my default, and set this category to the default.
+<p>
+Keep in mind that after creating a Default sort order, all newly added Product Lists will automatically be saved with that Default sort order. Previously added Product Lists, will need to changed manually. Product Lists are not sorted on the fly, they are only sorted when saved/created.
+
+</article>
+
+<article>
+<h2>Hidden Categories</h2>
+Categories can be hidden (so they do not appear in normal navigation trees)
+this lets you create special links to them for coupons and things like that. 
+<br>
+Products that only appear in hidden categories, or not in categories at all, will not appear in the search results.
+<br>
+To create a hidden category, just create/rename it with an exclaimation mark (!) as the first letter.  To unhide the category, rename it without the exclamation point.
+</article>
+
+
+<article>
+<h2>Adding Thumbnails to your categories</h2>
+
+Certain home and category page layouts will display your categories as a combination of text and thumbnails.  You can associate 1 thumbnail with each category through the site builder.
+
+<aside class="cbc">
+<h6>How do I associate thumbnails with a category page</h6>
+<div>
+<li>Click on setup</li>
+<li>Click the 'site builder' link</li>
+<li>Click on the camera icon next to the category name</li>
+<li>Use the media library interface to find and select an image</li>
+
+</div>
+</aside>
+
+
+</article>
+
+
+
+<article>
+<h2>Category Attributes set in the layout</h2>
+Within a layout or theme, certain attributes can be forced on or off.  These attributes are not editable.
+<br>
+<li>Descend Tree - if the current category has no subcategories, the parent set will be used</li>
+<li>No Root - will not show the top level categories (gets used in conjunction with descend tree)</li>
+<li>Product Categories - will show a list of all the categories the current product resides in when on a product page (only used in themes or product layouts)</li>
+
+</article>
+
+
+<article>
+<h2>Lists</h2>
+
+What is a list?  A 'list' is a grouping of products that is not associated with a specific category.  You can use lists to syndicate your products into marketplaces, or as an alternate source on a home, category or product page.  Lists are required on pages that have more than one product list if you want each list to display different products. 
+<br>
+<aside class="hint">
+<h6></h6>
+<div>Lists are also a handy workaround for getting different products to display on each of your specialty store homepages. Just create a custom list for each website that you want displayed and use that list in your page layout in Site Builder.
+</div>
+</aside>
+
+<br>
+
+<aside class="cbc">
+<h6>How do I create a List?</h6>
+<div>
+<li>Click on setup</li>
+<li>Click the 'categories and lists' link</li>
+<li>Click on 'add new' under the homepage</li>
+<li>Enter the name for your list (your name should describe what the list will be used for)</li>
+<li>Select 'product list' instead of 'root category level'</li>
+<li>Save your new list</li>
+
+</div>
+</aside>
+
+
+
+Lists will always appear at the bottom of the categories and lists page.  When you want to update the products on that list, do so through the 'categories and lists' page. 
+
+<aside class="cbc">
+<h6>Selecting a 'list' as the source of a product list</h6>
+<div>
+<li>Click on the setup tab</li>
+<li>Click on the site builder link</li>
+<li>Click 'edit' next to the page you wish to modify</li>
+<li>Click 'edit' for the product list element you wish to modify the source of</li>
+<li>The first dropdown in 'source'.  Set this to your new list</li>
+<li>Save your changes</li>
+
+</div>
+</aside>
+
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

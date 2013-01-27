@@ -1,0 +1,73 @@
+<meta type="filename" id="ticket/160481">
+
+<h1>Issue #160481: Ebay Insurance Did not Get Charged In Zoovy Checkout.</h1>
+
+<article>
+<h2>Issue #160481: Ebay Insurance Did not Get Charged In Zoovy Checkout.</h2>
+
+The ebay auction is configured to require an international customer to pay for insurance. In this auction the customer agreed to pay the required shipping of $3.00 for an order total of $42.99.
+
+<br>
+
+In zoovy the order is paid and there is no mention of the insurance. The customer only paid $39.99 which excludes the insurance. 
+
+<br>
+
+Ebay is displaying the shipping options correctly to the customers but the data did not come back to zoovy so therefore the customer did not pay the correct amount.
+
+</article>
+
+
+<article>
+<h2>Resolution</h2>
+
+So basically what's going on here is that the Zoovy insurance settings don't match the eBay settings.
+
+<br>
+
+<aside class="hint">
+<h6></h6>
+<div>
+The field in the profile:  ebay:ship_insuranceoption can be set to either "None" "Optional" or "Required".
+
+</div>
+</aside>
+
+
+Zoovy can calculate eBay shipping rates - we do not automatically import eBay insurance rates or settings into our checkout.  
+When eBay Insurance is REQUIRED by the profile the insurance amount is simply added to shipping total returned to Zoovy by the eBay shipping engine. 
+
+<br>
+
+It's worth mentioning the shipping rate given to Zoovy from eBay does not specify if the insurance is optional, required, etc. The eBay response does declare the amount (and Zoovy use that amount - regardless of what is specified in the profile), but the setting to determine if it's required or not is controlled by the current setting in the Zoovy Profile associated with the listing.
+
+<br>
+
+If you plan to offer optional insurance, you need to configure your Zoovy store so it's insurance settings match your eBay settings. 
+
+<br>
+
+<aside class="caution">
+<h6></h6>
+<div>
+If the insurance is REQUIRED in the profile then the insurance rate from eBay is used. So you need to decide which system is going to be offering insurance otherwise you might double charge your customers for insurance. 
+
+</div>
+</aside>
+
+
+So if the insurance is optional on eBay, the Zoovy checkout will ignore it and use it's own insurance calculations.
+
+<aside class="caution">
+<h6></h6>
+<div>
+Mixing required and optional insurances across multiple listings can 
+lead to unpredictable results. 
+
+</div>
+</aside>
+
+
+
+</article>
+

@@ -1,0 +1,324 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/supplychain">
+<h1>Supply Chain Cookbook</h1>
+
+
+
+
+
+
+
+
+
+
+<article>
+<h2>Concept Overview</h2>
+
+The supply chain system allows your store to manage the process of ordering items from your suppliers. Before venturing into the supply chain area you should have a firm grasp on the following concepts:
+* Supplier Modes
+* Supplier Formats
+
+</article>
+
+
+
+<article>
+<h2>Getting Started with Supply Chain - Setup</h2>
+<br><br>
+To set up a new supplier:
+<br><br>
+
+<li>Click the Utilities Tab
+<li>CLick on Supply Chain
+<li>Enter the <B>Supplier Code</B> - This code is strictly for your reference to the supplier. This field is case-sensitive and must be in all caps.
+<li>Specify a <b>Default Markup</b> for the prices of the products to be displayed on your website.
+<aside class="hint">
+<h6></h6>
+<div> Default Markup is the calculation to create the "price" of the product based on the cost of the item during creation/import.  This calculation takes place during creation/import of the product (or an update import thereof), rather than dynamically assigned during the customer shopping experience. i.e. PROD123 is created with a cost of $100 for supplier XYZ which has a default markup formula of COST*1.5.  When this product is imported and created the subscription process looks at the cost, them multiplies it by 1.5 to set the price value of $150.  Now whenever a customer adds this to the cart it quotes a price of $150.  If I change the default markup to say... COST*2, it does NOT dynamically change the price of the product already in the system to $200, rather any new products will use the new formula.  If you desire to recalculate the current products at the new markup, you must run another import of the values to recalculate.
+</div>
+</aside>
+
+<li>Select your Ordering method
+<li>Choose the Data Integration Type<br>
+-If supplier is JEDI, the Zoovy Store Name, Zoovy Store MID, and email are provided when you login to their store.<br>
+-If API link is used, the API bundle is required to be on your account. <br>
+-If using a generic (non-Zoovy site) supplier, the setup information that is entered is purely for your reference.
+<li>CLICK SAVE.
+<br><br>
+Congratulations! You are now ready to add products to your site! Continue to the next section, Products.
+<aside class="caution">
+<h6></h6>
+<div>
+
+The Paypal IPN feature is NOT compatible with virtual products (e.g. alldropship)
+Orders containing virtual products will not be properly handled.
+
+</div>
+</aside>
+
+</article>
+
+
+<article>
+<h2>Supplier Formats</h2>
+
+The supplier format affects how orders are formatted before they are sent to a supplier. 
+
+<section>
+<h3>Supplier Format: DROP SHIP</h3>
+Drop-shipping is where a supplier sends an order directly to a customer on your behalf. 
+In a drop-ship mode all payment and pricing information is removed from the items before they
+are sent to the supplier. The buyers billing information is replaced with the billing information
+you provide when you configure the supplier. Only minimal details necessary to ship the order
+are provided to the supplier - in fact no email address for the buyer is provided. 
+
+Drop ship orders can only be transmitted when the order they originate from is flagged as paid. 
+</section>
+
+<section>
+<h3>Supplier Format: FULFILLMENT</h3>
+Fulfillment centers are companies where you store your inventory and then they ship it for you.
+In many cases (especially for smaller volume companies) it is possible for large fulfillment centers to very profitable and still ship items for less than a small company operating it's own warehouse due to reduced staffing costs and other economies of scale.
+
+Orders sent to a fulfillment center have no payment information removed, the billing address and information is also intact. A fulfillment company is somebody you have a contractual relationship with, so they are not a competitor (unlike a drop shipper who may also sell direct to consumer).
+
+Fulfillment orders can be transmitted to the fulfillment center either when they are created, OR after they are flagged as paid.  (This is necessary because some fulfillment centers also do customers service for the companies)
+
+</section>
+
+<section>
+<h3>Supplier Format: STOCK</h3>
+
+
+
+Stock is used for products where a company operates its own warehouse. 
+Each product in inventory should have a "minimum quantity" set, when inventory drops below this number then items are added by the inventory system to the suppliers list of items to be ordered.
+
+When orders are created the shipping address is to your warehouse, NOT to a customers location. 
+This is specifically for re-ordering items you normally stock.  
+At this time the minimum stock level must be set to 1 or greater for this feature to work. 
+
+Orders can then be transmitted to the supplier after a preset number of days, or after a pre-alloted amount is reached, this is useful because many suppliers offer free shipping or reduced rates for orders over a certain dollar amount. 
+Order quantities can also be edited before transmission to the supplier. 
+
+<aside class="hint">
+<h6></h6>
+<div>
+Many sellers configure STOCK orders to be emailed to themselves, then they turn around and place the order with the suppliers.  This way the supply chain system simply acts like a "reminder" system, keeping a list of items they need to order. 
+
+</div>
+</aside>
+
+
+</section>
+
+
+</article>
+
+
+
+<article>
+<h2>Supplier Modes</h2>
+
+The supplier mode determines how inventory, shipping rates, and orders will be exchanged with the supplier.
+Zoovy offers three different modes: JEDI, API, GENERIC
+
+
+<section>
+<h3>Supplier Mode: GENERIC</h3>
+
+<section>
+<h3>Generic Inventory</h3>
+Generic inventory can be loaded once per day from a CSV file on either a website (via HTTP), or
+an ftp server.  You need to specify which columns contain the SKU, and the available quantity. 
+
+<aside class="hint">
+<h6></h6>
+<div>In the future Zoovy will offer an advanced macro language to automatically reformat
+files from your supplier and add headers
+</div>
+</aside>
+
+</section>
+
+<section>
+<h3>Generic Shipping</h3>
+<aside class="caution">
+<h6></h6>
+<div>
+Regardless of the mode that you select, if you do not have some kind of shipping configured you will not charge shipping to your customer.
+
+</div>
+</aside>
+
+Generic shipping can be calculated via either UPS or FedEx rates using either your account, or your
+suppliers account number and origin zip code.  You can also use basic shipping, and add additional handling fees. With a generic supplier you can also use shipping rates from your store.
+
+<aside class="caution">
+<h6></h6>
+<div>
+Cart/Orders with Generic products will NOT provide shipping choices to your customer!<br>
+<p>
+Imagine if a customer had put the following in their cart:
+<li>a product from your store (w/2 FedEx options)
+<li>a product from Supplier A (w/3 UPS shipping options)
+<li>a product from Supplier B (w/fixed shipping)
+<p><br>
+This order would require 3 shipments (w/3 different Shipping methods). Adding this functionality (allowing the customer to choose a shipping method for each shipment) to the cart would be very difficult and would be very confusing to the customer.
+<p>
+Therefore, we automatically pick the lowest price shipping method for each shipment and add it to the total cost of the "Shipping" charges.
+
+</div>
+</aside>
+
+
+<br>
+
+<aside class="caution">
+<h6></h6>
+<div> The items for any supplier configured for format "STOCK" will not have separate shipping calculated, the shipping will be calculated as if the items are shipping from your warehouse.
+
+</div>
+</aside>
+
+
+</section>
+
+<section>
+<h3>Generic Ordering</h3>
+Orders for generic suppliers can be transmitted using XML, or HTML emails, or via facsimile to your supplier. 
+
+</section>
+
+</section>
+
+
+
+
+<section>
+<h3>Supplier Mode: API</h3>
+
+<section>
+<h3>API Inventory</h3>
+An HTTP Post is performed to a webserver anytime inventory quantities are needed. This allows for realtime inventory. Optionally you can load inventory values into your store via CSV for the items, if inventory is configured in the store then no HTTP call will be made. 
+</section>
+
+
+<section>
+<h3>API Shipping</h3>
+An HTTP Post is performed to a remove webserver and contains the XML formatted contents of the cart or order in question. Your program can then use the address information to provide one or more available shipping methods. 
+</section>
+
+<section>
+<h3>API Ordering</h3>
+An HTTP Post is performed to a remove webserver and contains the XML formatted order. Your program on that webserver can then do tasks such as batching multiple orders together and submitting those to a supplier in their native order format. 
+</section>
+
+</section>
+
+<aside class="caution">
+<h6></h6>
+<div>
+JEDI has be deprecated and is no longer available
+
+<section>
+<h3>Supplier Mode: JEDI</h3>
+
+JEDI (Just Easy Data Integration) is available between two Zoovy stores in a drop ship or fulfillment configuration. 
+
+More information on JEDI can be found here: 
+<a class="linkdoc" href="#?doc=50389">Doc 50389</a>
+
+<aside class="hint">
+<h6> This document discusses JEDI from the "Retailer" side, to setup JEDI as supplier you should be reading the Wholesale Cookbook[[/HINT</h6>
+<div>]
+
+<section>
+<h3>JEDI Inventory</h3>
+With JEDI inventory there is no configuration. Inventory is loaded directly from your supplier. 
+</section>
+
+<section>
+<h3>JEDI Shipping</h3>
+With JEDI Shipping there is no configuration. Your suppliers actual shipping rates are passed on to your customers. 
+</section>
+
+<section>
+<h3>JEDI Ordering</h3>
+With JEDI Ordering - orders are automatically transferred to your supplier, there is no configuration. 
+
+
+</div>
+</aside>
+
+</section>
+
+<aside class="caution">
+<h6></h6>
+<div>
+If you dispatch your orders as faxes, certain markup tags appear in the email cc'd to you. There appear only in the email and not in the fax that is sent to the supplier. 
+
+</div>
+</aside>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

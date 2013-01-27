@@ -1,0 +1,222 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/guide/affiliate">
+<h1>Affiliate Tracking and Compatibility</h1>
+<article>
+<h2>Operation</h2>
+
+
+
+There are two ways to configure an affiliate tracking software in Zoovy. 
+The first is to a use a third party software like Commission Junction, Yahoo / Overture, or virtually any third party provider. 
+The second is to use the built in referrer tracking in Zoovy, and keep track of your own commissions.
+
+</article>
+<article>
+<h2>3rd Party Support</h2>
+
+
+Any provider which allows you to electronically submit an order number, and amount should do the trick
+all these programs perform soft tracking, which typically involve placing some hidden code on the last page of checkout, 
+in order to do this you'll need the WEB bundle on your account. Soft checking, although very common is also very susceptible to fraud.
+If you plan to use a soft affiliate program, you should plan on auditing your program on a weekly basis to ensure your 
+affiliates are not ripping you off. Fraud usually occurs in two places - soft affiliate programs cannot authenticate the 
+order amounts, devious affiliates can submit bogus order(s) and totals to generate false impressions of sales, and also 
+soft programs typically cannot track order cancellations. 
+
+</article>
+<article>
+<h2>Native Support... using URL tagging META=</h2>
+
+
+Zoovy has built-in order referrer tracking, which can provide the basis of a successful and self-policing affiliate program. 
+The Zoovy internal order referrer tracking is available to all accounts and is discussed in the configuration section below. 
+
+
+<section>
+<h3>Configuration</h3>
+
+This order referrer tracking revolves around the use of the meta parameter. 
+Simply make up codes for affiliates, such as AFFIL1, AFFIL2, and so on. 
+Then tell each affiliate to link to http://yourname.zoovy.com/anypage?meta=AFFIL1 and that�s it. 
+Zoovy will then associate any related orders with the code AFFIL1, on the web it will show that it was sent from META=AFFIL1 
+in the order preview screen, in the product manager you can easily run a report of all orders grouped by META id. 
+This is called the "Affiliate report". 
+You can either run the report for all orders, or a group of orders simply by selecting them. 
+If you run the report cumulatively you will probably want to track the affiliate payouts in a spreadsheet like Excel. 
+<br>
+</article>
+<section>
+<h3>Considerations</h3>
+
+If you are using the Referrer tracking feature of Domain redirection you will need to disable it so it 
+does not conflict with your affiliate report (actually you can always leave it enabled, which lets you 
+include popular search engines as affiliates to see where you actually generate sales from - but if you have 
+a busy site it can make the entire report very busy).
+<br>
+If you are using static pages and plan to send the customer directly 
+to your site then you will first need to redirect them through Zoovy. You can do this by using the 
+url http://yourname.zoovy.com/redir.cgis?meta=AFFIL1&url=http://www.yourdomain.com/anypath<br>
+</article>
+<section>
+<h3>Reporting</h3>
+
+At this time no online statistics or revenues earned to date are provided to the affiliates. 
+Zoovy does not provide an affiliate signup However it is possible to create a bastardized 
+version of the feedback form which basically sends you an email when somebody wants to sign up for your affiliate program.
+</article>
+
+<section>
+<h3>Promotion/Shipping Rules: META filter</h3>
+
+We've added the ability to easily configure shipping and promotion rules that become active or disabled based on the META source. This enables site owners to selectively offer discounts, modify shipping, or activate/deactivate coupons based on the initial traffic source.
+
+For example: the ability to configure a 10% discount, coupon, or shipping which only applies to customers to arrive through a Twitter or Facebook link.
+
+The destination URL being used would need to be modified on the source site linking to the website.  For example if you use twitter, and you post a link back to site from twitter, would use something similar to this
+http://www.YourDomainHere.com/?META=Twitter
+
+</section>
+<aside class="hint">
+<h6></h6>
+<div>
+Example Coupon Rule:<br>  
+URL in use:www.yourdomain.com/?META=FACEBOOK<br>
+In Coupon Settings:<br>
+Meta exactly matches Match Value<br>
+Match Value must equal FACEBOOK (in order for coupon to work)<br>
+(in most cases exact match rule will be used)<br>
+<br>
+Meta Fuzzy matches filter:<br>
+Match value can equal partial (ie. FACE)<br>
+(this rule is used for mainly PPC campaigns or other campaigns where the exact match isn't known)
+
+</div>
+</aside>
+
+<br>
+Zoovy Marketing Services can assist with 3rd party applications, and is a paid service.  Implementaion can ONLY assist with the Zoovy platform.
+<br>
+
+</article>
+<article>
+<h2>3rd Party Affiliate Programs</h2>
+
+
+<section>
+<h3>Policy Statement: </h3>
+
+Zoovy does not currently support any 3rd party affiliate programs at this time. 
+While Zoovy does provide the ability to integrate with many of them, 
+because of the technical nature of the questions any questions related to 3rd party 
+integration do not fall under the standard support Q&A. 
+For assistance with the integration of the affiliate program either seek assistance from the 
+provider of your affiliate software, or purchase a Fast Track from Zoovy. 
+Before implementing a third party solution - please read our explanation why we do not support 3rd party solutions.
+
+</article>
+<section>
+<h3>Integration</h3>
+
+Most 3rd party affiliate programs can be integrated with Zoovy using the edit checkout messages 
+feature that is available to accounts with the WEB bundle. The edit checkout messages allow you to edit and insert 
+custom HTML into virtually any message in the checkout. Most affiliate programs require that the 
+order id, amount, and customer email address be passed to them at the final stage of checkout. 
+Zoovy provides the following information that is available to be passed to an affiliate provider during checkout:<br><br>
+
+Adding tracking code to the sales confirmation page in checkout (for overture or another tracking software application).<br><br>
+
+Click by Click
+
+<ol>
+  <li></li>
+  Click on Setup. 
+  <li>Click on 'Checkout Setup' under the heading My Store Properties. 
+  <li>Scroll half way down the page to the 'Customize Checkout Messages' link 
+    and click it. 
+  <li>Use the variables at the top of this page in your tracking code to ensure 
+    order totals are correctly passed back to your tracking company. (replace 
+    TOTALGOESHERE with %SUBTOTAL% for instance). 
+  <li>Scroll down to the 'Checkout invoice instructions' textarea. 
+  <li>Paste in your code here. Push save.
+</ol>
+
+
+</article>
+<section>
+<h3>Checkout Variables</h3>
+
+Below is a summary of helpful variables which can be edited in the checkout messages.
+For a full list of variables refer to the checkout messages documentation.
+
+<table>
+	<tr>
+		<td>%ORDERID%</td>
+		<td>The Order ID (not available until the invoice stage</td>
+	</tr>
+	<tr>
+		<td>%GRANDTOTAL%</td>
+		<td>The total amount of the order without a dollar sign ($)</td>
+	</tr>
+	<tr>
+		<td>%grandtotal%</td>
+		<td>The total amount of the order with a dollar sign ($)</td>
+	</tr>
+	<tr>
+		<td>%SUBTOTAL%</td>
+		<td>The subtotal (amount not including shipping+ handling) of the order without a dollar sign.</td>
+	</tr>
+</table>
+
+
+By placing any of those variables above in a checkout message, 
+the software will interpolate the variables and replace the contents with the actual value. 
+Please note all variable names are case sensitive. For example:
+<br>
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;IMG WIDTH="1" HEIGHT="1" BORDER="0" SRC="http://someaffiliteprogram.com?ORDER=%ORDERID%&AMT=%GRANDTOTAL%"&gt;
+
+</code>
+</aside>
+
+
+
+
+</article>
+<section>
+<h3>3rd Party Support Policy</h3>
+
+Virtually all affiliate programs on the Internet are �soft� implementations. 
+Soft affiliate programs cannot accurately track returns, cancellations, 
+or in some extreme cases even verify the authenticity of an order. 
+This makes affiliate programs highly susceptible to fraud - 
+especially if the program achieves any sort of critical mass. 
+For this reason Zoovy does not feel soft affiliate programs are good for 
+businesses because they are not sustainable at volume. 
+We respect that your business may be an exception which is be capable of dealing 
+with the risk inherent in affiliate programs, but we also ask that you 
+respect our decision not to support them.  
+
+</article>
+</article>
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

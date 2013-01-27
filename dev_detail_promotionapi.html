@@ -1,0 +1,79 @@
+<meta type="filename" id="dev/detail/promotionapi">
+<h1>Promotion API</h1>
+<article>
+<h2>Overview</h2>
+
+A promotion API is a CGI (e.g. Perl/PHP) program which computes custom shipping.
+Shipping APIs are passed an XML representation of the current cart which then
+based on a companies internal business logic perform operations on the cart.
+The promotion API then output headers and data in a XML format.
+A promotion API may return one or more shipping methods, along with a price for each method.
+</article>
+
+<article>
+<h2>Custom Attributes</h2>
+Promotion API's may be passed a list of attributes for each product in the cart, this may include custom attributes
+specified by the site owner. This is to increase performance by avoiding having to do additional lookups of product data.
+</article>
+
+<article>
+<h2>POST Format</h2>
+What Zoovy sends to your URL:
+
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;?xml version="1.0"&gt;<br>
+&lt;PROMOTIONAPI_REQUEST&gt;<br>
+&lt;cart&gt;<br>
+&lt;product id="xx" qty="##" price="#.##" wt="###" tax="Y|N"&gt;description&lt;/product&gt;<br>
+&lt;product id="xx" qty="##" price="#.##" wt="###" tax="Y|N"&gt;description&lt;/product&gt;<br>
+&lt;/cart&gt;<br>
+&lt;attribs&gt;<br>
+   &lt;product id="xx" owner_tag1="x" owner_tag2="" /&gt;<br>
+   &lt;product id="xx" owner_tag1="x" owner_tag2="" /&gt;<br>
+&lt;/attribs&gt;<br>
+&lt;/PROMOTIONAPI_REQUEST&gt;<br>
+
+</code>
+</aside>
+
+
+<br>
+Notes:<br>
+In &lt;attribs&gt; the id= tag represents products, whereas in the &lt;cart&gt; the id= represents a full sku with options.<br>
+The values of owner_tag1 derive from whatever is placed in the Promotion API attribute list, for
+example zoovy:prod_name, zoovy:base_cost would translate to zoovy_prod_name and zoovy_base_cost respectively.
+Remember that owner names are not allowed to have underscores, so if you need to seperate the owner and tag names,
+simply replace the first underscore (from left to right) with a colon (:) to get the actual tag name in ZML notation.
+This translation is intended to provide compatibility with more XML parsers.<br>
+<br>
+<br>
+</article>
+<article>
+<h2>Response Format</h2>
+
+Expected Response Format (what your system returns to us):<br>
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;PROMOTIONAPI_RESPONSE&gt;<br>
+&lt;cart&gt;<br>
+&lt;product id="xx" qty="##" price="#.##" wt="###" tax="Y|N"&gt;description&lt;/product&gt;<br>
+&lt;product id="xx" qty="##" price="#.##" wt="###" tax="Y|N"&gt;description&lt;/product&gt;<br>
+&lt;/cart&gt;<br>
+&lt;/PROMOTIONAPI_RESPONSE&gt;<br>
+
+</code>
+</aside>
+
+
+
+</article>
+
+
+
+
+

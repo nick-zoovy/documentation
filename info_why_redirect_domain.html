@@ -1,0 +1,144 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/why_redirect_domain">
+<h1>Business Case: Why Zoovy Needs to be the Registrar</h1>
+
+
+
+
+<article>
+<h2>Overview</h2>
+
+This document describes the business case behind why Zoovy recommends that we are made both the delegate and registrar for a domain.  On some accounts Zoovy may require we are the registrar before any of the advanced domain features are available.
+
+<br>
+
+For example in order to configure a REDIRECT DOMAIN (which is used to create a HTTP 301 redirect for the http://username.zoovy.com domain) a domain owner will need to make Zoovy the registrar for the target domain. 
+
+
+</article>
+
+
+<article>
+<h2>Business Case</h2>
+
+A lot of technical people who understand DNS often will debate that if Zoovy is given an NS delegation, that should "suffice" and there is no reason to change registrars. 
+
+<br>
+
+Given the experiences we handle in our Technical Support department, we disagree. We've heard most of the arguments to be made, and taken them into consideration. We've balanced those arguments with the wide range of incredibly difficult support tickets that are opened regarding the "unusual" configurations people apply when the domain isn't under our control. In order to offer the advanced features and still maintain a manageable support footprint we have to require that the domain management be under our control. The fact is, even if you know better and can keep yourself out of trouble incorrectly configuring your domain - your partner, or the guy you sell your business to next week may not. 
+
+<aside class="hint">
+<h6></h6>
+<div>
+The fact is, since we started this policy in late 2006 the number of domain name issues entering into technical support has decreased dramatically.
+
+</div>
+</aside>
+
+
+
+<br>
+
+Even we are surprised how frequently these situations come up, even with the relatively modest number of clients we were seeing almost 1 high priority DNS issue per day.  Clients have found they are barraged with considerably less junk mail and spam because DNS providers like GoDaddy aren't selling their private information to SEO companies (you didn't really think they made money at $6/yr for a domain did you?) 
+
+<br>
+
+There is no such thing as a small DNS issue. When DNS is broken, something isn't working.  With multiple layers of caching, different types of records, it ALWAYS requires a senior technician be pulled off other projects to figure out what is actually going on. We have this policy to try and minimize the number of things that can go wrong into a known working profile.
+
+<br>
+
+There are a variety of reasons for this policy which are outlined below:
+
+<section>
+<h3>Known Working Profile</h3>
+
+Zoovy tech support will use http://username.zoovy.com for troubleshooting any issues since we know how that domain is configured and there is no "3rd party" in the middle intercepting and manipulating our DNS (unless you have a 301 Redirect). If a customer is having an issue we will ask them to go http://username.zoovy.com to eliminate a variety of potential DNS issues. 
+</section>
+
+<section>
+<h3>Improves SEO</h3>
+We don't sell domain privacy (a standard "upgrade" offered by many registrars) - because domain privacy hurts both mail deliverability and search engine ranking.  We think it's flat out disreputable how many registrars actually encourage clients to add domain privacy to their domain while conveniently neglecting to inform them those important detail!
+</section>
+
+<section>
+<h3>Stops Fraud</h3>
+Having Zoovy as the point of contact bogus "your domain is going to expire" notices from sketchy offshore registrars.   
+</section>
+
+<section>
+<h3>Streamline Support</h3>
+As long as Zoovy is not the registrar it is possible to change the NS records without letting Zoovy know.  This means that before we can "conclude" any tech support issue we would need to verify the dns configuration -- adding literally an extra 3-5 minutes to every support ticket.
+
+<br>
+
+<aside class="caution">
+<h6></h6>
+<div>
+Sites which do not use Zoovy as the registrar would never be eligible to be included in our monitoring profile since they have pieces which may break that are beyond our control.
+
+</div>
+</aside>
+
+</section>
+
+<section>
+<h3>Stops Hijacking/Ransom attempts</h3>
+Most registrars have poor security policies that can let bad hackers hijack domains once they have compromised email accounts.  Domain ransoming is a new and upcoming trend for the bad guys to extract money from companies.  The worst part is many ISP's have email which can be compromised pretty easily (which is why we recommend you let us handle your email hosting). The last thing any company wants is having to pay domain name ransom because an employee accidentally clicked an attachment in email!    Domain hijacking/ransoming is actually more common than you think - companies often neglect to report it because of the public embarrassment. 
+<br>
+Because Zoovy does not allow bulk electronic transfers - we have a actual human that inspects each request, which if it is not associated to a known project will often raise flags.  We're proud to report we've successfully stopped a number of hijacking attempts over the years.
+</section>
+
+</section>
+
+<section>
+<h3>SEO "Snake Oil" Proxies</h3>
+We don't see this much anymore -- but in 2005 they were all the rage, and there are still a few vendors out there preying on unsuspecting merchants. Many technical people who understand DNS would be absolutely jaw-dropping awe-struck at the brazen and completely unbelievable claims that SEO snake-oil vendors use to convince business owners to buy/try these "SEO improvement proxies".  
+
+<br>
+
+<aside class="hint">
+<h6></h6>
+<div>
+On a side note - clients generally neglect to mention that the site is going through some middleware that Zoovy has no control over.  After all - why should they notify Zoovy - the proxy vendor assured them it would be "transparent" and not break anything. 
+<br>
+We have yet to see a proxy that actually worked properly and achieve the results it claimed to. That's why we call it "snake-oil".  By putting us in the middle we have the opportunity to work with each client before these devices are actually implemented and typically at a stage when a client can still get their money back!
+
+</div>
+</aside>
+
+
+</section>
+
+<section>
+<h3>Split DNS</h3>
+Even if we have the NS records delegated to Zoovy - using newer versions of bind it's possible to respond differently based on the source IP address. This means it's not possible for us to actually trust NS delegations... again, if we're not expected to support it -- then this wouldn't be a big deal, it's just very hard to detect.  At least one customer did this to create a very unique mail configuration - of course that didn't stop his less-technical partner from verbally abusing our support staff in literally dozens of mail related tickets because a variety of mail-related things didn't work due to the configuration. 
+</section>
+
+<section>
+<h3>Hijacking &amp; Expirations</h3>
+There are also security implications, when we are the registrar we control the security of the domain and where the domain is pointing. This means domains can be hijacked, or worse held for ransom by a nefarious registrar.  There is no call worse than speaking with a business owner who accidentally let their domain name expire and it has been picked up by a click-farm.  Those support tickets usually start with "WHY IS ZOOVY POINTING MY PAGE AT A SITE SELLING VIAGRA!!!!!!!!!!!!!!!!!!!!!" .. at least those tickets are pretty easy to solve... is http://username.zoovy.com still working -- Yep, okay check the DNS, if not, look at the page body for a javascript redirect. 
+</section>
+
+<section>
+<h3>Contractual</h3>
+Zoovy is also contractually obligated to make sure any domain servicing eBay checkout redirect works at all times. 
+</section>
+
+<section>
+<h3>Less To Break = Easier to Support</h3>
+
+Making Zoovy the registrar puts us at the top of the foodchain .. we pick the nameservers, not you, when we pick the nameservers then we know the domain works... no funny business. 
+
+<br>
+
+We always find it interesting that the only people who care about the registrar vs. delegation debates are the same ones who understand why we have this policy. They feel it should be a "everybody but them" attitude. Ironically the only real reason for not wanting to switch Zoovy to the registrar is the domain owner doesn't want to give up the control -- which actually proves our point. Even if you make Zoovy the registrar, we're not really in control, and yet if you expect us to support it - we need to be in control of it right?
+
+<br>
+
+Zoovy is not the type of company which holds domains for hostage, we're happy to put that in writing.  Realistically you'd win in a lawsuit, because you remain the registered owner.  If you ever need to transfer it away, then you can.  
+
+</section>
+
+If you want a redirect domain, you will need to make Zoovy the registrar.
+
+</article>

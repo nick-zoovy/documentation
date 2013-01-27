@@ -1,0 +1,138 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/paymentstatus">
+<h1>Understanding Payment / Review / Order Workflow Status</h1>
+
+
+
+
+
+
+<article>
+<h2>Overview</h2>
+Zoovy provides three different types of workflows for an order they are:
+Payment, Review, and Workflow.  
+
+<br>
+<section>
+<h3>Payment Status</h3>
+Payment status is a three digit code used to track the disposition of funds received. The most significant digit of payment status determines it's overall status - the codes basically mean: paid (0xx), authorized (1xx), declined (2xx), refunded (3xx), paid w/caveats (4xx), processing (5xx), void (6xx), and error (9xx).  A table of all payment codes with explanations is below. 
+</section>
+
+<section>
+<h3>Review / Fraud Status</h3>
+Review Status is independent of payment status and denotes the risk level of the order. Many systems may contribute to the overall score such as Payment AVS or CVV validation, Paypal or Google checkout score, and also contributions from third party fraud scoring systems such as Kount.  Review status is a three digit alpha numeric code where the most significant letter means the overall status: Approved (Axx), Declined (Dxx), Review (Rxx), and Escalated (Exx).  Declined on review status means that one or more of the fraud system(s) involved in the order returned a "did not match", review means "not available", and escalated is specifically for services like Kount which offer the ability to "escalate" high value, or very suspect transactions to managers.  Zoovy will be adding functionality to the review system in the coming months based on user feedback. A table of all review codes with explanations is below. 
+
+<aside class="hint">
+<h6></h6>
+<div>
+Zoovy released "Fraud status" with the anticipation of a subsequent announcement of "Kount" integration.  There have been some issues bringing Kount online, and for this reason we consider the Review Status not fully implemented.  We hope to make an announcement of additional tools to work with review status in the near future.
+
+</div>
+</aside>
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+Review status (also known as "fraud status") is displayed to customers when they login to view their order in the customer area of your website. 
+
+</div>
+</aside>
+
+
+More information: <a class="linkdoc" href="#?doc=51617">Doc 51617</a>
+
+</section>
+
+<section>
+<h3>Order Workflow Status</h3>
+Order Workflow Status is independent of payment and review status, it is the general disposition of the order examples include: Incomplete, Recent, Pending, Approved, Processing, Completed, BackOrder, PreOrder.   Incomplete is reserved exclusively for non-paid ebay or overstock auction items, all other status can be used by you for any purpose.  Emails can be triggered as orders move between workflow statuses.
+</section>
+
+<aside class="hint">
+<h6></h6>
+<div>
+Custom filters can be quickly created in Zoovy Integrated Desktop Client to take full advantage of all these statuses.  For example a filter which says: "Put all single item orders, with expedited shipping, and a payment status of paid, and a fraud/review status of approved directly into processing" - would let those orders quickly and efficiently be identified for batch processing by warehouse staff early in the morning!
+
+</div>
+</aside>
+
+
+</article>
+
+
+<article>
+<h2>Understanding Payments</h2>
+
+Zoovy provies a generic payment processing interface which allows Internet Merchants to quickly and easily add or remove payment types from their website with little or no changes. Having the ability to change out payment types gives the merchant independence from policy changes, outages, poor support or a host of other issues which may have a direct impact on their business.
+
+<aside class="hint">
+<h6></h6>
+<div>
+If you need specific information on credit cards then please read:
+<a class="linkdoc" href="#?doc=50304">Doc 50304</a>
+
+</div>
+</aside>
+
+
+</article>
+
+<article>
+<h2>Payment Codes</h2>
+In the Zoovy payment processing system, each order is mapped to one distinct payment code (see table below), as the order moves through the system the Merchant, or other external systems may update that payment status as the funds are received or settled.
+</article>
+
+<article>
+<h2>Chained Payments</h2>
+An order may have one or more payments applied to it.  Some payments are related for example a Credit Card Authorization (199) can be captured and will become Paid (002). If at a later time a refund (301) is issued against that capture then.  If the gateway cannot be contacted and the refund fails then the result code might be a refund denied (257) or similar 2xx series payment status.  Each of those transactions which are applied to a parent transaction are referred to as a "chained transaction". <br>
+<aside class="hint">
+<h6></h6>
+<div>
+Not all marketplaces support an API call for Refunds / Voids.  For these marketplaces, a refund or void must be processed from the marketplace interface, and then the Zoovy order must be updated to reflect the change.  This is accomplished from the Orders >> Payment Status interface, using the Existing Payments / Action / Marketplace Refund option. <br>
+The following marketplaces do not support an API call for Refunds / Voids.<br>
+<li>Amazon
+<li>Checkout by Amazon
+<li>Buy.com
+<li>Home Shopping Network
+<li>Sears
+<li>Ebay
+
+</div>
+</aside>
+
+</article>
+
+<article>
+<h2>Mixed Payments</h2>
+If an order contains two or more payment types on the order then the payment type for the order becomes "mixed". 
+</article>
+
+<article>
+<h2>Flagging orders as paid</h2>
+Orders must have sufficient captured payments (0xx) applied to meet or exceed the balance_due on the order in order to be considered paid. 
+</article>
+
+
+<article>
+<h2>Payment Code Detail</h2>
+Below is a complete list of all payment codes, with detailed explanations and in some circumstances explanations of what to do next.<br>
+</article>
+
+<article>
+<h2>Payment Codes</h2>
+<MODULE></MODULE>
+</article>
+
+<article>
+<h2>Review/Risk Status Codes</h2>
+Review Status
+
+<MODULE></MODULE>
+</article>
+
+
+
+
+
+

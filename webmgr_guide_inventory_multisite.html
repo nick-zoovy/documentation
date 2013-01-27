@@ -1,0 +1,84 @@
+<meta type="filename" id="webmgr/guide/inventory-multisite">
+<h1>HOWTO: Share Inventory across Multiple Zoovy Stores</h1>
+<article>
+<h2>Goal</h2>
+
+This document is written for people who have control over two or more Zoovy sites 
+which share product id's. 
+
+It is possible to designate inventory in one site as the "Master" and the remaining 
+sites as the subordinate. 
+Inventory will only be updated on the master site. Purchases made on the subordinate sites can optionally be copied to the master site via order dispatch. <br>
+<br>
+
+Throughout this document the term "Master Site" will be used to reference the site that contains the inventory records. 
+The term "Subordinate" refers to any site that queries inventory from a master site. 
+<br>
+
+</article>
+<article>
+<h2>Requirements</h2>
+
+A site can only be a master or a subordinate; 
+it is not possible to configure a site as both. 
+Both master and subordinate sites must have the SITE INTEGRATOR feature enabled.
+Using the instructions included a subordinate site can only subordinate to a single master site. 
+(Having multiple master sites is possible, but requires custom programming and is beyond the scope of this document)
+
+</article>
+<article>
+<h2>Master Site Configuration</h2>
+
+Before proceeding you will need to decide if the site will allow public queries.
+If you do not allow public queries, you will need to supply your Zoovy password to the subordinate sites. 
+Zoovy recommends you use a public site, because it will result in faster inventory queries.
+
+To configure the master site to allow public queries you must select the option "Disclose Inventory Quantity to Customers".
+Configure the Developer Settings to Use Local Inventory Only. 
+To configure the master site to require a password, select any inventory mode other than disclose quantity.
+
+</article>
+<article>
+<h2>Subordinate Site Configuration</h2>
+
+
+Go to Setup / Inventory.
+Under "Developer Settings" configure the site to "Use Remote API Only".
+Put in a the URL of the remote site in the following format:
+<aside class="html">
+<h6></h6>
+<code>
+
+http://webapi.zoovy.com/webapi/merchant/inventoryapi.cgi/USER=MASTERUSER
+
+</code>
+</aside>
+
+
+Where MASTERUSER is the username of the master site.
+If the Master site is not public then you must also specify the site password 
+<aside class="html">
+<h6></h6>
+<code>
+
+http://webapi.zoovy.com/webapi/merchant/inventoryapi.cgi/USER=MASTERUSER/PASS=MASTERPASS
+
+</code>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Warning: Using Local + Remote Inventory</h2>
+
+Please note: the "Use Local Store Inventory + Remote API" may produce undesired results when communicating between two Zoovy sites. 
+This mode will use local product settings, then query the local store inventory, and then if no local inventory record is 
+found (but inventory is enabled) the system will then query the remote site. 
+This setting is primary intended for developers of supply chain 
+management applications who are managing inventory directly from the webapi.
+We expect to deprecate this approach in the near future, in favor of virtual products.
+</article>
+
+
+ 

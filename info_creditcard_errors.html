@@ -1,0 +1,41 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/creditcard_errors">
+<h1>Credit Transaction Messages</h1>
+
+<article>
+<h2>Concept Overview</h2>
+When Zoovy processes a credit transaction, we receive a message from the gateway provider that will have various transaction codes and messages attached.  Based on these messages, zoovy will then set the order to a certain status code (internal to zoovy), displaying a status message that coorespondes to this code.  These can often be somewhat difficult to decipher.  This document will try and address some of the more common codes.
+</article>
+
+
+
+
+<article>
+<h2>Gateway Messages and Codes</h2>
+Every gateway has it's own set of messages and codes.  As such, we'll place some of the more common ones here, separated by gateway type.  This will be a "living list" and will be updated when possible.<br>
+
+<section>
+<h3>Authorize.net</h3>
+<li><b>CODE: - Reason 123 - Response 3</b><br>
+<i>Sample Display Message:<br>
+[Sat 9-Dec-2006 16:28 PST] CREDIT Charge: [trans:0] [auth:] Unrecognized reason code This account has not been given the permission(s) required for this request. (Authorizenet Return Codes - Reason 123 - Response 3) [257]</i> <br>
+
+CAUSE: this message is usually caused by incorrect or missing account username, password, or transaction key.  Correcting this information in Setup > Payment Methods > Credit Cards will usually resolve the issue.  One common mistake is to use your Authorize.net account username/password rather than the API username/password that they give you.<br>
+
+</section>
+</article>
+
+<article>
+<h2>Zoovy Status Messages and Codes</h2>
+<li><b>STATUS CODE: 257</b><br>
+<i>Sample Display Message:<br>
+[Sat 9-Dec-2006 16:28 PST] Payment status set to 257 by cc_charge : Unknown - The gateway returned results the zoovy system does not recognize.</i> <br>
+
+This code is used when the gateway returns an unknown response that the system doesn't know how to handle.  It puts the order into DENIED status.
+
+</section>
+
+</article>
+
+
+

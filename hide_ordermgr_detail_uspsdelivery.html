@@ -1,0 +1,49 @@
+<meta type="filename" id="hide/ordermgr/detail/uspsdelivery">
+<h1>USPS Delivery Confirmation</h1>
+<article>
+<h2>Free Delivery Confirmation</h2>
+
+Order Manager makes it easy to batch print USPS approved delivery confirmation labels for free (you still need postage, but no fee for delivery confirmation). 
+</article>
+<article>
+<h2>IMPORTANT NOTICE:</h2>
+
+It is very important you follow the instructions provided by the postal service, specifically please ensure that all labels are firmly attached to the box, and MUST not be bent, folded, as this will make them unscannable.
+In the event the US Postal Services notifies Zoovy that your labels are unscannable, or the data is improperly formatted you may have your access to this feature removed - the best way to ensure compliance is to verify your labels with your local post master.
+</article>
+<article>
+<h2>Data requirements:</h2>
+
+You must have a From Name, and a To Name configured or an error will be generated.
+In the to: state it must be a two letter state code.
+Absolutely NO HTML must appear in your company name.
+Company Name has a maximum of 32 characters.
+Company Address1 and Company Address2 also have a maximum of 32 characters.
+Company City has a 21 character maximum, Company ZIP can only be 5 characters.
+Recipient Company Name, Recipient Name, Recipient Address 1, Recipient Address 2 all have a maximum of 38 characters.
+Recipient City is 21 characters.
+Please note these are considerably shorter than the maximum allowed number of characters on Zoovy. For this reason, Order Manager will truncate addresses which are longer than the allowed.
+</article>
+<article>
+<h2>Instructions:</h2>
+
+<li>1. Printing USPS Shipping labels is amazingly similar to printing regular labels, simply select one or more orders which you wish to print.
+<li>2. Then either hit the print button, OR right click and select print USPS, or select PRINT from the File menu.
+<li>3. Order Manager will contact the US Postal service for each order you have selected one by one, and download the appropriate label, and send it directly to the selected printer.
+</article>
+<article>
+<h2>Troubleshooting:</h2>
+
+This requires live access to the Internet to be used, if you are not connected it will give a variety of errors depending on the type of Internet connection.
+If there are any errors in the label the text error to a file called dcerror.txt in the order manager directory.
+To find an already printed label, it will be saved into the dcimages under the order manager directory, the filename will represent the last number on the order (e.g. 2002-04-1234 would be saved in the file 1234.jpg).
+</article>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,114 @@
+<meta type="filename" id="ordermgr/guide/mdac">
+<h1>MDAC Troubleshooting Guide</h1>
+<article>
+<h2>Overview</h2>
+
+Microsoft Data Access Components (MDAC) 2.8 contains core Data Access components such as the
+Microsoft SQL Server OLE DB provider and ODBC driver. Zoovy Order Manager uses Microsoft Access Runtime Edition
+as it's core database in non-enterprise installations. Unfortunately because MDAC is also relied on by numerous
+other applications (including Microsofts own applications) Zoovy can provide only limited support.
+
+We have verified that MDAC 2.8 installs correctly on machines with operating systems 98,ME,XP, and 2000
+which are freshly installed.<br>
+<br>
+This document attempts to fix the commonly known MDAC 2.8 issues:<Br>
+
+<li> Order Manager runtime error 5000
+<li> cp internal 103003 runtime error (kernel32 general protection fault)
+<li> runtime error 6 - buffer overflow
+<br>
+Unfortunately once you begin receiving these errors - there is no "simple" fix.<br>
+<br>
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+Attention Windows 98/ME Users - we have reason to believe that MDAC 2.8 has
+substantial installation and compatibility issues on Windows 98/ME. We recommend you remain with
+Order Manager version 4.26 or lower. You may download Order Manager version 4.26
+from <a href="http://app1.zoovy.com/biz/downloads/zom_v426.exe">http://app1.zoovy.com/biz/downloads/zom_v426.exe</a>
+<b>However - once you have upgraded to 4.28, you will no longer be able to easily downgrade [thanks to Microsoft!]</b>.
+
+</div>
+</aside>
+
+
+
+Once you have upgraded your system to MDAC 2.8 (which is installed as part of Order Manager 4.28 and higher)
+you will not be able to downgrade back to MDAC 2.7sp1.<br>
+<br>
+You may download MDAC 2.8 directly from Microsoft:
+<a href="http://www.microsoft.com/downloads/details.aspx?familyid=6c050fe3-c795-4b7d-b037-185d0506396c&displaylang=en">
+http://www.microsoft.com/downloads/details.aspx?familyid=6c050fe3-c795-4b7d-b037-185d0506396c&displaylang=en
+</a>
+<br>
+<br>
+<aside class="hint">
+<h6></h6>
+<div>
+
+We recommend all users who are experiencing difficulty with MDAC download the mdac_typ.exe file to the desktop, then
+run the program, this will cause MDAC to install in non-quiet mode and may provide additional insight as to what the
+specific problem is. 99% of the customer issues can be fixed by removing any running applications from the startup (or
+simply rebooting into safe mode) and then rebooting, and finally running mdac_typ.exe to install (before loading any
+other applications) resolves the problem.
+
+</div>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Known Installation Issues Windows 95/98/ME</h2>
+
+The following document from Microsoft describes how to remove MDAC 2.8 from your system.
+<a href="http://support.microsoft.com/default.aspx?kbid=311720">
+http://support.microsoft.com/default.aspx?kbid=311720
+</a>.
+<br>
+<br>
+Refer to the Microsoft troubleshooting guide if you intend to use MDAC 2.8 installed on your system
+<a href="http://support.microsoft.com/default.aspx?scid=kb;EN-US;232060">
+http://support.microsoft.com/default.aspx?scid=kb;EN-US;232060
+</a>
+
+</article>
+<article>
+<h2>Known Installation Issues - XP/2000</h2>
+
+MDAC 2.8 may not install correctly if you have *ANY* Microsoft applications open.
+This includes any applications which you may not be aware of - to disable any microsoft applications we recommend you download
+the MDAC file and start your computer in safe mode, or at minimum disable any unnecessary applications  from startup. To do this
+go to start button, click on Run, and type "msconfig" into the dialog and press "OK". Go to the startup tab and disable any applications
+which are not critical to the operation of the machine. Specifically Microsoft Office Search (MOSearch) is a resource hog which will
+also cause MDAC 2.8 to fail on installation.<br>
+<br>
+Additional troubleshooting steps, and how to contact Microsoft technical support are provided below:<br>
+<a href="http://support.microsoft.com/default.aspx?scid=kb;EN-US;232060">
+http://support.microsoft.com/default.aspx?scid=kb;EN-US;232060
+</a>
+<br><br>
+  </article>
+<article>
+<h2>Removing MDAC 2.8</h2>
+
+  To remove MDAC components from your PC, go to start (on the bottom left)
+  then run and type command and hit okay: <br><br>
+<li>Type cd \ and hit the enter key
+<li>Type cd progra~1 and hit enter key
+<li>Type cd zoovy  and hit enter key
+<li>Type cd ordermgr and hit enter key
+<li>Type mdac_typ /t:c:\mdac /c and hit enter key
+<li>You should see the program copy files to the directory
+<li>Type cd \mdac and hit enter
+<li>Type dasetup /u and hit enter
+<li>Reboot the computer<br><br>
+Note: Removing MDAC 2.8 can help resolve an error 5000-error on processing report in Order Manager.<br><br>
+Note: If the steps above don't work, just run "dasetup.exe /u" by locating the file with a search on your hard drive. 
+This is usually located in "C:\Program Files\Common Files\Microsoft Shared\dasetup" <br>
+</article>
+
+
+

@@ -1,0 +1,259 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="NETWORK/installation">
+<h1>NETWORK Suite: NETWORK Order Manager Installation</h1>
+
+<article>
+<h2>Overview</h2>This webdoc will take you through the download and installation of the NETWORK Suite including: MySql Database, MySql GUI Administrative Tools, NETWORK Sync Manager, and NETWORK Order Manger Client.
+</article>
+
+
+
+
+
+
+
+<article>
+<h2>Installation</h2>
+
+<section>
+<h3>Prerequisites</h3>
+
+You should have a dedicated server with no other "non-server" applications installed.
+The server should have at least 1gb of free space, but more space is recommended. If you do plan to use this with "non-server" applications you will do the installation/setup for "non-server" instructions. 
+<br>
+
+You can find out more about hardware and system requirements by reading webdoc: <a class="linkdoc" href="#?doc=50650">Doc 50650</a>
+
+<aside class="hint">
+<h6></h6>
+<div>If you are upgrading Enterprise Order Manager rather than performing the initial installation, please read: <a class="linkdoc" href="#?doc=50885">Doc 50885</a> 
+
+</div>
+</aside>
+
+
+</section>
+
+<section>
+<h3>Downloads</h3>
+As a "pre-installation" step, there are several items you should download and save to your desktop or another area on your computer where you can retrieve them.
+
+<aside class="hint">
+<h6></h6>
+<div>
+You can get full instructions on downloading the "pre-installation" step in the prior to Your Upgrade web doc <a class="linkdoc" href="#?doc=51375">Doc 51375</a>.
+
+</div>
+</aside>
+
+
+<li> ---Microsoft .NET 3.5 Framework service pack 1: You will need Microsoft .NET 3.5 framework sp1 installed on both the server and any client machines. For more information on that and other download requirements please visit: <a href="http://www.zoovy.com/biz/downloads/">Zoovy Download Page</a>
+<br>
+
+<li> ---MySql Database : Go to:<br> 
+<a href="http://dev.mysql.com/downloads/mysql/5.1.html#win32">Download MySql Database</a>
+
+Scroll down the page (skip the registration) and choose a mirror that is close to you. Download the .zip file to your server machine and decompress using a program such as winzip.
+<br>
+
+<li> ---MySql GUI Administrative Tools : Go to:<br> 
+<a href="http://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-gui-tools-5.0-r12-win32.msi/from/pick#mirrors">Download MySql GUI Administrative Tools</a>
+
+Under the registration box, click on the link entitled "No thanks, just take me to the downloads!". Choose a mirror that is close to you and save file to your computer.
+<br>
+
+<li> ---NETWORK Sync Manager : Go to:<br>
+The downloads page in your Zoovy account and select Sync Manager or 
+<a href="http://www.zoovy.com/biz/downloads/">Download NETWORK Sync Manager</a>
+
+Select the latest version of the Zoovy Sync Manager
+<br>
+
+<li> NETWORK Order Manger Client : this will need to be saved onto the machines that will be used as clients rather than the server, one copy on each machine.  You can find the latest general availability release by going logging into your Zoovy Web Manager and clicking the "Downloads" link in the upper right of the screen.  We always recommend that you check with Zoovy Tech Support before downloading and installing to make sure which versions are the latest recommended.
+
+</section>
+
+
+<section>
+<h3>Step1: Install the MySQL Database</h3>
+Run the setup.exe from within the .zip file you downloaded and extracted above for MySql Database.
+<br>
+
+Select the "Complete" install and install to C:\program files\mysql\mysql server 5.1
+<br>
+
+If the "Sign up - Setup Wizard" screen comes up, select "Skip Sign-Up" - this is not necessary. On the "server 5.1 - Setup Wizard" screen leave the "Configure the MySQL Server Now" checkbox checked and click finish.<br>
+
+<section>
+<h3>Dedicate server not running "non-server" applications:</h3>
+
+The MySQL Server Instance Configuration Wizard 1.08 will start.
+<li>When prompted select the "Detailed Configuration" option - select the appropriate server type for your environment.
+
+<li>For the best performance we recommend "Dedicated MySQL Server Machine" - you should NOT choose "Developer Machine" or your performance will suffer. 
+
+<li>Next you will want to select "Multifunctional Database" option
+
+<li>During the next step you will want to select the "optimal" number of connections the database will support, for most installations the default "Decision Support (DSS)/OLAP" option will be fine.  If you plan to have more than 20 concurrent administrative users
+then please consult with Zoovy Support. 
+
+<li>Leave the Enable TCP/IP Networking option with port number 3306 enable, and also leave the Enable Strict mode option selected.
+
+<li>When asked to choose a character set, please select "Manual Selected Default Character Set / Collation" and choose "UTF8" 
+
+<li>Leave the "Install as Windows Service checked", along with the Launch the MySQL Server automatically option.
+Also check the Include Bin Directory in Windows PATH box and click the "Next >" option
+
+<li>Leave the Modify Security Settings box checked.
+Enter a root password, we recommend at least 8 digits using a combination of mixed case and both numbers and letters. 
+DO NOT check the enable root access from remote machines or create an anonymous account option as these will substantially lower the security of your configuration and are not necessary.  
+<br>
+
+<aside class="hint">
+<h6></h6>
+<div>
+Remember the password, you will need it in step 2.
+
+</div>
+</aside>
+ 
+
+When you have configured all the steps above correctly then click the "Execute" button.
+Once the configuration has been processed click the "Finish" button.
+
+</section>
+
+<section>
+<h3>Server running "non-server" applications (if you are using the machine as a work station, not just as a server):</h3>
+<li>When prompted select the "Detailed Configuration" option - select the appropriate server type for your environment.
+
+<li>For the best performance we recommend "Developer Machine" - This will allow help prevent database issues when running "non-server" applications
+
+<li>Next you will want to select "Non-transactional Database" option
+
+<li>During the next step you will want to select the "optimal" number of connections the database will support, for most installations the default "Decision Support (DSS)/OLAP" option will be fine.  If you plan to have more than 20 concurrent administrative users
+then please consult with Zoovy Support. 
+
+<li>Leave the Enable TCP/IP Networking option with port number 3306 enable, and also leave the Enable Strict mode option selected.
+
+<li>When asked to choose a character set, please select "Manual Selected Default Character Set / Collation" and choose "UTF8" 
+
+<li>Leave the "Install as Windows Service checked", along with the Launch the MySQL Server automatically option.
+Also check the Include Bin Directory in Windows PATH box and click the "Next >" option
+
+<li>Leave the Modify Security Settings box checked.
+Enter a root password, we recommend at least 8 digits using a combination of mixed case and both numbers and letters. 
+DO NOT check the enable root access from remote machines or create an anonymous account option as these will substantially lower the security of your configuration and are not necessary.
+
+<aside class="hint">
+<h6></h6>
+<div>
+If you are not sure about any of this you can have Zoovy support install this by scheduling a GEEK services appointment in the support area.
+
+</div>
+</aside>
+
+
+</section>
+</section>
+
+<section>
+<h3>Step2: Install the MySql GUI Administrative Tools</h3>
+
+The MySql GUI Administrative Tools are a user interface that allows the user to easily run queries against their database and export these results to a file.  This is an enormously useful tool in troubleshooting any issues you may have for Zoovy Tech Support.<br>
+
+Zoovy Tech Support will guide you through any actually use of these tools, but having them installed and ready will facilitate quicker resolution of any issues you may encounter.
+<br>
+
+To install, run the installer file that you downloaded above, using the default settings.
+
+</section>
+
+<section>
+<h3>Step3: Install the MySql .net/Connector 5.2.5</h3>
+
+See <a class="linkdoc" href="#?doc=50885">Doc 50885</a> for the link to download the connector. 
+
+<aside class="hint">
+<h6></h6>
+<div>
+ZID 8.x comes with the new MySQL .net/Connector in the download page under MySQL community server.
+
+</div>
+</aside>
+
+
+<br>
+Under the registration box, click on the link entitled "No thanks, just take me to the downloads!". Choose a mirror that is close to you and save file to your computer.
+
+</section>
+
+<section>
+<h3>Step4: Install the Zoovy Sync Manager</h3>
+
+Run the installation package for Sync Manager you downloaded above.  Install using the default settings.
+
+The first time Sync Manager runs, it will request the account name and database "root" password, this is the password you created in Step 1 above. The sync manager will then ask for your Zoovy username and Master Password for the account security so it can download all your users from zoovy.com. Each user will only be able to have one concurrent connection to the database. 
+<br>
+
+<aside class="caution">
+<h6></h6>
+<div>
+If this is your first MySQL database with Zoovy, depending on how big your database is, could take several hours.
+
+</div>
+</aside>
+
+<br>
+
+Once SyncMgr is running you should see a 60 minute timer counting down to the next scheduled sync time, and a button allowing you to manually start the sync immediately if desired. You can start your initial sync to load the new MySQL database with all your order information at this time. This may take a while depending on the amount of data that needs to me transferred. You will also notice an "Admin" menu at the top of the window.  Nearly all of Order Manager's configuration settings and preferences for Email, UPS, FedEx, Endicia and other settings have been moved centrally into the SyncMgr.  You can either set these up now or after you have completed Step 3 below.
+
+As a final step before moving on to installation of the Order Manager NETWORK Client, while you are still at the server machine, you will need to open a port through the Windows Firewall if you have it running to allow the client to access the Sync Mgr and MySql database we have just installed.  To do this, follow the steps below:<br>
+<li>Open Windows Control Panel (Start > Control Panel)
+<li>Open Windows Firewall
+<li>Click on the "Exceptions" tab and then click on the "Add Port" button
+<li.In the "Name" field enter "MySql"
+<li>In the "Port number" field enter "3306"
+<li>Make sure option "TCP" is selected, and click "Ok"
+
+</section>
+
+<section>
+<h3>Step5: Install the Zoovy Order Manager NETWORK Client</h3>
+
+<aside class="hint">
+<h6>Remote Clients</h6>
+<div>
+Our SysOp team is able to configure remote clients via VPN (Virtual Private Network) if you have processing being done from separate networks and/or locations.  This service comes at no added cost, though configuration by a SysOp is billable.  Please refer to the <a href="http://www.zoovy.com/webdoc/index.cgi?VERB=DOC&DOCID=51510">Hamachi Webdoc</a> for further information:
+
+</div>
+</aside>
+
+
+
+Go to <a href="http://www.zoovy.com/biz/downloads/">Zoovy Download Page</a>
+and download and install the latest version of the Order Manager.<br>
+
+After installation, start the client. At the login screen go to Admin > Database Config and choose the "NETWORK" tab. You will see three fields on this screen.  The first is your Zoovy account name, the second is the IP Address for the server machine and the third is the database type with two radio buttons to choose from. One radio button will be for MySQL community Server (recommended) and the other will be Microsoft Server 2008. Click the radio button next to the database your using. 
+
+<aside class="hint">
+<h6></h6>
+<div>
+You can obtain the server's IP Address if you don't know it by opening a command line window on the server and typing "ipconfig" (Start > Run > Type "cmd" [Enter] > Type "ipconfig" [Enter]).
+
+</div>
+</aside>
+
+
+Once you have entered these items you can hit "Save" to bring you back to the login screen.
+<br>
+
+At the login screen you will then enter your account name, user name, and user password to login and open the client. For more information and details on this process or how to setup a user, visit: <a class="linkdoc" href="#?doc=50713">Doc 50713</a>.
+
+</section>
+
+
+</article>
+
+
+

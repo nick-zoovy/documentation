@@ -1,0 +1,116 @@
+<meta type="filename" id="ordermgr/detail/reports-filters">
+<h1>Reports - Filters</h1>
+<article>
+<h2>Overview</h2>
+
+Filters allow you to control which data appears on a report. Using a combination of filters in a specific order you 
+can craft a dashboard that displays virtually any metric you'd like about your business.
+Filters can be saved.
+
+</article>
+<article>
+<h2>How Filters Work</h2>
+
+To create a filter you simply select one or more filters from the list of Available Filters (each filter is described in
+detail below), in order for a particular order to be included on the report it must match every filter added.
+</article>
+<article>
+<h2>Adding Filters</h2>
+
+Simply select a filter from the list of Available Filters, provide the necessary addition criteria (e.g. if you select
+order total you will need to enter it if you want order totals greater than, or less than a certain amount). 
+Once you have added a filter you can remove it from the list of filters by selecting it in the list of Current Filters 
+and clicking the "Remove" button.
+
+</article>
+<article>
+<h2>Available Filters</h2>
+
+<li> Order Total - the order total reflects the grand total of the order, including all items plus tax, shipping, handling,
+and any speciality payment fees. When selecting this filter you will be required to specify if you want to include orders
+over a specific dollar amount, or under a specific dollar amount.
+<li> Payment Method - the payment method filter allows you to include only orders paid using a certain method, such as 
+paypal or credit card.
+<li> Created Date - the created date of the order is when the order was placed on the website.
+
+<li> Paid Date - the paid date of the order is when the order was originally marked as paid (even if the payment
+was later refunded, the original payment date will still be retained and the order will appear) -- 
+however orders must be marked as paid to be included.
+Orders that are not marked as paid will not be included - unless the date field is left blank. 
+If the date field is left blank then only UNPAID orders will appear in the report.
+
+
+<li> Ship Date - the ship date of the order is set to the date the first package was shipped in the order. 
+For this reason if your reports rely heavily on multi-date shipments (packages shipped across many days) we recommend
+you split orders so that each order's ship date can be tracked independently to ensure accurate reporting. 
+Orders that have not been shipped (or where shipping #'s were not provided will not be included - unless the date field is left blank. 
+If the date field is left blank then only UN-SHIPPED orders will appear in the report.
+As long as you utilize either the built-in UPS, FedEx or DaZzle integration the shipped date will always be set correct.y
+
+<li> Marketplace - this value allows you to specify one or more marketplaces which can be included. 
+0 - storefront sales only, 1 - ebay, 2 - ebay store, 4 - ebay motors, 8 - aol, 32 - amazon
+64 - froogle, 128 - pricegrabber, 256 - bizrate, 512 - shopping deal, 1024 - overstock.com<br>
+<br>
+If you want to have multiple marketplaces included, simply add the values together. E.g. if you wanted both ebay
+and ebay stores you would add 1+2 and use a value of "3" -- several of the marketplace numbers do not track yet, this is
+something we are still working on implementing (ebay and aol do - the others will be arriving shortly)<br>
+<br>
+
+<li> Shipping Method - this field allows you to sort by type of shipping that the customer selected. This should be the 
+exact shipping description that appears in the order. You may specify multiple shipping values by simply separating them
+by commas. 
+
+<li> Order Status - this allows you to enter one or more order statuses that should be included. You may enter any 
+of the following values: RECENT, PENDING, APPROVED, COMPLETED, CANCELLED, BACKORDER, ARCHIVE
+
+<li> New Customers - this field tracks customers where this is the first time purchasing from your store.
+The customers are grouped by email address, so if a customer changes their email address then they will be recorded as
+a new customer.
+
+<li> Repeat Customers - this field tracks customers which have purchased from you before.
+
+<li> Product Price - in this field you will be able to enter an amount, and also specify if orders greater than or less
+than the amount should be included. Only one product in the order needs to match the filter criteria for the entire 
+order to be included.
+
+<li> Destination State - In this you may specify one or more two letter state codes. To specify multiple states simply
+separate them by commas.
+
+<li> Supplier - this field you will enter the product supplier. This field is stored in the product field zoovy:prod_supplier.
+To be includdd in the report an order must have one or more items from the selected manufacturer(s). To specify multiple 
+suppliers simply use commas (note: supplier names must NOT contain commas, if they do, then it won't work)
+<li> Manufacturer - in this field you will enter the product manufacturer name. This field is stored in 
+zoovy:prod_mfg in the products. To be included in the report an order must have one or more items from the
+selected manufacturer(s). To specify multiple manufacturers simply use commas (note: manufacturer names should NOT 
+contain commas, if they do, then it won't work)
+
+<li> DEBUG - the problem with a dashboard report is you can't see exactly which data is included on the report.
+If you believe a particular report is questionable you can add the DEBUG filter. The debug filter does not actually
+cause orders to be included or not included, but it does the application to write out a debug file named 
+"debug.txt" -- you may look in this file to see why/how specific orders were included or excluded.
+
+</article>
+<article>
+<h2>Saving</h2>
+
+You may save filters for each recall in the future, that way you can use the same reports over and over again. If you use
+dates they will also be saved in the filter, so you will need to edit the filter before running it.
+
+</article>
+<article>
+<h2>Future Development</h2>
+
+The ability to filter is still a relatively new feature for us. 
+We have plans to add even more fields and capabilities to this, this is merely a first release to see if the functionality
+is useful and to gauge customer demand.
+We encourage you to provide feedback and to ask questions.
+
+
+</article>
+
+
+
+
+
+
+

@@ -1,0 +1,169 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/systemarchitecture">
+<h1>Zoovy System Architecture, Disaster Recovery and Business Continuity Plan</h1>
+
+
+
+
+<article>
+<h2>Disclosure Statement</h2>
+This secure information policy was prepared by the Zoovy systems engineering staff and is 
+intended to provide adequate disclosure to facilitate an evaluation of Zoovy infrastructure.  
+Because this is a publicly disclosed document dealing with security policies it is intentionally vague. 
+
+</article>
+
+
+<article>
+<h2>Network Connectivity</h2>
+Our equipment is located at the American Internet Services Data Center in San Diego (http://www.complexdrive.com)
+Zoovy utilizes two Cisco VXR7200 series switches to handle inbound traffic in an HSRP fault tolerant configuration. We operate BGP - our AS number is 33532, we also have our own /22 delegation of IP addresses from ARIN.  
+We currently have two HSRP connections to the AIS network. (The AIS upstream connects to multiple peers and has multiple networks, a fully redundant core, and no single point of failure).
+
+</article>
+<article>
+<h2>Runtime Environment</h2>
+
+The Zoovy system is designed on a Solaris backend with a SCSI-320 SAN storage array using RAID 56 mirrored disks. 
+For the front end for web servers we use a customized and hardened version of Linux, 
+which is based on the Redhat distribution. 
+We have limited vendors of core equipment: 
+Cisco, Sun, Dell, and HP - the performance characteristics of this equipment is well known, and the parts are full serviceable - we not use other non-branded equipment.  We use limited model numbers and stock our own spare equipment on site. 
+
+<br>
+
+We have multiple levels of fault tolerance in our network architecture. 
+The application architecture is written primarily Perl, and has been designed from the ground up. 
+
+</article>
+<article>
+<h2>Fault Tolerance</h2>
+
+Network load balancing is handled by a pair of Cisco CSS11150 series content switches.  
+We use an adaptive algorithm to send traffic to the "least busy" server - which is determined by the content switches based on the number of sessions and the average latency of those sessions.
+The Cisco routers, and subsequent content switches also do the first line of packet filtering.<br>
+<br>
+Due to issues with the Sun Clustering solution this is currently a manual cut over, but standby servers are ready to go and the procedures for doing such a cut over are well documented.
+
+<br>
+
+All systems (including webservers) have at least 0+1 mirrored disks, and redundant power supplies, ECC memory, and environmental monitoring (temperature, fan speed, bus errors).
+
+In addition each front-end webserver is capable of serving any page, although our software is divided into 7 core services (so each cluster can be independently tuned and scaled as needed based on the requirements). 
+
+We maintain limited support contracts with each vendor, and instead choose to be self sufficient by stocking all spare parts for our entire infrastructure. Based on past experience we have found that this enables us to respond quicker to any type of service disruption and can also be useful in setting up labs to test upcoming system architecture changes. 
+
+All spare equipment, and small parts such as fiber optic cables, disks, power supplies, are kept in spare cabinets at the facility. 
+
+Standby spare servers are typically either mounted in the rack, and additional spare parts are also kept at the Zoovy office. 
+
+</article>
+
+<article>
+<h2>System Monitoring</h2>
+
+An active polling system monitors the health of every server, and also specific services,   fan speeds, hard disks faults, ecc memory errors, disk space, database queries, and a handful of other metrics every 10 minutes and report back to a central monitoring system. The monitoring system classifies events by severity and pages the appropriate person(s). Based on the duration additional people are paged, including members of the management team at Zoovy. The pages continue until the problem is resolved, or acknowledged by our staff.
+
+In addition each webserver also checks it's own health every 2 minutes through an in-house application called "kevorkian". When a webserver can self-detect a correctable fault (non-hardware related) it will notify the load balancer to stop sending additional traffic to the server. This is useful in cases where a server is experiencing high load, or any number of "correctable" issues. The server remains out until the system's health is re-established then the server is either brought back in. 
+
+It is also important to acknowledge that the load balancer also actively polls each servers via an ICMP ping every 3 seconds. If a server fails (typically for hardware reasons) the server is removed from the rotation and all sessions (e.g. shopping carts) are seamlessly moved to another server. 
+
+Our ISP also monitors our interfaces to ensure we are up.
+All members of the engineering team, and management team have pagers.
+Outside the company some "key" customers have emergency escalation lists that include cell phone numbers, and home numbers in the event of an application error where support cannot be reached. 
+
+Finally we also use a variety of outside systems in various data centers around the country to monitor the availability of our system and verify that we are in fact serving "well known" pages and images.  (We do this by keeping an MD5 signature of the data). Any change in the output response of a key image or webpage also generates a notification (as does a lack of response)
+
+</article>
+
+<article>
+<h2>System Backups</h2>
+
+Incremental "snapshot" backups are made at least every 10 hours.
+
+Some data (specifically traffic statistics) are backed up less frequently due to the size of the data. 
+
+</article>
+
+<article>
+<h2>Business Continuance / Disaster Recovery</h2>
+The first line of defense is that a local copy of all data is provided to the client at their facility via the Zoovy Integrated Desktop application in either an access, mysql, or microsoft sql server database.  This puts more paranoid clients strongly in control of their own fate by providing a copy of data that can be configured to be no more than 5 minutes out of sync.
+
+<br>
+
+Zoovy operations automatically sends copies of our snapshots to the Amazon elastic compute cloud, as well as a copy of the current configuration files.  These copies are no more than 14 hours of sync with the master. In the event of a critical failure such as fire, earthquake, or meteor strike.  In the event of circumstance which renders our earthquake reinforced, vesda monitored, halon gas suppression firesystem data center from being usable - then dns and other services would be brought up in the EC cloud. These are kept on an encrypted disk, and are considered a "cold" backup, our staff routinely runs data integrity tests by performing periodic data recoveries several times a week.  We do not however actively test the cut-over scenarios because these would cause unnecessary business disruption for problems which we simply feel are less likely to happen.  We do anticipate 24-48 hours before service would be fully restored following such a devastating event.  
+
+<br>
+Our coporate offices are located approximately 35 miles from the data center. 
+
+<section>
+<h3>Is Zoovy's Data Center SAS70 Compliant</h3>
+Yes. <br>
+SAS 70 is a data center certification level.
+<br>
+The primary IDC we use in San Diego meets (and often exceeds) 
+all the criteria for obtaining SAS 70 certification in terms of redundancy, physical security, etc.
+<br>
+However SAS 70 certification is not required for Zoovy, so our agreement with the IDC does not require they maintain active SAS 70 certification (instead it stipulates that the IDC maintain more specific characteristics with regard to availability, physical security, fire supression, environment temperature, and staffing that comprise and surpass the SAS 70 certification requirements). 
+<br>
+
+The backup IDC we use is Amazons EC2 cloud which we have been told is SAS 70 compliant, but Amazon also does not publish it's SAS 70 certification for inspection. 
+<br>
+
+For larger clients who are concerned specifically about SAS 70 compliance we can arrange to have their staff, or designated auditors come to our San Diego IDC and conduct an on-site inspection.
+</section>
+</article>
+
+
+<article>
+<h2>Support Tracking</h2>
+
+Zoovy has both in-house support and an incident-tracking system that integrates with our platform,  which provides both tracking, logging it, also integrates heavily and provides heuristic mapping of problems. 
+
+It incorporates the best of breed features from a variety of programs such as Remedy and Tightlink.  We designed the system in-house because we wanted to be able to integrate customer history, configuration management, and of course the ability to heuristically view the customers profile. 
+
+This also gave us the requisite experience to be able to better understand our customers needs when it comes to handle their own customers online ticketing needs (for tasks such as RMA systems).
+
+</article>
+
+<article>
+<h2>Uptime</h2>
+
+At Zoovy, our target is 4 9's or 99.99% or roughly 4 minutes per month of non-scheduled maintanence outages.
+
+
+
+</article>
+
+<article>
+<h2>Team</h2>
+
+Zoovy has two system administrators, and three programmers, and two graphic artists/HTML designers. 
+
+While we are not a large company, we have a very experienced team who works very well together. 
+
+Knowing that 95% of all downtime is caused by human error, our position is that a smaller company staffed with highly qualified individuals is able to deliver a higher quality product. 
+
+We have no dependence on 3rd parties at this time, aside from support agreements for 
+things like hardware and operating system maintenance. 
+
+<br>
+</article>
+<article>
+<h2>Key Staff</h2>
+
+Brian Horakh is our Chief Technical Officer. 
+He has a background in designing highly available architectures and fault tolerant software. 
+He has certifications from Cisco, Novell, Microsoft, Sun, Linux, Compaq, and Oracle. 
+Besides being the first person to independently author 3rd party Cisco certification material, 
+and being one of the primary contributors for first version of the Linux certification exam 
+he has also been the primary technical editor and co-author on over 20 technical books from 
+companies such as Sybex, IDG, and Macmillian publishing. He has been working with Unix, 
+TCP/IP networking and related disciplines since 1996. <br>
+<br>
+
+
+</article>
+
+
+

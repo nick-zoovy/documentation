@@ -1,0 +1,145 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/detail/incomplete">
+<h1>Incomplete Items</h1>
+<article>
+<h2>Overview</h2>
+
+
+You do not have to manually email the customer after an auction closes.
+After any auction closes an external item is created and an email is sent to the winner.
+The external item is assigned a number and a link is sent to the customer in the email
+(ex. http://yourname.zoovy.com/claim/1234) allowing only the auction winner to purchase the item.
+They can then add the item to the cart just like any other item in your store.
+<br>
+You can see the external item under Order -> Incomplete in the web interface.
+On the right hand side you will see a status column which will tell you whether or
+not the customer has visited the website or not to make the purchase.
+<br>
+
+</article>
+<article>
+<h2>What are incomplete items?</h2>
+
+&nbsp;&nbsp;&nbsp; External Items are effectively "Incomplete Orders", they are a list of things
+you have agreed to sell to people, which was negotiated by a marketplace. For example
+External items are created automatically when Zoovy closes an auction.
+In addition you can manually create special external items as a handy way to give certain customers spiffs,
+or discounts on special products.<br>
+<br>
+</article>
+<article>
+<h2>How Incomplete Items Work</h2>
+
+
+When you create an external item you will be given a unique code which
+enables any person with that code to put the external item into their cart
+and perform a checkout ONE TIME. If you have 10 customers which need special
+discounts, you need to enter 10 external item.<br>
+<br>
+Each external item is assigned a unique number called it's Claim ID which then be purchased by going
+to the url http://yourname.zoovy.com/claim/#### - where #### is the system assigned claim number.
+<br>
+If you have a customer who does not want to go through checkout you can manually combine multiple
+external items using the create order feature of the web based order manager.<br>
+<Br>
+<Br>
+Because of their unique properties (for example different prices) Zoovy
+tracks them separately from your store products, and your orders. External items are really nothing
+more than a transitional state between a product/channel and an order.
+<br>
+</article>
+<article>
+<h2>Possible Status</h2>
+
+<li> [A] Active - nothing has happened to this External item.<br>
+<li> [V] Visited - user has accessed external item but did NOT proceed to checkout.<br>
+<li> [E] Error - something very bad happened. (Contact support)<br>
+<br>
+<li> [H] On Hold - waiting for you to acknowledge receipt of payment and then move to [P] Pending. Note: external items
+on hold will not expire for 1 year, many sellers use this status for non-paying bidders.<br>
+<br>
+<li> [P] Pending Processing - when an external item is flagged as paid it is then sent back to the marketplace so the marketplace
+can close the transaction on it's end and do any final things necessary such as leave feedback, or follow up with the customer
+on how the transaction went. You should consult the marketplace documentation to see how each particular marketplace uses
+this state. Once processed by the marketplace the external item will be moved to Completed so it can be removed by the
+system.
+<br>
+<li> [W] Waiting for Marketplace - this occurs when the order has been marked as "Paid", but feedback has not yet been left.  It is usually a short-term transitory status prior to the item being marked as "Completed".
+<br>
+<li> [C] Completed - this is the end of the external item life cycle, feedback (if any) has been processed. This is the
+ending state, when an item is flagged as completed then Zoovy will usually purge it within 24 hours, or during the
+next billing cycle (whichever is sooner).<br>
+<li> [G] Gift Certificate - reserved type, does not expired.
+<br>
+<i>No matter which state (except Hold) an external item is in, it will be removed from the system after 60 days of
+inactivity have passed.</i><br>
+</article>
+<article>
+<h2></h2>
+
+</article>
+<article>
+<h2>Whats the difference between created and modified</h2>
+
+Created is the date and time the external item was created, whereas Modified is the last time the external item had a
+property (such as state) updated. The expiration is based on the modified time stamp, rather than the created time stamp.<Br>
+</article>
+<article>
+<h2>Avoiding Expiration</h2>
+
+Every 60 days you should go in, flag all soon to expire orders as on hold and then either leave them on hold, or
+then move them back to pending, this will reset the modified time stamp and you'll have another 60 days. It's important
+to realize that most marketplaces will not refund any fees after 45 days, so you should normally try to finalize all
+transactions within 30 days just to be safe.
+</article>
+<article>
+<h2>How can I delete incomplete items?</h2>
+
+You can DELETE incomplete items by editing  the incomplete item and clicking
+the "remove" link. This will remove all traces of the incomplete item from the system.
+
+Instead of removing incomplete items from the system you should probably just
+flag them as paid and/or processed. You can either complete w/feedback or complete w/o feedback.
+This keeps a log of them in case you need them later for records or other information.
+
+</article>
+<article>
+<h2>How can I tell if an item is an incomplete item?</h2>
+
+Incomplete items will appear in orders as #####*SKU where ##### is the system assigned claim number.
+</article>
+<article>
+<h2>Incomplete Item Retention Schedule & eBay Disputes</h2>
+
+
+Keep in mind that incomplete items expire based on a counter that starts counting down from the
+last modified date, so each time the item is touched/updated/changes status the counter resets, all calculate in # of days.<br><br>
+
+They are:<br><br>
+
+  <ul><li>Waiting for purchase -> 45,
+  <li>Waiting for payment -> 45,
+  <li>Pending feedback   -> 10,<br><br>
+ NOTE: completed items should stick around for 15 days so customers can
+return to check order status.<br><br>
+  <li>Completed (Feedback Left) -> 15,
+  <li>Unpaid warned -> 15,
+  <li>Unpaid filed -> 15,
+<li>  Error -> 1</ul>
+
+
+Once we delete the data off the web it still stays in Order Manager indefinitely.
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+

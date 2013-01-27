@@ -1,0 +1,205 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="msol/csv">
+<h1>CSV Formatting for Microsoft Office Live Merchants (Optional)</h1>
+
+<article>
+<h2>Exporting your CSV file from Microsoft Office Live</h2>
+
+
+
+
+
+
+You will need to export a spreadsheet of products from your Office Live account, Zoovy allows uploading these products to your 
+
+account as a CSV import.
+
+<aside class="cbc">
+<h6>How to export your CSV</h6>
+<div>
+<li> 1. Log in to your Microsoft account.
+<li> 2. Go to 'More'
+<li> 3. Go to 'Sell Online'
+<li> 4. Go to 'Add Products & Images'
+<li> 5. Go to 'Edit Product Offline'
+<li> 6. Click 'Download Product List'
+<li> 7. Save the CSV file onto your desktop.
+
+</div>
+</aside>
+
+
+<aside class="caution">
+<h6></h6>
+<div>A CSV upload is one of the most technically challenging aspects of using Zoovy. We advise this only for experienced 
+
+computer users.
+</div>
+</aside>
+
+</article>
+
+
+
+<article>
+<h2>Important Notes about your CSV</h2>
+<aside class="caution">
+<h6></h6>
+<div>It is important that you make a backup copy of your original CSV to avoid permanently losing any important data.
+</div>
+</aside>
+
+Once you've exported your CSV from Microsoft you will have to open it in a spreadsheet program such as OpenOffice or Excel. 
+
+There you will need to edit your CSV to change the column headings used by Microsoft and replace them with the Zoovy 
+
+equivalents. Also, there will be columns that won't be necessary on the initial CSV upload and can be added at a later time. 
+
+For example, 'Category ID' and 'Category Path' should be saved for a separate "Category Import"
+<br>
+Please Note that toward the bottom of your exported CSV there will be a section beginning with:
+<li>"# Category Details (for reference only - to modify categories please use online tool.)"
+<br>
+This will need to be removed from your CSV since that information is not used in your Product Import.
+
+</article>
+
+
+<article>
+<h2>About Product Options</h2>
+Your products may have Options associated with them. These product options can be removed from the CSV that will be initially 
+
+imported into Zoovy in order to keep the initial import as simple as possible. You can easily differentiate which ones are 
+
+options by looking for their title in the 'Variation Title' column of your Microsoft CSV. Product options can be configured 
+
+later as Store Option Groups or Product Option Groups in the Zoovy product editor.
+<br>
+<a class="linkdoc" href="#?doc=50541">Doc 50541</a>
+
+</article>
+
+<article>
+<h2>About Product Images</h2>
+It is recommended that you use the Zoovy Media Library to upload your product images. Those images can then be associated with each product in this CSV. 
+<br>
+Example: Uploading an image called 'picture.jpg' would typically go in a folder titled 'P'. <br> The proper syntax in the CSV column for zoovy:prod_image1 would be: P/picture.jpg  <br>'P' is the folder name and 'picture.jpg' is the file name.
+<br>
+<a class="linkdoc" href="#?doc=50404">Doc 50404</a>
+<br>
+If you are a basic shop cart merchant just coming over from Microsoft then you may not have access to the Zoovy Media Library. If that is the case then you'll need to populate the 'zoovy:prod_image1' field with an image URL such as this:
+<br>
+http://www.yoururl.com/picture.jpg
+<br>
+OR
+<br>
+You'll need to add images to your products after the initial product import. You can just delete the zoovy:prod_image1 column for now.
+
+</article>
+
+
+<article>
+<h2>Microsoft Product Column Headings and their Zoovy equivalent</h2>
+
+<table>
+	<tr>
+		<th valign='top' nowrap bgcolor="CCCCCC">Microsoft Heading</th>
+		<th valign='top' nowrap bgcolor="CCCCCC">Zoovy Heading</th>
+		<th valign='top' nowrap bgcolor="CCCCCC">Description</th>
+	</tr>
+<tr>
+</tr>
+	<tr>
+		<td valign='top' nowrap bgcolor="EEEEEE">Product ID</td>
+		<td valign='top' nowrap bgcolor="DDDDDD">%SKU</td>
+		<td bgcolor="EEEEEE">This is the Product ID.</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap bgcolor="EEEEEE">Name</td>
+		<td valign='top' nowrap bgcolor="DDDDDD">zoovy:prod_name</td>
+		<td bgcolor="EEEEEE">The product's short name or title, should be less than 100 characters.</td>
+	<tr>
+		<td valign='top' nowrap bgcolor="EEEEEE">Variation Title</td>
+		<td valign='top' nowrap bgcolor="DDDDDD">-none-</td>
+		<td bgcolor="EEEEEE">Should not be used for now. Delete this column.</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap bgcolor="EEEEEE">Price</td>
+		<td valign='top' nowrap bgcolor="DDDDDD">zoovy:base_price</td>
+		<td bgcolor="EEEEEE">The price in US dollars without the dollar sign.</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap bgcolor="EEEEEE">Shipping</td>
+		<td valign='top' nowrap bgcolor="DDDDDD">zoovy:ship_cost1</td>
+		<td bgcolor="EEEEEE">The domestic fixed shipping price for quantity one of the item.</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap bgcolor="EEEEEE">Weight</td>
+		<td valign='top' nowrap bgcolor="DDDDDD">zoovy:base_weight</td>
+		<td bgcolor="EEEEEE">The weight in ounces.</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap bgcolor="EEEEEE">Shipping Surcharge</td>
+		<td valign='top' nowrap bgcolor="DDDDDD">-none-</td>
+		<td bgcolor="EEEEEE">Should not be used for now. Delete this column.</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap bgcolor="EEEEEE">Category ID</td>
+		<td valign='top' nowrap bgcolor="DDDDDD">-none-</td>
+		<td bgcolor="EEEEEE">Should not be used for now. Delete this column.</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap bgcolor="EEEEEE">Category Path</td>
+		<td valign='top' nowrap bgcolor="DDDDDD">-none-</td>
+		<td bgcolor="EEEEEE">Should not be used for now. Delete this column.</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap bgcolor="EEEEEE">Short Description</td>
+		<td valign='top' nowrap bgcolor="DDDDDD">zoovy:prod_desc</td>
+		<td bgcolor="EEEEEE">The product's description, should be less than 1024 characters.</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap bgcolor="EEEEEE">Description</td>
+		<td valign='top' nowrap bgcolor="DDDDDD">zoovy:prod_detail</td>
+		<td bgcolor="EEEEEE">The detailed description (used in specific page layouts).</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap bgcolor="EEEEEE">Keywords</td>
+		<td valign='top' nowrap bgcolor="DDDDDD">zoovy:keywords</td>
+		<td bgcolor="EEEEEE">The keywords published in the page's meta tags.</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap bgcolor="EEEEEE">Images</td>
+		<td valign='top' nowrap bgcolor="DDDDDD">zoovy:prod_image1</td>
+		<td bgcolor="EEEEEE">A URL or Image Library name which represents the primary image for the product, also use zoovy:prod_image2 
+
+.. etc. each in a new column. Reference folder name/file name. No need to use the delimiter (.jpg, .gif).</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap bgcolor="EEEEEE">Is Taxable</td>
+		<td valign='top' nowrap bgcolor="DDDDDD">zoovy:taxable</td>
+		<td bgcolor="EEEEEE">Either a (Y|N) or (1|0) to represent if an item is taxable.</td>
+	</tr>
+</table>
+
+</article>
+
+
+<article>
+<h2>Further Details</h2>
+<a class="linkdoc" href="#?doc=50285">Doc 50285</a>
+<br>
+<a href="http://support.zoovy.com/schedule/index.cgi?CLASS=IMP">Schedule Training Appointment</a>
+<br>
+<a class="linkdoc" href="#?doc=50551">Doc 50551</a>
+
+</article>
+
+
+
+
+
+
+
+
+

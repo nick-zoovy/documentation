@@ -1,0 +1,51 @@
+<meta type="filename" id="ticket/170843">
+
+<h1>Ebay displays old or wrong images</h1>
+
+<article>
+<h2>Issue</h2>
+
+Ebay is displaying the incorrect product image.  This is usually the result of cloning older products.
+
+<article>
+<h2>Resolution</h2>
+If you have ebay images being displayed incorrectly, there is a simple fix using the Product Power Tool.  
+<br>
+* In Zoovy, Open the Product Editor.  Scroll to the bottom and click on Debug
+     -in the debug list, you are going to note 2 different attributes:<br>
+      *ebay:prod_image1 (Image title A "Incorrect Image")<br>
+      *zoovy:prod_image1 (Image title B "Correct Image")
+<br>
+* In a separate window, open the Utilities section of Zoovy.  Click Product Power Tool
+<br>
+* Click "Select Product from list" and search the page for your product.  
+<aside class="hint">
+<h6></h6>
+<div>
+- It may be easiest to go back to the Debug Page and Copy (Ctrl + C) the product SKU and do a page search (Ctrl + F) for that exact SKU.  Check the corresponding box.                                                                                         
+Scroll to the bottom and Save.
+</div>
+</aside>
+
+<br>
+* Under Step 2: Select Attribute.  Choose "Custom Attribute" from bottom of list.  Place "ebay:prod_image1" in the custom attribute section.
+<br>
+* Under Step 3: Select Action, select "Set Value" and place the actual image (Image title B "Correct Image") exactly as displayed in the debug for zoovy:prod_image1
+<br>
+* Save.  Go back to the Product Editor, and Refresh the channel. 
+<br>
+
+<aside class="hint">
+<h6></h6>
+<div>
+This display issue usually occurs because the image configured for a SKU's ebay:prod_image1 attribute is different than the  image configured for the SKU's zoovy:prod_image1 attribute.
+<br>
+This usually happens when a product is cloned from an existing SKU.<br>  Merchants will change the zoovy:prod_image attribute because it is visible and can be changed using the product editor.<br>  
+The ebay:prod_image1 attribute is sometimes forgotten because it is not visible in the product editor interface and must be changed either via the Product Power Tool or a CSV import.
+<br>
+
+To prevent this kind of image bleeding between SKUs, it's recommended you clone products using a "blank template" SKU, where the desired attributes are configured, but not defined.  Use this "blank template" SKU to create the new products, and define the attributes once the new products are created.
+
+
+</article>
+

@@ -1,0 +1,36 @@
+<meta type="filename" id="ticket/166904">
+
+<h1>Issue #166904</h1>
+
+<article>
+<h2>Issue</h2>
+Issue: error loading gallery images on ebay listings - Ebay stock image placeholder shown instead of gallery image.
+</article>
+
+<article>
+<h2>Resolution</h2>
+
+Usually when you see the ebay stock image instead of your own image for the product in the gallery search result display, it's because there was some issue loading the correct image up to ebay, or ebay had a problem accessing that image location when polling the url.
+<br>
+To correct the gallery image issue, you should be able to use the following URL:
+<br>
+http://cgi5.ebay.com/ws1/eBayISAPI.dll?DisplayGalleryImagePageV3&Item=XXXX
+<br>
+Just replace the XXXX with the ebay item number for the problem listing.  That
+should allow you to re-poll the image. Here's a step by step if you need it:
+
+<li>1. Go to ebay.com>login>My EBay>All Selling (on the left had side)
+<li>2. Look at your active listings, and see if there are any listings that have a
+picture of what looks like looks like two blank Polaroids (ebay's stock
+placeholder if there is no image designated).
+<li>3. select the item number for a listing that has the image of two blank
+polaroids.
+<li>4. paste this link into your browser<br>
+http://cgi5.ebay.com/ws1/eBayISAPI.dll?DisplayGalleryImagePageV3&Item=XXXX<br>
+but replace the XXXX with the ebay item number from step 3.
+<br>
+This should refresh your listings and restore your gallery images. 
+
+
+</article>
+

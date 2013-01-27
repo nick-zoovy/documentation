@@ -1,0 +1,51 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/ebay_lot">
+<h1>EBay LotSize</h1>
+
+<article>
+<h2>LotSize on EBay</h2>
+
+
+
+
+
+
+There is a feature called "LotSize" which we don't currently support in 
+the interface -- because it's only relevant for "wholesale" categories.
+The field "ebay:lotsize" in the product controls this.<br>
+
+Item.*LotSize*         int 
+<http://developer.ebay.com/devzone/xml/docs/reference/ebay/types/simpleTypes.html#int> 
+        Optional         A lot is a set of two or more similar items that must be 
+purchased together in a single transaction. A listing can have multiple 
+lots (instead of multiple items). When LotSize is specified, the listing 
+price reflects the price of each lot (not each item within the lot). In 
+this case, Quantity indicates the number of lots being listed, and 
+LotSize indicates the number of items in each lot. (If a listing has no 
+lots, Quantity indicates the number of separate items being listed.) 
+Important: *Lot items can be listed only in lot-enabled categories.* 
+GetCategories returns LSD (lot size disabled) with a value of true for 
+categories that do not support lots. Not applicable to Half.com. This 
+field is ignored when Item.ListingType=Express.
+<br>
+
+There's probably 500+ of these little "category-isms" with various eBay 
+categories and it just doesn't make sense to build them all into the 
+interface -- I plan to address that in 2008 by letting people add custom 
+fields directly into the online product editor -- but if you are
+already using CSV .. then it's not really a big deal.<br>
+
+You can also add the custom fields into Warehouse Manager using a 
+"custom definition."<br>
+
+There *could* be issues when listing a product concurrently in 
+wholesale/non-wholesale categories - since our system isn't smart enough 
+to figure out when to send the field and when not to send the field (if 
+ebay:lotsize is set -- then the field is sent) .. however in 
+the past eBay would just ignore it for non-lot size enabled categories.
+
+</article>
+
+
+
+

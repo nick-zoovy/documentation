@@ -1,0 +1,154 @@
+<meta type="filename" id="GOOG/TrustedStores">
+<h1>Google Trusted Stores</h1>
+
+<article>
+<h2>What is Google Trusted Stores</h2>
+
+The Trusted Stores Program allows customers to view a seller performance report card and badge on the stores of participating merchants.  Merchants who maintain high shipment reliability and high customer customer service ratings will be allowed to display the Google Trusted Stores badge. The program is designed to ensure customers that they are doing business with a reputable and reliable merchant.
+
+Google will also act as a liaison between the merchant and customers. Customers can opt-in for up to $1000 in purchase protection. If there is an issue with an order, Google will "work with the merchant and customer to address (it)."
+<br><br>
+
+<aside class="cbc">
+<h6>Google Trusted Stores Implementation Guide</h6>
+<div>
+
+Google Trusted Stores set up has 4 steps to complete integration. To begin, login at http://www.google.com/trustedstores<br><br>
+
+<li>- Complete the required business information
+<li>- Digitally sign the program and shipping agreements
+<li>- Set up shipping and cancellation data feeds
+<li>- Grab the code and trusted stores number (upper right-hand corner) for implementation on Zoovy
+
+<aside class="hint">
+<h6></h6>
+<div> Link Trusted Stores to the Google Merchant Center account when completing the  shipping and cancellation data feed step.  Add required feed file names to data feeds tab. Cancellation filename will be orderstatus.txt and shipping filename is tracking.txt. Under data feeds, click on settings under the cancellation and shipping feed files and set Use Quoted Fields to YES.
+</div>
+</aside>
+
+<br><br>
+<b>Next, in Zoovy user interface</b>
+
+<aside class="hint">
+<h6></h6>
+<div>Log into Merchant Center and copy the account id # in the upper left hand corner. This is need for the UI 
+</div>
+</aside>
+
+
+<li>- Click on Setup
+<li>- Click on Analytics and Plugins
+<li>- Click on Google Trusted Stores
+<li>- Enter Product Search Account ID, aka Merchant Center ID
+<li>- Enter Badge Code (below)
+<li>- Replace variables in code with appropriate Zoovy macros
+<br><br>
+<aside class="html">
+<h6></h6>
+<code>
+<!-- BEGIN: Google Trusted Store -->
+<script type="text/javascript">
+ var gts = gts || [];
+
+ gts.push(["id", "xxxxx"]);
+ gts.push(["google_base_offer_id", "%PRODUCT%"]);
+ gts.push(["google_base_subaccount_id", "Merchant Center ID"]);
+ gts.push(["google_base_country", "TWO LETTER COUNTRY ABBREV."]);
+ gts.push(["google_base_language", "TWO LETTER COUNTRY LANGUAGE ABBREV."]);
+
+ (function() {
+    var scheme = (("https:" == document.location.protocol) ? "https://" : "http://");
+    var gts = document.createElement("script");
+    gts.type = "text/javascript";
+    gts.async = true;
+    gts.src = scheme + "www.googlecommerce.com/trustedstores/gtmp_compiled.js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(gts, s);
+ })();
+</script>
+<!-- END: Google Trusted Store -->
+
+</code>
+</aside>
+
+<br>
+<li> Example:
+<aside class="html">
+<h6></h6>
+<code>
+<!-- BEGIN: Google Trusted Store -->
+<script type="text/javascript">
+ var gts = gts || [];
+
+ gts.push(["id", "12345"]);
+ gts.push(["google_base_offer_id", "%PRODUCT%"]);
+ gts.push(["google_base_subaccount_id", "678910"]);
+ gts.push(["google_base_country", "US"]);
+ gts.push(["google_base_language", "EN"]);
+
+ (function() {
+    var scheme = (("https:" == document.location.protocol) ? "https://" : "http://");
+    var gts = document.createElement("script");
+    gts.type = "text/javascript";
+    gts.async = true;
+    gts.src = scheme + "www.googlecommerce.com/trustedstores/gtmp_compiled.js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(gts, s);
+ })();
+</script>
+<!-- END: Google Trusted Store -->
+
+</code>
+</aside>
+
+<br><br>
+<li>- Enter the below code into JavaScript Checkout Tracking Code section. The code is complete and does not require changes. 
+<br>
+<aside class="html">
+<h6></h6>
+<code>
+<!-- START Trusted Stores Order -->
+<div id="gts-order" style="display:none;">
+
+ <!-- start order and merchant information -->
+ <span id="gts-o-id">%ORDERID%</span>
+ <span id="gts-o-domain">%SDOMAIN%</span>
+ <span id="gts-o-email">%BILLEMAIL%</span>
+ <span id="gts-o-country">%BILLCOUNTRY%</span>
+ <span id="gts-o-currency">USD</span>
+ <span id="gts-o-total">%GRANDTOTAL%</span>
+ <span id="gts-o-discounts">%TOTAL_DISCOUNTS%</span>
+ <span id="gts-o-shipping-total">%SHIPPING%</span>
+ <span id="gts-o-tax-total">%TOTALTAX%</span>
+ <span id="gts-o-est-ship-date">%EST_SHIP_YYYY_MM_DD%</span>
+ <span id="gts-o-has-preorder">%HAS_PREBACKDELAY_YN%</span>
+ <span id="gts-o-has-digital">%HAS_DOWNLOAD_YN%</span>
+ <!-- end order and merchant information -->
+
+ <!-- start repeated item specific information -->
+%GOOGLE_TRUSTED_STORES_ITEM_SPANS%
+<!-- end repeated item specific information -->
+
+</div>
+<!-- END Trusted Stores -->
+
+</code>
+</aside>
+
+<br>
+
+<li>- Save the entries
+<li>- Click on customize site decals
+<li>- Choose an area of the website to display the decal. Select Google Trusted Stores in the drop down menu
+<li>- Click save
+<li>- Click in Syndication
+<li>- Click on Google Trusted Stores
+<li>- Select the profile and check the box to enable shipping and tax feeds.
+<li>- Click Save
+</section>
+
+</article>
+
+
+
+

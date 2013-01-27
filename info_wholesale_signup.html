@@ -1,0 +1,76 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/wholesale-signup">
+<h1>Wholesale Sign-up Form</h1>
+ 
+<article>
+<h2>Concept Overview</h2>
+
+The wholesale sign-up form allows customers interested in establishing a customer account with your store to send you a request with their relevant information. The form is customizable, so you can decide which information fields appear on the form and which information is required to complete it. <br>
+<br><b> Customizable information includes:</b>
+<br><li>Automatically lock the new customer account.
+<li>Setting information fields to require and ignore.
+<li>Initial wholesale schedule for new customers.
+<li>Email notification and To Do list reminders.
+<li>CRM ticket creation.
+
+<aside class="hint">
+<h6></h6>
+<div> Access the wholesale sign-up for at the Utilities Tab > 	
+Wholesale Pricing Schedules > then click the 'Sign-Up Form' sub-tab 
+</div>
+</aside>
+
+
+<section>
+<h3>Automatically locking the new customer account:</h3>
+<br>
+Once the customer completes sign-up, a customer account will be created for them. This account can be automatically locked until you review the account. This means that, although the account exists, the customer cannot use it yet. <br> You can unlock the account by de-selecting the 'Lock' check-box in the top section of the customer editor. To get to the customer editor, go to the Utilities Tab > Customer Manager > find your customer) 
+</section>
+
+<section>
+<h3>Setting information fields to Require and Ignore:</h3>
+The sign-up form has a box marked 'JSON Form Fields' that allows you to customize your Wholesale form. In this box, you can limit the fields that your customers are presented on the form using the Ignore function, or prevent a customer from submitting a form without completing a specific field using the Require function. <br>Note: you may wish to call customer support for help editing this code if you are not 100% certain that you understand the directions below.<br>
+<br>
+<b>Ignore:</b><br> Each line representing a field on the form begins with the code "ignore":1, or "ignore":0. If the code is "ignore":1, then the field that line represents will not be shown on the form. If the code is "ignore":0, then the field will be shown.<br> 
+<br>
+<b>Require:</b><br>After the Ignore code, the next code is the Require code. This code works the same way, so that "required":1 will force customers to complete the field and "required":0 will not. 
+Therefore, a line that begins:<br>"ignore":0,"required":1,"id":"resaleid"<br>Will make the Resale ID field appear as a required field.
+</section>
+<section>
+<h3>Initial wholesale schedule, email notification, and To Do list:</h3>
+<br>
+<b>Initial Wholesale Schedule:</b><br>
+The sign-up form allows you to set the initial wholesale schedule for new customers. <aside class="caution">
+<h6></h6>
+<div> Allowing people to sign up to a wholesale schedule without clicking the 'Lock' check-box will allow brand new visitors to your site to make wholesale purchases and view the wholesale prices for that initial schedule. 
+</div>
+</aside>
+
+<b>Email Notifications:</b><br>
+This check-box will send you a notification once a new visitor completes the sign-up form.<br>
+<br><b>To Do List:</b><br>
+This check-box will add an item to your to do list once a new visitor completes the form.
+</section>
+<section>
+<h3>Adding the form to your store:</h3><br>
+<br><b>The link to your Wholesale Sign-up Form</b>
+A link to your store's wholesale sign-up form will be shown on the form configuration page at the Utilities Tab > Wholesale Pricing Schedules > then click the 'Sign-Up Form' sub-tab.<br>
+<br><b>Where to paste the link</b><br>
+<li>Paste the link into your About Us page (in Wikitext format).<br>
+<li>Use a homepage banner linking to the form.<br>
+<li>Create your own Wholesale article page.  (Create article pages by adding a root level category in the Categories & Lists area and selecting the "Article Style" page layout (c-20090210)).<br>
+<li>Open a ticket with the Zoovy design team adding a wholesale link to your wrapper. 
+</section>
+</article>
+
+<aside class="html">
+<h6></h6>
+<code>
+
+</code>
+</aside>
+
+
+
+
+

@@ -1,0 +1,196 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/oddities">
+<h1>Odd Behaviors</h1>
+
+
+
+
+
+<article>
+<h2>Random Oddities</h2>
+Every platform has a few odd behaviors and questions, this is our list. 
+</article>
+
+
+<article>
+<h2>Products randomly don't add or remove from a category</h2>
+Here is what is most likely happening:
+The sorting of your category is take 5+ seconds to complete.
+When you add or remove a product the category sort is done then.
+The visual confirmation that a product was added/removed happens instantly (but the sort is still  happening on the backside)
+When you make the next change the first sort isn't done, and so when it finishes, it overwrites the subsequent changes you made .. in computer terms this is called a race condition.
+
+There are several things you can do to minimize/mitigate this issue:
+1. manually sort categories. 
+2. wait 5+ seconds between product adds (when working in the same category), especially on categories which contain A LOT of products. 
+3. possibly have smaller product records (the more fields are in a product the slower it will load)
+4. have more categories with less products in them. 
+
+Also you could use Warehouse Manager - which honestly is the best solution for this particular issue and is the reason I'm not going to classify this as something which requires an immediate fix.
+(Besides being considerably faster Warehouse manager just records the changes and then uploads all the changes to Zoovy so that even if you add 100+ products the category sort only happens once, instead of once per change)
+
+</section>
+
+
+<article>
+<h2>How can I delete all my products?</h2>
+
+Use Zoovy Warehouse Manager, or a CSV Import with the %DELETE parameter.
+<aside class="caution">
+<h6></h6>
+<div>
+By deleting your product does not mean that it will be automatically removed from channels, syndication, and or related items (i.e. cross selling lists). You must first remove the product from all of its verticals prior to deleting the product. Also remember if you check the box that says delete image this will delete the image, but if you have more than one product using that image your other live products will loose there image.
+
+</div>
+</aside>
+
+
+</article>
+
+
+<article>
+<h2>Why does a secure socket SSL error keeps popping up</h2>
+
+SSL errors are caused when a portion of a secure page (such as checkout) is non secure. <br>
+The most common causes are either:<br>
+<li> Links to non-secure graphics, such as banners, or other graphics which are embedded into the template. If you have built a custom template, this is most likely the cause of the problem - for information on how to avoid it you should review the documentation on creating a custom wrapper. If the page is secure, all graphics on the page must also be hosted and served securely.</li>
+
+<li>Some third party code that has been entered into the header (such as google analytics) is referencing a non-secure script.  Use a secure version.  If you don't have a secure version of the script (google does) then remove offending code.  SSL errors will negatively effect your sales.</li>
+
+<li> Another common cause is a tainted frameset. A tainted frameset is caused when frames are in use, and one or more frames is not secure - the most common reason for a tainted frameset is when a merchant uses domain redirection, and enables the feature which keeps the customers domain name at the top of the page throughout the site. The merchant must go into Zoovy Developer setup and enable the "Break out of Frames" option, in order to ensure that this error does not occur (this effectively sets a target="_top" on all links to secure urls).</li>
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+Some ways to find which image is the culprit:<br>
+1. Load the secure page and when the error pops up and prompts you 'do you want to load the nonsecure..' push the 'no' button.  Take a look at what images don't appear.  They are not referenced properly (most likely).<br>
+2. Follow step one above.  If you don't notice any images that aren't loading, it may be a script or css file.  Do a 'view source' and search for src='http:// and/or src="http://
+
+
+</div>
+</aside>
+
+
+</article>
+<article>
+<h2>Why does the screen just sits there BLANK?</h2>
+
+Blank screens usually indicate a broken table in conjunction with the Netscape browser, either that or an unfinished HTML comment. 
+
+
+
+
+</article>
+
+
+ 
+
+
+
+
+
+
+<article>
+<h2>Reports Not searchable</h2>
+
+Problem: unable to use the search function for site traffic report
+
+Steps to reproduce this issue:
+1. click on reports
+2. click on more reports for Website Statistics
+3. Monthly: Year to Date > Products Only > Proceed
+4. input in the search text box 2006-01 > go
+
+Without going into a lot of detail this is actually the correct behavior.
+The year month field is actually a 6 digit number - YYYYMM - so you need to search by that. E.g. 200601 instead of just 2006-01
+
+</article>
+
+
+<article>
+<h2>Reporting by Paid Date</h2>
+Although the paid date is in the Order Detail report, I can't search for all payments
+made in a particular month... the search feature will only look for the entire
+phrase in the field, such as Tue 1-Feb-2006, rather than all records with paid
+date in February. 
+
+<aside class="hint">
+<h6></h6>
+<div>
+I think a wild card search might do what you want ..
+something like *Feb-2006
+
+</div>
+</aside>
+
+
+The summary reports, as they are now set up, do exactly what we need, except
+that they are based on order date rather than paid date. Wouldn't it be a
+fairly simple matter to replicate the reports, substituting the "paid date" in
+the formulas where "order date" now exists? The new report could be added to
+the choices under Order Reporting:
+"Order Detail: Today | This Month | more"
+"Settlement Detail: Today | This Month | more"
+
+Perhaps I am missing something here (I am definitely not a database/spreadsheet
+person) but it seems like you could make a lot of people's lives so much easier
+for a fairly small effort on your part. :) Is this a lot more complicated than
+it looks? 
+
+<aside class="hint">
+<h6></h6>
+<div>
+Doing orders by paid date is misleading .. for a number of reasons.
+#1 - partial payments, where the paid date changes won't appear correctly. 
+#2 - we don't index by paid date (which means we have to search the entire order database) .. adding an index is nontrivial, but something we may do in the future.  Each index actually makes the system slower for every update and insert so it's always a trade off. 
+
+This request in particular is what we would call a "gateway" feature .. meaning that once it was added, it would enable people to operate their business differently. 
+This is not necessarily a GOOD thing -- the lack of a report by PAID date actually enforces best practice behaviors in companies, meaning that companies go through once a month and clean out all payments older than 30, 60 or 90 days (based on their business practices) to reduce the range of reports they need to run.
+Normally hope springs eternal and business owners will just leave unpaid orders cluttering up recent for years. (When it's really irrelevant since they can always un-cancel the order in the event a payment does arrive after the normal 10 days.)
+
+If we added a report by paid date then we'd have other people with invoices hanging out for years. Then the feature requests come in for things like not showing paid orders (when they shouldn't have been there in the first places), not reserving inventory on unpaid orders, etc .. and that leads to an entire beehive of seemingly innocuous and "easy" feature requests which when put together are actually really hard and time consuming. 
+
+To be totally honest at the end of the day, we don't really even want you using those online reports to compute sales. You should strongly consider getting a copy of Quickbooks, it already does *exactly* what you want - no excel wizardry necessary.  You'll find the more you deviate from the "recommended" path with our system the harder things get -- that is absolutely intentional. If things seem really difficult, sometimes it might be better to ask "is there an easier way to do this" .. it's a good practice in both Zoovy, and life in general. :-) 
+
+
+</div>
+</aside>
+
+
+</article>
+
+
+
+<article>
+<h2>Reporting on site traffic statistics</h2>
+If you run the report for the month it begins on Jul 30 and goes thru Aug 20.
+This brings up 2 specific questions 1) Why does it begin on Jul 30th, and 2)
+Why does it only go through Aug 20th?
+
+
+This is interesting... it's actually a bug between how Zoovy and the back end database summarize weeks.
+
+Keep in mind that the data is summarized by week, so the report isn't entirely accurate, it's converted back "out" to actual dates rather than saying the 35th week of the year which is less than helpful. Instead we give it a date e.g. Jul 30th is USUALLY the 34th week of the year. 
+
+Okay so basically the Zoovy system tracks weeks based on days of the year (this year started on a Wed) so there are no gaps, but the database tracks week of year from the first Sunday. Of course this leads to some fun an interesting problems since converting from Julian date (day of the year) to week, and then back to a day of the year is a little lossy if the two systems don't agree on how to track such data.
+
+At the time when the reports were made it was coincidence that the year started on a Sunday and the reports worked perfectly.  Of course they've been falling further and further out of sync .. Anyway the trend line is accurate, and changing the way Zoovy tracks the date would result in data corruption (since we'd have to add days to one week and steal them from another), and well changing the way the database stores date isn't an option .. so it's just a "live with it" sort of thing.
+
+</article>
+
+<article>
+<h2>Editing Orders with Options</h2>
+The online Web Manager interface for editing orders is not backward compatible with option.  Result of this is that if you edit an order with options online, the option selections for the product will get truncated and not display.  Work around for this issue is to only edit orders with options in the desktop client Order Manager.
+</article> 
+
+
+
+
+
+
+
+
+
+
+

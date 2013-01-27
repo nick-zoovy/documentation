@@ -1,0 +1,545 @@
+<meta type="filename" id="dev/detail/shipquote">
+<h1>Shipping Calculator - Developer Guide</h1>
+
+<article>
+<h2>Overview</h2>
+
+The Zoovy Shipping Calculator is a service available to accounts with the EBAY bundle and can be used in a variety of different ways. 
+The easiest is to simply embed the following HTML:<br>
+<br>
+<aside class="html">
+<h6></h6>
+<code>
+
+<form target="_blank" method="POST" action="http://%USERNAME%.zoovy.com/shipquote.cgis">
+<input type="hidden" name="product" value="0*%SKU%">
+Zip Code: <input type="textbox" name="ZIP" size="5">
+<input type="submit" value="Calculate Shipping">
+</form>
+
+</code>
+</aside>
+
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+You'll notice that we use "0*%SKU%" rather than "%SKU%".
+We do this to trick the shipping system into believing it is dealing with an incomplete item, rather than a normal product 
+so it will process any special rules which apply only to incomplete items.
+
+</div>
+</aside>
+
+
+
+</article>
+
+<article>
+<h2>Fixed Price Shipping</h2>
+
+
+If you use fixed price shipping, and do not require the customer enter a zip code, then you can remove the following line 
+from the example above:<br>
+<aside class="html">
+<h6></h6>
+<code>
+
+Zip Code: <input type="textbox" name="ZIP" size="5"> 
+
+</code>
+</aside>
+
+
+
+Or even better, you can just provide an HTML link (or button) which does the same thing such as:<br>
+<aside class="html">
+<h6></h6>
+<code>
+
+<a target="_blank" href="http://%USERNAME%.zoovy.com/shipquote.cgis?product=0%2A%SKU%">Get a Shipping Quote</a>
+
+</code>
+</aside>
+
+
+</article>
+<article>
+<h2>International Shipping</h2>
+
+If you support International shipping you can also add a country to the form above, here is an example
+which includes the complete list of countries, and is suitable for cutting and pasting into your html file:
+
+<aside class="html">
+<h6></h6>
+<code>
+
+<form target="_blank" method="POST" action="http://%USERNAME%.zoovy.com/shipquote.cgis">
+<input type="hidden" name="product" value="0*%SKU%">
+<input type="submit" value="Calculate Shipping">
+<select name="COUNTRY">
+<option>USA</option>
+<option>Albania</option>
+<option>Algeria</option>
+<option>American Samoa</option>
+<option>Andorra</option>
+<option>Angola</option>
+<option>Anguilla</option>
+<option>Antigua/Barbuda</option>
+<option>Argentina</option>
+<option>Armenia</option>
+<option>Aruba</option>
+<option>Ascension</option>
+<option>Australia</option>
+<option>Austria</option>
+<option>Azores</option>
+<option>Azerbaijan</option>
+<option>Bahamas</option>
+<option>Bahrain</option>
+<option>Bangladesh</option>
+<option>Barbados</option>
+<option>Belarus</option>
+<option>Belgium</option>
+<option>Belize</option>
+<option>Benin</option>
+<option>Bermuda</option>
+<option>Bhutan</option>
+<option>Bolivia</option>
+<option>Bosnia/Herzegowina</option>
+<option>Bonaire</option>
+<option>Botswana</option>
+<option>Brazil</option>
+<option>British Virgin. Isl.</option>
+<option>Brit. Indian Ocean</option>
+<option>Brunei Darussalam</option>
+<option>Bulgaria</option>
+<option>Burkina Faso</option>
+<option>Burma /Myanmar</option>
+<option>Burundi</option>
+<option>Cambodia</option>
+<option>Cameroon</option>
+<option>Canada</option>
+<option>Canary Islands</option>
+<option>Cape Verde</option>
+<option>Cayman Islands</option>
+<option>Central African Rep.</option>
+<option>Chad</option>
+<option>Channel Islands</option>
+<option>Chile</option>
+<option>China</option>
+<option>Christmas Island</option>
+<option>Cocos (Keeling) Isl.</option>
+<option>Columbia</option>
+<option>Comoros</option>
+<option>Congo</option>
+<option>Cook Islands</option>
+<option>Costa Rica</option>
+<option>Cote d'lvoire</option>
+<option>Croatia</option>
+<option>Cuba</option>
+<option>Curacao</option>
+<option>Cyprus</option>
+<option>Czech. Republic</option>
+<option>Denmark</option>
+<option>Djibouti</option>
+<option>Dominica</option>
+<option>Dominican Republic</option>
+<option>East Timor</option>
+<option>Ecuador</option>
+<option>Egypt</option>
+<option>El Salvador</option>
+<option>England</option>
+<option>Equatorial Guinea</option>
+<option>Eritrea</option>
+<option>Estonia</option>
+<option>Ethiopia</option>
+<option>Falkland Islands</option>
+<option>Faroe Islands</option>
+<option>Fiji</option>
+<option>Finland</option>
+<option>France</option>
+<option>French Guinea</option>
+<option>French Polynesia</option>
+<option>French South Ter. </option>
+<option>Gabon</option>
+<option>Gambia</option>
+<option>Georgia</option>
+<option>Germany</option>
+<option>Ghana</option>
+<option>Gibraltar</option>
+<option>Greece</option>
+<option>Greenland</option>
+<option>Grenada</option>
+<option>Guadeloupe</option>
+<option>Guam</option>
+<option>Guatemala</option>
+<option>Guinea</option>
+<option>Guinea-Bissau</option>
+<option>Guyana</option>
+<option>Haiti</option>
+<option>Heard and McDonald</option>
+<option>Holland</option>
+<option>Honduras</option>
+<option>Hong Kong</option>
+<option>Hungary</option>
+<option>Iceland</option>
+<option>India</option>
+<option>Indonesia</option>
+<option>Iran</option>
+<option>Iraq</option>
+<option>Ireland /Eire</option>
+<option>Israel</option>
+<option>Italy</option>
+<option>Ivory Coast</option>
+<option>Jamaica</option>
+<option>Japan</option>
+<option>Jordan</option>
+<option>Kazakhstan</option>
+<option>Kenya</option>
+<option>Kiribati</option>
+<option>Korea</option>
+<option>Korea</option>
+<option>Kosrae</option>
+<option>Kuwait</option>
+<option>Kyrgyzstan</option>
+<option>Lao People Republic</option>
+<option>Latvia</option>
+<option>Lebanon</option>
+<option>Lesotho</option>
+<option>Liberia</option>
+<option>Libyan Arab Jamahir.</option>
+<option>Liechtenstein</option>
+<option>Lithuania</option>
+<option>Luxembourg</option>
+<option>Macao</option>
+<option>Macedonia</option>
+<option>Madagascar</option>
+<option>Madeira</option>
+<option>Malawi</option>
+<option>Malaysia</option>
+<option>Maldives</option>
+<option>Mali</option>
+<option>Malta</option>
+<option>Marshall Islands</option>
+<option>Martinique</option>
+<option>Mauritania</option>
+<option>Mauritius</option>
+<option>Mayotte</option>
+<option>Mexico</option>
+<option>Micronesia</option>
+<option>Moldova</option>
+<option>Monaco</option>
+<option>Mongolia</option>
+<option>Montserrat</option>
+<option>Morocco</option>
+<option>Mozambique</option>
+<option>Namibia</option>
+<option>Nauru</option>
+<option>Nepal</option>
+<option>Netherlands</option>
+<option>Netherlands Antilles </option>
+<option>Nevis</option>
+<option>New Caledonia</option>
+<option>New Zealand</option>
+<option>Nicaragua</option>
+<option>Niger</option>
+<option>Nigeria</option>
+<option>Niue</option>
+<option>Norfolk Island</option>
+<option>Northern Ireland</option>
+<option>Northern Mariana Isl.</option>
+<option>Norway</option>
+<option>Oman</option>
+<option>Pakistan</option>
+<option>Palau</option>
+<option>Panama</option>
+<option>Papua New Guinea</option>
+<option>Paraguay</option>
+<option>Peru</option>
+<option>Philippines</option>
+<option>Pitcairn Island </option>
+<option>Poland</option>
+<option>Ponape</option>
+<option>Portugal</option>
+<option>Puerto Rico</option>
+<option>Qatar</option>
+<option>Reunion Islands</option>
+<option>Romania</option>
+<option>Rota</option>
+<option>Russia</option>
+<option>Rwanda</option>
+<option>Saba</option>
+<option>Saipan</option>
+<option>Samoa</option>
+<option>San Marino</option>
+<option>Sao Tome/Principe </option>
+<option>Saudia Arabia</option>
+<option>Scotland</option>
+<option>Senegal</option>
+<option>Seychelles</option>
+<option>Sierra Leone</option>
+<option>Singapore</option>
+<option>Slovakia</option>
+<option>Slovenia</option>
+<option>Solomon Islands</option>
+<option>Somalia</option>
+<option>South Africa</option>
+<option>Spain</option>
+<option>Sri Lanka</option>
+<option>St. Barthelemy</option>
+<option>St. Christopher</option>
+<option>St. Croix</option>
+<option>St. Eustatius</option>
+<option>St. John</option>
+<option>St. Helena</option>
+<option>St. Kitts / Nevis</option>
+<option>St. Lucia</option>
+<option>St. Maarten</option>
+<option>St. Martin</option>
+<option>St. Pierre /Miquelon</option>
+<option>St. Thomas</option>
+<option>St. Vincent</option>
+<option>Sudan</option>
+<option>Suriname</option>
+<option>Svalbard/Jan Mayen</option>
+<option>Swaziland</option>
+<option>Sweden</option>
+<option>Switzerland</option>
+<option>Syria</option>
+<option>Tahiti</option>
+<option>Taiwan</option>
+<option>Tajikistan</option>
+<option>Tanzania</option>
+<option>Thailand</option>
+<option>Tinian</option>
+<option>Tokelau</option>
+<option>Togo</option>
+<option>Tonga</option>
+<option>Tortola</option>
+<option>Trinidad and Tobago</option>
+<option>Tristan da Cunha</option>
+<option>Truk</option>
+<option>Tunisia</option>
+<option>Turkey</option>
+<option>Turkmenistan</option>
+<option>Turks and Caicos Isl.</option>
+<option>Tuvalu</option>
+<option>Uganda</option>
+<option>Ukraine</option>
+<option>Union Island</option>
+<option>United Arab Emirates</option>
+<option>United Kingdom</option>
+<option>Uruguay</option>
+<option>Uzbekistan</option>
+<option>Vanuatu</option>
+<option>Vatican City</option>
+<option>Venezuela</option>
+<option>Vietnam</option>
+<option>Virgin Islands</option>
+<option>Virgin Gorda</option>
+<option>Wake Island</option>
+<option>Wales</option>
+<option>Wallis / Futuna</option>
+<option>Western Samoa</option>
+<option>Yap</option>
+<option>Yemen</option>
+<option>Yugoslavia</option>
+<option>Zaire</option>
+<option>Zambia</option>
+<option>Zimbabwe</option>
+</select>
+</form>
+
+</code>
+</aside>
+
+
+
+</article>
+
+<!-- 
+<article>
+<h2>Handling Custom Attributes without Products</h2>
+
+
+Some customers (usually those who use Shipping APIs) use custom product attributes.
+By default custom attributes will be pulled from the product if you simply reference the product. 
+However if you are only creating channels, and not creating products (i.e. Launching Station / EnterpriseCK configuration) 
+and those custom attributes are embedded only into the channel then you will need to up your game a bit.
+<br>
+
+You will need to omit the product form variable in the example previous examples and pass a fully encoded cart, along with 
+attributes.<br>
+<aside class="html">
+<h6></h6>
+<code>
+
+<input type="HIDDEN" name="CART" value="
+<cart>
+<product>
+<id>0*%SKU%</id>
+<qty>1</qty>
+<wt>WEIGHT#</wt>
+<title>TITLE OF PRODUCT</title>
+</product>
+</cart>
+">
+
+<input type="HIDDEN" name="ATTRIBS" value="
+<attribs>
+<product>
+<id>0*%SKU%</id>
+<custom:attribute1>VALUE</custom:attribute1>
+<custom:attribute2>VALUE</custom:attribute2>
+<custom:attribute3>VALUE</custom:attribute3>
+</product>
+</attribs>
+">
+
+</code>
+</aside>
+
+
+
+</article>
+-->
+<article>
+<h2>Custom Cart Example: Rating multiple quantities of the same item</h2>
+
+
+Creating a cart can also be used for other much more advanced applications such as offering a multi-item shipping 
+calculation e.g. product + quantity control. Here is an example which uses Javascript to build a custom cart which is
+then submitted to the shipquote program.<br>
+<aside class="html">
+<h6></h6>
+<code>
+
+<script>
+<!--
+//
+// NOTE: The following code may NOT be legal at eBay - some javascript is blocked.
+//
+// in the example below you will also need to substitute <wt> with the weight for the listing, e.g. 
+// 	<INPUT TYPE="HIDDEN" NAME="product:zoovy:base_weight" SUB="<!-- WEIGHT -->"> and then replace the
+//	substitute <wt>5#</wt> with <wt><!-- WEIGHT --></wt> so it will be automatically interpolated with 
+//	the product weight by the HTML Wizard. 
+//
+//
+function buildCart() {
+thisFrm.CART.value = "<cart><product><id>0*%SKU%</id><qty>";
+thisFrm.CART.value = thisFrm.CART.value + thisFrm.QTY.value;
+thisFrm.CART.value = thisFrm.CART.value + "</qty><wt>5#</wt><title>Dutch Item</title></product></cart>";
+thisFrm.submit();
+}
+//-->
+</script>
+
+<form name="thisFrm" target="_blank" method="POST" action="http://%USERNAME%.zoovy.com/shipquote.cgis">
+<input type="hidden" name="CART" value="">
+<input type="hidden" name="ATTRIBS" value="">
+Quantity Desired: <input type="textbox" name="QTY" value="1" size="3"><br>
+Zip Code: <input type="textbox" name="ZIP" size="5">
+<input type="button" value="  Calculate Shipping   " 
+onClick="buildCart();">
+</form>
+
+</code>
+</aside>
+
+
+
+
+</article>
+<article>
+<h2>Custom Cart Example: Rating multiple quantities for multiple items simulatenously</h2>
+
+Here is an example of a multi item shipping calculator, it assumes you have the SKU for each product 
+prominently featured on each listing, or the customers somehow know the SKU. It also assumes that the listings
+are not WEIGHT based, since you would have to have the user enter the weight for each listing, or include
+some sort of lookup table. 
+
+<aside class="html">
+<h6></h6>
+<code>
+
+<script>
+<!--
+//
+// NOTE: The following code may NOT be legal at eBay - some javascript is blocked.
+//
+// in the example below you can only do fixed price shipping, NOT weight based, since it's not possible to
+//	lookup the weight for each item. (unless you used some other script-fu)
+//
+//
+function buildCart() {
+thisFrm.CART.value = "<cart>";
+if ( thisFrm.prod1.value != '' ) {
+	thisFrm.CART.value = thisFrm.CART.value + 
+		"<product><id>" + 
+		thisFrm.prod1.value + 
+		"</id><qty>" + 
+		thisFrm.qty1.value + 
+		"</qty><wt>0</wt><title>Item 1</title></product>";
+	}
+if ( thisFrm.prod2.value != '' ) {
+	thisFrm.CART.value = thisFrm.CART.value +
+		 "<product><id>" +
+		 thisFrm.prod2.value +
+		 "</id><qty>" +
+		 thisFrm.qty2.value +
+		 "</qty><wt>0</wt><title>Item 2</title></product>";
+	}
+if ( thisFrm.prod3.value != '' ) {
+	thisFrm.CART.value = thisFrm.CART.value +
+		  "<product><id>" +
+		 thisFrm.prod3.value +
+		 "</id><qty>" +
+		 thisFrm.qty3.value +
+		 "</qty><wt>0</wt><title>Item 3</title></product>";
+	}
+thisFrm.CART.value = thisFrm.CART.value + "</cart>";
+thisFrm.submit();
+}
+//-->
+</script>
+
+<form name="thisFrm" target="_blank" method="POST" action="http://%USERNAME%.zoovy.com/shipquote.cgis">
+<input type="hidden" name="CART" value="">
+<input type="hidden" name="ATTRIBS" value="">
+<table>
+	<tr>
+		<td>ITEM</td>
+		<td>QTY</td>
+	</tr>
+	<tr>
+		<td><input type="textbox" name="prod1" value="%SKU%"></td>
+		<td><input type="textbox" name="qty1" value="1"></td>
+	</tr>
+	<tr>
+		<td><input type="textbox" name="prod2" value=""></td>
+		<td><input type="textbox" name="qty2" value="1"></td>
+	</tr>
+	<tr>
+		<td><input type="textbox" name="prod3" value=""></td>
+		<td><input type="textbox" name="qty3" value="1"></td>
+	</tr>
+</table>
+<input type="button" value="  Calculate Shipping   " 
+onClick="buildCart();">
+</form>
+
+</code>
+</aside>
+
+
+
+
+</article>
+
+
+
+
+
+
+

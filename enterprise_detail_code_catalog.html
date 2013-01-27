@@ -1,0 +1,142 @@
+<meta type="filename" id="enterprise/detail/code-catalog">
+<h1>Creating a custom catalog</h1>
+<article>
+<h2>Overview</h2>
+
+The Zoovy Product Manager can search a "Catalog" via HTTP. 
+A catalog is nothing more than a search page which accepts fixed input parameters, and outputs a set XML format.
+A catalog can be quickly and easily implemented in any web language such as Java, PHP, Perl, ASP, Python, etc.
+Catalogs can implement both a "keyword" search and a "keyed" search. 
+The keyed search typically uses the manufactuer UPC or ISBN, or Bookland/EAN.
+
+</article>
+<article>
+<h2>Request Parameters</h2>
+
+Two parameters are passed via a standard HTTP GET:
+<table>
+	<tr>
+		<td>TEXT</td>
+		<td>The keyword string OR keyed field</td>
+	</tr>
+	<tr>
+		<td>SEARCH</td>
+		<td>The type of search being requested, the value will be one of the following: KEYWORD, SKU, or SKULIST<br>
+		KEYWORD is a request for a keyword search<br>
+		SKU is a request for a keyed search<br>
+		SKULIST is a batch request for a comma separated list of keyed fields (not typically used)<br>
+		</td>
+	</tr>
+</table>
+
+NOTE: typically the most important SEARCH type to implement is the SKU, in fact you're probably safe ignoring the other two,
+or simply treating all request types as a keyed search. 
+
+</article>
+<article>
+<h2>Output Format - SearchResponse</h2>
+
+A search summary is generated in response to a SEARCH type of "KEYWORD" or "SKU".
+The program should output an XML document, with a header type "text/xml" (note: you may need to override the default 
+Content-type header returned by the server). Here is a sample of the body of the document:<br>
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;?xml version="1.0"?&gt;
+&lt;SearchResponse&gt;
+&lt;product sku="YOUR SKU" name="PRODUCT NAME" inv="INVENTORY COUNT" grp="GROUPING CODE"&gt;encoded html&lt;/product&gt;
+&lt;product sku="YOUR SKU" name="PRODUCT NAME" inv="INVENTORY COUNT" grp="GROUPING CODE"&gt;encoded html&lt;/product&gt;
+&lt;/SearchResponse&gt;
+
+</code>
+</aside>
+
+
+
+The fields should be pretty self explanatory. Standard XML encoding rules apply. The HTML Description is displayed in a browser
+to the user. Typically it is wise to include a brief summary so the person browsing the catalog can verify they selected the correct
+product. You can include html &lt;IMG&gt; tags, and they will be displayed. The Grouping Code is another field you can use to 
+represent internal data such as Genre, Supplier, you name it (this will be displayed to the user and should help them verify
+they found the correct product).
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+YOUR SKU can be any alphanumeric code, it does not necessarily need to be the keyed field that was searched on.
+The value returned in "YOUR SKU" will be passed to ProductSync
+
+</div>
+</aside>
+
+
+
+<br>
+
+
+In a keyed search mode (http param SEARCH = SKU) you should only return 1 value, since a keyed field is assumed to be unique.
+In a keyed search the SearchResponse will be generated first to see if the product exists, if the product fails the SKULIST request
+will not be generated.
+
+</article>
+<article>
+<h2>Output Format - ProductSync</h2>
+
+A productsync request is generated after the end user has selected a product. In the case of a keyed search the client software will
+automatically trigger a productsync if a match is found. 
+A single HTTP parameter "PRODLIST" will be passed, just like SKULIST this is a comma separated list of products, comprised of the
+values returned in the &lt;SearchResponse&gt; &lt;product&gt; tag.
+Just like in SearchResponse you will need to set the header to Content-type: text/xml<br>
+<br>
+
+Here is an example response:<br>
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;PRODUCT TYPE="IMAGE" NAME="uniquename1a" EXT="jpg" URL="http://www.yourdomain.com/someimage1a.jpg"&gt;&lt;/PRODUCT&gt;
+&lt;PRODUCT TYPE="IMAGE" NAME="uniquename2a" EXT="jpg" URL="http://www.yourdomain.com/someimage2a.jpg"&gt;&lt;/PRODUCT&gt;
+&lt;PRODUCT NAME="YOUR SKU" CAT="category1/category2"&gt;
+&lt;zoovy:prod_name&gt;Product Name&lt;/zoovy:prod_name&gt;
+&lt;zoovy:prod_desc&gt;Product Description&lt;/zoovy:prod_desc&gt;
+&lt;zoovy:prod_desc&gt;Product Description&lt;/zoovy:prod_desc&gt;
+&lt;zoovy:prod_image1&gt;uniquename1a&lt;/zoovy:prod_image1&gt;
+&lt;zoovy:prod_image1&gt;uniquename2a&lt;/zoovy:prod_image1&gt;
+&lt;zoovy:....&gt;other fields&lt;/zoovy:....&gt;
+&lt;/PRODUCT&gt;
+&lt;PRODUCT TYPE="IMAGE" NAME="uniquename1b" EXT="jpg" URL="http://www.yourdomain.com/someimage1b.jpg"&gt;&lt;/PRODUCT&gt;
+&lt;PRODUCT TYPE="IMAGE" NAME="uniquename2b" EXT="jpg" URL="http://www.yourdomain.com/someimage2b.jpg"&gt;&lt;/PRODUCT&gt;
+&lt;PRODUCT NAME="YOUR SKU" CAT="category1/category2"&gt;
+&lt;zoovy:prod_name&gt;Product Name&lt;/zoovy:prod_name&gt;
+&lt;zoovy:prod_desc&gt;Product Description&lt;/zoovy:prod_desc&gt;
+&lt;zoovy:prod_image1&gt;uniquename1b&lt;/zoovy:prod_image1&gt;
+&lt;zoovy:prod_image1&gt;uniquename2b&lt;/zoovy:prod_image1&gt;
+&lt;zoovy:....&gt;other fields&lt;/zoovy:....&gt;
+&lt;/PRODUCT&gt;
+
+</code>
+</aside>
+
+
+You can set every possible field in the product, there are literally over 10,000 possible fields you can set 
+(when you figure in all the eBay fields, Amazon fields, Shopping.com fields, Yahoo Shopping Fields, Froogle Fields, etc.) you will 
+work with your enterprise account manager to come up with the list of data you have available, along with 
+the formatting requirements. You can also create your own custom fields. In addition Zoovy has a sophisticated mapping system
+that allows various marketplaces to share data (this reduces the amount of storage needed and also makes it easier for the 
+user to update). Again, this is all handled on Zoovy's end - let your account manager know which fields are available and they'll
+come up with a list of mappings.<br>
+<br>
+The PRODUCT TYPE=IMAGE are special nodes that trigger the client to download and import the image. The url you are 
+referencing should ALWAYS be the highest quality copy you've got. Zoovy will automatically download the image
+and dynamically resize it (while maintaining aspect ratio) and re-compress the image to the page layout it is
+being fit in. The system can import GIF, JPG, PNG, PSD, TIFF, BMP, and a variety of other formats.
+The unique name for the image is called the "Collection Name" and must be unique system wide, if two products
+share an image they can have the same collection name. The first product image will also be used as the
+thumbnail unless zoovy:prod_thumb is set.
+<br>
+<br>
+</article>
+
+
+

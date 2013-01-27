@@ -1,0 +1,59 @@
+<meta type="filename" id="webmgr/detail/inventory-general">
+<h1>Inventory</h1>
+<article>
+<h2>Introduction</h2>
+
+Zoovy supports a wide range of businesses and business models.  Before you start setting up inventory, you must decide which type of inventory system is right for you.  Businesses are classified by the type of inventory numbers they need to track: Actual, Reserved, Safety and Unlimited.  Each are discussed below:<br>
+<li>Actual Inventory<br>
+This is the simplest form of inventory.  Actual inventory tracks the count on the shelf.  If you have an effectively unlimited supply of product and you simply want to keep an accurate count of what you have, then you are using actual inventory.  This is mostly used so you will know when to re-order and this method of inventory tracking is all you will need.
+<li>Reserved Inventory<br>
+The difference with actual inventory and reserved inventory is that actual inventory does not track items that are for sale on marketplaces like eBay.  Reserved inventory takes the actual inventory and subtracts the number of items reserved in channels.  The reserved inventory also counts those items allocated as incomplete items.  If you have limited quantities of something, and you cannot afford to oversell, then reserved inventory is probably what you need.
+<li>Safety Inventory<br>
+This is a special mode built in for people who drop ship and receive an inventory update from their suppliers.  The problem is that the suppliers sell to more than just one merchant.  In this example, a supplier might have one or two of something left - and three businesses are going to buy it from the same supplier.  If all three or more sell, then the last person to order is going to get stuck.  Safety inventory allows your actual count to represent what is available from your suppliers, while still recognizing that the actual count may be lower.
+<li>Unlimited Inventory<br>
+This is another special mode. This one is built in for people who have unlimited quantities of product avaialble.  If you manufacture your products this may be the option to use when setting up your product data. When you set a product to "Unlimited Inventory", the Zoovy system will automatically enter an inventory quantity of 9,999.  Every time inventory finalization runs, it will be set back to that number whether you've sold 0 or 5000. 
+
+</article>
+<article>
+<h2>Inventory Accounting</h2>
+
+When you configure a product, you set the actual onhand inventory, also known as the "actual inventory". If you have unlimited 
+inventory for this product, check "Unlimited Inventory".  When a customer checks out and pays for an item
+inventory is decremented once the sale is marked "paid".  Inventory is reserved for channels (items that get launced into
+a marketplace).  So if you have an inventory for product "FOO" of "3" and you launch two channels into eBay, your reserve
+counts would go to 2.  So actual inventory is 3, reserve is 2, and you have 1 left to sell.<br><br>
+
+Reserve inventory does not decrement actual inventory until the item has been marked as paid in the Zoovy order system.  Using the example above,
+you have quantity 3 of product "FOO" and one external item (claim) is processed in the Zoovy order system and marked as paid.  Once this happens,
+your actual inventory drops to 2 (you just sold one) and reserve drops to 1 (you only have 1 outstanding claim or channel).<br><br>
+
+Keep in mind that unpaid claims (external items) in the Zoovy Order system will keep the inventory reserved for that item.  Using the example above again,
+if you have quantity 3 of product "FOO" and you have 3 unpaid claims (you launched 3 channels), then you actually have quantity 0 left to sell.
+
+It's important to have a basic understanding of inventory so you can properly configure your inventory settings in the setup area for inventory.
+
+</article>
+<article>
+<h2>Uploading Inventory)</h2>
+
+
+You can upload your inventory in bulk by using the CSV Product Import in Setup, or if you
+are a programmer who needs need to periodically synchronize with a remote system you may want
+to look into using the Inventory API.
+
+</article>
+<article>
+<h2>Developer Settings</h2>
+
+If you have a Zoovy Developer or Hybrid account then you will also have access to an option called 'Developer Settings'.  The inventory API allows your Zoovy store to communicate with a remote database in real-time to display the available quantity levels in your Zoovy store.
+Using Developer it is possible to connect one Zoovy store to another Zoovy store, this way if you have multiple Zoovy stores, you can have the first store reference the inventory to the second store.
+
+
+</article>
+
+
+
+
+
+
+

@@ -1,0 +1,338 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="dev/detail/buymebuttons">
+<h1>Buy Me Button Documentation</h1>
+<article>
+<h2>Overview</h2>
+
+Buy me buttons are used as an easy way to add items to a Zoovy shopping cart from a remote site or an HTML email. 
+
+</article>
+
+<article>
+<h2>Buy Me Button Wizard</h2>
+The easiest way to obtain a copy of the html that can be used to generate a 'buy me' button is to use the wizard.
+
+<aside class="cbc">
+<h6>Generating the buy me button html using the wizard</h6>
+<div>
+<li>Log in to your account at www.zoovy.com</li>
+<li>Click on the 'products' tab at the top</li>
+<li>In the left menu, select the product in question</li>
+<li>Scroll down to the 'tools' panel and open</li>
+<li>Push the 'show html' button under the 'Buy Me Button' heading</li>
+<li>Copy the form html and paste into your html</li>
+
+</div>
+</aside>
+
+
+</article>
+
+<aside class="caution">
+<h6></h6>
+<div> Please Note that if you are a Microsoft OfficeLive user the html code is generated on your PRODUCTS page.
+<BR><BR>
+You will need to copy and paste the code for each product from Zoovy into the Microsoft interface as shown in the training video.
+<BR><BR>
+Remember: Each product will have its own unique html.
+
+
+</div>
+</aside>
+
+
+<article>
+<h2>Zoovy Cart Functions</h2>
+Using the HTML code in the examples below, you can allow users browsing a site on any server 
+on the internet to add items to a shopping cart in your Zoovy store.<br>
+<br>
+In the HTML examples below, anywhere you see PRODUCTID, this should be replaced with the product id for 
+that product (this is the unique identifier for the product in the Zoovy system, which is not necessarily 
+the same as your product's name).  You can find a product's id by logging into your Zoovy account and 
+selecting the product in the product management section.  The product id will follow the word "Product: " at the top of the page.<br>
+<br>
+Anywhere you see "merchant_id", exchange that for your Zoovy login.  All of the HTML examples shown are 
+case-sensitive (capitalization matters) so make sure to use the forms exactly as shown (but feel free to 
+change anything that appears in italics to suit your tastes).
+
+</article>
+<article>
+<h2>Product Options</h2>
+
+
+Product options (or "pogs") in the Zoovy system allows you to manage different versions of the same product easily.  If you have something like a tee-shirt, which has different colors and different sizes, pogs are an easy way to keep track of things.  You can create and edit product options by logging in to the Zoovy system, going to the product management section, and selecting the "Manage Options" button for the product you'd like to change.<br>
+<br>
+
+<aside class="caution">
+<h6></h6>
+<div>
+<b>Important information if you're using product options:</b><br>
+If you have product options for configured for an item you're selling, 
+the HTML form you choose below MUST include the product options, or it will not be added to the cart! 
+Our system has safeguards that prevent bogus products from being entered.
+
+</div>
+</aside>
+
+
+You'll need some extra information from Zoovy to do an "Add to Cart" for any product with Pogs.  
+To get to this information, log in to the Zoovy web site and go to the product management section and select 
+"Buy Me Button" for the product you wish to use.<br>
+<br>
+
+For any "pogs" or "pogs:0001" field, you MUST use the value from the "pogs" input tag.  
+For every "pog_pogname" selection you see in the "Buy Me Button" section, you MUST include 
+it in the following forms as per the example. Be aware that you MUST have the options 
+configured in the Zoovy system if you include the "pogs", "pogs:0001", "pog_pogname" 
+or "pog_pogname:0001" fields in the form, and if you ever change your product options 
+in the Zoovy system you MUST change your HTML to match the new setup!
+ 
+</article>
+
+<article>
+<h2>Single-Item Link</h2>
+
+<aside class="html">
+<h6></h6>
+<code>
+<a href="http://merchant_id.zoovy.com/cart.cgis?add=yes&amp;quantity=1&amp;product_id=PRODUCTID">
+Add Product 0001 to Cart!
+</a>
+
+</code>
+</aside>
+
+
+
+Note: You can include any valid HTML between the a href tag, including image links
+
+</article>
+
+<article>
+<h2>Single-Item Button</h2>
+
+<aside class="html">
+<h6></h6>
+<code>
+
+<form action="http://merchant_id.zoovy.com/cart.cgis" method="post">
+<input type="hidden" name="add" value="yes">
+<input type="hidden" name="product_id" value="PRODUCTID">
+<input type="hidden" name="quantity" value="1">
+<input type="submit" value="Add to Cart!">
+</form>
+
+</code>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Single-Item Variable Quantity</h2>
+
+<aside class="html">
+<h6></h6>
+<code>
+
+<form action="http://merchant_id.zoovy.com/cart.cgis" method="post">
+<input type="hidden" name="add" value="yes">
+<input type="hidden" name="product_id" value="PRODUCTID">
+Quantity: <input type="text" name="quantity" value="1" size="3">
+<input type="submit" value="Add to Cart">
+</form>
+
+</code>
+</aside>
+
+
+ 
+</article>
+
+<article>
+<h2>Products with Options</h2>
+
+If your products have option groups on them, build them (with options) in Zoovy, and then use the Buy Me Button generator to get the html.
+
+</article>
+
+
+<article>
+<h2>Multiple-Item with Quantity</h2>
+
+<aside class="html">
+<h6></h6>
+<code>
+
+<form action="http://merchant_id.zoovy.com/cart.cgis" method="post">
+<input type="hidden" name="add" value="yes">
+
+Product 1<br>
+Quantity: <input type="hidden" name="product_id:PRODUCTID" value="1">
+<input type="text" name="quantity:PRODUCTID" value="0" size="3"><br>
+
+Product 1!<br>
+Quantity: <input type="hidden" name="product_id:PRODUCTID2" value="1">
+<input type="text" name="quantity:PRODUCTID2" value="0" size="3"><br>
+
+Product 3!<br>
+Quantity: <input type="hidden" name="product_id:PRODUCTID3" value="1">
+<input type="text" name="quantity:PRODUCTID3" value="0" size="3"><br>
+
+<input type="submit" value="Add Items to Cart">
+</form>
+
+</code>
+</aside>
+
+
+
+</article>
+
+<article>
+<h2>Multiple-Item with Checkbox</h2>
+
+<aside class="html">
+<h6></h6>
+<code>
+
+<form action="http://merchant_id.zoovy.com/cart.cgis" method="post">
+<input type="hidden" name="add" value="yes">
+
+Product 1<br>
+Add to Cart
+<input type="checkbox" name="product_id:PRODUCTID" value="1"><br>
+<input type="hidden" name="quantity:PRODUCTID" value="1" >
+
+Product 2<br>
+Add to Cart
+<input type="checkbox" name="product_id:PRODUCTID2" value="1" checked><br>
+<input type="hidden" name="quantity:PRODUCTID2" value="1" >
+
+Product 1<br>
+Add to Cart
+<input type="checkbox" name="product_id:PRODUCTID3" value="1"><br>
+<input type="hidden" name="quantity:PRODUCTID3" value="1" >
+
+<input type="submit" value="Add Checked Items to Cart">
+</form>
+
+</code>
+</aside>
+
+
+
+Note: You can pre-select an item to be checked by using the "checked" option as per product 2 in the example above 
+
+</article>
+
+<article>
+<h2>Using Product Options / Notes with Multiple-Item Forms</h2>
+
+
+Multiple add to cart forms are made to act much like the single add to cart forms, 
+and can have all of the same things like product options and notes.  There 
+are some changes that need to happen when you create the form for it to work properly:<br>
+ 
+<li> The input names will be in the form of "field:0001" instead of just "field".  
+For example, "pogs" turns into "pogs:0001" for product id 0001, and "pog_Size" will 
+be "pog_Size:0001", "notes_prompt" will be "notes_prompt:0001", etc.
+<li> The "product_id" field is replaced by the "product_id:0001" field.  
+The value for this field should always be "1", instead of the product's id.
+
+</article>
+
+<article>
+<h2>Product Notes</h2>
+
+
+Every "notes" field must have the "notes_prompt" field accompanying it as shown in the examples above.
+This lets the Zoovy system know what to put in the description in front of the text the user entered.  
+You can make a large textbox instead of a single-line textbox by changing the following:
+
+<aside class="html">
+<h6></h6>
+<code>
+
+<input type="text" name="notes" value="Default Text">
+
+</code>
+</aside>
+
+
+
+Into this (adjust the "cols" and "rows" to make the box bigger or smaller):
+<aside class="html">
+<h6></h6>
+<code>
+
+<textarea cols="50" rows="10" name="notes" wrap="soft">
+Default Text
+</textarea>
+
+</code>
+</aside>
+
+
+</article>
+
+<article>
+<h2>Changing Quantities</h2>
+You can change the values of inputs with a name of "quantity" or "quantity:0001" to your liking.  
+For instance if you have a checkbox add to cart, changing the value= attribute part of the "quantity" 
+input tag will change the quantity of that item that will be added to the cart when that product is 
+checked.  If you have a form that allows the user to input a quantity, changing the value will 
+result in the form saying something other than "0" when its displayed.
+
+</article>
+
+<article>
+<h2>Meta information</h2>
+
+
+Corporate customers who retrieve data from the Zoovy system can add information into the order that you 
+can be checked for later on (like an identifier for who referred the customer, etc) by parsing the product 
+through the developer API.  To add meta information into the cart, add the following inside the form tags to the 
+
+
+<aside class="html">
+<h6></h6>
+<code>
+<input type="hidden" name="meta" value="secret info">
+
+</code>
+</aside>
+
+
+
+The information "secret info" will be stored as an invisible item in the shopping cart named !META that can 
+then be retrieved later.  This feature is not recommended for non-programmers who do not want to edit or 
+view their orders through their own programs.
+
+</article>
+
+<article>
+<h2>Resetting the cart</h2>
+
+You can override the quantity of an item in the cart by passing an additional parameter with any add to cart command.
+The default behavior of the cart is to add, in other words if you have quantity of 1 of product ABC, and you click the add to cart
+button again, you'll now have quantity 2. If you specify override, then the quantity will stay at one (or whatever the last quantity
+passed is). Override will not remove items that have not been updated from the cart. If you want to implicitly remove items 
+from the cart you need to override the quantity for those items to 0.<br>
+<br>
+<aside class="html">
+<h6></h6>
+<code>
+
+<input type="hidden" name="override" value="1">
+
+</code>
+</aside>
+
+</article>
+
+
+
+
+
+

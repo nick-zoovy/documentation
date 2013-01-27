@@ -1,0 +1,305 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="webmgr/detail/sitesearch">
+<h1>Advanced Site Search</h1>
+<article>
+<h2>Overview</h2>
+The default search that Zoovy provides to all customers is a product id and product title search. 
+It does not search descriptions, or other custom attributes, and no custom keywords can be specified.
+
+<br>
+
+With the Advanced site search feature you can quickly and easily create custom catalogs of one or more specific fields. 
+For example you can create searches of product description, product title, and product id. 
+Or create a custom search which includes nothing but manufacturer product id, ISBN, 
+or any other field you may have for your products. Advanced Site searches can appear as text boxes, 
+or as drop down select lists (using a bit of custom HTML). 
+
+<aside class="hint">
+<h6></h6>
+<div>
+Using the Advanced Site Search feature requires the WEB bundle be available to your account.
+
+</div>
+</aside>
+
+
+</article>
+
+<article>
+<h2>Configuration</h2>
+
+With both types of searches the output can be customized just like any other page in the system, 
+and the search functionality can be embedded on any page [using a bit of Custom HTML in your page wrapper].
+<br>
+An advanced site search catalog allows you to create an index of specific product attributes. 
+<br>
+You should assign the catalog an alphanumeric name, which will be used to reference the catalog. 
+Then use a comma separated list to determine which product attributes will be indexed. If you don't understand how product attributes work then you should stop and read the the Product CSV Import documentation - which provides a good grounding on how Zoovy uses product attributes.
+<br>
+Once you have created a catalog, you can then proceed to the website builder and edit the search page; you can select page flows which have multiple searches and for each one you can change the prompt and select the catalog that will be used.
+<br>
+If you want to create your own custom HTML searches (such as a select list and drop down) the easiest way is to simply create a search page then go to the page with your browser, view the source, and copy the form, then make the necessary changes (such as changing the textbox to a drop down with fixed values or a even a radio button.) 
+<br>
+By using custom words which do not appear in other attributes you can create meta-indexes of your products which are very effective. Typically custom indexes work in conjunction with new custom attributes you have introduced into your Zoovy store. For information on adding your own custom attributes refer to the custom attribute documentation in the product manager.
+
+<aside class="cbc">
+<h6>Adding a Search Catalog</h6>
+<div>
+<li>Log in to your account at www.zoovy.com</li>
+<li>Click on the Setup tab</li>
+<li>Under the 'Utility Features' section, click the Manage Search Catalogs link (you may need to click 'more choices' to see this)</li>
+<li>Enter a Catalog code - if no catalog exists, use DEFAULT as the code</li>
+<li>Choose your format - In most cases, you should select product fulltext database</li>
+<li>Depending on which format you chose, different options will appear.  For fulltext database, set your attributes (ex: id,zoovy:prod_name,zoovy:prod_desc,zoovy:prod_detail,zoovy:prod_mfg )</li>
+<li>in most cases, enable dictionary (all records).</li>
+<li>Push the Add New Catalog button</li>
+<li>If you have a small product database (less than 5000), reset the catalog to index.  Custom catalogs require a manual index when adding new products or re-configuring the catalog).</li>
+
+</div>
+</aside>
+
+
+<aside class="hint">
+<h6></h6>
+<div> You can only have one primary search catalog. 
+<br> To reset the catalog: Go to Setup > Manage search catalogs > then click [RESET] next to the catalog marked **PRIMARY**.
+</div>
+</aside>
+
+</article>
+
+<br>
+<article>
+<h2> Configuration Settings on a Catalog</h2>
+Once the catalog is created, there are configuration settings that should be set and/or changed.  To see these configurations:
+
+<li> Setup
+<li> Manage Search Catalogs
+<li> Existing
+<li>  Click on the 'config' link next to the existing catalog you wish to change.  
+
+<br>
+
+There are several options to set including: Inflections, Isolation, Word Stemming, Soundex/Metaphone, and Exact Match.  Descriptions for each are listed below each setting with examples.  This is also the area where attributes can be added or removed along with adding rewrites and rules to the catalog.  
+
+<br>
+
+<aside class="hint">
+<h6></h6>
+<div>
+Any change you make to the configuration settings, you will need to REBUILD / Index the catalog in order for the changes to be live.
+
+</div>
+</aside>
+
+
+</article>
+
+<article>
+<h2>Enabling Multiple Catalogs on a Search Page</h2>
+The search page can be set up to use specific/multiple catalogs.  There are layouts in the system to allow up to four different catalog searches on the store search page.  To enable catalogs on your search page (this does NOT effect the theme):
+
+<br>
+
+<li>Click on Setup
+<li>Click on Site Builder
+<li>Click on the 'edit' link next to the search page for the profile you wish to modify
+<li>If prompted, choose a layout (any layout for now)
+<li>Click 'edit' next to the search element
+<li>Choose your catalog
+<li>Enter your prompt for the search
+<li>Save your changes
+
+
+</article>
+
+<br>
+
+<article>
+<h2>Things You Need to Know about Catalogs Before You Start Using Them</h2>
+<br>
+Before deciding to use a catalog based search - you must know that a catalog file does not store any actual words, instead it stores a value which represents the phonetic sound of the word stem called the "soundex value". Using word stems the words "Jewel", "Jewelry", "Jewelled" become simply "Jewel". Then the soundex algorithm further compresses words which are spelled differently but sound the same - for example: mis-spellings such as "potery" (pottery) both become the soundex value "C360" internally. Another example that arises with media sellers quite often is: "Tom Cruz" and "Tom Cruise" - even words which don't necessarily sound the same but are often mis-spelled such as "Brian" and "Brain" both become the value "B650". This is generally a good thing since most people can't spell anyway.
+<br>
+Clearly in some cases this over-intelligence can lead to confusing results. In those cases an EXACT match filter can be used to perform a more restrictive second pass on the data and to verify the actual literal spelling of the word(s) searched for appear. This negates any of the intelligent benefits while retaining most of the blazing speed.  
+<br>
+Unfortunately the downside of a catalog is that due to the file format, word stemming, and soundex values it is impossible to do substring matching. Fortunately customers don't do substring searches all that often since most websites don't support them (even google doesn't). Also because word stems+soundex are notoriously unreliable for words under 4 characters, any words (except words containing numbers) which are under 4 characters are excluded from the catalog and ignored when performing a search. (See below for a tip on how to work around this limitation to some degree using SEO keywords in a product)
+<li>Product Finder Map: Creates a specialized type of search box based on products which share common store option groups. For example if you sold shoes, you might have one store option group setup called "Brand" and another called "Size", then by creating a product finder group you can let your customers search by size and brand. This is also very useful in other industries such as automotive (make, model, year), jewelry (gem type, price), or literally hundreds of others.  
+<aside class="hint">
+<h6></h6>
+<div>
+To search on product option groups, you would need to use the dictionary/full text enabled catalog and add the zoovy:pogs attribute to the catalog.  There may be limitations to merchants using symbols in their pogs which would require catalog rewrites.  Symbols like a / or _ are thrown out by a catalog and interpreted as spaces instead.  Causing a 1 term search into multiple terms.  Example:  abc12/3 would actually be interpreted as abc12 3, essentially 2 terms now instead of 1.  Highly recommend using the Debug feature to test.
+
+</div>
+</aside>
+
+
+<li>eBay Site Search: allows you to search your listings on eBay, and present those as a product list inside your website alongside your products. You can search one or more seller id's. The listings that appear do NOT need to me managed by Zoovy. Very powerful for anybody who wants to cross syndicate their eBay listings into their Zoovy store.
+
+</div>
+</aside>
+
+
+</article>
+
+<article>
+<h2>What are Status, Index and Keys (in the catalog editor)</h2>
+
+<section>
+<h3>Status</h3>
+<li> Catalogs are flagged as "Dirty" when recent product changes have not been reflected in the catalog.<br>
+<li> Dirty catalogs will be updated/created automatically when the system runs, usually this occurs in the early morning.<br>
+<li> Catalogs which say "Recent" in the indexed time cannot be manually reset for 5 minutes.<br>
+<li> Large catalogs (10,000 keys ~ 2,000 products) may not be able to re-index via the web interface before the browser times out.
+For this reason it is recommended customers with large databases let the system automatically rebuild the search
+index during its normal nightly update. Attempting to manually reset a catalog larger than 2000+ items
+may result in corruption - if this occurs searching will be unavailable until the system indexer runs.
+<aside class="caution">
+<h6></h6>
+<div>
+Search catalogs do not index / update automatically at this time, it is recommended that you manually reindex the catalog once nightly or weekly depending on how often products are updated/added to the database.
+
+</div>
+</aside>
+
+</section>
+
+<section>
+<h3>Index</h3>
+The INDEXED time reflects the last time the catalog was completely accurate if it is flagged as Dirty, or the amount of time since the catalog changed if the catalog is flagged as "OKAY".
+</section>
+
+<section>
+<h3>Keys</h3>
+Each word in the fields you have set in your catalog is phonetically matched to a key.  The "keys" column is just the number of keys being used the the catalog.  Keys are described above in the 'catalog format' section.
+</section>
+
+</article>
+
+<article>
+<h2>Getting your FULL TEXT search to find common SUBSTRING</h2>
+While Full Text search catalog is not compatible with substring catalogs, and vice versa, you can setup a "pseudo" substring search for common substrings that may be used by adding these terms into your zoovy:keywords attribute, then adding this attribute into your catalog. 
+<li>1. Go to the product in the product editor and find the RSS/SEO Keywords section
+<li>2. Enter the substrings that you think your customers might most commonly use (must be 4 letters or more) and save
+<li> 3. Add zoovy:keywords to your search catalog (see "Adding a Search Catalog" above)
+<br>
+NOTE 1: The above steps can also be performed on a larger scale via CSV tool simply adding the search terms under the header zoovy:keywords separated by commas<br>
+NOTE 2: The above TIP can also be used to search for "related" words that might not some up under a phonetic soundex search, i.e. "dog" and "canine".
+
+<article>
+<h2>Release Notes</h2>
+
+<li> Advanced Site Search creates an extremely fast index that you can use in conjunction with your search page.
+Site Search supports very large databases (tested with over 25,000 products).<br>
+<li> Accounts with the WEB bundle include up to 5 catalogs free of charge, additional catalogs are $9.95 per month.<br>
+<li> To index on Product ID, use the field name 'id'
+
+</article>
+
+<br>
+
+<article>
+<h2> Troubleshooting Search Issues</h2>
+Keep in mind that whatever attributes are added to the configuration settings, the search catalog will go through each of these fields to look for a particular query.  If you have the soundex setting turned on there is significant room for error when there are large chunks of text to search through for a particular value.  We typically do not recommend using the zoovy:prod_desc and the soundex setting enabled together.  
+<br>
+
+Use the Debug button to troubleshoot weird search results or zero results.  The button is located at the top of the menu on the Manage Search Catalogs Page.
+<li> Select the correct search catalog in the drop down menu
+<li> Select the domain the catalog is being used that is having the issues
+<li> Type in the search query that is producing the behavior
+<aside class="hint">
+<h6></h6>
+<div>
+If you are trying to search for a sku, type in the sku in the Search Term box as well as the Product id box.
+
+</div>
+</aside>
+
+<li> Run query
+
+<br>
+
+The Debug Output may look like a foreign language but don't worry.  There are some key points to look for to assist with dialing in the problem.
+ <br>
+
+<section>
+<h3> Trace Log</h3>
+This section outputs the configuration of the catalog, what's turned on or off, rewrites, etc.
+
+</section>]
+
+<section>
+<h3> Stages 1 - 4</h3>
+<li> Stage 1 - Structured Input: this is how the query was input.  example: "cruz"
+<li> Stage 2 - Rewrites: the catalog will look to see if there are any rewrites matching this search query. example: cruise:cruz, the customer typed in "cruz" but you have all of your products listed as "cruise" and if you do not have the soundex feature turned on a search for "cruz" would result in a zero result page.  By adding the rewrite, you're telling the catalog that you want those 2 terms to equal each other.  All searches for "cruz" should show all "cruise" products.
+<li> Stage 3 - Kill Words: Any kill words that have been added, the catalog will determine if this query matches any of the kill words.  example:  if you have a website that sells televisions and nothing but televisions you may want to add that to the kill word section because everything is a tv.  
+<li> Stage 4 - Process Transformations: Based on the catalog configurations the catalog will transform the search query.  Example, if you have word stemming enabled it will strip the word down to the root and determine that as the keyword.  If you searched for "jewelry" the catalog would actually search for "jewel".  This stage is especially important if you have the soundex setting enabled.  It will tell you what value the catalog is looking for.  If someone typed in "cruz" the soundex setting may turn that into "crz" and determine that as the query.
+<li> Determined Keyword Count:  This is the final output of the keywords the catalog will look for in the various attributes that have been added to the catalog. 
+<li> At the bottom of the output you will see a list of skus that matched the query.
+<aside class="caution">
+<h6></h6>
+<div>
+If you determine you need to make a change to the catalog configuration, you will need to reindex the catalog before you can run the Debug again to reflect the changes you made.
+
+</div>
+</aside>
+
+
+<br>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

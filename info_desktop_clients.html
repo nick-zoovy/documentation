@@ -1,0 +1,140 @@
+<meta type="filename" id="info/desktop_clients">
+<h1>Desktop Clients History &amp; Future</h1>
+
+<article>
+<h2>Concept Overview</h2>
+
+This document discusses some of the upcoming changes to the Zoovy Desktop Applications. It covers a brief history of the applications (which might be real interesting for older Zoovy customers) and then discusses the future of the clients.
+
+</article>
+
+
+<article>
+<h2>History</h2>
+
+When Zoovy was founded back in October of 1999 we knew that a web-interface would have limitations for companies who did substantial order processing volume. We also knew that a desktop application could overcome many of the limitations of disconnect-prone modem based Internet connections.
+
+<br>
+
+We started with the plan of having a single desktop application titled "Zoovy Desktop" built in a programming language called "Delphi". 
+Delphi was a robust language, and clearly the right choice at the time - however it quickly became clear that it was impossible for one development team to mirror all of the rapid evolutions which were happening on Zoovy.com into a desktop application.
+About 6 months in the decision to split the single application into two separate applications one titled "Product Manager" and a new application titled "Order Manager" made sense. Since no real work had been done on order management, and the future of the Delphi language somewhat more "uncertain" we decided to commission the next client in Visual Basic (VB6).
+
+<br>
+
+Due to financial constraints in 2001 (after the .com crash) the Delphi Programmers were released the responsibility was shifted to the VB team to maintain the product manager code. The Delphi programming language was effectively discontinued by the manufacturer, and the realization that Product Manager would likely be wholly incompatible with Vista (which was originally supposed to ship in 2003) was terrifying for a little startup company on a tight budget. 
+
+<br>
+
+In 2002 focusing on large eBay sellers became a priority since that was one segment which was profiting online and had a real need for selling tools. A platform called "Enterprise" was developed and product manager and order manager were retrofitted to talk to a local UNIX server which handled it's own synchronization.
+
+<br>
+
+In 2003 the Enterprise platform was growing out of hand - it was clear that hypergrowth for under-capitialized eBay sellers was a bad business model for Zoovy (mostly due to several high profile failures who never ended up paying their bills). Right before the end we had identified that the Enterprise server could be used as a very high volume point of sale platform because of it's immunization to Internet disruptions and it's ability to have controlled/customized software releases. We bought some point of sale gear including credit card swipes, touch screen monitors, printers, etc. and started working on a point of sale prototype. 
+
+<br>
+
+Unfortunately at the same time Intel was talking about it's Itanium, and upcoming dual core and possibly even quad core processors. Microsoft was pushing it's .Net initiative, and had explained that if you didn't write your software in .Net that ISV's [Independent Software Vendor] would not only face substantial incompatibilities with Vista (due out in 2005) but that code not written in .Net could reasonably be expected to run much slower than it's processor optimized .Net counterpart. Yipes! There is nothing more terrifying for a "boutique ISV" like Zoovy which doesn't have a giant QA farm of 1,000 test machines than being incompatible with the new "secure" operating system which would be sold on all new machines.
+
+<br>
+
+Resources are always tight, so a decision to end-of-life product manager and start a brand new desktop client called "Warehouse Manager" which offered much of the same functionality [at least the pieces we wanted to keep] was started. We originally anticipated that it would take about 6 months to learn VB.Net and get out the first release. 
+
+<br>
+
+The lack of commercially available stable .Net components, the fact it was a new programming language, and the fact our small dev team was now supporting 3 applications in 3 different languages each with their own compatibilities lead to release 1.xx of Warehouse Manager being a dismal failure.  In an effort to migrate customers over to Warehouse Manager we end-of-lifed product manager and turned it off. Customers didn't move, they just left the platform in droves -- an expensive lesson was learned.  
+
+<br>
+
+Trying to work in VB and VB.net (which are two completely different languages structurally  but almost identical syntactically) was driving the dev team crazy. We went through several iterations of Warehouse Manager and realized that we'd taken it as far as we could with the tools we had available to us.  We went back and focused our attention on Order Manager in the 5.xxx release series. 
+
+<br>
+
+Along comes 2006 and it's clear to us that Vista is going to be released any day now. Microsoft ships Visual Studio 2006 with a new release of VB.net and a new improved upgrade wizard to convert VB6 applications to VB.net.  We do a dry run of the upgrade from VB to VB.net and it looks easy, only 113 errors - so we say "No problem" estimating it should take about 3 weeks to hammer through all the issues.
+
+<br>
+
+8 months later... turns out those 113 errors required almost a complete rewrite of the software. Zoovy.com had been in a massive release cycle, and lots of new functionality was available on the website that was completely incompatible with the order manager. The first release of the 6.xxx built in .Net was rushed out in early 2007, and needless to say probably should have gone through more testing - it didn't work.
+
+<br>
+
+</article>
+
+<article>
+<h2>The 2007 Progress Report</h2>
+
+In early 2007 Brian Horakh (CTO) replaced David Steel as CEO. Lots of internal reorganization, changes to technical support, customer service and sales gave the Desktop Clients an opportunity to catch up and stabilize. The changes gave our Dev team the opportunity to really dive in and master the .Net language.  Processes such as the Best Partner Practices were finally put into place and helped dramatically by framing new features in terms of customer benefit. 
+
+<br>
+
+We spent the majority of 2007 bringing the Warehouse Manager and Order Manager clients closer together (for example sharing the same sync process) - we got out a release of Enterprise using the same unified synchronization we used in our desktop clients.  We trained our support organization how to support the .Net framework and internally changed how we handle client issues, we also changed our QA and release process. At the time of writing this (Oct 1st, 2007) the two clients have a long list of feature requests, but no reproducible defects (there are still a few machine specific things we're working on) - we've got about two dozen clients running successfully on our enterprise platform.
+
+<br>
+
+Clearly we've made some mistakes. We've identified those, and corrected them in 2007. Zoovy Merchants should look forward to substantial new functionality in 2008.
+
+<br>
+
+Clients in 2008 should look forward to our new development process turning out higher quality software releases on a regular basis.  At this point the last releases of warehouse manager (6.018) and order manager (6.118) have been released.
+
+</article>
+
+<article>
+<h2>2007 Detail</h2>
+
+In Oct 2007 we will start releasing betas of the "Zoovy Integrated Desktop" beginning in version 7.xxx series. Version 7.xxx will mostly be a functionality build - we'll start throwing in a lot of new features that have been requested over the past years and we're going to keep going until we get our feature list down to ZERO.
+
+<aside class="hint">
+<h6></h6>
+<div> 
+BPP Customers who have executed an NDA [Non-Disclosure Agreement] can get access to our roadmap.
+
+</div>
+</aside>
+
+
+Without an NDA we can tell you that among the other features that will be addressed include dramatically improved inventory support, supply chain integration, and most importantly Point of Sale terminal support. 
+
+<br>
+
+Because the Zoovy applications are built on top of the .Net framework - Zoovy is well positioned to both avoid the pitfalls and to take maximum advantage of the processor changes that will occur in 2008.  Dual Core and Quad Core processors will have substantial improvements in the performance of our application - unlike some competitors who will experience negligible performance impacts for software that is not optimized for those processors.  
+
+<aside class="hint">
+<h6></h6>
+<div>
+The .Net framework allows a software application to take maximum advantage of both 32 bit and 64 bit operating systems by working with the operating system to "automatically optimize" for that target processor. 
+
+</div>
+</aside>
+
+
+<br>
+
+In addition the incompatibilities caused by the required security patches with the upcoming Service Pack 1 of Vista will be negligible for Zoovy, but will more than likely shut down integration with other "legacy Win32" applications.  
+
+<aside class="hint">
+<h6></h6>
+<div>
+Microsoft even acknowledges that we are in a transition period in terms of operating systems - users should expect future releases of the operating system to lock out older applications in favor of security. Microsoft was *VERY* forgiving with first release of Vista and favored application compatibility over security - and subsequently lost market share, we don't expect them to make the same mistake. XP will almost certainly be discontinued by Microsoft, which means businesses will need to learn how to use Vista. 
+
+</div>
+</aside>
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+The old Win32 API's are dead. It is reasonable to assume that other non-.Net applications will need to go through similar pains of migrating to .Net in the future.  If you've looked at competitive applications to Zoovy's desktop client - please realize - they are almost certainly in for a beating in the future. 
+
+</div>
+</aside>
+
+
+</article>
+
+<article>
+<h2>2008/2009 Roadmap</h2>
+Version 8.012 was released on 1/6/09. It includes a totally new database engine.  Our development calendar in 2008 was impacted by a variety of projects and basically "making stuff work" properly -- we are excited about the opportunities in 2009.  Hopefully with smaller client development budgets we will again have the opportunity to focus on improving our core platform.
+
+</article>
+

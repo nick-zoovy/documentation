@@ -1,0 +1,53 @@
+<meta type="filename" id="dev/detail/inventoryapi">
+<h1>Inventory API</h1>
+<article>
+<h2>Overview</h2>
+
+The Zoovy Inventory API allows you to query a remote database to perform inventory lookups.
+
+</article>
+<article>
+<h2>Request Format:</h2>
+
+Performs an HTTP POST, the REQUEST variable contains the following XML content:
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;INVENTORY&gt;
+&lt;SKU ID="1506"/&gt;
+&lt;/INVENTORY&gt;
+
+</code>
+</aside>
+
+
+NOTE: 1506 is the SKU number of the product in the local database (this could also be a virtual product, or
+a product added via the soft cart feature!)
+
+</article>
+<article>
+<h2>Response Format:</h2>
+
+Expects a HTTP Content-type of xml/success with the body of the document formatted as such:
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;INVENTORY&gt;
+&lt;SKU ID="1506" QTY="10" RESERVE="0" LOC="SHELF_ABC"/&gt;
+&lt;/INVENTORY&gt;
+
+</code>
+</aside>
+
+
+NOTE: 1506 is the SKU number of the product in the local database. QTY is the actual quantity on hand, the reserve amount
+(if any) will be subtracted from that based on the merchants settings. LOC is the location, and is used by applications which 
+support realtime inventory lookups. (NOTE: order manager does not support LOCATION via remote API's at this time).
+
+
+</article>
+
+
+

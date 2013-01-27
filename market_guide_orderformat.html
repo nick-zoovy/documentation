@@ -1,0 +1,165 @@
+<meta type="filename" id="market/guide/orderformat">
+<h1>XML API Order Format</h1>
+
+
+<article>
+<h2>XML Order Format</h2>
+This is the format of an order when it is sent via an XML dispatch to a remote API.
+The order listed below is for a Paypal Order, however other fields such as masked credit card will be present if the order is paid by credit card. 
+
+For specific detail on the formatting of the order, payment status codes, and more please contact zoovy developer support. 
+
+<pre>
+&lt;ORDER ID="2007-03-12345" USER="username" V="3"&gt;
+&lt;DATA&gt;
+&lt;ship_middlename&gt;X&lt;/ship_middlename&gt;
+&lt;bill_city&gt;Some City&lt;/bill_city&gt;
+&lt;qbook_export&gt;0&lt;/qbook_export&gt;
+&lt;order_subtotal&gt;80.00&lt;/order_subtotal&gt;
+&lt;cc_authorization&gt;&lt;/cc_authorization&gt;
+&lt;meta&gt;&lt;/meta&gt;
+&lt;bill_zip&gt;85304&lt;/bill_zip&gt;
+&lt;cartid&gt;zPcJ7cEg8wfkvXpkuAb9amuNQ&lt;/cartid&gt;
+&lt;tax_total&gt;0.00&lt;/tax_total&gt;
+&lt;ship_firstname&gt;Chad&lt;/ship_firstname&gt;
+&lt;ship_state&gt;AZ&lt;/ship_state&gt;
+&lt;ship_company&gt;&lt;/ship_company&gt;
+&lt;ship_email&gt;&lt;/ship_email&gt;
+&lt;tax_rate&gt;0&lt;/tax_rate&gt;
+&lt;shp_taxable&gt;0&lt;/shp_taxable&gt;
+&lt;ship_phone&gt;555-555-1212&lt;/ship_phone&gt;
+&lt;shp_service&gt;&lt;/shp_service&gt;
+&lt;tax_zone&gt;&lt;/tax_zone&gt;
+&lt;bill_company&gt;&lt;/bill_company&gt;
+&lt;hnd_method&gt;&lt;/hnd_method&gt;
+&lt;local_tax_rate&gt;0&lt;/local_tax_rate&gt;
+&lt;sdomain&gt;bizdomain.com&lt;/sdomain&gt;
+&lt;shp_footer&gt;&lt;/shp_footer&gt;
+&lt;paid_date&gt;1173331847&lt;/paid_date&gt;
+&lt;paypal_acct&gt;someuser@somedomain.com&lt;/paypal_acct&gt;
+&lt;bill_country&gt;&lt;/bill_country&gt;
+&lt;state_tax_rate&gt;0&lt;/state_tax_rate&gt;
+&lt;bill_state&gt;AZ&lt;/bill_state&gt;
+&lt;bnd_footer&gt;&lt;/bnd_footer&gt;
+&lt;ship_lastname&gt;Lastname&lt;/ship_lastname&gt;
+&lt;timestamp&gt;1173386588&lt;/timestamp&gt;
+&lt;pool&gt;APPROVED&lt;/pool&gt;
+&lt;ship_date&gt;0&lt;/ship_date&gt;
+&lt;ship_city&gt;Some City&lt;/ship_city&gt;
+&lt;order_total&gt;95.00&lt;/order_total&gt;
+&lt;spc_method&gt;&lt;/spc_method&gt;
+&lt;shp_method&gt;UPS Ground 2 - 5 days (Priority Mail for&lt;/shp_method&gt;
+&lt;card_exp_month&gt;&lt;/card_exp_month&gt;
+&lt;bill_middlename&gt;J&lt;/bill_middlename&gt;
+&lt;ins_method&gt;&lt;/ins_method&gt;
+&lt;mkt_dispatch&gt;1173331572&lt;/mkt_dispatch&gt;
+&lt;card_number&gt;&lt;/card_number&gt;
+&lt;card_exp_year&gt;&lt;/card_exp_year&gt;
+&lt;product_count&gt;1&lt;/product_count&gt;
+&lt;om_process&gt;0&lt;/om_process&gt;
+&lt;mkt&gt;0&lt;/mkt&gt;
+&lt;ship_zip&gt;85304&lt;/ship_zip&gt;
+&lt;bill_lastname&gt;Lastname&lt;/bill_lastname&gt;
+&lt;bill_email&gt;someuse@somedomain.com&lt;/bill_email&gt;
+&lt;po_number&gt;&lt;/po_number&gt;
+&lt;shp_total&gt;15.00&lt;/shp_total&gt;
+&lt;customer_order_count&gt;0&lt;/customer_order_count&gt;
+&lt;bill_address1&gt;1234 Main Street&lt;/bill_address1&gt;
+&lt;payment_status&gt;109&lt;/payment_status&gt;
+&lt;bnd_method&gt;&lt;/bnd_method&gt;
+&lt;ship_address1&gt;1234 Main Street&lt;/ship_address1&gt;
+&lt;amazon_orderid&gt;&lt;/amazon_orderid&gt;
+&lt;payment_cc_status&gt;&lt;/payment_cc_status&gt;
+&lt;order_notes&gt; Random text typed by customer / business owner&lt;/order_notes&gt;
+&lt;bill_int_zip&gt;&lt;/bill_int_zip&gt;
+&lt;tax_subtotal&gt;80.00&lt;/tax_subtotal&gt;
+&lt;payment_method&gt;PAYPAL&lt;/payment_method&gt;
+&lt;bill_province&gt;&lt;/bill_province&gt;
+&lt;bill_firstname&gt;Fernando&lt;/bill_firstname&gt;
+&lt;subpool&gt;20&lt;/subpool&gt;
+&lt;ship_address2&gt;&lt;/ship_address2&gt;
+&lt;ship_country&gt;&lt;/ship_country&gt;
+&lt;mkt_finalize&gt;1173331847&lt;/mkt_finalize&gt;
+&lt;bill_address2&gt;&lt;/bill_address2&gt;
+&lt;bill_phone&gt;555-555-1212&lt;/bill_phone&gt;
+&lt;payment_authorization&gt;XXXXXXXXXXXXXXXXXXXX&lt;/payment_authorization&gt;
+&lt;ip_address&gt;1.2.3.4&lt;/ip_address&gt;
+&lt;cvvcid_number&gt;&lt;/cvvcid_number&gt;
+&lt;ship_int_zip&gt;&lt;/ship_int_zip&gt;
+&lt;ship_province&gt;&lt;/ship_province&gt;
+&lt;created&gt;1173331572&lt;/created&gt;
+&lt;shp_carrier&gt;&lt;/shp_carrier&gt;
+&lt;payment_info&gt;&lt;/payment_info&gt;
+&lt;/DATA&gt;
+&lt;STUFF&gt;
+&lt;product stid="PID:#Z00/00A0:040C:1" qty="1" cost="0.00" notes="" weight="4" price="80.00" taxable="1" description="STORMTROOPER ANKLE BOOTS / Size: Size 11 / Width: D (Standard Mens) / Gender: Mens / Order notes: " mkt="" mktid="" mktuser="" mkturl="" channel="0"&gt;
+        &lt;attribs&gt;
+                &lt;zoovy-ship_insurance&gt;0&lt;/zoovy-ship_insurance&gt;
+                &lt;zoovy-prod_image1&gt;stormtroopernew&lt;/zoovy-prod_image1&gt;
+                &lt;zoovy-prod_mfg&gt;Custom Handmade Boots&lt;/zoovy-prod_mfg&gt;
+        &lt;/attribs&gt;
+&lt;/product&gt;
+&lt;/STUFF&gt;
+&lt;EVENTS&gt;
+&lt;event luser="" etype="0" time="1173331572"&gt;Created customer somebody@something.com&lt;/event&gt;
+&lt;event luser="" etype="0" time="1173331572"&gt;Payment status set to 106 by initialize_order_new : Pending Paypal - The payment for this tranaction is waiting for the user to visit the PayPal system and make payment.&lt;/event&gt;
+&lt;event luser="" etype="0" time="1173331572"&gt;Request for PayPal payment has been successfully placed.&lt;/event&gt;
+&lt;event luser="" etype="0" time="1173331572"&gt;order initialized by [/httpd/bin/httpd] on d05&lt;/event&gt;
+&lt;event luser="" etype="0" time="1173331847"&gt;Final payment status is 050&lt;/event&gt;
+&lt;event luser="" etype="0" time="1173331847"&gt;INFO: website NOT setup to import confirmed addresses&lt;/event&gt;
+&lt;event luser="" etype="0" time="1173331847"&gt;IPN is attempting to load previous order 2007-03-37275&lt;/event&gt;
+&lt;event luser="" etype="0" time="1173331847"&gt;PAYPAL CONFIGURATION cfg=[33] ver=[7a] attempt=[0]&lt;/event&gt;
+&lt;event luser="" etype="0" time="1173331847"&gt;Payment XXXXXXXXXXXXXXX received from paypal at Wed 7-Mar-2007 21:27 PST&lt;/event&gt;
+&lt;event luser="" etype="0" time="1173331847"&gt;Payment confirmation for $95.00 received from PayPal (Fee: $3.06; Deposit: $91.94)&lt;/event&gt;
+&lt;event luser="" etype="0" time="1173331847"&gt;Payment status set to 050 by paypal-ipn : Paid in Full - via Paypal (verified buyer)&lt;/event&gt;
+&lt;event luser="" etype="0" time="1173331847"&gt;Paypal reports confirmed address.&lt;/event&gt;
+&lt;event luser="" etype="0" time="1173331847"&gt;Saved/Reset Transaction Fees&lt;/event&gt;
+&lt;event luser="" etype="0" time="1173331847"&gt;Zoovy original payment status is '106' [0] [0] [2007-03-12345]&lt;/event&gt;
+&lt;event luser="" etype="0" time="1173331847"&gt;did finalization on this order (updates campaigns, supplier orders)&lt;/event&gt;
+&lt;event luser="" etype="0" time="1173376503"&gt;Synced from desktop client was pool=RECENT payment=050&lt;/event&gt;
+&lt;event luser="" etype="0" time="1173382503"&gt;Synced from desktop client was pool=PENDING payment=109&lt;/event&gt;
+&lt;event luser="" etype="4" time="1173386588"&gt;Synced from desktop client was pool=PENDING payment=109&lt;/event&gt;
+&lt;/EVENTS&gt;
+&lt;FEES&gt;
+&lt;fee amount="3.06" posted="1173331572" name="Paypal Transaction Fee" code="PAYPAL_FEE"&gt;&lt;/fee&gt;
+&lt;/FEES&gt;
+&lt;TRACKING&gt;
+&lt;/TRACKING&gt;
+&lt;/ORDER&gt;
+</pre>
+</article>
+
+
+<article>
+<h2>Simulating a Dispatch</h2>
+
+Copy this into a .html file, then either use the sample XML above, or use your own XML exported version of an order. 
+
+<aside class="html">
+<h6></h6>
+<code>
+
+<html>
+Zoovy Order Dispatch Simulation
+<hr>
+<form method="POST" action="http://www.yourdomain.com/path/to/secret/program.jsp">
+<input type="hidden" name="Method" value="Order">
+Paste Order XML here:
+<textarea name="Contents"></textarea><br>
+<input type="submit" value=" Simulate Dispatch! ">
+</form>
+</html>
+
+
+
+</code>
+</aside>
+
+
+
+</article>
+
+
+
+
+ 

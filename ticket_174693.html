@@ -1,0 +1,57 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="ticket/174693">
+
+<h1>Issue #174693</h1>
+
+
+
+
+
+<article>
+<h2>Issue</h2>
+Issue: Ebay Preview Error 37 - 
+<aside class="html">
+<h6></h6>
+<code>Input data for tag <Item.AttributeSetArray (...) is invalid or missing.
+</code>
+</aside>
+
+
+<br>
+
+I get this error while previewing the launch of product PRODABC:<br>
+<aside class="html">
+<h6></h6>
+<code>Could not Preview due to Error(s): #37 Input data for tag 
+</code>
+</aside>
+
+<aside class="html">
+<h6></h6>
+<code><Item.AttributeSetArray.AttributeSet[2].Attribute[2].Value.ValueID>
+</code>
+</aside>
+
+<aside class="html">
+<h6></h6>
+<code>is invalid or missing. Please check API documentation.
+</code>
+</aside>
+
+<br>
+Can you help me with this? Thanks.
+</article>
+
+<article>
+<h2>Resolution</h2>
+
+Anytime you see this type of error, it's relating to the Item Specifics for the product.  It tells you that something is not correctly set in this area (Ebay Marketplace > Ebay Category > "Choose").<br>
+
+In this particular case, there is a problem with the "Return Policy" specifics.  Unchecking this box will allow the preview to pass successfully. <br>
+
+Try adjusting the settings here to see if you can get the preview error to resolve, or open a ticket with Tech Support letting them know you are getting an "Item Specifics" error thrown and for which product.
+
+</article>
+
+
+

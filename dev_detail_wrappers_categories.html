@@ -1,0 +1,447 @@
+<meta type="filename" id="dev/detail/wrappers-categories">
+<h1>Wrapper Reference - Categories</h1>
+<article>
+<h2>Overview</h2>
+
+
+In the codes below, there are several instances of ATTRIBUTE=0 or 1. 
+In these cases, 0 is false and 1 is true.  
+So in the instance of NOHOME=1, the home button/text would not appear in your navigation categories.  
+Pay close attention to the image categories, which sometimes duplicate a true or false statement up to three times.  
+Make sure all three are the same, or funky things will happen with your categories.  In image categories, feel free to adjust the width of the buttons, but again, do it in all three places.  BUTTONTYPE=sleekgrey4_off can be changed to any button type in the zoovy system.  It would need to be changed once in the body code and twice in the head code.  All three references can point to different navbuttons.
+<br>
+<br>Your code does not need to contain the nohome and onlyhome lines of code if you are not using them.  By default, both are set to zero. In some cases (text navcats), there is a divider line of code.  It be used to set what is placed between two categories.  Text menus also offer the 'after' tag, which can be used to place a piece of code on a page ONLY if there is navigation that appears.
+Some notes about subcategories:
+<table>
+	<tr>
+		<td><b>NOROOT=1</b></td>
+		<td>This will make sure the root categories do not appear in the subcat area.  Set this to 0 and navigation categories with no subcategories will display the rootlevel navcats in the subcat area.</td>
+	</tr>
+	<tr>
+		<td><b>DESCENDTREE=1</b></td>
+		<td>This will display the latest (or lowest) level of subcats displayed if no new subcategories are available.</td>
+	</tr>
+	<tr>
+		<td><b>PRODCAT=1</b></td>
+		<td>This will show all the categories and subcategories on a product page that the product resides in.  Right now, this includes hidden categories.</td>
+	</tr>
+</table>
+
+</article>
+<article>
+<h2>Horizontal Text Navigation Categories</h2>
+
+
+Place this code into your ZHTML where you want your root-level navigation categories to appear:
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;!-- MENU
+FORMAT=&lt;a href="%URL%" target="%TARGET%"&gt;%MESSAGE%&lt;/a&gt;%BREAK%
+DIVIDER=|%BREAK%
+AFTER=
+ONLYHOME=0
+NOHOME=1
+--&gt;
+
+</code>
+</aside>
+
+
+
+
+</article>
+<article>
+<h2>Horizontal Image Navigation Categories</h2>
+
+
+The image based navigation needs two pieces of code to work properly.  
+The piece immediately following should be placed in your ZHTML where you want the Navcats to appear.
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;!-- MENU
+BUTTONTYPE=sleekgrey4_off
+FORMAT=&lt;a href="%URL%" OnMouseOver="on(%NUM%)" OnMouseOut="off(%NUM%)"&gt;&lt;img src="%SRC%" width="%WIDTH%" height="%HEIGHT%" border="0" name="roll_%NUM%"&gt;&lt;/a&gt;%SP%
+WIDTH=140
+NOHOME=0
+ONLYHOME=0
+--&gt;
+
+</code>
+</aside>
+
+
+
+Place this code in the head of your ZHTML:
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;script language="JavaScript"&gt;
+&lt;!--
+initialized = 0;
+&lt;!-- MENU
+FORMAT=rollover_%NUM%_on = new Image;%BREAK%rollover_%NUM%_on.src = "%SRC%";%BREAK%
+BUTTONTYPE=sleekgrey4_on
+WIDTH=140
+NOHOME=0
+ONLYHOME=0
+--&gt;&lt;!-- MENU
+FORMAT=rollover_%NUM%_off = new Image;%BREAK%rollover_%NUM%_off.src = "%SRC%";%BREAK%
+BUTTONTYPE=sleekgrey4_off
+WIDTH=140
+NOHOME=0
+ONLYHOME=0
+--&gt;initialized = 1;
+function on(imageNumber) {
+if (!initialized || !document.images) return;
+document.images[eval("\"roll_"+imageNumber+"\"")].src = eval("rollover_"+imageNumber+"_on.src");
+}
+function off(imageNumber) {
+if (!initialized || !document.images) return;
+document.images[eval("\"roll_"+imageNumber+"\"")].src = eval("rollover_"+imageNumber+"_off.src");
+}
+// --&gt;
+&lt;/script&gt;
+
+</code>
+</aside>
+
+
+
+
+</article>
+<article>
+<h2>Vertical Text Navigation Categories</h2>
+
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;!-- MENU
+FORMAT=&lt;a href="%URL%" target="%TARGET%"&gt;%MESSAGE%&lt;/a&gt;&lt;br&gt;
+ONLYHOME=0
+NOHOME=1
+--&gt;
+
+</code>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Vertical Image Navigation Categories</h2>
+
+Place this code into the body of your ZHTML where you want the Navcats to appear:
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;!-- MENU
+BUTTONTYPE=sleekgrey4_off
+FORMAT=&lt;a href="%URL%" OnMouseOver="on(%NUM%)" OnMouseOut="off(%NUM%)"&gt;&lt;img src="%SRC%" width="%WIDTH%" height="%HEIGHT%" border="0" name="roll_%NUM%"&gt;&lt;/a&gt;&lt;br&gt;
+WIDTH=140
+ONLYHOME=0
+NOHOME=1
+--&gt;
+
+</code>
+</aside>
+
+
+
+Place this code between the head tags of your ZHTML:<br>
+
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;script language="JavaScript"&gt;
+&lt;!--
+initialized = 0;
+&lt;!-- MENU
+FORMAT=rollover_%NUM%_on = new Image;%BREAK%rollover_%NUM%_on.src = "%SRC%";%BREAK%
+BUTTONTYPE=sleekgrey4_on
+WIDTH=140
+ONLYHOME=0
+NOHOME=1
+--&gt;&lt;!-- MENU
+FORMAT=rollover_%NUM%_off = new Image;%BREAK%rollover_%NUM%_off.src = "%SRC%";%BREAK%
+BUTTONTYPE=sleekgrey4_off
+WIDTH=140
+ONLYHOME=0
+NOHOME=1
+--&gt;initialized = 1;
+function on(imageNumber) {
+if (!initialized || !document.images) return;
+document.images[eval("\"roll_"+imageNumber+"\"")].src = eval("rollover_"+imageNumber+"_on.src");
+}
+function off(imageNumber) {
+if (!initialized || !document.images) return;
+document.images[eval("\"roll_"+imageNumber+"\"")].src = eval("rollover_"+imageNumber+"_off.src");
+}
+// --&gt;
+&lt;/script&gt;
+
+</code>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Horizontal Text Subcategories</h2>
+
+
+Place this code into the body of your ZHTML where you want the subcategories to appear:
+
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;!-- MENU
+TYPE=SUBCAT
+FORMAT=&lt;a XXX href="%URL%"&gt;%MESSAGE%&lt;/a&gt;
+DIVIDER=|%BREAK%
+AFTER=
+NOHOME=1
+NOROOT=1
+DESCENDTREE=1
+PRODCAT=1
+--&gt;
+
+</code>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Horizontal Image Subcategories</h2>
+
+Place this code into the body of your ZHTML where you want the subcategories to appear:
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;!-- MENU
+TYPE=SUBCAT
+BUTTONTYPE=l2_redgalaxy_off
+FORMAT=&lt;a XXX href="%URL%" OnMouseOver="sbon(%NUM%)" OnMouseOut="sboff(%NUM%)"&gt;&lt;img src="%SRC%" width="%WIDTH%" height="%HEIGHT%" border="0" name="subroll_%NUM%"&gt;&lt;/a&gt;%SP%
+WIDTH=140
+NOHOME=1
+NOROOT=1
+DESCENDTREE=1
+PRODCAT=1
+--&gt;
+
+</code>
+</aside>
+
+
+Place the following piece of code between the head tags of your ZHTML
+
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;script language="JavaScript"&gt;
+&lt;!--
+initialized = 0;
+
+&lt;!-- MENU
+TYPE=SUBCAT
+FORMAT=subrollover_%NUM%_on = new Image;%BREAK%subrollover_%NUM%_on.src = "%SRC%";%BREAK%
+BUTTONTYPE=l2_redgalaxy_on
+WIDTH=140
+NOHOME=1
+NOROOT=1
+DESCENDTREE=1
+PRODCAT=1
+--&gt;
+&lt;!-- MENU
+TYPE=SUBCAT
+FORMAT=subrollover_%NUM%_off = new Image;%BREAK%subrollover_%NUM%_off.src = "%SRC%";%BREAK%
+BUTTONTYPE=l2_redgalaxy_off
+WIDTH=140
+NOHOME=1
+NOROOT=1
+DESCENDTREE=1
+PRODCAT=1
+--&gt;
+
+initialized = 1;
+function sbon(imageNumber) {
+if (!initialized || !document.images) return;
+document.images[eval("\"subroll_"+imageNumber+"\"")].src = eval("subrollover_"+imageNumber+"_on.src");
+}
+
+function sboff(imageNumber) {
+if (!initialized || !document.images) return;
+document.images[eval("\"subroll_"+imageNumber+"\"")].src = eval("subrollover_"+imageNumber+"_off.src");
+}
+
+// --&gt;
+&lt;/script&gt;
+
+</code>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Vertical Text Subcategories</h2>
+
+Place this code into the body of your ZHTML where you want the subcategories to appear:
+
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;!-- MENU
+TYPE=SUBCAT
+FORMAT=&lt;a XXX href="%URL%"&gt;&lt;/a&gt;&lt;br&gt;
+NOHOME=1
+NOROOT=1
+DESCENDTREE=1
+PRODCAT=1
+--&gt;
+
+</code>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Horizontal Image Subcategories</h2>
+
+Place this code into the body of your ZHTML where you want the subcategories to appear:
+
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;!-- MENU
+TYPE=SUBCAT
+BUTTONTYPE=l2_redgalaxy_off
+FORMAT=&lt;a XXX href="%URL%" OnMouseOver="sbon(%NUM%)" OnMouseOut="sboff(%NUM%)"&gt;&lt;img src="%SRC%" width="%WIDTH%" height="%HEIGHT%" border="0" name="subroll_%NUM%"&gt;&lt;/a&gt;&lt;br&gt;
+WIDTH=140
+NOHOME=1
+NOROOT=1
+DESCENDTREE=1
+PRODCAT=1
+--&gt;
+
+</code>
+</aside>
+
+
+
+Place the following piece of code between the head tags of your ZHTML:
+
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;script language="JavaScript"&gt;
+&lt;!--
+initialized = 0;
+
+&lt;!-- MENU
+TYPE=SUBCAT
+FORMAT=subrollover_%NUM%_on = new Image;%BREAK%subrollover_%NUM%_on.src = "%SRC%";%BREAK%
+BUTTONTYPE=l2_redgalaxy_on
+WIDTH=140
+NOHOME=1
+NOROOT=1
+DESCENDTREE=1
+PRODCAT=1
+--&gt;
+&lt;!-- MENU
+TYPE=SUBCAT
+FORMAT=subrollover_%NUM%_off = new Image;%BREAK%subrollover_%NUM%_off.src = "%SRC%";%BREAK%
+BUTTONTYPE=l2_redgalaxy_off
+WIDTH=140
+NOHOME=1
+NOROOT=1
+DESCENDTREE=1
+PRODCAT=1
+--&gt;
+
+initialized = 1;
+function sbon(imageNumber) {
+if (!initialized || !document.images) return;
+document.images[eval("\"subroll_"+imageNumber+"\"")].src = eval("subrollover_"+imageNumber+"_on.src");
+}
+
+function sboff(imageNumber) {
+if (!initialized || !document.images) return;
+document.images[eval("\"subroll_"+imageNumber+"\"")].src = eval("subrollover_"+imageNumber+"_off.src");
+}
+
+// --&gt;
+&lt;/script&gt;
+
+</code>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Vertical Text Navigation Categories</h2>
+
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;!-- MENU
+FORMAT=&lt;tr&gt;&lt;td background="%WRAPPER_URL%/fade.gif"&gt;&lt;a href="%URL%" target="%TARGET%"&gt;%MESSAGE%&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td height=4 background="%WRAPPER_URL%/line.gif"&gt;&lt;/td&gt;&lt;/tr&gt;
+ONLYHOME=0
+NOHOME=1
+--&gt;
+
+</code>
+</aside>
+
+
+
+
+</article>
+<article>
+<h2>Thumbnail Categories</h2>
+
+If you want to use the category thumbnails in your layout, you'll need to use different code to display the categories.  This code is faster than the standard menu wrapper element, however does NOT allow you to use the graphical buttons features.  Paste the following code into your wrapper. Leave source set to . if you want to display the root level categories.  Alternatively, you could set this to SRC=.safename (where safe name is a category safe name) and it will pull in a set of subcategories.  This is handy if you want to break your navigation into separate sections. Use the variables on the category flow elements for this.
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;!-- ELEMENT
+TYPE=SUBCAT
+MODE=LIST
+SRC=.
+FORCECOLUMNS=1
+&lt;HTML&gt;=
+&amp;lt;!-- ROW --&amp;gt;
+&lt;tr&gt;
+&amp;lt;!-- CATEGORY --&amp;gt;
+&lt;td&gt;&lt;a href="%cat_url%" &gt;&lt;img src="%image_url%/W40-H40-Bffffff/%cat_thumb%.jpg" height=40 width=40 alt="%cat_pretty%" border="0"&gt;&lt;/td&gt;
+&amp;lt;!-- /CATEGORY --&amp;gt;
+&lt;/tr&gt;
+&amp;lt;!-- /ROW --&amp;gt;
+&lt;/HTML&gt;=
+--&gt;		
+
+</code>
+</aside>
+
+</article>
+
+
+

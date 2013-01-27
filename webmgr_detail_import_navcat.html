@@ -1,0 +1,218 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="webmgr/detail/import-navcat">
+<h1>Category Import</h1>
+<article>
+<h2>Directions</h2>
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+Please note: This is an advanced feature and requires that you first contact
+technical support via a ticket. If you corrupt your your database there will be a $150 charge per hour to fix it<br><br>
+
+</div>
+</aside>
+
+The safest way to put together an import file for your categories is to use the export file to make your modifications, then import that file back into the table.  Note that formatting and syntax of this file is critical, so if you don't know what you are doing, contact Tech Support for assistance, or at the very least save a copy of the export file unchanged as a backup. <br>
+
+There are 6 columns in the file:
+<li> safe name - must be in a cleaned, DB friendly syntax, i.e.  category "Safe Name" would be ".safe_name".  All lower case, no special characters other than underscores, and a period before each category level.
+<li> pretty name - this is the display name of your category.  In the example above it would be "Safe Name"
+<li> sort order - sort order of the category (NAME, NONE, PRICE, SKU, SKU_DESC)
+<li> products - list of products in the category, comma separated, no spaces
+<li> category layout - name of the category layout
+<li> meta - this holds the syndication and other information for the category, usually there is not a need to adjust any information in this column and it is edited via the interface.
+<br>
+
+<aside class="hint">
+<h6></h6>
+<div> Always back up your existing categories before doing a category import. To create a back up, click on the "EXPORT" link under Setup > CSV Import Utility > Category. 
+</div>
+</aside>
+
+</article>
+<article>
+<h2>Changing Safenames</h2>
+The only way to change a category safename is though a CSV import.  First export your categories, create a new second column with the header %REMAP_SAFE  Add the new names for the appropriate categories, leaving the cell blank for the categories that are not changing.
+<aside class="caution">
+<h6></h6>
+<div>
+Changing the safename will cause the old safename url to produce a 404 error message.  It is highly recommended that you implement 301 redirects.  Please refer to the <a href="https://www.zoovy.com/webdoc/index.cgi?VERB=DOC&DOCID=51497">URL Rewrite</a> doc for reference.
+
+</div>
+</aside>
+
+</article>
+<article>
+<h2> Column Headings</h2>
+#TYPE=CATEGORY - This should be the topmost line in any category import. 
+<br>
+<tr>
+		<td valign='top' nowrap>#JUST_PRODUCTS</td>
+		<td>This code is actually a macro that is passed to the import process rather than an actual attribute.  It tells the import process to add products to category if the safe name exist.
+		</td>
+	</tr>
+<br>
+%SAFE - This is the safename of the category that you want to modify.
+<br>
+%NUKE_SAFE - This header kills the category safename that you designate in this column.
+<br>
+<aside class="caution">
+<h6></h6>
+<div>
+Nuking the safename will produce a 404 error message.  It is highly recommended that you implement 301 redirects.  Please refer to the <a href="https://www.zoovy.com/webdoc/index.cgi?VERB=DOC&DOCID=51497">URL Rewrite</a> doc for reference.
+
+</div>
+</aside>
+
+%REMAP_SAFE - Use this header to change the safename to a different safename. Populate this column with the new safename.
+<aside class="caution">
+<h6></h6>
+<div>
+Changing the safename will cause the old safename url to produce a 404 error message.  It is highly recommended that you implement 301 redirects.  Please refer to the < a href"https://www.zoovy.com/webdoc/index.cgi?VERB=DOC&DOCID=51497">URL Rewrite</a> doc for reference.
+
+</div>
+</aside>
+
+<br>
+%METASTR - This header is used for meta information. For example, to set the Thumbnail picture used for the category, you would populate this column with "CAT_THUMB=" (no quotes) and then the image location. You could also set sitemap priority levels for category pages from the default, using MAP=(Enter Value Here)"
+</article>
+<article>
+<h2>Modify Metadata through CSV</h2>
+The CSV import utility now has the option to apply Meta Data in bulk to your categories.
+<br>
+It is <b>STRONGLY</b> suggested that you speak to implementation before you attempt to perform this type of update.
+<br>
+You May also want to speak to our Marketing Development team as far as relevant and beneficial implementation of Meta Data, Keywords, and SEO related material before modifying these fields.
+<br>
+<b>Import Headers</b>
+The headers available for export/import in regards to Your Meta Data are as follows
+<br>
+<li>PAGE_TITLE
+<li>META_DESCRIPTION
+<li>META_KEYWORDS
+<br>
+You may notice, when actually looking at the Meta portion of the category page there is an option for "Additional Head Elements".  This is currently not available for import, as this field may pertain to code, or advanced text that a CSV can corrupt.
+<br>
+<b>Page Title</b>
+This Field should be a brief 1-3 word title or message that appears at the top of the layout
+<br>
+<b>Meta Description</b>
+This should be a short "verbal" description relating to the page/category contents like:
+"This zoovy store specializes in Hats and beanies."
+<br>
+<b>Meta Keywords</b>
+These should be keywords directly refering to the content of the category or page you are building. An example would be: hats,beanies,caps,lids
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,72 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="tech/site_loading_slow">
+<h1>Help! My site is loading slow</h1>
+
+
+
+
+
+
+
+
+<article>
+<h2>Overview</h2>
+
+The following document discusses some advanced concepts behind how Zoovy replicates sites to it's webserver farm and then provides a set of tips business owners can follow to improve site performance.
+
+<section>
+<h3>Load balancing</h3>
+Zoovy does not put sites on a single server. Each site is put into a cluster of webservers which increases the overall complexity, but also equips each site to deal with far higher traffic loads and also eliminates the possibility that another customer on the same server can affect other customers (at the same time eliminating the need to have one server per customer). 
+
+Incoming shoppers are automatically routed to the "least busy server" and then their session is kept on that server for the duration of their visit, unless that server goes down.
+
+Each server employs health monitoring software that checks memory, local disks, network connectivity and system load. In the event a server detects a case where a server failure is potentially imminent the server informs the load balancer to redistribute all sessions to other servers and it goes into a "undead mode" where it restarts all services and attempts to heal itself. In the event a server cannot heal itself (e.g. hardware failure) Zoovy admin staff are notified and the server's hardware is repaired. 
+
+Currently there are over 30 servers which service all stores. In addition there are always multiple "hot spare" servers which can be added at any time as demand increases. 
+
+</section>
+
+<section>
+<h3>Replication</h3>
+A full discussion of the Zoovy architecture is available in the document:
+<a class="linkdoc" href="#?doc=50645">Doc 50645</a>
+
+<br>
+But suffice it to say that the majority of every site along with all configuration files is stored on every webserver. 
+
+<br>
+
+The following elements are NOT stored on each webserver: 
+* Products (which are stored in a central database)
+* Images (images are stored on a central fileserver, but images are also replicated to each server using a reverse caching algorithm which has a 96% overall hit rate)
+* Inventory - for obvious reasons this is stored in a central database
+* Orders - for obvious reasons these are stored on a central database + fileserver.
+
+<br>
+
+Currently each site must be re-replicated whenever any piece of data in the site changes. To maximize site performance we encourage site owners to use the following tips and tricks:
+
+* Keep product lists small: this will avoid slow category page load times because each product must be loaded from the central database. 
+* Avoid updates: use the warehouse manager desktop client to upload all changes to your site at once, currently each time data is changed on your site the entire site must be reloaded to each server.
+
+</section>
+
+<section>
+<h3>Future</h3>
+
+In 2007 we will be introducing a "publish" button which provides the following advantages:
+Allows site owners to make full backups of categories, pages, and products that you can restore from.
+Provides site owners with the ability to determine when updates are and are not visible to customers.
+Out of stock products will no longer be removed from the category database when inventory runs out (instead they will only be removed from the website during the next publish cycle).  
+
+</section>
+
+
+</article>
+
+
+
+
+
+
+

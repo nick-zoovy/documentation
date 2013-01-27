@@ -1,0 +1,117 @@
+<meta type="filename" id="info/detail/ebay-unpaid">
+<h1>eBay Unpaid Item Manager</h1>
+<article>
+<h2>Overview</h2>
+
+The eBay site is designed so that a seller lists an item and buyers bid on or purchase the item. 
+The buyer or winning bidder then pays for the item, and the seller ships it to the buyer. 
+When the transaction is complete, eBay charges the seller a percentage of the transaction price, 
+known as a Final Value Fee or FVF. eBay's Unpaid Item policy and User Agreement both make clear 
+that buyers must pay for the items they commit to purchase.
+
+</article>
+<article>
+<h2>When to Use the Unpaid Item Process</h2>
+
+
+However, in some cases, the buyer does not pay or the buyer and seller have a disagreement. 
+The Unpaid Item Process is designed to handle this. 
+The process usually occurs after eBay has charged the seller the Final Value Fee (FVF - a percentage of the sale amount), 
+but before the seller ships the item. Typically, a seller would use the Unpaid Item Process when:
+
+    <li> The buyer does not pay during the first seven days after the transaction and does not respond to the seller.
+    <li> The buyer refuses to pay.
+    <li> The buyer's check does not clear or credit card transaction is declined.
+    <li> The buyer requests shipment to a country that the seller doesn't ship to.
+    <li> The buyer wants shipment to an unconfirmed address.
+    <li> The buyer wants to use a payment method that the seller doesn't accept.
+    <li> The buyer is no longer a registered eBay user.
+    <li> The buyer and seller are unable to resolve a disagreement over terms.
+    <li> The buyer returned the item for a refund.
+    <li> The buyer made a mistake and no longer wants the item.
+    <li> The seller does not receive payment for some other reason.
+
+These situations occur in only a small percentage of listings. But because they do occur, the Unpaid Item Process allows the seller to escalate the situation and attempt to correct it. The goal is a negotiation between buyer and seller. However, negotiation does not resolve all cases. This is what the Unpaid Item Process is designed to help with.
+
+</article>
+<article>
+<h2>How the Unpaid Item Process Works</h2>
+
+
+The Unpaid Item Process involves both a buyer and a seller. Parts of it can be automated by Zoovy 
+but other parts can only be used through the eBay site. Typically, the process has four steps:
+
+<li> The seller files a dispute.
+The seller can file a dispute on the eBay site or by calling AddDisputeCall up to 45 days after the transaction is created. The seller usually has to wait until 7 days after the transaction to file the dispute, unless the buyer is no longer a registered eBay user or requests shipment to a country the seller does not support. In those two cases, the seller can file the dispute immediately.
+<li> eBay contacts the buyer.
+      Once the dispute is created, eBay sends the buyer an email with a pop-up message asking the buyer to pay. The buyer has 7 days to respond, but can only reply or pay through the eBay site. If the buyer has already paid, she can explain. If the buyer does not respond after 7 days, the seller can close the dispute and request a fee credit.
+    <li> The buyer and seller communicate.
+
+      The buyer and seller can attempt to resolve the situation. The buyer must communicate through the eBay site. The seller can communicate through the site or by calling AddDisputeResponseCall.
+    <li> The seller closes the dispute.
+
+      The seller can close the dispute after the buyer has responded at least once or 7 days pass, whichever comes first. Closing the dispute is done through the eBay site or with AddDisputeResponseCall. In either case, the seller has several options for closing the dispute. Each option has different results for the buyer and seller.
+      Reason for Closing 	Results
+      We've completed the transaction and we're both satisfied. 	In this case, the buyer pays. The seller does not receive a Final Value Fee credit, and the buyer does not receive an Unpaid Item Strike.
+      We've agreed not to complete the transaction. 	The buyer and seller decide not to move forward. What happens next is described in Mutual Agreement.
+      I no longer wish to wait for or communicate with the buyer. 	The seller would use this option if the buyer does not respond or the communication is not effective. The buyer receives an Unpaid Item Strike and the seller receives a Final Value Fee credit.
+
+A dispute only remains open for 60 days after the transaction was created. If the seller does not close the dispute within 60 days, it is automatically closed. In that case, the seller does not receive a Final Value Fee credit and the buyer does not receive an Unpaid Item Strike.
+Mutual Agreement
+
+When the seller uses AddDisputeResponse to close a dispute with the second reason (We've agreed not to complete the transaction), the dispute is not yet closed. eBay generates an email to the buyer. The email contains a link to a page on the eBay site on which the buyer needs to choose from two options. Each option has its own results.
+Buyer Option 	Results
+I agreed not to complete this transaction, or returned the item, or both. 	The seller receives a Final Value Fee credit, the buyer does not receive a strike, and the dispute is closed.
+We have made an agreement to cancel this transaction. 	The seller does not receive a Final Value Fee credit, the buyer does not receive a strike, and the dispute is closed.
+[Or] The buyer does not respond within 7 days. 	The seller is eligible for an FVF credit, and the buyer does not receive a strike. The dispute closes automatically.
+Options in the Process
+
+The Unpaid Item Process also lets you get information about open or closed disputes or reverse a dispute that has been closed. These are the options the Unpaid Item Process offers.
+
+    <li> The buyer or seller wants information about a dispute.
+
+      The eBay site offers a Dispute Console that lets a buyer or seller see a list of disputes he is or has been involved in. The seller can also use GetDisputeCall to retrieve the details of a specific dispute. Either buyer or seller can use GetUserDisputesCall to retrieve the full list of disputes he or she has been involved in as either buyer or seller. The dispute information is available up to 5 years after the dispute has been closed.
+    <li> The seller reverses the dispute after it is closed.
+
+      Sometimes the buyer and seller come to an agreement after a dispute is closed. In that case, a seller can reverse the dispute using SellerReverseDisputeCall. Any Final Value Fee credit the seller received and any Unpaid Item Strike the buyer received are reversed.
+
+Life Cycle of a Dispute
+
+A dispute has a life cycle, with various stages. The functions you can use at a given time depend on the stage of the dispute life cycle. The life cycle stages are Create, Communicate (the stage where the buyer and seller leave comments for each other), Close, and After Closing.
+Function 	Life Cycle Stage 	When You Can Use It
+AddDispute 	Create 	Available only to the seller, in these cases:
+
+    <li> If the buyer is no longer a registered eBay user, as soon as the transaction is created.
+    <li> If the buyer requests shipment to a country the seller does not ship to, as soon as the transaction is created.
+    <li> Otherwise, at least 7 but no more than 45 days after the transaction was created, if the buyer has not paid or does not respond, or if buyer and seller agree not to complete the transaction.
+
+AddDisputeResponse 	Communicate or Close 	Available only to the seller, in these cases:
+
+    <li> Add Comments or Respond to Buyer - After the dispute has been created, but before it is closed.
+    <li> Close - After the buyer has responded or seven days, whichever comes first, up to 60 days after the transaction was created. At 60 days, the eBay system automatically closes the transaction.
+
+GetDispute 	Any 	Available only to the seller, after the dispute has been created and up to 5 years after it has been closed.
+GetUserDisputes 	Any 	Available to either buyer or seller, after the dispute has been created and up to 5 years after it has been closed.
+SellerReverseDispute 	After Closing 	Available only to the seller, after a dispute has been closed, if an agreement is reached. SellerReverseDispute reverses the seller's FVF credit and the buyer's strike.
+
+Note: As of July, 2004, the Unpaid Item Process replaces the Non-Paying Bidder feature. 
+
+A dispute only remains open for 60 days after the transaction was opened. After 60 days, it closes automatically. In this case, the seller does not receive an FVF credit and the buyer does not receive a strike.
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+
+While an unpaid item dispute is open, it will remain in the incomplete items folder of Order Manager (in either Web Manager or Zoovy Order Manager.)
+
+
+</div>
+</aside>
+
+ 
+
+</article>
+
+
+

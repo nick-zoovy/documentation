@@ -1,0 +1,208 @@
+<meta type="filename" id="hide/160679">
+
+<h1>Issue #160679</h1>
+
+<article>
+<h2>Issue</h2>
+Issue: Default site incorrect, causing errors in feeds
+
+<br>
+
+Platform: na
+Topic: web_manager
+Our default site is set to www.zurichsafes.com but should be (and always has been as far as we know) www.zurichproducts.com
+
+this is causing errors in our syndicate feeds, such as this one from google base (Errors: Error Bad data Line # 
+The domain of this URL doesn't match the domain registered on the Settings page of this account. - help link:http://zurichsafes.com/product/SCH-FE595PLY:AM04) and therefore causing a major drop in sales. 
+
+I have attached a screen shot. Please do whatever it takes, or tell me whatever to do so we can fix this.
+Default site needs to be www.zurichproducts.com 
+
+
+ 
+</article>
+
+<article>
+<h2>Resolution</h2>
+Hi,
+
+It looks like there might be a couple of things setup incorrectly here.  First, you do not have a configuration set up for zurichproducts.com.  You only have a configuration for zurichsafes.com.  
+
+Also, the URL that you listed above http://zurichsafes.com/product/SCH-FE595PLY:AM04, is not the URL to the home page but rather a URL to a specific product.
+
+I would highly recommend scheduling an implementation session with a specialist to take the time to go over your configuration completely and get is set up the way you want it to be.
+
+Thank you,
+Michael
+</article>
+
+<article>
+<h2>Resolution</h2>
+Michael,
+Thanks.  URL <http://zurichsafes.com/product/SCH-FE595PLY:AM04 > is part of the error message that google base sent back to us. If I understand zoovy correctly, zoovy builds the xml product file that google reads and submits. Therefore, the zurichsafes.com url is indeed wrong, it should be www.zurichproducts.com. 
+
+
+1. it is configured and has been configured to zurichproducts.com be the default. We inquired about this issue back on Ticket: 158666, but it was not causing any errors that we knew of then. It is now causing errors, and therefore lost sales.
+
+
+2. zurichsafes, like many other profiles we have is simply a specialty site and NOT the default but in zoovy. It, like a few other sites, redirect to www.zurichproducts.com
+
+
+3. I have attached a couple of screen shots for the edit domain configuration page. Let me know what I need to change. I need zurichproducts.com to be the default site for syndication right now.
+
+
+4. Could the DOMAIN ORDER have anything to do with this error? Zurichsafes.com is the first domain listed. I have attached a screen shot. 
+
+5 We have been in training sessions before and mentioned the zurichsafes>default issue and the trainer said that it didn't look normal, but offered no fix.
+
+Screen shots are attached to next ticket, as this one is closed.
+
+
+
+
+
+</article>
+
+<article>
+<h2>Resolution</h2>
+Screen shots attached
+</article>
+
+<article>
+<h2>Resolution</h2>
+Hi, 
+
+I am unable to open your screen shots but from what I see it appears you have created a new profiles for www.zurichproducts.com.  Which from what i read in your previously stated ticket Rich had told you how to work around that.  From my understanding and what you are trying to do. You will just need to goto googlebase and fill out the syndication info for zurichproducts.com in that specific profile.  I hope i answered your question. If not it may be better to schedule a phone call this upcoming week so we can go over this via the phone. Please let me know if I answered your questions or if you would like more info. I will be in and available for calls Tuesday, Wednesday and Friday of next week. 
+
+
+Thanks
+
+Jon H. 
+
+</article>
+
+<article>
+<h2>Resolution</h2>
+My name Nolan at (303)317-3422. Please call re: I can tell you where to go to see the problem that I am having.
+</article>
+
+<article>
+<h2>Resolution</h2>
+My name Nolan at (303)317-3422. Please call re: I can tell you where to go to see the problem that I am having.
+</article>
+
+<article>
+<h2>Resolution</h2>
+I'm forwarding to CS manager to get a tech to call back.
+
+</article>
+
+<article>
+<h2>Resolution</h2>
+
+Incident 26210 created and assigned to kateo
+
+----------------------------------------------------------------------------
+An incident means this issue has been escalated for review by a senior 
+technician or a developer for further investigation. 
+Depending on the status, and the workload of the individual it has been 
+assigned to it may be several days or more before this issue is addressed. 
+
+We encourage you to check back as often as necessary and add additional 
+notes. If the issue cannot be solved immediately it will be downgraded 
+to a low priority incident in which case the ticket and incident will 
+remain open until the issue is resolved.  Any notes you add to the ticket 
+will be sent automatically to the person who is assigned to the incident.
+
+</article>
+
+<article>
+<h2>Resolution</h2>
+kate - can you please put one of your minions on this. 
+</article>
+
+<article>
+<h2>Resolution</h2>
+### Tech Notes ###
+
+Attempted to call.  Merchant not available.  Need to try back in an hour or two.
+</article>
+
+<article>
+<h2>Resolution</h2>
+### Tech Notes ###
+
+Problem: The default profile has several domains attached to it.  The Googlebase configuration for the default profile is using a domain that is not attached to the profile.
+
+Googlebase configuration:
+
+DEFAULT => zurichsafes.com (EDIT)
+Status: Last Run: Sun 25-Nov-2007 / Next Run: Mon 26-Nov-2007 / Success!
+
+Domains associated with the default profile:
+
+zurichproducts.com
+zurichsafe.com
+zuricklocks.com
+zuricksafes.com
+exportinghome.zoovy.com
+
+If possible, the merchant would very much like for zurichproducts.com to be the domain that is used for Googlebase under the default profile.
+</article>
+
+<article>
+<h2>Resolution</h2>
+### TECH NTOES ###
+
+---FROM GoogleBase Syndication Settings:
+DEFAULT => zurichsafes.com (EDIT)
+Status: Last Run: Wed 28-Nov-2007 / Next Run: Thu 29-Nov-2007 / Success!
+
+---FROM Domain Config:
+zurichsafes.com
+Hosting Type:	 Specialty
+Configuration Profile: DEFAULT 
+
+---FROM Site Builder: 
+Profile DEFAULT 
+Associated Domains
+zurichproducts.com
+zurichsafe.com
+zuricklocks.com
+zuricksafes.com
+exportinghome.zoovy.com
+
+</article>
+
+<article>
+<h2>Resolution</h2>
+Nolan,
+Sorry that this took so long.  Brian and I spent a couple days getting it worked out.  So, really two issues here:
+
+1. a domain that wasn't in the default was being syndicated under the default profile - we fixed this yesterday. That domain (zurichsafes.com) now appears in the profile Default.
+
+On a related side note, where was some question of why when you remove a domain from a profile, why a syndication might still display that domain and the one used for syndication.  This will happen until the next successful syndication run. It's not going to chose a new domain to display until the next time syndication is run and it is reset.
+
+2. How do I decide which domain within a profile is "primary" and get syndication to run with that domain? - So we looked at this, the functionality and the business cases behind it and made some adjustments.  If you want to select one domain within a profile as "primary", i.e. all syndication for that profile will use that domain, then the recommended method is to change all the other domains under that same profile to redirect at the primary domain.  Example:
+
+I have profile "DEFAULT" and three domains under it.  I want domain "ABC.com" to be the one which syndication uses.  I set the domains up under domain configuration as follows:
+
+---Domain ABC.com - Type: Default (Alternately Type:Specialty , Profile DEFAULT - does the same thing)
+
+---Domain DEF.com - Type:Redirect , Redirect to Domain: ABC.com
+
+---Domain ZYX.com - Type:Redirect , Redirect to Domain: ABC.com
+
+Now, the caveat of this is that you have to have the target domain (ABC.com in the example above) under registrar of zoovy in order to perform the redirects.
+
+(http://www.zoovy.com/webdoc/index.cgi?VERB=DOC&DOCID=50971)
+
+Alternately you can still use the viable work-around that has always been the case: close a new profile and only assign the domain that you want to syndicate to under that profile.  Example:
+
+As in the above scenerio I have three domains under profile DEFAULT.  Unfortunately, I don't have domain ABC.com registered with zoovy and I refuse to do so. My alternative is to clone the profile DEFAULT creating a new one well call "PROFILE2", then assign domain ABC.com under that profile and syndicate from that new profile rather then DEFAULT.
+
+Let us know if you have questions.
+
+ ~MJ
+</article>
+

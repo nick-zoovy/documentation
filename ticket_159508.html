@@ -1,0 +1,71 @@
+<meta type="filename" id="ticket/159508">
+
+<h1>Issue #159508: Shipping Address Problem</h1>
+
+<article>
+<h2>Issue #159508: Shipping Address Problem with Quickbooks / FedEx Printing</h2>
+
+I  placed a recent order that was intended to bill and ship to the same address.  When I printed out the Fed Ex label, using FedEx Ship Manager (via Quickbooks), 
+the shipping address from an earlier order the same customer placed was utilized.  
+
+<br>
+
+Looking into Quickbooks, I can see that the customer's home address was in the Bill to area, but the old ship to address was in place in the Shipping area.  It appears that when I synchronized, the shipping address area did not get updated.
+</article>
+
+
+<article>
+<h2>Clarification</h2>
+
+When you say that you printed the label, you mentioned using FedEx Ship Manager.  You didn't print out the label from Order Manager? Is there a reason why?  I think that printing out of ZOM would resolve this problem for you, as I suspect that ZOM has the correct information for the order, but that QB does not.
+
+<br>
+
+Can you open that order in ZOM and tell me if the shipping address for that order is correct?
+</article>
+
+<article>
+<h2>Update from Customer</h2>
+Yes, Order Manager does have the correct address visible when I look at the order there.  But, I don't have a thermal printer.  So, I print using my laser printer via Fed Ex Ship Manager.
+</article>
+
+<article>
+<h2>Update from Developer</h2>
+
+Quickbooks will change the billing and shipping information if it's correctly set in Customer record. Otherwise Quickbooks will use the customer record that it has in the database. Since she is trying to print in Quickbooks, it's causing her to print the wrong address since it pulls from the customer record not the invoice.
+</article>
+
+<article>
+<h2>Resolution</h2>
+
+The issue here is that Quickbooks pulls from the customer record. Quickbooks can only support one address per customer - so if a customer updates their address, it doesn't update.   In this case, I don't know why the customer record didn't update - but my guess would be something in your checkout settings, which I will investigate  --- however I need to bring a much bigger issue to your attention: 
+
+<br>
+
+<aside class="caution">
+<h6></h6>
+<div>
+Printing invoices or shipping from quick books is *VERY* dangerous.
+
+</div>
+</aside>
+
+
+You should not be printing orders or shipping from Quickbooks since QB has a limitation of only one shipping and one billing address per customer.  The address on an invoice is tied to a customer, so if it's updated - it will just use the new address (or if it's not, it will use the old address)
+
+<br>
+
+If a customer orders two of the same item - lets say a gift for both of their grandmothers on mothers day - one grandmother will receive two sets of gifts, the other will receive none.
+
+<br>
+The alternative is to create one customer record per unique order - or per unique address - but that creates a whole host of other reporting issues.  
+
+<br>
+As such -- we do not recommend or support the configuration you are using, there is absolutely no way we could make it work all of the time. 
+
+<br>
+
+Since you don't have a thermal printer I assume it also means you don't have a FedEx contract. Contact Zoovy Sales to see if we can arrange for you to get a FREE Thermal Printer (which we can in 99% of the cases)
+
+</article>
+

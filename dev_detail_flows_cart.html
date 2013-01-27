@@ -1,0 +1,148 @@
+<meta type="filename" id="dev/detail/flows-cart">
+<h1>Flows - CART Element</h1>
+<article>
+<h2>Overview</h2>
+
+This guide discusses the "CART" element - specifically the ability to embed server side javascript into the cart
+element to create your a customized cart presentation.<br>
+<br>
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+This document is written for Zoovy employees who are building
+customized carts for customers, and contains references to specific Zoovy internal policies and procedures.
+Customers do not necessarily need to follow these "guidelines" - with the exception of the performance guidelines.
+Failure to adhere to the performance guidelines could result in the cart being deactivated and replaced with a
+default Zoovy cart. <br>
+
+</div>
+</aside>
+
+
+
+<br>
+<aside class="caution">
+<h6></h6>
+<div>
+
+<b>Effective 9/18/04: Consultants/Independent Contractors who are building projects for customers *MUST* adhere to all guidelines to 
+ensure forward compatibility. Keep reading to learn why:</b><br>
+<br>
+Failure to provide full compatibility for all Zoovy features will most likely result in a disruption of
+the customers business, which will ultimately result in a monetary loss. When a monetary loss occurs
+customers have been known to drag these issues into court. Therefore it is paramount Individuals/Consultants building 
+applications be aware of the following:<br>
+<br>
+
+<li> Projects which fail to adhere to the current compatibility guidelines at the time of delivery are 
+considered "incomplete" and therefore would be deemed NOT fit for use by the platform vendor (Zoovy). 
+This statement entitles a customer to receive refunds, and possibly take punitive actions against a 
+consultant for stating otherwise. Zoovy recommends Consultant/Individuals provide a customer with a copy of these
+guidelines and an affidavit stating they are compliant upon project delivery. We recommend customers "sign off" that either
+they, or another consultant, or the Zoovy development staff has reviewed the code for compatibility prior to accepting
+the project.<br>
+<Br>
+
+<li> Companies/Individuals who fail to adhere to the published guidelines fully indemnify Zoovy, and therefore assume full 
+responsibility for any disruptions to the customers business. This statement should be considered and amendment to the Zoovy Terms 
+of service, and Acceptable Use Policy - by using our platform this supercedes ANY previous contract you had with 
+your customer that may limit your responsibility.<br>
+<br>
+
+<li> Therefore as viewed by a court of law, a customer should be entitled to a full refund on any fees paid to any
+Individual/Consultant, as well as damages (within on jurisdictional guidelines) from Individuals/Companies who do not 
+adhere to these guidelines. <br>
+<br>
+
+<li> Reliability is a key feature of our platform and our brand - outages adversely affect our brand. 
+Therefore if an Individual/Company chooses not to adhere to these guidelines, Zoovy may independently determine it is 
+appropriate to take legal action against them. Zoovy reserves the right to pursue legal remedies as allowed by a court of law including, 
+but not limited to: court  ordered cessitation of all services to all Zoovy customers, and/or financial remedies as afforded by trademark laws. 
+The venue and laws governing any such action will be determined by California, district of San Diego.<br>
+<br>
+<li> Adherence to these guidelines does not guarantee compatibility, or proper operation - and under no circumstances
+does Zoovy warranty, or assume any responsibility for 3rd party code. Zoovy certifies that any code delivered to our 
+customers and certified ready for use meets these guidelines. 
+
+</div>
+</aside>
+
+
+
+<p>
+By default if you specify type of "CART" with VERSION=1 and a CODE segment you will get
+buttons regardless of that setting - this is simply to preserve forward compatibility.
+Because of the amount of logic that is actually implemented in a javascript cart.
+</p>
+
+
+</article>
+<article>
+<h2></h2>
+
+
+Performance:
+	1. calling CART.count() rather than setting a variable equal to stuff count and decrementing the variable.
+	2. fetching the same key/value from an external function/object more than 3 times in the operation of a 
+	   program (instead copy it to a variable in the local memory rather than calling out to an external function)
+	   
+Compatibility:
+	1. Failure to encode STIDS when passing on a URI (remember STIDS contain #) 
+	2. Failure to display / handle simple promotions.
+	3. Failure to display possible shipping modes (waivers available in certain instances where it is not possible)
+
+Forward compatibility:
+	1. Attempting to parse STIDS from STUFF object.
+	2. Poor commenting - chances are somebody (probably me) is going to have to look at this in the future - failure
+	   to comment will result in possible loss of authorship priviledges and/or termination. 
+	3. Failure to adhere to current coding style guidelines. 
+			
+	   
+The following zoovy functions are automatically imported into the javascript namespace:
+
+themeini(key) - returns a text string of a value in the theme.ini file
+webdb(key) - returns a text string of a value in the webdb
+flow_url(pagetype) - returns the appropriate URI to a specific page type.
+element(key) - returns values which are stored inside the <ELEMENT> tag [ex: element('SHOW_CART') returns a 0/1]
+moneyformat(value) - returns a properly formatted dollar value - use this function to format all money values to
+		- help ensure forward compatibility with multi-currency.
+
+
+The following zoovy objects are automatically imported into the javascript namespace:
+[in order to use these you must declare them .. ex: var cart = new CART;]
+
+#################################
+STUFF - stuff is a container object for products, it is used in both carts, and orders. Because stuff is a very
+complex format, only a limited number of stuff properties are brought into javascript although we may add more
+over time.
+
+## STUFF.as_xml() - returns the product contents as xml.
+    note: this is serialized using the same internal function an order uses. This is *incredibly* handy for peering
+    inside a particular cart to see what data is kept in there - also for data interchange. 
+
+## STUFF.itemList() - returns a list of stids separated by pipes.
+    returns a list of STIDs (stuff id's) separated by | (pipe) characters. A STID is a unique object in a cart.
+    you should not attempt to break down the stid - as it's format may change over time, it simply guaranteed not to
+    contain a pipe symbol, and it is guaranteed to be unique in the cart. If you want the SKU or the PRODUCT then use
+    the "item" method.
+    
+## STUFF.item(STID,PROPERTY)
+    fetches a property of a specific stid. 
+
+
+#################################
+CART - in reality the STUFF object is stored inside the CART, so when you view the CART object you'll see the "STUFF"
+    inside it. -- it is important to realize that you cannot access the STUFF contents except through the STUFF object.
+    
+## CART.count() - returns the number of items in the cart.
+	- you should only call this once per cart, and set a variable to the value rather than calling .count() for
+	each interation of a loop. This is much faster, and reduces system load.
+	
+## 
+
+</article>
+
+
+

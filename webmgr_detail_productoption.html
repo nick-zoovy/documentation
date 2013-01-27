@@ -1,0 +1,364 @@
+<meta type="filename" id="webmgr/detail/productoption">
+<h1>Product Options</h1>
+
+<article>
+<h2>Overview</h2>
+Product Option Groups allow you to easily create multiple versions of a single product. Typical examples of product options are color, size. With product options you can use a single product id, picture, and description to create an almost limitless number of combinations.
+Options can modify the product price and weight.  Some option types can be configured to effect inventory as well.  Currently, there are 12 different types of options in Zoovy.
+</article>
+
+<article>
+<h2>Store Option Groups vs Product Option Groups</h2>
+Store option groups are created and modified through the store option group creator.  Once these groups are created, they can be used on individual products.  These types of option groups can be set up so that anytime the parent group is modified, those changes are reflected on the product level.  Store option groups can also be used in a manner where you turn on/off specific options on the product level.  For instance, you create a SOG called 'color' and put yellow, green and blue in it.  On the product level, once you associate that group with the product, you can set it up so only yellow and green are choices.
+
+<br>
+
+Product option groups are built and maintained on the product level.  They are only available on the specific product they were created for.
+
+<aside class="hint">
+<h6></h6>
+<div>
+Use Store option groups for lists that will pertain to several products, like size and color.  Use product option groups for lists which are only available for a single product in your store.
+
+</div>
+</aside>
+
+<aside class="caution">
+<h6></h6>
+<div>
+Deleting Inventoriable SOGs / POGs:<br>
+While Zoovy dissuades merchants from deleting SOGs and POGS once they have been created (we recommend simply setting that option's inventory to zero), if a merchant feels it is necessary to delete / remove an inventoriable option, THE INVENTORY MUST FIRST BE SET TO ZERO.  If an inventoriable option is deleted / removed while there is still inventory, that SKU will continue to syndicate with the deleted inventoriable option.<br>
+
+</div>
+</aside>
+
+</article>
+
+<article>
+<h2>Modifiers</h2>
+Most option group types can affect price, weight and/or inventory.  Unless otherwise specified in the option group type documentation below, each type supports all of these modifiers.
+
+<section>
+<h3>Price</h3>
+To add $3.00 to a product you simple put "+3", or "+3.00" into the price modifier field for that option. To subtract a value, simply enter the same information with a minus instead of a plus.  If you enter a value with no modifier (no "+" or "-") the system will set the product price to that value.
+<br>
+In addition you can modify the price by a percentage, so for example you can subtract 10 percent by putting -%10 into the price modifier. 
+Finally modifier codes will be appended to your product id on the invoice, each code will be separated using a dash. So a Large Blue Widget product code might look like WIDG-LG-BL on the invoice; in this example WIDG is the Product ID, and WIDG-LG-BL is the SKU.
+</section>
+
+<section>
+<h3>Weight</h3>
+You can add or subtract from the weight of a given product by using the same syntax as the price.   + or - will add or subtract from the weight, while the absence of a + or - will set the weight to that amount.  
+</section>
+
+</article>
+
+<article>
+<h2>How to create option groups</h2>
+
+<aside class="cbc">
+<h6>Store option groups</h6>
+<div>
+<li>Log in to your account at www.zoovy.com.</li>
+<li>Click on the products tab.</li>
+<li>Click on the 'store option groups' link on the left</li>
+<li>Push the 'Create New' button</li>
+<li>Specify a type by selecting an option in the radio</li>
+<li>Enter an option prompt (this is what will appear in your store before the option list)</li>
+<li>Select whether or not this option group type affects inventory (only compatible with certain option types)</li>
+<li>Check enable assembly, if needed (detailed below)
+<li>Check properties only, if needed (detailed below)
+<li>Select the store option group behavior (detailed below)<li>
+<li>Save your changes</li>
+
+</div>
+</aside>
+
+
+Once you have saved your changes, you will be taken into the editor of that specific option group type.
+
+</article>
+
+<article>
+<h2>How to export option groups</h2>
+
+<aside class="cbc">
+<h6>Exporting Store option groups</h6>
+<div>
+<li>Log in to your account at www.zoovy.com.</li>
+<li>Click on the Utilities tab.</li>
+<li>Click on the 'Product Options' link on the bottom right</li>
+<li>Export Products Step 1: select your products for export</li>
+<li>Export Products Step 2: select any other product data attributes you want to export in the 'specify your own custom fields:' box</li>
+<li> Under Export Products Step 3: Option/Variation Formatting select 'JSON' from the '(POG) Product Option Group Formatting' drop-down box. </li>
+<li>click 'Export Now'</li>
+
+</div>
+</aside>
+
+
+Once the batch job has run, you can export the CSV file to your desktop. Copying SOGs from one product to another can be done by copying the data in the '%POGS=JSON' field to other products and importing the CSV file as a Product CSV import.
+</article>
+
+<article>
+<h2>Option Group Properties</h2>
+
+<section>
+<h3>Enable Assembly Processing</h3>
+Assemblies can create master products which are made up of one more sub products. Each option may contain a different list of items and quantities it contains. When an assembly item is displayed in the cart it will display the items (and quantities) which make up the assembly. This is ideally suited for things which are "build to order" such as custom computer systems. When one or more of the items referenced in a particular assembly option is not in-stock then the option will not be displayed to the customer.
+
+When purchased the inventory for each item in the assembly is decremented based on the quantity needed to complete the assembly. Not all options in an option group need to have assembly's tied to them.
+Assembly processing is the most complex form of options, and therefore also has the largest list of incompatibilities. Do not enable assembly processing if you do not actually need it.
+<aside class="hint">
+<h6></h6>
+<div>To show multiple quantities of one Product ID in the Assembly Option use the format "SKU*Quantity". For example, if you want to sell 3 of Product ID WIDGET in an Assembly the format would be "WIDGET*3".
+</div>
+</aside>
+
+<aside class="caution">
+<h6></h6>
+<div>Assembly options will show a price modifier equal to the total price of the parts. If you do not want that default price modifier to appear then enter a Price Modifier of "-100%" for that assembly option choice.
+</div>
+</aside>
+
+</section>
+
+<section>
+<h3>Properties Only</h3>
+ Properties Only:  is used to specify that the store option group data should ONLY be used to compile search data. With a "Properties Only" style option group the customer will never be prompted to select this option while purchasing. A "Properties Only" group is not compatible with Inventoriable Options or Assemblies, but is compatible with a special type of search catalog known as a "Finder" which can be used to let customers find matching products based on either their options or properties.
+<br>
+Frequent examples of "Properties Only" options include: "Genre", "Year", or even "Price Range". For example if a DVD is a romantic comedy, it could have both the Genre options "Romance" and "Comedy" checked. Then the customer doesn't need to choose between the Comedy and Romance version, the product is both Comedy and Romance at the same time.
+<br>
+<li>Other examples include: Make/Model: manufacturers of carts, boats, planes, etc. regularly make parts which span multiple makes, models and years. (NOTE: due to limitations in the number of options per group (1296) it is not possible to create a single group for "Make/Model/Year"
+<li>Price Range: setting up price ranges for -, -, and - lets you provide customers an easy way to locate products in their price range. 
+
+<aside class="caution">
+<h6></h6>
+<div>
+Enabling this feature will make the option group you create 'invisible', so that it will NOT appear on your website.  You should only enable this feature for FINDER specific option groups that do not present themselves as actual choices for your customers.
+
+</div>
+</aside>
+
+
+</section>
+
+<section>
+<h3>Store Option Group Behavior</h3>
+About Behavior:  There are two behaviors available when new options are added to the store option group - the new options can either be automatically added to all products using that group, OR manually added to each product.
+
+Automatic Store Option groups cannot select different options on a product by product basis. When changes are made in an automatic group, they are instantly added to all products associated to the group. When changes are made to manual groups it is necessary to add the new option to each product, but of course then it is also possible to choose which specific options are applicable to the product.
+
+Using Automatic groups with inventoriable store option groups is HIGHLY discouraged since inventory for the items will be out of stock (zero) when the new item code is created. Automatic groups are really best suited for situations where (for example) you have a line of products made by a common manufacturer and the options available/unavailable to the line of products doesn't change. As new options are added they are available for all products.
+
+If you're still in doubt as to which type of option group to use, we recommend manual since it offers the highest degree of flexibility.
+</section>
+
+
+</article>
+
+<article>
+<h2>Option Group Types</h2>
+Currently, there are 12 different option group types in Zoovy.  The different types allow you to present the options to your customer in a different style.  For instance, in some cases the option may need to have a picture associated with it, or perhaps you are collecting a date from the customer and need a calendar option type.  Both are available.
+<br>
+
+<section>
+<h3>Select Box</h3>
+This is your standard, run of the mill dropdown menu.  This option type is simple for your customer to understand and fairly aesthetic in it's appearance.  Most of the time, this is the option type you are going to want to use.  This option type will allow your customer to make only 1 selection from the list in this option group.
+</section>
+
+
+<section>
+<h3>Radio Buttons</h3>
+This will display all the options available with a circle next to each option. The user chooses the appropriate option and the circle becomes filled in. Unlike select lists a radio button always displays all options to the customer. Radio buttons should typically be used with 10 or less options since they consume a lot of screen space and make the customer need to scroll.
+</section>
+
+<section>
+<h3>Checkbox</h3>
+This is a single option (on or off, yes or no) group type.  It presents the user with a checkbox that they can either enable or disable. Checkboxes should be used whenever the user has only two possible choices.
+</section>
+
+<section>
+<h3>Hidden Attributes</h3>
+This is used for advanced development and, in most cases, should be avoided.  The customer will not be prompted to enter or select anything because the option is 'hidden'.
+</section>
+
+
+<section>
+<h3>Free-Form TextBox</h3>
+A free-form text box is a single line text box that you can use to prompt the user for a short piece of information, such as a piece of text for engraving. 
+
+<br>
+
+This option group type allows you to:<br>
+create a price modifier per letter/word<br>
+enter a default piece of text<br>
+or enter a maximum number of characters to be allowed.
+</section>
+
+
+<section>
+<h3>Free-Form Number</h3>
+Similar to the free-form textbox, this option group presents the user with your standard form input text field, but requires all entered characters to be numbers.
+
+<br>
+
+This option group type allows you to enter:<br>
+default piece of text<br>
+maximum number of characters to be allowed<br>
+minumum number<br>
+maximum number
+</section>
+
+<section>
+<h3>Multi-line Textarea</h3>
+This option type will display a multi line textarea in which users can enter a block of text. You can restrict the number of characters but you cannot charge per word or per character.
+Like a textbox you can assess fees per character (excluding spaces and punctuation), and per word. The textarea also allows you assess fees per line. Fees are additive and can be used together.
+<br>
+This option group type allows you to enter:<br>
+the number of rows (effects the height of the textarea)
+the number of columns (effect the width of the textarea - try 40-50)
+default text<br>
+maximum number of characters to be allowed<br>
+create a price modifier per letter/word/line
+
+</section>
+
+<section>
+<h3>Readonly Instructions</h3>
+Allows for an additional piece of text to be included in the product page.  The advantage of this piece of text is that it will appear in the cart, as well as the product page.  This should be used sparingly.
+</section>
+
+<section>
+<h3>Dynamic Big List</h3>
+This option will allow you to create a dual-level (two levels only) conditional select list, where the options of the second select list will change based on what is chosen in the first list.
+<br>
+This option group type can NOT have any modifiers associated with it.
+</section>
+
+<section>
+<h3>Image Grid and Image Select</h3>
+These two option group types do nearly the same thing. The main difference is that the grid will display all the images at once, the select will display one image and change based on what option is chosen in the select list.
+
+<br>
+
+The image option types will allow you to choose the dimensions of the thumbnail preview (same size for entire group) and whether or not the thumbnail supports/displays 'click to enlarge'.
+
+</section>
+
+<section>
+<h3>Calendar</h3>
+
+Guess what this does?  Yep, displays a calendar. This is javascript based that loads a small popup with a navigable calendar which your customer can use to select a date. The calendar also has the ability to apply a rush fee if the date is within a certain number of days of today. This allows you to create additional revenue for specialty things like "Rush Fees".
+
+<br>
+
+This option group type allows you to enter:<br>
+A prompt<br>
+A rush for of $XX.xx for order within X days<br>
+A rush Prompt<br>
+A rush Message
+
+</section>
+
+</article>
+
+
+<article>
+<h2>Display of Options</h2>
+
+Products with a price of zero dollars will not display a price.
+This means that you could create a product such as "can of soda" and set the price to zero dollars, then have options of
+"single can" for $1.00, "six pack" for $3.00, or "twelve pack" for $6.00.
+However if you do not enter a price for a product then it will not be purchasable and the add to cart button will not appear.
+
+</article>
+<article>
+<h2>Compatibility</h2>
+
+To use a product option group, all selections MUST always be autonomous, which means you cannot have two options that cannot be purchased together. For instance if your product comes in three colors, and three sizes, and all colors are available in all sizes, then this product can be easily created using two product option groups (Color & Size). The customer on your website will be FORCED to choose a one color, and one size, before being allowed to purchase the item.
+</article>
+<article>
+<h2>Handling Non-autonomous Options</h2>
+
+There are two obvious ways to handle non-autonomous product options:<br>
+<li>Solution 1: Enter each combination as a separate product into your system, giving each combination a unique product id. However if you have thousands of possible combinations, then this is probably not a good solution.
+<li>Solution 2: Manually combine all non-autonomous options together. Example: your product has one group (Size), which has options (Big and Small), and another group (Color) which has options (Yellow and Green). Unfortunately the manufacturer of your product does not produce a Small/Green version (so the options are not autonomous, because there is at least one combination which is NOT valid.) Because the total number of valid options in this combination is three, you could create a single product option group called "Color and Size" and put three options into it: Yellow/Big, Yellow/Small, Green/Big.
+<li>Solution 3: if you have a lot of non-autonomous options, the matrix can grow considerably in complexity, if this happens then you're only solution is to use a combination of solution 1 and solution 2.
+<li>Solution 4: we point this out only because some customers have reminded us that you can always put non-autonomous options onto your website, then wait until you get an order for a combination that doesn't exist, then contact the customer and see if they will accept a substitution. Sometimes this is a really good idea, since if you get a lot of requests for one combination you don't produce, then perhaps you ought to think about producing it!
+</article>
+<article>
+<h2>Reasons not to use Product Options</h2>
+
+Besides the inherent complexity, when using product options your Zoovy sales and statistics reports will aggregate all options together into a single product.
+In addition customers often prefer to shop by picture, in these circumstances in order to generate a thumbnail you must create separate products for each item.
+Although it is worth mentioning that you can use custom page flows in conjunction with javascript to generate thumbnails for option groups.<br>
+Also be aware that at this time, we do not support most types of syndication for products that have options.  EBay and Amazon have limited support for syndicating products with options, the remainder do not at this time.
+
+</article>
+<article>
+<h2>Pricing Discounts</h2>
+
+Most people let the customer specify the quantity, and then use either simple promotion, rules based promotions, or the promotions API to calculate at what point the customer receives discounts, however it is possible to offer specific quantities using options. This is particularly important with items such as cigars that are sold in quantities of 1, 12 (box), and 36 (case).
+In the cigar example it is recommended that the product cost be set to "blank" so the customer is directed to the options. A product cost of blank, will not appear on the website. It's also worth mentioning a configuration like this will throw off a few minor things such as the total inventory value report since the products technically don't have a sale price.
+
+</article>
+<article>
+<h2>Removing Product Options</h2>
+
+
+You can easily remove product option groups from a product.
+
+<aside class="cbc">
+<h6>Removing Options for a Product</h6>
+<div>
+<li>Log into your account at www.zoovy.com</li>
+<li>Click on the products tab</li>
+<li>Click on the product you want to modify (on the left or via search)</li>
+<li>Push the config options button</li>
+<li>Click on the diamond shaped icon to edit the option group</li>
+<li>Push the delete group button</li>
+
+</div>
+</aside>
+
+
+Using Warehouse Manager you can also create, edit, and remove product options and option groups. Refer to the Warehouse Manager documentation for more specifics.
+
+</article>
+
+
+<article>
+<h2>Troubleshooting</h2>
+Q: Whenever adding an item to the cart, the price of the item is zero.
+A: You most likely set a modifier to be "0" instead of "+0". If you do not put an implicit plus or minus in front of a modifier then it is consider a set value.
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

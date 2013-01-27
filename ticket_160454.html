@@ -1,0 +1,83 @@
+<meta type="filename" id="ticket/160454">
+
+<h1>Issue #160454: The item cannot be listed or modified. The title and/or description may contain improper words, or the listing or seller may be in violation of eBay policy.</h1>
+
+<article>
+<h2>Overview</h2>
+Issue #160454: The item cannot be listed or modified. The title and/or description may contain improper words, or the listing or seller may be in violation of eBay policy.
+
+<br>
+
+I have not changed a thing.  All of a sudden they are not being uploaded.  I don't know of any violations that I have done since they all worked in the past.
+
+</article>
+
+
+<article>
+<h2>What causes this?</h2>
+
+The error you are getting is one that ebay is returning directly to Zoovy because of the "data" being sent.  Zoovy sends a variety of data to ebay such as title, description, and attributes.  
+
+<br>
+
+Ebay, in it's infinite wisdom, takes all the field data (like product name and description) and jams it all together pulling out punctuation, spaced, formatting, returns, ect.  Basically makes one big blog of the text.  Then they run a very large and complex script on the text that searches for various issues (profanity, illegal/banned products, java script code, etc).
+
+<br>
+
+This process unfortunately quite often throws many "false positives".  In addition eBay does not share "why" a listing failed, only that the listing contained a word that shall not be spoken.
+
+<br>
+
+This asinine policy makes it virtually impossible for Zoovy, the sender, to pinpoint exactly what the "problem" is in the product.  Sometimes it's a word they don't like, sometimes it's a pair/group of words together, sometimes HTML or odd punctuation combinations can do so. Sometimes it's two words too close together.
+
+<br>
+
+eBay's secret thought police change this filtering script quite often, so it's a moving target.  What causes the error today may not tomorrow, and vice versa.
+
+</article>
+<article>
+<h2>Fixing it</h2>
+
+Cleaning these "problems" up are mostly a matter trial and error.  Some
+recommendations would be to remove any brand names to start with.  If that
+doesn't work, return them and try, to remove the HTML coding and either use wiki or a flat text for your description. If you're getting the notice on multiple listings review then undo any recent changes to your polices such as return policy, etc. however keep in mind you didn't need to change ANYTHING - the filter may have changed.
+
+<br>
+
+Wish we could be of more assistance here and tell you "X is the problem, remove
+that and it will pass", but since ebay doesn't inform us what they don't like
+exactly about a product, it makes it impossible for us to pass that information
+onto you.
+
+</article>
+
+<article>
+<h2>Is this a joke?</h2>
+
+No, this is completely real.  This is probably one of the most difficult to troubleshoot issues you will ever encounter. This error means that eBay has determined that *SOME* word you've got in your title or description has been deemed verboten by the eBay thought police.
+
+<aside class="hint">
+<h6></h6>
+<div>
+In fact it doesn't have to be a word it can be a combination of two words - for example: lets say the word "YUMMY" was banned - if you had a phase like "This widge was signed by Sammy Ummy" it would be flagged. Pretty annoying. eBay doesn't give a clue about what words are banned either.
+
+</div>
+</aside>
+
+
+
+Unfortunately the only way to troubleshoot it is to systematically go through and remove half the text, try a launch, see if it happens, if it doesn't add half the text back.. a huge waste of time. If you'd like - as a service we offer our customers we have staff on this side who can do this for a very nominal fee, if this is something you'd like us to assist with please contact support.
+
+<aside class="hint">
+<h6></h6>
+<div>
+Keep in mind the list of banned words changes weekly - so what is a problem today may not be tomorrow. The list of words also changes per category. 
+
+</div>
+</aside>
+
+
+</article>
+
+
+

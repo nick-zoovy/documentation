@@ -1,0 +1,93 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/site_publisher">
+<h1>Site Publisher</h1>
+
+<article>
+<h2>Concept Overview</h2>
+
+
+Questions:
+1. How do you know if you're looking at a "snapshot" version of a site, or if it's the actual live site?<br>
+View the source code of the page, at the bottom there will be debugging information if it has a pub=[######] that is the gmt timestamp of when the snapshot was created.
+<br>
+2. How long do snapshots last?<br>
+Currently there is no preset time.  However some upgrades Zoovy may do in the future would require that we expire and invalidate all previous snapshots. We will provide at least 24 hours notice before this happens.  Beyond that once you create a snapshot, that version of the site will remain until another publish occurs, or the snapshot is removed.
+<br>
+
+3. Does the merchant have the control to turn a snapshot "on" or "off"?<br>
+Yes, you can remove a snapshot from the control panel in the manage area.  It will take 5-10 minutes before those changes are replicated to all webservers.
+<br>
+
+4. Do I have to create a snapshot?
+Zoovy support MAY ask high volume/database intensive sites to use snapshots, OR pay higher fees.  Snapshots are far more efficient on webservers and the backend because data is deployed "at the edge" of the network. 
+<br>
+
+5. Any other advantages to snapshots?
+Lower site latency, decreased dependence on the Zoovy backend are both current advantages. However this is a new piece of technology and in the future we plan additional enhancements for this technology including the ability to "pre-render" specific portions of the site thereby further increasing performance. 
+
+<br>
+
+The site publisher functionality allows a Zoovy site owner to dictate when changes they have made to their site are visible to the public.
+
+<br>
+
+Zoovy employs a sophisticated cluster architecture which allows a single website to be served by multiple webservers in multiple geographically diverse locations at the same time.
+
+<br>
+
+Site Publisher allows a site owner to create a "snapshot" of their site, along with all configuration settings to a "package database" which is distributed and stored locally on each of the servers.  This not only increases the reliability of the site dramatically, it also increases the speed (because data is served off local hard disks) and at the same time reduces the overall demand on the Zoovy backend.
+
+<br>
+
+<aside class="hint">
+<h6></h6>
+<div>
+Publishing typically takes 5-10 minutes before sites are visible on the live production servers. 
+
+</div>
+</aside>
+
+
+</article>
+
+
+<article>
+<h2>Who was invited? Why wasn't I invited?</h2>
+
+This feature is considered experimental and in a "pilot" phase. As such we are limiting the number of customers who can utilize this feature. Originally this feature was planned for release in early 2008, however due to the volume of pre-xmas traffic we are seeing our operations staff thought an early release might be prudent and beneficial to our high-volume sites.  
+
+<br>
+
+<aside class="hint">
+<h6></h6>
+<div>
+The Zoovy system is prepared for a 2x increase holiday traffic this season.
+However the performance gains from site publisher make us prepared for more than a 100x increase. (Actually site publisher takes all load off the backend, effectively allowing us to scale the architecture horizontally and allowing each server to act autonomously from the backend.) 
+
+</div>
+</aside>
+
+
+<br>
+
+We are inviting customers who have stable websites, known support profiles, and who do considerable volumes of traffic. The list of customers effectively mimics our enterprise server deployment, with a few high-traffic non-enterprise customers thrown in for good measure.
+
+</article>
+
+<article>
+<h2>What if it doesn't work?</h2>
+
+The site publisher functionality has actually been incorporated into our live infrastructure for several months. Pre-xmas support demands did not allow us to make a general release of this without impacting customer service. We do not anticipate any deployment issues.
+
+<br>
+
+If deployment issues did arise, the site publisher code would be deactivated by our operations staff and the "live" version of the website would begin to display. For this reason customers who are participating in the initial rollout are encouraged to have the "test" version of their site ready to go live at any time.
+
+</article>
+
+<article>
+<h2>Why is site publisher so cool?</h2>
+If the idea of statically replicating the instruction code for a content-managed dynamic website to a geographically diverse grid of computers doesn't get your geek-propeller spinning -- well, we don't know what will.
+
+</article>
+

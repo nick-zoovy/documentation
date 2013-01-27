@@ -1,0 +1,536 @@
+<meta type="filename" id="enterprise/database">
+<h1>Enterprise Suite Database Structure</h1>
+
+<article>
+<h2>Concept Overview</h2>
+
+Zoovy will support limited access to the Enteprise Suite shared database. 
+The normal install of Enteprise Suite uses a MySql database engine, which can be accessed via ODBC, or Visual Studio.NET in addition to a variety of open source languages such as Perl, PHP, Python, or Ruby.
+
+<br>
+
+The database table structure between SOHO and Enterprise in versions 6.xxx are the same. So this is also a guide to the SOHO database, but in future versions of Order Manager the SOHO database will be encrypted and will not be accessible to third party developers.
+
+<br>
+
+In addition customers/developers will need to verify their applications meet specific data accuracy requirements. The exact details of this program have not been finalized at this time, however we expect to have two application tiers: Read-Only, and Read-Write. Applications will be issued keys which will limit the access to the tables they have based on the specific needs of their application.
+
+<br>
+
+The tables which are currently supported are:
+
+<table>
+<tr>
+	<td>CUSTOMERS</td>
+	<td>Stores the base customer record, including passwords, email subscription preferences</td>
+</tr>
+<tr>
+	<td>CUSTOMERBILLING</td>
+	<td>Contains billing and payment details. A single customer may have multiple billing and payment addresses.</td>
+</tr>
+<tr>
+	<td>CUSTOMERSHIPPING</td>
+	<td>Contains shipping details, a single customer may have multiple shipping addresses.</td>
+
+</tr>
+<tr>
+	<td>CUSTOMER_META</td>
+	<td>This contains additional tags that are unique per customer, they can be used to store foreign database keys, or other information.</td>
+
+</tr>
+<tr>
+	<td>CUSTOMER_NOTES</td>
+	<td>Customer notes are shared across all orders for a given customer account.</td>
+
+</tr>
+<tr>
+	<td>CUSTOMER_WHOLESALE</td>
+	<td>Contains information about the customers wholesale pricing schedule, drop ship settings and EDI access. One record per customer.</td>
+</tr>
+<tr>
+	<td>INCOMPLETES</td>
+	<td>Contains information about closed auction or fixed price listings from a marketplace such as eBay.</td>
+</tr>
+<tr>
+	<td>INVENTORY</td>
+	<td>Contains the inventory for a particular SKU since the last synchronization - this table should *NEVER* be updated by anything other than the sync process.</td>
+
+</tr>
+<tr>
+	<td>INVENTORY_UPDATES</td>
+	<td>Contains a list of changes to inventory that need to be uploaded to the Zoovy servers.</td>
+</tr>
+<tr>
+	<td>ORDERS</td>
+	<td>Contains the order body</td>
+
+</tr>
+<tr>
+	<td>ORDER_EVENTS</td>
+	<td>A list of changes that have been made to the order.</td>
+
+</tr>
+<tr>
+	<td>ORDER_CONTENTS</td>
+	<td>Contains the line items for each order.</td>
+
+</tr>
+<tr>
+	<td>ORDER_FEES</td>
+	<td>Any fees which have been recorded against the order (used for reconciliation functionality)</td>
+
+</tr>
+<tr>
+	<td>ORDER_PRODATTRIBS</td>
+	<td>Contains details about the products in the order, and their specific attributes</td>
+
+</tr>
+<tr>
+	<td>ORDER_PRODOPTIONS</td>
+	<td>Contains details about the options selected for each line item in the order. </td>
+</tr>
+<tr>
+	<td>ORDER_TRACKING</td>
+	<td>Contains tracking information for the order.</td>
+
+</tr>
+<tr>
+	<td>ORDER_TAGS</td>
+	<td>These are custom tags that are in the XML but do not have their own column in the ORDERS table, use this to add your own custom fields to an order.</td>
+</tr>
+</table>
+
+<aside class="caution">
+<h6></h6>
+<div>
+Access to any and all other tables is NOT supported. There is no other data in the other tables which is interesting anyway, many of the tables are temporary and will be overwritten during various types of synchronization. 
+<aside class="caution">
+<h6></h6>
+<div>
+
+
+<section>
+<h3>Using Epoch Times</h3>
+The Zoovy system tracks all dates in EPOCH TIME format, which is the number of seconds that have elapsed since midnight GMT Jan 1st, 1970. 
+There are a number of reasons for this but the biggest is synchronization: 
+Epoch times do not take into account daylight savings time so the clock effectively never moves backwards.
+Since time always moves forward, it means that keeping track of changes is nothing more than looking at your last synchronization time, and then getting a
+list of everything which has changed since then. Also since Epoch times don't take into account timezones (they are always GMT) it avoids needing to consider
+which timezone a customer was in (or what their PC was configured for) when looking at a database. 
+</section>
+
+</article>
+
+
+<article>
+<h2>ORDERS Table</h2>
+<aside class="html">
+<h6></h6>
+<code>
+ID AUTONUM
+ORDERID
+created - timestamp
+TS - timestamp
+bill_*
+ship_company
+ship_firstname
+ship_middlename
+ship_lastname
+ship_email
+ship_address1
+ship_address2
+ship_city
+ship_state
+ship_zip
+ship_province
+ship_int_zip
+ship_country
+ship_phone
+
+order_notes
+payment_method
+payment_status
+payment_cc_status
+payment_info - memo
+po_number
+card_number
+card_exp_month
+card_exp_year
+cc_authorization
+cvvcid_number
+POOL - varchar
+paid_date
+ship_date
+SUBPOOL integer
+paypal_acct
+shp_method
+shp_taxable
+shp_total
+shp_carrier
+shp_footer
+shp_service - 4 digit routing code
+hnd_method
+hnd_taxable
+hnd_total
+ins_method
+ins_taxable
+ins_total
+spc_method
+spc_taxable
+spc_total
+bnd_method
+bnd_taxable
+bnd_total
+bnd_footer
+cust_order_count - integer
+mkt integer
+tax_zone - 
+sdomain - 
+om_process - bitwise field, reserved for future use - 4 is "do not print invoices"
+META
+COMPUTED_tax_rate
+COMPUTED_tax_subtotal
+COMPUTED_tax_total
+COMPUTED_order_total
+
+</code>
+</aside>
+
+</article>
+
+<article>
+<h2>ORDER_EVENTS Table</h2>
+<aside class="html">
+<h6></h6>
+<code>
+ID AUTONUM
+ORDERID 
+CREATEDTS
+MESSAGE varchar(255)
+LUSER varchar(20)
+ETYPE integer
+
+</code>
+</aside>
+
+</article>
+
+<article>
+<h2>ORDER_CONTENTS Table</h2>
+<aside class="html">
+<h6></h6>
+<code>
+ID AUTONUM
+PARENT NUMBER
+ORDERID 
+CLAIM INTEGER
+PRODUCT TEXT
+INV_OPTIONS
+OTHER_OPTIONS
+QTY
+COST CURRENCY
+PRODNAME 
+WEIGHT DECIMAL
+PRICE CURRENCY
+TAXABLE SHORT
+CHANNEL INTEGER
+BATCHNO TEXTFIELD
+MKT TEXTFIELD
+MKTID TEXTFIELD
+MKTURL TEXTFIELD
+MKTUSER TEXTFIELD
+ASSEMBLY_MASTER TEXTFIELD
+
+</code>
+</aside>
+
+</article>
+
+<article>
+<h2>ORDER_FEES Table</h2>
+<aside class="html">
+<h6></h6>
+<code>
+ID AUTONUM
+ORDERID
+PARENT
+FEENAME
+CODE
+PRODUCT
+AMOUNT
+SUBCODE
+POSTED integer
+UUID varchar
+MEMOVAL varchar(64)
+
+</code>
+</aside>
+
+</article>
+
+<article>
+<h2>ORDER_PRODATTRIBS Table</h2>
+<aside class="html">
+<h6></h6>
+<code>
+ID
+PARENT
+ORDERID
+PRODUCT
+ATTRIBNAME
+ATTRIBVAL
+
+</code>
+</aside>
+
+</article>
+
+<article>
+<h2>ORDER_PRODOPTIONS Table</h2>
+<aside class="html">
+<h6></h6>
+<code>
+ID 
+ORDERID
+PARENT
+OPTIONTAG
+OPTID
+OPTV
+OPTMODIFIER
+PROMPT
+PROMPTVAL
+PRODUCT
+
+</code>
+</aside>
+
+</article>
+
+<article>
+<h2>ORDER_TRACKING Table</h2>
+<aside class="html">
+<h6></h6>
+<code>
+ID AUTONUM
+ORDERID TEXTFIELD
+PARENT
+METHOD TEXTFIELD
+TRACKING TEXTFIELD
+COST CURRENCY
+ACTUALWT TEXTFIELD
+NOTES TEXTFIELD
+VOID INTEGER - TIMESTAMP
+CREATED INTEGER - TIMESTAMP
+
+</code>
+</aside>
+
+</article>
+
+<article>
+<h2>ORDER_TAGS</h2>
+<aside class="html">
+<h6></h6>
+<code>
+ID AUTONUM
+PARENT NUMBER
+ORDERID TEXTFIELD
+TAGNAME TEXTFIELD
+TAGVAL MEMO
+
+</code>
+</aside>
+
+</article>
+
+
+
+
+<article>
+<h2>CUSTOMERS Table</h2>
+<aside class="html">
+<h6></h6>
+<code>
+ID AUTONUM
+CID - a unique identifiers on the Zoovy side to track this record, set to zero for a new customer
+EMAIL - this is a unique key
+CREATED_GMT -
+MODIFIED_GMT -
+NEWSLETTER - bitwise
+SCHEDULE - varchar(5)
+HAS_NOTES -
+ORIGIN -
+NEW_CUSTOMER integer
+UPDATED integer
+DELETED integer
+DEFAULT_BILL_ADDRESS varchar(10)
+DEFAULT_SHIP_ADDRESS varchar(10)
+FULLNAME
+
+</code>
+</aside>
+
+</article>
+
+<article>
+<h2>CUSTOMERBILLING and CUSTOMERSHIPPING Tables</h2>
+<aside class="html">
+<h6></h6>
+<code>
+Although the current Zoovy checkout only supports one address per customer, it is possible to store
+more than one address per customer.  (This is intended for forward compatibility)
+
+ID AUTONUM
+PARENT - integer
+CODE 
+xxxx_company
+xxxx_phone
+xxxx_address1
+xxxx_address2
+xxxx_state
+xxxx_zip
+xxxx_province
+xxxx_int_zip
+xxxx_country
+xxxx_default tinyint
+xxxx_firstname
+xxxx_lastname
+payment_method
+card_number
+card_exp_month
+card_exp_year
+
+</code>
+</aside>
+
+</article>
+
+<article>
+<h2>CUSTOMERWHOLESALE Table</h2>
+<aside class="html">
+<h6></h6>
+<code>
+ID AUTONUM
+PARENT AUTONUM
+EMAIL varchar(65)
+ws_company
+ws_address1
+ws_address2
+ws_city
+ws_state
+ws_zip
+ws_country
+ws_phone
+LOGO
+BILLING_CONTACT
+BILLING_PHONE
+ALLOW_PO integer
+RESALE integer
+RESALE_PERMIT
+
+</code>
+</aside>
+
+</article>
+
+<article>
+<h2>CUSTOMERNOTES Table</h2>
+<aside class="html">
+<h6></h6>
+<code>
+ID AUTONUM
+PARENT integer
+LUSER varchar
+CREATED_GMT
+NOTEVAL
+NID integer -- set to zero to indicate a new note. 
+
+</code>
+</aside>
+
+</article>
+
+<article>
+<h2>CUSTOMERMETA Table</h2>
+<aside class="html">
+<h6></h6>
+<code>
+ID 
+PARENT
+TAGNAME
+TAGVAL
+
+</code>
+</aside>
+
+</article>
+
+<article>
+<h2>INCOMPLETES Table</h2>
+<aside class="html">
+<h6></h6>
+<code>
+ID Number - this is the claim #
+TS 
+created
+channel
+product - this should actually be named SKU
+qty - quantity
+price - currency
+weight - double, in ounces
+taxable - short
+prodname - 
+email - 
+STAGE - 3
+STATUS - 5
+ORDERID - 20
+MKT varchar(20)
+MKTID varchar(40)
+MKTURL varchar(255)
+MKTUSER varchar(100)
+VIRTUAL varchar(20)
+UPDATED short
+<aside class="html">
+<h6></h6>
+<code>
+</article>
+
+<article>
+<h2>INCOMPLETETAGS Table</h2>
+<aside class="html">
+<h6></h6>
+<code>
+ID 
+PARENT
+TAGNAME
+TAGVAL memo
+
+</code>
+</aside>
+
+</article>
+
+<article>
+<h2>INVENTORY Table</h2>
+<aside class="html">
+<h6></h6>
+<code>
+SKU text
+QTY integer
+RESERVE integer
+LOCATION varchar(20)
+
+</code>
+</aside>
+
+</article>
+
+<article>
+<h2>INVENTORY_UPDATES Table</h2>
+
+</article>
+
+
+
+
+

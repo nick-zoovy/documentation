@@ -1,0 +1,277 @@
+<meta type="filename" id="webmgr/detail/payment-creditcard">
+<h1>Credit Card Processing Overview</h1>
+
+
+<article>
+<h2>Overview</h2>
+This document was created to educate clients on credit card processing on the Internet.
+Several "industry terms" are used throughout this document, to avoid confusion an explanation of each key term is outlined below.  
+</article>
+
+<article>
+<h2>What is a "Merchant Account" or "Merchant Service Provider"</h2>
+To accept credit cards for payment, the Merchant must have a merchant account with a financial institution such as a Bank or ISO (Independent Sales Organization). Each Merchant Account is setup with a specific processor or platform. In most cases the platform is different than the company that the Merchant Account from. The processor takes on the job of authorizing the purchases made with the card and making sure the funds are deposited into the Merchants bank account.
+</article>
+
+<article>
+<h2>Terminology</h2>
+
+<section>
+<h3>What is a "Gateway" or "Processor"</h3>
+
+A gateway is used with a Merchant Account to process credit cards. Gateways perform the same job as a terminal or swipe in the traditional brick and mortar world by processing the payment of a credit card. Zoovy supports a variety of Gateways, each have their own specific setup and configuration and capabilities, along with their own set of general codes.
+
+<br>
+A Customer goes through the checkout process on a Merchants website. During the checkout process Zoovy establishes a secure link with the Gateway processing server over the Internet using an SSL (secured socket layer) connection, and prepares and subsequently transmits the encrypted transaction request in a format which is compatible with the specific Gateway. The Gateway server receives the request and transmits it over a private network to the appropriate financial processing network. When the authorization response is received from the financial network the response is returned via the same session to checkout process, the results are saved into the order file and then displayed to customer.
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+Keep in mind that the gateway operates on the internet. When using Order Manager to process credits or change amounts, you must change the amount then sync with Zoovy with the Synchronize Button. Then
+charge the card. The charge credit card button uses the information from the
+Zoovy servers verus the windows client. If you do not sync then it will charge
+the amount on Zoovy server versus the correct amount.
+
+</div>
+</aside>
+
+
+</section>
+
+<section>
+<h3>What is "Instant Capture" or "Delayed Capture"</h3>
+There are three stages to receiving funds: Authorization, Capture, Settlement.  Authorization reserves an amount from a buyers credit limit, but does not "charge" them the funds (authorizations do NOT show up on the cardholders next billing cycle).
+Capture transfers funds from the cardholder's bank, to your merchant account provider.  Finally settlement transfers the funds from your merchant bank to your bank account, this usually happens nightly and is one big sweep that results in a deposit. 
+
+<br>
+Authorization times vary depending on processor and gateway, but are at least 3 days and sometimes as long as 30. If more than 30 days has elapsed then the authorization expires and the seller would need to obtain a new authorization.
+
+<br>
+
+Instant capture means that funds are both authorized, and captured at the time the order is placed. If you do not ship products within 24 hours of receiving an order then you should not use instant capture, and instead you must authorize a card for the amount and then perform a capture before the transaction is processed. For more information on how captures and authorizations work contact your merchant account provider.
+
+<aside class="hint">
+<h6></h6>
+<div>
+Some gateways in Zoovy support a mode called "NOAUTH_DELAY" which rather than performing an authorization it simply stores the credit card into a secure wallet, then subsequent "captures" are actually instant captures performed against a non-authorized card. This can be very convenient if (for example) an authorization would expire 
+
+</div>
+</aside>
+
+
+</section>
+
+
+<section>
+<h3>What is "AVS-Address Verification System"</h3>
+
+AVS is a credit card fraud identification (not prevention) tool that provides mail order and electronic commerce merchants with the means to verify the key components of the consumer's billing addresses against the addresses that the credit card issuer has on record for that consumer. AVS is currently available only for U.S.-issued credit cards.
+AVS has two parts - street address and zip code.
+</article>
+
+<section>
+<h3>What is "Delayed Capture"</h3>
+
+Use the delayed capture option any time the Merchant wants to authorize payment for a service that will not be performed within the current day, or for a product that will not be shipped within the current day. Note that credit card authorizations tend to expire after 7 days, and if a delayed capture using an expired authorization, then the Merchant may be subject to higher transaction fees. If the sale won't be completed within 7 days, then consider waiting until the sale is completed before submitting the payment. Normally a Merchant will set up a delayed capture, first submit an authorization, which verifies that the transaction will be paid when the sale is completed. Then, after the service has been completed or the product has been shipped, the transaction will be completed by performing a delayed capture.
+</section>
+
+</article>
+
+
+<article>
+<h2>Set Up</h2>
+
+To setup credit cards, you must enable a payment gateway, or tell Zoovy that you will be manually processing credit cards.  For information on getting a merchant account, or applying for a payment gateway see the credit card guide in the guides section.
+<br>
+If you are using a terminal, or a non-compatible gateway then you will need to configure your Zoovy store to perform manual capture. With manual capture Zoovy will perform a simply mod-10 checksum on the card to ensure the card number is valid, and also that the expiration date is in the future. If necessary Zoovy can also capture the CVV/CID number as part of the checkout process.<br>
+<br>
+Customers who intend to perform high volumes of transactions should absolutely plan on having a compatible gateway. 
+
+
+For more information on setting up gateways please read:
+<a class="linkdoc" href="#?doc=50611">Doc 50611</a> 
+</article>
+
+
+<article>
+<h2>Using Zoovy to Manually Process Credit Cards</h2>
+
+Under manual credit card processing Zoovy will capture the cardholder information and credit card numbers, then the Merchant must use their terminal, or software or website provided with the Merchant Account and process the card as it was a manual or phone sale, after the card has been successfully charged then simply flag the sale as paid. <br>
+<li>1)	To find credit card information on the Zoovy web site click on Orders
+<li>2)	Select the order you wish to access
+<li>3)	Click payment status
+<li>4)	There you will find the credit card number
+<li>5)	Process the card using your own equipment or software
+<li>6)	Now flag the order as Paid from that screen. 
+<li>7)	Exit and the order will show as Paid. 
+<br><br>
+<strong>Note:</strong> Offline processors (manual processing) cannot accept CVV/CID - it is against visa/mastercard amex
+rules. The field may not be electronically stored or transmitted.
+
+
+</article>
+<article>
+<h2>Enable a Payment Gateway</h2>
+
+Enabling a gateway is easy. Here are the instructions regarding activating a merchant account and gateway with Zoovy.<br>
+<li>1)	Log in to your account at www.zoovy.com 
+<li>2)	Click on the setup tab.
+<li>3)	Click on the payment link.
+<li>4)	Click on the 'credit option'
+<li>5)	By default, you will be presented with a list of credit processing options. Select the appropriate payment gateway and push save.
+<li>6)	Set your credit card acceptance policy.
+<li>7)	Check the boxes for the types of cards you have arranged to accept. Do not check types that are not supported with your merchant account. By default most merchant accounts only include Visa and MasterCard.
+<li>8)	Unless otherwise desired, leave AVS, CVV/CID, and FVAR settings to their default.
+<li>9)	Enter username and password supplied by your gateway
+<li>10)	Press the save button.
+
+If you use a gateway the Payment CC Status field in the payment area shows the results of the transaction as sent from your credit card processor, this is typically only meaningful to developers or Zoovy technical support. But may from time to time provide additional details about why a specific transaction failed. 
+
+
+This is a common list of questions and answers we receive regarding credit card processing though a variety of gateways.
+If this does not answer your question then please contact support at <a href="http://support.zoovy.com">http://support.zoovy.com</a>.<br>
+<br>
+Credit Cards have their own special settings, which are specific to your gateway.<br>
+The Payment CC Status shows the results of the transaction as sent from your credit card processor, this is typically only
+meaningful to developers or Zoovy technical support.<br>
+<br>
+CVVCID is an optional field, that certain processors use to determine the authenticity of a card. If you don't know what one is,
+suffice to say you probably don't need it to process credit cards!<br>
+<br>
+<b>Authorize:</b><br>
+If available the "Authorize" link is used to capture a previously authorized transaction. If you do not use delayed capture, then
+you should not need to use this feature unless you are attempting to re-processing a credit card which previously failed.<br>
+<br>
+<b>Reset Order to allow re-processing:</b><br>
+Zoovy has an internal block designed to prevent two employees in a company from accidentally re-processing an order.
+The "reset order to allow reprocessing" will effectively reset the flag that an order has been processed and allow
+you to process the order. Use this if you're receiving a message saying you need to reset the order to continue.<br>
+<br>
+<b>Remove all Credit Card status messages:</b><br>
+This is handy if you want to complete reset all status messages between Zoovy and gateway, effectively "reboot" the system and remove
+any corruption or errors which may have occurred in the order. If you do this, you will lose track of any reference codes which may
+have been previously issued, this could result in accidentally doublecharging a customer. Generally you should only use this option
+if you know what you're doing or you've been advised to by Zoovy technical support. If you do this, there is no undo button.<br>
+<br>
+<b>Transfer of funds</b><br>
+Orders are not paid, until they are flagged as paid. 
+If you have opted to use delayed capture, then you should manually capture the payment and flag the order 
+as paid before moving the order to completed. You can capture the payment by going into Orders, editing an 
+order, and then selecting payment details.
+
+</article>
+
+
+<article>
+<h2>Reprocessing a credit card</h2>
+To reprocess a specific order you will need:
+<aside class="cbc">
+<h6>Reprocessing steps</h6>
+<div>
+<li> Go to Orders
+<li> Find the order and click Payments
+<li> The existing payment should be declined (leave this alone, it's fine)
+<li> The card # should be stored in a wallet under "Add Payment"
+<li> Add the payment and select the appropriate capture setting.
+<li> If you receive a 0xx payment code then everything went fine!
+
+</div>
+</aside>
+
+
+</article>
+
+
+
+<article>
+<h2>Accepted Cards and Fees</h2>
+You must check the appropriate box to the left of the credit card that you wish your gateway to accept. If the credit card isn't selected the gateway will not allow the payment to go through successfully, for that credit card.<aside class="cbc">
+<h6></h6>
+<div><li> Click on setup <li>Click on payment methods <li> Click on credit cards <li> Click on proceed <li> Accepted Cards and Fees 
+</div>
+</aside>
+</article>
+<aside class="hint">
+<h6></h6>
+<div>For example  if your gateway accepts Visa but you do not check the box to allow Visa as an acceptable credit card, <br>your customers will not be able to checkout using the Visa credit cards. 
+</div>
+</aside>
+ 
+<br>
+<aside class="hint">
+<h6></h6>
+<div>Transaction Fee and Discount Rate (%)<br><br>
+What does it do? When you input a value in each of these fields (provided by your credit card gateway), <br>it will generate the fees associated with the order in the order history area. <br>Most people do not fill in this information, and it is not required. 
+</div>
+</aside>
+
+
+<article>
+<h2>Processing Refunds / Credits</h2>
+
+
+If you want to give a partial refund or credit to a customer who was overcharged for his order. Depending on the type of capture which was performed and how much time has elapsed. In general you should credit the order, then change the amount to the correct amount, and recharge the order with the correct amount.
+
+If your gateway supports it, then you can go into your payment gateways administrative interface and change the amount then perform the capture and manually flag the sale as paid. (This assumes you have not already captured the sale).
+
+You may also be able to save merchant processing fees if you void the sale using the payment gateway interface instead of using Zoovy to credit the sale.
+
+
+</article>
+<article>
+<h2>Processing Voids</h2>
+
+
+voiding a transaction can only happen during the same day a transaction was performed, before the transaction has settled.
+
+Voiding a transaction typically avoids the fees associated with performing a credit.
+
+Unfortunately most payment gateways require that you actually log in to perform a void, and do not support voids via their API's. You should check the documentation for your payment gateway to see if it supports voids via it's API or if that is a feature reserved for it's user interface.
+
+</article>
+<article>
+<h2>AVS and CVV</h2>
+
+AVS stands for Address Verification System. Whenever you perform a credit card Sale or Authorize
+Only transaction, the Gateway verifies the customer's address you entered on the Point of Sale page
+against the address that the card-issuing bank has on file for the customer. The AVS code tells you how
+well the two addresses match. If the transaction is approved, you will find the AVS Approval Code via your Gateway interface.
+The codes and available functionalities vary substantially between gateways.
+<br>
+<br>
+About CVV: To help reduce fraud in the card-not-present environment, credit card companies have introduced a card
+code program. Visa calls this code Card Verification Value (CVV)--MasterCard calls it Card Validation
+Code (CVC)). The card code is a three- or four- digit security code that is printed on the back of cards.
+The number typically appears at the end of the signature panel. This helps validate that a genuine card is
+being used during a transaction, especially in situations like mail orders, telephone orders or Internet
+orders where the card is not present. All MasterCard cards, both credit and debit, were required to
+contain CVC2 by January 1, 1997; all Visa cards must contain CVV2 by January 1, 2001. By using the
+card code results along with the Address Verification Service (AVS), you can make more informed
+decisions about whether to accept transactions.
+
+</article>
+<a class="linkdoc" href="#?doc=50767">Doc 50767</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,53 @@
+<meta type="filename" id="ticket/159405">
+
+<h1>Issue #159405: Need to merge two customer accounts into one</h1>
+
+<article>
+<h2>Issue</h2>
+Issue: when changing customer email - received ERROR: The email address user@domain.com is already in use by customer #
+
+<br>
+
+<aside class="html">
+<h6></h6>
+<code>
+
+Customer requested please change my username from my old email address:  user@olddomain.com to my current email address: user@newdomain.com
+
+
+</code>
+</aside>
+
+<br>
+
+When I used order manager to find customer by email, I did.  Then I pressed edit, but was unable to edit the customer email because the new email address already existed.  What do I do?
+
+</article>
+
+<article>
+<h2>Resolution</h2>
+
+<aside class="cbc">
+<h6>Merge two customer accounts</h6>
+<div>
+<li> Lookup user@newdomain.com
+<li> Write down the order #'s
+<li> Delete the user@newdomain.com
+<li> Change the email address from user@olddomain.com to user@newdomain.com
+<li> Reassociate any orders that were written down to the new account
+
+</div>
+</aside>
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+I have written this down as a feature request (the ability to merge customer accounts).
+
+</div>
+</aside>
+
+
+</article>
+

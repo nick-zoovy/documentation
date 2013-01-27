@@ -1,0 +1,208 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="webmgr/detail/payment-authorize">
+<h1>Authorize.net</h1>
+<article>
+<h2>Overview</h2>
+
+
+This document details specifically with Authorize.Net, for more general information on setting up gateways please visit:
+<a class="linkdoc" href="#?doc=50611">Doc 50611</a>
+
+Zoovy uses Authorize.Net's advanced integration method (AIM) and you should ignore any messages from them 
+encouraging you to change your shopping cart integration (we have always used the safest connection method 
+for all of our credit card gateways). <br>
+<br>
+Since Zoovy uses AIM mode for connecting to Authorizenet, you shouldn't have to add any 
+URLs into their interface for SIM support. <br>
+<br>
+
+</article>
+
+<article>
+<h2>American Express CID + Authorize.net</h2>
+
+The CID number is the 4 digit number on the front of the American Express card. The CID number is not encoded on the magnetic strip and therefore makes the data harder to steal.<br>
+<br>
+To use CID #'s American Express requires merchants to verify they are using a PCI Compliant scanning software before they will allow CID cards to be processed. Merchants can use Hackersafe or ControlScan to become allowed to send to Amex CID #'s. From American Express:
+<br>
+<br>
+At this time, American Express does not send a separate field to your authorization processor that will specifically indicate the outcome of CID validation (ie: match, no-match). Once a merchant is activated for AMEX CID, AMEX will factor that value into the overall authorization decisioning process and may decline due to an invalid CID. You will need to speak with your processor to find out how they are managing the responses from American Express and what you can expect to see in the response they send back to you.<br>
+<br>
+American Express appreciates your desire to reduce fraud by submitting the CID. The reason that the CID program is successful is the importance we place on the security value. We request that it be kept in a secure environment. The payment information needs to be protected from the time it is obtained by the merchant, or vendors you may employ, through the payment process until submission is completed. This authentication process needs to audited to ensure security. Site certification remotely audits a merchant to ensure they are protecting company assets (customer information) from hackers or new vulnerabilities.<br>
+<Br>
+There are many scan vendors available to complete the vulnerability testing. If you currently utilize a service, please forward us a copy of your most recent scan results. <br>
+<br>
+Here is a list of Scan Vendors that we will acknowledge completed/passed vulnerability testing scans from. Please forward all results for review.<br>
+<br>
+If you are still interested in using CID, and you have provided us with a copy of your most recent scan results, we can then work jointly to complete the CID program activation process after the freeze has been lifted, the week of January 9, 2006.
+
+More info:
+
+https://www209.americanexpress.com/merchant/singlevoice/dsw/FrontServlet?request_type=dsw&pg_nm=faq&ln=en&frm=US
+
+</article>
+
+
+<article>
+<h2>Troubleshooting</h2>
+
+<li> Please note: Zoovy is only able to provide limited support on Authorize.net accounts that were not purchased through Zoovy.
+<li> Before contacting Authorize.net support please verify the username and password above are correct and you can log in at http://www.authorizenet.com
+<li> This address if for a list of Authorize.net Error Response Codes http://www.authorize.net/support/Merchant/Transaction_Response/Transaction_Response.htm
+<li> If your merchant account is new, try processing a transaction by hand through the authorize.net user interface - most merchant account problems will be easier to diagnose from there.
+<li> If you are receiving AVS errors - try disabling AVS through Authorize.net, go to "Settings" then "Address Verification Settings" and remove any checkboxes next to "Reject Transaction". Please note that if you do not have AVS at least partially enabled your merchant account provider may charge you higher fees. Contact your merchant account provider for details. 
+<li> Zoovy does not use ADC SIM "Soft Cart" mode, you should not have any referrer URL's set in your account configuration.  To check to see how your account is configured login to Authorize.net go to "Settings" then select "Manage Urls" and remove any URL's which may be configured.
+
+<li> Although you may have Zoovy set to "Ignore AVS Results", the system will still report on the success or failure of AVS on the transaction in the events. 
+<li> If you are still experiencing problems,  try logging into Authorize.net and enabling "Test Mode", you can do this by going to "Settings" and then selecting "General Merchant Settings" and enabling "Test Mode". Be sure to disable this when you are finished testing.
+<br>
+For questions on if Authorize.net is receiving your transactions, 
+please contact Authorize.net by clicking on the "Support Link" in your Authorize.net account - 
+please note that Authorize.net may take up to 72 hours to respond to your inquiry. 
+You can also call them toll free at 1-877-447-3938.
+
+</article>
+<article>
+<h2>Pricing</h2>
+
+If you do not have an Authorize.net, or purchased from a reseller who is less than competitive. <br>
+Here is the list of fees associated with a Authorize.net Gateway account purchased through Zoovy:<br>
+$99 setup fee (This fee will appear on the first Zoovy monthly bill you receive).<br>
+$15 per month for up to 250 transactions.*<br>
+$0.10 per transaction after the first 250 transactions.*<br>
+*this fee automatically deducted from your checking account each month by Authorizenet.<br>
+Contact your account manager for more information on signing up.<br>
+
+</article>
+<article>
+<h2>Authorize.Net Helpful Tips</h2>
+
+
+Zoovy internally maps all codes from different payment gateways to more generic codes in an effort to get our customers 
+more meaningful error messages as they relate to the Zoovy system. 
+In some cases those error codes don't line up real well, Authorize.net literally has thousands of error codes of which Zoovy consolidates those down to a much more managible list of about 50 things that could actually cause the problem.
+
+<br>
+
+
+However in some cases you may need to contact authorize.net support to get an answer.
+The codes that Authorize.net sends back appear in the payment detail event log. (to view this go to an order, click payment status) here are some examples:
+
+<br>
+
+A common problem is:
+<aside class="html">
+<h6></h6>
+<code>
+
+CREDIT Charge: [trans:0] [auth:] Fingerprint transaction key or password is required 
+(Authorizenet Return Codes - Reason 103 - Response 3)
+
+[Tue 8-Feb-2005 14:40 PST] CREDIT Charge:
+ [trans:768217973] [auth:T15339] Successfully charged account - 
+AVS is not supported by the credit card issuer modified status 001 to 252 - 
+Card Code CVV2/CVC2/CID Matched card
+(Authorizenet Return Codes - Reason 1 - Response 1 - AVS S - Card Code M)
+[Tue 8-Feb-2005 14:40 PST] Payment status set to 252 by cc_charge : Disallowed - 
+Invalid tender, your bank/account does not support that type of payment.
+
+</code>
+</aside>
+
+
+
+If you read between the lines you'll see the authorize.net return and reason codes - if you're talking to Authorize.net
+technical support, this will help them figure out what is going on. Authorize.net doesn't understand the zoovy 3 digit 000 - 599 codes. Authorize.net support wants the "Reason and Response codes" - a reason of 1 means "success" to them, but it doesn't necessarily mean the same to Zoovy. 
+
+<br>
+
+
+Again, since Zoovy supports multiple gateways besides authorize.net we attempt to map authorize.net's codes to our internal codes. We do this for reporting reasons, and also it means that our software only has to understand our codes and that every time authorize.net adds a new code we don't have to re-release our software and potentially disrupt your business. Also each gateway works differently so it's a bit of a challenge to try and keep them all talking together and still provide the customers with the same level of functionality across gateways. 
+
+<br>
+
+
+Using our own internal codes means we can consider certain things failures that authorize.net would consider a success --
+One of those things is when Authorize.net charges the money, BUT then sends the success code along with a response code that indicates it's a potentially fraudulent transaction -- and so the order doesn't pass our internal fraud detection.
+For example based on AVS (Address Verification Settings) -- its not uncommong for Zoovy to reject the transactions because the issuing bank doesn't support AVS.
+99% of the banks in the world support AVS, so when you run into a bank that doesn't -- it's a BIG red flag.
+In fact in the payment status it says that we changed from a 001 to a 252 code. 
+Of course you can turn off the AVS requirement in your payment settings,  although personally we'd recommend you give the customer their money back and tell them to send you a check -- thats you're call.
+
+<br>
+
+
+Reading the messages generated by AVS failures and other such nonsensical errors is actually pretty easy once you get the hang of it -- here's an example:
+
+<aside class="html">
+<h6></h6>
+<code>
+
+
+-- CREDIT Charge: [trans:768217973] [auth:T15339] Successfully charged account    [authorize.net did this!]
+-- AVS is not supported by the credit card issuer modified status 001 to 252     [zoovy did this!]
+-- Card Code CVV2/CVC2/CID Matched card (Authorizenet Return Codes -
+ Reason 1 - Response 1 - AVS S - Card Code M) [authorize.net debug messages]
+-- Payment status set to 252 by cc_charge : 
+Disallowed - Invalid tender, 
+your bank/account does not support that type of payment. 
+[zoovy decided it was suspect and told the customer it was denied, based on your settings!]
+
+
+</code>
+</aside>
+
+
+
+Telling the customer it was denied is a great way to tell if a card is fraudulent or not.
+It gives you an excuse to call the customer and verify it's a real transaction, whereas if you told them it was a success
+they aren't expecting you to contact them.
+This method is employed VERY frequently by electronics sellers.
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

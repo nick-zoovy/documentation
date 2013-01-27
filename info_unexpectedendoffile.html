@@ -1,0 +1,42 @@
+<meta type="filename" id="info/UnexpectedEndOfFile">
+<h1>Unexpected end of file has occurred</h1>
+
+<article>
+<h2>Symptom:</h2>
+Upon trying to Sync or close Order Manager the user gets an Exception Error.<br>
+The details of the error will be something similar to this, however details may vary:
+<br>
+************** Exception Text **************<br>
+System.Xml.XmlException: The 'Package' start tag on line 101 does not match the<br>
+end tag of 'ToCompany'. Line 102, position 3.<br>
+
+</article>
+<article>
+<h2>Solution</h2>
+
+This is normally the result of a corrupted Dazzle xml file.  The solution is to find the file that is corrupt and remove it.<br>
+
+Here are the steps to do this.<br>
+
+<aside class="cbc">
+<h6>Finding Corrupt XML File</h6>
+<div>
+<li>Close Order Manager
+<li>Open "My Computer" and navigate to C:\program files\Zoovy\Desktop\tracking
+<li>You will see files in here that have an extension of .XML.  It is one of these files that is corrupt.
+<li>Create a sub folder called temporary and a subfolder called corrupted.
+<li>Move all of the .XML files from the tracking folder into the temporary subfolder.
+<li>Now move one of the .XML files back into the tracking folder.
+<li>Attempt to open Order Manager.
+<li>If Order Manager works fine, close it.  Repeat steps 6 and 7 until Order Manager works.
+
+</div>
+</aside>
+
+
+Once you know which file is causing the error, copy that into the Corrupted subfolder. You can then copy the rest of your .XML files back in to the tracking folder one at a time.  Test each one to make sure they are all ok.<br>
+
+You will need to reprocess the orders that are associated with the corrupted .XML file.<br>
+
+If you have problems with this, or need us to help walk you through this, please feel free to call our support line.<br>
+</article>

@@ -1,0 +1,168 @@
+<meta type="filename" id="pkg-media/detail/catalog-book">
+<h1>Book Catalog</h1>
+<article>
+<h2>Overview</h2>
+
+The book catalog contains information indexed by ISBN. 
+When uploading to the Book catalog you may use either the ISBN or the Bookland/EAN number.
+The bookland EAN number is the barcode on the back of the book - 
+and if submitted it will automatically be detected and converted to an ISBN.
+Searching by EAN is also possible (the EAN will be converted to an ISBN before the search occurs).
+
+</article>
+<article>
+<h2>Point System</h2>
+
+<table>
+	<tr>
+		<td valign="top"><b>Contributor</td>
+		<td>&nbsp;&nbsp;&nbsp;</td>
+		<td valign="top"><b>Recipient</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			Upload all required fields: +20<br>
+			Upload Chapter List: +10<br>
+			Upload Optional field: +3 each<br>
+			Per Download: +5 each<br>
+		</td>
+		<td>&nbsp;&nbsp;&nbsp;</td>
+		<td valign="top">
+			Per Download: -5 points<br>
+			
+		</td>
+	</tr>
+</table>
+
+</article>
+<article>
+<h2>Fields</h2>
+
+<table>
+	<tr>
+		<td valign="top"><b>Field Name</b></td>
+		<td valign="top"><b>Required</b></td>
+		<td valign="top"><b>Description</b></td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">ISBN</td>
+		<td valign="top"><b>Y</b></td>
+		<td valign="top">This field may contain either an ISBN or an EAN.
+		<br><i>Attribute: zoovy:prod_isbn</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Manufacturer ID</td>
+		<td valign="top">N</td>
+		<td valign="top">This is the number assigned by the publisher (the other barcode on the back of the book that ISN'T the ISBN).
+			This is used by some manufacturers for re-ordering.
+		<br><i>Attribute: zoovy:prod_mfgid</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Book Title</td>
+		<td valign="top"><b>Y</b></td>
+		<td valign="top">The title as it appears on the book.
+		<br><i>Attribute: zoovy:prod_name</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Book Cover</td>
+		<td valign="top"><b>Y</b></td>
+		<td valign="top">An image of the front of the book - minimum: 75x50 maximum: 640x400
+		<br><i>Attribute: zoovy:prod_image1</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Back Cover</td>
+		<td valign="top">N</td>
+		<td valign="top">An image of the back of the book
+		<br><i>Attribute: zoovy:prod_image2</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Description</td>
+		<td valign="top"><b>Y</b></td>
+		<td valign="top">Text about the album.
+		<br><i>Attribute: zoovy:prod_desc</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">MSRP</td>
+		<td valign="top"><b>Y</b></td>
+		<td valign="top">Manufacturer suggested retail price (found on the back of the book)</td>
+		<br><i>Attribute: zoovy:prod_msrp</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Genre (Unstructured)</td>
+		<td valign="top">N</td>
+		<td valign="top">The unstructured genre contains a category for the book. For example "Sci Fi" or "Fiction".
+			NOTE: At this time Zoovy is in the process of developing a structured Genre field based on feedback from sellers.
+		
+		<br><i>Attribute: zoovy:prod_ugenre</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Published Year</td>
+		<td valign="top">N</td>
+		<td valign="top">The 4 digit year the book was published.
+		<br><i>Attribute: zoovy:prod_publishyear</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top"># Pages</td>
+		<td valign="top">N</td>
+		<td valign="top">The number of pages the book contains
+		<br><i>Attribute: zoovy:prod_pages</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Product Format</td>
+		<td valign="top"><b>Y</b></td>
+		<td valign="top">The list of available formats is maintained by Zoovy.
+			Currently the following Book Formats are supported: Paperback, Hardcover, Audio Tape, Audio CD.
+		<br><i>Attribute: zoovy:prod_format</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Product Language</td>
+		<td valign="top"><b>Y</b></td>
+		<td valign="top">The list of available book languages is maintained by Zoovy.
+		<br><i>Attribute: zoovy:prod_language</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Oversized</td>
+		<td valign="top">N</td>
+		<td valign="top">If the book is large and will not fit in a normal media-mail envelope
+		<br><i>Attribute: zoovy:prod_oversize</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Includes Software</td>
+		<td valign="top">N</td>
+		<td valign="top">Many reference books include a CD at the back with software.
+		<br><i>Attribute: zoovy:prod_hassoftware</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>
+		<td valign="top">Reviews</td>
+		<td valign="top">N</td>
+		<td valign="top">A list of reviews (ideally formatted with HTML) for the particular product.
+		<br><i>Attribute: zoovy:prod_detail</i>
+		</td>
+	</tr><tr><td colspan='3'><hr></td></tr>
+	<tr>	
+		<td valign="top">List of Chapters</td>
+		<td valign="top">N</td>
+		<td valign="top">This field should contain one chapter on each line.
+		<br><i>Attribute: zoovy:prod_chapters</i>
+		</td>
+	</tr>
+</table>
+
+</article>
+
+
+

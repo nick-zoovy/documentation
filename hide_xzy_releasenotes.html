@@ -1,0 +1,149 @@
+<meta type="filename" id="hide/xzy-releasenotes">
+<h1>Zoovy Warehouse Manager 6.xxx Release Notes</h1>
+
+<article>
+<h2>Concept Overview</h2>
+This document contains the changes for warehouse manager. It is recommended that you read this document before downloading any new release of the software. 
+</article>
+
+<article>
+<h2>Build 6.016 - released 9/25/07</h2>
+<li> FIXED: "Could not find Image" error when adding image to a sub-folder. 
+<li> FIXED: Runtime error "argument out of range exception" index in length must refer to a location within a string error when accessing image library.
+<li> This version has been tested and is known to work properly with Enterprise.
+</article>
+
+<article>
+<h2>Build 6.012 - released 9/12/07</h2>
+<li> FIXED: Received an "Object not instantiated" error while clicking on the web page tab when editing a product.
+<li> FIXED: Deleting a product would not delete the inventory record.
+<li> FIXED: Deleting an image folder would not synchronize the delete to the web.
+<li> FIXED: Image would not be downloaded when editing a product (SOHO Only)
+<li> FIXED: "Could not find image" endless loop would be triggered when clicking on an image that was corrupt.
+</article>
+
+
+<article>
+<h2>Build 6.010 - released 9/8/07</h2>
+<li> FIXED: Issue in SOHO when attempting to get an image, resulted in an endless loop due to an event misfire (worked properly in Enterprise)
+</article>
+
+
+<article>
+<h2>Build 6.008 - released 9/8/07</h2>
+<li> IMPLEMENTED: User interface cleanup (still needs some more work in the next version)
+<li> FIXED: When attempting to delete item that was in navigation category, would get "The field is too small to accept the amount of data you attempted to add.  Try inserting of pasting less data" - increased the size of safename in on of the tables	(thanks gssstore)
+<li> IMPLEMENTED: Added the ability to choose product layout by product and edit the attributes required for the product layout	
+<li> FIXED: Website categories appear in strange order	(thanks gssstore)
+<li> FIXED: eBay attributes not displaying correctly in ZWM	
+<li> FIXED: Management categories maximum length is 50, this includes the path	
+<li> IMPLEMENTED: When editing a product, the list view would also return to the top of list, now returns to the product selected 
+<li> FIXED: Inventory would not decrement correctly 
+<li> IMPLEMENTED: When editing a product the interface shows what website categories that product is in, you can add/remove from the category (thanks zephyrsports)
+<li> IMPLEMENTED: Ability to export the inventory to CSV file 	
+<li> IMPLEMENTED: Ability to search the product by PID and display the results found	
+<li> IMPLEMENTED: Ability to search the inventory table by SKU and display the results found	
+<li> IMPLEMENTED: Add to the ability to quickly add inventory to product by inventoriable SKU in the product editor	
+
+<aside class="caution">
+<h6></h6>
+<div>
+The following are KNOWN ISSUES with this software release, a subsequent release is planned in the near future to address these issues:<br>
+<li> Product editor does not resize.
+<li> Main window resizes, but components on the application do not.
+<li> Size of the main window is not remembered upon exit.
+
+
+</div>
+</aside>
+
+
+</article>
+
+<article>
+<h2>Build 6.006 - released 3/22/07</h2>
+<li> IMPLEMENTED: when image is selected in the image library, it now tells the full path to the image. 
+<li> FIXED: Client now remembers changes of which products are selected in navigation categories.
+<li> FIXED: Error "the field is too small to accept the amount of data you attempted to add" due to one of the fields in the image database.
+<li> FIXED: Inventory not working correctly when adding a new product.
+<li> FIXED: Related products were not checked in the product editor, this was a display issue only.
+<li> FIXED: Both SOHONET and Enterprise versions of the client are now available.
+<li> FIXED: Automatically strips the $ in the cost and price fields if they existed in the database.
+</article>
+
+<article>
+<h2>Build 6.002 - released 1/25/07</h2>
+<li> FIXED: Multi-Qty pricing not saving when editing a product (thanks gssstore)
+<li> FIXED: Implemented a 24 hour warning message if data has not been synced when opening.
+<li> FIXED: "Could not unload schedule main" error message when exiting warehouse manager.
+<li> FIXED: Products occasionally not showing in the listview on the main form 
+<li> FIXED: Parsing error on navcats for customers using supply chain.
+<li> IMPLEMENTED: The ability to support blank prices in products.
+<li> FIXED: Product parsing errors caused by the length of amazon attributes in certain categories. 
+<li> FIXED: Increased the length of valid image names to 80 and image folders to match new settings on the zoovy.com media library.
+<li> FIXED: Increased the length of the product name to 255 characters. 
+</article>
+
+
+<article>
+<h2>Build 6.000 - released 12/28/06</h2>
+
+</article>
+
+<aside class="caution">
+<h6></h6>
+<div>Before proceeding, if you are on a version of Warehouse Manager that is before 6.000 you will need to uninstall Warehouse Manager before upgrading. <li>Please go to control panel. <li>Add / remove programs. <li>Uninstall Warehouse Manager. <li>Reboot the computer. <li>Then install the latest version of Warehouse Manager. 
+</div>
+</aside>
+
+
+<article>
+<h2>What happened from version 1.50 to 6.000</h2>
+So back in February 2006 we stopped development on the warehouse manager to focus on migrating the Order Manager desktop client to the same .Net platform that Warehouse Manager was built on. 
+Although we originally expected this process to take "about 6-8 weeks", it actually took closer to 11 months to work out all the kinks. 
+
+<br>
+<aside class="hint">
+<h6></h6>
+<div>If you are getting the following error message, you will not be able to use Warehouse Manager version 6.000. We will be releasing another version of warehouse manager that will resolve this issue. <br>This error message will usually occur either when downloading products or Website Category Download: <b>System.Data.OleDb.OleDbException: The field is too small to accept the amount of data you attempted to add.  Try inserting or pasting less data.</b> <br>If you get this error message when warehouse manager is downloading products, most likely this is due to the Amazon attributes are greater than 30 characters.<br>It is important that you open a support ticket for this issue anyway. When the new version of order manager that contains the fix for this error is released we will be able to notify you.
+</div>
+</aside>
+
+
+For the layperson version 6.000 will not appear substantially different from it's predecessor 1.50, however there is quite a big different "under the hood". 
+Many of the components such as login/security/licensing/data synchronization/database format/shared utility libraries are the same for both Warehouse Manager and Order Manager, this means any changes/enhancements in those libraries only needs to be implemented once to benefit both software applications. 
+
+<br>
+
+This is of importance because now going forward both software applications can be worked on by the same people, in a common language, and will (in the future) be able to share data much easier, without compatibilty issues since the pieces can be used interchangibly. They are also both fully Vista Ready, and will be able to take full advantage of all future generation dual and quad core processors.  Not to mention that having a shared library of sync routines facilitates the release of additional specialized desktop software (such as the Enteprise Sync Manager) to suite complex customer environments. 
+
+</article>
+
+
+<article>
+<h2>Build 1.50 - released 2/15/06</h2>
+
+<li> IMPLEMENTED: support for adding products to launch groups.
+<li> CORRECTED: Misspelling of word "Manufacturer" in the product editor (thanks spruebrothers)
+<li> CORRECTED: Price and cost of products was adding too many digits after the zero (thanks gssstore)
+<li> CORRECTED: Saving a product would cause a run time error (thanks angelstechnology,palmbeachdiamonds)
+
+</article>
+
+<article>
+<h2>version 1.16 - released 1/11/2006</h2>
+
+<li> CORRECTED: Query to complex error when syncing with products down to Warehouse Manager (thanks spruebrothers)
+<li> CORRECTED: Double click product that contains image but folders does not exist, causes the image to be corrupt (thanks enterprise2019)
+<li> CORRECTED: If you select image that was download would could external error and crash (thanks craftersnet,usavem)
+<li> CORRECTED: Clone product was deleting the information of the original product (thanks mugheaven)
+<li> CORRECTED: If click on tax on products, tax was not being remembered (thanks atozgifts)
+<li> IMPLEMENTED: A File -> Maintenance -. Refresh Data from Zoovy (thanks outofthetoybox)
+<li> CORRECTED: The colon was being replacing with dash in all information (thanks mugheaven)
+<li> CORRECTED: If you rename navigation category, would not allow spaces (thanks gssstore)
+<li> CORRECTED: Unable to remove more than one product from category (thanks gssstore)
+<li> CORRECTED: Related products not remembering what was checked and not checked (thanks gssstore)
+<li> IMPLEMENTED: Added manufactor name, manufactor id, and UPC to the product editor (thanks gssstore)
+<li> CORRECTED: Fields like ebay buy it now , profiles and etc were not saving and loading in the product editor (thanks scalesusa) 
+
+</article>

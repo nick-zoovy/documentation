@@ -1,0 +1,235 @@
+<meta type="filename" id="dev/detail/flows-gallery">
+<h1>Gallery Page Layout</h1>
+<article>
+<h2>Overview</h2>
+
+Galleries are used to display a list of channels which are currently running, 
+or will soon be running on a marketplace. The gallery page by default is located at
+http://yourname.zoovy.com/gallery.cgis however any of the elements below may be used on any page (including the homepage or any category).
+<br>
+<aside class="hint">
+<h6></h6>
+<div>
+
+Make sure you check out the <a href="#whatnow">What can I do with this?</a> section below.
+
+</div>
+</aside>
+
+
+
+</article>
+<article>
+<h2>GALLERY</h2>
+
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;ELEMENT TYPE="GALLERY" NAME="GALLERY1"&gt;
+SAVETO=page:gallery
+LIMIT=#
+&lt;/ELEMENT&gt;
+
+</code>
+</aside>
+
+
+
+LIMIT is the maximum number of listings which will appear in the gallery. The maximum number is 500 
+
+
+</article>
+<article>
+<h2>GALLERYSELECT</h2>
+
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;ELEMENT TYPE="GALLERYSELECT" NAME="GALLERYSELECT1"&gt;
+SAVETO=page:gallery
+&lt;/ELEMENT&gt;
+
+</code>
+</aside>
+
+
+
+The GALLERYSELECT element displays a tabbed list of marketplaces which have one or more listings, along with the number of listings.
+The colors and fonts are based on the wrapper which is selected.
+
+</article>
+<article>
+<h2>PRODGALLERY</h2>
+
+The PRODGALLERY is a stand in replacement for the product list. 
+It can be used in any of the following contexts:<br>
+<li> A product page - it displays a list of channels (in a list format) which are currently active for the product selected.
+<li> A category page - it displays a list of channels which are related to any products associated with the page (NOTE: You do not necessarily need to have a PRODLIST element on the same page - the list of products is pulled from the navigation category)
+<li> Any page - displays a full list of active channels, similar to the GALLERY element, but it allows customization.
+
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;ELEMENT TYPE="PRODGALLERY" NAME="PRODGALLERY1"&gt;
+BLANKMESSAGE=html message which is displayed if no items are available.
+PG= the safename of the category to pull products from (this overrides the current category/product in focus)
+SAVETO=page:gallery
+FORMAT=THUMB|PLAIN|CUSTOM 
+COLS=3 (number of columns)
+ALTERNATE=1/0 (alternate row colors)
+HTML=the list specification for FORMAT CUSTOM (refer to PRODLIST documentation)
+&lt;/ELEMENT&gt;
+
+</code>
+</aside>
+
+
+<br>
+<br>
+The following custom variables are available for each item in a PRODLIST element (in addition to all product attributes)<br>
+<table>
+<tr>
+	<td>gallery:channel</td>
+	<td>The channel associated with the current item</td>
+</tr>
+<tr>
+	<td>gallery:starts</td>
+	<td>The unixtimestamp when the listing begins (this assumes that a scheduler has been set for the item)</td>
+</tr>
+<tr>
+	<td>gallery:countdown</td>
+	<td>The pretty "starts in" time</td>
+</tr>
+<tr>
+	<td>gallery:launchtime</td>
+	<td>The pretty time and date the listing starts</td>
+</tr>
+<tr>
+	<td>gallery:ends</td>
+	<td>The unixtimestamp when the listing will end</td>
+</tr>
+<tr>
+	<td>gallery:endtime</td>
+	<td>The pretty time and date when the listing will end</td>
+</tr>
+<tr>
+	<td>gallery:merchant</td>
+	<td>The current zoovy username</td>
+</tr>
+<tr>
+	<td>gallery:product</td>
+	<td>The product id of the associated item</td>
+</tr>
+<tr>
+	<td>gallery:market</td>
+	<td>The market name e.g. "ebay", "ebaystores", etc.</td>
+</tr>
+<tr>
+	<td>gallery:marketid</td>
+	<td>The id/number the marketplaces uses to identify this listing</td>
+</tr>
+<tr>
+	<td>gallery:thumb</td>
+	<td>The image library name for the thumbnail (or the URL if the merchant isn't using a Zoovy image hosting)</td>
+</tr>
+<tr>
+	<td>gallery:title</td>
+	<td>The title of the listing on the marketplace</td>
+</tr>
+<tr>
+	<td>gallery:url</td>
+	<td>The URL which links directly to the listing.</td>
+</tr>
+<tr>
+	<td>gallery:type</td>
+	<td>The type of listing "Auction" or "Fixed Price"</td>
+</tr>
+<tr>
+	<td>gallery:visitors</td>
+	<td>The number of visitors recorded for the current listing</td>
+</tr>
+<tr>
+	<td>gallery:bidcount</td>
+	<td>The number of bids received</td>
+</tr>
+<tr>
+	<td>gallery:bidprice</td>
+	<td>The current bid price (or the fixed price for fixed price only listings)</td>
+</tr>
+</table>
+In addition to the variables above, you may reference any product variables. 
+However if you do not reference any product variables then the listing will be rendered substantially faster (since the product lookup will not occur).
+<br>
+</article>
+<article>
+<h2>So, what can I do with this stuff?</h2>
+
+<a name="whatnow"></a>
+The PRODGALLERY element allows you to create websites that would be impossible without the Zoovy content management engine.
+<br>
+Here are a few examples of neat stuff we've done in the past:<br>
+<br>
+<section>
+<h3>One of a Kind Seller w/Website Model</h3>
+
+<b>The basic idea:</b>
+Sell on the store First, items that do no sell go to eBay later (but are still listed on store).<br>
+<br>
+<b>How to do it:</b>
+Configure inventory so it does not allow items which are reserved to be purchased.
+First create products for each item and place them on the website. (HINT: use an incrementing SKU e.g. 
+1,2,3..999 to keep track of an items age relative to other items on the site). 
+Periodically go through the database and find items which are old and have not been sold and create channels for them 
+(e.g. powerlisters, which continue until sold). 
+Use the PRODGALLERY on the product page layout to direct buyers who arrive at the product to bid on the item at eBay.
+(Hint: using a custom auction definition you could change the product flow automatically when you create a listing).
+
+</article>
+<section>
+<h3>One of a Kind Seller w/Website Showcase</h3>
+
+<b>The basic idea:</b>
+List items on the storefront, along with the time the item will start. 
+Since eBay auction times are typically very short this gives you an excellent way to showcase popular items BEFORE
+the auction starts and also provide a permanent landing page for items which can be used on promotional materials. 
+Ideally this could be used with a custom hosted script which allowed people to register for notifications when items
+would start e.g. a button which says "Tell me when the auction starts".<br>
+<br>
+<b>How to do it: </b>
+Do not specify a retail price on items (this will prevent them from being purchased via the website).
+Use a product layout which includes the PRODGALLERY, immediately create the channels for each item and use channel 
+scheduler to specify a start time in the future, use the scheduler feature "Add this item to the channel list immediately".
+To generate the "Tell me when this auction starts" 
+use a custom list format which passes the product id, and starting time for a listing to a remote CGI which is loaded in popup.
+<br>
+<b>Other Ideas: Buy It BEFORE the Auction starts</b> -
+Especially useful for items where the retail value is predictable and high (so you don't have to pay marketplace fees) - e.g.
+cars, boats, houses. Simply set the retail price to the price you want, enable inventory on the item then create a scheduler 
+in the future which verifies inventory before launch. If the item is already sold, it will NOT launch. 
+
+</article>
+<section>
+<h3>Amazon.com model (new and used next to eachother)</h3>
+
+<b>The basic idea:</b>
+Selling returns, and slightly damaged goods next to your own items becomes a snap. 
+Use your favorite auction site like eBay.com (or any Zoovy compatible marketplace for that matter) to let buyers to your website 
+choose to bid or buy an item. <br>
+<br>
+<b>How to do it:</b>
+Simply create a custom page flow which has a PRODGALLERY element on it. 
+When you launch a listing, just make sure the custom page flow is selected and thats it.
+You might also want to configure the BLANKMESSAGE portion of the element to display a message when there are no listings currently running.
+
+</article>
+
+
+Please note: at this time there are no default system flows which include the PRODGALLERY element. 
+Because of their highly specialized nature they are built into custom flows and are only available to accounts with the WEB bundle.
+
+</article>
+
+

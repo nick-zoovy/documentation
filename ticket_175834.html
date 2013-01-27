@@ -1,0 +1,150 @@
+<meta type="filename" id="ticket/175834">
+
+<h1>Issue #175834</h1>
+
+<article>
+<h2>Issue</h2>
+Issue: 2008-08-30582
+
+<br>
+
+Platform: na
+Topic: web_manager
+this order isnt comming up i am getting a error
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>500 Internal Server Error</title>
+</head><body>
+<h1>Internal Server Error</h1>
+<p>The server encountered an internal error or
+misconfiguration and was unable to complete
+your request.</p>
+<p>Please contact the server administrator,
+ webmaster@zoovy.com and inform them of the time the error occurred,
+and anything you might have done that may have
+caused the error.</p>
+<p>More information about this error may be available
+in the server error log.</p>
+<p>Additionally, a 404 Not Found
+error was encountered while trying to use an ErrorDocument to handle the request.</p>
+</body></html></article>
+
+<article>
+<h2>Resolution</h2>
+edwinj logged into store
+</article>
+
+<article>
+<h2>Resolution</h2>
+### TECH NOTES ###
+2008-08-30582 does not show up in order search, but is visible at the bottom of the recent orders tab.  Clicking on the link for the order produces the error mentioned.
+
+2008-08-30582	Cornelius, Elizabeth 	US, SC 29118  	13.59	Pending  	PAYPAL 	Wed 6-Aug-2008
+</article>
+
+<article>
+<h2>Resolution</h2>
+### TECH NOTES ###
+Order has corrupt data.  System admin checking into server backups to see if any backup data is available, or if order was corrupted during transmission from ebay.
+
+Zoovy Order 2008-08-30582
+ebay # 130237487743
+claim #4015100*OD80
+</article>
+
+<article>
+<h2>Resolution</h2>
+
+Incident 28429 created and assigned to jhunt
+
+----------------------------------------------------------------------------
+An incident means this issue has been escalated for review by a senior 
+technician or a developer for further investigation. 
+Depending on the status, and the workload of the individual it has been 
+assigned to it may be several days or more before this issue is addressed. 
+
+We encourage you to check back as often as necessary and add additional 
+notes. If the issue cannot be solved immediately it will be downgraded 
+to a low priority incident in which case the ticket and incident will 
+remain open until the issue is resolved.  Any notes you add to the ticket 
+will be sent automatically to the person who is assigned to the incident.
+
+</article>
+
+<article>
+<h2>Resolution</h2>
+
+Incident 28432 created and assigned to edwinj
+
+----------------------------------------------------------------------------
+An incident means this issue has been escalated for review by a senior 
+technician or a developer for further investigation. 
+Depending on the status, and the workload of the individual it has been 
+assigned to it may be several days or more before this issue is addressed. 
+
+We encourage you to check back as often as necessary and add additional 
+notes. If the issue cannot be solved immediately it will be downgraded 
+to a low priority incident in which case the ticket and incident will 
+remain open until the issue is resolved.  Any notes you add to the ticket 
+will be sent automatically to the person who is assigned to the incident.
+
+</article>
+
+<article>
+<h2>Resolution</h2>
+Ed, 
+
+The order was created in between backups. Meaning that this was not yet backed up. 
+I can not get any info from the order itself. However I have this info (pasted below) from the database.
+
+Name:Cornelius, Elizabeth
+Email: 1mudwitch@sc.rr.com
+Payment type   PAYPAL   
+Amount: 13.59
+
+I will let the merchant know this information. I just wanted to give you an update.
+
+
+</article>
+
+<article>
+<h2>Resolution</h2>
+Dovi, 
+
+This order was corrupted.  The information that I can pull from the order out of the database is pasted below.
+
+Name: Cornelius, Elizabeth
+Email:  1mudwitch@sc.rr.com
+Payment type:    PAYPAL	
+Amount:  13.59
+
+Was this order completed via the website or was this order created manually? Also please let us know if we could assist any further. 
+
+Thanks
+
+Jon H. 
+</article>
+
+<article>
+<h2>Resolution</h2>
+what is the order for? it was created by the website
+</article>
+
+<article>
+<h2>Resolution</h2>
+	2008-08-30600  new order same problem
+</article>
+
+<article>
+<h2>Resolution</h2>
+Dovi, 
+
+Developers are currently looking into this issue. Thank you for the update of the ticket. I will respond to this ticket when I have further information. 
+
+Thanks
+
+Jon H. 
+
+</article>
+

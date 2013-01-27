@@ -1,0 +1,40 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="ticket/160705">
+
+<h1>Issue #160705: Hiding Product Detailed Description</h1>
+
+
+<article>
+<h2>Issue #160705: Hiding Product Detailed Description</h2>
+
+<br>
+
+I have used the Product Detailed Description:  field for awhile now.  The information I put in this field has always been sent to amazon and to my ebay listings.  
+
+<br>
+
+It would be better if it did not go to amazon.  
+</article>
+<article>
+<h2>Resolution</h2>
+
+With eBay, the html wizard (template) determines which fields are "compiled" into the description - so a custom html wizard would solve this.
+
+<br>
+
+With Amazon - the product detailed description is actually a standard field - and is definitely syndicated to Amazon. We will also search the field for WIKI formatted bullets and pass those as "feature bullets"
+
+<br>
+
+I'm not sure what type of information you'd keep in the product record that isn't relevant to Amazon buyers or eBay buyers - my guess is that it's policy information.  That should be incorporated into a custom product template which can load and display alternate custom fields e.g. "username:prod_web_only"
+
+<br>
+
+Detailed description usually contains product specifications that are not relevant for displayed in the product lists, which is why it is a separate field.
+
+</article>
+
+
+
+
+

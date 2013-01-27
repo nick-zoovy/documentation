@@ -1,0 +1,44 @@
+<meta type="filename" id="ordermgr/detail/omcompare">
+<h1>Tech Support / Compare Database </h1>
+<article>
+<h2>Overview</h2>
+
+During a normal synchronization the Order Manager client will record the timestamp, of the most recently modified invoice. The next time a synchornization is performed, only the invoices which have changed since the timestamp will be synchronized. Since time should never move backwards (and if it does we've got much bigger problems) this allows Order Manager to do what is called "incremental synchronization" e.g. only download changes rather than the full database. The compare database feature does a systematic invoice by invoice comparison of the local order manager database against the Zoovy servers. 
+</article>
+<article>
+<h2>Server is Authorative</h2>
+
+In this case the Zoovy servers will be treated as the master copy, in the event two invoices do not match, then a new copy will be downloaded from the Zoovy server and the local copy will be overwritten. This can be used to fill in gaps if for whatever reason order manager missed an invoice.  
+</article>
+<article>
+<h2>Client is Authorative</h2>
+
+If the local client has not been uploading it's changes to Zoovy, then performing a client is authorative synchronization will upload any invoices which exist in the local database, and are not identical on the server. In the event an order is new on the server, and does not exist on the local database it will be ignored. 
+</article>
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+These features should not be used without the assistance of Technical support. A full backup of all data (on both the Zoovy server) and the local client should be performed before either comparison is performed.
+
+</div>
+</aside>
+
+
+</article>
+<article>
+<h2></h2>
+
+</article>
+<article>
+<h2></h2>
+
+</article>
+<article>
+<h2></h2>
+
+</article>
+
+
+

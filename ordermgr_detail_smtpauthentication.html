@@ -1,0 +1,93 @@
+<meta type="filename" id="ordermgr/detail/smtpauthentication">
+<h1>SMTP and Order Manager</h1>
+<article>
+<h2>Overview</h2>
+
+SMTP stands for Simple Mail Transmission Protocol, it is the primary means of transporting mail over the Internet.
+</article>
+<article>
+<h2>Setup: </h2>
+
+While installing order manager you will be asked for the following pieces of information:<br>
+	<li> SMTP Server Address - this is the address of the server that your computer
+	will be sending mail through. For example, servername.yourisp.com
+	<li> Checkbox - turn on POP before SMTP
+		Username, Password, Pop Server
+
+To reconfigure these settings later go to Admin / Edit SMTP Settings
+
+	If your ISP does not support either of these authentication methods, you may want to consider using Zoovy Mail.
+</article>
+<article>
+<h2>AOL Users:</h2>
+
+AOL Users - you do not have an SMTP server and should leave the SMTP address
+field blank. You will not be able to use the SMTP Mail feature unless you
+purchase an SMTP transport service from another ISP. Zoovy does provide this
+service; please check out Zoovy Mail or contact your Account Executive for more information.
+</article>
+<article>
+<h2>Comcast Users:</h2>
+
+Comcast Users - Comcast is currently limiting outbound SMTP traffic to a small number of messages
+per connection.  When you reach that connection limit, Order Manager will generate a 1005x error
+and terminate your smtp connection.  If you are using Comcast, you will need to purchase a
+seperate SMTP transport service.  Zoovy does provide this service; please check out Zoovymail
+or contact your Account Executive for more information.
+
+
+</article>
+<article>
+<h2>Known Incompatibilites</h2>
+
+Norton's firewall product will cause Order Manager to break, lock up.
+Most personal firewall software such as black ice defender, or zone alarm will result in connection 10xxx and 11xxx errors.
+</article>
+<article>
+<h2>Outlook Users</h2>
+
+If you use Outlook you can determine your SMTP mail server address, and POP server address by going to Tools / Accounts / Mail tab. Click on the name of the ISP you are using, go to the Servers tab. The value in the field "Outgoing Mail (SMTP)" is the value of your SMTP server address. The value of the field "Incoming Mail (POP)" is your POP address. If your incoming mail says "IMAP" then you should contact your ISP to verify they support POP and to learn the appropriate POP server address. The incoming mail server username and password will be the same username and password you supply in the SMTP mail settings in Order Manager. If you do not know your mailbox password, then you must contact your ISP to learn it.
+</article>
+<article>
+<h2>ISP Support</h2>
+
+In order to use Order Manager to send mail using SMTP (Simple Mail Transfer Protocol) you should first verify what type of authentication your ISP supports. ISPs employ a variety of mail filtering and authentication techniques to keep spammers (people who send mass email) from using their system resources. For an ISP allowing spam to originate from their network can result in their mail servers being added to a black list and their customers not being able to send or receive any email. Consequently paranoia about spammers causes ISP's to employ a variety of authentication methods to verify who is using their mail servers to send mail.
+</article>
+<article>
+<h2>Supported Authentication Methods</h2>
+
+Zoovy supports the two most common types of ISP SMTP authentication, which are IP Authentication, and POP before SMTP Authentication.
+	IP Address Authentication is by far the most common; this is where an ISP allows any computer located on their specific network to send mail. If your ISP employs IP Address Authentication then you will only be able to send email while you are using a computer connected to their network.
+</article>
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+This can be very problematic for people who install Order Manager on their laptops for use both at the office and their home. Almost all ISPs employ some sort of IP Address Authentication - even if they use other authentication methods as well. In other words very rarely will you be able to send mail from one ISP while being connected to another.
+
+</div>
+</aside>
+
+
+<article>
+<h2>POP before SMTP</h2>
+
+	POP (Post office Protocol) before SMTP (Simple Mail Transfer Protocol) authentication is employed as a way to authenticate a specific user using the same username and password they use to access their mailbox. POP is a protocol designed exclusively for downloading the contents of an email mailbox to a client it - POP cannot send mail it can only receive while SMTP can only be used to send mail.
+</article>
+<article>
+<h2>POP Sessions</h2>
+
+	POP requires the transmission of a clear text username and password to initiate a session with an ISP's POP mail server. POP before SMTP authentication works on the principle that when a client accesses their email via POP the ISP can safely confirm that a specific user is using a computer located at a specific at IP address for a limited period of time.  Once the POP authentication is successful they could then update their SMTP mail server to allow that specific IP address to transmit mail via SMTP for a limited period of time. Unfortunately the time interval that a client is allowed to send mail for varies by ISP - but generally after the IP address assigned to your computer has successfully authenticated via POP it will be allowed to relay (send mail via SMTP) for anywhere from 2 minutes to 1 hour with most allowing you to send mail for about 5 minutes.  <br><br>
+	Please note that while nearly every ISP on the planet supports POP before SMTP, there are still 300+ methods of authentication that can be employed. Your ISP may choose to use any number of them to validate SMTP email and combat SPAM. Other things ISP's do includes limiting the number of outbound messages to somewhere around 1,000 messages. Because of the multitude of configuration options available - Zoovy only supports the two most popular ones (which realistically represent around 90% of the ISP's today).  If your ISP isn't going to work - you should follow the troubleshooting steps with your ISP technical support. The cost of supporting the thousands of potential resulting configurations is simply not possible for Zoovy to assume since in many cases troubleshooting this can be very complicated.
+</article>
+<article>
+<h2>Zoovy SMTP Mail service</h2>
+
+Your SMTP address should be provided by your ISP.
+If you are using AOL you do not have access to an SMTP server.
+For an additional monthly fee Zoovy provides an SMTP mail service for
+special circumstances (AOL) where customers cannot get their own, or their
+ISPs mail service is unreliable or incompatible with Order Manager.
+</article>
+

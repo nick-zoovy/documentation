@@ -1,0 +1,94 @@
+<meta type="filename" id="webmgr/detail/utilities-launchgroups">
+<h1>Launch Groups</h1>
+<article>
+<h2>Overview</h2>
+
+
+Launch Groups allow you to syndicate products from categories, lists, or hardcoded csv lists of products into
+marketplaces at predictable days/times. 
+
+</article>
+<article>
+<h2>Getting Help</h2>
+
+The Launch Groups manager has inline help - 
+just click the "Info" link adajcent to any field to learn how to properly configure the values.
+
+</article>
+<article>
+<h2>Queuing Strategies</h2>
+
+
+
+Launch Groups support a variety of "Queueing Strategies" - a detailed explanation of each one is provided below:
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+If you set the Max Products per launch to either -1 (unlimited) or a value greater than the number of products
+in the group then the queuing strategy is irrelevant since all products will be launched every time.
+
+</div>
+</aside>
+
+
+
+<section>
+<h3>Round Robin</h3>
+
+This selects products in a sequential order. 
+Each Launch Group keeps an internal count of how many listings it has performed, which is then divided by the
+number of products in the list and the remainer determines the beginning offset in the product list. 
+When the end of the list is reached it starts over at the beginning. 
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+In Round Robin - a products position in the list determines its order in the launch. If the products position changes 
+(e.g. items are added or removed from the list, or the sequence is resorted in a different order) then 
+products may be either passed over, or launched duplicately. Round Robin is almost certainly not the best 
+queuing strategy for highly contentious lists of products whose order and sequence change frequently.
+
+</div>
+</aside>
+
+
+
+</article>
+<section>
+<h3>Sell Thru</h3>
+
+This data goes to the specific marketplace and pulls the total number of listings, and total number of sales over the
+past 90 days. A simple ratio is computed and the items with the highest sell thru ratio are used. 
+If an item has no sales record, it's sell thru percentage is set at 100% so it will sell. 
+
+</article>
+<section>
+<h3>In Stock</h3>
+
+
+The "In Stock" queuing strategy looks at the number in stock, removes reserve inventory and then uses those items which have the highest
+available quantity for sale.
+
+</article>
+<section>
+<h3>Recent</h3>
+
+
+The "Recent" queuing strategy looks at the modified times for each product. 
+A product is modified anytime it is saved or edited in any way.
+
+</article>
+<section>
+<h3>Least Recently Used</h3>
+
+
+This attempts to find the total number of listings for all marketplaces, and launch those items 
+which are NOT being listed as frequently (and therefore may not have been sold). 
+
+</article>
+
+
+

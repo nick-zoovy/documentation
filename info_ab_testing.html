@@ -1,0 +1,239 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/ab_testing">
+<h1>A/B Testing Survival Guide</h1>
+
+<article>
+<h2>Concept Overview</h2>
+
+
+Multi-variable testing also known as "A/B testing" is where two different wrappers (each with different variables) are displayed on the same website concurrently.  Half of the visitors are shown website A, and the other half are shown website B.  
+
+<aside class="hint">
+<h6></h6>
+<div>
+It is possible to design *ONE* wrapper which can be used on both the 'A' and 'B' side and simply toggles the display of content based on the internal SPECL variable: 'CART::multivarsite'.
+
+</div>
+</aside>
+
+
+<br>
+
+A/B testing is useful for determining if changes made to a site have a positive impact on sales, but only under certain conditions. 
+
+</article>
+
+
+<article>
+<h2>Caveats to A/B testing</h2>
+We often say there are three types of people who visit your website:
+<ul>
+<li> People who will buy no matter what you do.
+<li> People who will NOT buy from you, no matter what you do.
+<li> People who *might* buy from you, depending on what you do.
+</ul>
+While the percentage changes based on customer composition and traffic, the third group is who the A/B test is intended to target/address, and that is the group who the site should be designed for.  
+<br>
+
+In our experience pages which get less than 10,000 visitors in a 1 week period probably won't see any difference no matter what changes they make even if the changes are major. 
+Changing subtle things like the formatting of a title, or a "border around an image" won't produce any type of measurable results, and would literally take probably 50,000 visitors per week or more to see any type of measurable difference in sales.  The business rationale for monitoring "small changes" is usually not worth the cost/overhead of setting up the test. 
+
+<br>
+
+The duration of the test is another important factor.  Keep in mind many products have a multi-day or even multi-week and in some cases multi-month buyer behavior.  Visitors come to the site, do research, and then might come back and visit 3-5 times before actually making a purchase.  Again these are the people who "might" buy from you, and the ones the test is intended for.  If your changes affect short term "instant" sales by 5%, but increase long term 2 week "researched" sales by 20% then the change overall was good, however the first week won't look good at all, at least depending on what percentages of clients you have coming to the site.  A/B tests do not measure buyer behavior, they measure sales, they also don't measure return rates or customer service impact from converting "long term" buyers into "instant sales".  The same goes for the reverse, a compelling "call to action" might cause a instant burst by converting 4 week buyers, into "day one" buyers, but over a 4 week period - there would be no change in sales, or possibly even a higher return rate as buyer remorse is more common on "instant sales. Buyer behavior must be inferred through research and experience. 
+</article>
+
+<article>
+<h2>Creating A/B Testing</h2>
+Step by Step instructions are difficult because they will vary slightly based on what needs to be tested.  For example to test a different format of product layout.  
+
+<br>
+A/B tests are most commonly used to aesthetic element changes across the entire site.
+<br>
+
+<aside class="hint">
+<h6></h6>
+<div>
+Normally you wouldn't do this stuff yourself, you'd have our design department set it up for you. The examples below are *NON* FUNCTIONAL, you cannot cut and paste them -- they are intended to be integrated into existing configurations. 
+
+</div>
+</aside>
+
+
+<section>
+<h3>Testing Different Wrappers</h3>
+This is the easiest, make a copy of a wrapper and select it on the B side. 
+</section>
+
+<section>
+<h3>Testing Different Product Layouts</h3>
+The wrapper can "force" a product layout by editing the TOXML CONFIG element. To set wrapper B which implicitly sets a new product page layout you could use &lt;ELEMENT TYPE="CONFIG" OVERRIDE="flow.p=~custom_layout_bside"&gt;
+</section>
+
+<section>
+<h3>Testing Different Category Layouts</h3>
+To override a category layout across the entire site it's very similar to the product layout. &gt;ELEMENT TYPE="CONFIG" OVERRIDE="flow.c=~custom_layout_bside"&lt;
+</section>
+
+<section>
+<h3>Testing changes on only one page</h3>
+In order to conduct an A/B test on only one page, or specific page(s), the layout would need to be designed to selectively display content for both A and B.  
+The layout would then need to be programmed to selectively display content based on the state of the SPECL variable - 'CART::multivarsite'.
+Elements of the page which do not change between A/B would not require any customization.
+
+<aside class="hint">
+<h6></h6>
+<div>
+This approach is commonly used when more than one category and/or product page is in use on the site at a given time. 
+
+</div>
+</aside>
+
+
+</section>
+
+</article>
+
+<article>
+<h2>Viewing A/B Test Sites</h2>
+Links have been added so that it is easy to navigate between the A and B versions of the site.  Simply click on the "Sites" tab and select a domain, or profile and click the "Site-A" link or "Site-B" link.
+Now it is easier than ever to compare the two sites  
+
+<br>
+
+<article>
+<h2>Viewing Sales Reports</h2>
+
+The field "multivarsite" is set to either an "A" or "B" in the order object. 
+The online sales reports (in the reports area) display a multi-variable column and break out sales totals for each variable.
+
+</article>
+
+<article>
+<h2>Modifying Google Analytics</h2>
+
+The following SPECL code will output either an "A" or a "B" if multi-variable (A/B) testing is enabled.  You can use this in conjunction with javascript to track performance.
+
+<aside class="html">
+<h6></h6>
+<code>
+<% loadurp("CART::multivarsite"); print(); %>
+
+</code>
+</aside>
+
+
+
+Exmaple of tracking using one Google Analytics accounts:
+
+<aside class="hint">
+<h6></h6>
+<div> To see the A vs. B stats a filter will need to be set up to recognize the variables.   Site-A and Site-B
+
+This code will need to be inserted into the current analytics code
+
+<aside class="html">
+<h6></h6>
+<code>
+if ("<% loadurp("CART::multivarsite"); print(); %>" == "A") { 
+	pageTracker._setVar("Site-A");
+	} 
+else { 
+	pageTracker._setVar("Site-B");
+	}
+
+</code>
+</aside>
+
+
+Example of tracking using separate Google Analytics accounts:
+
+<aside class="hint">
+<h6></h6>
+<div> You will need two separate profiles in your Google Analytics account in order to configure this method of A/B testing. Name one "www.yourdomain.com (a)" and the other "www.yourdomain.com (b)" 
+</div>
+</aside>
+
+
+<aside class="html">
+<h6></h6>
+<code>
+<br>
+
+<script type="text/javascript">
+
+var pageTracker;
+if ("<% loadurp("CART::multivarsite"); print(); %>" == "A") {
+  // Analytics Account #1
+  pageTracker = _gat._getTracker("UA-12345-1");
+  }
+else {
+  // Analytics Account #2
+  pageTracker = _gat._getTracker("UA-12345-2");
+  }
+pageTracker._initData();
+pageTracker._trackPageview("");
+</script>
+
+</code>
+</aside>
+
+
+<br>
+
+
+Example using two different profiles in the same Google Analytics account:
+<a href="https://www.google.com/support/googleanalytics/bin/answer.py?answer=55524&hl=en"> Click here.</a>
+<aside class="html">
+<h6></h6>
+<code>
+
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-xxxxxx-x");
+pageTracker._initData();
+if ("<% loadurp("CART::multivarsite"); print(); %>" == "A") {
+  // Analytics Account #1
+  pageTracker._setDomainName("SITEA.example.com");
+  }
+else {
+  pageTracker._setDomainName("SITEB.example.com");  
+  }
+pageTracker._trackPageview();
+</script>
+
+</code>
+</aside>
+
+
+</article>
+
+<article>
+<h2>Experimenting with page layouts</h2>
+A/B testing allows two different wrappers to be configured, because the wrapper can override the page layout - it is possible experiment with different page layouts. 
+</article>
+
+<br>
+
+<article>
+<h2>New Promotion/Shipping Rules: A/B Site Filter</h2>
+Along with being able to run A/B testing using wrapper elements, promotion/coupon rules and shipping ruls can now also be set to apply only to the A or B site.  The ability to activate/deactivate promotions means you can test the results of different marketing campaigns on the same traffic source.  This will be found when creating rules for promotions and shipping
+
+Has use rule if >>
+Visitor is on Site-A
+Visitor is on Site-B
+
+</article>
+
+<br>
+
+<article>
+<h2>Googles A/B Testing Tool: Our Opinion</h2>
+There is this perception on the Internet that everything Google makes is "great".  In general this is a well deserved reputation that Google has earned over the years. However Google's A/B testing tool is "deceptively simple" and clearly bucks the trend of "winner applications" coming from within Google. A/B testing is not simple, it is not easy, and it should only be used in certain very limited applications. 
+<br>
+We are nearly certain that the A/B test tool for Google was developed as a '20 project'. We suspect it was the brain child of an engineer who wanted to implement multi-variant testing for another '20 project' and learned that the only commercial products on the market at the time were literally hundred of thousands of dollars in software and consulting.  We further assume the engineer was understandably "upset" that they didn't have a hundred thousand dollar multi-variant testing budget, and so he proceeded to write a competitive application, in about 5 minutes, in javascript that solved the needs for "his project". The application is nearly useless unless you have designed your pages to be static (non CMS/Dynamic), and has significant SEO ramifications -- which again, if you're Google you probably don't give a damn about either of those because that's how you're architecture is built. For the rest of us, that's a problem. 
+<br>
+So while we applaud the goals of the program (to take multi-variant testing from the large corporate entitles and give it to the people) - we also feel that the Google A/B testing it is incredibly poorly documented, and lacks the necessary features and requisite deployment scenarios to be useful for almost anybody other than Google.  Perhaps more importantly it offers no guidance as to when A/B testing can or 'should' be used, and no guidance or instruction as to setting up control groups for the literally thousands of other variables which can significantly disrupt a study. A test with no controls is not a test, it's more appropriately called "random non-measurable changes". 
+<br>
+Google's A/B testing is, in our opinion is the same as a book titled "Bomb Disarming for Dummies" -- while we applaud the concept, we recommend that A/B testing, along with bomb disarming be left up to the experts who do it everyday. 
+
+</article>

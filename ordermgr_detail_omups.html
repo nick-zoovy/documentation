@@ -1,0 +1,120 @@
+<meta type="filename" id="ordermgr/detail/omups">
+<h1>Shipping with UPS World Ship</h1>
+<article>
+<h2>IMPORTANT NOTE:</h2>
+
+<aside class="caution">
+<h6></h6>
+<div>
+Worldship is not a supported method of processing your orders. Please use the built in UPS Online Tools functionality within the Order Manager desktop client to process shipments.
+
+</div>
+</aside>
+
+While the synchronization process is a snap, there is some setup that requires the preparation of your shipping software to accept the exported files. Please consult your WorldShip Software Documentation for specific instructions on setting up your import/export settings.
+</article>
+<article>
+<h2>About this Feature</h2>
+
+The Zoovy Order Manager makes it easy to import tracking information and export customer shipping data to the UPS "WorldShip" software.
+</article>
+
+<aside class="cbc">
+<h6>Exporting Invoices From Order Manager</h6>
+<div>
+<li>1. Run Zoovy order manager
+<li>2. Select the invoices you would like to export
+<li>3. Right Click one of the selected orders
+<li>4. In the menu, select "Export to >> Shipping Export File" to save
+<li>5. In UPS WorldShip, go to UPS online connect
+<li>6. Select batch import
+<li>7. Locate the file that you created and load
+
+</div>
+</aside>
+
+
+<aside class="cbc">
+<h6>'Import Tracking Numbers'</h6>
+<div>
+<li>1. Export your End of Day report from WorldShip
+<li>2. With your file created, you will need to edit to use Zoovy headers as seen in this doc: <a class="linkdoc" href="#?doc=50956">Doc 50956</a>
+<li>3. Once done, open Order Manager
+<li>4. Right Click within the order list screen (you don't need to select a specific order)
+<li>5. In the menu, select "Import From >> Shipping import file"
+
+</div>
+</aside>
+
+<aside class="caution">
+<h6>Check your import file</h6>
+<div>
+Verify that your import headers conform to Zoovy import standards.  Check for spaces, strange characters, and verify casing matches what is displayed in the webdoc.  Note that as soon as this file is imported, all orders listed will have tracking appended.  Depending on your configuration, this may move your orders automatically to completed, and trigger your STATCOMP email.  It's suggested that you create a template with the proper headers, and copy/paste your End of day information to avoid issue.
+
+</div>
+</aside>
+
+<article>
+<h2>Troubleshooting Tracking Import</h2>
+
+If you have trouble with importing tracking numbers, check to see whether the file is being recreated, or appending data to the file.  Appending means that new items are added to the old with each import.  This should not be happening.  To update, follow these instructions.
+</article>
+
+<aside class="cbc">
+<h6>'Change Appending to Overwrite'</h6>
+<div>
+<li> Run UPS Worldship
+<li> Go to UPS Online Connect in the menu system, then click on create/edit map
+<li> Choose the export map name and click the edit button
+<li> Change the radio button from appending the file to overwriting the file. and hit
+the okay.
+
+</div>
+</aside>
+
+<article>
+<h2>Multiple Packages</h2>
+UPS (multiple boxes) option is used for split shipments.  For example, if you have a customer that ordered three items that need to be shipped in two boxes, you would use this option.  Keep in mind that when you use this the shipment will split according to SKU or product ID.  
+</article>
+<article>
+<h2>Key Import with UPS</h2>
+
+The instructions for Key Import are as follows:
+</article>
+
+<aside class="cbc">
+<h6>'Key Import'</h6>
+<div>
+
+<li>1. Run UPS Worldship
+<li>2. Go UPS Online Connect (in menu)
+<li>3. Then go to Key Import
+<li>4. Click on more then choose the named of import that was created for Zoovy.
+<li>5. It will now prompt for Enter Import Key
+<li>6. You can either scan the invoices or type the invoice number. 
+<li>7. Process shipment as normal <br><br>
+
+</div>
+</aside>
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+Comma delimited imports convert the dashes (-) to underscores (_) for the
+invoice number. If you type in an invoice number, you will need to enter
+underscore as the invoice number. For example 2003-05-2569 needs to be input
+as 2003_05_2598.
+
+</div>
+</aside>
+
+
+</article>
+
+
+
+
+
+
+

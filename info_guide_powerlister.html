@@ -1,0 +1,308 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/guide/powerlister">
+<h1>eBay Powerlister Survival Guide</h1>
+<article>
+<h2>Preface</h2>
+
+
+The goal of the powerlister is to act like an employee who constantly
+monitors and tunes your auctions for you.
+<br>
+
+
+The eBay PowerLister is built to accommodate the high level of sell-thru
+that can occur with certain types items on eBay. The fundamental idea behind
+Powerlister is simple, list more when an item is hot, and list less when it isn't. For
+this reason Powerlister is ideally suited to handle the unique selling profile
+needed for the Buy It Now and or Fixed Price feature on eBay. If you don't plan
+to use the Buy It Now or Fixed Price feature, then you might look into using
+Channel Scheduler - it's quite a bit simpler.
+
+</article>
+<article>
+<h2>Introduction</h2>
+
+
+
+So what is Powerlister? Powerlister is an expert system that runs on top of
+the Zoovy eBay API Broker application. Powerlister has many parameters that
+you can use to tune it, understanding what each setting does, and how
+powerlister thinks will help you better utilize this powerful tool.
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+Powerlister can also be a dangerous tool if not used correctly, Zoovy takes
+absolutely no responsibility for misconfigured, or improperly tuned Powerlisters.
+Zoovy provides a best effort launch service, which means that launch times and
+schedules are not guaranteed. Finally, the Powerlister is a shared system resource,
+which means that during peak times it will be slower to respond than during non-peak
+times.
+
+</div>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Parameters:</h2>
+<section>
+<h3>Total Quantity to sell</h3>
+
+The total quantity of the product you wish to sell, or
+simply use -1 for infinity. This is the quantity that will be reserved in inventory. If
+you put a -1 here, then you are telling the powerlister it cannot run out of
+inventory. When the total quantity to sell is reached then the powerlister will
+exit. (If you use reserved inventory, or dutch auctions then read the Gotchas
+below).<br><br>
+Note:  If you are not tracking inventory, do not use "-1" instead use "9999" for total quantity to sell.
+
+</article>
+<section>
+<h3>Maximum Listings on eBay</h3>
+
+
+This is the total number of listings that will be posted
+to eBay. This is a great way to control costs, and to give you the opportunity to
+retune a powerlister. When powerlister has created the number of listings
+allowed then it will exit. If you put a �1 here the powerlister will run until
+something else causes it to exit. (If you use the relist one time feature on your
+listings, with a setting other than -1 then you should read the Gotchas below).
+</article>
+<section>
+<h3>Trigger Price to Relaunch</h3>
+
+This is quite the cool feature, if you run auctions at $0.01 and you want to wait until the bid price reaches your cost, or your recommended sales price then you should use triggered bidding. When the trigger price on a powerlister auction is reached another auction can be created, this is where the maximum concurrent listings comes into play. If you don't want to trigger new auctions then set your trigger price to 0 to disable it.
+<aside class="hint">
+<h6></h6>
+<div>The trigger bid price needs to be greater than the starting bid price.
+</div>
+</aside>
+
+
+<b>Important:</b> In order for trigger pricing to work, you must enable your Zoovy gallery.  To
+enable the gallery follow this link: <a class="linkdoc" href="#?doc=50752">Doc 50752</a>
+</article>
+<section>
+<h3>Minimum CONCURRENT listings</h3>
+
+This is the minimum number of concurrently
+running listings that the powerlister will attempt to keep active on eBay at all
+times. This is per channel, which means that if you have the same product listed in separate powerlister channels with different launch schedules, then each powerlister will attempt to fill it's own minimum regardless of the other powerlisters.
+</article>
+<section>
+<h3>Maximum CONCURRENT listings</h3>
+
+This is the maximum number of listings you
+want Zoovy to keep active on eBay, this is per channel. This number can only be
+reached by new triggered auctions, if you don't use triggered bidding then set
+this number to the same as the minimum concurrent listings.
+</article>
+<section>
+<h3>Auction Spacing</h3>
+
+This is the minimum delay that powerlister must wait between
+auction launches. How you use this setting will dramatically impact your fees and
+other settings. Read the section later in this document that discusses how
+powerlister launches auctions. (Note: using a custom channel definition you can
+tune this setting).
+</article>
+<section>
+<h3>Time to Live</h3>
+
+This is how long the powerlister will actively launch auctions. If
+you set this to 1 week, then powerlister will launch auctions for a week, and then
+track any running auctions before it completes.
+</article>
+<section>
+<h3>Starting Hour</h3>
+
+This is the first hour in the day where powerlister will launch
+auctions. For example if the start time is set to 7:00am, and a buy it now occurs
+at 11:00pm then powerlister will wait until 7:00am of the next morning.
+ All times are PST.
+</article>
+<section>
+<h3>Ending Hour</h3>
+
+This is the last hour that powerlister must stop launching new
+listings. For example, if this is set to 8:00pm, and a listing ends at 6:00pm, and
+another auction is already in the launch queue to go at 7:00pm, and the launch
+interval is 3 hours, then the listing will wait until the next morning start time to
+list (since it would then launch at 10:00pm which would be past the end time).
+For more information on exactly how this works refer to the section in this
+document that discusses how powerlister launches auctions.
+</article>
+<section>
+<h3>Allowed Launch Days</h3>
+
+This allows you to configure specifically which days of the
+week powerlister will launch new listings.
+</article>
+<section>
+<h3>Duration</h3>
+
+Duration tells eBay how many days to run the listing.
+</article>
+<section>
+<h3>Titles 1 - 5</h3>
+
+Powerlister randomly picks one of the five titles when it launches.
+This allows you to get some variance in your listings, and make it's harder for
+eBay to catch it if you break the 10+ rule. (eBay rules state that you can only
+have 10 listings of the same item on eBay at the same time � during the
+holiday's this can hurt the sales of popular items such as razor scooters or tickle
+me elmo's). If you leave a title blank, then it will be ignored. By putting different
+keywords in each title you can often pick up other buyers that may not have
+otherwise found you.
+</article>
+<section>
+<h3>Relist One Time</h3>
+
+Relist One Time causes the powerlister to submit your auction again if it
+does not sell. Per eBay rules you can get the listing fees refunded on an item if it
+sells the second time. eBay will only credit the listing, other specialty fees cannot
+be reclaimed. (Note: auction counters do not reset for relisted auctions)
+The remaining fields are related to an eBay auction and have no special effect on
+Powerlister.
+
+</article>
+</article>
+<article>
+<h2>How PowerLister Thinks:</h2>
+
+
+Powerlister runs by a set of rules that govern its behavior. These
+instructions are similar to those you would give to an employee who would
+monitor auctions for you.
+The following things can cause a Powerlister to Complete:
+<li> Expired: The current date is older than the channels time to live.
+<li> Sold Everything: The channels available quantity to sell minus the quantity
+already sold is less than zero and available quantity is not set to 1.
+<li> Too many Listings: The listings allowed for the channel minus the listings
+already performed is less than zero and listing allowed is not set to 1.
+The following events can cause Powerlister to Launch a Listing:
+<li> Buy it Now: A Buy It Now occurs and Fill Buy It Now Option is selected,
+then another auction is launched immediately (regardless of time of day).
+<li> Trigger: Any auctions have exceeded their trigger price.
+<li> Below Minimum Listings: The Count of listings to launch plus the count of
+running listings is less than the Minimum Concurrent Listings (in this
+circumstance it can then launch multiple listings)
+
+<br>
+
+
+The following things will cause Powerlister to become active:
+<li> A buy it now occurs
+<li> A bid is received for a listing AND the eBay gallery channel is enabled.
+<li> An auction is launched is flagged by the system as ended.
+<li> The Polling interval is exceed (approximately every 6 hours depending on
+load during high volume times this may be longer.)
+<li> The channel has been updated on the Zoovy server.
+
+</article>
+<article>
+<h2>Powerlister Launching Sequence</h2>
+
+
+The following logic is used to determine the launch time of a new listing.
+<ol>
+<li> Check for Max Concurrent: If the item has been triggered by a
+high bid then powerlister verifies that Max concurrent listings will
+not be exceeded by launching this listing. It does this by
+calculating the count of running listings, plus the count of listings
+in the launch queue and verifying that the sum of the two is less
+than the Maximum concurrent listings.
+<li> If the item is launched from a buy it now, and the buy it now is
+immediately checked then the item is set to launch time now
+and the item is added to the launch queue and the remaining
+steps are ignored.
+<li> Powerlister checks the launch queue for the item that is set to
+launch last in the queue, if there is one then takes that, and
+adds the Launch Interval and sets the next possible launch time
+to the result. If no items are in the launch queue then the
+current time is used.
+<li> The powerlister then checks the start hour against the next
+possible launch time, if the hour of the next possible launch time
+is before the start launch hour, then it moves the next possible
+launch time ahead to the start hour.
+<li> The powerlister then checks the end hour, if the next possible
+launch time is after the end hour, then the next possible launch
+time is set to the start time, of the next day.
+<li> The powerlister then checks the allowed days, if the next
+possible launch time is not on an allowed day, then the next
+possible launch time is moved ahead till the next available day,
+at the first available time (which is the start time).
+<li> The most current data from the listing is then loaded from the
+Zoovy Channel database. The Zoovy Channel database always
+contains the most recent information like the HTML description,
+titles, etc.
+<li> The listing is added to the launch queue, the channel status is
+updated, and the listings performed count is incremented.
+</ol>
+</article>
+<article>
+<h2>Powerlister Gotchas:</h2>
+
+
+<li> Relist One Time: When auctions are relisted one time (for the fee credit)
+they do not decrement the listings performed. This is because they are
+launched by the eBay subsystem, rather than the powerlister itself. In
+other words, if you want to restrict by maximum listings, with the relist
+one time = then you need to compensate for relisted auctions.
+<li> Dutch Auctions: Powerlister will not reduce the quantity of dutch auctions
+to match the quantity available to sell. Here is an example of what can
+happen: listing has quantity 5, you have quantity 3 left to sell, powerlister
+says 3 left, here let me launch an auction with 5 in it, and of course then
+all 5 sell, now you're two short. For this reason with dutch auctions we
+recommend restricting powerlister by maximum listings rather than
+maximum quantity to sell through.
+<li> Quantity to Sell = -1: This will cause the powerlister to actually add one to
+your reserved inventory count, which can throw off a lot of other
+processes. Of course, if you have an unlimited quantity then you probably
+aren't using reserved inventory. But it's mentioned here.
+<li> Editing an Existing Channel: Updating a powerlister channel will flush the
+launch queue, BUT will not decrement the listings performed (which can
+cause the channel to end prematurely). It will also cause the launch
+queue to get rebuilt with the new data. This occurs as a precaution
+because a race condition can occur where an auction is currently
+launching from one server and being updated on another, and therefore
+cannot be reliably removed from the launch queue.
+<li> Reserve Price/Removed Bids: If the is below the reserve, or
+any bid that exceeds the trigger price is removed, then the item will not
+sell and the item will not relist with a fee credit. The fee credit is set to off
+when one auction triggers another, so that the system will back off and
+only the second item will relist. This is implemented so that if demand
+slacks off then only the oldest item the one without bids will relist. (By
+the time the trigger price is reached, it's assumed by powerlister that the
+item is for all intents and purposes sold!)
+<li> If you have outstanding offers on Second Chance Offers (Personal Offers), Powerlister considers it an open
+auction and will not relist until the auction actually closes.
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+Powerlister doesn't check the general inventory setting it checks the product
+setting.  If you had inventory enabled on your site, and you disabled it - without disabling it
+on the products first it would cause a scenario where Powerlister would think that product inventory
+was still enabled and would honor inventory settings, stop listing, and revoke channels based on your
+original inventory settings when inventory reached 0.  A workaround to get Powerlister to begin listing again would be to enable inventory 
+for the products in question, set an inventory value, save the product information, and then go back and turn inventory
+for that product off.
+
+
+</div>
+</aside>
+
+
+
+
+</article>
+
+
+
+
+

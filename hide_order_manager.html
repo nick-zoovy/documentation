@@ -1,0 +1,151 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="hide/order_manager">
+<h1>Order Manager (ZOM)- Getting Started with version 6.x</h1>
+
+
+
+
+
+
+<article>
+<h2>Overview</h2>
+This document covers procedures to create new user, login, and get Order Manager setup for initial use on version 6.012 and above.
+</article>
+
+
+<article>
+<h2>Steps required in order to log into Order Manager (ZOM)</h2>
+<aside class="caution">
+<h6></h6>
+<div>NEVER modify an order online after you have synchronized that order with Zoovy Order Manager.
+</div>
+</aside>
+
+<aside class="hint">
+<h6></h6>
+<div> First you will need to create a manage user. To create a manage user please follow the following steps. <br>
+<li> Step 1. Log into Zoovy.com
+<li> Step 2. Click on Setup > Manage user log in
+<li> Step 3. Create a new user
+<li> Step 4. Create a password for the user
+<li> Step 5. Click save 
+<br>Please note the manage users are not restricted when using ZOM. This behavior will change in the future. When creating the manage user, the rights the user has will be referenced in later versions of ZOM.
+
+</div>
+</aside>
+
+<aside class="hint">
+<h6></h6>
+<div>
+Many people get confused by what is displayed as the "username" in the web interface and what the actual username you should be entering is.  While the display shows the username to be "companyname*username", the actual username you will use to log into Order Manager is simply the "username" portion, you will omit the "companyname*" portion.
+
+</div>
+</aside>
+
+<aside class="hint">
+<h6></h6>
+<div><li>SOHO - The Small Office/Home Office version stores your company database file on the local hard disk. The database file can be shared with SOHO Clients via a shared network drive.
+
+<li>SOHO Client -  Computers configured as a SOHO Client may not synchronize data, they must use a database created by a SOHO installation.
+To avoid performance issues you should never have more than 3 SOHO Clients computers + 1 SOHO Master in use at the same time (instead use Enterprise).
+
+<li>Enteprise Client - to use this option you must have an Enterprise server on your network.  Enterprise servers automatically synchronize data with Zoovy, and offer significant functionality and performance improvements for companies with large databases.
+</div>
+</aside>
+
+
+<aside class="caution">
+<h6></h6>
+<div>You may only have ONE active database per account (SOHO or Enterprise). Having multiple databases is NOT supported and will cause data corruption. Any attempt to install additional databases will disable all existing databases. 
+</div>
+</aside>
+
+<aside class="cbc">
+<h6>Logging into ZOM v6.xxx</h6>
+<div>
+<li> Step 1. Click on Admin > Database Config
+<li> Step 2. Click on the SOHO tab
+<li> Step 3. Input the Admin username and password (Zoovy username and password)
+<li> Step 4. Keep the box checked for FIND AND UPGRADE PRE V6.010 DATABASE (RECOMMENDED)
+<li> Step 5. Click SAVE
+<li> Step 6. Input the manage user login name that you created in the text box Username (the name only with no *)
+<li> Step 7. Input the password for the manage user that you created in the text box Password
+<li> Step 8. Click Login
+<li> Step 9. Click Sync
+</div>
+</aside>
+<aside class="hint">
+<h6></h6>
+<div>If you change the Admin password to log into to zoovy.com, you will also need to change the Admin password within ZOM. To change the Admin password in ZOM please follow the following steps:
+<li> Step 1. Open ZOM
+<li> Step 2. Click on Admin > Account Security
+<li> Step 3. Input the Admin username
+<li> Step 4. Input the new Admin password 
+<li> Step 5. Click update 
+</div>
+</aside>
+
+
+<aside class="hint">
+<h6></h6>
+<div>If you are seeing the following error:<br>
+
+#Z2000: API ERROR: Security Digests do not match - probably invalid
+password.<br>
+
+You can address this issue by reauthorizing the security tokens as outlined in the HINT above.
+
+ 
+</div>
+</aside>
+
+
+</article>
+
+<article>
+<h2>What to do after Login</h2>
+There are several actions that you should take after login to get your data into the database and ready for use:
+
+<li>Full standard syncronization - this can be performed by clicking on the "Sync" button in the menu bar at the top of the screen.
+<li>Company Information syncronization - this is accessed from Admin > Company > Company Syncronization
+<li>Product syncronization - accessed from Admin > Download Products from Website
+<aside class="hint">
+<h6></h6>
+<div>In order to get your products to show in the "Add Item" window, be sure to check the "Show All " checkbox.
+</div>
+</aside>
+
+<li>Setup Email Preferences - Admin > Setup > Email Preferences
+<li>Finally you can take time at this stage if you desire to setup any 3rd party system integration that you may use for shipping (i.e. FedEx, UPS, Endicia)
+
+Once you have done the steps above you should find your ZOM database populated with the data you need and ready for use. Also reference wedboc <a class="linkdoc" href="#?doc=50427">Doc 50427</a>] for additional information.
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

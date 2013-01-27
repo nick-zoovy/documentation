@@ -1,0 +1,92 @@
+<meta type="filename" id="ticket/161254">
+
+<h1>Issue #161254: Paypal charging wrong shipping amount</h1>
+
+<article>
+<h2>Issue #161254: Paypal charging wrong shipping amount</h2>
+
+Order's going through Paypal have incorrect shipping amount (does not match invoice).
+
+<aside class="hint">
+<h6></h6>
+<div>
+This is *NOT* a Zoovy issue. This is a *PAYPAL* issue. 
+<br>
+We recommend customers contact Paypal's support group regarding this issue.  (We hope that *SOMEDAY* Paypal might actually correct it if they get enough merchants who are confused by it.)
+
+</div>
+</aside>
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+Zoovy support staff will not be able to correct this issue without you providing your Paypal login and password. 
+
+</div>
+</aside>
+
+
+
+</article>
+
+
+<article>
+<h2>Resolution</h2>
+The sellers Paypal account is incorrectly configured to add shipping to every order, even though Zoovy CORRECTLY passes the shipping to Paypal.  
+
+<br>
+
+<aside class="hint">
+<h6></h6>
+<div>
+This is ridiculously easy to do since eBay helps sellers configure this.
+
+</div>
+</aside>
+
+
+</article>
+
+
+<article>
+<h2>Steps to Verify</h2>
+
+The direct link to cause Zoovy to trigger a Paypal redirect is:
+<aside class="html">
+<h6></h6>
+<code>
+http://USERNAME.zoovy.com/paypal.cgis?orderid=YYYY-MM-#####&email=buyer@domain.com
+
+</code>
+</aside>
+
+
+<br>
+
+The buyer is redirected to a Paypal screen - but before the redirect occurs it is possible to press ESCAPE in the browser at the redirect page.  View the source and save it to a file on your hard disk.
+
+<br>
+
+View the shipping amount being sent to Paypal - it is correct.
+<aside class="html">
+<h6></h6>
+<code>
+&lt;input type="hidden" name="shipping_1" value="28.25"&gt;
+
+</code>
+</aside>
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+If Paypal complains about a "duplicate transaction" or how the order was already paid - you can save the redirect file to your hard disk, and use a text editor (such as textpad)  to change the invoice # in the file so you can retry the same payment to Paypal.
+
+</div>
+</aside>
+
+
+
+</article>
+

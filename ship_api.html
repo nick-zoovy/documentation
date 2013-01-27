@@ -1,0 +1,296 @@
+<meta type="filename" id="ship/api">
+<h1>Shipping API</h1>
+<article>
+<h2>Overview</h2>
+
+A shipping API is a CGI (e.g. Perl/PHP) program which computes custom shipping.
+Shipping APIs are passed an XML representation of the current cart which then compute shipping
+based on a companies internal business logic, and output headers and data in a XML format.
+A shipping API may return one or more shipping methods, along with a price for each method.
+</article>
+<article>
+<h2>Configuration</h2>
+
+<p>You can configure External Shipping by going to the Shipping link under the setup tab.  
+There are two methods you can call our system, either in an XML-like mode which will post a 
+single XML string to your CGI, or the much easier flat mode which will send each of the 
+parameters as a separate entry as a CGI variable.  Keep in mind that these will be 
+presented as options for shipping in <i>addition</i> to any other shipping methods 
+you have created in the Zoovy system.</p>
+
+
+</article>
+<article>
+<h2>Custom Attributes</h2>
+
+Shipping API's may be passed a list of attributes for each product in the cart, this may include custom attributes
+specified by the site owner. This is to increase performance by avoiding having to do additional lookups of product data.
+
+</article>
+<article>
+<h2>Request Parameters Specification</h2>
+
+
+<dl>
+<dt><b>country</b></dt>
+	<dd>The country of shopper (This will be blank for United States orders).</dd>
+<dt><b>zip</b></dt>
+	<dd>The zip code of the shopper, or the postal code if it is international.</dd>
+<dt><b>weight</b></dt>
+	<dd>The total weight of all of the items the cart.</dd>
+<dt><b>price</b></dt>
+	<dd>This is the subtotal for the order before tax.</dd>
+<dt><b>itemcount</b></dt>
+	<dd>This is the total number of items in the cart.</dd>
+<dt><b>is_cod</b></dt>
+	<dd>Whether the shipping requested was for a payment type of COD (this will only appear if you enable a COD payment type for your checkout).</dd>
+<dt><b>cart</b></dt> 
+	<dd>
+		This is the contents of the shopping cart.
+		<ul>
+			<li>In flat mode this is newline delimited, with each line being comma delimited.  Each comma delimited line has the fields in following order: SKU, Quantity, Item Description, Item Weight, Taxable, and Price per Item.</li>
+			<li>In XML mode, it contains &lt;cartitem&gt; tags with the fields being attributes to the cartitem tag, and the description being the contents of the tag</li>
+			<li>The SKU field can contain 0-9, A-Z, a-z, and "-" (for delimiting product options), "%" (auto-alied items such as discounts), "*" (External items indicator), "!" (hilien cart items).</li>
+			<li>The taxable field is either a single uppercase Y for yes, or N for no.</li>
+			<li>Weight is integer, and represents the number of ounces for the whole order.</li>
+			<li>Weight and price are both per-item, so you must multiply by Quantity to get the total Weight or Price per line</li>
+			<li>None of the fields contain commas, and you do not need to un-escape any of the data</li>
+		</ul>
+	</dd>
+</dl>
+
+</article>
+<article>
+<h2>Response Specification</h2>
+
+
+<p>The FLAT response should be sent as MIME type text/plain, and consists of a newline delimited list 
+of available shipping methods for the requested cart.  Each line consists of a description followed by a colon, 
+and then a numeric price (no dollar sign or commas should appear in this).  If the response is empty, then 
+Zoovy will display "Actual Cost to be Determined" in the shopping cart and on the invoice.</p>
+<Br>
+
+</article>
+<article>
+<h2>Example : Simple Flat Shipping</h2>
+
+<p>This example charges $.10 per ounce, for shipping to the United States, 
+$.15 per ounce for canada, and $.25 per ounce outside of the U.S.  It also 
+has an 2-day rate of $.20 per ounce, and an Express option of $.30 per 
+ounce for overnight shipping within the U.S.</p>
+
+<aside class="html">
+<h6></h6>
+<code>
+
+
+use CGI;
+$cgi = new CGI;
+$weight  = $cgi-&gt;param('weight');
+$country = $cgi-&gt;param('country');
+
+print "Content-type:text/plain\n\n";
+if ($country eq '') # U.S. shipping is sent as a blank country
+{
+	$price = (0.10 * $weight);
+	print "Standard:$price\n";
+	$price = (0.20 * $weight);
+	print "2-Day:$price\n";
+	$expprice = (0.30 * $weight);
+	print "Express Overnight:$expprice\n";
+} 
+elsif ($country eq 'Canada')
+{
+	$price = (0.15 * $weight);
+	print "Canadian:$price\n";
+}
+else
+{
+	$price = (0.25 * $weight);
+	print "International:$price\n";
+}
+</pre>
+
+<p>If you saved this example into a file called shipping.cgi, with a URL of http://yourdomain/cgi-bin/shipping.cgi and you make a call to it in a way similar to the way Zoovy does you can test the output.</p>
+
+<p>For instance, if called with a URL like http://yourdomain.com/cgi-bin/shipping.cgi?weight=10&country=Canada (Shipping for a 10 oz cart to Canada) you would see:</p>
+
+<pre>
+Standard:1.5
+</pre>
+
+<p>Or if you called it with http://yourdomain.com/cgi-bin/shipping.cgi?weight=12&country= (U.S. shipping of a 12 oz. cart) you would see:</p>
+
+<pre>
+Standard:1.2
+2-Day:2.4
+Express Overnight:3.6
+</pre>
+
+<p>The output of your script will be plain text.  The description is up to the the colon, and the price appears after the colon.  The price should be a number with nothing other than digits, and optionally a single period for the decimal point.  The list should be split by UNIX newlines.  Also keep in mind that Zoovy will use the http POST method to call your script, though the URL examples are GET type requests, if you want to test using URLs like that you should make sure your script works with both POST and GET requests.</p>
+
+<p>This next example charges $1 per item for US and $2 per item for the UK, and presents "Actual Cost to be Determined" message for any other countries (If your CGI does not return any results, Zoovy defaults to this as the shipping)</p>
+
+<pre>
+use CGI;
+$cgi = new CGI;
+$count   = $cgi-&gt;param('itemcount');
+$country = $cgi-&gt;param('country');
+
+print "Content-type:text/plain\n\n";
+if ($country eq '') # U.S. shipping is sent as a blank country
+{
+	print "Domestic:$count\n";
+} 
+elsif ($country eq 'United Kingdom')
+{
+	$price = (2 * $count);
+	print "United Kingdom:$price\n";
+}
+
+</code>
+</aside>
+
+
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+The code below is not supported or maintained by Zoovy.
+The cart format has changed slightly since this document was written (and would make
+the example considerably more complex) - the examples below have been retained to demonstrate the basic structure of a 
+Shipping API rather than an specific implementation.
+
+</div>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Example : SKU based Flat Shipping</h2>
+
+		
+<p>In this example, we ship mirrors (SKUs beginning with M), Stickers (SKUS beginning with S) 
+and rocks (SKUs beginning with R), amoung other things.  There is a flat rate of $.20 per ounce 
+for the entire order.  We charge charge $3 extra if there are any mirrors present in the 
+shopping cart, and $5 extra if there are both mirrors and rocks in the same order, since 
+we don't want to load them in the same box.  If we are only shipping stickers we send it 
+in an envelope and only charge them $.50 shipping.</p>
+
+<aside class="html">
+<h6></h6>
+<code>
+
+use CGI;
+$cgi = new CGI;
+$weight  = $cgi-&gt;param('weight');
+# Line items in the shopping cart is devided by newlines
+@cart    = split /\n/, $cgi-&gt;param('cart'); 
+
+$price        = $weight * 0.20; # 20 cents per ounce base price
+$name         = "Ground";       # Default the shipping name
+$mirrors      = 0;              # Default mirrors to not found
+$rocks        = 0;              # Default rocks to not found
+$stickersonly = 1;              # Default to stickers only being true
+foreach $line (@cart)
+{
+	# Each of the line items has all of the information available as
+	# a comma-separated list.  
+	($sku,$qty,$desc,$weight,$taxable,$price) = split /,/, $line;
+	# $sku     : The item's sku
+	# $qty     : The number of that particular SKU in the cart
+	# $desc    : The description of the item
+	# $weight  : The weight per item 
+	# $taxable : Whether the item is taxable or not
+	# $price   : The price per item
+	# For weight and price, multiply by qty to get the total weight
+	# or total price for this line item
+	$firstchar = substr($sku,0,1); # Get the first character
+	if ($firstchar eq '%') { next; } # Skip discounts/special items
+	if ($firstchar eq '!') { next; } # Skip hidden items
+	if ($firstchar ne 'S') { $stickersonly = 0; } # Found a non-sticker!
+	if ($firstchar eq '*') { next; } # Skip external/auction items
+	if ($firstchar eq 'M') { $mirrors = 1; } # Found a mirror!
+	if ($firstchar eq 'R') { $rocks = 1; } # Found a rock!
+}
+if ($stickersonly)
+{
+	$name = 'USPS Envelope';
+	$price = 0.50;
+}
+if ($mirrors)
+{
+	$name = "Ground with Mirrors";
+	if ($rocks) { $price = $price + 5; }
+	else        { $price = $price + 3; }
+}
+
+print "Content-type:text/plain\n\n";
+print "$name:$price";
+</pre>
+
+<h2>SKU-based XML Mode Example</h2>
+
+<p>This functions the same as the example above, but it uses the XMLish mode.  Working in this mode is a lot more complicated, as you can see.</p>
+
+<pre>
+use CGI;
+$cgi = new CGI;
+$contents = $cgi-&gt;param('content'); # The XMLish request is sent in this one
+                                    # variable
+($weight) = ($contents =~ m/&lt;weight&gt;([0-9]+)&lt;\/weight&gt;/); # Extract the weight
+
+$price        = $weight * 0.20; # 20 cents per ounce base price
+$name         = "Ground";       # Default the shipping name
+$mirrors      = 0;              # Default mirrors to not found
+$rocks        = 0;              # Default rocks to not found
+$stickersonly = 1;              # Default to stickers only being true
+while ($contents =~ m/&lt;cartitem(.*?)&gt;(.*?)&lt;\/cartitem&gt;/)
+{
+	my $attribs_text = $1;
+	my $attribs = {}; # Hash reference
+	while ($attribs_text =~ m/([a-z]+)=\"(.*?)\"/)
+	{
+		$attribs-&gt;{$1} = $2;
+		$attribs_text =~ s/[a-z]+=\".*?\"//;
+	}
+	my $desc = $2;
+	$contents =~ s/&lt;cartitem.*?&gt;.*?&lt;/cartitem&gt;//;
+	$firstchar = substr($attribs-&gt;{'sku'},0,1); # Get the first character
+	if ($firstchar eq '%') { next; } # Skip discounts/special items
+	if ($firstchar eq '!') { next; } # Skip hidden items
+	if ($firstchar ne 'S') { $stickersonly = 0; } # Found a non-sticker!
+	if ($firstchar eq '*') { next; } # Skip external/auction items
+	if ($firstchar eq 'M') { $mirrors = 1; } # Found a mirror!
+	if ($firstchar eq 'R') { $rocks = 1; } # Found a rock!
+}
+if ($stickersonly)
+{
+	$name = 'USPS Envelope';
+	$price = 0.50;
+}
+if ($mirrors)
+{
+	$name = "Ground with Mirrors";
+	if ($rocks) { $price = $price + 5; }
+	else        { $price = $price + 3; }
+}
+
+print "Content-type:text/plain\n\n";
+print "$name:$price";
+
+</code>
+</aside>
+
+
+
+
+</article>
+
+
+
+
+

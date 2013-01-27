@@ -1,0 +1,42 @@
+<meta type="filename" id="dev/detail/webapi-subscribe">
+<h1>Merchant WebAPI subscribe.cgi</h1>
+<article>
+<h2>Purpose</h2>
+
+This API provides a quick and easy way to add customers to the mailing list.
+It is designed to be transparently called by another CGI or Flash element
+because it returns XML rather than HTML. For an HTML version simply use the 
+http://merchant.zoovy.com/subscribe.cgis form.
+</article>
+<article>
+<h2>Parameters</h2>
+
+merchant - the zoovy username<br>
+fullname - the fullname of the person subscribing e.g. "John Doe"<br>
+email - the email address of the person subscribing.<br>
+
+</article>
+<article>
+<h2>Responses</h2>
+
+All responses are sent back in XML as follows:<br>
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;?xml version="1.0"?&gt;
+&lt;subscribe&gt;
+.. contents ..
+&lt;/subscribe&gt;
+
+</code>
+</aside>
+
+
+
+The contents will either be an &lt;error&gt; tag containing an error message,
+or a &lt;success&gt; tag containing a successful response.
+</article>
+
+
+

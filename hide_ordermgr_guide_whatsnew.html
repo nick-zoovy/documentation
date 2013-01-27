@@ -1,0 +1,1027 @@
+<meta type="filename" id="hide/ordermgr/guide/whatsnew">
+<h1>Order Manager 5.xxx Release Notes</h1>
+<article>
+<h2>Overview</h2>
+
+This document outlines the version to version changes in the order manager windows client.
+</article>
+<article>
+<h2>Build 5.146 - released 1/24/06</h2>
+
+
+This version includes several bug fixes for Endicia and Quickbooks. The most significant feature enhancement in this 
+version is the ability to print dropship packingslips for wholesale customers. 
+A drop ship packing slip includes the wholesale customers address and logo on the packing slip 
+(so when it is received by the recipient they think it was shipped by your customer, instead of you.) Dropship 
+packing slips do not include price information either, and include the reference number given by your customer on 
+the invoice. A dropship packing slip is automatically printed anytime an order is received from a customer who has 
+drop shipping information in their customer record. (The ability to add drop shipping information to a customer 
+record requires the wholesale bundle.)
+<br>
+<br>
+
+<li> CORRECTED/Quickbooks: Runtime error 13 - Type mismatch when exporting orders as invoices to Quickbooks	
+<li> IMPLEMENTED: Shipping carriers codes now transfer correctly when getting a new shipping rate from the Zoovy servers	(thanks beechmontporsche)
+<li> CORRECTED: When removing a product with inventory options - the client was only sending the product id without option to add back into inventory	(thanks kbtdirect)
+<li> CORRECTED: Runtime error BOF or EOF when editing a customer who had no phone number set	(thanks encompassmedia)
+<li> CORRECTED/Quickbooks: When exporting a order to Quickbooks and the product did not exist and receive payment was turn on, it would generate an error	(thanks ebikestop)
+<li> CORRECTED: When the Customer or Company Name had ampersand (&amp;) the order manager would double encode it	(thanks gssstore)
+<li> IMPLEMENTED: Added a feature that you can see all orders up to year old if the order status is Backorder (thanks 888knivesrus)
+<li> CORRECTED: When creating an invoice a phantom sku was also being created if exiting without the exit button - e.g. using the x in top right of the window	(thanks 888kniversrus)
+<li> CORRECTED/Quickbooks: Addr1 (Address Field 1) is to long error when exporting to Quickbooks 	(thanks mailboxes)
+<li> IMPLEMENTED/Quickbooks: Add encoding to the address fields for billing and shipping in Quickbooks	
+<li> IMPLEMENTED/Endicia: Change the shipping total in Endicia Dazzle to subtotal verus order total	
+<li> IMPLEMENTED/UPS: Change the insurnace total in UPS Online tools to order sub total verus order total	(thanks 888kniversrus)
+<li> CORRECTED: Runtime error 52 when trying to edit the company logo on primary station in multiple order manager installation	(thanks gssstore)
+<li> IMPLEMENTED: When syncing products, did not delete products removed from on web	(thanks pawswholesale)
+<li> CORRECTED/Quickbooks: In Quickbooks when exporting an invoice as type invoice and the receive payment option is checked, it would error out if the payment method did not exist	(thanks tunertoys)
+<li> CORRECTED/Quickbooks: When exporting into Quickbooks using the mapping of marketplace (i.e.: eBay) discounts off the invoice were exporting with errors	(thanks mailboxes)
+<li> IMPLEMENTED/Quickbooks: Added the ability to modify invoices/sales receipts in Quickbooks	
+<li> IMPLEMENTED/Endicia: If insurance is enabled - automatically turns off Stealth postage for the invoice 	(thanks coolstuff4u)<br>
+<i>Note: After Jan 9, 2006 the USPS requires that stealth postage can not be used concurrently with insurance.</i>
+<li> IMPLEMENTED/Endicia: Created a setting in Endicia Dazzle Setup that lets you use Order Total versus Sub Order total for insurance	spruebrothers
+<li> IMPLEMENTED/Endicia: Added the ability to automatically print custom forms inside the Endicia Integration	
+<i> Note From Endicia: If you check the "Automatically Print Custom Forms" box, 
+the postage will print using the settings in your layout and the custom forms will print using your default printer in Windows.
+If do not check the box, your custom forms will not print and will create and record the custom form information. 
+Instead customs forms can be printed from the postage log with the Print Record option.</i>
+<li> CORRECTED: Product with assembly options would not add to the invoice	(thanks zephyrsports)
+<li> CORRECTED: When creating invoices from scratch, the create invoice would not delete the items from the new invoice	(thanks zephyrsports)
+<li> CORRECTED: If you unsubscribe a customer from a newsletter, it would set the value to 2 versus 0	(thanks atozgifts)
+<li> IMPLEMENTED: Dropship packing slips and integration in the Windows Order Manager	(thanks gkworld)
+<li> CORRECTED: Dashboards reports were showing AOL Sales even if you did not have a sale at this marketplace. 	(thanks fdishops)
+<li> IMPLEMENTED: Change the sync process so customer records sync down before orders. 
+This is for the new dropship printing process since the customer records must exist before the invoices do.
+<li> IMPLEMENTED/Fedex: Fedex new Signature options - Deliver without signature, Indirect signature, direct signature, 
+adult signature.
+
+</article>
+<article>
+<h2>Build 5.146 - released 8/15/05</h2>
+
+Please execuse all the "CORRECTED" issues, this provides a comprehensive list of all issues fixed between the last official release (5.126) and the current release - including all early access versions. Early access versions do not have the same release process and therefore it is easy for bugs to slip in. We have highlighted the important changes in bold. 
+
+<li> CORRECTED: Runtime Error 75 - When going to Tools -> Label Setup (thanks kirkfishkreations)
+<li> CORRECTED: Order display not displaying correctly when editing the customers	(thanks pulsartech)
+<li> CORRECTED: #z1301 ORDERSYNC/UPLOAD found 35 bytes which is insufficient for successful transport to WebAPI. (thanks navyseals)
+<li> CORRECTED: phone number not displaying when editing a customer	(thanks pulsartech)
+<li> CORRECTED: Runtime error when creating a blank email 	(thanks sasydeals)
+<li> CORRECTED: The outgoing mail address was not saving the blank settings	(thanks charisgames)
+<li> CORRECTED: Alter field META to length of 255 versus 12	(thanks ezmiser)
+<li> CORRECTED: Reports by Invoice Details was reporting wrong payment status	(thanks kbtdirect)
+<li> CORRECTED: If Quickbooks item (product) does not support negative price, will generate a message box to change type to ItemDiscount (thankshightempsilicone)
+<b><li> IMPLEMENTED: Negative line items create products as ItemDiscount in Quickbooks	</b>
+<li> CORRECTED: If sort by date in Completed tab, the sort would go alphanumeric versus date	(thanks ezmiser)
+<li> CORRECTED: If customer updated the Fedex account, it did not update the account information in Order Manager	(thanks stewarttoys)
+<b><li> IMPLEMENTED: The ability to edit, print invoice/packingslip, email customer, add tracking and other features when editing a customer	Note: You need to right click on a order in the order history to see all the new features	(thanks pulsartech) </b>
+<b><li> IMPLEMENTED: Adding field 2975 to mask the Fedex Account # on Fedex Ground Labels so customers can't see your account #	(thanks maildirect)</b>
+<b><li> IMPLEMENTED:Only display the last 120 days of orders created but still can search the older orders	 (thanks thechessstore)</b>
+<li> CORRECTED: If the label was oversize in UPS Printing , generates a warning message but still prints the label	(thanks mpodesigns)
+<li> IMPLEMENTED: Update the ActivexReports to Build: 2.3.3.1275 - should fix a few memory issues. 
+<li> CORRECTED: If shipping to international ground for Fedex Labels, the province code for Quebec is QC 	(thanks musicvalue)
+NOTE: All other international methods except for Ground the province code for Quebec is PQ	
+<li> CORRECTED: customer email address can not be edited	(thanks mccantsenamels)
+<li> IMPLEMENTED: When searching invoices, right-click now lets you add, edit, move invoices, print invoices	(thanks kbtdirect)
+<li> CORRECTED (SOMETIMES): Order Manager looks it is not responding when waiting to receive data - an example of this inventory sync	(thanks discountofficeitems)
+<li> IMPLEMENTED: Increased the length of the product description in the invoice to from 255 to small text	(thanks candlemakers)
+<li> CORRECTED: Runtime error when setting up second machine (license)	(thanks gssstore)
+<b><li> IMPLEMENTED: Update Endicia Integration to support Endicia 5.0 features
+Some of the new features Global Priority, Small Flat Rate and Global Priority Large Flat Rate	</b>
+<li> CORRECTED: Runtime error 339 when creating emails - caused by version 5.135	(thanks kbtdirect)
+<b><li> CORRECTED: To workaround the sort on case issue, the first letter of firstname, lastname, and city is now capitalized	(thanks kbtdirect)</b>
+<li> IMPLEMENTED: A new database for new accounts so it does not upgrade the database for first time Order Manager users	
+<li> CORRECTED: New customers created in the Windows Order Manager were not syncing properly	(thanks fdishops,kbtdirect)
+<b><li> IMPLEMENTED: Change how the Deposit Account Name works for the Quickbooks integration in preparation for the new feature</b>	
+<b><li> IMPLEMENTED: Add receive payment to the invoice for the Quickbooks integration	</b>
+<li> CORRECTED: Display issue for incomplete tab, if you click on processed would say "Nothing Done Yet" when it should said "Completed"	discount
+<b><li> IMPLEMENTED: Add credit card transaction to the receive payment for Quickbooks -	
+ Note: that you have to Quickbooks Merchants Account and the latest qbooksdll in order for to work 	</b>
+<li> IMPLEMENTED: Testing of Quickbooks Merchant Account against Order Manager	
+<li> IMPLEMENTED: Message for missing fields in Quickbooks Merchant Account now warns the customer at the end 	
+<li> IMPLEMENTED: Message for missing fields in Quickbooks Merchant Account now warns the customer at the end - modify wording to Intuit spec.	
+<li> IMPLEMENTED: If you now export a Zoovy invoice as Sales receipt and the payment status of the invoice is not paid, it will prompt you if you still want to import the invoice into Quickbooks	
+<li> IMPLEMENTED: Remove the bulk email button from the customer search toolbar	- use the online newsletter tool, it's better. 
+
+</article>
+<article>
+<h2>Build 5.126 - released 5/12/05</h2>
+
+Version 5.126 is a maintenance release, it does not contain any new features.
+It addresses several issues that were brought to our attention after the release
+of 5.120. 
+
+<li> CORRECTED: Order payment status was changing from paid to pending after 
+charging the card when creating a brand new order	(thanks gssstore)
+<li> CORRECTED: Logo had a double path causing a scripting 5800 error on the 
+invoice and runtime error when editing the company logo	(thanks hotsauce,kirfishkreations)
+<li> CORRECTED: Dashboards reports if customer was using name as the value 
+for the repeat customer caused runtime error 13	(thanks hightempsilicone)
+<li> CORRECTED: Print order notes on packslips and/or invoices not remembering 
+the settings	(thanks charisgames)
+<li> CORRECTED: Fedex Error - 8027 when shipping international addresses 
+with provinces like Queensland, Austrialia	(thanks mygolfball)
+<li> CORRECTED: Fedex Error - FO1C Recipient postal code and state/province 
+do not match when printing airbills to some Canada provinces	(thanks musicvalue)
+<li> CORRECTED: Z3101 Error - added more error handling routines to prevent corrupt 
+orders from being sent	(thanks navyseals)
+<li> CORRECTED: FedEx Mapping of carrier code not working correctly due to the 
+trademarks symbols	(thanks shockingfun)
+<li> CORRECTED: Runtime Error 52 - Bad File Name and 5000 Error when highlighting invoices
+(thanks kirfishkreations)
+<li> CORRECTED: Runtime Error 13 - when exporting orders into UPS Online Tools	
+(thanks xppassport)
+<li> CORRECTED: Error - 'No Order was selected to Email' when searchiing invoice 
+then edit the invoice number and click email	(thanks gunnersalley)
+<li> CORRECTED: Z3101 Error - changed the sync progress so it loads variables in 
+form activate versus load -- thereby causing all sorts of oddball issues with persistent forms.
+(caused odd results when editing orders from the search dialog)
+
+
+</article>
+<article>
+<h2>Build 5.120 - released 4/27/05</h2>
+
+<table>
+	<tr>
+		<td>
+Version 5.120 includes several key enhancements, the most noticeable is a new sync process that
+includes much better error handling, and the ability to retry if an error occurs. In some cases the
+the new sync process can automatically transfer information about bad or corrupted information directly
+to technical support to ensure that problems are addressed quicker than ever.<br>
+<br>
+It also includes numerous bug fixes with the FedEx and UPS Shipping features, including the ability to set the 
+service type automatically (e.g. the software can now tell between Next Day Air and Ground shipments and 
+select the correct service type). <br>
+<br>
+		</td>
+	</tr>
+	<tr>
+		<td>Updated customer sync + customer tables to support new fields in CRM/Wholesale bundles.</td>
+	</tr>
+	<tr>
+		<td><b>FEATURE: Added Wholesale fields in the customer editor - Note: Requires the Wholesale Bundle</b></td>
+	</tr>
+	<tr>
+		<td><b>FEATURE: Added the 1st stage of the CRM bundle to the customer editor including notes and newsletters</b></td>
+	</tr>
+	<tr>
+		<td>FEATURE: Added product id to the incomplete tab	(thanks outrageousdiamonds)</td>
+	</tr>
+	<tr>
+		<td><b>FEATURE: Send email using Zoovy.com mail servers WITHOUT using SMTP (sidesteps many ISP firewall issues) - Note: Requires the CRM Bundle</b></td>
+	</tr>
+	<tr>
+		<td>FEATURE: Customer upload now uploads in batches of 25 at time, does not flag customer sync unless uploaded sucessfully</td>
+	</tr>
+	<tr>
+		<td>FEATURE: Changed customer search, double-click now bring up the customer editor</td>
+	</tr>
+	<tr>
+		<td>FIXED: Splitting error when non inventory options contain colon in it - only affecting Quickbooks Integration	(thanks ssphoto)</td>
+	</tr>
+	<tr>
+		<td>FIXED: Adding unwanted item when hitting the add item 	(thanks navyseals)</td>
+	</tr>
+	<tr>
+		<td>FIXED: Rounding error with weights when converting them back to ounces	(thanks scalesusa)</td>
+	</tr>
+	<tr>
+		<td>FIXED: Filters by Order status was not filtering correctly	(thanks carpartsdiscount)</td>
+	</tr>
+	<tr>
+		<td>FEATURE: Added a standard filter to be included called "All Uncanceled Orders"</td>
+	</tr>
+	<tr>
+		<td>FEATURE: Added a filter by product id  - Notes: does not support option groups [YET]</td>
+	</tr>
+	<tr>
+		<td>FIXED: Invoice has a blank line in order between shipping and insurance	(thanks jordanindustrial)</td>
+	</tr>
+	<tr>
+		<td>FIXED: Runtime error 6 - overflow - when uploading orders 	(thanks vistawholesale)</td>
+	</tr>
+	<tr>
+		<td>FEATURE: Added subject and different htm location for standard email templates</td>
+	</tr>
+	<tr>
+		<td>
+	<b>IMPORTANT CHANGE:</b> If customer is using Order Manager 5.97 of higher, they can longer downgrade once they 
+upgrade to this version	(5.120)
+If they downgrade to Order Manager after using Order Manager 5.97 or higher, then they will get a run time error 	
+when they edit orders. The run time error is 380 - Invalid Property Value -- future versions include forward database
+compatibility to ensure this does not happen.
+		</td>	
+	</tr>
+	<tr>
+		<td>FIXED: Display Zoovy Weight Notation - does not affect shipping weight to any 3rd pary software	(thanks vistawholesale)</td>
+	</tr>
+	<tr>
+		<td>FIXED: Encode XML of the sku in the order when uploading	(thanks caboots)</td>
+	</tr>
+	<tr>
+		<td>FEATURE: Only download orders that have successful sync with the Zoovy servers, will not download an order 	
+	information if the order has been changed in Order Manager but did not sucessfully sync to Zoovy</td>
+	</tr>
+	<tr>
+		<td>FEATURE: Added support for InventoryAssemblyItem to Quickbooks<br>
+	Note: Currently Quickbooks Integration only support the following items (products):	
+	Service, InventoryPart, NonInventory and InventoryAssembly
+		</td>
+	</tr>
+	<tr>
+		<td>FEATURE: Quickbooks integration now exports insurance and handling values and whether or not is taxable</td>
+	</tr>
+	<tr>
+		<td>FIXED: Font issues in list views - shared property	(thanks scalesusa)</td>
+	</tr>
+	<tr>
+		<td>FEATURE: Quickbooks integration lets you export product using the market (e.g. eBay) as the product id	</td>
+	</tr>
+	<tr>
+		<td><b>FEATURE: Support added for ship carrier codes</b></td>
+	</tr>
+	<tr>
+		<td>FEATURE: Added support for mkturl and mktid in the contents table of Order Manager	</td>
+	</tr>
+	<tr>
+		<td>FIXED: Invalid Shipper License when trying to print UPS airbill inside Order Manager	</td>
+	</tr>
+	<tr>
+		<td>FIXED: error message F820 when processing a ground package for Fedex 	</td>
+	</tr>
+	<tr>
+		<td>FIXED: Runtime error when trying to export an order to Endicia Dazzle	</td>
+	</tr>
+	<tr>
+		<td>FIXED: Encode issues with some of the new fields now supported in order	</td>
+	</tr>
+	<tr>
+		<td>FIXED: Zoovy Mail as Tranport was not sending mail if you did not set an SMTP address</td>
+	</tr>
+	<tr>
+		<td><b>FEATURE: Added Fairbanks Model SCB-24533-1 (cap 150 LB) to the Scale / Weigh in Order Manager</b></td>
+	</tr>
+	<tr>
+		<td>FIXED: Runtime error 13 when syncing - due to the new code release in Order Manager 5.103</td>
+	</tr>
+	<tr>
+		<td>FIXED: Runtime error 76 - when editing company logo	</td>
+	</tr>
+	<tr>
+		<td>FIXED: Runtime error 76 - when changing default print	</td>
+	</tr>
+	<tr>
+		<td>FIXED: Runtime error when adding items an invoice inside the Windows Order Manager - due to the CUSTOMERS tables upgrade</td>
+	</tr>
+	<tr>
+		<td><b>FEATURE: Added Mettler- Toledo Scale support	(thanks yimport,shockingfun)</b></td>
+	</tr>
+	<tr>
+		<td>FIXED: The minimum version requirement broken by alters in 5.97 BETA</td>
+	</tr>
+	<tr>
+		<td>CORRECTED: Rewrote the sync progress to try three times before failing, added error messages numbers	
+	Added ctMeter to the exe</td>
+	</tr>
+	<tr>
+		<td>CORRECTED: Run time error 13 - company sync , during a refresh installation of Order Manager</td>
+	</tr>
+	<tr>
+		<td>CORRECTED: RECURSION problem by removing the synchronize button	</td>
+	</tr>
+	<tr><td>CORRECTED: If attempt 1 or 2 was sucessful , do not sync again (BUG ONLY OCCURED IN BETAS)</td></tr>
+	<tr><td>CORRECTED: Runtime error on change username , when username does not exist	</td></tr>
+	<tr><td>CORRECTED: Missing username when creating the username for the first time in the account	 </td></tr>
+	<tr><td>CORRECTED: If the email failed using Zoovy Mail as transport and resync, did not delete the original file.</td></tr>
+	<tr><td>CORRECTED: If shp_carrier is blank or not found, uses the old way of remembering the shp_carrier	
+	especially in Dazzle in remembering what selected before you went to next order </td></tr>
+	<tr><td>CORRECTED: When hit the create invoice, cursor is placed at the email textbox	 </td></tr>
+	<tr><td>CORRECTED: Key-Lookup not remembering cursor position	(thanks sportstop) </td></tr>
+	<tr><td>CORRECTED: Current working directory causes ordersync-upload file not to be found	 </td></tr>
+	<tr><td>CORRECTED: Runtime error 94, when running backup database	(thanks usavem) </td></tr>
+	<tr><td>IMPLEMENTED: A new backup and restore database function, now backups the database and its structure </td></tr>
+	<tr><td>IMPLEMENTED: Add 2 new fields to ORDERINFO , TAX_ZONE and sdomain	 </td></tr>
+	<tr><td>IMPLEMENTED: When making any alters to the Order Manager database, prompt username to backup before upgrading	 </td></tr>
+	<tr><td>CORRECTED: Runtime error 13, when creating a new invoice and asking for a shipping quote	 </td></tr>
+	<tr><td>CORRECTED: Canada Provinces not matching correctly in the Fedex Label area	 </td></tr>
+	<tr><td>IMPLEMENTED: Filters for sdomain (Speciality Domain) in the Dashboard reports</td></tr>
+</table>
+
+
+</article>
+<article>
+<h2>Build 5.96 - released 3/18/05</h2>
+
+
+<li> FIXED: Zoovy Mail as Transport was causing a runtime error 	(thanks dealexpress)
+<li> FEATURE: Added decimal support of ounces for using the scale in Order Manager	(thanks scalesusa)
+<li> FIXED: Font issue in the incomplete - trying reduce the frequency of the issue	
+<li> FEATURE: If total weight is set to zero, OM will not passed the weight field to Endicia Dazzle	(thanks scalesusa)
+<li> FEATURE: If weight is 4.2 rounds up to nearest ounces which would 5	(thanks scalesusa)
+	
+<li> FIXED: Zoovy Mail as Transport was used the wrong name in the body of the email	(thanks dealexpress)
+<li> FIXED: If you voided a Fedex Express label, would tell you could not because it was not 15 digits	(thanks mygolfball,greatbuysnetwork)
+<li> FEATURE: Added a default ship method and package type to both the UPS and FedEx printing	(thanks mygolfball, dealexpress)
+<li> FIXED: Treated 16ounces as zero -	(thanks scalesusa)
+<li> FIXED: When creating invoice, shipping method and amount not saved unless hit the shipping button	(thanks bestdealsontheplanet)
+<li> FIXED: Tracking notes need to be encoded to prevent xml errors	(thanks sittingonthedock)
+<li> FIXED: If you cancelled the button used the order status button on the toolbar, the cancelled email was not created	(thanks greatgiftideasetc)
+
+
+
+</article>
+<article>
+<h2>Build 5.92 - released 2/21/05</h2>
+
+<i>5.92 is a minor re-release of 5.90, no major changes have been made. If you are currently running 5.90 there is no need
+to upgrade.</i><br>
+<br>
+<li> Code reorganization of libraries - speficially encoding xml, decoding xml , registering of multiple licenses
+<li> FIXED: Label Setup not remembering saved Printer Name
+<li> FIXED: Runtime error 13 when adding date filter to filtes
+<li> Increased the length of filter name display - to make easier to read
+<li> FEATURE: Added support of the scale ES 10000
+
+
+</article>
+<article>
+<h2>Build 5.90 - released 2/8/05</h2>
+
+
+<li> FIXED: Runtime Error 9 - When adding product to invoice after clicking on the list of products.
+<li> FIXED: Adding product not in the product list does not save to the invoice	(thanks bargainman)
+<li> FIXED: Qty was not updating when adding product to invoice	(thanks toonstation)
+<li> FIXED: Shipping description was being stripped when creating an brand new invoice	(thanks vinyljunkie1,scalesusa)
+<li> <b>FEATURE: Added option group support to  the Window Order Manager - NOTE: You must be connected to the Internet to use this feature!</b>
+<li> FEATURE: Added secondary indexes for OUTGOINGMAIL table to make send email faster	(thanks vjbooks)
+<li> FIXED: Subpool status not saving once syncing with the Window Order Manager	vjbooks
+<li> <b>FEATURE: Downloading of invoices now syncing in batches of 25 - should help improve syncing speed of the data and avoid timeouts</b>
+<li> FEATURE: Improved syncing process - now points to one api versus 2 (no more legacy.cgi)	
+<li> FIXED: Adding 2.0 option groups issues found in Order Manager 5.63	
+<li> FIXED: Runtime error 94 when updating incompletes 	
+<li> FIXED: When exporting multi box, split qty now divides the weight properly per qty	(thanks lamawellness)
+<li> FIXED: Parsing when uploading orders	(thanks navyseals,kyledesign)
+<li> FEATURE: Print EPL2 to raw printer - now using the default LP2844 drivers versus text driver	
+<li> FIXED: Runtime error 52 - bad file name when charging credit card - due to new sync process of orders	(thanks jefatech,vjbooks)
+<li> FEATURE: Added a path location of the database in the Order Manager about	
+<li> FEATURE: Added a maximum total email count in OUTGOINGMAIL	(thanks vjbooks)
+<li> FEATURE: Added the ability to delete/purge email according the maximum total email count	vjbooks
+<li> FIXED: Runtime error when sending email 	(thanks vjbooks)
+<li> <b>FEATURE: Added the ability to print UPS Labels inside the Order Manager	</b>
+<li> FEATURE: added the ability to void UPS Labels - has to be less than 24 hours
+<li> FIXED: Missing order sync and customers , skus from sync progress	(thanks usavem)
+<li> FEATURE: Changed the debuging of the Endicia Model to Return back the error information in global string	
+<li> <b>FEATURE: Added the ability to print Fedex labels inside the Windows Order Manager	</b>
+<li> FEATURE: Added the ability to void a Fedex Package
+<li> FEATURE: Order Manager menus interface differently if you have a primary shipper set ie FedEx	
+<li> <b>FEATURE: Now supports the new insurance, handling, special services - does not override data - Display Only	</b>
+<li> FIXED/FEATURE: Order Manager uses the new affiliate tracking type and reflects the Affiliate reports to display the new time	
+<li> FEATURE: Exports to Quickbooks whether shipping is taxable or not 	(thanks scalesusa)
+<li> FEATURE: Quickbooks Integration modifies customer information to update the customer information	(thanks bobuxusa, dollsoreal)
+<li> FEATURE: Sorting adding to Email Manager (thanks atozgifts)
+<li> FIXED: Order not remembering the check number - information was saved but disappear after you sync	
+<li> FIXED: Invoice printing with extra zeros due to adding of shiping taxable fields, now prints properly	(thanks charisdiscs,greatbuysnetwork)
+<li> FIXED: Added Fedex Ground Close to the Fedex Integration	(thanks shockingfun)
+<li> FIXED: The message box saying that Fedex International support is not available	(thanks shockingfun)
+<li> FIXED: Missing orders from supporting the new META format	(thanks gssstore, ezmiser)
+<li> <b>FEATURE: Added Zoovy mail as transport - new email transport layer to work around SMTP timeout issues.</b>
+<li> FIXED: Runtime when exporting Quickbooks as invoices (related to new features in 5.83)	(thanks gssstore)
+<li> FEATURE: Added new flat rate type for the Endicia Integration - Priority Flat Rate Envelope, Priority Flat Rate Box,	
+	Express Flat Rate Envelope	(thanks vistawholesale)
+<li> FIXED: Duplicate customer creation - if you created the customer through the Windows Order Manager (SOHO only)	
+<li> FIXED: Order date on packing slips and invoices now print the created date versus the modified date	(thanks xppassport)
+<li> FEATURE: Sales Price and Description exports into Quickbooks when creating inventory item in Quickbooks	gssstore
+<li> FEATURE: Wrote a workaround for the Quickbooks error when running Quickbooks MultiUser version when multi logins are being used	(thanks lamawellness)
+<li> FIXED: Runtime error when using SUBPOOLS filter by single item	
+<li> FEATURE: Adds a default phone number of 555 555 5555 when export the order to the new Fedex Labels software	
+<li> ENHANCEMENT: The phone number now strips all characters except for the actual number for both the Fedex and UPS Label Intergration	
+<li> FIXED: If the product contain options the cost was not brought over to Quickbooks	(thanks brandnamebeauty)
+<li> FEATURE: Fedex and UPS Label Printer - now uses the Label Setup Printer as it default printer, no longers requires Zebra to be default	
+	printer on the machine	
+<li> FEATURE: Changed the Label Printer Setup to used a dll versus ocx - more reliable for label printer	
+<li> FEATURE: New look when syncing orders, customers, inventory and incompletes to the Zoovy server	
+<li> FIXED: Runtime error when hitting the Batch button in Endicia Dazzle Integration - caused by new feature in beta release 5.85	(thanks jdhines)
+<li> <b>FIXED: You can search by credit card now in the search invoice 	</b>
+<li> FEATURE: Added multi user support for the Fedex or UPS Label Intergration (thanks which employee shipped which package)
+<li> <b>FEATURE: Enhancements made to the incomplete tab - shows different sub tabs</b>
+<li> <b>FEATURE: Dashboard reports have been added to Order Manager	</b>
+<li> <b>FEATURE: Filters for the dashboards have been added - filters like order total, order status, payment method</b>
+<li> <b>FEATURE: Scale Integration added to Endicia Dazzle, UPS, FedEx</b>
+<li> <b>FEATURE: Added new order status called "Backorder"</b>
+<li> <b>FIXED: If you created an order from incomplete items it was not decrementing inventory - now it does (thanks hbaworldwide,bestfriends)</b>
+<li> FIXED: Combining orders with the same SKU was deleting the duplicate sku now modifies so SKU does not get deleted	(thanks bestfriends)
+<li> FEATURE: Added support for handling, insurance and specialty fees when creating/editing invoices	
+<li> <b>FEATURE: Quickbooks 2005 now supported -	</b>
+
+<br>
+<u>Enterprise Only:</u><br>
+<li> NEW FEATURE: Added sql statements to the JIT tables for print status and print error 
+<li> NEW FEATURE: Added Returncode support for the Endicia Dazzle code, updates DEBUG in JIT tables 
+<li> FIXED: Rewrote the printing to JIT_ITEMS so it would flow better and stop the item from being sent to processed 
+
+<li> FEATURE: Prevents an order from being moved to COMPLETED unless the JIT items have been processed - Enterprise Only	
+<li> FEATURE: JIT Label systems nows using the new raw printer function for EPL2	
+<li> NEW FEATURE: Added new %RETURNCODE% for printing the return code from Dazzle	
+
+
+</article>
+<article>
+<h2>Build 5.60 - released 9/16/04</h2>
+
+<li> FIXED: Added indexes to a variety of tables to avoid performance drain
+on larger datasets.<br>
+NOTE: (This optimization is important for people with 
+more than 2,500+ orders in their database)
+<li> FIXED: Quick fix in the sync process so during a full reset / timestamps 
+comparison it's 1/10th as intensive on screen updates. 
+
+</article>
+<article>
+<h2>Build 5.58 - released 9/14/04</h2>
+
+<li> FIXED: randomly missing orders during sync (thanks scaleusa, bidflex)
+<li> FEATURE: added ability to sync back and forth product attributes inside the order (handy for reporting)
+<li> FEATURE: added ability to sync back and forth product options inside the order (handy for reporting)
+
+</article>
+<article>
+<h2>Build 5.56 - released 9/10/04</h2>
+
+<li> FIXED: Quickbooks creating items instead of link the association (thanks sassydeals)
+<li> FIXED: Increased length of INVOPTIONS of the STID, causing contents to be blank for orders that had more than 15 char in the options	(thanks gunnersallery, kyledesign)
+<li> FEATURE: Added the ability to add local tax rate to the invoice	(thanks kyledesign)
+<li> FIXED: Credit cards can not be charged through the gateway on orders that were created through the Windows Order Manager	(thanks 4armedforces,scalesusa)
+<li> FEATURE: Now saving cost of the product per invoice basis - lays groundwork for future reporting
+<li> FEATURE: If you export the order to quickbooks and need to create the item as inventory will bring cost over is set in the invoice	(thanks fastpayfastship)
+<li> FEATURE: UPS Worlship now exports by qty - example ABC has qty 3, will export as 3 line items if you box seperately	(thanks lamawellness)
+<li> FEATURE: Endicia Integration now supports custom form	(thanks scalesusa)
+<li> FIXED: Second address if deleted on the web, was not syncing properly to Windows client	(thanks talkntel, bulldog)
+<li> FIXED: Inventory not updating when combining orders	(thanks atozgifts)
+<li> FIXED: Orders syncing blank information 	(thanks scalesusa)
+<li> FEATURE: Added setting in Quickbooks integration to deduct on discounts	(thanks 4vhc)
+<li> FEATURE: Added a copy tracking to clipboard interface	(thanks simplestore)
+<li> FEATURE: Added channel, marketid, market to the syncing orders. Notes: lays groundwork for future reporting	
+<li> FIXED: If exporting to Quickbooks added settings (strip all characters follow by dashes or options) will not bring only based sku	(thanks dollssoreal)
+<li> FIXED: Paid date not saving the the Windows Order Manager	(thanks bulldog)
+<li> FEATURE: Cleaned up dialog to get shipping prices from the web (thanks ducklingdaffodils)
+<li> FIXED: Custom forms not syncing properly to the Endicia Dazzle	(thanks scalesusa, sasydeals)
+<li> FIXED: Runtime error 13 - Type mistmatch when exporting to Quickbooks	(thanks scalesusa, sasydeals)
+<li> FIXED: Added length to the Inventory options part of the sku, this would fixed blank orders or 5800 errors	(thanks 1stproweddingalbums, gunnersalley, dollssoreal)
+<li> FIXED: Encoded the shipping item for Quickbooks export.	(thanks lasertekservices)
+<li> FIXED: Consolidated ORDERINFO_EVENTS inserts to one function	- fixes timestamp issue 
+<li> FIXED: Synchronized ORDERINFO_EVENTS table so both enteprise and SOHO versions match exactly	
+<li> FIXED: Packing slip issue with enterprise - Enterprise only	
+<li> FIXED: Added the ability to print in the search summary table - Enterprise Only	
+<li> FEATURE: Email customer when searching in the summary table - Enterprise only	
+<li> FIXED: Sql error when starting Order Manager for limit 2500 - Multiple User OM only	(thanks shopsbs)
+<li> FIXED: No scroll bar when doing a search on invoices by partial customer name.	(thanks xppassport)
+<li> FEATURE: Added phone and email address to Endicia Dazzle export	(thanks sasydeals)
+<li> FIXED: STID not propely splitting if only containing / in the STID	(thanks dollssoreal)
+<li> FEATURE: Added support for new fields for fees - posted, uuid, memo, subcode	
+<li> FEATURE: Added Techincal Support which fixes duplicate order events in the order	
+<li> FIXED: Duplicates events will not insert into the Windows Order Manager	(thanks scaleusa)
+<li> FEATURE: removed duplicate saving of tags , changed syncing processing of orders	
+<li> FIXED: Orders not moving to different order status	(thanks scalesusa)
+<li> FIXED: HTML editor toolbar does not function for any option buttons (center, bullet, etc)	(thanks hbaworldwide)
+<li> FIXED: Runtime Error 94 and 55 when syncing updated invoices	(thanks dollssoreal,bidflex)
+<li> FIXED: If you reset the database, you would have blank orders. This was related to the new sync process	(thanks esales)
+<li> FEATURE: Faster rountine for adding data to the XMLTAGS (faster sync)
+<li> FEATURE: Added a logging of the insert statements in the Tech Support for troubleshooting of issues only	
+<li> FEATURE: Added ship_phone to the Worldship export files 	(thanks candlemakers)
+<li> FIXED: Missing orders issue with the Windows Order Manager	(thanks esales,scalesusa,bidflex)
+<li> FIXED: Removed Post amount in the Dazzle Integration
+<li> FIXED: Order would go missing if orders were created in the Windows Order Manager	
+<li> FEATURE: Automation of Dazzle into the Enterprise JIT system	
+<li> FIXED: Weight issue in the Dazzle Enterprise JIT system	
+<li> FEATURE: Added date advance in Dazzle Enterprise JIT System	
+<li> FIXED: not removing rejected postage even though it was successful - Enterprise JIT system only	
+<li> FIXED: Default weight to blank if only # exists versus one pound	
+<li> FIXED: Uncomment coded that preventing printing of Dazzle software - Enterprise only	
+<li> FIXED: the function that converts lbs to ounces e.g. 1.45# added ceiling function to round up weights.
+<li> FIXED: Sync issues of orders not status after moving in different order statuses	
+<li> FIXED: On server, fees were fixed in the paypal when creating an order in the paypal IPN	
+<li> FIXED: In the windows clients, added better handling rountine for handling misformatted fee amounts	(fixes corrupt data from bug on zoovy.com)
+
+</article>
+<article>
+<h2>Build 5.12 - released 6/22/04</h2>
+
+Highlights: Support for Zoovy Order Format 3.0.  Support for Endicia v4.6.<br><br>
+
+<li>FEATURE: Added the ability to ignore Zoovy Order Manager weight insteads uses Endicia DaZzle for weight	(thanks speedbleeder)
+Watch Out: This will set weight 1 oz , you need to change the weight in Endicia DaZzle. Prompting will always turn on for this option
+<li>FEATURE: Added the ability to choose how many days in advance you set your postage, If prompting is selected, Zoovy Order Manager (thanks zooksstuff)
+will not added the DateAdvance value to xml export for Endicia Dazzle
+Watch Out: Date Advance is global setting, currently is not set by each order information
+<li>FIXED: Order events being duplicated when downloading orders	(thanks zooksstuff)
+<li>FIXED: Inventory not added back to web if you delete the sku from the order	(thanks zooksstuff)
+<li>FIXED: When receiving sync inventory xml error, prompts user for correct username
+<li>FIXED: Type Mismatch Error 13 - when typing .50 in shipping amount in the create invoice (thanks simplestore)
+<li>FIXED: Error when search more than one field at time in the incomplete search (thanks adam)
+<li>FEATURE: Upgraded the spell control, now contain techincal dictionary for internet terms
+<li>FIXED Runtime Error 339 - wspell.ocx not reigstered
+<li>FIXED: When creating invoice , shipping company was being to save a bill company no matter what was type in the box (thanks jefatech)
+<li>FIXED: Runtime Error 7 - Out of Memory Error (thanks kendall, simplestore)
+<li>FIXED: Subscript out of range error - runtime error 9 caused by the new Dazzle features in 4.53b4 (thanks simplestore)
+<li>FEATURE: Upgarded the Mabry Barcode Control
+<li>FEATURE: Multi user support added in SOHO edition - 2.0 customers only.
+<li>FEATURE: Import the Fedex tracking numbers from csv - tracking number then order number - just like Worldship (thanks sportstop)
+<li>FEATURE: Quickbooks integration now supports the new format for option groups - will convert to underscores unless you check (thanks jefatech)
+Convert underscores to dashes in Tools -> Quickbooks Setup
+<li>FIXED: Updating qty and price when creating not saving properly	xppassport
+<li>FIXED: Runtime error 13 caused by new feature 4.55b2
+<li>FEATURE: Added %ORDERNOTES% as email variable in the customizing email messages	gateway
+<li>FEATURE: Now import tracking number saves the import file as name and day import into the tracking\imported directory
+<li>FIXED: Search by credit card would add commas in the Search Invoice screen (xppassort)
+<li>FIXED: Do not create customers accounts was not remembering settings - in screen Tools -. Quickbooks Setup (thanks gateway)
+<li>FEATURE: Remove commas for contact name and attention for UPS Worldship export (thanks jefatech)
+<li>FIXED: Fixed order notes not displaying when editing an error (thanks gunnersalley)
+<li>FIXED: Incompletes items not displaying (thanks xppassport)
+<li>FIXED: Runtime error - 3265 when clicking on incomplete tab (thanks esales)
+<li>FIXED: Runtime error 91 when trying to change the payment status (thanks jefatech)
+<li>FIXED: Shipping not upload when creating new invoices (thanks xppassport)
+<li>FIXED: Infinite loop on order syncing - this would happen if you double quote or & in the description of the product in the order (thanks jefatech)
+<li>FIXED: Not exporting to UPS Worldship	(thanks charisdiscs)
+<li>FIXED: Runtime error 424 when trying to charge a credit card via gateway
+<li>FIXED: Server side code was returning a parsing error when attempting to charge a credit card - WEBAPI
+<li>FIXED: Server side was not setting the order status to an order - WEBAPI
+<li>FIXED: Runtime error 3265  when exporting to Quickbooks 2004 (thanks esales)
+<li>FIXED: View of tax rate and total tax amount (thanks hotnsexymama)
+<li>FIXED: Runtime error '-2147217904 (80040e10) when search by incomplete (thanks mmusa)
+<li>FEATURE: Added new tracking UI - for mulitple packages support , notes , actual weight and cost
+<li>FEATURE: Endicia Dazzle now imports the weight and final cost into the tracking field
+<li>FEATURE: UPS Worldship now imports the final cost, weight, notes
+<li>FEATURE: Fedex support now addes weight and cost
+<li>FEATURE: Saves the orders fees information - does not displayed them yet
+<li>FIXED: Runtime error 94 - when enter tracking number
+<li>FIXED: Events format changed
+<li>FEATURE: Added a COMPAT mode layer in new sync process
+<li>FIXED: Runtime error -2147217904 (80040e10) when combing orders	(thanks mmusa,bidflex)
+<li>FIXED: Sales tax issues if sales tax edited on web as 8.25 would convert to .08% (thanks talkntel)
+<li>FIXED: The claim being exported when using either Quickbooks, Worldship or any export routines	(thanks esales,videongames)
+<li>FIXED: Corrupt orders when syncing orders from the web but look fine in the web interface (thanks bidflex)
+<li>WEBAPI: Fixed credit card processing when charging credit card in order manager	(thanks guitarelectronics)
+<li>FIXED: File not found error when importing from the File -> Import from UPS Worldship (thanks diecastndiamonds)
+<li>FIXED: Runtime error 13 - Type mismatch when tabbing to shipping total (thanks talkntel)
+<li>FIXED: Runtime error 424 when splitting an order number (thanks navyseals)
+<li>WEBAPI: Migration of all  WEBAPI cgi to the new sync process
+<li>FIXED: Runtime error - Inet failed when combining orders
+<li>FIXED: Runtime error - Inet failed when syncing orders
+<li>FIXED: Runtime error 53 when downloading products from website (thanks darrinsdepot)
+<li>FIXED: Tracking numbers not populating when importing from file	(thanks diecastndiamonds)
+<li>FIXED: Runtime error 94 when exporting to Quickbooks (thanks diecastndiamonds,gulf)
+<li>WEPAPI: Fixed encoding issues with register trademarks (thanks studio34music)
+<li>FIXED: Credit card gateway is missing (thanks guitarelectronics)
+<li>FIXED: Incomplete not syncing to Order Manager (thanks talkntel)
+<li>FIXED: Multiple claims on invoices - script was run created in OM to fix this issue (thanks surplusxprss,ducklingsdaffodils)
+<li>FIXED: File not closing when importing UPS Worldship (thanks jefatech)
+<li>FEATURE: Enchancements made to support the option 2.0 format  - functions that used this new <li>FEATURE:
+order syncing, all 3rd party integration, combing order, splitting orders, editing orders, invoices, packing slips
+<li>FIXED: Tax not calculating after order not syncing (thanks talkntel)
+<li>FIXED: MAxLocksPerFile Error when correcting the skus with multiple claims (thanks talkntel)
+<li>FIXED: Runtime error 55 - File already open when importing UPS Worldship tracking numbers (thanks scalesusa)
+<li>FEATURE: Increased length of description of products to 255 max length	(thanks guitarelectronics)
+<li>FEATURE: Increased list view to display more invoices numbers when searching by incompletes (mmusa)
+<li>FIXED: Quickbooks integration was not creating the associated sku to Zoovy sku , was creating a brand new products (thanks sasydeals)
+<li>FEATURE: Upgrade the Endicia Dazzle UI
+<li>FEATURE: Dazzle UI now supports the new international mail types
+CAUTION: Postage has been sent to Dazzle, not fully tested on all countries
+<li>FEATURE: Added stealth postage settings and SkipUnverified settings to Endica Setup Area
+<li>FEATURE: Endicia Dazzle will import if encountered an error when using not prompting and auto close of Dazzle
+<li>FEATURE: Added flate rate support for Priority and Express in Endicia Dazzle
+<li>FEATURE: Added additional services - registered mail, insured mail, certified mail, delivery confirmation, signature confirmation
+<li>FEATURE: Reply postage can now be generate by invoice in Endicia DaZzle
+<li>FEATURE: Transulation added for Zoovy Countries to USPS countries for Endicia Dazzke	(thanks scalesusa)
+<li>FIXED: Calculating shipping on brand new invoice - Invalid Destiantion Message	(thanks scalesusa)
+<li>FIXED: Runtime error when upgrading from 4.x to 5.x versions	(thanks theoneedge)
+<li>FEATURE: Asked to backup the Zoovy database before upgrading database to 5.x version format (thanks adam)
+</ol>
+<b>Enterprise Only</b><br>
+<li>FIXED: When editing multiple orders, tax , ship method and ship price was being saved to all orders
+<li>FEATURE: Added jitsync to the save invoice of OM - Enterprise only
+Customize packing slip for tastycds for the new jit system
+<li>FIXED: Added CANCELED as completed for setting the order status to cancelled
+Enchancement - added limit of 2500 viewable orders in (Enterprise only)
+
+</article>
+<article>
+<h2>Build 4.52 - released 3/31/04</h2>
+
+<li> FIXED: Runtime Error 91 when printing shipping labels from the labels screen	(thanks webstrings,mmusa)
+<li> FEATURE: Upgrade to latest jet engine 4.0 sp8
+<li> FIXED: Runtime error 438 in (4.51b1 only) when trying to create/edit email	(thanks clubhousegolf)
+<li> FIXED: Import of tracking number for Fedex Ship Manager , Fedex software added hard returns and not properly ending	(thanks sportshop)
+<li> FIXED: Inventory was being reduced by 2 every time you created a new invoice	(thanks spruebrothers)
+<li> FEATURE: Quickbooks detects if the sku is type group item for export and exports properly for group items	(thanks guitarelectronics)
+<li> FEATURE: Product creation for Quickbooks integration now on its own tab, it now support two item types : service and inventory part	(thanks videosngames)
+<li> FEATURE: extended incomplete search to show all items, previous versions only searched in I, V, N, W, and A status	(thanks wesellinkjets)
+
+<b>Enterprise Only:</b><br>
+<li> FIXED: Email Preferences form when saving
+<li> FEATURE: EAN detection, EAN to ISBN conversion in JIT interface in OM
+
+</article>
+<article>
+<h2>Build 4.50 - released 3/12/04</h2>
+
+Highlights: Quickbooks 2004 support, FedEx Ship Manager Support (imports tracking numbers).
+Enterprise customers please read the notes below before upgrading.
+
+<li> FIXED: Downloading products was not bringing all the option groups (thanks outposts)
+<li> FIXED: Run time error 9 on blank add products list	(thanks adam)
+<li> FIXED: Split and combine order not grayed out in the main menu area	(thanks uagear)
+<li> FEATURE: Bad csv containing no order number would cause a run time error	(thanks studio34music)
+<li> FIXED: blank email creating when importing tracking number with no invoice numbers	(thanks scalesusa)
+<li> FIXED: international ship to address not saving to province, state and country caused a run time error	(thanks tastycds)
+<li> FEATURE: Custom Export now exports the email address, mail address and fullname	(thanks bestfootstools)
+<li> FEATURE: Quickbooks 2004 support added
+<li> FEATURE: Added Credit card support integration for Quickbooks 2004 only	(thanks gardensbyolivia,liqcentral,scalesusa)
+<li> FEATURE: OM now detects whether the library was installed in the for the new Quickbooks Int. Library
+<li> FEATURE: Added phone number to customer sync for Quickbooks
+<li> FIXED: Only creates emails for orders that exist when importing the tracking number	(thanks scalesusa)
+<li> FIXED: Rememeber shipping price causes another invoice to be created (thanks scalesusa)
+<li> FEATURE: Fedex Ship Manager Support	(thanks greatlookz)
+<li> FIXED: Runtime error 6 overflow when syncing large amounts of modified orders 	(thanks angelstechnology)
+<li> FIXED: 1 day behind - leap year issue in Order Manager	(thanks vistawholesale)
+<li> FIXED: 401 Non-modal when searching invoices then click order status button on toolbar	(thanks adam)
+<li> REMOVED: Ship email from Order Manager, use Bill email for exports like Worldship	(NOTE: Ship email was never supported by zoovy.com)
+<li> FEATURE: POP before SMTP reauthenticate every 1 minute + auto retry after error
+<li> FIXED: invalid username/password when syncing on new blank database	(thanks speedtshirts)
+<li> FIXED: Runtimer error 6 - overflow when backup bigs amount of data	(thanks tapediscounters)
+<li> FEATURE: Added Enterprise Candidate Support (multi-user order manager)
+<li> FIXED: 401 Modal Error during Quickbooks Synchronization if the invoice contain discounts in it	dollssoreal
+<li> FEATURE: Quickbooks synchronization - %discounts are created as whole amount for compability issue with discount item in qb	dollssoreal
+<li> FIXED: User access settings fixed - Enterprise only	rainmakers
+<li> FIXED: Latest MDAC installing all operating systems except Windows 98 - Windows 98 will installed MDAC 2.7 sp1
+<li> FEATURE: Cursor begins at the product sku (increases compatibility for using barcode scanners) - (thanks adam,greatlookz)
+<li> FIXED: OM substatus tab does not highlight correctly if you change the order to paid, marked paid, repaint all invoices	(thanks 4armedforces)
+<li> FIXED: Double skus when hitting save on incomplete items	(thanks scalesusa,bidabit,myriadcouture)
+<li> FIXED: when changing items they are now transmitted in batches of 25 (faster syncs)
+<li> FEATURE: rememembers screen size, position and where split bar is (thanks scalesusa)
+<li> FIXED: Last order in batch for Endicia is doing zero weight	(thanks 21stcenturygems)
+<li> FIXED: Large fonts issue	(thanks ezmiser)
+<li> FEATURE: Quickbooks Synchronization now does create customers if checked in Tools | Quickbooks Setup (only works for Sales Receipts)
+<li> FEATURE: Fedex Ship Manager - now exports email addresss as ship alert emai id, exports the order number as ground invoice number or express reference number depending on shipping method and helps with Fedex reports	(thanks gifts123)
+<li> FEATURE: Fedex Ship Manager - now imports tracking numbers from the output file generated	(thanks gifts123,outbackware)
+<li> FIXED: runtime error 7 - out of memory (thanks kendall)
+<li> FIXED: Updated to Latest Patch for the reports and invoice control - 2.0.0.1230
+<li> FIXED: runtime 6 - overflow error causes by remember screen size starting  4.41b1
+<li> FEATURE: Turn on the ability to remember screen size and split bar positions by going to Admin | Preferences - SOHO only
+<li> FEATURE: Move all the Email Tools under new menu Email, Enterprise only shows the Email Manager under Email menu (thanks keith)
+<li> FIXED: Missing one order when exporting to Endicia bug caused by beta 4.41b2	(thanks myriadcouture)
+<li> FEATURE: added right click menu for edit invoice, payment status, payment , tracking, archive orders
+<li> FIXED: Incompletes not saving quantity or creating orders with quantities (SOHO-none, Enterprise - required push)	inktoneric
+<li> FIXED: If you create an incomplete order and add a item from inventory, then remove the claim number and do not update the claim	hotnsexymama
+<li> FIXED: Runtime error 91 when right clicking on menus (error came from 4.43b5 because of new rountines added)
+<li> FEATURE: detects what mdac the application is running must be 2.7 or higher - no longer includes in install mdac
+<li> FEATURE: added new sub menus in Admin for Company and Database Tools, consolidated the tools in new sub menu	(thanks adam)
+<li> FEATURE: Added ico to the setup - using the default Zoovy order Manager icon - makes it easier to find on desktop.
+<li> FIXED: Creating invoices concatenates any string that is to long before adding is to the database - thereby avoiding SQL errors.
+<li> FEATURE: Save on create/edit invoice will now save invoice with out exiting, if exiting customer will be prompt	(thanks adam)
+<li> FEATURE: Removed "Save" prompt in invoice edit - merchant can turn on "Automatically Save Invoice" by going to Admin | Preferences | Order Properties
+<li> FIXED: Customer sync - not creating customers , or bringing down address and etc
+<li> FIXED: 2.0 account no longer receive a message they need a silver account or higher, 2.0 accounts have full access to all OM features.
+<br>
+<br>
+<b>Enterprise Only:</b><br>
+<i>This client requires server codebase 20030312 or later.<br>
+attempting to run this client on earlier versions won't work, and will probably cause corruption.
+Consult your Enterprise Account Manager before loading this version.
+</i><br>
+<li> FEATURE: JIT (Just In Time) specialized order processing interface - Enterprise only
+<li> FEATURE: Search summary (Universal Search) feature added, lets you lookup orders by ebay id, etc. - Enterprise only
+<li> FIXED: registry issue caused in previous beta - Enterprise only
+<li> FIXED: Subscript runtime error 9 - when running Search summary (new feature) - Enterprise only
+<li> FIXED: Remove dashes, commas and spaces out the search - Enterprise only
+<li> FEATURES: Added dashes back in the search summary box (Enterprise only)
+<li> FEATURE: Added support for ACK_OKAY (Enterprise Only)
+
+</article>
+<article>
+<h2>Build 4.34 - released 11/6/03</h2>
+
+<i>4.34 is a sub-release intended to correct a few minor glitches which were reported after the release of 4.32.
+If 4.32 is working for you (and you don't create invoices via Order Manager) then
+there is no need to upgrade to this version.</i><br>
+<br>
+<li> FIXED: incomplete item not showing when hitting creating invoice after creating the at least one item with incomplete
+<li> FEATURE: Add message to add item - so customer could know that they needed to type 3 letters
+<li> FEATURE: Add show all products checkbox in add item
+<li> FEATURE: In Admin -> Preferences , ability to turn off the auto move of orders to completed when importing tracking numbers
+<li> FIXED: runtime error 13 type mistmatch when editing shipping total (with $'s) in the create invoice area.
+</article>
+<article>
+<h2>Build 4.32 - released 11/1/03</h2>
+
+<i>In an effort to communicate better with our customers about new releases we are trying this new format for the release notes:</i><br>
+<br>
+<b>Big Stuff:</b><br>
+<li> FEATURE: Importing tracking numbers from any 3rd party software [e.g. worldship, libra, dazzle, quickship]
+will automatically move the invoice to COMPLETED and send the email message "tracking.htm" (thanks discountsoftware, shoebacca)
+
+<br>
+<aside class="caution">
+<h6></h6>
+<div>
+
+The following caveats apply to the new tracking number import:<br>
+NOTE1: Email will only be sent if "Automatically notify customers" is enabled.<br>
+NOTE2: Invoices will ALWAYS be automatically moved to COMPLETED. <br>
+NOTE3: Dazzle tracking numbers will be automatically imported (and moved) when a sync is performed, OR when the software is exited,
+OR when the "tracking" button is clicked on an invoice.<br>
+
+</div>
+</aside>
+
+
+<li> FEATURE: Streamlined invoice creation - new features include added ship to, shipping calculator, payment processing (thanks adeal, scalesusa)
+<li> FEATURE: Outlook support as alternative for sending email	via SMTP.
+This feature should be very useful for customers who have ongoing issues with how their ISP performs SMTP/POP3 authentication.
+<aside class="caution">
+<h6></h6>
+<div>
+
+Outlook transport should be used as a last resort. Each time a message is sent outlook will prompt you to verify it is okay for Order Manager to add the message.
+
+</div>
+</aside>
+
+
+<li> FEATURE: Added support in Quickbooks setup to automatically print invoices via Quickbooks (thanks jazz)
+<li> FEATURE: Added search by product to the Order Manager, also a "create invoice" from the search - should make doing phone quotes considerably easier	(thanks adeal)
+<li> FEATURE: The search utility list will now appear blank until you have entered at least 3 characters, this is intended to improve performance
+on clients with large product lists.
+<br>
+<br>
+<b>Little Stuff</b><br>
+
+<li> FEATURE: Dazzle automatically imports tracking numbers (without closing/leaving Dazzle)
+<li> FEATURE: Automatic syncing when you hit the sync button, no more "Extra Click"
+<li> FEATURE: Updated eBay Non Paying Bidder (NPB) - warning and npb now as red in tab.
+<li> FEATURE: client registration support [Enterprise	only]
+<li> FIXED: Privledge checking - customers without proper flags could access restricted features [Quickbooks, USPS Airbill printing]
+<li> FIXED: Invoice preview issues on Win98/ME when an HP printer was configured as default and MDAC 2.8 was installed on system.
+<li> FIXED: Runtime Error 438 when right -clicking import - ups worldship (thanks angelstechnology)
+<li> FIXED: Runtime Error 424 when trying to split an order	(thanks 888kniversus,countryprints)
+<li> FIXED: Runtime Error 3265 when adding non virtual products to invoice (thanks channelvelocity,toonstation)
+<li> FIXED: garabage email being sent	(thanks talkntel)
+<li> FIXED: Sent emails not showing on some clients.	(thanks sandjonline)
+<li> FIXED: missing order history/events	(thanks sandjonline)
+<li> FIXED: Print by SKU in cancelled tab	(thanks 4armedforces)
+<li> FIXED: bulk email reference when sending bulk email	(thanks cubbyhole)
+<li> FIXED: batch printing does not use the right mail class for more than one order in DaZzle integration (thanks 21stcenturygems)
+<li> FIXED: The leading % on promotion products will now be stripped when importing into Quickbooks. (thanks zbilliards)
+<li> FIXED: Encoding trademark symbols and international characters
+<li> FIXED: Right click - "Print All Invoices" now only prints the invoices in the current subpool	(thanks 4armedforces)
+<li> FIXED: Order notes did not print on invoice unless print order notes on packing slip was enabled.
+</article>
+<article>
+<h2>Build 4.30 - released 9/24/03</h2>
+
+<li> corrected: problem with virtual items (thanks esales)
+</article>
+<article>
+<h2>Build 4.28 - released 9/23/03</h2>
+
+<li> FIXED: runtime error 424 - import from worldship.
+<li> FIXED: print blank delivery confirmation labels (thanks atozgifts,daystartechnology)
+<li> FEATURE: automatic import of endicia dazzle
+<li> FIXED: order not mark paid is check box is on when creating invoices	(thanks tastycds)
+<li> FEATURE: more descriptive debug filenames
+<li> FEATURE: added card type - no more "CREDIT" now says mastercard, visa, amex, discover -
+used in invoices, packing slips, quickbooks integration, listview	(thanks welburn)
+<li> FEATURE: quickbooks uses the customer:job versus name for the address built	(thanks welburn)
+<li> FIXED: load xml error when exporting to Quickbooks 2002 users. (thanks darrinsdepot,scaleusa,angelstechonly,gilco)
+<li> FEATURE: Increase expiration year by 15 years	(thanks jefatech)
+<li> Add filters for Contact Name when sending email	(thanks esales)
+<li> FEATURE: All toolbars, lists, and buttons have been upgraded to new versions
+<li> FEATURE: Update the MDAC library to 2.8
+<li> FEATURE: Update the Jet 4.0 to Service Pack 7
+<li> FEATURE: Hit enter key on password let you in without clicking the okay button
+<li> FIXED: font size occassionally appears to small in listview control
+<li> FEATURE: Added class reference rountine to Quickbooks	(thanks welburn)
+<li> FEATURE: Added Accrual /Cash option Quickbooks Integration	(thanks outpost)
+<li> FEATURE: added alldropship processing / (virtual product) support in Order Manager (thanks anything)
+<li> FEATURE: Order Manager Packager support for file/url
+<li> FEATURE: Added quickbooks sdk version checking
+<li> FEATURE: Added quickbooks synchronize products (from Zoovy to Quickbooks during invoice sync)
+<li> FEATURE: Added quickbooks troublehshooting wizard which helps fix problems during sync.
+
+</article>
+<article>
+<h2>Build 4.26 - released 8/20/03</h2>
+
+
+<li> FEATURE: Added ability to export reports to excel and html besides pdf, text, and rtf
+<li> FEATURE: Upgraded report control with additional functionality including zoom, multipage preview, and invoice export features.
+<li> FIXED: archive orders is no longer broken, versions 4.24 had issues after sub order tabs were introduced	(thanks kendall)
+<li> FEATURE: Customer search table optimization - results in much faster synchronization (thanks inktoneric,outpost,tekdeal)
+<li> FEATURE: added alternative source [From] address for bulk email 	(thanks shoebacca)
+<li> FIXED: Select more than one incomplete item crashes create email	(thanks awc)
+<li> FIXED: Paid date not being set if created invoices offline and paid was set during the order creation (thanks rainmakers)
+<li> FEATURE: Print all invoices with/without notes (thanks wesellinkjets)
+<li> FEATURE: Added inventory decrement on combine orders	(thanks atozgifts)
+<li> FIXED: decimal in weight, now can do 1.2 ounces	(thanks fareastandbeyond)
+<li> FEATURE: Add alternative bulk email address. For SOHO, Admin -> Edit Company Information	shoebacca
+<li> FEATURE: Quickbooks procedure revamp for upcoming changes
+<li> FEATURE: Added export to right click	context menu
+<li> FEATURE: Export to invoices in many formats including excel, pdf, text, rtf, html
+<li> FEATURE: Quickbooks sync exits with no prompt in quickbooks
+
+
+</article>
+<article>
+<h2>Build 4.24 - released 7/12/03</h2>
+
+<li> enhancement: added non-paying bidder tools.
+<li> corrected: cancel tab sql error (thanks orbitnine)
+</article>
+<article>
+<h2>Build 4.22 - released 7/09/03</h2>
+
+<li> enhancement: added filters for shipping, payment and single item in sub order status.
+<li> enhancement: selecting orders on one sub order status tab and moving to the next tab leaves only the orders which appear in both tabs selected. (this way you can drill down so for example you can now show all paid, orders which ship air, with only one item in three clicks).
+<li> enhancement: Ability to export the reports to text files, rtf files, pdf files	(thanks scrapbookfountain)
+<li> corrected: Runtime error 340 on sub order status with only one tab. (thanks avon4sale,  candlesoylutions)
+<li> corrected: Invalid use of null 94 (thanks angelstechnology, uagear)
+</article>
+<article>
+<h2>Build 4.20 - released 7/02/03</h2>
+
+<li> enhancement: Support for Location in Packing slip.
+</article>
+<article>
+<h2>Build 4.18 - released 6/25/03</h2>
+
+<li> enhancement: labels now print in ascending order, same sequence as invoices and packing slip (thanks hawkins)
+<li> corrected: sql error in create invoice when international address and payment specified (thanks hawkins and 5dollarcds)
+<li> corrected: combine order / split order had sql error (thanks rainmakers)
+<li> corrected: enterprise, fixed handling of global configuration variables (thanks shoebacca)
+</article>
+<article>
+<h2>Build 4.16 - released 6/16/03</h2>
+
+<li> corrected: runtime error 76 during send mail.
+</article>
+<article>
+<h2>Build 4.14 - released 6/16/03</h2>
+
+<li> enhancement: Sub pools - allows users to create custom sub statuses for orders.
+<li> enahncement: implemented "show all paid orders" on sub pools tab for all users.
+<li> corrected: Runtime error 91 during incomplete sync	(thanks 5dollarscds)
+<li> corrected: Runtime error 424 - during uploading customer information	(thanks 5dollarscds)
+<li> corrected: Runtime error 13  - print packing slips	(thanks oaktree)
+<li> enhancement: Search Credit card	(from features forum)
+<li> enhancement: Credit Filter - credit card system now strips middle 8 digits, and CCV/ID - when order is flagged as paid
+<li> corrected: Invalid use of null (runtime error 94) when splitting orders	uagear
+<li> enhancement: Ship date added when adding/importing trackinng numbers in
+<li> enhancement: option to "do not sync email" on SMTP error - let user continue.
+<li> enhancement: complete w/o feedback , complete w/feedback - incomplete item
+</article>
+<article>
+<h2>Build 4.12 - released 6/13/03</h2>
+
+<li> corrected: runtime error 76 during send mail.
+</article>
+<article>
+<h2>Build 4.10 - released 6/13/03</h2>
+
+<li> corrected: runtime error 94 "invalid use of null" which occurred after upgrading some database versions.
+<li> enhancement: quickbooks export now uses created date of invoice, rather than current date. (thanks daystarttechnology)
+</article>
+<article>
+<h2>Build 4.08 - released 6/12/03</h2>
+
+<li> corrected: Small fonts randomly appear in order manager.
+<li> enhancement: multi-customer select send/email	(thanks to rainmakers)
+<li> enhancement: Print Underscores in barcode versus dashes	(thanks to rainmakers)
+<li> corrected: Delay capture , doing additional capture in some cases (thanks candlesoylutions)
+<li> corrected: Runtime Error 9 - Overflow error happening in sync (thanks talkntel, candlesoylutions)
+<li> corrected: verify microsoft jet is compatible with 2000 and xp (or if it has it's own installer) - both 2000 and XP now have their own installer	(thanks Kendall)
+<li> corrected: Company information not syncing in Order Manager Beta (thanks esales)
+<li> corrected: %SHIPADDR% this field should NOT have &lt;br&gt;'s in it, it should have CR's, &lt;br&gt;'s should only exist in %HTMLSHIPADDR%	(thanks daystartechnolgy)
+<li> corrected: XML Parsing Error found in Xmlnum.xml	(thanks candlemakers)
+<li> corrected: Runtime Error 53 - On Delivery Confirmation	(thanks caboots)
+<li> corrected: Order notes not printing when doing print all invoices - SOHO Edition	(thanks wesellinkjets)
+<li> corrected: No username specified error (thanks carmbo)
+<li> corrected: Creating incomplete items from order manager not subtracting from inventory	(thanks 5dollarcds)
+<li> corrected: Report by SKU detail - give nothing to report error	(thanks closeoutdude)
+<li> enhancement: Claim numbers can now be printed or omitted from invoices - default is ommitted.
+<li> corrected: XML Parsing stream error with quickbooks	(thanks usfreight,candlesoylutions)
+<li> corrected: email templates has wrong variables - need to overwrite with right one.
+<li> corrected: Error 5000 processing report when printing packing slips
+<li> corrected: Company name not available in edit	(thanks upscale)
+<li> corrected: Logo will not save - for label printing	(thanks luvmy3toys)
+<li> corrected: Runtime error 5707 - trying to set up the printer for labels	(thanks nancyk2001)
+<li> corrected: Customer shipping/billing info not updating	(thanks gilco, toonstation)
+<li> enhancement: add events to order manager via addEvents function
+<li> enhancement: 11001 workaround - SMTP Error (added timer to order manager) - wait 3 seconds. (thanks gifts123, nerdgear)
+<li> enhancement: Client now does small blocks of orders when downloading a new database.
+Faster sync for new client installations.
+Also Fixes Runtime error - 12052 HTTP timeout - firewall issue	(thanks qualitycollectibles)
+<li> corrected: Fixed problem with order status changing randomly after sync.
+<!-- since 405rc4 -->
+<li> enhancement: Strip all characters that are not valid XML encoded.
+<li> enhancement: Added a Account name for deposited sales receipts in Quickbooks
+<li> corrected: Fixed the ' problem in customer search when editing the record
+<li> corrected: printing multiple page orders.
+<!-- since 405rc2 -->
+<li> enhancement: Adding hide claim feature for invoices and packing slips
+<li> enhancement: Added shipping method to the list view - ability to sort by shipping
+<li> corrected: Fixed the Import UPS worldship not syncing right away
+<li> corrected: Fixed the FEDX dropped when adding tracking numbers manually
+<li> corrected: Installer will overwrite any all default emails now.
+<li> corrected: Marking claim items to paid will now be marked paid on website
+<!-- since 405rc1 -->
+<li> enhancement: Invoices and packing slips now alphabetize the skus
+<li> corrected: Fixed the %BULKEMAILURL% url, so it is now required in bulk email.
+<li> enhancement: Added shipping price to %SHIPMETHOD%
+<li> enhancement: Improved the Delivery Confirmation error rountine - no more runtime error 76
+<li> corrected: Fixed the runtime error 438 for Tech Support "Client computer is correct" sync.
+<li> corrected: Runtime error when setting the qty to 0 has been fixed
+<li> corrected: Fixed the do not print company information on labels
+<li> corrected: Fixed sales tax when modified through an order
+<li> enhancement: Enterprise login has changed to allow soho/enterprise logins on the same installation.
+
+
+</article>
+<article>
+<h2>Build 4.04 - released 3/27/03</h2>
+
+<li> Updated the ActiveX and Dlls for the Mail control in Order Manager to fix out of memory error on Windows 2000.
+<li> Added new Email Tags to make emails compatible with website variables.
+<li> Added Archive Feature in Completed Status Only
+<li> Enchanced Endicia DaZzle support by adding layout choices in printing and added Endicia Shipping options
+<li> Added rubberstamp field for Dazzle - this gives you the ability to print order numbers on postage
+<li> Added new feature to allow selection of auto email when changing order status. To setup these options go to Admin -> Preferences
+<li> Added html email editor
+<li> International orders now work with Endicia DaZzle
+<li> Increased database field size to eliminate problems with missing orders
+<li> Automatically reduce the zip to max length when using the smart paste in create invoice
+<li> Tracking numbers now restricted to only allowed characters
+<li> Added remove option group feature for the Quickbooks Export. (Enable by going to Tool / Quickbooks Setup / General Tab and click on the options check box)
+<li> Added options to Print order notes on Invoices and/or Packing Slips. (Enable by going to Admin / Preferences and check the relevant check boxes)
+<li> Uses new Webdoc Help system.
+</article>
+<article>
+<h2>Build 4.02 - released 1/6/03</h2>
+
+V4.02 - Bug fix Release<br>
+<li> Label Printing has moved Shipping Labels in the File Menu and Right-click of mouse
+<li> Print All Invoices bug found and fixed
+<li> Export to UPS Worldship (multi-box) bug found and fixed
+<li> Unchecking  the "Automatically Notify Customer" in Admin - no longer sends email
+</article>
+<article>
+<h2>Build 4.00 - released 12/29/02</h2>
+
+<li> New Database format - much faster than previous versions.
+<li> Multiple Account Support
+<li> HTML Email
+<li> Quickbooks 2003 Support
+<li> Endicia Integration
+<li> Improved label printer support
+<li> Improved Inventory and Incomplete Item support
+<li> Tons of other useful features (review the readme for full details)
+</article>
+<article>
+<h2>Build 3.36 - released 9/5/02</h2>
+
+<li> Fixed uploading problem with special characters like trademarks
+<li> Right click now moves move all orders in mult-select, in other versions it only moved the last selected in the multi-select
+<li> Changed date in the incomplete tab to be the created time
+<li> Changed date in all tabs to be format with cushion 0 example 09/05/02
+<li> Listview of orders no longer sorts case sensitve
+<li> Added a debug tool for helping troubleshoot problems with an smtp server
+</article>
+<article>
+<h2>Build 3.34 - released 6/27/02</h2>
+
+<li> Improved Synching - much more reliable, resumes after errors.
+<li> SMTP Error tracing.
+<li> Improved Error Reporting.
+<li> New Look for Invoices.
+<li> Payment status is now shown on main display.
+<li> Database Verification tools.
+</article>
+<article>
+<h2>Build 3.32 - 4/19/02</h2>
+
+<li> Added auto-ticket feature when OM encounters XML Parser errors (no more emailing dump files!)
+<li> Added database comparison feature to verify database integrity with Zoovy servers
+<li> Fixed auto-bcc (unless of course thats what you want) on email
+<li> Fixed USPS Delivery confirmation ZIP+4 problem
+<li> Fixed order status not saving when right click change status is performed.
+<li> Fixed bulk email in all lower case.
+<li> Fixed "missing orders" after processing payments via order manager<br>
+</article>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,81 @@
+<meta type="filename" id="info/amazon syndication feed management">
+<h1>Amazon Syndication Feed Management</h1>
+
+<article>
+<h2>This addresses how to manage and troubleshoot Amazon product feeds using the Amazon Control Panel in Product Editor</h2>
+
+</article>
+
+<article>
+<h2>Amazon Control Panel</h2>
+Each button in the Amazon Control Panel will trigger a specific action.
+<section>
+<h3>Save</h3>
+Will save any changes made to the product's Amazon configuration, and send the current configuration to Amazon. 
+</section>
+<section>
+<h3>Validate</h3>
+Checks a products current configuration against Amazon's required product guidelines.  Intuitive errors will be displayed if any of the recommended configuration guidelines are not observed.
+</section>
+<section>
+<h3>Queue Now</h3>
+Resets the product in Zoovy.  Sends the product data to Amazon as if it has never previously been syndicated to Amazon.
+</section>
+<section>
+<h3>Queue Later</h3>
+Queues product to send 30 hrs after the Queue Later button is clicked.  This function can be used in conjunction with the Remove function, for instances when Amazon requires a 24 hr listing removal.
+</section>
+<section>
+<h3>Remove</h3>
+Removes the product from Amazon.  This feature should be used rather than disabling the Allow syndication to Amazon check box (setting amz:ts to 0), if the plan is to re-list the product.
+
+</section>
+
+</article>
+<aside class="hint">
+<h6></h6>
+<div>
+The Save button should be used whenever saving any configuration changes in the Amazon panel.  Once the Save button has been clicked, it is generally not necessary to use Queue Now.  (Avoiding Queue Now can prevent exhausting the data feed limits Amazon imposes on each merchant account). <br>
+Under normal conditions, any product configuration updates should be sent to Amazon automatically.
+
+</div>
+</aside>
+
+
+<aside class="hint">
+<h6></h6>
+<div> If the user does not intend to re-syndicate a product in the immediate future, the Allow syndication to Amazon box should be unchecked. <br>
+Setting product attribute amz:ts to 0 applies the same behavior as unchecking the Allow syndication to Amazon box.
+
+</div>
+</aside>
+
+
+<article>
+<h2>Feed Details</h2>
+For additional feed / error details, there are four reference check box options at the bottom of the Amazon Marketplace panel.
+<section>
+<h3>Related Items</h3>
+Displays the feed status of items related to the primary product being referenced in Product Editor. <br>
+Note:  Although the feed status(es) of the Related Item(s)is displayed for reference, those Related Products' Amazon feeds cannot be updated from the primary product's panel.  The Related Product must be searched in Product Editor, thus making it's Amazon configuration accessible.
+</section>
+<section>
+<h3>Summary</h3>
+Displays a user friendly  explanation of the product's feed status, and where the product is in the feed progression.
+</section> 
+<section>
+<h3>History</h3>
+Displays recent events from product's syndication life cycle.
+</section>
+<section>
+<h3>Definitions</h3>
+Defines terms used in the Status messages.
+</section>
+
+
+<article>
+<h2>Amazon Syndication Log</h2>
+Errors returned by Amazon, which could prevent products from syndicating successfully, can be viewed on a product by product basis in the Amazon Control Panel. <br>
+Multiple failed products and their corresponding errors can be viewed in the Amazon Syndication Error Logs. <br>
+Syndication >> Amazon Services >> Logs.
+</article>

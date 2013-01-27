@@ -1,0 +1,21 @@
+<meta type="filename" id="ticket/109822">
+
+<h1>Issue #109822: Converting Timestamps</h1>
+
+<article>
+<h2>Issue #109822: Converting Timestamps</h2>
+
+I'm trying to play around with our data. (In a duplicate of our database, not the live one.) I need to sort stuff into months, but I don't know how to convert your timestamp and created numbers into a date. I know I can go by the invoice number, but many times an invoice won't actually be paid for in the same month it was originally created.
+
+</article>
+
+<article>
+<h2>Resolution</h2>
+
+Converting the Epoch time in Microsoft access can be very difficult.
+
+<br>
+You might find it easier with Enterprise - because MySQL has a "from_unixtime" function which can be run against the database.
+
+</article>
+

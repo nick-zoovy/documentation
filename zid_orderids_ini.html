@@ -1,0 +1,50 @@
+<meta type="filename" id="ZID/orderids.ini">
+
+<h1>ZID error orderids.ini</h1>
+
+<article>
+<h2>Issue</h2>
+Issue: errors when creating an order in OM
+
+<br>
+
+I have a fresh install of ZID on a windows vista machine. when i click the create order button in order manager, i recieve the error ACCESS TO THE PATH C:/PROGRAMFILES/ZOOVY/DESKTOP/ORDERIDS.INI DENIED
+
+See the end of this message for details on invoking 
+just-in-time (JIT) debugging instead of this dialog box.
+<br>
+************** Exception Text **************
+<br>
+System.UnauthorizedAccessException: Access to the path 'C:\Program Files\Zoovy\Desktop\OrderIDs.ini' is denied.
+   
+</article>
+
+<article>
+<h2>Resolution</h2>
+
+When opening ZID, click on admin (before logging in) > account security 
+You should be able to update after verification.
+
+</article>
+
+
+<article>
+<h2>Resolution</h2>
+<br>
+Some tracking down found this to be an issue with Windows Vista.
+<br>
+What you can do is copy the file ORDERIDS.INI from the following directory:
+C:\Program Files\Zoovy\Desktop
+<br>
+and place it in the following:
+<br>
+c:\Users\(user)\Appdata\local\VirtualStore\program files\zoovy\desktop\(Zoovy account name) 
+<br>
+::Where parentheses stands your computer's personal folder names and usernames.
+It may be easier to manually search through folders. I noticed the folder "Appdata" is hidden, so you may need to enable view hidden files to see this one.
+<br>
+If you have any further inquiries, or need further assistance with this please let us know.
+
+
+</article>
+

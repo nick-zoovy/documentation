@@ -1,0 +1,307 @@
+<meta type="keywords"></meta>
+
+<meta type="filename" id="ship/rules">
+<h1>Shipping Rules</h1>
+<article>
+<h2>Shipping Rules</h2>
+<section>
+<h3>Overview</h3>
+
+Rules based shipping lets you make business decisions on the shipping price based on the items in the cart. 
+Rules based shipping makes those decisions based on the contents of the cart, either the SKU, or the product description.
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+Customers who plan to use Rules based modifications are encouraged to plan their product id's accordingly.
+Specifically products which should have the same rule applied to them should have similar SKUs so that 
+it will be possible to use wildcards to identify ranges of products. For example a rule which matched A* would match all products in the 
+cart which start with an A, including ABC, ABD, AIE, but not BOO.
+
+</div>
+</aside>
+
+</section>
+
+<section>
+<h3>How rules are processed:</h3>
+
+<li> Rules are processed at the top of the list and going down. 
+<li> Every rule will be processed unless a STOP action is encountered. 
+<li> Each rule works off of rule+filter, where the filter is a SKU or wildcard used to group SKUs. 
+<br>
+</section>
+<section>
+<h3>Rule Name</h3>
+
+The rule name is simply an internal tracking system to help you remember why a rule exists. This should ideally describe what the rule was created to accomplish.
+
+</section>
+<section>
+<h3>Use Rule If</h3>
+
+
+<li><b>never (Disabled)</b>
+Ignores this rule and moves on to the next rule - primarily used for testing.</td></tr>
+
+<li><b>Any product in cart matches the filter criteria</b><br>
+Just as it sounds, one or more matches will result in the rule being run.
+For example lets say you had a filter criteria of A*,B*,C* - in order for the rule to be processed you would only need to have a 
+cart with either A*, B*, or C*. If you had a D* product also, then the rule would still be run because either either an A*, B*, or C* was found.
+
+<li><b>All products in cart match the filter criteria</b><br>
+Every product in the cart must match one or more the filters, multiple filters can be separated by commas.  The rule will only be executed if all the products match will the rule being run. For example lets say you had a filter criteria of A*,B*,C* - in order for the rule to be processed you would only need to have a cart any combination of either A*, B*, or C*, but if you had a D* then the rule would NOT be run.
+
+<li><b>Two or more matches in cart match the filter criteria</b><br>
+The two or matches is intelligent, it does not look for distinct products and can count two or more quantities of the same item
+to satisfy the rule.
+If you had a filter criteria "A*,B*,C*" then a cart with quantity 2 of A* would work, so would a cart with one quantity 1 A*, 
+and quantity 1 B*. <br>
+Hint: This is a convenience rule, usually used for a "buy two" get free/discounted shipping promotion.
+
+<li><b>Nothing in cart matches the filter criteria</b><br>
+In order for this rule to be run, there must be absolutely no products which match the filter criteria in the cart.<br>
+HINT: this rule is usually used for disqualifying carts which do not contain the requisite promotional items, 
+e.g. coupon codes to warrant the rule being run. For example if you used a filter criteria of COUPON* then any cart which
+did not include a COUPON would execute this rule.
+
+<li><b>All elements of filter are present in cart</b><Br>
+This rule is also commonly referred to as the "Inverse All" rule. 
+Many people get confused by the difference between the ALL and inverse ALL. 
+On the Perform action if ALL products in the cart match the filter criteria you can have a much broader 
+filter. Let's say you had A* B* C*, in order for the rule to be processed you would only need to have a 
+cart with either A*, B*, or C*, or any combination thereof. A cart with only A*, or a B* would match, but obviously a
+cart with A* and D*, or just D* would not because D* does not match the filter criteria.
+<br>
+<br)
+An inverse ALL means you must satisfy each filter with one or more products.
+In our earlier example, a filter of "A*,B*,C*" would require at least one A*, B*, and C* in the cart. 
+However, if you have a D* or E* the rule will still be processed because an A*, B*, and C* were found and the rule was 
+satisfied.
+<br>
+<br>
+HINT: Inverse All Rules are handy for promotions when you want to say "buy A* and B* and get free shipping".
+<br>
+<br>
+So what happens when a rule matches? The Rule Action you choose from the "Action if Matched" drop-down will occur. Each Action has an associated value that will be applied to the cart. Values can always be both positive and negative dollar amounts. However, in many cases they can also be percentages. For example -%10 would take 10% off the shipping price. Here is the summary of actions:
+
+<li><b>Three or more matches in cart match the filter criteria</b>
+This is typically used for a buy three or more items and get some sort of discount.
+
+<li><b>STATE / Province matches filter criteria (e.g. AK,HI)</b>
+This is used to filter by state, for example if you don't want people in Hawaii selecting ground shipping then you could use this sort of rule. <br><br><i>Helpful hint</i>: A common request is to have certain perameters for continental or non-continental US. We went ahead and constructed this list of the continental US to help you build your shipping rules:<br><br>48 Continental states<br>
+AL, AR, AZ, CA, CO, CT, DE, FL, GA, IA, ID, IL, IN, KS, KY, LA, MA, MD, ME, MI, MN, MO, MS, MT, NC, ND, NE, NH, NJ, NM, NV, NY, OH, OK, OR, PA, RI, SC, SD, TN, TX, UT, VT, VA, WA, WI, WV, WY, DC <br><br>Non Continental States<br>
+AK, HI, AS, FM, GU, MH, MP, PW, PR, VI<br><br>
+
+APO/FPO States<br>
+AA, AE, AP, EE<br>
+
+<li><b>Country matches filter criteria (e.g. Canada, Mexico)</b>
+This rule matches countries, if the name of the country has a space in it, you must substitute that space with an underscore.
+
+<li><b>IP Address matches filter pattern</b>
+The IP address denotes a specific computer or network on the Internet. The IP address that an order was placed from appears in the Payment status. You can use this to flag orders from problem countries.
+
+<li><b>Date is before (filter criteria: YYYYMMDDHHMNSS)</b>
+You must specify a date in the filter critera, the action will be applied if todays date is before the date specified in the filter criteria
+
+<li><b>Date is past (filter criteria: YYYYMMDDHHMNSS)</b>
+You must specify a date in the filter critera, the action will be applied if todays date is after the date specified in the filter criteria
+
+<li><b>Any Incomplete Item Appears in Cart</b>
+Leave the filter criteria blank, any incomplete items (e.g. closed auctions) will cause this rule to execute
+
+<li><b>Filter criteria appears as substring in item description</b>
+In the filter criteria put a substring, be sure to use wildcards to match on both sides e.g. *ebay*. If you want to match two words with a space, you should translate the space to an underscore e.g. *ebay_store*
+
+<li><b>Weight of cart is greater than filter criteria (filter critera must be a number of ounces)</b>
+The filter criteria must a # of ounces.
+
+<li><b>Weight of cart is less than filter criteria (filter critera must be a number of ounces)</b>
+The filter criteria must a # of ounces.
+
+<li><b>Subtotal of cart is greater than filter criteria (filter critera must be a number of dollars)</b>
+
+<li><b>Subtotal of cart is less than filter criteria (filter critera must be a number of dollars)</b>
+
+    So what happens when a rule matches? Well then we need to discuss Rule Actions, each action has an associated value that will be applied to the cart. Values can always be both positive and negative dollar amounts, however in many cases they can also be percentages. For example -%10 would take 10% off the shipping price. Here is the summarized of actions:
+
+</article>
+<article>
+<h2>Filter Criteria</h2>
+
+Filter critera is normally a SKU, or a wildcard referencing a SKU. 
+However it may be different based on what is needed to satisfy the Use Rule If statement. For example it could be an IP Address
+e.g. 192.168.*
+
+
+</section>
+<section>
+<h3>Action If Match</h3>
+
+
+<table>
+	<tr><td><b>Stop Rule Processing</b></td></tr>
+	<tr><td>If executed, this stops any additional rules from being processed.</td></tr>
+	<tr><td><b>Add [value] to Shipping Price</b></td></tr>
+	<tr><td></td></tr>
+	<tr><td><b>Set Shipping Price to [value]</b></td></tr>
+	<tr><td></td></tr>
+	<tr><td><b>Disable Shipping Method</b></td></tr>
+	<tr><td></td></tr>
+	<tr><td><b>Add [value] for every matching item</b></td></tr>
+	<tr><td></td></tr>
+	<tr><td><b>Add [value] for each matching SKU</b></td></tr>
+	<tr><td></td></tr>
+	<tr><td><b>Add [value] for every item in cart </b></td></tr>
+	<tr><td></td></tr>
+	<tr><td><b>Add [value] for each matching item, minus one</b></td></tr>
+	<tr><td></td></tr>
+	<tr><td><b>Add [value] percent of matching items subtotal.</b></td></tr>
+	<tr><td></td></tr>
+	<tr><td><b>Add [value] percent of the cart subtotal</b></td></tr>
+	<tr><td></td></tr>
+</table>
+
+
+</section>
+<section>
+<h3>Value</h3>
+
+Value must be specified, if needed by the Action if Match selected. 
+Typically value will be a number of dollars.
+
+</section>
+<section>
+<h3>An Example</h3>
+
+In this example, the customer wanted to ship first class USPS for items under 10 ounces. The primary method of shipping was USPS. Items over 10 ounces went via Priority Mail.
+
+
+<aside class="cbc">
+<h6>'Example 1'</h6>
+<div>
+<li>Go to setup then shipping.
+<li>Select weight based shipping.  
+<li>Add a weight price description something like
+this... First class, 10 ounces, 2.00(or whatever you want to charge)
+<li>Then save that and select view/edit special rules.  
+<li>Add a new rule.  The rule should say this...
+<li>Use the filter criteria if the weight of the cart is greater than (select this
+from drop down)
+<li>Put 10 in the filter criteria
+<li>Action if match is disable shipping method.
+<li>then save.  
+
+</div>
+</aside>
+
+</section>
+<section>
+<h3>Test your setup</h3>
+
+Be sure you test to see how it works when you get it set up.  Just
+let us know if you still need help.  You can always schedule more fast track
+time too if you need it. Through
+</section>
+
+<aside class="html">
+<h6></h6>
+<code>
+
+<a href="http://support.zoovy.com/schedule">The Fast track system</a>
+
+</code>
+</aside>
+
+
+<article>
+<h2>Advanced Filter Matching</h2>
+You can use advanced filter matching in a variety of powerful ways, filtering by ebay profile type for example. Advanced filter matching is usable with any "filter match" type of rule trigger and any product attribute that can be set.  You initialize the advanced filter matching by inserting two "@@" symbols, then the attribute. Below is the syntax and examples:
+
+<li> EQUALS Attribute - 
+<aside class="html">
+<h6></h6>
+<code>
+@@
+zoovy:profile==DEFAULT
+
+</code>
+</aside>
+
+
+<li> NOT EQUAL Attribute - 
+<aside class="html">
+<h6></h6>
+<code>
+@@
+zoovy:profile<>DEFAULT
+
+</code>
+</aside>
+
+<li> GREATER THAN/LESS THAN Attribute - 
+<aside class="html">
+<h6></h6>
+<code>
+@@
+zoovy:base_price>20.00
+
+</code>
+</aside>
+
+</article>
+
+The "zoovy:ship_sortclass" (Shipping Sort Class) is commonly used for matching. It can contain any 10 digit alphanumeric string which represents a parcel or item type in your store.
+
+
+
+<article>
+<h2>References</h2>
+Please see also the following webdocs regarding coupons and promotional rules:<br>
+
+<a class="linkdoc" href="#?doc=50313">Doc 50313</a><br>
+<a class="linkdoc" href="#?doc=50987">Doc 50987</a><br>
+<a class="linkdoc" href="#?doc=50337">Doc 50337</a><br>
+
+</article>
+
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

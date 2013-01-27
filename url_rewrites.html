@@ -1,0 +1,61 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="URL Rewrites">
+<h1> URL Rewrites</h1>
+
+<article>
+<h2>URL Rewrite Overview</h2>
+
+Using this method Zoovy will simply perform an HTTP 301 redirect from one domain to another. Configuring a redirect domain is also available for yourname.zoovy.com.
+<aside class="hint">
+<h6></h6>
+<div>301 redirects are permanent way to move pages, and is often used in SEO: URL redirection, also called URL forwarding, URL shortener, domain redirection and domain forwarding
+</div>
+</aside>
+
+<br>
+To appear in the list of destinations a domain must be either currently registered with Zoovy, a new registration, or a domain which is in the process of being transferred to Zoovy. In addition the domain must be configured in either a DEFAULT or SPECIALTY hosting mode.
+<br>
+Located under:
+Setup  » Domain Hosting  » Domain Config
+<aside class="caution">
+<h6></h6>
+<div> Rewrites can not be done by Zoovy for domains with other Registars 
+</div>
+</aside>
+
+
+</article>
+<article>
+<h2>URL Rewrite Rules</h2>
+A rewrite rule allows you to redirect traffic from one url to another url on your site, or another site. For example if you want to run a promotion at http://www.yourdomain.com/promo you would direct /promo to a category page such as "/category/promotion".
+<br>
+This feature is useful when creating print, radio, or television campaigns. The URL rewrite rules can also be useful when migrating from another webhost to Zoovy and you want to retain pages which are indexed by Google or other search engines.
+<br>
+<aside class="hint">
+<h6></h6>
+<div>Rewrites can also be set through CSV.  When creating rewrites for a category page the incoming URL must end in (/).  Also when redirecting to a different domain the full URL is needed and can ONLY be done by csv.<br>
+ex. Incoming URL (%PATH): www.mydomain.com  Rewrite To (%TARGETURL): http://www.differentdomain.com <br>
+For product urls, if you have a large number of rewrites but do not know the replacing url for each, the attribute %KEYWORDS can be used in place of %TARGETURL. On the %KEYWORDS column, enter any correlating keywords for that product url. The system will rewrite according to the follow rules: <br>
+<li>If one match is found, the url will rewrite to that product url
+<li>Multiple matches for those keywords, the url will rewrite to a search result
+<li>No matches, the url will rewrite to the homepage
+</div>
+</aside>
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+
+<aside class="caution">
+<h6></h6>
+<div>Support issues stemming from diagnosing redirect loops, or issues about site behavior are billable.
+</div>
+</aside>
+
+
+Rewrite rules are cached on each webserver, so updates to rewrites may take up to 4 hours to be live on your site. 
+
+</article>
+
+

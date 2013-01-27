@@ -1,0 +1,103 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="webmgr/detail/channel-scheduler">
+<h1>Channel Scheduler</h1>
+<article>
+<h2>Overview</h2>
+
+Channels can be scheduled to launch one time, or many times. 
+Channels which are scheduled to launch once will appear as status HOLD, 
+whereas channels which are scheduled to repeat over again will appear as SCHEDULED in your channel manager. 
+Please note scheduled channels never actually launch 
+themselves, instead they create copies of themselves with new channel numbers that can be managed separately.<br>
+<br>
+The Channel scheduler can be accessed by going to Setup / Products, selecting a product then
+clicking on Create Channel, and finally in the channel selection screen clicking the "Schedule" button.
+</article>
+<article>
+<h2>Key Features</h2>
+<section>
+<h3>Remove from Website</h3>
+
+Remove from Website will delete the product from all navigation categories before launching the channel, 
+this is an ideal solution for one of a kind sellers who would like to place one-of-a-kind items on their storefront 
+for up to 45 days before launching them to an auction venue such as eBay.
+</article>
+<section>
+<h3>Respect Inventory</h3>
+
+Respect Inventory will check for an in-stock quantity above zero before launching. 
+In the near future this will also support safety inventory (specifically, after the new 
+inventory system is rolled out in a few weeks).
+</article>
+<section>
+<h3>One-Time Channels</h3>
+
+One-Time Channels will appear with a status of HOLD until they have been 
+launched (as long as they are not repeating). 
+</article>
+<section>
+<h3>Include in Gallery</h3>
+
+If you check this box then the item will appear in the pre-launch gallery.
+The pre-launch gallery can be embedded into a product layout and used to display upcoming auctions.
+</article>
+<section>
+<h3>Repeating Channels</h3>
+
+Repeating Channels will appear with a status of SCHEDULER, and simply create copies of 
+themselves with new channels that are Pending. The original Scheduled Channel status will 
+say how many channels it has launched, and how many remain.
+</article>
+<section>
+<h3>Maximum Launches</h3>
+
+Maximum Launches tracks the number of times you want the channel to replicate itself, 
+after the number has been reached, the original channel will move to Completed. 
+Setting this to -1 will cause the channel to continue to launch until it is revoked, removed, etc.
+
+
+</article>
+</article>
+<article>
+<h2>Editing Channel Schedule</h2>
+
+You can edit scheduled channels by going to Setup / Manage / Channel Manager.
+Find the channel you want to reschedule and then click the "Details" link.
+Then select the "Edit Schedule" link and follow the instructions.
+
+</article>
+<article>
+<h2>Cancelling Future Launches</h2>
+
+When more than one launch of an item is request the channel scheduler it makes a copy of a channel for each launch. 
+The original channel is called the Parent channel, the copy is called the Child. Revoking the child will not affect the
+parent, in fact nothing that happens to the child will affect the parent. If you want to stop future launches you must
+revoke the parent channel. To find the parent of a child channel, go to the Channel Manager and view the details of the
+channel - one of the properties will be the Parent.
+
+
+</article>
+<article>
+<h2>Using Schedule with one of a kind inventory</h2>
+
+
+There is a known issue with one of a kind inventory and channel scheduler.  
+Scheduler is designed to launch listings at a set interval - for example every Sunday at 5:00pm. 
+The problem is that with a one of a kind item, running on a 7 day listing you will not know that 
+the item has sold until the next Sunday at 5:01pm. As such, Scheduler does not guess that an 
+item has been sold, it either errors out the channel (due to lack of inventory - because 1 was 
+already reserved in the listing which had not closed) or sell another one (because it was not 
+configured to respect inventory). The work around is simpler than you might think - just set 
+the launch interval to be less than the auction duration. For example if you want to re-launch 
+every 7 days, then run 5-day auctions. If you want to run 7-day listings, then launch every two 
+weeks as opposed to every week. This will give the system the opportunity to catch up, and make 
+sure that an item has not been sold prior to launching another one.<br>
+<br>
+If you sell one of kind items exclusively on eBay, and you aren't overly concerned with precise 
+launch times then you might also want to take a look at the eBay PowerLister for it's ability to 
+specify allowed launch days and times.<br>
+
+</article>
+
+
+

@@ -1,0 +1,130 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/product_finder">
+<h1>Finder</h1>
+
+
+
+
+
+<article>
+<h2>Finder Overview</h2>
+
+A Finder is a predefined set of search parameters which will allow your customers to easily find what they're looking for.  For instance, a dropdown list of 'genres' to help your customers find what toy they're looking for.  Or checkboxes of 'colors' to allow them to find clothing of a specific color.
+
+<br>
+
+Finders can also contain multiple search parameters and types, such as clothing style as a dropdown and color as checkboxes.  That way the customer can search for hats that are red, blue or khaki.<br>
+<aside class="caution">
+<h6></h6>
+<div>
+Regardless of whether you decide to use the theme, or layout enabled finder configuration, you will need to configure a FINDER search catalog in the Setup >> Manage Search Catalogs interface.
+
+</div>
+</aside>
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+A 'product finder' is different than a finder.  A product finder is used in the Zoovy interface to allow merchants to find and select product to appear in a given list or category page.
+
+</div>
+</aside>
+
+
+</article>
+
+<article>
+<h2>Adding a finder to your store</h2>
+
+<section>
+<h3>Using the right theme or layout</h3>
+In order to use a finder, you must be using a theme or layout that supports one.  Shoptastic and Bluelicious are two examples of themes that have a finder.  There is also an advanced search layout that has multiple finders (ID: 5006).
+</section>
+
+<section>
+<h3>Mapping your products</h3>
+In order for a finder to work, you must first create an option group to be searched.  Option groups are covered more thoroughly in this document:
+<a class="linkdoc" href="#?doc=50319">Doc 50319</a> 
+<aside class="hint">
+<h6></h6>
+<div>
+Option groups must be Store Option Groups (SOGs), as Product Option Groups (POGs) will not be recognized by the search engine.
+
+</div>
+</aside>
+
+<br>
+Once the option group has been created, you must map your products to the appropriate data fields.
+<aside class="cbc">
+<h6>Mapping your product to an option group 'en masse'</h6>
+<div>
+<li>Click on the utilities tab</li>
+<li>In the Account Utilities section, click the link for Option Power Tool</li>
+<li>Select all or some of your products</li>
+<li>Choose the option group you wish to associate product with and push the edit button</li>
+<li>Check the appropriate boxes for each product</li>
+<li>Save your changes</li>
+
+</div>
+</aside>
+
+
+
+
+
+</div>
+</aside>
+
+
+</section>
+
+<article>
+<h2>Enabling the finder via layout/theme</h2>
+
+Now that you have your product mapped to specific option fields, you need to set the finder up to search this option group.  Edit the page/theme that has the finder element in it.
+
+<aside class="cbc">
+<h6>Enabling the Finder</h6>
+<div>
+<li>Click 'edit' next to the finder prompt</li>
+<li>Enter a prompt that will appear on your store next to the search field (this should be short and reflect the option group that will be searched)</li>
+<li>Select the group to be searched</li>
+<li>Check/Uncheck 'ANY' as needed</li>
+<li>Select the display (most DEFAULTS are a select list)</li>
+<li>Push the 'Add to Finder Text' button</li>
+<li>If you are adding multiple search parameters, repeat these steps.  If there will only be one search parameter (one dropdown, for instance)then you are done.  Click the save button</li>
+<li>Check the appearance of the finder on the theme/page you are using it to ensure aesthetics</li>
+
+</div>
+</aside>
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+A finder may be template specific, so check the theme or layout you are using in the editor for special instructions
+
+</div>
+</aside>
+
+</article>
+<br>
+<article>
+<h2>Configuring a finder in the Search Catalog</h2>
+<aside class="cbc">
+<h6>Configuring a finder in the Search Catalog</h6>
+<div>
+<li>Click Setup >> Click Manage Search Catalogs</li>
+<li>From the Create a New Catalog section, name the Catalog Code:FINDER</li>
+<li>For Format, select Finder Product Map from the drop down</li>
+<li>The new catalog now appears in your list of search catalogs.  Clicking Refresh will update your product records.</li> Note:  These record updates can take a long time depending on the size of your product data base and how many products are being updated by a specific refresh</li>
+<aside class="hint">
+<h6></h6>
+<div>
+A search catalog configured as a Finder must be named FINDER for it to function correctly
+
+</div>
+</aside>
+
+

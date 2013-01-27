@@ -1,0 +1,229 @@
+<meta type="filename" id="info/detail/overstock-listing">
+<h1>Overstock Auctions</h1>
+<article>
+<h2>Overview</h2>
+
+<aside class="caution">
+<h6></h6>
+<div>
+http://www.overstock.com/67670/static.html<br>
+
+Dear Customers,
+
+We are sad to announce that the O.co Marketplace (Auctions) has closed. We extend our gratitude to all of you who helped make the O.co Marketplace an exciting place for both buyers and sellers. We encourage you to visit our other O.co websites, where you can find great savings on brand-name merchandise, cars, and even vacations.
+
+Sincerely,
+The O.co Marketplace Team
+
+
+</div>
+</aside>
+
+
+
+<p>
+Overstock Auctions is hosted by Overstock.com.<br>
+
+Zoovy customers will not be charged insertion fees through December 31, 2005. 
+There is a 5% closing fee for all sold items and all reserve and upgrade fees apply.<br>
+<br>
+
+Overstock Auctions can be used as both a channel, and syndication.
+
+If the listing is launched as a channel it will NOT be syndicated.
+
+</article>
+<article>
+<h2>Why use OverStock Auctions?</h2>
+
+
+Overstock.com is one of the Internets leading e-commerce sites, and is in the top 25 of 
+
+the Internets most visited sites. 
+
+Coupled with their amazingly successful "it's all about the O" advertising campaign 
+
+Overstock is receiving unprecendeted levels of buyer interest. They need your products!
+
+<br>
+
+<br>
+
+Overstock has publically stated they believe eBay's fees are too high, and that they believe
+
+that eBay's fees will continue to be high until another player can present a credible alternative
+
+and bring back competition. Depending on the closing price Overstock's fees are anywhere 
+
+from 30 to 60% less than eBay's fees for the same item. This alone is enough to warrant further 
+
+investigation by any seller.
+
+
+
+</article>
+<article>
+<h2>Operation mode</h2>
+
+
+
+
+When configuring Overstock you will need to select a syndication operation mode:<br>
+
+<br>
+
+<b>Disabled:</b> means syndication will not occur, however it is still possible to launch
+
+individual items on Overstock using channels.<br>
+
+<br>
+
+<b>Almost Fixed Price:</b> this will set the starting bid for your listings to your
+
+base price minus $0.01. <br>
+
+<br>
+
+<b>Variable Starting Bid:</b>
+
+With this setting you can either specify a fixed amount e.g. $0.01
+
+OR input a formula using any of the possible values:
+
+<table>
+
+	<tr><td>BASE</td><td>The base price of the item (zoovy:base_price)</td></tr>
+
+	<tr><Td>COST</td><td>The cost of the item (zoovy:base_cost)</td></tr>
+
+	<tr><td>MSRP</td><td>The MSRP of the item (zoovy:prod_msrp)</td></tr>
+
+	<tr><td>SHIP</td><td>The fixed shipping price of the item (zoovy:ship_cost1)</td></tr>
+
+</table>
+
+Here are examples of common formulas:
+
+<table border=1>
+
+	<tr><td><b>Formula</b></td><td><b>Explanation</b></td></tr>
+
+	<tr><td>BASE*0.90</td><td>10% off base price</td></tr>
+
+	<tr><td>COST*1.10</td><td>10% above cost</td></tr>
+
+	<tr><td>(COST+SHIP)*1.05</td><td>5% above the sum of the cost and the shipping</td></tr>
+
+</table>
+
+
+
+<br>
+
+If you enter specifics in the product editor for overstock, then those setting will be used 
+
+instead of the defaults. This allows you to exclude certain products from being managed.
+
+<aside class="hint">
+<h6></h6>
+<div>Overstock's API doesn't support the transfer of shipping rates. Therefore your rate will display on Overstock as 0.00 or Free if you are using calculated. However the shipping will be calculated when the customer checks out. This may have changed and we will investigate further after the first of the year. 
+</div>
+</aside>
+
+
+<aside class="caution">
+<h6></h6>
+<div>You must configure your Auction Template before you can successfully submit products to OverStock. Your Auction Template is configured under Setup > Company Profiles.
+</div>
+</aside>
+
+
+</article>
+<article>
+<h2>Options</h2>
+<section>
+<h3>Set Make It Mine Price to Base Price</h3>
+
+
+"Make It Mine" allows customers to pay instantly for an item. 
+
+You must have a feedback of 10+ to use the Make It Mine feature. 
+
+Enabling this feature when you do not have sufficient feedback will cause the
+
+items to be 
+
+
+
+
+
+</article>
+<section>
+<h3>NEVER send shipping info to Overstock</h3>
+
+
+Overstock supports fixed shipping, for a single item. If this is not enabled Zoovy will
+
+not send any shipping information to Overstock, which will cause the item to appear
+
+as "See Description". Zoovy will automatically embed a flash based shipping calculator
+
+at the bottom of the listing to assist customers in obtaining a shipping from your Zoovy
+
+shopping cart quote prior to checkout.<br>
+
+<br>
+
+Note: standard "marketplace markup" applies to overstock listings.
+
+
+
+</article>
+<section>
+<h3>Use Overstock/eBay Reserve Price if Set</h3>
+
+
+This will cause the system to try and find a reserve price for the item.
+
+If a reserve price can be found then it will be used, if a reserve price
+
+cannot be located then the item will still be listed without a reserve price.
+
+
+
+</article>
+</article>
+<article>
+<h2>Operation</h2>
+
+
+When a sale occurs, an incomplete item is generated. The incomplete item is
+
+then paid for through your Zoovy store. Overstock does not have it's own checkout
+
+and relies exclusively on 3rd parties such as Zoovy to provide this functionality.
+
+
+
+A shipping calculator and link to the checkout application will be included in the
+
+listing. Any checkout links to http://ebayapi.zoovy.net/checkout.cgi will be replaced with
+
+the appropriate checkout link.
+
+
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+

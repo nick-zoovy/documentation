@@ -1,0 +1,167 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="policy/3rd_party_javascript">
+<h1>Policy on 3rd Party Javascript</h1>
+
+<article>
+<h2>Concept Overview</h2>
+
+
+
+
+This policy covers the installation of any 3rd party javascript which is not "sold" by Zoovy.  Therefore this policy does not apply to installations of live-chat (if purchased through Zoovy), buysafe, power-reviews, geotrust true-business id's, or other services where Zoovy is directly or indirectly remunerated for the cost of the service. 
+This policy does directly apply to any javascript which is provided by a 3rd party directly to the client. 
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+Any service requests related to installation/operation or diagnostics of 3rd party javascript is considered billable as "MKT" series which is a TIDA service. 
+
+<a class="linkdoc" href="#?doc=50551">Doc 50551</a>
+
+Clients should be aware of this policy prior to submitting tickets requesting assistance on these topics.  We recommend, in general that clients pursue an engagement with Zoovy Marketing Services via a Basic, or Advanced Analysis. 
+
+<a class="linkdoc" href="#?doc=51356">Doc 51356</a>
+
+
+</div>
+</aside>
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+We believe providing non-javascript programmers with javascript and telling them to simply "install it" is incredibly irresponsible of these companies. 
+
+</div>
+</aside>
+
+
+<br>
+
+Unfortunately there are times for any company where it is necessary to draw the line, and say "I'm sorry - we don't do that".  This policy covers one of only a handful of those situations where clients are upset that our technical services group will not install/customize javascript provided to them by another third party.  
+In this document we will explain the rationale behind this decision and offer some suggested alternatives.  We also have some choice words for vendors who deceptively claim the installation of their application is "simple and straightforward". 
+
+<br>
+
+<section>
+<h3>Reasons we have this policy</h3>
+
+<ol>
+<li> Client Expectations:  Our policy is "if we install it - you should expect it to work", and you subsequently expect us to support it, and if it's not working you should be able to put in a high priority ticket at 3am and expect us to fix it, free of charge.  Unfortunately, this is absolutely not possible -- and if you keep reading you'll understand why, after we reveal the man behind the curtain. 
+
+<li> Hey, it's not our software:  Lets start with the fact that nobody at Zoovy was involved or consulted in the creation, development, or planning deployment scenarios of the software. Our staff receives no training from the vendor, we have no technical relationship with the vendor, we are not their customer, we have limited ways to contact them -- and since we aren't a customer they usually ignore us.   Also since these are programs, it's nearly impossible to even find somebody in the companies own technical support group who has a clue how these things work.  We have no control over the quality of the product, or changes which are made to it. 
+
+<li> Browser Variances:
+Virtually all ROI trackers are based on Javascript. Javascript is an incredibly unreliable language, each browser has a different "javascript engine" which runs the program a little differently. Most companies only test on IE 7, and Firefox these days, and completely disregard safari, opera, chrome, any cell phones, or linux desktops -- why? well testing costs money. 
+
+<li> No Cross Compatibility Testing:
+Virtually every javascript plugin we've seen was designed to play nicely with itself, but not necessarily others. The problem is that all browsers run javascript in one "virtual machine" -- meaning each program starts where the last one left off, if one program "crashes" the virtual machine then no subsequent javascript runs.  That means the first error breaks everything else, and that error might only occur a portion of the time in a certain browser -- finding it can be INCREDIBLY expensive, if not impossible. 
+
+<li> It's just a demo/example: 
+We've seen from other vendors they *expect* you to rewrite their software to work with theirs, they even denote this by saying "PUT CODE HERE".  What a lot of clients don't realize is that a lot more customization is actually required.  If you're wondering why they don't just give out fully functional versions, well each company has their own reason, but we're certain there are a lot of things each vendor could do to isolate their programs and make them "stay in their own corner" .. but virtually nobody uses them since it makes the javascript program much more complex and intimidating and inaccessible for novice javascript programmers.  We should also point out that Google Chrome - which nobody uses, and which doesn't run a lot of javascript correctly anyway, intends to fix this issue by giving each javascript program it's own virtual machine -- of course that's also why nothing works with it. Bottom line on this one: anybody who is smart enough to realize why it isn't going to work, is probably also smart enough to fix it. 
+
+
+<li> Zoovy Voodoo - Session Handoffs + Cookies: 
+Now this one is our fault. Zoovy is a COMPLICATED piece of software, we do a lot of magic in the background without telling you. And frankly some of the magic isn't friendly with ROI trackers. Specifically some of the things we do with cookie hand-offs across domain vs. SSL.  -- in fact before we try to get any ROI tracker to work we always demand the client purchase and install an SSL certificate and have all their domains configured properly so that cookies move from the origin domain, to the checkout domain without issue (which is how those spiffy ROI trackers work).  This can be incredibly difficult with specialty sites, in fact some ROI trackers won't work with specialty sites at all.  For the most part ROI trackers assume that only one domain will ever be in use on the site, or that people who have multiple domains are also going to be smart enough to rewrite their demo. 
+
+<li> Security/sandbox software: As if all the browsers variances weren't a big enough issue, the number of applications which intercept/block/mangle cookies under a guise of privacy, anonymity, or security are some of the worst.  Big applications like McAfee and Norton can both cause this if their privacy settings are unintentionally ratched up to the "nazi level".  Of course on the flip side - a number of hostile applications such as keystroke loggers and other spyware applications actually install as javascript plugins, and can cause incompatibilities and 3rd party plugins to break pretty easily. There are an estimate 25 million computers online right now that have one more viruses or worms on them... not a small number. When you ask us why this sale didn't show up in our ROI tracker -- well, it's not perfect, it relies on Javascript. 
+
+<li> Oh -- we found a bug: Great -- there is no way to get the bug fixed, the javascript program is being loaded from a file on a server we don't control!  Plus keep in mind a bug isn't really a "big" issue most of the time. In fact a lot of times it's the fact you have software from competitive companies installed on the same webpage/virtual machine .. it's neither fault, both work independently but they don't play nicely together.
+
+But if we find a bug -- then trying to track down the person in the organization who made the mistake, convince them it's a bug (and since it usually breaks a competitors program, they often don't see it as a bug -- more a "feature") and then try to bring two hostile companies together to resolve the issue. 
+
+<li> It worked yesterday:  Yep, since these programs are actually loaded from remote servers it also means they can change at any time, without notice.  
+If the vendor has different webserver farms, in separate locations there could even be two versions.  One version could be cached. With layer 3-7 load balancers they could be serving a different version of the file based on which browser, ip, or AS#, or other things... companies absolutely do this stuff, even Zoovy does this type of voodoo in our software.  And they do.. and that means that we would need to redo all that expensive testing, that the vendor should have done themselves in the first place. 
+
+<li> Technical Support are not programmers; Frankly if we employed professional programmers on our technical support group you should expect your rates to triple or quadruple.  There is no company on the planet which provides "free" programming support as part of the basic service.
+
+<li> Bad Data = Bad Decisions: If these widgets aren't deployed properly and tested properly, they are going to produce bad data. Assuming you actually plan to use the data, then Bad Data = Bad Decisions.  Bad Decisions can cost *IMMENSELY* more. We'll discuss some of the bad decisions we've seen clients make based on bad data.
+
+</ul>
+
+
+</section>
+</article>
+
+<section>
+<h3>Bad Decisions</h3>
+
+If you decide to go it on your own, rather than have a programmer discuss this, we're going to document some of the "expensive mistakes" we've seen over the years. 
+
+<ol>
+<li> Not Breaking out eBay: Google Analytics doesn't understand that Zoovy does eBay checkouts through our own checkout.  eBay sales have a 1:1 conversion rate (every ended auction = 1 checkout) so clients who don't customize the google analytics to break out eBay sales will see their conversion numbers go up and down dramatically based on how many listings they put up on eBay and subsequently how many sold.
+
+<li> Browser Incompatibility: Many a fire alarm has been pulled when clients see their ROI plummet, or see their tracker stop working -- not realizing that FireFox just released a new version which blew up the ROI tracker for a particular vendor. There are so many variables to diagnose .. just always consider "the user profile."
+
+<li> So Which Product: Depending on how the example script is provided it can track either the product which the buyer came from, or it can track the one the buyer ended up purchasing?  The one the buyer purchased might not even be advertised (and so will be ignored by many ROI trackers) .. but wait, which product is more useful? the one that generated the sale, or the one which wasn't advertised but sold? Honestly - that is up to you, there is no right answer to this question, but it's important to realize *it is a decision* you need to make.   Drop the spend rate on a product which generates the leads just because it get's near zero sales and you'd be making a huge mistake which will impact your pocket book. 
+
+<li> Wait.. so which SKU?: Oh.. we can't forget a lot of ROI trackers link to the product, but the customer doesn't purchase the product, they purchase the SKU/STID .. with options/assemblies.  So if this isn't done correctly then you'll see products with options get zero sales -- and possibly drop them from advertising. Yipes!
+
+<li> Wait.. which Category?: For ROI trackers which support a product category field - honestly there's about a billion different values that *could* go here.  It's non-specific, there is no right answer.  To be clear: *THERE IS NO RIGHT ANSWER* .. not like there are many right ones to choose from, there are just a whole bunch of wrong ones and you have to pick which one isn't the worst for you.  The field is "CATEGORY" (singular) every order can have one or more products, and each product can be in one or more categories. 
+
+<li> Don't forget the SSL: If a buyer lands on domain xyz.zoovy.com, then goes to xyz.com then checks out through ssl.zoovy.com/xyz -- there is zero chance even the smartest of javascript based ROI trackers will be able to figure out that is the same person.  Get an SSL certificate and use primary domains to get buyers to www.xyz.com and checkout through secure.xyz.com and make sure cookie paths are set to .xyz.com.  Image based pixel trackers work pretty well across domain transitions, some companies support both types but only advertise one or the other -- be sure to ask. (if the support both, don't install both since it will generally track *two* conversions instead of one)
+
+<li> What about Google Checkout: Google Checkout never sends buyers back to your site so no tracking pixels. They require the installation of this incredibly complicated pixel.  The pixel has to be whitelisted by google, the whole thing is a real mess. It adds "yet another layer" of needless complexity. It's also worth mentioning google doesn't use a pixel for adwords ROI tracking,  they built something entirely different for that (which honestly is a lot more reliable!)
+
+<li> What about Amazon Checkout: Yeah.. unfortunately -- nobody supports this yet.  Amazon *tries* to get buyers back to your website, but there are no guarantees or promises. Many buyers finish the transaction on Amazon and then close their window -- so ROI trackers won't be reliable. 
+
+<li> Most people shop a bit before buying: with CPC -- it's not uncommon a person might see you on three or four different marketplaces before they actually buy from you.   Can you guess who get's credit for the sale at the end? Depending on the technologies each CPC site uses, some will track everything, some will only track direct links, some will only track direct sales.  The cookies they set and expiration dates can also make them look bigger and better than their competitors.  (A site which keeps a 30 day cookie is logically going to have more sales than a site which keeps a 5 day cookie). 
+
+<li> TEST TEST TEST: seriously - if you deploy and don't test this stuff, you shouldn't even look at the data, you are reading fiction.  If you don't understand variances in the data collection methods, you can't make good assessments.  Test with multiple browsers, as many as possible.  Test what happens if you have cookies from multiple different ROI trackers. 
+
+<li> TEST AGAIN: hey, keep an eye on those reports. If data changes, and you didn't do anything -- time for some more testing. 
+
+</ol>
+
+</section>
+
+
+
+<article>
+<h2>Okay, I understand it's complicated - Who can I pay to do it?</h2>
+
+There are lots of companies and consultants you can pay to do this.  Professional consultants charge big bucks -- usually starting at several thousand dollars.  For this reason in 2008 we created our Marketing Services group to assist clients with these, along with some other more serious issues (specifically clients wasting tons of money on ineffective marketing). 
+<br>
+The marketing services group is separate from implementation, and development - they deploy and interpret these ROI trackers, in addition to performing other tasks specifically related to assisting clients with marketing projects.  That includes tasks starting with brainstorming, SEO, Adwords/CPC management, data acquisition, and measuring effectiveness of various campaigns.  They specialize in marketing management and support roles -- even if you use an outside company to do your media buys and campaign execution, chances are if they were working with our marketing services group then you'd be getting a lot more bang for your buck.  Nobody knows how to do more with the Zoovy platform than our own staff. 
+
+<br>
+The best part is - that every engagement with Marketing starts with an analysis. During the analysis we go in and deploy basic versions of these ROI trackers for all marketplaces which are currently in use.  We then do all the testing, to ensure they are accurately tracking data. 
+<br>
+ 
+The purpose of the analysis is establish a baseline to judge the effectiveness of future marketing activities that will be recommended in a proposal following the analysis.
+
+<br>
+The analysis is *easily* the best value you get and is absolutely the least expensive ways to get your ROI trackers setup properly.  If you choose to "self manage" your CPC feeds after the analysis that you can also have an ongoing project established where our staff will provide ongoing consulting and/or development services.
+
+<a class="linkdoc" href="#?doc=51356">Doc 51356</a>
+</article>
+
+
+<section>
+<h3>So why doesn't Zoovy provide pre-built examples for Xyz?</h3>
+
+We have a guide to deploying analytics and 3rd party trackers here:
+<a class="linkdoc" href="#?doc=50595">Doc 50595</a>
+
+<br>
+
+We get this question a lot.  This stuff simply changes way too often to think we'd be able to communicate this as part of our monthly service fee, we'd have charge a lot more.  There are specific gotchas, or things which are broken which we become aware of we do post that on the recent news. We do monitor each of the ROI trackers every 4 minutes to ensure availability from 2 different data-centers -- we also attempt to track changes when possible. We will disable trackers globally if one of them goes down, since when a javascript include file can't be loaded it causes the entire website to "hang" or appear very slow. .. (that's why it's so important you put shopping.com in the shopping.com area, etc.)
+
+<br>
+
+However based on past experience the more support we provide, the more clients demand (for free). So we've drawn the line at "compatibility".  In general, regardless of what we did -- we found that nearly 100% of clients who self deployed had big gaping issues -- and that's a clear signal to us that what we were doing wasn't working. Since then the ROI trackers have only gotten more complicated.  Keep in mind: in our opinion there is no *right* way to do this... just varying levels of "less wrong". 
+<br>
+
+In addition -- over this particular topic, I'm embarrassed to admit we've certainly experienced very abusive clients, with our staff when we refused to provide support.   Saying things like "WHAT?!?! the only reason I bought Zoovy was for the support with xyz marketplace" really doesn't get you anywhere.  We provide compatibility for the marketplaces and their ROI trackers - but there is certainly no expectation we would provide free development or configuration consulting at any point in the sales process.  
+Telling us "It was working yesterday, what did you guys break?" doesn't really fly either.
+
+<br>
+
+Our position is:  if you can't get it working yourself, based on the examples SPECL we provide online then you should probably consider paying somebody else to do it. The examples we provide are remedial compared to complexity the next steps of testing and analyzing how each piece of javascript will interact.  We don't think anybody who doesn't have access to a senior level javascript programmer *AND* some level of marketing analysis training should be attempting to deploy these tools. 
+
+</section>
+
+</article>
+
+

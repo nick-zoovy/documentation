@@ -1,0 +1,523 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="hide/releasenotes">
+<h1>Order Manager 6.xxx Release Notes</h1>
+
+
+
+
+
+
+
+<article>
+<h2>Concept Overview</h2>
+This document contains a detailed list of changes to the order manager software. You should always review this document prior to installing a new version. 
+</article>
+
+
+
+
+<article>
+<h2>Version Release Notes</h2>
+
+<section>
+<h3>6.134 - released 10/20/07</h3>
+<li> FIXED: buySafe bond was copying into both orders during order split.
+<li> FIXED: fixed runtime error which occurs during order split
+<li> FIXED: orders view is substantially faster (especially in enterprise)
+<li> FIXED: missing option description on items purchased from ebay
+<li> FIXED: tracking number was cut off at 26 characters rather than 31 characters. 
+<li> IMPLEMENTED: added upc and box size fields for custom packing slips and invoices.
+</section>
+
+<section>
+<h3>6.118 - released 9/22/07</h3>
+<li> FIXED: Data Reader Error when trying re-ship an order that was in completed (Enterprise Order Manager Only)
+<li> FIXED: Could not send email in Enterprise order manager when adding a tracking number after upgrading from SOHO.
+<li> FIXED: "Invalid or missing Shipper Attention name" error when shipping Canadian orders via the UPS Integration.
+<li> FIXED: On the order, right-click tracking window - pressing the button titled "Copy tracking to clipboard" - all tracking numbers would be copied even when only one was selected.
+<li> FIXED: Email messages were truncated if they contained pipe symbols.
+<li> IMPLEMENTED: International commercial invoices now print 3 copies instead of just 1 (triplicate copies are apparently is required by all International carriers)
+<li> Internal changes were made to improve reliability and speed up event handling in orders.
+
+<aside class="caution">
+<h6></h6>
+<div>
+Known Issues:<br>
+<li>Currently the 2" x 1" logo image selection is not printing/displaying on invoices or packing slips.  Only the 1" x 1" logo is available.  You will want to make sure that your logo image is reflective of that sizing for best display on your invoices.
+
+</div>
+</aside>
+
+
+</section>
+
+
+<section>
+<h3>6.116 - released 9/13/07</h3>
+<li> FIXED: Error "Collection was modified, enumeration operation may not execute" when right clicking on an order in listview and selecting "Payment" option
+<li> FIXED: Inventory was not decrementing correctly when create new invoices from an incomplete item.
+<li> Added substantial error checking to the UPS Airbill printing module.
+<li> Recipient/Attention to would be carried over from one invoice to another when printing mixed commericial/residential UPS and FedEx Airbills.
+<li> FIXED: Endicia tracking #'s would not be automatically imported when Dazzle was installed on a client workstation (since this normally happened during sync).
+<li> FIXED: Cleaned up some issues in the invoice formatting.
+</section>
+
+
+<section>
+<h3>6.108 - released 9/7/07</h3>
+<li> Corrected an issue caused in version 6.106 that affected the length of the LUSER/GUID field and could cause event corruption. 
+<li> Corrected the possibility for a blank order id to be requested in keyed lookup if the user mistakenly prepended or appended a comma to the input field. 
+</section>
+
+<section>
+<h3>6.106 - released 9/4/07</h3>
+
+<li> Version 6.106 - corrected an issue where the Google Checkout Invoice search dialog did not appear. 
+<li> Version 6.104 - corrected an error in the installer package. Uninstalling the previous version of order manager is no longer explicitly required.
+
+</section>
+
+<section>
+<h3>6.102 - released 9/3/07</h3>
+
+<li> IMPLEMENTED: Added %ORDERNOTES% and %HTMLORDERNOTES% to the email messages sub routine	
+<li> FIXED: Subpool not being remembered when order moved to different status	
+<li> FIXED: When creating an order in ZOM , sales tax was saving .000825 verus .0825 , causing tax to be off	(thanks gssstore)
+<li> FIXED: When creating more than one order, the quote shipping feature will work on the first order created but not for any subsequent orders (thanks gssstore)
+<li> FIXED: Removed the ability to customize the toolbar on the main window (it didn't work and should not have been there)
+<li> FIXED: When exporting a non paid order to Quickbooks, would cause an error.
+<li> IMPLEMENTED: When exporting to Dazzle software will not print "envelope postage" when weight is more than 3.5 ounces (USPS rules state envelopes are not valid above 3.5 ounces)
+<li> FIXED: If more than one order is selected when editing, then the address would load from first order but save to different a order number. 
+<li> IMPLEMENTED: When highlighting more than one order and selecting edit, order manager brings up edit window for each order selected. 
+<li> FIXED: When editing the payment information on an order using a right click, followed by clicking the "cancel button" the payment status would be changed to paid. 
+<li> FIXED: When in Enterprise mode - searching for an invoice to export into Quickbooks, and the invoice and products were not in Quickbooks, the order would would not export to Quickbooks.
+<li> IMPLEMENTED: UI changes in Tools -> Printer Setup  was renamed to Tools -> Thermal Label Printer Setup	
+<li> IMPLEMENTED: Commercial invoice which can be printed for International FedEx/UPS airbills - which includes a shipping export declaration. 
+<li> IMPLEMENTED: Added Tools -> Commercial Invoice Printer Setup. 
+<li> FIXED: When searching customers, and pressing the customer history button on the toolbar, user would get "System.IndexOutOfRangeException: amazon_orderid" 	
+<li> FIXED: SOHO Order Manager - did not remember the setting in Admin -> Preferences  "Automatically save new and edited invoices"	
+<li> IMPLEMENTED: When searching for tracking number to void, users would sometimes accidentally add spaces to make it easier to read, (spaces are now stripped)	
+<li> IMPLEMENTED: Locking of orders for google check out and the ability to unlock orders	via a right click.
+<li> IMPLEMENTED: Added a preorder and processing order status.
+<li> IMPLEMENTED: Added guid to order events	
+<li< FIXED: If order manager was minimized when exiting the client would remember the screen as 0,0 (causing all sorts of fun issues)
+		
+</section>
+
+
+<section>
+<h3>6.082 - released 5/21/07</h3>
+* When exporting over to Dazzle, the weight would be carried from the first package to all subsequent packages. 
+</section>
+
+<section>
+<h3>6.080 - released 5/11/07</h3>
+<li> FIXED: Inventory not syncing correctly on fresh installations of order manager was installed (SOHO edition only). 
+<li> FIXED: Report by SKU detailed not displaying description correctly.
+<li> FIXED: Quickbooks integration did not bring description with options across correctly since option upgrade.
+<li> FIXED: Missing fields error when exporting to Quickbooks for QB Merchant Service customers.
+<li> IMPLEMENTED: Added Location field to "products by sku" and "products by sku detailed" reports"
+<li> FIXED: Negative dollar amounts for items caused errors when exporting to Quickbooks.
+<li> IMPLEMENTED: When searching by invoice the cursor disappears after five letters.
+<li> FIXED: Disappearing options when splitting an order.
+<li> IMPLEMENTED: Application now remembers the screen size after shutdown.
+<li> IMPLEMENTED: Ability to turn off grid control (Invoice display) on right click because of user complaints that grid was control was slow.
+<li> IMPLEMENTED: Additional dialog boxes to help diagnose issues with Windows Vista and the UAC causing the application and database to be stored in the incorrect directory.
+<li> FIXED: Dashboard report not displaying for some users, which was due to the upgrade from VB6 to VB.net
+<li> FIXED: Archiving orders apparently did not work since 6.xxx release.
+<li> FIXED: Combine orders missing supply chain information on all orders. 
+<li> FIXED: Invoices print blank after performing search + edit.
+<li> FIXED: Company name &&amp;amp; instead of simply &amp; on Invoice.
+<li> IMPLEMENTED: Keyed lookup now works with Endicia Dazzle.
+<li> IMPLEMENTED: Universal keyed lookup using carrier codes for UPS/Dazzle/FedEx in dropdown.
+<li> IMPLEMENTED: Package verfication screen before user can print shipping labels (this can be configured in the online User Manager).
+<li> IMPLEMENTED: Package verification screen scans by SKU and UPC (when SKU not found)
+<li> IMPLEMENTED: Editing description wasn't intuitive in order editor, now the edit product window instantly pops up after clicking on the description field in the edit invoice grid control.
+<li> IMPLEMENTED: Ability to see and add customer notes when editing an order.
+<li> FIXED: International Orders contain "funny characters" due to UTF-8 encoding issue.
+<li> IMPLEMENTED: Support for USPS Dazzle 7.0 -- YOU MUST BE RUNNING THAT VERSION PRIOR TO MAY 14TH 2007. 
+<li> IMPLEMENTED: Ability for Dazzle integration to remember package type, dimensions, oversize rate, non-machinable rate, ballon rate, and international fields: customs signer, customs certified, and contents type for the customs form called "returned goods".
+<br>
+<br>
+
+<li> Upgrades on various component assemblies due to patching Visual Studio to service release 2. (This should have no noticable effect on the application).
+<li> Upgraded the Janus components used by the Order Manager to the latest versions in an attempt to reduce memory leakage and increase performance.
+</section>
+
+
+<section>
+<h3>6.064 - released 3/28/07</h3>
+<li> IMPLEMENTED: the ability to login using username*subuser at the prompt (hopefully this will make things a bit easier for some customers)
+<li> IMPLEMENTED: Updating of list views when editing or creating orders now happens automatically. 
+<li> IMPLEMENTED: Restricted state code to two characters in companyinfo.
+<li> IMPLEMENTED: Tried to make it easier to understand there is a new product editor by adding a right click.
+<li> FIXED: No longer allows editing of the description in the grid view, you must use the product editor. 
+<li> FIXED: two issues on server - calculate shipping did not work, and charging credit cards which were previously authorized resulted in the contents being destroyed. These were fixed on the server, since release 6.062. 
+<li> FIXED: Increased prod_name length to 1024 characters so it will properly support legacy data (which used to be kept in the item description field).
+<li> FIXED: When selecting more than order at a time, the option (e.g. color: red) would disappear. 
+<li> FIXED: Fixed several errors that could result in blank descriptions when editing products. 
+
+</section>
+
+
+<section>
+<h3>6.062 - released 3/25/07</h3>
+
+<li> Version 6.062 addresses a small issue in version 6.060 that caused an alter to be run continuously over and over (this does not by itself cause any issue, but it's still an undesirable behavior). In addition we spent the day going through a variety of use case scenarios to ensure data integrity, and several improvements were made in that area.
+
+<li> Version 6.062 is also substantially faster than all preceding 6.xxx versions, we did some code optimization for the grid control that should give it the "pep" that was apparently in version 5.156. 
+</section>
+
+<section>
+<h3>6.060 - released 3/25/07</h3>
+<li> Version 6.060 was released and we believe it corrected the problems in version 6.058, however at this point we've developed tools on the server to correct any data problems which may have occurred, if you are running version 6.060 or later and have zero dollar order totals, please contact support. 
+</section>
+
+<section>
+<h3>6.058 - released 3/25/07</h3>
+<li> Version 6.058 was released for 1 hour, in an attempt to hot-fix the issues caused by the order contents problem in version 6.056.  While this partially fixed the problem, it did not entirely fix the problem and some orders remained with $0.00 totals. 
+</section>
+
+<section>
+<h3>6.056 - released 3/24/07</h3>
+<li> Since version 6.052 was an emergency release, it did not go through normal quality assurance procedures. A bug fix to the Enterprise codebase to address a problem with Wholesale Quantity Pricing substantially affected the SOHO client database and prevented any order contents from being saved (thus resulting in $0.00 orders). 
+</section>
+
+<section>
+<h3>6.052 - released 3/23/07</h3>
+<li> Version 6.052 addressed a display problem created in version 6.050 with orders containing the same product with different option combinations.  
+Version 6.050 was pulled and customers were forced to upgrade. 
+</section>
+
+<section>
+<h3>6.050 - released 3/22/07</h3>
+
+<aside class="caution">
+<h6></h6>
+<div>
+Any changes you have made to the text based option descriptions in your products using Order Manager will be reset back to their original state at purchase (this is because previous versions did not correctly edit the options themselves, rather just the summary.) 
+If you have edited option descriptions in order manager, you should contact Support for assistance BEFORE UPGRADING. <br>
+<br>
+EDITING ORDERS WITH OPTIONS ON THE WEB WILL NOT SYNC OR PRINT CORRECTLY IN ORDER MANAGER.
+
+</div>
+</aside>
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+This version does not support the upcoming Coupons or Gift Certificates feature which will be released PRIOR to the next version of this software. 
+
+</div>
+</aside>
+
+
+<li> IMPLEMENTED: Buysafe fees are now part of the export to Quickbooks
+<li> IMPLEMENTED: When using Endicia Dazzle, the customs number is now put into tracking field, if no tracking was provided. (This is useful primarily for Amazon who requires a tracking number before they pay for an order).
+<li> IMPLEMENTED: Search by Amazon order # (requires Amazon Bundle), and displays 
+<li> IMPLEMENTED: The ability to run dashboard reports and filter by schedule has been implemented.
+<li> IMPLEMENTED: Much more sophisiticated product editor that allows editing of individual options. No longer using legacy "description" field in products.  NOTE: This 
+<li> IMPLEMENTED: Ability to print shipping notes per item on packing slip and invoice. 
+<li> FIXED: Inventory when splitting and combining orders was not syncing correctly.
+<li> FIXED: Custom forms not printing to Endicia
+<li> FIXED: Backorder.htm and Recent.htm default email messages were missing from installation package.
+<li> FIXED: Sync now displays warnings (and reasons) why emails could not be sent to customers.
+<li> FIXED: Country code was missing on International labels for UPS
+Amazon Order # in the main order list view. 
+<li> FIXED: Endicia custom forms were using the defaults, not what the user selected.
+<li> FIXED: Corrected displaying FedEx overnight as default shipping method regardless of what was chosen. This only affected customers who were NOT using FedEx rating methods. 
+<li> FIXED: Corrected when running reports and trying to export to Excel or Textfile, the file would be blank or generate a runtime error.
+<li> FIXED: (Enterprise Only) Location was not appearing on packing slips.
+
+</section>
+
+<section>
+<h3>6.038 - released 1/2/07</h3>
+<li> Updated the order manager to fix UPS tracking # import, and also to ignore the UPS Rate change warning.
+</section>
+
+<section>
+<h3>6.036 - released 12/14/06</h3>
+<li> FIXED: The list view did not include the payment status column (it was hidden by default).
+<li> In addition we updated all the external help links to point at the new webdoc system.
+</section>
+
+<section>
+<h3>6.034 - released 12/13/06</h3>
+<li> This is the first "production" release that supports the Enterprise database functionality. We would like to take a moment and thank all of our Enterprise beta customers for their assistance and patience in delivering this release. 
+<li> FIXED: Cancel button on sync form does not work reliably.
+<li> FIXED: Memory leaks/corruption with data.reader() not closing [primarily affected Enterprise]
+<li> IMPLEMENTED: Moved Email Preferences, UPS Setup, FedEx Setup, Admin Preferences, and Subpool configuration into a separate code library so it can be shared with Enterprise sync manager.
+<li> IMPLEMENTED: Displayed wrong order total after order was edited in the desktop client. (Did not affect order total on the web)
+<li> IMPLEMENTED: Added a leading zero to dates to improve sorting - e.g. instead of 2/05/2006 it is now 02/05/2006
+<li> IMPLEMENTED: Upgraded the 3rd party listview control that displays orders to correct the "printing one invoice" issue, and a few other miscellanous issues reported by customers.
+<li> IMPLEMENTED: Corrected event dates in orders for events created in order manager. 
+<li> FIXED: Updated the paypal reminder and credit card error messages so they used the correct variables. 
+</section>
+
+
+<section>
+<h3>6.024 - released 10/31/06</h3>
+<li> FIXED: A file was not installed properly that caused invoices to not print. 
+</section>
+
+<section>
+<h3>6.022 - released 10/30/06</h3>
+<li> FIXED: Order events displaying the wrong issue (display issue only)
+<li> FIXED: Orders not retaining supply chain data for subsequent dispatching
+<li> FIXED: Report "Products by SKU Detail" was not working properly (thanks spruebrothers)
+<li> FIXED: Changed length of tracking field from 25 to 30 characters due to USPS increasing their delivery confirmation codes. (Thanks summitfashions)
+<li> FIXED: Buysafe total displaying correctly on invoice. 
+<li> FIXED: Orders were losing buysafe tracking data in products.
+<li> FIXED: Inventoriable options not showing on packing slips and invoices.
+<li> FIXED: Split order feature was only putting two items on each invoice, regardless of how many items were actually available.
+<li> FIXED: When editing an invoice, the email customer button did not work.
+<li> IMPLEMENTED: The cursor now retains focus in shipping keyed lookup mode.
+</section>
+
+<section>
+<h3>6.020 - released 9/27/06</h3>
+<li> FIXED: issue with batch capture of credit cards
+<li> FIXED: fedex was giving a dimension error when trying to ship anything (was caused to due changes in 6.018)
+<li> FIXED: was using default emails instead of custom emails (was broken in version 6.018)
+<li> FIXED: saying "file already opened" when sending email (we could not reproduce this but believe it was fixed)
+
+</section>
+
+
+
+<section>
+<h3>6.018 - released 9/21/06</h3>
+<li> The entire application was tuned and got considerably faster. 
+<li> FIXED: Combine Orders causes runtime error.
+<li> FIXED: Commission fees were removed when syncing orders back up to Zoovy
+<li> FIXED: When splitting an order the shipmethod was "text1" and also caused a runtime error
+<li> FIXED: When creating an invoice after searching for an incomplete item, it would not load the incomplete item into the form. 
+<li> FIXED: The cancel subject in "email preferences" was blank.
+<li> FEATURE: Package Dimensions are no longer remembered.
+<li> FIXED: Blank dashboard reports when a filter was used.
+<li> FIXED: The "Do not automatically move orders to complete after importing tracking numbers" checkbox would not remember it's state in Admin | Preferences | Order Properties.
+<li> FIXED: Prompted to print after searching for an invoice.
+<li> FIXED: "nBit" component was not licensed message appearing on some computers.
+<li> The user interface for searching incomplete items now supports right click options.
+<li> The ability to SAFELY edit more than order at a time has been added.
+<li> The ability to select a printer before actually printing an invoice/packing slip was added.
+<li> Found and fixed a memory leak on Form Main and Form Sync.
+
+</section>
+
+
+<section>
+<h3>6.016 - released 9/15/06</h3>
+<li> FIXED: Email preferences don't save
+<li> FIXED: Payment methods don't load on company sync.
+<li> FIXED: Order timestamps warning was displayed after a delayed capture was performed on a credit card.
+<li> FIXED: Shipping dialog causes crash after second attempt. (Fixed an unreported similar probable issue with Tracking as well)
+<li> Implemented the ability to only run one instance of order manager at the same time. 
+<li> Changed the login screen from "Database Setup" to "Database Config", and also merged the "Change Password" and "Add/Edit User" (introduced in version 6.014) into a single option titled "Security"
+</section>
+
+<section>
+<h3>6.014 - released 9/14/06</h3>
+<li> IMPLEMENTED: Add/Edit User in the form login area - use this to bring down new users that have been created on the web. 
+<li> Company Sync on a brand new database was not returning any data.
+<li> If you had a brand new database and MORE than 1,000 orders it would continually prompt you to download the last 90 days of orders.
+<li> When searching invoices the software would display the print dialog box.
+<li> Email preferences weren't loading. 
+<li> Order Total not being passed to Endicia Dazzle Application
+
+</section>
+
+
+<section>
+<h3>6.012 - released 9/13/06</h3>
+<li> Fixes an issue during send email where the application crashes.
+</section>
+
+<section>
+<h3>6.010 - released 9/12/06</h3>
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+This version moves the database storage location from C:\program files\zoovy\ordermgr\database to a new directory in C:\program files\zoovy\common and also renames the database from "username.mdb" to simply "ordermgr.mdb" - after installing the new software you will need to re-setup your database and be sure to check the box which says "Upgrade pre-5.010 database versions" -- if you fail to do this the software will download your entire order history from Zoovy.com and this could take several hours (or even days for very large customers). 
+
+
+</div>
+</aside>
+
+
+<li> IMPLEMENTED: Combine Orders functionality
+<li> IMPLEMENTED: Split Orders functionality
+<li> IMPLEMENTED: Slider Bar (allows for resizing of invoice window)
+<li> IMPLEMENTED: Sub-order status functionality
+
+<li> UI CHANGE: Email menu was removed, and is now part of "Admin | Setup | Email Preferences"
+<li> UI CHANGE: FedEx and UPS setup moved to the "Admin | Setup" 
+<li> UI CHANGE: Email manager moved to "Tools | Email Manager"
+<li> UI CHANGE: "Tools | Label Setup" is now "Tools | Printer Setup" 
+
+<li> FIXED: CVVCID in payment info will not save
+<li> FIXED: Recent tab will not display new orders after sync
+<li> FIXED: Selecting multiple emails not working properly
+<li> FIXED: Size of the subject in the email manager was too short
+<li> FIXED: Resizing email customer window the body of the message would not resize.
+<li> FIXED: No state or zip would appear on invoice if country was "United States" 
+<li> FIXED: Endicia International tab was using previous description
+<li> FIXED: After a tracking number was voided - the tracking number was still sent to customer in email message.
+<li> FIXED: Tracking method was saving as UPS if you right clicked on an order and pasted in a tracking #.
+<li> FIXED: Company Logo was missing on invoice and packing slip
+<li> FIXED: Changed Airborne to DHL
+<li> FIXED: Fixed ability to edit order notes in billing info when in multi-user mode.
+<li> FIXED: Search incomplete item was crashing when typing eBay #
+<li> FIXED: Search invoice functionality was not showing order status.
+<li> FIXED: Packing slips had no shipping information said "via Shipper" instead of "via UPS" or "via FedEx"
+<li> FIXED: Search invoice with credit card numbers was formatting with commas.
+<li> FIXED: Edited an invoice and clicked email customer the software would do nothing.
+<li> FIXED: When creating an invoice the subtotal was not updated automatically.
+
+</section>
+
+
+
+<section>
+<h3>6.008 - released 8/30/06</h3>
+<li> CORRECTED: UPS Labels not printing
+<li> CORRECTED: Adding invoices and sales receipts in quickbooks for quickbooks product type inventory.
+<li> CORRECTED: Multi-user SOHO version now works properly.
+<li> CORRECTED: Invoices with duplicate items containing the same SKU but with different claim numbers could not be added to an invoice. 
+</section>
+
+<section>
+<h3>6.006 - released 8/28/06</h3>
+<li> CORRECTED: Manual Credit tab not appearing when editing payment information.
+<li> CORRECTED: Right click on order and hit "Email Customer" nothing happens
+<li> CORRECTED: Display the wrong expiration month and year on general payment tab when payment type is credit.
+<li> CORRECTED: Not remembering the state of what checkboxes where checked in tools / quickbooks setup.
+<li> CORRECTED: When creating an invoice, if you search for a customer it would only bring half the information (billing or shipping) over depending on which tab you were on. Now both billing and shipping are being loaded.
+<li> CORRECTED: Shipping address not being populated for Amazon orders.
+<li> CORRECTED: Implemented reference id in the Dazzle implementation, it will contain the full Zoovy Order # unless the merchant has more than 14 digits, then the dashes are stripped from the order #.
+<li> CORRECTED: Increased the width of the order id column in the order listview.
+<li> CORRECTED: Unable to edit the description or taxable for line items when creating or editing orders.
+<li> CORRECTED: If the merchants company profile had a country of "United States" set, then when printing a packing slip or invoice then the city state and zip would not appear correctly. 
+<li> CORRECTED: Search invoice was giving a .Net framework error when searching or exiting the form. 
+<li> CORRECTED: When you right click on the search invoice form, it now has the same right click options that invoices do in all other areas of the software.
+
+</section>
+
+<section>
+<h3>6.004 - released 8/24/06</h3>
+<li> Added new scale type "Fairbanks 2455" series (thanks stewarttoys)
+<li> Added Endicia ES2200 22lb scale to list of supported scales
+<li> Made significant internal improvements to scale "weigh" button - now uses .Net communications library
+<li> Lowered memory consumption by removing unnecessary libraries and forms from application.
+<li> Corrected the error "Unable to get window handle for the AxWeighButton Control" 
+<li> Corrected rounding down of weight when exporting to Endicia Dazzle (always rounds up so that weights do not have to be manually corrected)
+
+Customers upgrading from 5.156 are strongly encouraged to uninstall the previous
+software, reboot the computer, and then install this version. 
+
+</section>
+
+
+
+
+
+<section>
+<h3>6.002 - released 8/23/06</h3>
+This is a general release to fix issues that did not appear during the pre-release of 6.000, we expect to follow up with a 6.0004 shortly to fix some outstanding installation
+issues. 
+
+<li> Fixed UPS airbill printing
+<li> Fixed location not appearing on packing slip
+<li> Fixed the error when you try to setup a label printer for FedEx airbill printing
+<li> Fixed blank emails displaying when viewing / editing emails
+<li> Fixed Endicia Dazzle importing tracking numbers as part of sync process.
+
+
+Customers upgrading from 5.156 are strongly encouraged to uninstall the previous
+software, reboot the computer, and then install this version. 
+</section>
+
+
+
+<section>
+<h3>6.000 - released 8/17/06</h3>
+
+<li> This is the first release in the 6.00 series. Our goal with this release is to provide feature
+parity with the 5.156 release.
+<li> This version supports ZoovyMail Transport for all ZoovyMail Customers.
+<li> Sending mail through any method OTHER than ZoovyMail is no longer supported. 
+<li> Significant internal changes to the database structure.
+<li> Improved handling of Option Assemblies. 
+<li> Insurance has been added to FedEx Shipping
+<li> Fixed a minor issue shipping packages to Canada via FedEx.
+<li> Amazon SKU now syncs properly into Quickbooks
+
+</section>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

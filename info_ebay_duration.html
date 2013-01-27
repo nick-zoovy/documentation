@@ -1,0 +1,54 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/ebay_duration">
+<h1>Product attribute "ebay:duration"</h1>
+
+<article>
+<h2>Concept Overview</h2>
+Product attribute "ebay:duration" is used to set the auction duration for any launch.
+</article>
+
+<article>
+<h2>Concept Detail</h2>
+Auction duration when sending a product to ebay is pulled from two places: product and profile.  There is a "heirarchy" of precedence for these two areas.  If the duration is set at the product level, in the product attribute "ebay:duration", then this setting will override any launch duration set at the profile level.  If the product does not have a duration set, then the profile setting will be used and the product attribute will be set with this duration and next time will use the ebay:duration product level attribute.
+
+<section>
+<h3>How to tell if ebay:duration is set for a product</h3>
+If you want to determine which products have a current ebay:duration set, you can do an export of that field for all products in: Utilities > Product Export. For just a single product or few products, you can quickly discern if the product has the attribute by using the Product Editor, looking up the product, and using the "Debug" option under Tools.
+<aside class="hint">
+<h6></h6>
+<div> There is two symptomatic signs that will also let you know if you have a different duration set in product than profile.  The first is during the launch preview.  If you see a 10-day duration fee being added to the listing, but your profile is set to 7-Day, you likely have a product set to 10-day that needs addressed. The second is in the auction itself. i.e. you set the profile to use a 3-day listing but it launched as a 7day aution, etc. 
+</div>
+</aside>
+
+</section>
+
+<section>
+<h3>Ebay duration problems</h3>
+There are two problems that users may encounter with this attribute setting. The first problem comes about when you decide after launching a product with one length duration, to later launch it with a different profile that has a different duration length.  You desire to run say, a 7-day duration, and you set the profile to that setting, and launch the auction.  You check the auction and see that for "some unknown reason" it launched as a 10-day auction.  
+<br>
+The second problem is usually encountered when you try to "correct" the problem above.  Ebay will not accept either a "0" value, or a NULL (i.e. blank, no value) for this attrubute, and having a NULL value in the attribute blocks our launch engine from pulling the setting from the profile.
+<br>
+Both of these issues can be corrected following the instructions below. Either deleting the attribute from the product, or setting a correct desired value for this attribute will correct the issues.
+</section>
+
+
+<section>
+<h3>How to adjust ebay:duration</h3>
+To correct the above issue, you need to reset the duration attribute for the product with the Product Power Tool.  To learn more about using the tool, see: <a class="linkdoc" href="#?doc=50287">Doc 50287</a>.
+You need to delete the attribute from the product that you want to change.  This will reset the duration for that product allowing it to use the profile setting.
+<aside class="caution">
+<h6></h6>
+<div> EXPERIMENTAL WARNING: the product Power Tool allows you to make a lot of changes all at once. Just like any Power Tool, it should be used responsibly, and only be experienced folks with proper training. If you'd like to learn more about using the tool, please schedule time with one of our training staff.
+</div>
+</aside>
+
+</section>
+
+</article>
+
+
+
+
+
+
+

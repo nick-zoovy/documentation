@@ -1,0 +1,89 @@
+<meta type="filename" id="info/detail/ebay-recyclebin">
+<h1>eBay Recycling Bin</h1>
+<article>
+<h2>Overview</h2>
+
+<article>
+<h2>Background</h2>
+
+  eBay provides insertion fee credits to sellers for items which did not sell. 
+  The policy is that eBay will refund the insertion credit on the first listing 
+  if the item sells when it is listed the second time. This only works when an 
+  item is relisted using the RelistItem form, rather than the AddItem form on 
+  the eBay.com website.<br>
+  <br>
+  In the past Zoovy has offered a feature called "Relist One Time" which caused 
+  a 7 day auction that did not sell to automatically relist for another 7 days. 
+  However this has caused significant trouble with the Channel Scheduler feature, 
+  which launches new listings at a time interval and cannot track if a listing 
+  sold or was relisted. The effect was that a merchant would always have too many 
+  of a poor selling item, or too few of a hot selling item.<br>
+  <br>
+  In addition if a seller forgot to revoke and/or remove a listing before canceling 
+  it on eBay then the item would be automatically relisted. Finally relisting 
+  could happen anywhere from a few minutes, to a few hours later. <br>
+  <br>
+  The eBay recycling bin was designed to solve these issues. <br>
+  <br>
+  </article>
+<article>
+<h2>About this Tool</h2>
+
+  With the eBay recycling bin when an item does not sell, it's listing ID is stored 
+  in a database. Then when a new product is listed using AddItem, the system checks 
+  the recycling bin; if old auctions which could be relisted are available it 
+  automatically performs a RelistItem instead of an AddItem. If the second item 
+  sells, then the first item's fee are refunded by eBay.</p>
+<p><strong>Caveats:</strong> 
+<li>Items older than 90 days cannot be recycled. 
+<li>Items must have the same or lower starting bid price
+<li>Items must have the same or lower reserve price
+ <li>Only the same item can be recycled, you cannot substitute one item for another.
+<li> This only works one round, meaning if the item does not sell the 2nd time the 3rd time you launch the item it is being listed as a AddItem not RelistItem<br>
+  <br>
+  Please note: AddItem and RelistItem are eBay terms, not Zoovy terms.<br>
+  <br>
+  <b>To use this feature:</b><br>
+  <br>
+  The eBay recycling bin works automatically in the background; you don't have 
+  to do anything. In other words, when you launch a new channel or relist an item 
+  with  Zoovy's Scheduler or Powerlister, the system checks the recycling bin for 
+  a match, it it finds one, the product is relisted on eBay using eBay's RelistItem, 
+  as outlined above.<br
+<br>
+<aside class="hint">
+<h6></h6>
+<div> Please disregard the channel status of a listing if it does not say recycled. When an item is relisted the channel status is not always accurate in reporting an item has been recycled.  
+</div>
+</aside>
+
+  Please note: you can only have one recycling bin per seller, per Zoovy store. 
+  <br>
+  </article>
+<article>
+<h2>Operational Details</h2>
+
+  The eBay Gallery service will automatically use the RelistItem to the auctions 
+  you launch through Zoovy. When an item is created from a recycled listing, it 
+  will say "Recycled" instead of "Created" in the channel status. <br>
+  In the future we may add additional features to this service, at that time to 
+  update the settings simply look up the channel number and edit it.<br>
+  </article>
+<article>
+<h2>Support</h2>
+
+  For support please visit <a href="http://support.zoovy.com">http://support.zoovy.com</a>.<br>
+  <a href="#" onClick="javascript:openWindow('http://www.zoovy.com/helper?DEFINITION=ebay.password&TYPE=G');">Click 
+  Here to Change your eBay Password</a><br>
+  </article>
+<article>
+<h2>Frequently Asked Questions</h2>
+
+  <b>Can I use multiple eBay usernames?</b><br>
+  No the eBay Recycle Bin only supports one eBay username. <br>
+  <b>I'm planning to change my eBay username, what can I do to make it go easier?</b><br>
+  eBay allows you to specify an email address instead of a nickname, use your 
+  registered email address in the username field with your regular eBay password 
+  and everything should go fine.<br>
+  </article>
+

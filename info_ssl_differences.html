@@ -1,0 +1,196 @@
+<meta type="filename" id="info/ssl_differences">
+<h1>Understanding SSL Certificates differences for the non-mathlete</h1>
+
+<article>
+<h2>Concept Overview</h2>
+SSL Certificates
+
+<br>
+We apologize in advance for the technical nature of this document. It is 
+impossible to coherently try and explain the differences between SSL 
+Certificate types without at least a light discussion of crypographic 
+protocols.
+<br>
+
+Zoovy provides 4 different SSL Certificate "Flavors". They are:<br>
+<br>
+<li>Rapid SSL - 256 bit
+<li>Trustwave Premium - 256 bit
+<li>GeoTrust SSL Premium - 256 bit
+<li>Trustwave EV (Extended Validation) - 256 bit<br>
+<br>
+
+The number of "bits" refers to the maximum number of "password" 
+combinations which need to be tried to "guess" the correct key. With a 
+256 bit certificate it means there are 2 to the 256^th power, or 
+roughly: 
+115,792,089,237,316,195,423,570,985,008,690,000,000,000,000,000,000,000,000,000,000,000,000
+possible guesses necessary (give or take a few sextillion) to try and 
+guess all possible passwords.<br>
+<br>
+That number is the amount of guesses which could be necessary to guess 
+the key to decrypt a single session. Unlike Hollywood movies, strong encryption can't be broken in seconds, there are no backdoors, or secret pass phrases or anything like that.  However it is currently possible to use some 
+very elegant cracking techniques to eliminate huge ranges of numbers, so 
+an accomplished mathlete can reasonably reduce a 256 bit cipher down to around 
+2^107^th power or roughly: 162,259,276,829,213,363,391,578,010,288,130 
+possible guesses necessary using publicly available attacks. 
+Needless to say even attempting a few quadrillion combinations per second, they wouldn't finish before sun goes supernova. So "guessing" the password after a few tries is probably out, sorry Hollywood.
+
+<aside class="hint">
+<h6></h6>
+<div> If you ever see those $250,000 guaranteed protection from an 
+SSL vendor, what they're saying is - if somebody "guesses" the key, 
+they'll pay up to $250,000 in insurance. It's hilarious - you've got a 
+better chance of winning a jackpot vegas, at the same time being struck by lightning, 
+while being eaten by a shark!
+
+</div>
+</aside>
+
+
+But a way for a bad guy to get a persons credit card doesn't necessarily
+require guessing, a better way would be to find a way to take over your 
+DNS, and -pretend- to be you. That way they'd serve up a secure page and 
+the buyer would (being unaware it wasn't your store) gladly hand over 
+their credit card details to the nefarious international hackers.
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+Secure & Trusted DNS is a key component to ensuring SSL functionality. This is 
+one reason Zoovy asks clients to transfer their DNS to us rather than 
+use outside nameservers. We do not allow modification (hijacking) of 
+names under our control without going through some extremely rigorous 
+security protocols including voice verification. You'd be amazed how few 
+checks a $6/yr. domain registrar will go through before turning over 
+your domain to a bad guy pretending to be you. (It's literally just a 
+matter of sending a fax with a plausible story on made-up letterhead)
+
+
+</div>
+</aside>
+
+
+
+For this reason SSL includes a "identity verification" component - 
+basically there are a series of companies on the Internet such as 
+Geotrust, Trustwave, Verisign, RapidSSL, Thawte, and a few dozen others 
+who browsers "trust" to verify your company's identity. The browsers come 
+preloaded with the "Root Certificates" for these companies. When your 
+browser connects to your server (hosted by Zoovy) it downloads the 
+certificate, then attempts to verify that certificate against the 
+certificates it has installed. I'm not going to go into how this 
+happens, it's beyond the scope of this document - but suffice to say 
+it's a mathematically proven algorithm used to determine that your 
+certificate was created by a trusted certificate.<br>
+<br>
+Of course lets think like the bad guys for a moment: if they could get 
+an SSL certificate, that's issued to you, loaded on their webservers - well 
+then they could still -pretend- to be you, and again the unsuspecting 
+buyer wouldn't have a clue they weren't actually talking to you. So how 
+does a bad guy get an SSL certificate pretending to be you? Well you'd 
+be amazed how easy it is.<br>
+<br>
+Each company who has a "root certificate" which is trusted by the 
+browsers, goes through different internal protocols to verify your 
+identity, so that they don't accidentally issue a certificate that 
+claims to be you to somebody who isn't you. In practice they all do a 
+sufficient job to stop a lazy criminal, and some companies definitely do 
+a better job than others. If a company accidentally issues a certificate 
+to the bad guys, then they're going to find their root certificates 
+removed in a future version of each browser and subsequently be out of 
+business. However the level of checking they do is what you pay for. Of 
+course -- to the browser (and to 99.9999999% of all end-users) all SSL 
+certificates that are issued from any trusted root certificate are 
+treated the same, they get the same lock, etc. - the math they use to 
+protect the session is the same, there is no difference on the grade of 
+encryption. The only difference is if you click the lock in the browser 
+it will tell you who the issuing party is. Theoretically some 
+applications (military, defense, b2b) might remove "less trusted" 
+certificates .. however in practice this never really happens.<br>
+<br>
+So why the difference in price, what do you pay for? Well - mostly 
+branding. RapidSSL is inexpensive, but it's brand name is regarded as a 
+"budget" brand in most cryptographic circles.  They will issue a 
+certificate to pretty much anybody who can get an email at a domain - 
+it's easy and painless (which isn't a good thing in security circles - a 
+little pain equals "rigorous checking").<br>
+<br>
+Geotrust and Trustwave both do a good job checking, and give you cool 
+little badges you can drop on your site telling people "it's secure" .. 
+here at Zoovy we like them because both badges have the word "trust" in 
+them. Buyers can click the little badges and their sites will use all 
+sorts of big crytographic words to tell them how secure your site is. 
+Most studies indicate that buyers don't want to deal with real security, 
+they just want to feel secure - and the more you can do to make them 
+feel warm and fuzzy about your security the more likely they are to buy 
+from you. Keep in mind that both RapidSSL, GeoTrust SSL, and TrustWave 
+SSL offer the same cryptographic levels - none are more secure than the 
+other, all are trusted by the same browsers, it's just branding.<br>
+<br>
+Lastly is an EV SSL Certificate - and this is a bit different. EV stands 
+for "Extended Validation", and is the security communities attempt to 
+remedy the failure of SSL to provide a differentiation between different 
+levels of "identity verification", it's also being used as a way to 
+dramatically increase the cost (and subsequent profit) on issuing SSL 
+certificates by everybody in the industry.<br>
+<br>
+<aside class="hint">
+<h6></h6>
+<div>
+The easiest way to see an EV certificate in action is to go to 
+www.paypal.com <http://www.paypal.com/> you'll notice the URL turns 
+"green" (which is supposed to indicate "it's safe"), and it also clearly 
+shows the company name - rather than the domain name as "Paypal, Inc." 
+this is important because it tells you that the person who issued the EV 
+certificate for Paypal.com did so for a company named "Paypal, Inc." 
+which is who you're supposed to be doing business with. 
+
+</div>
+</aside>
+
+Again in reality, 99.999999% of the people in world never notice this. Verisign 
+(who sells EV certificates for ridiculous fees and stands to make a lot 
+by Fortune 500 CIO's deciding they should "go green") is doing a big 
+marketing campaign called "if it's not green, it's not secure". EV 
+Issues are supposed to do a more thorough background check before 
+issuing a certificate - and in exchange the browsers trust them.
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+Keep in mind you're supposed to buy 1 SSL certificate per server it's 
+loaded on, so big banks, etc. this might be millions of dollars in just 
+SSL certificates. We don't recommend Verisign because their certificates 
+are priced substantially higher than other brands.
+
+
+</div>
+</aside>
+
+
+
+So what does this mean to you - absolutely nothing. There is no 
+difference in the security afforded, simply the branding.<br>
+<br>
+
+Besides in practice most bad guys never actually attack the 
+cryptography, or even try and circumvent the SSL certificate simply 
+because it is way easier to harvest the bank account pins, using worms 
+and keystroke loggers (and none of this SSL voodoo really protects 
+buyers from that).
+<br>
+
+If Verisign keeps dumping money into it's "if it's not green, it's not 
+secure" pro-EV advertising campaigns then EV certificates could become 
+important to consumers. In practice 99% of people in the world (who 
+don't work in IT) have no idea who Verisign is, so better off going with 
+a Trustwave EV certificate.<br>
+<br>
+For purchasing information on SSL's, please visit <a class="linkdoc" href="#?doc=50970">Doc 50970</a>
+
+
+

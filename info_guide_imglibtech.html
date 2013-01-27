@@ -1,0 +1,181 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/guide/imglibtech">
+<h1>Technical Guide to the Image Library</h1>
+<article>
+<h2>Summary</h2>
+ The Zoovy Image Library allows you to easily upload new images, and manage existing
+ones.
+</article>
+<article>
+<h2>What is an Image Collection?</h2>
+
+Once uploaded an image is automatically saved in a "collection", an image collection
+contains information about the image itself including which instance (a single
+copy of an image) is the original image. All future changes to the image are made
+from the original that you upload. Zoovy uses image collections to provide an
+easy way for you to have pictures automatically sized and formatted to the environment
+the image is being displayed in.
+</article>
+<article>
+<h2>Can I upload mutliple images with the same name?</h2>
+
+No, if you upload a file with the same name it will automatically overwrite the
+previous collection. This trick is a handy way to replace the original copy of an image in a collection. When you
+replace the original image in a collection all instances will be automatically
+deleted. In addition when replacing an original image in a collection if you accidentally
+upload a corrupt image, the original collection will remain intact and the corrupt
+copy will simply be discarded.
+</article>
+<article>
+<h2>Why does Zoovy use Image Collections?</h2>
+
+Image collections are designed to avoid the accidental mistakes that are commonly
+associated when using pictures on the web. Collections ensure a picture is always optimized, thereby making it download faster, and look better.
+For example when you upload a picture Zoovy will automatically create a thumbnail 50x50 version
+of the image, this will typically be smaller than the original image so Zoovy
+will create a special smaller 50x50 image (called an instance). In addition if
+the thumbnail is shown on a black background, Zoovy will attempt to make the background
+color of the image black. Finally the 50x50 thumbnail copy of the image will automatically
+be saved (a technique called caching [pronounced cash-ing]), along with any other
+instance copies of the image. Here's another example of how collections work:
+if you use the image with a product that requires a 200x200 image, Zoovy will
+create a special 200x200 copy of the image, that will be saved along with the
+original. Only in rare-circumstances will Zoovy show the original file (for example
+the popup full screen view of an image, in image edit will always show the original).
+</article>
+<article>
+<h2>How can I optimize my images to work with Image collections?</h2>
+
+In certain circumstances you may want to either crop images so they do not have
+extra background pixels, or increase the height or width of the background so
+they image does not automatically resize. Zoovy will always maintain the aspect
+ratio of an image (meaning the relationship between the height and width, so the
+image does not appear deformed). Try uploading images which are the exact height
+and width for the instance they will be used in. You can tune your compression
+levels, and color depths prior to putting an image into a collection. In addition
+you should always try to upload a native format such as JPG, GIF or PNG. If you
+upload other formats they will be converted into a JPEG before being saved into
+the library, and therefore may not be optimized. To improve performance try uploading
+images which are no larger than the largest size.
+</article>
+<article>
+<h2>Why when I delete instances from a collection do they keep re-appearing?</h2>
+
+Zoovy will create copies of images (called instances) when they are needed, and
+then save those specific instances so in the future so that the image will load
+much quicker. The first time you view a new instance the image is created "on
+the fly" which means that the image will be instantly created, however after the
+instance has been created all future loads will be much faster. Zoovy attempts
+to store all instances which provides maximum performance, however this technique
+also consumes maximum disk space. You can safely delete any instance of an image
+to save disk space, if the system needs the instance a new copy be automatically
+created. NOTE: for maximum performance of your website we recommend NOT deleting
+instances, unless you are 100% sure they are no longer in use.
+</article>
+<article>
+<h2>Why doesnt Zoovy automatically expire unused-instances of images to save disk space?</h2>
+
+Zoovy's goal is to provide a consistent balance of speed and flexibility for its
+customers. It has always been a company policy to try to maximize performance
+of customers websites, in the unfortunate event that a instance was deleted and
+then needed by a potential customer it could impact the customers perception of
+website performance. Actually Zoovy does monitor the number of instances and age
+for each customer, and when the number exceeds an internal limit (typically around
+2,500 per folder) Zoovy technical support will contact the customer and assist
+with removing older instances to increase performance and avoid what is known
+as "the lookup penalty." But if you want delete images to save disk space and
+run the chance of impacting your website performance then its your decision.
+</article>
+<article>
+<h2>Deleting Lots of Images</h2>
+
+The fastest way to mass delete images is to use the Zoovy Product manager for
+Windows, or the Product Image %DELETE parameter. Just click on the Image Library
+tab. Some customers used the WebAPI.
+</article>
+<article>
+<h2>How many collections/instances are supported?</h2>
+
+There is no hard limit. However based on the architecture you will begin to impact
+the performance of your site at around 2,500 instances per folder, which roughly
+translates into between 500 and 1250 collections. In theory that this creates
+a maximum upper limit of 45,000 products (based on 36 available folders 0-9 +
+A-Z * 1250 collections). Of course if you've been using Zoovy technology for any
+length of time you probably already knew that Zoovy professional services has
+a simple work around for merchants who are loading in excess of 5,000 products
+that can really boost performance, and shatter the collection/instance limit.
+So if your planning to exceed 5,000 products you should probably contact Zoovy
+Professional Services as soon as possible so we can help you! (We've also got
+LOTs of great tools for bulk loading data, so you don't have to type all the products
+in.) On a related note with tuning your Zoovy account can easily exceed 100,000
+active products, with a virtually unlimited number of SKU's. In other words, no
+matter how big you get, don't worry about it we've got you covered. ;-)
+</article>
+<article>
+<h2>What is the image path / URL to images in my library</h2>
+
+Image collections have a different path depending on what type of file is being
+requested. Go to Setup / Image Library and select an Image. There is a form there
+which allow you to generate a URL (along with a size and scaling approach), this
+can also be done by right clicking on an image in product manager and saying "Generate
+HTML". The image path is always:
+<aside class="html">
+<h6></h6>
+<code>
+
+http://static.zoovy.com/img/USERNAME/W75-H75-Bf0f0f0/COLLECTIONNAME
+
+</code>
+</aside>
+
+
+where USERNAME is your zoovy username, and collectionname is the name of the file
+(with or without a file extension). <br>
+In the URL the W75 (or simply W#) specifies the width is 75 pixels, the H75 (or
+simply H#) specifies the height is 75 pixels, and the Bxxxxxx specifies the hexadecimal
+RGB color which will be used to fill in behind the image in the event the image
+must be scaled (image scaling is always maintains the pictures aspect ratio).
+You can adjust the W#, H#, and Bxxxxxx values to get the image that you want.
+The URL to the original image is:
+<aside class="html">
+<h6></h6>
+<code>
+
+http://static.zoovy.com/img/USERNAME/-/COLLECTIONNAME
+
+</code>
+</aside>
+
+
+</article>
+<article>
+<h2>Why do animated GIFs stop animating?</h2>
+
+The Zoovy Image Library does not support animated gifs. Consequently the easiest
+way to upload and access an animated gif is to upload the gif as a custom file
+and then use html to reference the gif, or simply put the URL in the use Custom
+URL field when you associate the image. Please note that images referenced by
+custom URL will not be automatically resized.
+</article>
+
+<article>
+<h2>Images not showing up on Website</h2>
+
+
+You have your product setup and the products link to categories. You have uploaded your images to the media folder, but why are they not showing up on the product? 
+
+The first place to check is in the product editor under the image section. You will need to load the image in Image1. If you click on image one a pop-up box will open that is your media library. Select the image that goes with the product. Click save and refresh the tab opened with your website. 
+
+<aside class="caution">
+<h6></h6>
+<div>
+If you delete an image DO NOT upload another image with the same name!! With the image caching Zoovy uses the images are not hosted locally for performance purposes. If this is done it is a billable procedure for one of our System Operators to flush the cache. 
+
+</div>
+</aside>
+
+
+Also, if you reference images from a third party hosted solution (setting prod_image1 to http://www.domain.com/imagename.jpg), such as amazon, our media library can not manipulate/resize as needed in some list formats, such as a product list. It is suggested that you do not take this approach and that you upload the imagery into the media library.
+</article>
+
+

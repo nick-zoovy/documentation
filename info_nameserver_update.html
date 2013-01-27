@@ -1,0 +1,155 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/nameserver_update">
+<h1>New Nameserver Configuration</h1>
+
+
+
+<article>
+<h2>Concept Overview</h2>
+
+Zoovy will be updating our network to utilize a new set of IP addresses at midnight on March 31st, 2007. This includes the IP addresses for our primary nameservers NS.ZOOVY.COM and NS2.ZOOVY.COM.
+</article>
+
+<br>
+
+<article>
+<h2>Identifying Your Domain Registrar</h2>
+Before reading this document it may be helpful to know whom is the current registrar of your domain. Please follow the steps below to identify your registrar.
+<aside class="cbc">
+<h6>Find My Registrar</h6>
+<div>
+<li> Step 1. Go to http://www.dnsstuff.com/
+<li> Step 2. Scroll down to where it says "WHOIS Lookup"
+<li> Step 3. In the "WHOIS Lookup" field enter your domain name
+<li> Step 4. Click the "WHOIS" button
+<li> Step 5. The next page that is generated will be the WHOIS info for your domain
+<li> Step 6. Towards the top locate "Registrar:"
+<li> Step 7. This will tell you who your registrar is
+
+</div>
+</aside>
+
+<aside class="hint">
+<h6></h6>
+<div>If Zoovy is your registrar it will say "EVERYONES INTERNET, LTD. DBA RESELLONE.NET"
+</div>
+</aside>
+
+
+</article>
+
+<article>
+<h2>Registrars</h2>
+<section>
+<h3>If Zoovy Is Your Registrar</h3>
+If Zoovy is your registrar then don't worry, everything will transfer fine 
+<aside class="hint">
+<h6></h6>
+<div>You can stop reading now & no need to contact Zoovy Support.
+</div>
+</aside>
+
+</section>
+
+<section>
+<h3>If Your Registrar is (GoDaddy, Network Solutions, Dotster, or Register.com)</h3>
+This will be a seamless transfer of nameservers. These registrars only require that you enter the nameserver address (example: ns.zoovy.com & ns2.zoovy.com) they do not require that you enter the IP address that the name servers reside at. 
+
+<br>
+
+Please confirm that your nameservers are set to Primary: NS.ZOOVY.COM and Secondary: NS2.ZOOVY.COM (We have had a few customers contact us that did not have the name servers setup correctly even though they were using GoDaddy, Network Solutions, Dotster, or Register.com). The quick way to find out what nameservers your domain is using for the nameserver is to follow my steps below.
+<aside class="cbc">
+<h6>Find My Nameserver</h6>
+<div>
+<li> Step 1. Go to http://www.dnsstuff.com/
+<li> Step 2. Scroll down to where it says "WHOIS Lookup"
+<li> Step 3. In the "WHOIS Lookup" field enter your domain name
+<li> Step 4. Click the "WHOIS" button
+<li> Step 5. The next page that is generated will be the WHOIS info for your domain
+<li> Step 6. Locate "DNS Servers:"
+<li> Step 7. This will tell you your current DNS sever settings
+
+</div>
+</aside>
+
+<br>
+If your nameservers are not correct please contact your domain registrar's support department and they can help you correct nameserver settings to point toward NS.ZOOVY.COM and NS2.ZOOVY.COM.
+
+<aside class="hint">
+<h6></h6>
+<div>You can stop reading now & no need to contact Zoovy Support.
+</div>
+</aside>
+
+
+</section>
+
+
+<br>
+
+<section>
+<h3>If Your Registrar Is Not Listed Above</h3>
+This is where it becomes a little tricky. The reason this becomes tricky is because there are so many registrars out there and they do not all manage the domains the same. When configuring the nameserver for your domain, some registrar's require the nameserver (example: ns.zoovy.com & ns2.zoovy.com) in addition to the the IP address of the nameserver. 
+
+<br>
+
+The registrars that require you to manually manage the domain nameserver and IP address of the nameserver will have problems after Zoovy changes our IP address for the nameservers on March 31st, 2007. If you have not changed the IP address for the nameserver in your domain manger from your domain registrar you could experience problems with your domain. If your website is down on April 1st, please know it is not an April Fools Joke!!Open up a support ticket !!QUICKLY!!
+
+<br>
+
+Your http://username.zoovy.com web address will not be affected because this is hosted by us, only the domains that you have added via (Web Manager > Setup > Domain Hosting)
+
+<aside class="caution">
+<h6></h6>
+<div>I must emphasize that only customers that are not using Zoovy or one of the top 4 registrars (GoDaddy, Network Solutions, Dotster, or Register.com) may be affected negatively by this nameserver IP change. Anyone who is using Zoovy or one of the top 4 registrars will have a smooth problem free transition. This is one of the key benefits to transferring your domain to Zoovy as the registrar, so you are not affected by big DNS changes
+</div>
+</aside>
+
+</section>
+</article>
+
+
+<article>
+<h2>If I Am Not Using Zoovy Or One Of The Top 4 Registrars What can I Do?</h2>
+You will need to log into your domain manager via your domain registrar and verify that your DNS settings have your nameservers listed as NS.ZOOVY.COM & NS2.ZOOVY.COM. You will then need to confirm if your domain DNS nameserver settings are mapped to a IP address. 
+If your nameservers are not mapped to a IP address and you have ns.zoovy.com and ns2.zoovy.com listed as your nameservers you are in the clear with nothing to worry about.
+(If you are not technically savvy you may want to contact your domain registrar for help understanding how they manage DNS for nameservers)<br>
+<br>
+In the event that your nameserver is mapped to an IP address you will need to enter the new IP address by replacing 66.240.244.200 & 66.240.244.202 with our new IP address. If you are not technically savvy you may want to contact your domain registrar to help you make this change.
+
+<aside class="hint">
+<h6></h6>
+<div>
+Your current settings may look like this<br>
+ns.zoovy.com 66.240.244.200<br>
+ns2.zoovy.com 66.240.244.202
+</div>
+</aside>
+
+
+The new/current IP address settings for the DNS servers are:<br>
+ns.zoovy.com 208.74.184.1<br>
+ns2.zoovy.com 66.240.244.202<br>
+<br>
+
+<aside class="caution">
+<h6></h6>
+<div>Zoovy will not release what the new nameserver IP will be until we are closer to the change over date. If you change your nameserver IP address prematurely this could cause your domains to have problems.
+</div>
+</aside>
+ 
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

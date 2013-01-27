@@ -1,0 +1,176 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="webmgr/detail/amazon-common-issues">
+<h1>Amazon Part 5A - Trouble-Shooting Syndication Issues</h1>
+
+<article>
+<h2>Overview</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+Amazon Syndication is a complicated process in which many things can go wrong. Below are listed some common issues and their resolutions.
+<br>
+
+
+<aside class="cbc">
+<h6>SKU cannot be found by customers on Amazon.com</h6>
+<div>
+<li> Step 1 - Confirm that SKU is purchasable on Amazon.com
+<li> Step 1A - Go to SellerCentral: Inventory and search for the SKU
+  <ul> - if SKU is not found, proceed to "SKU cannot be found on SellerCentral"</ul>
+<li> Step 1B - Click on the Title for this SKU, redirects to Amazon.com
+  <ul> - if SKU is unavailable for purchase, proceed to "SKU found on Amazon.com but unavailable for purchase"</ul>
+<li> Step 2 - Consult with Amazon Tech Support or Sales Representative
+<li> Step 2A - Ask how your particular SKU's Category is searched
+<li> Step 2B - Get advice on Search Terms and/or other attributes to increase search results
+
+</div>
+</aside>
+
+<br>
+
+
+<aside class="cbc">
+<h6>SKU not listed in the SellerCentral Inventory Download Report</h6>
+<div>
+<li> Step 1 - Confirm that SKU has inventory available on SellerCentral
+<li> Step 1A - Go to SellerCentral: Inventory and search for the SKU
+  <ul> - if SKU is not found, proceed to "SKU cannot be found on SellerCentral"</ul>
+  <ul> - if SKU is found, but inventory is not set, proceed to "SKU found on SellerCentral; missing Inv, Price, Images and/or Relation info"</ul>
+<li> Step 2 - Confirm that SKU is not a parent SKU (ie a SKU w/options) - these SKUs do not have inventory
+
+</div>
+</aside>
+
+<br>
+
+
+<aside class="cbc">
+<h6>SKU found on Amazon.com but unavailable for purchase</h6>
+<div>
+<li> Step 1 - Confirm that SKU has inventory and price set on SellerCentral
+<li> Step 1A - Go to SellerCentral: Inventory and search for the SKU
+  <ul> - if SKU is found, but inventory/price is not set, proceed to "SKU found on SellerCentral; missing Inv, Price, Images and/or Relation info"</ul>
+
+</div>
+</aside>
+
+<br>
+
+
+
+<aside class="cbc">
+<h6>SKU cannot be found on SellerCentral</h6>
+<div>
+<li> Step 1 - Confirm that it has been 24 hrs since the SKU has been set to syndicate on Zoovy
+<li> Step 2 - Confirm that the SKU cannot be found on SellerCentral
+<li> Step 2A - Go to SellerCentral: Inventory and search for the SKU
+<li> Step 2B - Be sure to use uppercase version of the SKU (ie the search is case-sensitive)
+  <ul> - if SKU is found, but inventory/price is not set, proceed to "SKU found on SellerCentral; missing Inv, Price, Images and/or Relation info"</ul>
+<li> Step 3 - Check the Uploads Report for any specific errors for this SKU
+<li> Step 3A - Go to Zoovy: Syndication: Amazon: Uploads
+<li> Step 3B - Reference the "Amazon Error" webdoc for error explanations/resolutions
+<li> Step 3C - Be sure to "RESET" SKU for syndication after fix has been made
+<li> Step 4 - Check the Logs for any recent XML Parse Errors
+<li> Step 4A - Go to Zoovy: Syndication: Amazon: Logs
+<li> Step 4B - Correct as possible
+  <ul> - if errors are "unfixable", open a ticket with title "Amazon XML Parse Errors". Copy and paste the entire error into the ticket and we will investigate the
+issue for you.</ul>
+<li> Step 5 - If errors are not found, "RESET" the SKU to re-syndication the next day
+<li> Step 5A - Wait until ~7pm Pacific the next day
+<li> Step 5B - Begin these steps again
+<li> Step 6 - If SKU is still not found on SellerCentral, submit ticket to Zoovy Tech Support
+<li> Step 6B - Be sure to include the following:
+  <ul> - verification that the above steps have been followed (with dates)</ul>
+  <ul> - include specific SKU(s) of interest</ul>
+  <ul> - information about missing SKU(s)</ul>
+  <ul> - verification that all fixable errors have been fixed (see note below)</ul>
+  <ul> - any other relevant info</ul>
+
+</div>
+</aside>
+
+<br>
+
+
+<aside class="cbc">
+<h6>SKU found on SellerCentral; missing Inv, Price, Images and/or Relation info</h6>
+<div>
+<li> Step 1 - Confirm that the SKU can be found on SellerCentral
+<li> Step 1A - Go to SellerCentral: Inventory and search for the SKU
+<li> Step 2 - Verify which information is not on this SKU (inv, price, images and/or relations)
+<li> Step 3 - Verify that 24hrs has passed since the the initial Syndication setup
+<li> Step 3A - Product, inventory, price, images, and relation information is uploaded separately throughout the day
+<li> Step 4 - Check the Uploads Report for any specific errors for this SKU
+<li> Step 4A - Go to Zoovy: Syndication: Amazon: Uploads
+<li> Step 4B - Reference the "Amazon Error" webdoc for error explanations/resolutions
+<li> Step 4C - Be sure to "RESET" SKU for syndication after fix has been made
+<li> Step 5 - Check the Logs for any recent XML Parse Errors
+<li> Step 5A - Go to Zoovy: Syndication: Amazon: Logs
+<li> Step 5B - Correct as possible
+  <ul> - if errors are "unfixable", open a ticket with title "Amazon XML Parse Errors". Copy and paste the entire error into the ticket and we will investigate the
+issue for you.</ul>
+<li> Step 6 - If errors are not found, "RESET" the SKU to re-syndication the next day
+<li> Step 6A - Wait until ~7pm Pacific the next day
+<li> Step 6B - Begin these steps again
+<li> Step 7 - If SKU is still not found on SellerCentral, submit ticket to Zoovy Tech Support
+<li> Step 7A - Be sure to include the following:
+  <ul> - verification that the above steps have been followed (with dates)</ul>
+  <ul> - include specific SKU(s) of interest</ul>
+  <ul> - information about missing SKU(s)</ul>
+  <ul> - verification that all fixable errors have been fixed (see note below)</ul>
+  <ul> - any other relevant info</ul>
+
+</div>
+</aside>
+
+
+<aside class="cbc">
+<h6>SKU found on SellerCentral; but was previously deleted from Zoovy</h6>
+<div>
+<li> Step 1 - Confirm that the SKU can be found on SellerCentral
+<li> Step 1A - Go to SellerCentral: Inventory and search for the SKU
+<li> Step 2 - Confirm that Amazon checkbox was unchecked and a 24hr waiting period was held. 
+
+<aside class="caution">
+<h6></h6>
+<div>NOTE: If you delete a product in Zoovy, your product will be orphaned on Amazon. You must first uncheck your product's Amazon checkbox (or set amz:ts -1 in the Product Power Tool) and let Amazon syndication run once before you delete the product from your Zoovy Store. If this is not done customers will be able to still purchase those products from Amazon.
+</div>
+</aside>
+
+
+<li> Step 3 - Confirm Uploads report has a record of the Product deletion from Amazon Syndication
+   <ul> - Go to Zoovy: Syndication: Amazon: Uploads Report</ul>
+   <ul> - search for SKU, should be "Deleted"</ul>
+
+
+</div>
+</aside>
+
+
+<br>
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

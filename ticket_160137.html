@@ -1,0 +1,70 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="ticket/160137">
+
+<h1>Issue #160137: eBay Incomplete items not being created</h1>
+
+
+<article>
+<h2>Issue #160137: eBay Incomplete items not being created</h2>
+
+We are having issues with eBay items selling and Zoovy not creating incomplete item orders. 
+
+</article>
+
+<article>
+<h2>Tech Response</h2>
+
+In troubleshooting this issue, I discovered that your ebay authorization token is invalid.  I don't know if your token expired, was cancelled, or removed from your eBay account but before I can troubleshoot this issue further, I'll need you to refresh your token.
+
+<br>
+
+This may well resolve the entire issue.
+
+If it does not, please update this ticket once you have refreshed your token. 
+
+<aside class="hint">
+<h6></h6>
+<div>
+Please include examples of eBay items that are not working. 
+
+</div>
+</aside>
+
+
+</article>
+
+<article>
+<h2>Custom Question</h2>
+Authorization tokens expire?? It was not cancelled nor revoked. How do I refresh it? 
+
+</article>
+
+<article>
+<h2>Resolution</h2>
+I refreshed the authorization token by going to Manage | eBay | and selecting the "Accounts" tab, however the ebay items are still not showing in the incomplete file on Zoovy.
+</article>
+
+<article>
+<h2>Resolution</h2>
+The authorization token expires once per year.
+In addition, changing your ebay password or username can also cause it.
+
+<br>
+
+The listings won't create incomplete items immediately (automatically), you would need to click the "instant checkout" link in each one.
+
+<br>
+
+However the backup eBay polling system should catch anything which ended in the last week .. it could take a couple of hours.
+
+<aside class="hint">
+<h6></h6>
+<div>
+In this case the backup polling system took about 15 minutes from the time the authorization token was refreshed.
+
+</div>
+</aside>
+
+
+</article>
+

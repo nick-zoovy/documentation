@@ -1,0 +1,225 @@
+<meta type="filename" id="webmail/detail/features">
+<h1>Email Consolidation</h1>
+<article>
+<h2>What are Fused accounts?</h2>
+
+
+
+A Fused account is any one of your email accounts that you have 
+setup to be conslidated into your ZoovyMail account. This could be a POP3 email account, 
+Hotmail, Yahoo!, AOL, or MSN email account.
+
+</article>
+<article>
+<h2>Why store all my email on ZoovyMail servers?</h2>
+
+
+Keeping all of your email on ZoovyMail servers adds tremendous mobility and 
+accessibility to your email. You can acesss your server-side email folders from 
+anywhere in the world using your favorite email client. Best of all, any changes 
+that you make to your mail folders are instantly recognized on all computers accessing your email.
+<br>
+<br>
+No longer do you need to worry about keeping your mail backed up on your computer. 
+We fully back up all of our servers which hold your ZoovyMail email.
+<br>
+<br>
+If you've ever went through the painful process of moving your email and settings to a new computer, 
+a ZoovyMail account is for you. Since all data is stored on the server, a few easy clicks is 
+all that is necessary to access all of your email just as you left it.
+
+</article>
+
+<article>
+<h2>Can I simply forward all mail from ZoovyMail to someplace else?</h2>
+
+Is it possible forward email to another provider such as GoDaddy/AOL/MSN/Yahoo?
+
+<br>
+
+Yes you can, but you PROBABLY DO NOT WANT TO - here's why:
+<ol>
+<li> Nearly all of the planned enhancements that integrate email in the Zoovy system will 
+be fully incompatible with this configuration. 
+<li> It is possible that your 3rd party email hosting company will see spam forwarded
+from your domain and incorrectly flag your business/domain as a spammer 
+(which could result in you losing customer emails).
+In some cases this may cause your domain to give phishing/virus/security warnings with modern browsers which will
+have a dramatically negative impact on your sales. (Even worse it can take weeks to correct)
+<li> ZoovyMail offers more features and functionality than any other mail platform, and it's
+included FREE with your Zoovy account. So you're better off just configuring your email client
+to access inboxes for both services, or better yet - just using ZoovyMail entirely.
+</ol>
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+We're real serious here, we REALLY REALLY REALLY encourage you to avoid doing this. 
+Given enough time - bad things will happen.
+
+</div>
+</aside>
+
+
+</article>
+
+
+<article>
+<h2>Does ZoovyMail support autoresponders and forwarders?</h2>
+
+Yes, ZoovyMail supports setting up autoresponders and forwarders on any one of your domain names. 
+In addition, ZoovyMail allows you to setup a vacation away message to autoreply to all email that 
+is delivered to your ZoovyMail account.
+
+</article>
+
+
+<article>
+<h2>Can I use my own domain name with ZoovyMail?</h2>
+
+
+Yes, absolutely, of-course! 
+ZoovyMail allows you to receive and send email from your own domain names. 
+When Zoovymail is initially setup an admin mail user is created based on your zoovy username the 
+admin user is admin@YOURNAME.zoovy.com. When you add domains to your Zoovy account and you select
+ZoovyMail hosting for them, then admin@YOURDOMAIN.com is automatically created.<br>
+<br>
+When adding sub-users to your Zoovy account in Setup - Add/Remove Users you can automatically
+create an inbox for them at the same time, for example if you add a user named "phil" then their
+email account would be "phil@YOURNAME.zoovy.com" and their email password is displayed in the
+User Manager at Zoovy.com. For each domain an alias is created as well - for example:
+"phil@YOURDOMAIN.com" will be delivered to "phil@YOURNAME.zoovy.com".<br>
+<br>
+<aside class="hint">
+<h6></h6>
+<div>
+
+Although the inbox/login is always user@YOURNAME.zoovy.com you can use any outgoing address
+(e.g. user@YOURDOMAIN.com) you wish.
+
+</div>
+</aside>
+
+</article>
+
+
+
+<article>
+<h2>How do we store all MS Outlook Address Books, Calendars,<br>
+Task Lists, Notes, and Journal on our servers?</h2>
+
+ZoovyMail uses a special plug-in for MS Outlook that was specifically written for FuseMail. 
+This plug-in allows you to store not only mail folders but also all other MS Outlook 
+groupware folders. (Address Book, Calendar, Task List, Notes, and Journal)
+<br>
+<br>
+<i>Note: this plugin isn't actually available yet, or rather it's only available in beta and
+we aren't recommending our customers use it. However it will be available soon.</i>
+
+</article>
+<article>
+<h2>How do I connect to my ZoovyMail account?</h2>
+
+
+We have 3 methods of connecting to ZoovyMail. They are:<br>
+<br>
+
+# ZoovyMail webmail Interface, this interface supports not only mail but all groupware 
+features such as Address Books, Calendars, Tasks, Notes, and Journals (http://webmail.zoovy.com)<br>
+<br>
+# IMAP with any email client, simply add an IMAP account in your email client using<br>
+          Incoming IMAP server: imap.fusemail.net<br>
+          Outgoing SMTP server: smtp.fusemail.net<br>
+          Username: admin@YOURNAME.zoovy.com<br>
+          Password: [check Setup / Domain Hosting]<br>
+<br>
+# FuseMail Outlook plug-in This plugin supports both mail as well as storage of all of your 
+Outlook groupware folders, such as Address Books, Calendars, Tasks, Notes, and Journal. 
+This plug-in will be available for download within your webmail interface.
+
+</article>
+<article>
+<h2>How can I send mail through Firewalls</h2>
+
+Domains configured to use ZoovyMail include SPF (Sender Permitted Framework) records which 
+prevent domain hijacking by spammers. SPF records dramatically increase the likihood of your email
+being received by it's intended recipient without getting caught up in spam filters or anti-phishing
+software. <br>
+<br>
+Some ISP's such as Cox Cable do not allow their subscribers to send mail through third parties such
+as ZoovyMail. If you use Cox Cable you can specify your outbound SMTP port as "2500" instead of "25" to
+circumvent your ISP's firewall and still be able to send mail.
+
+</article>
+
+<article>
+<h2>Can I be notified when I receive new email?</h2>
+
+If you choose to use the webmail interface located at http://webmail.zoovy.com then you can download
+this handy desktop utility which notifies you whenever new email arrives. This will also notify you
+of appointments or tasks which are overdue.
+
+
+http://www.fusemail.com/features/windows_email_notification_client.html
+
+</article>
+
+
+<article>
+<h2>Does ZoovyMail offer SPF and why are SPF Records Important?</h2>
+
+<aside class="hint">
+<h6></h6>
+<div>
+SPF or Sender Permission Framework is a way of validating which mailservers on the Internet are authorized to send email on behalf of a domain. Wikipedia has a great entry on SPF if you want to learn more.
+
+</div>
+</aside>
+
+
+ZoovyMail will automatically have SPF records configured for any domain which is flagged to use ZoovyMail.  
+
+<aside class="caution">
+<h6></h6>
+<div>
+SPF also means you will only be able to send email from smtp.fusemail.net. If you try to use a different email server, your email may be sent to the trash when it is received by it's recipient.
+
+</div>
+</aside>
+
+
+<br>
+
+Without SPF records it means anybody can send mail as you and mail servers have no way to authenticate the sender is in fact authorized to send the email. In other words anybody can go configure their email client at home to send email from your business - even people looking to send SPAM, or do "Phishing" attacks. 
+
+<br>
+
+<aside class="caution">
+<h6></h6>
+<div>
+Not having SPF records means your email is more likely to be filtered as spam (since a spam filter can't "trust" you. SPAM filters are becoming more aggressive everyday which is why most reputable companies these days have locked down SPF records.
+
+</div>
+</aside>
+
+
+
+One primary reason Zoovy began offering free hosted email 2 years ago was to help our customers work around these problems so they would never be an issue and we could minimize disruption to our customers business (and hopefully reduce our email support).
+
+<br>
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+If you don't have SPF records on all your domains that you send email from - you'll find more and more of your email (to customers) shows up in the trash everyday.  You've probably got a few years before this is a big problem and nobody can read your email... although it's hard to say exactly. 
+
+</div>
+</aside>
+
+
+</article>
+
+
+

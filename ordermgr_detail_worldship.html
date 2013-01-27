@@ -1,0 +1,179 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="ordermgr/detail/worldship">
+<h1>UPS WorldShip</h1>
+<article>
+<h2>IMPORTANT NOTE:</h2>
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+Effective 1/1/06 -- this feature is deprecated.
+No support will be provided on new installations - 
+in addition no feature requests will be implemented.
+Customers who ship via UPS should visit:<br>
+<a target="_top" href="http://webdoc.zoovy.com/ordermgr/index.php?GOTO=detail/ship-ups.php">
+http://webdoc.zoovy.com/ordermgr/index.php?GOTO=detail/ship-ups.php
+</a> for more information on the Native UPS integration inside Zoovy 
+Order Manager.
+<br>
+
+</div>
+</aside>
+
+
+
+<hr>
+<b>DEPRECATED FEATURE:</b><br>
+
+These export functions require setup of your WorldShip Software. Please consult your WorldShip/Libra Software Documentation for specific instructions on setting up your import settings.
+</article>
+<article>
+<h2>About this Feature</h2>
+
+The Zoovy Order Manager makes it easy to import tracking information and export customer shipping data to the UPS "WorldShip" software.
+</article>
+<article>
+<h2>Considerations:</h2>
+
+While the synchronization process is a snap, there is some setup that requires the preparation of your shipping software to accept the exported files. 
+</article>
+<article>
+<h2>Set Up</h2>
+
+To begin, run Order Manager and select an order.  From the file menu, select File -> Export to UPS - one box.  This will produce a file named yourusername_UPS_export.csv.  Save this file wherever you like, but remember where you saved it and make it easy to get to.
+</article>
+<article>
+<h2>Importing into Worldship</h2>
+
+To import into worldship Batch Setup Procedures - just follow these 34 simple steps:<br>
+<li>1. Run UPS Worldship
+<li>2. Go the UPS Online Connect in the menu area
+<li>3. Click on Connection Assistant
+<li>4. Click on Create a new map for Import and hit Next
+<li>5. Change Import Data types to shipment and hit next
+<li>6. Select by file and click browse
+<li>7. Change the file types and to Text files (*.txt, *.csv) and choose the file that was saved from the Order Manager
+<li>8. Choose a data source name (such as ZOOVY)
+<li>9. Select Microsoft Text Driver and hit next
+<li>10. Select a new map and call the map name to ZOOVYI and click next
+<li>11. Hit finished
+<li>12. Hit ok on the ODBC Text Setup
+<li>13. You are now at Edit �ZOOVYI� import map
+<li>14.  Choose the saved file from Order Manger as the ODBC table by dropping down the list of saved files
+<li>15. Change the Worldship fields to Ship To
+<li>16. Select OrderNum and click Define Key
+<li>17. Select OrderNum on left side and CustomerID on right side and hit connect
+<li>18. Repeat step 17 using the field names in first column and connecting to the field names in the right column
+<br>ShipName  -> Company or Name
+<br>Attention  -> Attention
+<br>ShipAddress  -> Street Address
+<br>ShipAddress2  -> Room/Floor/Address2
+<br>ShipCity  -> City
+<br>ShipState ->  State
+<br>ShipZip ->  Postal/ZipCode
+<br>ShipCountry ->  Country
+<li>19. Now change the Worldship Fields to Shipment Information from the drop down menu on the right.
+<li>20. Select ShipMethod on left side and Service Type on right then hit connect
+<li>21. Click on Edit
+<li>22. Next type &quot;UPS Ground&quot; (without the quotation marks) as the 
+  External Field and &quot;Ground&quot; as Worldship Field and hit add 
+  </article>
+<article>
+<h2>UPS Online Tools Users</h2>
+
+  If you are using UPS Online Tools, then the mapping in step 22 - 23 changes 
+  as follows:<br>
+  <br>
+
+<li>UPS Ground to Ground
+<li>UPS 3 Day Select to 3 Day Select
+<li>UPS 2nd Day Air to 2nd Day Air
+<li>UPS 2nd Day Air A.M. to 2nd Day Air AM
+<li>UPS Next Day Air Saver to Next Day Air Saver
+<li>UPS Next Day Air to Next Day Air
+<li>UPS Next Day Air Early A.M. to Next Day Air Early AM
+<li>UPS Standard to Canada to Standard
+<li>UPS Worldwide Express to Worldwidw Express
+<li>UPS Worldwide Express Plus to Worldwide Express Plus
+<li>UPS Worldwide Expedited to Worldwide Expedited
+</article>
+<article>
+<h2>NOTE:</h2>
+
+this is for the UPS options. If you used rule-base rules or other shipping rules then it would be the description name for the rule
+<li>23. Repeat steps 22 using the names in first column as the external field and names of the right column as the Worldship Field and hit the add button
+<br>UPS 3 Day Saver   3 Day Select
+<br>UPS 2 Day Service   2nd Day Air
+<br>UPS Next Day Afternoon Service Next Day Air Saver
+<br>UPS Next Day Service  Next Day Air
+<br>UPS Next Day AM Service  Next Day Air Early AM
+<li>24. Hit okay
+<li>25. Select ShipTrue as the ODBC field and Billing Option as Worldship fields and hit connect
+<li>26. Next hit edit and type Y as external field and Prepaid as the Worldship field. Hit add then OK
+<li>27. Now change the Worldship Fields to Package
+<li>28. Select ShipFalse as the ODBC field and Package Type as Worldship fields and hit connect
+<li>29. Next hit edit and type N as external field and Package as the Worldship field. Hit add then OK
+<li>30. Select ShipWeight as the ODBC field and Weight as Worldship fields and hit connect
+<li>31. Select OrderNum as the ODBC field and Reference1 as Worldship fields and hit connect
+<li>32. The rest of fields in the csv are optional and not required
+<li>33. Click OK
+<li>34. UPS Worldship software might ask you if you want to batch import the fields. If you choose Yes, please follow the import batch procedures
+</article>
+<article>
+<h2>Exporting from Worldship</h2>
+
+To export from WorldShip and into the Zoovy Order Manager set the export file to the following format:
+<li>trackingnumber
+<li>orderid 
+</article>
+<article>
+<h2>Exporting Worldship Tracking into Zoovy</h2>
+
+To export from worldship Setup Procedures just follow these steps:<br>
+<ol>
+<li> Run UPS Worldship
+<li> Go the UPS Online Connect in the menu area
+<li> Click on Connection Assistant
+<li> Click on Create a new map for Export and hit Next - 1 of 5
+<li> Choose Shipment from Export Data Types  and hit next -2 of 5
+<li> Choose by File in -3 of 5- step for the dsn used zexport
+<li> Choose ODBC drivers  Microsoft Text Driver *.txt;*.csv
+<li> In currently selected click Browse go to My Documents then type tracking.csv where it says file name and hit next
+<li> Chose new map 4 of 5 named zoovytracking and hit next
+<li> Hit finish on next screen
+<li> Click on ODBC Text Setup NOTE: Do not change anything
+<li> Click on the Package tab then highlight Tracking Number and hit Add button
+<li> Highlight the Reference1 and hit Add button
+<li> Check the radio button which "Overwrite" and make sure it is not set to "Append to Existing File" 
+<li> Then hit okay
+<li> It will then ask if you want to Batch Export now with ZoovyTracking? If you run your end of day hit yes if not hit no
+</ol>
+
+<aside class="caution">
+<h6></h6>
+<div>
+ 
+NOTE: Be sure you uncheck the append to file checkbox in the instructions below or all your customers will receive emails each time you import tracking numbers. 
+
+</div>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Invoices and Tracking Numbers</h2>
+
+Order Manager exports invoices into Worldship.  You can also import UPS tracking numbers into Order Manager.  For step by step procedures on these features, visit the Order Management Shipping section.
+</article>
+
+ 
+
+
+
+
+
+
+

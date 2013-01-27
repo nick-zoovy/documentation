@@ -1,0 +1,53 @@
+<meta type="filename" id="webmail/detail/dns">
+<h1>Webmail Server Configuration Info</h1>
+<article>
+<h2>Setup</h2>
+
+Please ensure the nameservers for your domain to point to:
+<br>
+Primary: ns.zoovy.com<br>
+Secondary: ns2.zoovy.com<br>
+<br>
+<aside class="hint">
+<h6></h6>
+<div>If your Domain was registered through Zoovy then your nameservers are already
+configured properly.
+</div>
+</aside>
+
+
+Once you have done this then you can configure your mail client to access:
+webmail.yourdomain.com<br>
+<br>
+Your email client should be configured as follows:<br>
+<li> Username: admin@yoursitename.zoovy.com 
+<li> POP Server: pop.fusemail.net
+<li> IMAP Server: imap.fusemail.net
+<li> SMTP Server: smtp.fusemail.net
+<br>
+<br>
+Zoovy will configure SPF (Sender Permitted Framework) records for both the
+Zoovy mail servers, and the ZoovyMail service (hosted by FuseMail). This will inform the rest of the 
+Internet that only servers authorized by Zoovy are allowed to send mail from your
+domain. This protects you and your customers from both rogue viruses and spammers
+who could otherwise hijack your domain.  You must send email from your domain out through smtp.fusemail.net.<br>
+<br>
+
+</article>
+<article>
+<h2>Special Circumstances</h2>
+
+
+Certain Internet Service Provider such as Cox Cable, or Netscape
+Internet restrict the ability to send mail to only their mail servers.
+This may be a problem if you notice that when sending email, the mail
+program hangs and eventually produces an error about a server timeout.
+Most of the time this can be easily circumvented by using port 2500 of
+smtp.fusemail.net for outbound SMTP instead of port 25 (the default).
+In the place where you configure your outbound mailserver SMTP settings to
+use smtp.fusemail.net, look for the "25" and change it to be "2500".<br>
+<br>
+</article>
+
+
+

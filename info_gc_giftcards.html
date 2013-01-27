@@ -1,0 +1,141 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info_gc/giftcards">
+<h1>Gift Card Manager</h1>
+
+<article>
+<h2>Gift Cards Overview</h2>
+
+
+
+
+
+ 
+<aside class="caution">
+<h6></h6>
+<div>You must have the CRM bundle enabled to use Gift Card.
+</div>
+</aside>
+
+
+Gift card products can be created under Utilities > GiftCard Manager > Products.<br>
+You must first supply a SKU and a gift card amount to apply to the product. Then, you can choose whether to select the "Allow buyer to specify electronic recipient" checkbox. This option will automatically email a giftcard notice to the recipient and also create a customer account for them. The gift card will appear in the recipient's new customer account.<br>
+You can also set up the card so that a personal note from the giver will be appended to the gift card email notification. Do this by checking the "Allow buyer to put note on card" checkbox.<br>
+If you want to create a gift card manually for a customer without creating a gift card product, you can do this under Utilities > GiftCard Manager > Products. (see "Click by Click: How to create a gift card" below)<br>
+<section>
+<h3>Using the Card:</h3>
+The customer can either copy and paste the gift card code from the email into the Coupon / Gift Card Code field in the Cart or log into their account and click on the gift card to add it to the cart automatically.<br>
+<aside class="hint">
+<h6></h6>
+<div> Unlike coupons, Promotional or Cash Equivalent gift cards can hold a balance over a time (until the expiration date is reached). 
+</div>
+</aside>
+
+
+
+<aside class="cbc">
+<h6>How to create a gift card</h6>
+<div>
+<li> Go to Utilities > GiftCard Manager 
+<li> Click on the "Create Card" tab at the top of the screen
+<li> Enter the customer's email address, optional expiration date, any notes that are appropriate, select the type of gift card (Cash Equivalent, Promotional, or Exclusive), optionally email the recipient with the code and the balance of the Gift Card.
+<li> Save.
+
+</div>
+</aside>
+
+<aside class="hint">
+<h6></h6>
+<div> The note field will be displayed in the email to the gift card recipient. (This is the %ADDITIONAL_TEXT% field in the AGIFT_NEW and AGIFT_RTRY emails).
+</div>
+</aside>
+
+<br>
+
+<aside class="caution">
+<h6></h6>
+<div>3rd party giftcards are not compatible with the Zoovy platform. We use a proprietary checksum on our cards that allow us to determine if the card number is valid / the correct length.  This is because we use the same field for both coupons and giftcards. 
+</div>
+</aside>
+
+
+
+<section>
+<h3>Transaction Log</h3>
+The Transaction Log (Utilities > Gift Cards > Show All) allows for you to see on which orders the gift card was used. You can also edit gift cards that have already been created.
+</section>
+<aside class="caution">
+<h6></h6>
+<div>You must have a Coupon Code / Gift Certificate Box on your shopping cart page in order to accept Gift Certificates.
+</div>
+</aside>
+
+
+The gift-cards we create have a unique security/checksum code - so "random" numbers don't work. In addition certain letters/numbers can't be used together -- for example the system treats the lowercase L "l" and number one "1" the same (because in a times roman font they appear to be identical). We do the same with zero "0" and the letter O. There are a few other substitutions manipulations that occur as well to assist dyslexic people.
+<br>
+It is a numerical formula so you can't import numbers. If you have gift cards from a previous e-commerce system or retail store that you would like to use in Zoovy, we recommend you maintain a spreadsheet and say on your web store "if you bought a giftcard prior to mm/dd/yyyy please contact us to have it exchanged for a new card."
+<br>
+You could also create new giftcards (if you know the email address) and associate them with the account via Utilities > Customer Manager.
+</article>
+
+
+
+
+<article>
+<h2>Giftcard Supplier</h2>
+
+Giftcard products can be created in the giftcard manager. These products are automatically configured to be fulfilled by a built in supplier "GIFTCARD". The "GIFTCARD" supplier will automatically create+issue giftcards when orders are flagged as paid. Giftcards will always be issued for the price of product. Giftcards created giftcard products are Cash Equivalent. 
+
+</article>
+<article>
+<h2>Creating Gift Cards in Bulk</h2>
+Creating bulk giftcards are generally used for company promotions, when an email is not going to be associated with the gift card.
+
+If you select more than quantity 1, no customer or email will be assigned. You may create up to 9,999 giftcards at one time. A list of pre-authorized card codes will be generated, these can then be merged into a direct mail or other personalized electronic campaign.  
+
+<aside class="caution">
+<h6></h6>
+<div> Be sure to speak with your accountant regarding gift card liabilities and how those will affect your companies balance sheet (especially non-expiring cash-equivalent gift cards).
+
+</div>
+</aside>
+ 
+</article>
+<article>
+<h2>Gift Card Series & Reports</h2>
+For merchants who issue series of giftcards for trade shows or daily deal sites such as Groupon we have added new functionality:
+<br>
+When batch creating giftcards there is now a "Series Identifier" which is a 16 character field you can use to group cards for a particular event.  Re-creating cards with the same series name will result in the same card #'s being returned (making it easy to retrieve the list of actual card #'s in a series) 
+<br>
+There is also a new tab "Card Series" which summarizes a series and can display all cards in a series (or all cards which aren't in a series).  This will also break down the remaining balance or value for the series, the number of transactions and the series created date.  For any cards that were not created in a series will be grouped under the "Series Not Set".
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

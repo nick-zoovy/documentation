@@ -1,0 +1,164 @@
+<meta type="filename" id="market/guide/channelstate">
+<h1>Understanding Channel State</h1>
+<article>
+<h2>Overview</h2>
+
+Each channel is assigned a unique number, and each one contains a unique state.
+With each dispatch request the channel id, the data, along with a channel state is passed.
+(Actually to conserve bandwidth, the data is only passed in certain states when appropriate).
+In certain cases you will need to update the channel state, for example when a new listing is receive it must be set from 
+"Pending (P)" to either Active (A), Existing (X), or Error (E).
+<br>
+This document is targeted at both internal zoovy, and 3rd party client developers who are launching channels, as well as marketplaces who are processing channels.
+</article>
+<article>
+<h2>[P</h2> Pending]
+
+[P] Pending simply means a channel is waiting for dispatch, or more importantly confirmation of a dispatch so it can be moved to Active or Existing. 
+When you receive a channel state of P you will find that it also contains the data from the channel.<br>
+<br>
+
+</article>
+<article>
+<h2>[A</h2> Active and [X] Existing]
+
+
+The Marketplace may choose to set the channel to either Active (A) or Existing (X) once it receives the dispatch. 
+The only difference between Active and Existing is simply that Active channels will eventually expire (45 days), 
+and Existing channels will stick around indefinitely. This is merely a reporting requirement. <br>
+<br>
+[A] Active - means a listing has been created, or one will be created shortly. 
+Active channels can be set by the merchant to Revoke, or Removed. They can be cloned - but not edited (since they are live).<br>
+If the listing can't be removed, then it should be treated as a revoke.
+<br>
+[X] Existing - is used for listings which do not expire. 
+Unlike active channels - existing channels can be edited and the changes will take effect and contents will be transmitted with the dispatch notification.
+Can be set by the merchant to Removed. Can be cloned. 
+Every 30 or so days the Zoovy system will poll the marketplace to make sure the existing listing is still accurate.<br>
+<br>
+<br>
+If an error occurs during a channels operation, the marketplace will set the channel state to Error (E). 
+Channels that are set to Error should also be accompanied with a meaningful status message. 
+Merchants may fix an error channel - Pending (P) or simply Delete (D). 
+For this reason if an error is non-fatal, then we recommend to the marketplace to leave the listing Active and simply updating the status. 
+Most merchants associate Error as a fatal error.<br>
+<br>
+NOTE TO MERCHANT CLIENT DEVELOPERS: <br>
+Although a channel can be updated at any time, once it is Active it cannot be edited, since it is effectively "in process" or "already processed".
+
+</article>
+<article>
+<h2>[E</h2> Error]
+
+[E] Error - means that something went wrong and a channel could not move from Pending or Scheduled to 
+Active or Existing, Deleted. This state can only be set by a marketplace or the Zoovy system (if a 
+dispatch could not be performed and exceeded the maximum number of attempts).<br>
+
+</article>
+<article>
+<h2>[D</h2> Deleted]
+
+[D] Deleted - duh. This will be removed from the system in a little bit. 
+
+</article>
+<article>
+<h2>[R</h2> Revoke, [M] Remove]
+
+Remove (M) means cancel the listing, take it down.
+Revoke (R) is really just a fancy word for "Cancel", it means finish what you're doing, but don't do anything else. 
+For example if a listing will automatically relist, then Revoking (R) is a request not to relist - whereas Remove (M) is a request to cancel immediately.
+<br>
+If a revoke or a remove cannot be performed then you can optionally set the state to Zombie (Z) until the channel finishes, 
+otherwise the channel will be set to Completed (C). Zombie channels also allow the customer to try either 
+Revoke (R) or Remove (M) since the user may correct the error that caused the listing to become a Zombie and then attempt to reprocess it. 
+
+</article>
+<article>
+<h2>[Z</h2> Zombie]
+
+[Z] Zombie - means that a remove or revoke request was placed, 
+and that it could not be processed because of an error (e.g. can't cancel the listing in the last 24 hours of bidding). 
+This state can only be set by a Marketplace, or Zoovy (if a dispatch to revoke or remove failed). 
+
+</article>
+<article>
+<h2>[C</h2> Completed, Success [1], Not Successful [0]]
+
+[C] Completed is a generic status for the customer meaning the item is over, you can probably delete it, or relist it, or really do whatever you want with it.
+[1] Success - means that a channel finished with External Items. Can be reset to pending, or possibly even re-scheduled. Can be set by merchant to Deleted. <br>
+[0] Unsuccessful - means that a channel finished and no External Items were created, can be reset to pending or possibly even rescheduled. Can be set by merchant to Deleted. <br>
+<br>
+If a listing ends and creates External Items it should finish as Success (1).
+If no winning bidders were found then it should be set to Unsuccessful (0).  
+NOTE: Currently both success and non-success are resolved to (C) Completed.
+<br>
+Completed Channels can only be cloned to new channel numbers, and therefore brought back through the channel definition creation tool. 
+Channels will be set to completed when fields have changed and provide a mechanism that allows customers to gracefully migrate to the new form. <br>
+<br>
+[C] Completed - means that a channel finished and that External Items are not appropriate for the type of channel, so it's just done. 
+Can be set by merchant to Deleted. <br>
+<br>
+
+</article>
+<article>
+<h2>[S</h2> Scheduled, [H] Hold]
+
+MARKETPLACE DEVELOPERS: you will never receive dispatch records for [S] Scheduled, or [H] Hold channels. 
+These status are reserved for use BEFORE the record reaches [P] Pending, or while a channel is being edited.
+<br>
+[S] Scheduled - means that a channel is waiting before it becomes pending. 
+Although some channels may never move to pending because they will effectively "clone" themselves by creating new channels 
+that actually launch. That way scheduled channels remain scheduled so they can clone again later (think of them as breeder channels). 
+Scheduled channels can be set to Pending, Hold, or Revoke, Remove by the merchant. 
+<br>
+NOTE TO CLIENT DEVELOPERS:<br>
+If setting a scheduled channel to remove or revoke then you should also set any channels with the scheduled channels parent id to remove and revoke also.<br>
+<br>
+Special note: Off-line clients will actually have to connect to the Internet to request a channel be put on hold for editing. 
+Basically when you right click to edit a channel PM will perform quick "put this channel on hold, stop any dispatching" - and 
+will receive a success/fail from the server so it knows how to instruct the user. This is to avoid letting the user do 
+something nasty like editing an active channel. <br>
+<br>
+Channels that are scheduled will be able to be edited. 
+This is obviously a sticky subject since nothing is stopping a channel from automatically changing to Pending while it is being edited. 
+For this reason, in order to edit a channel it must be set to Hold "H" before it can be edited. Only scheduled and pending channels 
+can be placed on hold (but Pending will usually move right to active so it's really on scheduled channels). <br>
+
+[H] Hold - means the channel is currently being edited, or waiting for a approval to launch.  
+All dispatches have been suspended; all schedules will be ignored and processed after the channel 
+is no longer in hold. A notification will be sent to the customer each time a scheduled channel 
+cannot be listed because it is on hold. Can be set by Merchant to Pending, or Scheduled (depending on which one it came from).<br>
+<br>
+
+</article>
+<article>
+<h2>FAQ</h2>
+
+
+<b>How does channel scheduler interact with channel states?</b><br>
+It doesn't specifically work with the states, Scheduler IS a state. 
+Scheduler will has two operational modes - one time launch, repeating launch. 
+A one time launch will simply move the channel from Scheduled to pending. 
+A repeating launch will cause a new channel number to be issued as pending, 
+and the original channel (called the parent channel) will remain as scheduled. <br>
+<br>
+
+<b>How should import channels works?</b><br>
+Import channels refers to a generic channel which is used to pick up existing listings which may already be running on a marketplace and map that to a product.
+Import channels will move from Pending to Active to Completed. 
+An error will be reported if the username and/or password are incorrect, or any portion of the batch does not appear to be valid before processing then it can be set to error. Remember the state talks about the channel, not the listing status. For the listing status, visit the marketplace or read the status messages. <br>
+<br>
+<b>What's the dilly-o about success and unsuccessful?<br></b>
+This is really something built in for one of a kind sellers, 
+basically they can quickly and easily relist auctions or other types of listing which did not complete successfully. 
+I envision eventually having a right click behavior in product manager which is "create a new channel for product xxx" and 
+then it displays a list of possible channels - not just the one it origined from. So it didn't sell on eBay? Why not try another marketplace?<br>
+NOTE: we now implement a quantity sold field which tracks the number of external items completed, and most clients use that data to determine 
+when they should relist.
+<br>
+</article>
+
+
+ 
+
+

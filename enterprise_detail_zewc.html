@@ -1,0 +1,168 @@
+<meta type="filename" id="enterprise/detail/zewc">
+<h1>Zoovy Wireless Client</h1>
+<article>
+<h2>Overview</h2>
+
+
+</article>
+<article>
+<h2>Installation</h2>
+
+<section>
+<h3>AppForge Booster</h3>
+
+Before installing the ZEWC client you must have Appforge Booster+ installed on your Symbol 1846.
+Booster is a runtime environment which allows the ZEWC client to interface with the Symbol scanner.
+You will need to purchase a copy of the Booster software $25.00, or download a 30 day evaluation copy.<br>
+The version needed is the AppForge Booster Plus for the Symbol SPT 1800 (Version 3.5, Build 633 [or better])
+Make sure you buy a license for the Symbol SPT1800 version, not just the PalmOS version.
+<br>
+Once you have installed Booster on your PC, then HotSync your palm pilot and the Booster application should be loaded.
+The first time Booster is HotSynced, it can take up to 5 minute to transfer all the necessary libraries.
+Once Booster been been successfully installed on the Palm Pilot you should verify that it is registered properly with the
+appropriate registration code that you were given by AppForge. You can verify this by going to the Booster application on the
+Palm.
+<br>
+After Booster has been installed - follow the steps below to install the ZEWC software.
+<br>
+</article>
+<section>
+<h3>Installing the PRC file</h3>
+
+<li> Download the newest version of the ZEWC-Install.prc file from the downloads area on your server.
+<li> Go to Start / Programs / Symbol SPT Desktop and run the installation tool.
+<li> Use the installation tool to locate and add the file to the Palm.
+<li> Press the Hotsync button on your Palm to download the software.
+<br>
+
+</article>
+<section>
+<h3>Config File</h3>
+
+
+The configuration for ZEWC is done via the memo feature of the PalmOS.
+PalmOS automatically names a file by whatever appears in the first line.
+ZEWC looks for a file which is named "zewc" (without the quotes).<br>
+<br>
+The format for values are key=value - with each key and value pair on their own line.
+The following are a list of properties which can be configured in the memo file.
+<table>
+	<tr>
+		<td><b>KEY</b></td>
+		<td><b>VALUE</b></td>
+		<td><b>NOTES:</b></td>
+	</tr>
+	<tr>
+		<td>ip</td>
+		<td>x.x.x.x</td>
+		<td>
+			Notes: can be either a DNS name, or an ip address of the Zoovy server.
+			Using an IP address is preferable to increase speed and reduce network traffic and/or possible errors.
+		</td>
+	</tr>
+	<tr>
+		<td>merchant</td>
+		<td>username</td>
+		<td>the zoovy username of the store this client will connect to.</td>
+	</tr>
+	<tr>
+			<td>offline</td>
+			<td></td>
+			<td>sets the scanner to "offline" mode where no wireless network is avaialble, but you still want to scan and store bar codes.</td>
+	</tr>
+	<tr>
+		<td>eof</td>
+		<td></td>
+		<td>signifies the end of file, any values below this line will be ignored. (it just lets us know that got to the end of the file)</td>
+	</tr>
+</table>
+
+</article>
+<section>
+<h3>Example zewc config file</h3>
+
+<aside class="html">
+<h6></h6>
+<code>
+
+zewc
+
+ip=192.168.1.100
+merchant=username
+eof=
+
+</code>
+</aside>
+
+
+
+<aside class="html">
+<h6></h6>
+<code>
+
+To enable offline mode for the wireless client, add the following line to the config file:
+
+zewc
+
+ip=192.168.1.100
+merchant=username
+offline=
+eof=
+
+
+The offline statement must be entered before "eof"
+
+</code>
+</aside>
+
+
+
+
+</article>
+</article>
+<article>
+<h2>Usage</h2>
+
+Along the bottom of the SPT1846 you will see four grey buttons, the outer left and right buttons toggle between modes.
+By default the client will assume that it is in an environment with an "always on" wireless network.
+A list of modes is given below.
+<section>
+<h3>Store</h3>
+
+Store simply lets you scan an item, and a location and transmits that data to the server.
+
+</article>
+<section>
+<h3>Multi-Store</h3>
+
+Multi-store lets you scan one or more items, then a location.
+The toggle buttons along the top of the scanner
+can be used to move between the fields,
+pressing the downward toggle button twice will cause the batch to be submitted.
+
+</article>
+<section>
+<h3>Locate</h3>
+
+Locate lets you scan an invoice or packing slip,
+and query the server, and display results where the items on the invoice are.
+
+</article>
+<section>
+<h3>Multi-Locate</h3>
+
+Multi-locate lets you scan one or more invoices and/or packing slips and then
+retrieve a combined pick list for each of the items.
+
+</article>
+<section>
+<h3>Verify</h3>
+
+The verify mode is used to simply verify that a SKU is in the correct position.
+
+
+</article>
+</article>
+
+
+

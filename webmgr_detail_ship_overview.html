@@ -1,0 +1,250 @@
+<meta type="filename" id="webmgr/detail/ship_overview">
+<h1>Website / Setup / Shipping Overview</h1>
+<article>
+<h2>Summary</h2>
+
+Zoovy offers a variety of shipping solutions so that we can meet the needs of all our merchants.  Our integration with FedEx, UPS, and USPS provides realtime quotes to your customers.  We also have several Zoovy shipping methods, such as weight based and price based.  Most of our shipping options include the ability for you to add custom rules based on Country, State, or whether or not the customer was an auction winner.  Note of these solutions meet your needs?  We also offer custom shipping API's for those customers with specialized needs.
+<table cellpadding=2 width=450><tr><td><img src="http://www.zoovy.com/biz/setup/shipping/images/fedex.gif"></td><td><img src="http://www.zoovy.com/biz/setup/shipping/images/usps.gif"></td><td><img src="http://www.zoovy.com/biz/setup/shipping/images/ups_logo.gif"></td></tr></table>
+<br>
+<aside class="hint">
+<h6></h6>
+<div>When you choose "domestic shipping", be aware that includes all 50 states including Hawaii and Alaska.  In order to charge additional shipping by location for these states, you need to setup shipping rules <a class="linkdoc" href="#?doc=50339">Doc 50339</a> to do so.  At the very least, you will want to put a note in your checkout messages indicating shipping to these locations will be an additional charge. 
+</div>
+</aside>
+
+</article>
+
+
+
+<article>
+<h2>Simple Shipping</h2>
+
+Simple Shipping is basically where you have a price per item charge, 
+one price for the first item, and then an incremental price for every 
+other item. For domestic orders you can specify up to three different 
+rates (shipping methods), each with a different description. You can 
+also customize simple shipping using Rules based shipping which is 
+discussed later. Personally simple shipping is my favorite, it is 
+so easy to explain to the customer, $x.xx for the first item, and 
+then $x.xx for every item after that. If you want to configure 
+flat rate shipping then you should put the flat rate price in for 
+the first item, and then leave the price for each additional item blank.
+<br>
+You can configure flat rate shipping by using simply shipping and 
+configuring a price for the first item, and then leaving the second item price blank.
+</article>
+
+
+
+
+
+
+
+
+
+<article>
+<h2>Ship by Weight</h2>
+ 
+Simple Weight Calculator allows you to specify a simple handling rate based on the total weight of a particular package. During checkout the least value, which is greater than the total cart weight will match. For example if you have three rules: 10oz is $3.00, 20 oz is $5.00 and 30 oz is $6.00. If the total calculated weight of the cart was 15 oz. it would automatically match the 20oz price and use that. If the cart weighs more than the greatest amount, and no other shipping methods are available then an error (Shipping to be Determined $0.00) will be displayed.
+If you plan on doing shipping based on Unit costs rather than ounces you should enter your shipping tables into the weight based shipping tool but instead of putting in ounces use units. For example if you are a bookseller and you sell three book sizes: small, large and oversized then you might assign each small book a unit of 1 (put 1 in the oz field for the product, regardless of actual weight), a large book with a unit weight of 2, and a oversized with a unit weight of 3. In many cases policies like this can be very accurate and MUCH easier to manage than being forced to weigh each item individually.
+It's also worth mentioning that the weight based shipping tool does support decimal weights so you can use fractions of an ounce if you really need to. It is also worth mentioning that fractions are ALWAYS rounded up to the nearest ounce in all shipping methods except for weight based shipping in which case the actual weight is used without rounding. 
+<br>
+<br>
+Weight based shipping allows a merchant to put in custom business logic for weight based shipping. 
+With weight based shipping it is important to specify pricing steps for each weight. 
+For example $4.00 for up to 1lb., $6.00 for up to 2lb., etc. If the total weight of the 
+order exceeds the limits put into the weight table then Zoovy will show "Actual shipping 
+price to be determined $0.00" to the customer during the checkout. Although many merchants 
+prefer to put in a "free shipping" weight which is effectively saying that any order over a 
+certain amount receives free shipping, to do this simply put in a step that goes up to a few 
+billion ounces with a price of $0.00.
+
+
+</article>
+
+
+
+
+
+
+
+<article>
+<h2>Local Delivery Setup</h2>
+
+Local delivery can be configured for specific zip codes. Local delivery can also optionally specify a price for delivery.
+</article>
+
+<article>
+<h2>External Shipping Remote API</h2>
+
+If you want to program your own interface for calculating shipping, then External Shipping is for you! External shipping works by contacting a CGI program that you make with a list of products, wieghts and prices for the items in the user's shopping cart. Your CGI program then lists the available shipping methods for that shopping cart.
+<br>You can configure External Shipping by going to the Shipping link under the setup tab. There are two methods you can call our system, either in an XML-like mode which will post a single XML string to your CGI, or the much easier flat mode which will send each of the parameters as a separate entry as a CGI variable. Keep in mind that these will be presented as options for shipping in addition to any other shipping methods you have created in the Zoovy system.
+
+
+</article>
+
+
+
+<article>
+<h2>Fixed Price Shipping Instructions:</h2>
+
+Fixed Shipping allows you to set an individual shipping price per item purchased. Fixed Shipping differs from all other shipping methods on the system, because it allows a unique shipping price for each item.
+<aside class="hint">
+<h6></h6>
+<div>If you have configured domestic shipping 1st item & 2nd item. You then have a customer that adds two differnt products to the cart. Zoovy will use the 1st item and 2nd item shipping price for the product that has the most expensive shipping prices. 
+</div>
+</aside>
+
+</article>
+<article>
+<h2></h2>
+
+Fixed Shipping is most commonly used with Marketplaces that generate External Items (e.g. Auctions), these Marketplaces often request that Merchants provide a Fixed Cost shipping estimate. Fixed Shipping presents a unique problem, which is: "What happens when more than one item is purchased together?".
+</article>
+<article>
+<h2>Configuration Overview</h2>
+
+Zoovy differentiates Fixed Shipping quotes into four classifications:
+<li> Single External Item - only quoted when a single external item appears in the customers shopping cart.
+<li> Multi External Items - only quoted when two or more external items appear in the customer shopping cart, with no additional store items. This also applies for single External Items with quantities greater than 1 (e.g.: Dutch Auctions)
+<li> Any Combination - only quoted when any combination of Store and External Items appear in a cart. For this method to be quoted at least one store item, and at least one External Item must be purchased.
+<li> Store Only - Only quoted if all items in the cart are store items.
+</article>
+<article>
+<h2>Disable Other Methods</h2>
+
+Fixed Shipping Quotes are processed before ANY other shipping methods, and have the ability to disable other methods from being quoted. This allows the store to give one set of shipping prices to Marketplace customers, and another to store customers. By disabling any other shipping methods for a particular Fixed Shipping type, you can be assured that the customer will be given no other shipping estimates.
+</article>
+<article>
+<h2>Marketplace Penalty Mode</h2>
+
+For convenience Fixed Shipping has two primary behaviors. The first behavior is to act like a separate type of shipping quote, this means that the Fixed Shipping Name will be presented to the customer as an option during checkout. The second behavior allows you to simply append fixed shipping costs to all other calculated methods, thereby providing a simple mechanism for adding additional fees to default shipping quotes (e.g.: for each eBay item charge an extra $2.00). Please note the second behavior (Append to other shipping costs) may not be compatible with all marketplaces.
+</article>
+<article>
+<h2>Known Bugs</h2>
+
+In addition there is one other issue when implementing fixed price shipping - 
+even if you did not quote a fixed shipping cost in a channel, if you set a fixed shipping cost for a product 
+which is associated with a channel then that price will be used. 
+However if there is a shipping cost specified in the Channel that the External Item origined from, 
+then the Fixed shipping cost from the Channel will be used. Please consider this when planning a rollout of this feature.
+</article>
+
+
+
+<article>
+<h2>Price Based Shipping</h2>
+Price based shipping allows you to determine the shipping price based on the total of the order.
+
+</article>
+
+<article>
+<h2>Customer Pickup</h2>
+
+There isn't a lot to say here, this option was included by the development team in the hopes that pizza shops and 
+sandwich places across the USA would migrate to Zoovy. If you use these make sure you use ZIP-SPANs to configure a 
+specific geographic area. There is nothing worse than having a person choose customer pickup (because it is usually 
+priced 0.00) when they are in Montana and you are in New York. 
+</article>
+
+
+
+
+
+ 
+<article>
+<h2>USPS Set Up</h2>
+
+In USPS Setup select the methods of United States Postal Service shipping that are available to customers. 
+During checkout the price will be derived from USPS based on the total weight of the order, and making the 
+assumption that it will fit into a standard box size. A company address MUST be configured for this method 
+to accurately calculate shipping from your origin to the customers destination address. The handling fee 
+(if any) will be added to the USPS quoted rates, after insurance has been applied. Insurance may be either 
+a dollar amount, or a percentage of the sale - for example, %10.
+
+
+
+In the event USPS is down,
+and the weight is less than or equal to 5lbs it will default to a local table rather than failing out.
+The logic here is that most USPS quotes are well under 5lbs. This also makes USPS Priority compatible
+with quote shipping in cart under most circumstances, which is GREAT!
+
+In the event you only have priority enabled, and the weight is less than or
+equal to 5lbs the system will use the local table which will result in considerably faster checkouts for
+customers since it doesn't need to go to USPS for a rate, over 5lbs the rate goes variable based on Zip code.
+
+<br>
+<b>Insurance</b><br>
+Insurance can be automatically added to USPS orders by configuring it in Setup | Shipping Configuration | USPS Settings
+
+</article>
+
+<article>
+<h2>Handling</h2>
+
+Handling is configured under the "Handling and Insurance" section. You are given three options for how handling fees will be handled in the orders:<br>
+<li> Not Used/Disabled - self-explanitory.
+<li> Included as part of the shipping total - this will add a separate handling charge to the shipping total that you have set for the product(s) and display it as part of the "Shipping and Handling" total on the invoice.
+<li> Displays as it's own line item under shipping - this will keep the display for shipping separate for handling on the invoice.  You will see a separate line item displayed solely for "Handling" under the value for "Shipping".<br><br>
+
+Next you are given three methods of determining the handling charge:Flat Handling Per Item, Per Product, or Weight Based. Each of these have subsettings that you will need to configure to correctly set the handling for your orders.<br>
+Finally you can enable and configure special advanced handling rules, much as you would for shipping settings above.
+</article>
+
+
+
+
+
+
+
+
+
+<article>
+<h2>Shipping Errors</h2>
+
+The message "Shipping to be Determined" means that no possible shipping methods could be calculated. 
+First verify you have one or more shipping methods enabled by going to Setup | Shipping. 
+
+If you have shipping methods enabled, then verify that the order contents did not eliminate 
+shipping methods because either they were too heavy, too light to compute. Also verify that 
+there are no rules which may be interfering with the shipping computation.
+<br>
+The message "CHECKOUT LOGIC ERROR: an unspecified fatal error has occurred within checkout" means that you have added yourself to the Block List.  In order to remedy this, go to Setup | Shipping | Block Lists.  You should then be able to remove any IP/Email/Zip Codes from the list that you do NOT want blocked. 
+</article>
+<article>
+<h2></h2>
+
+
+
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,149 @@
+<meta type="filename" id="info/3rdparty">
+<h1>Integrating 3rd party non-supported applications</h1>
+
+<article>
+<h2>Overview</h2>
+This document is intended to provide an overview of the common ways people integrate non-supported applications with the Zoovy system.  Integrating with third party software applications is possible, though all support for non-supported applications will be billable.
+
+<br>
+For a full list of supported/non-supported third party software/applications and our polices, please visit: <a class="linkdoc" href="#?doc=50850">Doc 50850</a>
+
+<aside class="caution">
+<h6></h6>
+<div>
+<b> CAUTION - using Google AdSense </b><br>
+Using Google Ads will incur additional fees by Zoovy or get you suspended. Do not use Google Ads with your Zoovy sites. Google Ads will cause the pages refresh twice on most browsers, thus the tracking isn't accurate and the cart/checkout won't work right. In addition, the servers have to work twice as hard, requiring additional resources.
+
+</div>
+</aside>
+
+
+
+</article>
+
+
+<article>
+<h2>3rd Party JavaScript</h2>
+
+Often times, customers want to add third party code, such as tracking or affiliate code, to the last page of checkout.  Though this is allowed, any complications that arise during the checkout process that result from adding third party code will be billable to troubleshoot (we won't troubleshoot the third party code, we'll most likely just remove it).  It is urged that you use caution and good judgment when adding this code.  It is also recommended that you apply as few of these as possible.  The more JavaScript you add, the more likely you are to break checkout.  You should go through checkout before AND after making any changes to checkout to observe what changes have taken effect.
+
+<br>
+
+If you are having an issue with your cart/checkout, you should remove all third party code prior to contacting our support team. This will help expedite your request.  Leave the javascript off until the issue is resolved.  If removal of the javascript solves the problem and the code is from a BPP partner, please contact Zoovy support.
+
+<br>
+
+The assumption that any company we partner with ensures javascript code compatibility would be false. DealTime or NexTag are marketplace partners of ours, but not technology partners.   A few safe code examples would be Google Analytics or BuySafe. Even if you use Google Analytics or BuySafe we can not guarantee its functionality. We will troubleshoot the issue and even work with the companies to make software functional. By using a 3rd Party JavaScript where the file is hosted on an external server can cause problems for you. If we change some code then it may effect the data that is transmitted, or if the content of the JavaScript changes on that server it could impair the website. If there is a potential partner out there that you would like to see us integrate with, please follow the process detailed on the BPP partner page:  <a class="linkdoc" href="#?doc=50850">Doc 50850</a>
+
+<br>
+In most cases, when third party javascript needs to be added it should be done in one of two places.  If the script needs to be present on every page, the Theme is the best location for it.  If the code only needs to be present during checkout (like on order completion) then the 'checkout messages' is the place for it.
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+<b>CAUTION - Custom JavaScript</b>
+<br />The Support Team isn't trained on the installation or troubleshooting of JavaScript and will be unable to assist you with this.
+<br /><br />If you need assistance with inputting 3rd Party JavaScript, a member of our graphics/development team will be required to assist you.  The time of these employees will be billable by the hour with a one hour minimum (current hourly rate of <a href="http://www.proshop.zoovy.com">Zoovy ProShop</a>). You will be notified of the amount prior to installing the JavaScript.
+
+</div>
+</aside>
+
+
+<section>
+<h3>Adding third party code directly into your custom theme</h3>
+If you have a custom Theme, you can add the third party code yourself through the custom file edit screen (setup - site themes [under customize templates]).  Always make local backups of the original files before making changes. Referencing a non-secure source in your wrapper will result in an SSL error during checkout, so be sure to either use OUTPUTSKIP to load the code only on secure pages or, if necessary, reference a secure source for the code.<br>
+More about OUTPUTSKIP and TOXML: <a class="linkdoc" href="#?doc=50158">Doc 50158</a>
+
+</section>
+
+<section>
+<h3>Adding third party code using Checkout Messages</h3>
+
+<aside class="caution">
+<h6></h6>
+<div>
+Adding Automatic Popups to the Last Page of Checkout - an AWFUL idea<br>
+IE 6.0+ has a built in popup blocker.  When popup code is present, IE stops loading the page and prompts the user whether they wish to allow popups. It then reloads the page and applies the filter to allow/disallow popups.  The problem is that the POST from the form has already gone through by the time the page reloads and a message will be displayed telling the customer their cart is empty.  This is a security feature of IE, not a bug in our cart software.
+
+</div>
+</aside>
+
+
+<aside class="cbc">
+<h6>Adding the third party code to checkout</h6>
+<div>
+<li>Go through the entire checkout process of your store</li>
+<li>Log in to your account at www.zoovy.com</li>
+<li>Click on the setup tab</li>
+<li>Click on 'Checkout Setup' under the store properties header</li>
+<li>Click on the 'Checkout Messages' link at the top of the screen</li>
+<li>Scroll down to the message that appears in the stage of checkout where the code should appear</li>
+<li>Add script and save.</li>
+<li>Go through the entire checkout process of your store again and make sure everything is still working</li>
+
+</div>
+</aside>
+
+
+Why go through checkout before AND after adding the code?  To make sure you know what does/doesn't happen and that the experience is fresh in your mind and so that any recent changes made on our end or by your staff to your checkout settings don't seem like 'bugs' after checking out once the code is added.
+<br>
+
+If the third party code requires the order total or some other variable to be passed in, you can access a limited amount of information from the order itself.  A full list of variables and how to implement them is listed on the checkout messages page at the top.
+
+<aside class="hint">
+<h6></h6>
+<div>
+If you want the code to appear on the last page of checkout for every payment method, use the 'Checkout Invoice Instructions' field instead of pasting it into every payment type success message.  That way you only need to maintain that code in one spot.  This message appears whether payment is successful or not.<br><br>
+In some cases, you may only want the javascript to appear when a successful order goes through (paid).  To do this, put the code the the Payment method success boxes for each payment method that you accept, such as 'credit cart success' message.
+
+</div>
+</aside>
+
+
+</section>
+
+<aside class="caution">
+<h6></h6>
+<div>Using JavaScript with any AJAX wrapper is really bad idea. Please avoid at all cost.
+</div>
+</aside>
+
+
+</article>
+
+<article>
+<h2>FTP Access</h2>
+
+Because Zoovy is a content management solution it is not possible to use FTP in conjunction with software like Frontpage, DreamWeaver or Pagemill. To upload files you must use the Media Library (for images) and/or the Custom File upload facility (for all non-images, such as flash, PDFs and animated banners)
+
+</article>
+
+
+
+<article>
+<h2>Accounting</h2>
+
+<aside class="hint">
+<h6></h6>
+<div>
+The easiest way to do accounting with Zoovy is to utilize the Quickbooks integration. 
+
+</div>
+</aside>
+
+
+If you use another accounting program you can create sales reports in the Manage area of the website and/or by using the Zoovy Order Manager. 
+
+</article>
+
+
+
+
+ 
+
+
+
+
+
+

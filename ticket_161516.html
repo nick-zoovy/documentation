@@ -1,0 +1,30 @@
+<meta type="filename" id="ticket/161516">
+
+<h1>I can't log into Order Manger after updating or installing</h1>
+
+<article>
+<h2>Issue</h2>
+Issue: I uninstalled ZOM, then rebooted. Just installed 7.012 desktop client, but can't login.  Got SYNC ERROR.
+
+ERROR: 0
+4:48:21 PM#Z1000: 
+HINT: Consider searching for 'warehouse manager error 0' at http://webdoc.zoovy.com
+
+</article>
+
+<article>
+<h2>Resolution</h2>
+
+You most likely need to configure the database and account security.  Start the Zoovy Integrated Desktop but do not attempt to log in.
+
+<li> Step 1. Click on Admin > Database Config
+<li> Step 2. Click on the SOHO tab
+<li> Step 3. Input the Admin username and password (Zoovy username and password)
+<li> Step 4. Keep the box checked for FIND AND UPGRADE PRE V6.010 DATABASE (RECOMMENDED)
+<li> Step 5. Click SAVE
+<li> Step 6. Click on Admin > Account Security
+<li> Step 7. Input the Admin username and password (Zoovy username and password)
+<li> Step 8. Click UPDATE
+<li> Step 9. Then try to log in as normal
+
+</article>

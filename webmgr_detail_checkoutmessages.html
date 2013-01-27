@@ -1,0 +1,131 @@
+<meta type="filename" id="webmgr/detail/checkoutmessages">
+<h1>System Messages</h1>
+
+<article>
+<h2>Overview</h2>
+During the checkout process, there are several text messages that appear for your customers. These messages can be customized to more closely related to your customers.
+<aside class="caution">
+<h6></h6>
+<div> System messages were formerly known as "Checkout Messages" before the introduction of Partitions in Zoovy. 
+</div>
+</aside>
+  
+</article>
+
+<article>
+<h2>Customizing the Messages that Appear During Checkout</h2>
+Under Setup > System Messages, the Admin of the account will have access to System Messages.
+<aside class="cbc">
+<h6>Customizing Checkout Messages</h6>
+<div>
+<li>Log in to your account at www.zoovy.com</li>
+<li>Click on the setup tab</li>
+<li>Click on 'Checkout Setup' under the store properties header</li>
+<li>Click on the 'System Messages' link at the top of the screen</li>
+<li>Scroll down to the message you would like to customize</li>
+<li>Change message and save.</li>
+
+
+</div>
+</aside>
+
+System Messages can use SpecL Code to achieve any number of effects. Consult <a class="linkdoc" href="#?doc=50729">Doc 50729</a> for further details.
+</article>
+
+<article>
+<h2>Adding Third Party Codes to Checkout</h2>
+
+The content of this section has been moved:<br>
+<a class="linkdoc" href="#?doc=50711">Doc 50711</a>
+
+</article>
+
+<article>
+<h2>Custom Messaging</h2>
+You can create a system message with a custom identifier (id) - however if you create a message with an unknown id - it will not be used.  Website designers may create custom messages that they want to display as part of a product, category, or home page layout, this is particularly useful in multi-language websites.
+In addition there are literally tens of thousands of custom payment messages you can create which will be displayed depending on the disposition of a payment.  It is actually possible to create a unique message for each payment tender and 3 digit result code.  (That’s almost 10,000 messages in each language alone!)
+
+<br>
+
+Fortunately the payment messaging system allows you to create custom messages which override system default messages for more specific use cases, but you don’t have to.  For each payment the system will go searching for the "best message" through a list of messages starting with the most specific, and then systematically trying less and less specific ones.  For example lets say a credit card payment attempt has a result of 288 (denied).   The system will start by looking for a message with the id "payment_credit_288", then move on to "payment_credit_denied", then eventually try "payment_denied", if none of those messages are found a generic error stating "could not find message, tried: payment_credit_288, payment_credit_denied, payment_denied" will be shown to the user.
+
+<br>
+
+This approach allows you to give specific wording to your clients regarding the steps they should take to correct errors.   This is useful in situations where for example a client is attempting to pay through the Paypal Website Payments Pro Credit Card Gateway (tender: CREDIT) and gets a denied message 288 which means the card was declined due to Paypal’s fraud filters.   This is not the same as a general decline, in fact the customers card is probably fine (the error code 288 on Zoovy corresponds to Paypal error 10417).   On a 288 is not a correctable error, the client does not need to contact their bank - it’s simply a decline because "Paypal does not want to process that payment". So the messaging for a 288 failure, might be different than 205 (AVS Failure) which could instruct the customer to try a different card, or call in during normal business hours with a different billing/shipping address.   Ultimately this allows you to give a customer specific instructions detailed to a tender type + result code -- that will help them resolve the issue with their payment.
+
+<br>
+
+In order for a custom message to be displayed it’s id must conform to the naming guidelines.  By giving a message the correct id "payment_tender_code", "payment_tender_status" (where status is one of the following: success, pending, denied, void, processing, returned, error) or "payment_status".
+
+<br>
+Finally in the customer admin user interface you can override the default message to admin_payment_tender_code, admin_payment_tender_status, or admin_payment_status.   If no specialized admin_xxxxx message is displayed. 
+
+</article>
+
+
+<article>
+<h2>Advanced Usage</h2>
+
+<aside class="caution">
+<h6></h6>
+<div>
+This is considered custom programming which is not 
+supported by Zoovy Technical support. Please contact client services to discuss
+having a developer implement this code into your site. 
+
+</div>
+</aside>
+
+
+It is possible using SPECL code inside a system message to customize the checkout and/or email messaging for failed orders. The code below checks for orders which start with a payment status of either sucess=zero("0") or pending=one("1"), or review=four("4") .. leaving only denied, or cancelled .. to display conditional messaging to help clients understand their payment could not be processed.
+
+<aside class="html">
+<h6></h6>
+<code>
+
+
+<%
+/* SPECL code to handle output special message for failed credit cards */
+print("");
+loadurp("CART::order.payment_status");
+format(substring=>$_,pos=>"0",len=>"1");
+stop(eq=>"0");
+stop(eq=>"1");
+stop(eq=>"4");
+/* if we got here then a failure occurred! */
+print("Hey wiseguy, you're card failed.");
+print("You betta gimme a new number!");
+%>
+
+
+
+</code>
+</aside>
+
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

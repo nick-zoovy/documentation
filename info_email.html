@@ -1,0 +1,256 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/email">
+<h1>Setup / Site Builder / Email</h1>
+<article>
+<h2>Overview</h2>
+
+
+You can create custom checkout letters which are sent to customers after a checkout by going to Setup | Site Builder
+ and editing the Order Created message. 
+You can also edit a variety of other messages such as Payment 
+reminders, Incomplete Item created, reminders - which are used for auctions, and more.
+
+</article>
+
+<article>
+<h2>Customizing Email</h2>
+
+Zoovy supports HTML Email, or more specifically the MIME multipart/alternative format (RFC 1521) which allows Zoovy to send both an HTML and text version of an email in the same message envelope. Zoovy will detect if the message is HTML or Text and then send it with the appropriate headers. A message is assumed to be HTML if one or more HTML tags are found.
+
+<aside class="cbc">
+<h6>Customizing Outbound Email Content</h6>
+<div>
+<li>Log in to your account at www.zoovy.com</li>
+<li>Click on the Setup tab</li>
+<li>Click on the site builder link</li>
+<li>Click 'edit' next to email messages</li>
+<li>Click one of the email names on the left to edit that email content</li>
+<li>Click 'edit' next to the body content of the email</li>
+<li>Make changes and save - emails DO support wiki text</li>
+</article>
+
+<aside class="caution">
+<h6></h6>
+<div>
+Note that the functionality to edit email "on-the-fly" via the Web Manager Orders interface is no longer available.  You can customize your email content as outlined above, and the Order Manager desktop client still contains functionality to edit email content on-the-fly on a one by one basis if needed.  This includes the use of the "Blank Message" email type in the Web Manager Order interface as well.
+
+</div>
+</aside>
+
+
+<article>
+<h2>Template Types</h2>
+In addition to being able to create your own email templates for special situations, Zoovy had provided several stock templates that we use for various automated notifications and manual processes which you might encounter, divided into sections.  These are all editable. Here is a map to what each does: (note - (A) signifies a template that is or can be setup to be sent out automated by the system for an event, (M) signifies one that is only sent manually.  All (A) emails can be sent manually in addition.)<br>
+Order Messages: 
+<li>(A)OCREATE - order created emails
+<li>(M)OCUSTOM1 and OCUSTOM2 - two "stock" pre-created custom emails for you to use
+<li>(M)ODENIED - order payment denied
+<li>(M)OFBAMAZON - request for customers to leave you feedback on Amazon
+<li>(A)OMERGE and OSPLIT - sent when merging or splitting an order
+<li>(M)PAYREMIND - payment reminder to be sent if order has not yet been paid
+<li>(A)STATAPPR - order has been moved to APPROVED status
+<li>(A)STATBACK - order has been moved to BACKORDER status
+<li>(A)STATCOMP - order has been moved to COMPLETED status
+<li>(A)STATKILL - order has been DELETED
+<li>(A)STATPEND - order has been moved to PENDING status
+<li>(A)STATPROC - order has been moved to PROCESSING status
+<li>(A)STATRECN - order has been moved to RECENT status
+<li>(A)TRACKING - sent out when tracking has been added to the email and the status moved to COMPLETED<br>
+Incomplete Item Messages:
+<li>(A)ECREATE - incomplete item, such as an ebay listing bought, created email
+<li>(M)ECUSTOM1 and ECUSTOM2 - two additional "stock" pre-created custom emails for you to use in relation to incomplete items
+<li>(M)EREMIND - payment reminder email for incomplete items
+<li>(M)FEEDBACK - request for customers to leave you feedback, usually to ebay/incomplete item<br>
+Account Messages:
+<li>(A)ACREATE - sent when a customer creates an account
+<li>(A)PREQUEST - sent when a customer requests their password
+<li>(A)SUBSCRIBE - sent when a customer subscribes for the newsletter<br>
+Product Messages:
+<li>(M)PINSTOCK - email to notify a customer when a product comes back in stock
+<li>(A)PTELLAF - email sent with the "Tell a Friend" feature<br>
+Supply Chain Email Messages:
+<li>(A)SCHTML - HTML version of the email sent to a supplier when ordering product
+<li>(A)SCTXT - text version of the email sent to a supplier when ordering product
+<li>(A)SCXML - XML version of the email sent to a supplier when ordering product<br>
+</article>
+
+
+<article>
+<h2>Links for tracking</h2>
+
+For orders you can link people directly to your website (which displays tracking information) by providing a link to 
+
+<br>
+
+<aside class="html">
+<h6></h6>
+<code>
+http://www.yourdomain.com/order_status?bill_email=%EMAIL%&order_id=%ORDERID%
+
+</code>
+</aside>
+
+
+<br>
+
+This has the added benefit of making customers feel like your system is tracking their order and also makes them more likely to remember your company's name -- which helps with both word of mouth marketing and also helps keep subscribers to your newsletter.
+
+
+</article>
+
+
+<article>
+<h2>Variables</h2>
+Zoovy has several variables setup that can be used in your emails.  These variables will insert a representative piece of data into the email, for example website URL, so that rather than having to change the URL in each email template, you only need to change the information the variable points at.  These can be used at your discretion.  <br>
+
+Customer Variables:<br>
+<li>%WEBSITE%</li>
+<li>%SUPPORTPHONE% - The sellers phone number (if available). Zoovy is on the AOL white list so your emails should go through to AOL addresses as long as you have %SUPPORTPHONE% configured and a complete address in Company Profiles.</li>
+<li>%SUPPORTEMAIL% - The sellers email Address</li>
+<li>%NAME% - The Customers full name </li>
+<br>
+URL variables:
+each of the variables below will output the full path to their respective location. For instance, %CART_URL% will output http://www.yourdomain.com/cart.cgi<br>
+
+<li>      %CART_URL%</li>
+ <li>     %SUBSCRIBE_URL%</li>
+ <li>     %FEEDBACK_URL%</li>
+ <li>     %PRIVACY_URL%</li>
+ <li>     %RETURNS_URL%</li>
+ <li>     %PASSWORD_URL%</li>
+  <li>    %FORGOT_URL%</li>
+  <li>    %CONTACT_URL%</li>
+  <li>    %GALLERY_URL%</li>
+  <li>    %REMOVE_URL%</li>
+  <li>    %HOME_URL%</li>
+  <li>    %NEWS_URL%</li>
+  <li>    %ABOUT_URL%</li>
+  <li>    %FASTORDER_URL%</li>
+  <li>    %MAIL_FORM_URL%</li>
+  <li>    %GRAPHICS_URL%</li>
+   <li>   %IMAGE_URL%</li>
+  <li>    %WRAPPER_URL%</li>
+  <li>    %SEARCH_URL%</li>
+  <li>    %CUSTOMER_MAIN_URL%</li>
+  <li>    %CATEGORY_URL%</li>
+  <li>    %CLAIM_URL%</li>
+  <li>    %PRODUCT_URL%</li>
+  <li>    %RESULTS_URL%</li>
+ <li>     %LOGIN_URL%</li>
+
+<br>
+In addition to the global variables above, each email has specific variables that pertain to that type of email template.  These can be found at the bottom of the page in each template layout editor area.<br>
+
+<aside class="hint">
+<h6></h6>
+<div>
+The standard email templates come built-in with some variables.  These can, if you desire, be replaced with hard coded data.  For example, %WEBSITE% could be replaced with www.mystore.com
+
+</div>
+</aside>
+
+</article>
+
+
+
+<article>
+<h2>Credit Cards</h2>
+
+Zoovy does not allow you to receive full order information via email because email is not a secure form of communication. 
+You may receive copies of order notifications by going to Setup ->Email -> Order Created and selecting the carbon copy 
+option from the page. 
+</article>
+<article>
+<h2>Text vs. HTML:</h2>
+
+All Emails sent by Zoovy are HTML, with a text conversion of the HTML in the header. 
+If you don't know any HTML then you just make sure you don't have any &lt; or &gt;'s in the your message and Zoovy will mostly take care of the rest. 
+
+If you're curious, when translating HTML to Text Zoovy will convert all &lt;BR&gt; and &lt;/tr&gt; tags to hard returns, it will also convert all &lt;/td&gt; to tabs, then it will strip all remaining HTML tags. The result isn't quite as pretty as the fixed width space padding that the plain text equivalents use, but is still readable and most people will only see the HTML version anyway.
+
+</article>
+<article>
+<h2>Compatibility:</h2>
+
+Most MIME compliant email readers will understand multipart related Messages should either be formatted all plaintext or all HTML so even those folks who can only view text will still be able to render the embedded text message. Customers with non MIME compliant browsers will still see the MIME header (which they should be used to since 99% of the email on the Internet is MIME these days) and will be happy to see that we embed the text version before the text/html so the message still looks pretty. At this time there are no known compatibility issues.
+
+Zoovy does some special formatting for AOL, and MSN to comply with their postmaster identification rules.
+
+</article>
+<article>
+<h2>Email Notifications</h2>
+
+Email Notifications are generated when specific things happen in your store, such as receiving an order.
+You can disable most email configurations by going into Setup then clicking the "Email Messages" link. 
+In Email messages simply remove the carbon copy email address and you will no longer receive carbon copies of messages.
+There are other types of notifications called "reminders" which are sent to customers, you can enable and disable 
+those reminders in Setup | Automated behaviors.
+<Br>
+You can send an email to multiple people by adding commas to the From: address, and enabling carbon copies in the message
+configuration.
+The first email address will be the "From", but all email addresses will be Carbon Copied (CC'd). 
+Please note, this is a CC, not a BCC (Blind Carbon Copy), which may appear unprofessional. In these cases
+it is better to forward a single message to two accounts by using a hosting account with mail forwarding installed. <br><br>
+Note: Once an auction is complete, Zoovy will always send an e-mail to the auction winner. This feature cannot be disabled. You can change the contents of the message and subject, but the system is designed to always send a message to auction winners.  You can also disable positive feedback reminders under SETUP | SITE AUTOMATION.
+
+</article>
+
+<article>
+<h2>Troubleshooting</h2>
+
+<b>Problem:</b> Buyer writes a message like this: When I click on the link provided, I am taken right back into my own email!  This is a dead link.<br><br>
+
+<b>Solution:</b>  The ISP or email software the user is using is most likely flagging your email as potentially harmful due to content of the message. This is extremely hard to diagnose. 
+Change to the standard email template from custom and see if that has any effect. If you have multiple customers reporting this then inform Zoovy support (be sure to include which ISP is having difficulty) - but make sure you've changed to the standard email template to see if that fixed the problem first.<br><br>
+
+<b>Problem:</b> Emails not getting sent out when a customer place an order.<br><br>
+
+<b>Solution:</b> Send a test message of the specific email that is being sent. The new email editor will display all errors that would restrict the email from going out. Most likely cause could be the specific email message does not have a subject. <br><br>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

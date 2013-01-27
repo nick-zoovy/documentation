@@ -1,0 +1,264 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="ordermgr/detail/omfaq">
+<h1>Order Manager FAQ</h1>
+
+
+
+
+<article>
+<h2>How do I change the status of orders in the Order Manager?</h2>
+
+<aside class="cbc">
+<h6>Using the Toolbar</h6>
+<div>
+<li>Select one or more orders
+<li>Click the Change Status icon
+<li>Select status
+<li>Press Change Status
+
+</div>
+</aside>
+
+
+<aside class="cbc">
+<h6>Using Right Click</h6>
+<div>
+<li>Select one or more orders
+<li>Right click the orders
+<li>Select Change Order Status
+<li>Select the status you would like to move the orders to
+
+</div>
+</aside>
+
+
+</article>
+
+<article>
+<h2>Automatic Emails</h2>
+
+Will Order Manager send emails to customers when I move orders?
+
+<br>
+
+In Order Manager you can set a preference so an email goes out for all orders when you change the status (regardless of the status change).  Therefore when you move the order to Pending an email will be sent, when you move it to Approved an email will be sent etc.
+<br><br>
+If you would like to have the automatic notification on go to Admin > Setup > eMail Preferences.  Make sure that you have selected to enable email.  There are several check boxes for the different order statuses.  If you want an email sent when the order is moved to one of these statuses simply put a check in the check box for that status.
+<br><br>
+If you do not check any of the statuses.  You can email your customers when you decide.  For instance if you would like to only send an email out when you move orders to "Completed" status you could select all of the completed orders and either click on "Email Customer" icon on the tool bar or right click and select "Email Customer" from the menu.  Then select the email you would like to send out, press OK, make any modifications necessary and press the Send button.
+<br><br>
+You can always edit your email messages before you sync as well.  Go to the Tools menu and select "Email Manager".  All of your outgoing mail will appear here.  You can delete and/or edit any messages before you send them out.
+<br><br>
+</article>
+<article>
+<h2>Sorting Orders in Tabs</h2>
+
+If you would like to sort your orders in Order Manager simply click on one of the headings -i.e. Order Date, Order Total etc.-  If you click a heading once it will sort either ascending or descending.  The next time you click the heading it will sort in the opposite direction.  
+</article>
+
+<article>
+<h2>Altering Invoice Appearance</h2>
+
+Invoices in Order Manager are not currently editable.  If you use the QuickBooks integration you may want to consider printing invoices from there.  They have a great invoice-editing tool.  In Order Manager there is one change you can make:
+<br>
+<li>1.	Go to the Admin Menu
+<li>2.	Click on Preferences
+<li>3.	Edit the Invoice Footer Message (By default this footer is "Thank you for your business".  This message appears right above the bar code at the bottom of the invoice.)
+</article>
+
+
+
+<article>
+<h2>Altering Order Status</h2>
+
+You can edit any invoice by simply double-clicking any of the orders in Recent, Pending, Approved, Completed or Cancelled.  This will bring up an Edit Invoice screen where you can make any modifications to the order.
+</article>
+
+
+<article>
+<h2>Loading Products into Order Manager</h2>
+
+I am manually creating invoices and entering the products manually.  Is there anyway to download my products to the Order Manager to decrease my data entry?
+
+<br>
+
+Yes, you can download all of your products into Order Manager to make the process much quicker:
+<br>
+
+<ol>
+<li>	Go to the Admin Menu
+<li>	Select Download Products from website<br>
+NOTE: Anytime you add or remove products on your website you will need to refresh the product list.
+
+<li>	Click on Create Invoice
+<li>  Click on Add Item
+<li>	Start typing either a partial product code or description. 
+Once you have entered at least 3 characters then all matches products will be listed down below in the list.
+<li>	Select the product and click on the Add Product icon
+</ol>
+
+</article>
+
+<article>
+<h2> Changing master computers</h2>
+
+If you want to change the master computer to a new or different computer, here are the steps. Using this process with eliminate the need for the long download time. This should not be done often due to the possiblility of placing the folder wrong and the database not working correctly.
+
+<ol>
+<li>On master, go to directory C:\program files\zoovy\desktop\[username]\desktop7.mdb
+
+<li>copy these file in the same directory on the new computer.
+
+<li>Be sure to create a map directory for the new master database.
+
+<li>In Order Manager, before logging in, go to Admin>>database setup>>SOHO>>Enter username and password>>click save
+
+<li>5.On machine, click on SOHO Client>>Enter user name and search directory for the newly mapped master computer. Repeat for second client machine.
+</ol>
+<aside class="caution">
+<h6></h6>
+<div>
+Be aware that if this process is done and does not work right, you may be billed for the time spent on fixing the issue.
+
+</div>
+</aside>
+
+</article>
+
+<article>
+<h2>Handling Store Credit</h2>
+
+I give out store credits to some customers.  When I create invoices in Order Manager is there anyway to add a payment type called "STORE CREDIT"?
+
+
+<br>
+<li>1.	Go to the Admin Menu->Payment Utilities
+<li>2.	Click on Add Payment Type
+<li>3.	Enter the name of the payment type
+<li>4.	Click on Add
+
+</article>
+<article>
+<h2>Print is too small to read in the Order Status tab</h2>
+
+
+The most common cause of this is a problem with either buggy video card drivers, or lack of video ram.<br><br>
+
+Always start by verifying you have the latest driver from the hardware manufacturer, video card drivers are notoriously buggy - especially the ones which ship with systems. <br><br>
+If the latest driver is installed, and the problem is still occurring then you can eliminate completely, or at least significantly reduce the chances of this happening by going into control panel, selecting "Display" then going to Settings | Advanced | Performance and changing Hardware Acceleration from Full to None. If this does not work trying lower the color depth. <br><br>
+
+Also unloading programs which consume large amounts of graphic resources such as PHOTOSHOP, etc. or desktops with billions of icons, or hundreds of windows open. Anything which might have hidden forms is also bad, for example office startup, real player, etc. all of those toys take up valuable system resources. Norton antivirus is also a huge consumer when it comes to resources.  <br><br>
+  Please remember IT IS A BUG IN THE VIDEO CARD - it does not matter how much 
+  ram is installed on the computer or video card, because on most cards the windows 
+  drivers can only address a few mb of it (the rest of the memory can only be 
+  accessed using a technology like DirectX or openGL). It's a big whole in the 
+  windows operating system, order manager tends to consume a lot of resources 
+  so that's why it appears more with order manager than with other applications 
+  which are less resource intensive. <br>
+  <br>
+  If all else fails buy a new PC. ;-) 
+  </article>
+<article>
+<h2>Runtime Error 339 - Library component CTBUTTON.ocx not registered</h2>
+
+  This error means that the Order Manager was not installed as a user with administrative 
+  privileges. This error can also be caused if the operating system has the system 
+  path set incorrectly. Under Windows 2000, and Windows XP OCX files should be 
+  installed in the \windows\system32 directory. However during installation on 
+  some computers the files are installed to the \windows\system directory. We 
+  believe this occurs on computers which have not been properly upgraded from 
+  an earlier version of windows or where the operating system is running in a 
+  legacy support. In this case copying the missing OCX files from \windows\system 
+  to \windows\system32 will fix the problem.<br>
+
+</article>
+<article>
+<h2>When I try to run order manager I get a error code 53?</h2>
+
+Error 53 means file not found. You should probably re-install the Order Manager and if that does not fix it then contact Zoovy support.
+
+</article>
+<article>
+<h2>DeleteFile Failed. Code 5, Access Denied</h2>
+
+DeleteFile failed. Code 5. Access denied.
+This error typically means that the application is still running.
+You may need to hit CTRL-ALT-DELETE and end task.
+If you are rebooting, make sure that your computer is one which does a hard reboot 
+rather than a soft reboot. Soft reboots do not actually close the running applications, 
+even ones which have crashed. The best way to ensure that you are doing a hard reboot 
+is to simply turn off the power to the computer.
+
+
+<aside class="caution">
+<h6></h6>
+<div> In version 6 or higher we have depreciated the ability of exporting the entire product id and description for non inventorial options. When exporting orders to quickbooks that have non inventorial options only the original product id and description will be imported to quickbooks. 
+
+</div>
+</aside>
+
+</article>
+<article>
+<h2>Some of my products in Order Manager are showing "@@". What does this mean?</h2>
+<br>
+The @@ at before a product in an order denotes that this is a drop ship product.
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

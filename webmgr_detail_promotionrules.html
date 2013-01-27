@@ -1,0 +1,299 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="webmgr/detail/promotionrules">
+<h1>Promotion Rules</h1>
+<article>
+<h2>Overview</h2>
+
+
+
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+This document describes how to use promotion rules to give discounts. You can also provide discounts for products based on quantity purchased by using the Wholesale Bundle and the "Quantity Pricing" or "Wholesale to the Public" feature.
+
+</div>
+</aside>
+
+
+Promotion Rules allow you to define "special cases" for certain products, or combinations of products that can be used to manipulate the shopping cart, and offer discounts, or apply surcharges.
+
+Although they may seem a bit complicated at first, promotion rules give you the flexibility to precisely determine when, and if so, how much discount is given. This can be a godsend for a merchant trying to manage their business well. For example, with simple promotions you could offer a discount for all purchases over $200, but with rules based promotions you would be able to create more advanced promotions such as:
+<Br>
+<li>Purchase two or more of the same item and receive a 10% discount on your entire order.
+<li>Purchase any of the three following items and receive a special gift.
+<li>Purchase five of the same item, and get the sixth one free.
+
+</article>
+<article>
+<h2>How Rule Processing Occurs</h2>
+
+<li> Rules are processed in order, starting at 1. New rules are automatically added to the bottom.
+<li> Rule processing will continue until the end of the list is reached, OR a matching rule specifies to STOP rule processing.
+<li> Rules apply to the entire contents of the cart.
+</font>
+</article>
+<article>
+<h2>Promotion Code</h2>
+
+The discount code is the SKU which appear in the cart. A % will be applied to the front of the SKU, this makes it easily identifable
+as a item which was automatically added by a rule. Rules are grouped together by discount code. 
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+WARNING: if a promotion code is the same as a SKU then it will decrement from that items SKU. 
+This is a FEATURE (so you can do a buy 2 - get 1 free rule, and still have inventory be accurate).<br>
+It's also worth mentioning that promotion rules are NOT checked against inventory to verify that they are in stock.<p>
+Promotion codes should contain ONLY alphanumeric characters (ABC123) and underscores (_). 
+Promotion codes may not contain special characters such as asterisks (*), slashes (/) and ampersands (&).</p>
+
+</div>
+</aside>
+
+
+
+For example you might have CODE1 for the first discount, CODE2 for the second discount, and CODE3 for the third.
+In this example the customer could receive up to three separate discounts in a single order provided they
+purchased the appropriate products to satisfy receiving all three discounts.
+For this reason it is recommended that you place each separate discount under it's own CODE, if you only
+want a customer to receive one discount per order, then use the same discount code in every rule.<br>
+
+</article>
+<article>
+<h2>Discount Description</h2>
+
+The Rule Name contains text which describes the rule, this is displayed to the customer as the product title.
+Only the last discount description for a given discount code. Best practice guidelines state that you should always populate this
+field with what the particular rule you are adding does, as a note to yourself or other techs who may follow you. Put a # in front of the 
+text to tell everybody that they are reading a comment, but remember the last description which is applied 
+for any code will be what is displayed to the customer. 
+<br>
+</article>
+<article>
+<h2>Use Rule If</h2>
+
+The use rule if (also called the rule process) determines when the action (discussed later) will be executed.
+Filter criteria (explained next) is the list of items you want to check for.
+<table>
+	<tr><td valign='top'><b>never (DISABLED)</b></td></tr>
+	<tr><td valign='top'>this is simply for debugging, it basically says "never do what this rule says to do", just go to the next rule.</td></tr>
+	<tr><td valign='top'><b>any product in cart matches filter criteria</b></td></tr>
+	<tr><td valign='top'>this means one or more matches will cause the rule action to be executed.</td></tr>
+	<tr><td valign='top'><b>all elements of filter are present in cart</b></td></tr>
+	<tr><td valign='top'>this means that every item in the filter must be matched against, for example if your filter as A*,B*,C* you would need to have a product which started with A, B, and C respectively (but if you had a D as well, it would still satisfy the filter criteria)</td></tr>
+	<tr><td valign='top'><b>NOTHING in cart matches the filter criteria</b></td></tr>
+	<tr><td valign='top'>this means that if nothing in the filter, is found in the cart then execute the rule.</td></tr>
+	<tr><td valign='top'><b>ALL products in cart match the filter criteria</b></td></tr>
+	<tr><td valign='top'>this means that each item in the cart, which be checked to see that it matches at least one item in the filter.</td></tr>
+	<tr><td valign='top'><b>More than MATCH VALUE items are found in the filter criteria</b></td></tr>
+	<tr><td valign='top'>This uses the the match value field to input a number. If you put a match value of 5, then 5 items in the cart must match the filter criteria. Keep in mind this keeps track of quantity, so 5 of a single item which matches the filter criteria would cause the rule to execute.</td></tr>
+	<tr><td valign='top'><b>Exactly MATCH VALUE items are found in the filter criteria</b></td></tr>
+	<tr><td valign='top'>This expects a number to be present in the match value field. This means that the customer must have at least match value, no more and no less items which match the filter criteria.</td></tr>
+	<tr><td valign='top'><b>Less than MATCH VALUE items match the filter criteria</b></td></tr>
+	<tr><td valign='top'>This expects a number to be present in the match value field, you must have less than the number of match items for the rule to execute.</td></tr>
+	<tr><td valign='top'><b>total price is GREATER than MATCH VALUE</b></td></tr>
+	<tr><td valign='top'>This expects a price in the match value. The price should be in dollars, without the dollar sign.</td></tr>
+	<tr><td valign='top'><b>total price is LESS than MATCH VALUE</b></td></tr>
+	<tr><td valign='top'>This expects a price in the match value. The price should be in dollars, without the dollar sign.</td></tr>
+	<tr><td valign='top'><b> Date value is in the future(specify date value in match value: YYYYMMDDHHMNSS)</b></td></tr>
+	<tr><td valign='top'>This expects a date in the match value field. If the current date is before the time specified in the match value field, then the rule is executed. Dates and times are in Pacific Standard Time (GMT-8) and may have "slippage" during daylight savings.</td></tr>
+	<tr><td valign='top'><b>Date value is in the past (specify date value in match value: YYYYMMDDHHMNSS)</b></td></tr>
+	<tr><td valign='top'>Same syntax as date is future, but only executes the rule if the specified date value has already past.</td></tr>
+	<tr><td valign='top'><b>Any Incomplete Item Appears in Cart</b></td></tr>
+	<tr><td valign='top'>If you want to make rules which differentiate based on the types of items which are in the cart (e.g. auction items), at this time there is no way to filter by marketplace.</td></tr>
+	<tr><td valign='top'><b>Filter appears as substring in any item description</b></td></tr>
+	<tr><td valign='top'>This rule is a little interesting it uses the filter criteria as a substring of the original value. Multiple substrings are NOT allowed, because commas will be interpreted literally. Examples of strings to search for "Buy_It_Now" </td></tr>
+</table>
+
+</article>
+<article>
+<h2>Match Value</h2>
+
+If a value is required for the "Use Rule If" statement, then you must put the appropriate value in the rule.
+No data validation is done on the match value, if you put in an invalid value, the rule simply won't work.
+
+</article>
+<article>
+<h2>Filter Criteria</h2>
+
+Filter Criteria contains a comma separated list of product id's, the wildcard character * may be used to match a series of
+characters, for example C* matches all product id's that start with a C. In addition the ? operator may be
+used to represent any single character so ?FOO would match any product such AFOO, BFOO, CFOO would match.
+
+the filter criteria is used to declare which items will be matched.
+You can use a combination of full SKU's and wildcards to denote specific classes of product.
+For example A* means any product id which begins with an A.
+For example A* would match product id's like APPLE1, ANIMAL1, and ARDVARK1, but would NOT match BANANA1.
+
+</article>
+
+<article>
+<h2>Advanced Filter Matching</h2>
+You can use advanced filter matching in a variety of powerful ways, filtering by ebay profile type for example. Advanced filter matching is usable with any "filter match" type of rule trigger and any product attribute that can be set.  You initialize the advanced filter matching by inserting two "@@" symbols, then the attribute. Below is the syntax and examples:
+
+<li> EQUALS Attribute - 
+<aside class="html">
+<h6></h6>
+<code>
+@@
+zoovy:profile==DEFAULT
+
+</code>
+</aside>
+
+
+<li> NOT EQUAL Attribute - 
+<aside class="html">
+<h6></h6>
+<code>
+@@
+zoovy:profile<>DEFAULT
+
+</code>
+</aside>
+
+<li> GREATER THAN/LESS THAN Attribute - 
+<aside class="html">
+<h6></h6>
+<code>
+@@
+zoovy:base_price>20.00
+
+</code>
+</aside>
+
+</article>
+<article>
+<h2>Action if Match</h2>
+
+The action if match is only performed if the "Use Rule If" is satisfied.
+
+
+In order to understand the Action if Match value, you must understand that the discount code is a SKU, the 
+Action If Match simply modifies that SKU, it can change the quantity, it can change the price, 
+and it can do all of this relative to the current state of the SKU.
+<table>
+		<tr><td valign='top'><b>Completely STOP Rule Processing</b></td></tr>
+		<tr><td valign='top'>If this is run, then any rules below this are ignored.</td></tr>
+		<tr><td valign='top'><b>DISABLE (Remove) Discount code</b></td></tr>
+		<tr><td valign='top'>This deletes the SKU from the cart.</td></tr>
+		<tr><td valign='top'><b>SET Discount to Value</b></td></tr>
+		<tr><td valign='top'>This will set the discount price to the value.</td></tr>
+		<tr><td valign='top'><b>ADD modify value to Discount Amount</b></td></tr>
+		<tr><td valign='top'>This will add the value to the price of the discount code.</td></tr>
+	   <tr><td valign='top'><b>ADD modify value to Discount Amount FOR EVERY MATCHING ITEM, set quantity=1</b></td></tr>
+		<tr><td valign='top'>This will add the value to the price of the discount code, once for each matching item in the cart, it will also adjust
+the quantity of the discount code to 1. If you have one sku, with a quantity of 5, then it counts as 5 items.</td></tr>
+	   <tr><td valign='top'><b>ADD modify value to Discount Amount FOR EACH MATCHING SKU, set quantity=1</b></td></tr>
+		<tr><td valign='top'>This will add the value to the price of the discount code, once for each matching unique sku. If you have a SKU with a quantity of 5, then it counts as 1 SKU.</td></tr>
+	   <tr><td valign='top'><b>ADD modify value to Discount Amount FOR EVERY SKU REGARDLESS OF MATCH, set quantity=1</b></td></tr>
+		<tr><td valign='top'>This adds the modify value once for each unique item in the cart.</td></tr>
+	   <tr><td valign='top'><b>ADD modify value to Discount Amount FOR EVERY ITEM REGARDLESS OF MATCH, set quantity=1</b></td></tr>
+		<tr><td valign='top'>This adds the modify value once for each item in the cart (if you have two items, with quantity 3 each, then this would add 6x the discount amount)</td></tr>
+	   <tr><td valign='top'><b>SET Discount Quantity equal to EVERY MATCHING SKU</b></td></tr>
+		<tr><td valign='top'>This alters the quantity of the discount code, once for each matching unique item.</td></tr>
+	   <tr><td valign='top'><b>SET Discount Quantity equal to EVERY MATCHING ITEM</b></td></tr>
+		<tr><td valign='top'>This alters the quantity of the discount code, for every matching item which is being purchased (including if more than one of the same item are being purchased).</td></tr>
+	   <tr><td valign='top'><b>SET Discount Quantity equal to EVERY SKU REGARDLESS OF MATCH</b></td></tr>
+		<tr><td valign='top'>This alters the quantity of the discount code, once for each item.</td></tr>
+	   <tr><td valign='top'><b>SET Discount Quantity equal to EVERY ITEM REGARDLESS OF MATCH</b></td></tr>
+		<tr><td valign='top'>This alters the quantity of the discount code, for every item being purchase (including if more than one of the same item is being purchased) </td></tr>
+
+	   <tr><td valign='top'><b>Apply modify value to effective subtotal</b></td></tr>
+		<tr><td valign='top'>This action is used when stacking coupons with the objective of each coupon deducting from the subtotal of the previous coupon.</td></tr>
+</table>
+
+<br>
+<br>
+
+Make sure you understand the difference between rules which  calculate by SKU and rules which calculate by ITEM.
+Rules which calculate by SKU will only run once for each unique item in the cart, so effectively the rule will
+ ignore the quantity of the item purchased, this is handy if you only want to give discounts on the first item (for example with
+ a manufacturers rebate).
+ITEM rules will apply the rule based on the quantity of matches, so if you wanted to give a 10% discount for every
+ qualifying item then you would match by ITEM.
+
+</article>
+<article>
+<h2>Modify Value</h2>
+
+Modify Value contains a price that will be applied to the order. May also contain percentages and minuses if you with to
+alter the price by a percentage, or lower the price respectively.
+
+</article>
+<article>
+<h2>Apply Tax</h2>
+
+In some cases the discounts should subtract from the sales tax, in others they should not.
+
+If you're discount should be considered taxable then check this box.
+
+Remember discounts can be either positive or negative.
+
+</article>
+<article>
+<h2>Weight in Ounces</h2>
+
+In many cases you will want the shipping to calculate based on the weight of the discount.
+
+In the event you do not use weight based shipping, leave this field blank if you want the discount to
+ be ignored during simple shipping computation.<br>
+
+</article>
+<article>
+<h2>Examples</h2>
+
+
+
+<section>
+<h3>Discounts for "select" customers</h3>
+
+Creating a discount which can be given to special customers is really quite easy, this is nothing more than a glorified coupon.
+<li> Create a product called "DISCOUNT1"
+<li> Associate a promotion rule which applies a discount when DISCOUNT1 is in the cart.
+<li> Tell your customers to go to http://yourname.zoovy.com/product/DISCOUNT1 and add it to their cart in order to get their discount.
+Note: the limitation with this is that anybody who knows the URL "DISCOUNT1" could get the discount.
+You can create much more elegant systems, which automatically apply a variety of discount schedules 
+to customers using custom programming and a promotion api. Remember to be creative, if your customers qualify for
+discounts then you can also associate rules with the discount like minimum order amounts, etc.
+</section>
+</article>
+
+<article>
+<h2>References</h2>
+Please see also the following webdocs regarding coupons and promotional rules:<br>
+
+<a class="linkdoc" href="#?doc=50313">Doc 50313</a><br>
+<a class="linkdoc" href="#?doc=50339">Doc 50339</a><br>
+<a class="linkdoc" href="#?doc=50987">Doc 50987</a><br>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

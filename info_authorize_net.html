@@ -1,0 +1,80 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/authorize.net">
+<h1>Setting Up authorize.net / e-OnlineData</h1>
+
+<article>
+<h2>authorize.net e-OnlineData</h2>
+
+
+
+This document focuses specifically on configuring your Authorize.net gateway.
+<aside class="hint">
+<h6></h6>
+<div>You do not need to fill out your username, password, and transaction key. You need username and either your password or transaction key.
+</div>
+</aside>
+
+
+<aside class="caution">
+<h6></h6>
+<div>For new authorize.net accounts, the username that is requested is not the username that you use to log into your authorize.net account. It is the Merchant ID, found under Settings in your authorize.net account.
+</div>
+</aside>
+
+<aside class="caution">
+<h6></h6>
+<div>You can not issue a partial credit within the first 24 hours. If you try to issue a partial credit it will be considered a full credit until the transaction settles. It takes 24 hours for a transaction to settle with Authorize.net. When issuing a credit within the first 24 hours; we will send the request to Authorize.net as a credit but they will change the credit request to Void. Best practices suggest that you wait 24 hours before the issue of credits to ensure that everything runs smoothly.
+</div>
+</aside>
+
+<section>
+<h3>Setting Up Authorize.net</h3>
+This section describes how to begin a new authorize.net account, if you do not already have one.
+<aside class="cbc">
+<h6>How to get started with authorize.net / e-OnlineData</h6>
+<div>
+<li> In your Zoovy account, go to Setup > Payment Methods.
+<li> At the top of the screen, click on the Credit Cards tab.
+<li> On the Credit Cards screen, you will see an ad to the right "Apply Now Instant Merchant ID."
+<li> You will be taken to e-Online Data which will allow you to acquire an Authorize.net account. Follow the on-screen prompts.
+
+</div>
+</aside>
+
+</article>
+<br>
+<aside class="caution">
+<h6></h6>
+<div>Your transaction key is generated in your authorize.net account under Settings > Security Settings.
+</div>
+</aside>
+
+<br>
+<aside class="hint">
+<h6></h6>
+<div>You will need to take your new authorize.net account out of Test Mode before you can start accepting payments.
+</div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

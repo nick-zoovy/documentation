@@ -1,0 +1,755 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/detail/wikitext">
+<h1>WikiText Guide</h1>
+<article>
+<h2>Concept Overview</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WikiText is the easiest way to maintain formatting and consistency across a vast number of authors and documents. 
+Using WikiText instead of HTML insures that all text will seamlessly adhere to formatting requirements for marketplaces, syndication feeds, and templates thereby
+ensuring the most professional presentation.
+When compared to HTML you'll find WikiText is also considerably easier to learn, 
+easier to read/edit, and guaranteed to avoid all the known issues surrounding embedded HTML tags.<br>
+<br>
+Possibly one of the most impressive properties of wikitext is that each template 
+(collectively site wrapper, auction wizard, and/or page layout) applies it's own unique style to wikitext. 
+Using WikiText guarantees your text will always be in the proper color, size, 
+and font that the template author intended.<br>
+<br>
+Later on if you decide to change templates then the text automatically changes to match the styles of the new template!
+<Br>
+<br>
+WikiText is supported in every Text Field by Zoovy. 
+It can be used in product descriptions, shipping and return policies,
+any other place you need to format large blocks of text!
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+If you choose to embed HTML tags instead of using wikitext you will spend more time maintaining your site and
+may encounter errors when working with marketplaces.
+
+</div>
+</aside>
+
+
+</article>
+<article>
+<h2>Basic Syntax Overview</h2>
+
+Place each wiki command, one per line, the leading character must always be in column 1. 
+You can use WikiText commands
+
+<section>
+<h3>Titles</h3>
+
+WikiText specifies three types of title, examples are as follows:<br>
+<pre>
+= Section =
+== Sub Section ==
+=== Sub Sub Section ===
+</pre>
+
+Your H1, H2 and
+H3 text colors should be either black, or a color that matches your site theme.
+<aside class="hint">
+<h6></h6>
+<div>
+
+= Section (H1)=
+== Sub Section (H2) ==
+=== Sub Sub Section (H3) ===
+
+Just make sure the first characters and last characters on any line are =, ==, === 
+and you'll get a title
+
+</div>
+</aside>
+
+
+A section title will typically skip down a line, and may have some sort of formatting above, below or adajcent 
+(such as a graphic, or underline). A subsection title is the most commonly used and is used to break text and identify
+key topics of text. A sub sub section is really a minor title, typically sub sub sections will not include any line breaks
+and will include minimal formatting. 
+
+</section>
+
+
+<section>
+<h3>New Paragraphs</h3>
+
+To begin a new paragraph either use a = title =, or == sub-title ==, or if you don't want a header then simply
+insert two blank lines. 
+</section>
+
+
+<section>
+<h3>Bullets</h3>
+
+Bullets are perhaps the most important feature of wikitext. To create a bullet list simply start each line with an 
+asterisk (*), and enter one bullet per line. Here is an example:
+
+<pre>
+* Bullet item 1
+* Bullet item 2
+* Bullet item 3
+</pre>
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+Amazon estimates that items which contain bullet lists are 65% more likely to sell. Incredible!
+
+</div>
+</aside>
+
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+Some marketplaces (specifically Amazon) will extract the first wiki bullet list found in your product description 
+and use that for the products bullet list. Amazon formats bullet lists differently, and displayed to users before
+the product description. Always make sure the first bullet list in your product description is your primary bullet list.
+
+</div>
+</aside>
+
+
+
+It is also very common (recommended) to create a bullet list with a subsection header e.g.
+<pre>
+== Features ==
+* Feature 1
+* Feature 2
+</pre>
+
+
+</section>
+
+
+</article>
+<article>
+<h2>Advanced Syntax</h2>
+
+
+<section>
+<h3>Section Dividers</h3>
+
+
+Insert four or more dashes (e.g. ----) on it's own line to insert a line or section break.
+Usually this will be translated as a <hr> in HTML, and is commonly used to signify a totally new unrelated topic of text that follows.
+
+</section>
+
+<section>
+<h3>Tables</h3>
+
+
+Creating a table in your text is easy, just use the following syntax:
+
+<pre>
+|=Heading A|=Heading B|=Heading C
+|1a|1b|1c
+|2a|2b|2c
+</pre>
+
+The lines with |= are considered header cells, they will have special formatting to them, if you wanted to create
+a two column vertical table which highlighted the values rather than the headers, you could do something like this:
+<pre>
+|Header 1|=Value 1
+|Header 2|=Value 2
+|Header 3|=Value 3
+|Header 4|=Value 4
+</pre>
+
+</section>
+
+<section>
+<h3>Linking with Wiki</h3>
+
+There are several different ways to link with wiki:
+<br>
+
+<!-- the section below needed to be encoded because it was returning errors when displayed in webdoc as unrecognized tags (it was interpreting the text as wiki.  oops. -->
+<pre>
+&#91;&#91;keyword&#93;&#93;  -  will link the word 'keyword' to a search results set for 'keyword'
+&#91;&#91;Linked phrase&#93;:search=Cable&#93;  - will link the phrase to a search results set for 'cable'
+&#91;&#91;visit a domain&#93;:url=http://www.domain.com&#93;  - will link phrase 'visit a domain' to www.domain.com
+&#91;&#91;open a window&#93;:popup=http://someurl.com&#93; - will link 'open a window' to any location AND open in a new window (not a popup)
+&#91;&#91;emailus&#93;:url=mailto:name@email.com&#93; - will link 'emailus' with a mailto tag that sends to name@email.com
+&#91;&#91;category text&#93;:category=your.safe.path&#93; - will link 'category text' the category page .your.safe.path
+&#91;&#91;product text&#93;:product=yourproductid&#93; - will link 'product text' the product page for the yourproductid product.
+&#91;&#91;phrase&#93;:customer=login&#93; or &#91;&#91;phrase&#93;:customer=signup&#93;
+
+</pre>
+
+</code>
+</aside>
+
+
+Some common values for the customer= would be:
+<pre>
+&#91;&#91;Login&#93;:customer=login&#93;
+&#91;&#91;Logout&#93;:customer=logout&#93;
+&#91;&#91;Recover Password&#93;:customer=login&#93;
+&#91;&#91;My Account&#93;:customer=order&#93;
+&#91;&#91;Quick Order&#93;:customer=wholesale/order&#93;
+&#91;&#91;Change Password&#93;:customer=password&#93;
+&#91;&#91;Email Preferences&#93;:customer=newsletter/config&#93;
+&#91;&#91;Change Password&#93;:customer=password&#93;
+&#91;&#91;Order Status&#93;:customer=order/status&#93;
+&#91;&#91;Create Account&#93;:customer=order/signup&#93; (feature requires wholesale bundle <a class="linkdoc" href="#?doc=50512">Doc 50512</a>)
+</pre>
+
+<aside class="hint">
+<h6></h6>
+<div>
+At the end of the url/search/product/etc, you can set &:CLASSNAME to set a specific class name on a link.  This will allow developers to override the link styles and/or behaviors based on the class name.  Example:
+
+&#91;&#91;phrase&#93;:customer=login:&ztitle&#93; would add the class ztitle to the link (which is a default zoovy class in all/most themes).
+
+
+</div>
+</aside>
+
+
+
+<section>
+<h3>Escaping special characters in wiki links</h3>
+
+The wiki linking convention requires special characters to be encoded.  The equal sign, for instance, is part of the wiki syntax and if one is present in the URL, then it will be interpreted by the wiki engine and the wiki link will not work.
+
+<br>
+<table cellspacing="10" border="0">
+<tr>
+	<td align="left" valign="top">
+<table cellpadding="0" cellspacing="2">
+<tr>
+	<td>Character</td>
+	<td>Escape Code</td>
+</tr>
+<tr>
+	<td>SPACE</td>
+	<td>%20</td>
+</tr>
+<tr>
+	<td>&lt;</td>
+	<td>%3C</td>
+</tr>
+<tr>
+	<td>&gt;</td>
+	<td>%3E</td>
+</tr>
+<tr>
+	<td>#</td>
+	<td>%23</td>
+</tr>
+<tr>
+	<td>%</td>
+	<td>%25</td>
+</tr>
+<tr>
+	<td>{</td>
+	<td>%7B</td>
+</tr>
+<tr>
+	<td>}</td>
+	<td>%7D</td>
+</tr>
+<tr>
+	<td>|</td>
+	<td>%7C</td>
+</tr>
+<tr>
+	<td>\</td>
+	<td>%5C</td>
+</tr>
+<tr>
+	<td>^</td>
+	<td>%5E</td>
+</tr>
+<tr>
+		<td>~</td>
+	<td>%7E</td>
+</tr>
+</table>
+	</td>
+	<td valign="top">
+<table cellpadding="0" cellspacing="2">
+<tr>
+	<td>Character</td>
+	<td>Escape Code</td>
+</tr>
+<tr>
+	<td>[</td>
+	<td>%5B</td>
+</tr>
+<tr>
+	<td>]</td>
+	<td>%5D</td>
+</tr>
+<tr>
+	<td>`</td>
+	<td>%60</td>
+</tr>
+<tr>
+	<td>;</td>
+	<td>%3B</td>
+</tr>
+<tr>
+	<td>/</td>
+	<td>%2F</td>
+</tr>
+<tr>
+	<td>?</td>
+	<td>%3F</td>
+</tr>
+<tr>
+	<td>:</td>
+	<td>%3A</td>
+</tr>
+<tr>
+	<td>@</td>
+	<td>%40</td>
+</tr>
+<tr>
+	<td>=</td>
+	<td>%3D</td>
+</tr>
+<tr>
+	<td>&amp;</td>
+	<td>%26</td>
+</tr>
+<tr>
+	<td>$</td>
+	<td>%24</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</section>
+
+</section>
+
+
+<section>
+<h3>Disabling WikiText</h3>
+
+To disable wikitext command processing <!-- simply include a &lt;!-- NOWIKI --&gt; in your text, or --> in the element of the
+template set WIKI="0"
+
+</section>
+
+
+</article>
+<article>
+<h2>Real World Example</h2>
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+The title of the product is not usually specified in the description, 
+virtually all templates include the title immediately above the description. 
+
+</div>
+</aside>
+
+
+
+Try pasting the following into one of your product descriptions to see how easy WikiText is:
+
+<pre>
+
+== About ==
+The weightron 6000 is the envy of all other shipping scales 
+in the industry. With it's hand painted pink and yellow finish 
+it will never get lost in the warehouse. 
+
+== Product Features ==
+* Hand Painted Wood Bezel
+* Solid Aluminum Construction
+* Rubber Grommits for holding it in place
+
+== Dimensions ==
+|=Height|6"
+|=Width|5"
+|=Depth|4"
+
+== Warranty ==
+The weightron 6000 needs no warranty, it is indestructable!
+
+</pre>
+
+</article>
+
+
+<article>
+<h2>Looking Ahead: WikiText relevance in the Future</h2>
+
+
+The following section describes how using WikiText can help future proof your business! Not only is it easy,
+but it's also important to make sure your product data can be used in places other than your website and auction
+templates.
+
+<section>
+<h3>WikiText + Ajax (Web 2.0)</h3>
+
+New website programming techniques (specifically one called "AJAX") will alter the face of every website and
+make heavy use of DHTML and Javascript. Both DHTML and Javascript have compatiblilty issues when outputting 
+HTML (especially broken/non structured XHTML) which can cause browser memory leaks, crashes, or in a best case
+scenario heavily mangled text.
+Site owners who intend to deploy Ajax based websites which offer a substantially improved buyer experience will
+likely need to remove any embedded HTML for those sites to work properly.<br>
+<br>
+Amazon (the unofficial "King" of personalization) has been working on an AJAX interface for several months already. 
+Although it has not been released, most experts agree that AJAX interfaces can provide such substantial user 
+interface improvements that customers will be much more likely to make a purchases exclusively from Ajax based 
+websites. Higher Volume = Lower Prices = More Competition. In the real world having a non-ajax website would be 
+the equivalent to having a store on "the bad side of town". <br>
+<br>
+<i>NOTE: Zoovy is already working on AJAX templates, the rendering system upgrades in Sept. 2005 were intended to
+bring various components of the system into compliance so we could start implementing this. Expect to see the
+first series of AJAX based websites around Feb. 2006.</i>
+
+</section>
+
+
+<section>
+<h3>WikiText + Google</h3>
+
+Google introduced AJAX programming to the world with innovative services such as Google Suggest and Google Earth - 
+so it's no surprise they see the writing on the wall and how AJAX will affect their business.<br>
+<br>
+With the advent of AJAX based websites, websites will become much harder to spider. (NOTE: Spidering is how google
+builds it's search engine database, without an alternative to spidering Google would be effectively out of business).
+Google recognizes this emerging trend and has already introduced Googlebase and Froogle which allow website 
+owners to feed content directly into Googles database. GoogleBase will eventually be the preferred method, for
+Google to receive structured content, and it's reasonable to assume that they will offer some limited markup abilities,
+but NOT allow a full HTML markup due to security issues with cross site scripting. (Google will never allow HTML
+in their XML/RSS/ATOM feeds since those feed formats discourage/disallow the use of embedded HTML.
+WikiText will likely be the markup they choose, or at a minimum wikitext can easily be translated 
+into any format Google requests.<br>
+</section>
+
+
+<section>
+<h3>The Mobile Web</h3>
+
+In 2006 we are going to see some rapid deployment of mobile devices, and more specifically Internet equipped 
+mobile devices, as well as the probable elimination of several regulatory barriers, which will cause all site 
+owners to evaluate making their websites available on the "Mobile Web". WikiText can be translated as either 
+HTML or WML (Wireless Markup Language). 
+<br>
+It's also worth mentioning that with Googles penchant for mobile devices and the wireless Internet, and they're 
+resulting horde of structured data from Googlebase, they're accurate and detailed knowledge of city maps and 
+locales from Google Earth, and they're fetish for PhD's with ample free time we'll be seeing absolutely some 
+incredible innovative wireless applications in 2006/2007. Quite honestly, by the end of 2006 the entire world
+will have changed. <br>
+<br>
+You'll start to see the applications towards the end of 2006, in anticipation of the big changes in 2007. 
+First all non-digital television broadcasts will go dark in July 2007. The important side note is that the FCC has
+already said they plan to resell/relicense that radio spectrum. This will make a variety of high speed, low power,
+wide area Internet services available and incredibly affordable. 
+The UHF spectrum is widely regarded as the cherry spot for consumer wireless, and is why many countries outside 
+the US have much better mobile Internet options than we do.<br>
+<br>
+<i>NOTE: Zoovy is already working on providing WML based websites to mobile devices.</i>
+</section>
+
+
+In conclusion, WikiText is a way of future-proofing your business and ensuring that your data 
+will be able to participate in the upcoming technology revolution. While WikiText by itself doesn't guarantee
+success, any business owner knows that particiption is requisite for generating sales.  
+
+</article>
+<article>
+<h2>Guide for Web Developers/Template Designers</h2>
+
+If you are designing wrappers, layouts, or HTML Wizards then you should be aware you can override 
+wiki-styles with your own custom HTML tags. To override a wikistyle, simply have an element with a SUB= set to the
+appropriate wikitag. Below is a guide of wikitags, along with their default HTML translations:<br>
+<!-- 
+<table border=1>
+	<tr><td><b>WikiTag</b></td><td><b>Default HTML</b></td><td><b>Notes:</b></td></tr>
+	<tr><td>%title1%</td><td>&lt;br&gt;&lt;b&gt;</td><td>precedes a section title (e.g. = text =)</td></tr>
+	<tr><td>%/title1%</td><td>&lt;/b&gt;&lt;br&gt;</td><td>follows a section title</td></tr>
+	<tr><td>%title2%</td><td>&lt;br&gt;&lt;b&gt;</td><td>precedes a sub section title (e.g. == text ==)</td></tr>
+	<tr><td>%/title2%</td><td>&lt;/b&gt;</td><td>follows a sub section title</td></tr>
+	<tr><td>%title3%</td><td>&lt;b&gt;</td><td>precedes a sub-sub section title (e.g. === text ==)</td></tr>
+	<tr><td>%/title3%</td><td>&lt;/b&gt;</td><td>follows a sub-sub section title</td></tr>
+	<tr><td>%list%</td><td>&lt;ul&gt;</td><td>pre-pended for the beginning of any list sequence</td></tr>
+	<tr><td>%/list%</td><td>&lt;/ul&gt;</td><td>appended the end of any list sequence</td></tr>
+	<tr><td>%listitem%</td><td>&lt;li&gt;</td><td>pre-pended before any line in a list equence</td></tr>
+	<tr><td>%/listitem%</td><td>&lt;/li&gt;</td><td>appended to any line in a list sequence</td></tr>
+	<tr><td>%section%</td><td>&lt;p&gt;</td><td>pre-pended to any new section (not supported yet)</td></tr>
+	<tr><td>%/section%</td><td>&lt;/p&gt;</td><td>appended to the end of any section</td></tr>
+	<tr><td>%softbreak%</td><td>&lt;br&gt;</td><td>inserted when two blank lines are encountered</td></tr>
+	<tr><td>%/hardbreak%</td><td>&lt;hr&gt;</td><td>inserted when any sequence of four or more dashes (e.g. ----) are encountered</td></tr>
+	<tr><td>%table%</td><td>&lt;table&gt;</td><td>pre-pended to any table sequence</td></tr>
+	<tr><td>%/table%</td><td>&lt;/table&gt;</td><td>appended to any table sequence</td></tr>
+	<tr><td>%tablerow%</td><td>&lt;tr&gt;</td><td>pre-pended to any line in a table sequence</td></tr>
+	<tr><td>%/tablerow%</td><td>&lt;/tr&gt;</td><td>appended to any line in a table sequence</td></tr>
+	<tr><td>%tabledata%</td><td>&lt;td&gt;</td><td>pre-pended to each data cell</td></tr>
+	<tr><td>%/tabledata%</td><td>&lt;/td&gt;</td><td>appended to each data cell</td></tr>
+	<tr><td>%tablehead%</td><td>&lt;td&gt;&lt;b&gt;</td><td>pre-pended to a header cell e.g. |=text</td></tr>
+	<tr><td>%/tablehead%</td><td>&lt;/b&gt;&lt;/td&gt;</td><td>appended to a header cell</td></tr>	
+</table>
+ -->
+
+Creating an element which overrides a specific style (for example which sets it so all section titles appear in between
+span tags with a CSS class of "xtitle" could be done as follows:
+
+<aside class="html">
+<h6></h6>
+<code>
+
+<!-- WIKI text subs -->
+<ELEMENT ID="CQHREXQ" SUB="title1" TYPE="HIDDEN"><DEFAULT><![CDATA[<div class="ztitle">]]></DEFAULT></ELEMENT>
+<ELEMENT ID="CQHREXR" SUB="/title1" TYPE="HIDDEN"><DEFAULT><![CDATA[</div>]]></DEFAULT></ELEMENT>
+<ELEMENT ID="CQHREXS" SUB="title2" TYPE="HIDDEN"><DEFAULT><![CDATA[<div class="ztitle2">]]></DEFAULT></ELEMENT>
+<ELEMENT ID="CQHREXT" SUB="/title2" TYPE="HIDDEN"><DEFAULT><![CDATA[</div>]]></DEFAULT></ELEMENT>
+<ELEMENT ID="CQHREXU" SUB="title3" TYPE="HIDDEN"><DEFAULT><![CDATA[<span style="font-weight:bold;">]]></DEFAULT></ELEMENT>
+<ELEMENT ID="CQHREXV" SUB="/title3" TYPE="HIDDEN"><DEFAULT><![CDATA[</span>]]></DEFAULT></ELEMENT>
+
+<!-- WIKI list subs -->
+<ELEMENT ID="WIKILIST" SUB="list" TYPE="HIDDEN"><DEFAULT><![CDATA[<ul  class="wiki_list">]]></DEFAULT></ELEMENT>
+<ELEMENT ID="WIKIENDLIST" SUB="/list" TYPE="HIDDEN"><DEFAULT><![CDATA[</ul>]]></DEFAULT></ELEMENT>
+<ELEMENT ID="WIKILISTITEM" SUB="listitem" TYPE="HIDDEN"><DEFAULT><![CDATA[<li class="wiki_listitem">]]></DEFAULT></ELEMENT>
+<ELEMENT ID="WIKIENDLISTITEM" SUB="/listitem" TYPE="HIDDEN"><DEFAULT><![CDATA[</li>]]></DEFAULT></ELEMENT>
+
+<!-- These tags are not supported yet in wiki but will/may be some day. -->
+<ELEMENT ID="WIKISECTION" SUB="section" TYPE="HIDDEN"><DEFAULT><![CDATA[<p  class="wiki_section">]]></DEFAULT></ELEMENT>
+<ELEMENT ID="WIKIENDSECTION" SUB="/section" TYPE="HIDDEN"><DEFAULT><![CDATA[</p>]]></DEFAULT></ELEMENT>
+
+<ELEMENT ID="WIKISOFTBREAK" SUB="softbreak" TYPE="HIDDEN"><DEFAULT><![CDATA[<br>]]></DEFAULT></ELEMENT>
+<ELEMENT ID="WIKIHARDBREAK" SUB="hardbreak" TYPE="HIDDEN"><DEFAULT><![CDATA[<hr class="wiki_ruler">]]></DEFAULT></ELEMENT>
+
+<!-- WIKI table subs -->
+<ELEMENT ID="WIKITABLE" SUB="table" TYPE="HIDDEN"><DEFAULT><![CDATA[<table cellspacing="0" class="wiki_table">]]></DEFAULT></ELEMENT>
+<ELEMENT ID="WIKIENDTABLE" SUB="/table" TYPE="HIDDEN"><DEFAULT><![CDATA[</table>]]></DEFAULT></ELEMENT>
+<ELEMENT ID="WIKITABLEROW" SUB="tablerow" TYPE="HIDDEN"><DEFAULT><![CDATA[<tr class="wiki_tablerow">]]></DEFAULT></ELEMENT>
+<ELEMENT ID="WIKIENDTABLEROW" SUB="/tablerow" TYPE="HIDDEN"><DEFAULT><![CDATA[</tr>]]></DEFAULT></ELEMENT>
+<ELEMENT ID="WIKITABLECELL" SUB="tabledata" TYPE="HIDDEN"><DEFAULT><![CDATA[<td class="wiki_tabledata">]]></DEFAULT></ELEMENT>
+<ELEMENT ID="WIKIENDTABLECELL" SUB="/tabledata" TYPE="HIDDEN"><DEFAULT><![CDATA[</td>]]></DEFAULT></ELEMENT>
+<ELEMENT ID="WIKITABLEHEAD" SUB="tablehead" TYPE="HIDDEN"><DEFAULT><![CDATA[<td class="wiki_tablehead"><b>]]></DEFAULT></ELEMENT>
+<ELEMENT ID="WIKIENDTABLEHEAD" SUB="/tablehead" TYPE="HIDDEN"><DEFAULT><![CDATA[</b></td>]]></DEFAULT></ELEMENT>
+
+
+</code>
+</aside>
+
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+Most "Series 6" and higher templates override wiki-styles, so take a look at some of those for real world examples.
+
+</div>
+</aside>
+
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+Embedded DIV sections in templates (collectively wrappers, layouts, wizards) can inherit SUB values from their parent,
+any changes made on the child DIV will not affect the parent, this allows designers to override the style of markup for
+a specific area (e.g. return policy headings might be in red bold print) while not affecting the remainder of the template
+or needing to backup values.
+
+</div>
+</aside>
+
+
+
+</article>
+
+
+<article>
+<h2>Understanding Wiki Translation Engine - a designers point of view</h2>
+
+The beautiful part about formatting a site with Wiki is the flexibility it gives the designer of the site to maintain complete control over the aesthetic properties of the site by wrestling that control away from the person writing the content. 
+
+<br>
+
+Lets use a simple example to illustrate how the Wiki translation engine works, in this example lets say a user creates a simple bulleted list in wiki like such:
+<aside class="html">
+<h6></h6>
+<code>
+* Item 1
+* Item 2
+* Item 3
+
+</code>
+</aside>
+
+
+The Zoovy Wiki engine will translate that syntax into an intermediate format that would appear as such:
+<aside class="html">
+<h6></h6>
+<code>
+%list%
+%listitem%Item 1%/listitem%
+%listitem%Item 2%/listitem%
+%listitem%Item 3%/listitem%
+%/list%
+
+</code>
+</aside>
+
+
+The designer can then specify SUBs in the wrapper of the site which override the %list%, %listitem%, %/listitem%, and %/list% tags during site rendering to produce ANY of the following results:
+
+Simple bulleted list, with CSS class:
+<aside class="html">
+<h6></h6>
+<code>
+<ul class="bullet_list">
+<li> Item 1</l1>
+<li> Item 2</l1>
+<li> Item 3</l1>
+</ul>
+
+</code>
+</aside>
+
+
+Or even create a complex table with graphical bullets:
+<aside class="html">
+<h6></h6>
+<code>
+<table class="bullet_table" border="0" cellpadding="0">
+<tr><td><img src="http://www.domain.com/img/somebullet.gif"></td><td>Item 1</td></tr>
+<tr><td><img src="http://www.domain.com/img/somebullet.gif"></td><td>Item 2</td></tr>
+<tr><td><img src="http://www.domain.com/img/somebullet.gif"></td><td>Item 3</td></tr>
+</table>
+
+</code>
+</aside>
+
+
+The content author does not need to be concerned with the display of the output, 
+that is up to the designer. 
+
+<aside class="hint">
+<h6></h6>
+<div>
+WIKI syntax also means that in the future sites such as Amazon, Google, etc. will be able to use WIKI Markup to ensure that product descriptions (regardless of author or origin) appear consistently throughout their marketplace and can avoid the "eBay Effect" where each listing has it's completely unique presentation thereby hurting the overall shopping experience of the customer.
+
+</div>
+</aside>
+
+
+</article>
+
+
+<article>
+<h2>Credit</h2>
+
+We adopted the wiki style used by wikipedia.org. However, our language is only loosely based on the wikipedia language. Not all wikipedia wiki commands are supported (only the commands on this page are).
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,284 @@
+<meta type="filename" id="enterprise/detail/tools-orderimport">
+<h1>Order Import Tool</h1>
+<article>
+<h2>Overview</h2>
+
+This tool allows you to import orders to your Enterprise database for processing.
+The order import feature works along the same lines as the CSV product import tool. This
+tool is designed to allow importing of
+orders in sycnrhonization with the JIT Interface for Order Manager. Once orders
+have been successfully imported, they will appear in the &quot;Recent&quot; tab in Order
+Manager.<br>
+<br>
+
+The Order Import Tool is accessed from the 'Tools' menu on your Enterprise server as "Import Orders from CSV file."<br><br>
+
+Follow this link for additional information on the <a href=../guide/jitprocessing.php>JIT Order Processing System</a> which can be
+found in the Guides section of this manual.
+
+</article>
+<article>
+<h2>Variables</h2>
+
+These are the variables that constitute the column headings in the CSV file you are importing.<br><br>
+
+%MKTORDERID - specifies the marketplace order id for the order.  This is typically the order id
+associated with a marketplace like Amazon.com. This is a required field.<br><br>
+
+%TITLE - title of the product on one line<br><br>
+
+%SKU - UPC,ISBN, or internal SKU number<br><br>
+
+%BILL_EMAIL - Email address of customer<br><br>
+
+%BILL_FULLNAME - Full name of customer<br><br>
+
+%BILL_ADDRESS1 -  Billing Address 1<br><br>
+
+%BILL_ADDRESS2 - Billing Address  2<br><br>
+
+%BILL_CITY - City<br><br>
+
+%BILL_STATE - State<br><br>
+
+%BILL_ZIP - Zip Code (US Only)<br><br>
+
+%BILL_PHONE - Telephone<br><br>
+
+For <b>International Orders</b>, you will need to upload a seperate file and include the following field names:<br><br>
+
+%BILL_PROVINCE<br>
+%BILL_COUNTRY<br>
+%BILL_INT_ZIP<br><br>
+
+We determine if an address is international if the BILL_INT_ZIP field is populated.
+
+</article>
+<article>
+<h2>OPTIONS</h2>
+
+
+Options appear at the top of a file, before header. Options always start with a pound sign.
+The following is a list of options:
+<br><br>
+<table>
+	<tr>
+		<td valign="top">#CREATE_SINGLE_ITEM_ORDERS</td>
+		<td valign="top">Tells the system to create an individual Zoovy order for each item listed in the order. Each line item in an imported order
+		creates an individual Zoovy order.</td>
+
+	</tr>
+
+	<tr><td colspan="2"><aside class="hint">
+<h6></h6>
+<div>
+
+Hint: If you are running behind processing orders, you can enable this feature ('CREATE_SINGLE_ITEM_ORDERS') to speed up order processing.
+</div>
+</aside>
+
+
+<br>
+
+
+
+	</td>
+	</tr>
+	<tr>
+		<td>#FLAG_PAID</td>
+		<td>Flag invoices as paid</td>
+	</tr>
+	<tr>
+		<td>#CREATE_CUSTOMERS</td>
+		<td>Creates an actual customer record</td>
+	</tr>
+	<tr>
+		<td>#JIT_CREATE</td>
+		<td>Creates an entry in the JIT fulfillment table</td>
+	</tr>
+	<tr>
+		<td>#JIT_ORDERED</td>
+		<td>Tells the system that this item has been ordered</td>
+	</tr>
+	<tr>
+		<td>#POSTDATE=YYYYMMDD</td>
+		<td>Tells the system to post date the orders.</td>
+	</tr>
+	<tr>
+		<td valign="top">#TYPE=JIT_ORDERS</td>
+		<td>Specifies the import contains orders -  </td>
+	</tr>
+	<tr>
+		<td valign="top">#TYPE=JIT_MANIFEST</td>
+		<td>Specifies the import is a shipping MANIFEST - rather than actual orders. See the section on "Dealing with Manifests" below.</td>
+	</tr>
+	<tr>
+		<td valign="top">#TYPE=JIT_INVENTORY</td>
+		<td>Specifies the import type is a supplier inventory report. - See the section on "Dealing with Supplier Inventory" below.</td>
+	</tr>
+		<tr>
+			<td valign="top">#MANIFEST_IGNORE_ERRORS</td>
+			<td>Optional (use with caution), ignores fatals errors.  Useful where there are more items in a manifest than the actual order (i.e. the manifest is incorrect).</td>
+		</tr>
+			<tr>
+					<td valign="top">#PREPROCESS_COMBINE_DUPS</td>
+					<td>Preprocess imported files and scan for duplicate line items and combine them into a single line item with a combined quantity.
+</td>
+		</tr>
+
+
+
+</table>
+
+</article>
+<article>
+<h2>%MKTORDERID - a required field</h2>
+
+Please note: When using the Order Import Tool you MUST include the %MKTORDERID column. %MKTORDERID works using the same
+principal as the %TRANSACTION column in a CSV upload for products with inventory. This is a unique number that can only be applied once.
+This way if a file crashes in the middle of an import, or a browser session drops, or an employee accidentally loads a file twice -
+the same orders will not be uploaded twice.<br>
+
+</article>
+<article>
+<h2>Example</h2>
+
+<pre>
+#TYPE=JIT_ORDERS
+#CREATE_SINGLE_ITEM_ORDERS
+#JIT_CREATE
+#JIT_ORDERED
+#CREATE_CUSTOMERS
+#FLAG_PAID
+%MKTORDERID,%SKU,%BILL_EMAIL,%BILL_FULLNAME,%BILL_ADDRESS1,%BILL_ADDRESS2,%BILL_CITY,%BILL_STATE,%BILL_ZIP
+ABCD1234,1294949398,johnd@yahoo.com,John Doe,191 Calle Magdalena,Suite 290,Encinitas,CA,92024
+</pre>
+NOTE: once this file is uploaded, any attempt to reupload the same file will result in failures for any orders that have
+already been imported.  This avoids creating duplicate orders.
+
+</article>
+<article>
+<h2>Dealing with Manifests</h2>
+
+
+Suppliers often send Shipping Manifests, or Acknowledgement reports electronically -
+the manifests contain a list of items which are being shipped along with dispositions for a particular batch.  The manifest reports are uploaded using the Order Import Tool on your server.
+A #JIT_MANIFEST import really only needs to contain two columns:
+<aside class="html">
+<h6></h6>
+<code>
+
+#TYPE=JIT_MANIFEST
+#MANIFEST_IGNORE_ERRORS
+%SKU,%QTY,%BATCHNO
+
+</code>
+</aside>
+
+
+The system will then change the disposition of the items from ON_ORDER to ACK_OKAY (meaning that we've received them in a manifest).
+At that point you can use the JIT tools (JIT Expecting Report) to inspect the batch and determine which items are not going to be recieved so you can inform
+those customers and cancel those orders BEFORE the actual items are received.<br><br>
+From the "JIT Reports" area of your server, check the status of the batch in question. All items that remain with a status of "On Order" were not included
+with the manifest and will not be shipping.  These orders would need to be moved in Order Manager from "Recent" to "Cancelled". These customers would then
+need to be notified and refunded.<br><br>
+
+<br>
+<aside class="hint">
+<h6></h6>
+<div>
+
+If you do not specify %BATCHNO in the import file then you must specify BATCHNO when you are importing the file on the order import screen.  If you are importing a manifest with multiple batch
+numbers, you must specify the %BATCHNO in the import file.
+
+</div>
+</aside>
+
+
+<br>
+
+</article>
+<article>
+<h2>Dealing with Supplier Inventory</h2>
+
+
+At this time Zoovy has limited supplier inventory support - this is mostly
+for people who use Just in time ordering but who also want to report inventory
+levels on their websites.
+<br>
+
+<aside class="html">
+<h6></h6>
+<code>
+
+#TYPE=JIT_INVENTORY
+%SUPPLIER,%SUPPLIER_SKU,%QTY,%MSRP,%COST
+
+</code>
+</aside>
+
+
+
+<b>Column Headers:</b><Br>
+<table>
+	<tr>
+		<td>%SUPPLIER</td>
+		<td>The supplier code</td>
+	</tr>
+	<tr>
+		<td>%SUPPLIER_SKU</td>
+		<td>The suppliers SKU for the product</td>
+	</tr>
+	<tr>
+		<td>%MERCHANT_SKU</td>
+		<td>Your SKU for the product (leave blank to use the same as the suppliers)
+	</tr>
+	<tr>
+		<td>%QTY</td>
+		<td>The instock quantity</td>
+	</tr>
+	<tr>
+		<td>%MSRP</td>
+		<td>Retail Price - suggested by supplier/manufacturer (optional)</td>
+	</tr>
+	<tr>
+		<td>%COST</td>
+		<td>Unit Cost (optional)</td>
+	</tr>
+	<tr>
+		<td>%FILTER=LT:#####</td>
+		<td>If the column is less than the header value, then the data is imported</td>
+	</tr>
+	<tr>
+		<td>%FILTER=RE:/regex/</td>
+		<td>Applies a regular expression to the column, if regular expression passes then the column is allowed to be imported.</td>
+	</tr>
+</table>
+<br>
+<aside class="hint">
+<h6></h6>
+<div>
+
+If you do not specify %SUPPLIER in the import file then you must specify BATCHNO when you are importing the file on the order import screen (the BATCHNO should be your supplier code).
+If you are importing a manifest with multiple batch
+numbers, you must specify the %BATCHNO in the import file.
+
+</div>
+</aside>
+
+
+<br>
+<aside class="hint">
+<h6></h6>
+<div>
+
+Your supplier has multiple warehouses and requires you specify which order you want the inventory shipped from
+then you should setup a separate supplier code for each warehouse.
+
+</div>
+</aside>
+
+
+
+</article>
+

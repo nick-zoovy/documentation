@@ -1,0 +1,185 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/amazonpayment">
+<h1>Checkout by Amazon</h1>
+
+
+<article>
+<h2>Configuring Checkout By Amazon</h2>
+
+
+
+
+
+ 
+<article>
+<h2>Overview</h2>
+Checkout by Amazon (CbA) allows customers to use their Amazon wallet to pay for items in your Zoovy online store.   The service does not require that you have an approved selling account with Amazon, however if you do not have the Amazon feature-set, only a member of the Zoovy Implementation Team will be able to configure this for you. 
+
+<aside class="hint">
+<h6></h6>
+<div>
+This feature is now live and ready to use in production.  CBA is very complicated to setup, and not for the technically timid or those lacking in patience. If you do have the Amazon Feature-set and wish to configure this without the assistance of the Implementation Team, be sure to read all the setup instructions before you get started.  We will attempt to document all the obscurities. A video tutorial is also due to be released in the near future.
+
+</div>
+</aside>
+
+
+</article>
+
+
+<article>
+<h2>Getting Started / Configuring a new account</h2>
+
+<aside class="caution">
+<h6></h6>
+<div>
+You must follow these steps explicitly to get this configured. If you do not, you will require the assistance of Amazon technical support to "correct" your account which could take several days/weeks. 
+
+</div>
+</aside>
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+If you have previously signed up for an Amazon Webstore you CAN still sign up for CBA. This has not always been the case. On the other hand, if you sign up for CBA now, you will be unable to add an Amazon Webstore onto this account in the future.    
+
+</div>
+</aside>
+
+
+<aside class="cbc">
+<h6>Setup Steps</h6>
+<div>
+<li> *** AT NO POINT IN THIS PROCESS SHOULD YOU CLICK THE: "Create account" LINK IN THE UPPER LEFT HAND PORTION OF THE SCREEN on payments.amazon.com (regardless of how obvious and tempting it may be) -- DOING SO WILL MAKE IT IMPOSSIBLE TO GET A CHECKOUT BY AMAZON ACCOUNT SETUP PROPERLY. USE THE LINK PROVIDED BELOW FOR SIGNUPS! ***
+<li> Go to <A HREF="https://sellercentral.amazon.com/gp/on-board/workflow/Registration/login.html/902-0586098-4611057?passthrough%2Fsource=AmazonCheckout&passthrough%2Fld=Zoovy&passthrough%2Faccount=cba&passthrough%2FsuperSource=OAR&passthrough%2FmarketplaceID=AZ4B0ZS3LGLX" target="_blank">Checkout By Amazon Registration</A>
+<li> Select: Use existing Amazon.com customer account
+<li> fill in the information
+<li> You should receive a login to sellers central.com if you didn't already have one, and it should have a dropdown that says: Your Checkout Website and Your Checkout Website (Sandbox)
+<li> The configuration settings can be found in the next section of this document.
+
+
+</div>
+</aside>
+
+</article>
+
+
+<article>
+<h2>Amazon Settings</h2>
+<br>
+Checkout with Amazon is configured in Setup | Amazon Configuration, and requires the Amazon feature-set. If you do not have the feature-set, please book an implementation  <br>
+
+<br>
+
+In order to configure Checkout with Amazon, you will need the following information, which can be located by logging into your Amazon SellerCentral account, and/or Amazon Web Services account.<br>
+<li>Merchant Token
+<li>Merchant ID
+<li>Access Key ID
+<li>Secret Key ID
+<aside class="hint">
+<h6></h6>
+<div>
+Merchant Token:  Settings Tab >> Account Information >> Your Merchant Token<br>
+<br>
+Merchant ID:  You can obtain your ID either from your Amazon Web Services Account (AWS), or you can go to one of our live Amazon listing on amazon.com, hover the cursor over you return policy, and your merchant id will be displayed in the lower left corner (when using Firefox browser).<br>
+<br>
+Access Key ID:  Login to Amazon Web Services Account >> Security Credentials >> Access Key<br>
+<br>
+Secret Key ID:  Login to Amazon Web Services Account >> Security Credentials >> Secret Key > +Show<br>
+
+</div>
+</aside>
+
+<br>
+
+</article>
+
+<article>
+<h2> Setup / Payment / Amazon</h2>
+Once configured, you can enable Amazon Payments by going to Setup >> Payment Methods >> Amazon. 
+<br>
+
+<section>
+<h3> Display Settings</h3>
+You can change the color, size and background of your Checkout with Amazon button. A preview should appear on the Payment Methods page.
+</section>
+
+<aside class="caution">
+<h6></h6>
+<div> 
+Checkout by Amazon will use the same shipping and tax information configured for your Zoovy store.  Any alternate shipping options configured within your Amazon/Seller Central account will NOT be referenced. The customers who checkout with CBA will only be offered the cheapest configured shipping rate.  
+
+</div>
+</aside>
+
+
+<section>
+<h3>Environment</h3>
+When you have the Sandbox environment you will see an XML dump of what is being transmitted to Amazon.  You should select production unless you are doing testing.
+
+<aside class="hint">
+<h6></h6>
+<div>
+You can also enable the sandbox in your cart by adding: ?_sandbox=1 to the end of any URL for any page on your site.
+<br>
+Use: ?_sandbox=0 to disable.
+
+</div>
+</aside>
+
+
+
+</section>
+<section>
+<h3>Return URLs</h3>
+You can use anything you like for the following URLs but most merchants set them to the homepage of their webstore.
+
+Successful Payment Return
+Cancel Payment Return
+
+</section>
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

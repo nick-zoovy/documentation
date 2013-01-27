@@ -1,0 +1,314 @@
+<meta type="filename" id="enterprise/guide/barcoding">
+<h1>Guide to Barcoding with Zoovy</h1>
+<article>
+<h2>PLEASE NOTE</h2>
+The Barcoding system has been phased out and is no longer in use.  Zoovy will be reintroducing an updated Barcode system in 2008 along with the new Point of Sales system.  More information to be released shortly.
+</article>
+<article>
+<h2>Overview</h2>
+
+Product Manager can be used to print barcode labels for products
+using a custom channel definition and the INPUT TYPE=SKU.
+<br><br>
+
+Product Manager also supports the same barcode printing solution as the SOHO
+version of Product Manager for printing SKU and Price.  For more information on
+printing bar codes in Product Manager, <a href="/prodmgr/detail/barcodes.php">follow this link.</a><br><br>
+
+Order Manager also supports barcode printing of labels using the JIT interface.  The JIT
+interface will print a "Shipping Label", "Return Label", or a "Store Label".
+
+</article>
+<article>
+<h2>Barcode Label Definitions for JIT Mode</h2>
+
+
+When working in the JIT interface in Order Manager, barcode labels are printed
+according to the disposition of the product being scanned.  There are three
+custom text files which need to be configured for your printer.<br><br>
+
+Please note: As of March 2004, JIT label printing only works with Zebra EPL
+LP2844 printers.<br><br>
+
+The three text files correspond to the three labels and reside in the root
+folder (typically C:\Program_Files\Zoovy\OrderMgr\) of Order Manager:<br><br>
+
+BarcodePackage.txt<br>
+BarcodeReturn.txt<br>
+BarcodeStore.txt<br><br>
+
+Each file may include plain text and custom label properties as listed below.
+If you are using a Zebra printer, you will need to include the EPL commands for
+formatting the label definition. The Zebra EPL printer is required for
+printing labels in JIT mode.  Please see your EPL printer documentation, or
+visit Zebra's website (http://www.zebra.com) for a current EPL2 <a href="980352-001D_PageMode_EPL2_Prog.pdf"> printer command reference.</a>(3.8mb PDF download)<br><br>
+
+Example JIT label definition for BarcodePackage.txt (shipping label):<br><br>
+
+---cut here---<br>
+# Clear Image Buffer<br>
+N<br>
+# q = Set Form width<br>
+# Q=  Set Form length<br>
+# 800 dots = 4" or 100mm<br>
+q800<br>
+# S# speed 2<br>
+#  4 is max speed!<br>
+S4<br>
+#Return Address Commented Out<br>
+# Ascii Text start at 50 horiz, 0 vert, 0 rotation, font #1, hsize 1, vsize 1, normal (N), text<br>
+A50,32,0,1,2,2,N,"Zoovy, Inc."<br>
+A50,74,0,2,1,1,N,"http://www.zoovy.com"<br>
+A50,104,0,2,1,1,N,"191 Calle Magdalena, Suite 290"<br>
+A50,133,0,2,1,1,N,"Encinitas, CA. 92024"<br>
+A50,161,0,2,1,1,N,""<br>
+#<br>
+# Line draw (black), horiz pos, vert pos, horiz length, vert length<br>
+LO45,200,780,18<br>
+A45,201,0,2,1,1,B,"Destination:"<br>
+#<br>
+A80,230,0,1,2,3,N,"%LABEL_ADDR1%"<br>
+A80,276,0,1,2,3,N,"%LABEL_ADDR2%"<br>
+A80,319,0,1,2,3,N,"%LABEL_ADDR3%"<br>
+A80,362,0,1,2,3,N,"%LABEL_ADDR4%"<br>
+A80,396,0,1,2,3,N,"%LABEL_ADDR5%"<br>
+A80,430,0,1,2,3,N,"%LABEL_ADDR6%"<br>
+#<br>
+#<br>
+# Barcode horiz pos, ver pos, rotation, narrow dots, wide dots, bar code height, human readable (B = yes, N=no),<br>
+A60,460,0,1,1,1,N,"Invoice #:"<br>
+B60,475,0,1,2,2,50,B,"%ORDERID%"<br>
+A400,490,0,1,1,1,N,"SKU/UPC : %UPC%"<br>
+A400,505,0,1,1,1,N,"Batch No: %BATCHNO%"<br>
+A400,525,0,1,1,1,N,"Employee: %USERNAME%"<br>
+A80,555,0,2,1,3,N,"Positive feedback is greatly appreciated!"<br>
+#issues a print command<br>
+P1<br>
+#issues a cut command<br>
+C<br>
+.<br>
+---cut here---<br>
+
+</article>
+<article>
+<h2>Supported Variables for Order Manager</h2>
+
+
+These properties are only supported in JIT mode for ZOM version 4.43b5 and later:<br><br>
+
+<li>%LABEL_ADDR1% - Shipping Name - Address Line 1<br>
+<li>%LABEL_ADDR2% - Street Address <br>
+<li>%LABEL_ADDR3% - Address 2 (suite/Apt etc.)<br>
+<li>%LABEL_ADDR4% - City, State. Zip<br>
+<li>%LABEL_ADDR5%<br>
+<li>%LABEL_ADDR6%<br>
+<li>%UPC% - SKU/UPC<br>
+<li>%BATCHNO% - JIT Batch Number<br>
+<li>%USERNAME% - JIT Mode Operator<br>
+<li>%DATETIME% - Date and Time the label was created.<br>
+<li>/STR:%ID%/%UPC% - For store labels only, includes unique tracking code ID with UPC.<br>
+<li>/RTN:%ID%/%UPC% - For return labels only, includes unique tracking code ID with UPC.<br>
+
+<br>These properties are currently supported in Order Manager 4.43 for printing of labels:<br>
+<table>
+<tr>
+   <td valign="top"  valign="top">Variable</td>
+   <td valign="top"  valign="top">Description</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%BULKEMAILURL%</td>
+   <td valign="top"  valign="top">The URL reference that does remove from bulk email list (the unsubscribe URL that is generated automatically from Zoovy.</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%BILLEMAIL%</td>
+   <td valign="top"  valign="top">The billing address of the customer</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%COMPANYNAME%</td>
+   <td valign="top"  valign="top">Your company name.</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%COMPANYADDR1%</td>
+   <td valign="top"  valign="top">Your Company address 1.</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%COMPANYADDR2%</td>
+   <td valign="top"  valign="top">Your company address 2.</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%SUPPORTEMAIL%</td>
+   <td valign="top"  valign="top">Your support email. Please note these are all plaintext and contain no HTML formatting.  They are in lower case and if used within an HTML email they should be placed within a pre tag to maintain spacing and column widths.  These variables will eventually be removed.</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%QUOTEDPRICE%</td>
+   <td valign="top"  valign="top">The quoted price of the invoice number.</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%SUPPORTPHONE%</td>
+   <td valign="top"  valign="top">Your support phone number.</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%FULLNAME%</td>
+   <td valign="top"  valign="top">The customers full name in first last format.</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%SPLITID%</td>
+   <td valign="top"  valign="top">New Order ID of a split order.</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%SPLITCONTENTS%</td>
+   <td valign="top"  valign="top">New order contents in plain text.</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%HTMLSPLITCONTENTS%</td>
+   <td valign="top"  valign="top">New order contents in HTML format.</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%MARKETURL%</td>
+   <td valign="top"  valign="top">The URL where the item was sold.  For example, the eBay auction URL. This variable will only work with orders in incomplete status.</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%CLAIMID%</td>
+   <td valign="top"  valign="top">The claim ID created when the item was sold. This variable will only work with orders in incomplete status. </td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%PRODUCTDESC%</td>
+   <td valign="top"  valign="top">The description of the item sold through a marketplace. This variable will only work with orders in incomplete status.</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%WINNINGPRICE%</td>
+   <td valign="top"  valign="top">The winner's price of the item sold. This variable will only work with orders in incomplete status.</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%MARKETID%</td>
+   <td valign="top"  valign="top">The id from the marketplace.  For example, the eBay auction number. This variable will only work with orders in incomplete status.</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%MARKETORIGIN%</td>
+   <td valign="top"  valign="top">The origin where the item was sold. This variable will only work with orders in incomplete status.</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%ORDERID%</td>
+   <td valign="top"  valign="top">The Order ID number as assigned by Zoovy</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%WEBSITE%</td>
+   <td valign="top"  valign="top">The address of your website formatted like http://yourname.zoovy.com</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%CONTENTS%</td>
+   <td valign="top"  valign="top">A formatted list of the contents of the order with prices.</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%PACKSLIP%</td>
+   <td valign="top"  valign="top">A formatted list of the contents of the order without prices.</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%ORDERNOTES%</td>
+   <td valign="top"  valign="top">The order notes as entered by the customer.</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%SHIPADDR%</td>
+   <td valign="top"  valign="top">A multiline statement of the shipping address</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%BILLADDR%</td>
+   <td valign="top"  valign="top">A multiline statement of the billing address.</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%SHIPMETHOD%</td>
+   <td valign="top"  valign="top">The shipping method and price.</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%PAYINFO%</td>
+   <td valign="top"  valign="top">Payment Type (eg: Paypal, credit card, etc.)</td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%HTMLCONTENTS%</td>
+   <td valign="top"  valign="top">An HTML formatted contents table
+(contains the same data as the plaintext %CONTENTS% just intended for HTML messages).<br>
+The table includes the following style sheet elements which can be customized and tuned by you:<br>
+      <table>
+         <tr><td valign="top">table.invoice</td><td valign="top">the body of the table</td></tr>
+         <tr><td valign="top">td.title</td><td valign="top"> used for each cell in the title</td></tr>
+         <tr><td valign="top">td.item1</td><td valign="top"> this covers all the cells in the odd rows in the table.</td></tr>
+         <tr><td valign="top">td.item0</td><td valign="top"> this covers all the cells in even rows in the table.</td></tr>
+         <tr><td valign="top">font.sum</td><td valign="top"> used for special headings, such as tax, shipping, etc.</td></tr>
+         <tr><td valign="top">font.sumresult</td>
+               <td valign="top"> used for the value in special heading such as tax, shipping, etc.</td></tr>
+      </table>
+   </td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%HTMLPACKSLIP%</td>
+   <td valign="top"  valign="top">An HTML formatted packing slip table (contains the same data as the
+plaintext %PACKSLIP%
+just intended for HTML messages).<br>
+   The table includes the following style sheet elements which can be customized and tuned by you:<br>
+      <table>
+         <tr><td valign="top">table.packslip</td><td valign="top">the body of the table</td></tr>
+         <tr><td valign="top">td.title</td><td valign="top"> used for each cell in the title</td></tr>
+         <tr><td valign="top">td.item1</td><td valign="top"> this covers all the cells in the odd rows in the table.</td></tr>
+         <tr><td valign="top">td.item0</td><td valign="top"> this covers all the cells in even rows in the table.</td></tr>
+      </table>
+   </td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%HTMLBILLADDR%</td>
+   <td valign="top"  valign="top">An HTML formatted billing address table (contains the same data as the plaintext
+%BILLADDR% just intended for HTML messages).<br>
+   The table includes the following style sheet elements which can be customized and tuned by you:<br>
+      <table>
+         <tr><td valign="top">table.billaddr</td><td valign="top">the body of the table</td></tr>
+         <tr><td valign="top">td.bill_fullname</td><td valign="top"> the billing name (always on the first line)</td></tr>
+         <tr><td valign="top">td.bill_company</td><td valign="top"> the company name (always on the second line)</td></tr>
+         <tr><td valign="top">td.bill_address</td><td valign="top"> the address (always on the third line, multiple lines
+are separated by &lt;br&gt;'s)</td></tr>
+         <tr><td valign="top">td.bill_phone</td><td valign="top"> the phone (if available)</td></tr>
+      </table>
+   </td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%HTMLSHIPADDR%</td>
+   <td valign="top"  valign="top">An HTML formatted shipping address table (contains the same data as the
+plaintext %SHIPADDR% just intended for HTML messages).<br>
+   The table includes the following style sheet elements which can be customized and tuned by you:<br>
+      <table>
+         <tr><td valign="top">table.shipaddr</td><td valign="top">the body of the table</td></tr>
+         <tr><td valign="top">td.ship_fullname</td><td valign="top"> the shipping name (always on the first line)</td></tr>
+         <tr><td valign="top">td.ship_company</td><td valign="top"> the company name (always on the second line)</td></tr>
+         <tr><td valign="top">td.ship_address</td><td valign="top"> the address (always on the third line, multiple
+lines are separated by &lt;br&gt;'s)</td></tr>
+         <tr><td valign="top">td.ship_phone</td><td valign="top"> the shipping phone (if available)</td></tr>
+      </table>
+   </td>
+</tr>
+<tr>
+   <td valign="top"  valign="top" nowrap>%HTMLTRACKINFO%</td>
+   <td valign="top"  valign="top">An HTML formatted shipping address table (contains the same data as the plaintext
+   The table includes the following style sheet elements which can be customized and tuned by you:<br>
+      <table>
+         <tr><td valign="top">table.trackinfo</td><td valign="top">the body of the table</td></tr>
+         <tr><td valign="top">td.line</td><td valign="top"> a line in the tracking table.</td></tr>
+      </table>
+   </td>
+</tr>
+</table>
+
+</article>
+<article>
+<h2>Barcode Label Toolkit</h2>
+
+Enterprise customers also have access to Zoovy's "Barcode Label Toolkit" from their
+server.  The toolkit allows you to configure a text file and print a series of bar
+codes.  For more information, download and install the toolkit.<br>
+
+
+</article>
+
+
+
+
+
+
+

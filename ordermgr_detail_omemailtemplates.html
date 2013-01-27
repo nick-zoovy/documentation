@@ -1,0 +1,147 @@
+<meta type="filename" id="ordermgr/detail/omemailtemplates">
+<h1>Custom Email Messages</h1>
+<article>
+<h2>Overview</h2>
+
+<aside class="caution">
+<h6></h6>
+<div>
+Since integrated desktop version 7.018 all emails are now stored on the web. 
+
+</div>
+</aside>
+
+
+Order Manager will automatically generate emails when events occur. <br>
+Those events are:<br>
+<li> Order Status Change to Recent
+<li> Order Status Change to Pending
+<li> Order Status Change to Approved
+<li> Order Status Change to Completed
+<li> Order Status Change to Cancelled<br><br>
+By default these messages are named pending, approved, completed, and cancelled (recent is not included by default).<br>
+The messages are stored in the default order manager directory (typically C:\program files\zoovy\ordermgr) in the
+emails\default directory. <br>
+</article>
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+If you would like to customize these email messages you should edit them online. 
+
+
+</div>
+</aside>
+
+
+<aside class="cbc">
+<h6>'Saving Custom Emails'</h6>
+<div>
+<li> From login Select Customer Tool
+<li> Select Bulk Email
+<li> Choose any option from the list
+<li> Select Load Message
+<li> Open a sample email from either the email folder in default, or the bulkemail or sample email file
+<li> Make your changes
+<li> Select save message
+<li> Name the message and save it into the custom directory
+
+</div>
+</aside>
+
+
+<article>
+<h2>Using Variables to Customize Your Messages</h2>
+All email templates may contain the following variables, the variables will be automatically substituted when the message is created, this means you won't have to cut and paste pieces of information from the order into the email. 
+
+In fact, you should never even need to edit the email if you have your email messages setup correctly.
+</article>
+
+<article>
+<h2>Using Variables</h2>
+
+Variables such as %FIRSTNAME% are actually macros which translate into SPECL code such as <% print($bill_firstname); %>.  Custom Macros, and custom formatting can be done by customizing the email template and overriding the default values provided by the system.
+
+<br>
+<br>
+
+The list of variables (macros) is displayed in the user interface and varies based on the type of email that is being sent. For example ORDER emails have fields like order_total, whereas CUSTOMER emails (which don't pertain to an order) don't have those fields. 
+
+</article>
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+<li> Variable (macro) names are case sensitive (they must be typed in all UPPER case) they MUST have the percent (%)
+signs before and after them.<br>
+
+</div>
+</aside>
+
+
+</article>
+
+<article>
+<h2>Compatibility</h2>
+
+Zoovy supports HTML Email, no effort is made to provide a text based version of email messages.  
+
+</article>
+
+<article>
+<h2>Email Tips</h2>
+
+<li> Keep messages with instructions short and to the point. Create templates for each of the standard messages you regularly send out.
+
+<li> Test messages not only with your email software but also with popular software such as Outlook, and free services such as Hotmail and Yahoomail.
+
+If you or a friend have access to AOL make sure you see how your email messages will appear. Each of those systems will interpret HTML email messages slightly different.
+
+<li> Watch out for SPAM filters: Avoid using ALL CAPITAL LETTERS, messages with all capital letters will often be flagged as SPAM.
+
+<li> Avoid using RED type, messages with red lettering will also commonly be treated as SPAM.
+
+<li> Local URL references - Triple check your message to ensure it does not contain any references to images at local URL's (e.g. file://) because
+those will only be viewable on your computer - not by the rest of the world.
+
+<li> Login to your Zoovy site, go to Setup / Checkout Settings and enable the feature "Disable login/password requirement for order status checking."
+then add a link to
+https://ssl.zoovy.com/USERNAME/order_status.cgis?email=%ORDERSTATUSURL%&order_id=%order_id% in your email messages and customers
+can instantly check their order status.
+
+</article>
+<article>
+<h2>LEGACY SUPPORT</h2>
+
+The following variables will be removed in future versions:<br>
+<li>%fullname%	The Customers Full Name in first last format
+<li>%order_id%	The Order ID of the Order
+<li>%quotedprice%	The current (most recently saved) full price of the order
+<li>%contents%	The contents of the order in a space separated format
+<li>%bill_email%	The billing email address of the customer (NO LONGER SUPPORTED)
+<li>%website%	The yourname.zoovy.com url
+<li>%bulkemailurl%	The url reference that does remove from bulk email list (the unsubscribe URL - which is generated automatically by Zoovy)
+<li>%companyname%	Your Company Name
+<li>%companyaddress1%	Your Company Address1
+<li>%companyaddress2%	Your Company Address2
+<li>%supportphone%	Your Support Phone Number
+<li>%supportemail%	Your Support Email Address
+<li>%trackinglist%		A plaintext list of tracking numbers.
+Please note: these are all plaintext, and contain no HTML formatting. They are in lower case.
+And if used inside an HTML email they should be placed within a &lt;pre&gt; tag to maintain spacing and column widths.
+These variables will eventually be removed.<br>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+

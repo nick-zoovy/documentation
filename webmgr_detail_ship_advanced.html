@@ -1,0 +1,79 @@
+<meta type="filename" id="webmgr/detail/ship_advanced">
+<h1>Shipping Tricks and Tips</h1>
+<article>
+<h2>Displaying Shipping in the Cart</h2>
+
+If you go into SETUP, in checkout properties you should MAKE SURE you enable shipping to be displayed in your cart. 
+Customers love this feature, but remember it is only compatible with non-origin shipping formats so you can't use it with USPS, UPS, or Federal Express.
+It's worth mentioning that if you don't put in your Federal Express number that the shipping system will default to Zoovy's fedex number which quotes high shipping rates, and an origin from zip code 92007.
+</article>
+<article>
+<h2>Having different pricing for Auction/Non-Auction items.</h2>
+
+Shipping for auctions is calculated just like any other product in the store.<br>
+<br>
+There are three ways to calculate different shipping for auctions, one is to use special fixed price fees for external items, 
+the second is to use API shipping, the third is to use options which only apply to eBay listings.
+This is the most common eBay (and technically only supported on eBay) - it is an experimental feature used to add product 
+options to a product, but it can be used in conjunction with rules based shipping to create "phantom" options which add a 
+-EBAY to the SKU of the item eg: if PRODUCTID was the Products Unique Code, the PRODUCTID-EBAY would be the one which 
+originated through eBay. Then you could for example, have a shipping rule which added $5 for each item that matched *-EBAY. 
+Just cut and paste the code below into your auction description, don't worry it's hidden it WILL NOT APPEAR TO BIDDERS.
+Note: Before using the following code make sure you replace the word "customer" with the current users username. 
+</article>
+<article>
+<h2>Code Example</h2>
+
+&lt;ZOOVY&gt;
+&lt;customer:pogs&gt;Source&lt;/customer:pogs&gt;
+&lt;customer:pog_source&gt;
+&lt;OPTION VALUE="EBAY"&gt;eBay Auction&lt;/OPTION&gt;
+&lt;/customer:pog_source&gt;
+&lt;/ZOOVY&gt;
+
+</article>
+<article>
+<h2>Multiple Shipping Policies</h2>
+
+Having multiple shipping policies can be best accomplished by using the Shipping API feature.
+Trying to have multiple shipping policies configured in your store without the shipping API can prove to be very difficult to configure and maintain.
+
+</article>
+<article>
+<h2>Free shipping for additional items</h2>
+
+To set-up a special promotion for free shipping for additional items purchased from the store and the end of an auction. 
+Use fixed shipping for incomplete items ONLY, and then configure simple shipping to zero dollars, 
+this way anything purchased from the store will have no shipping. 
+
+
+</article>
+
+<article>
+<h2>Ebay and Shipping</h2>
+Shipping, particularly when it comes to Ebay listings and the many different configuration settings can be extremely complex.  Here are some tips to remember that will help you succeed:<br>
+
+<li>1. Setup an implementation appointment to help you accomplish your goals.  These appointments go best if you go into them with a very clear picture of "what you want to happen" in regards to shipping, then the implementation team can do their best to get you as close to your goal as possible.
+
+<li>2. Test...test..test.  We can't stress this enough.  Once you get a configuration for ebay profile/shipping/product setting setup, perform a small group of test launches, looking closely at any preview messages during the launch, then also observe the results that ebay displays carefully.  If something isn't right you know about it right away, can make changes, and don't have 300 listings up that are incorrect.
+
+<li>3. Once you get a shipping/ebay configuration that is working for you...don't play with it.  Ebay changes things often enough that it is enormously difficult to get consistent shipping behavior with ebay listings.  If you go in and change something, it's virtually impossible to do so.  If you want to "try" something, setup a new product, a new profile, and use them to go back to Step 2 above.  Don't "test" with something that is working.  Leave it be.
+
+<li>4. SIMPLE is better.  The temptation to be constantly tweaking your shipping to give the best rates, to configure it this way for this section of products/customers, that way for another set, and a third way for yet another (et cetera, ad nauseam...) can be very strong and hard to resist. Most of the time the net you gain in sales do not offset the problems and headaches that you will cause to yourself, and more importantly to your customers.  The more complex your shipping requirements, the more likely that it will cause your shipping to break in some corner case that you didn't think to test, or, confuse your customers.  The more simple you can keep your shipping, the better off you (and your customers) will be.
+<br>
+</article>
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+

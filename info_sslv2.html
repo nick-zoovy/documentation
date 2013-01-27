@@ -1,0 +1,67 @@
+<meta type="filename" id="info/sslv2">
+<h1>3rd Party Security Scans</h1>
+
+<article>
+<h2>Concept Overview</h2>
+
+<aside class="caution">
+<h6></h6>
+<div>As of April 22nd 2007, Hackersafe is the only recommended 3rd party security scanning solution. Hackersafe's PCI program is described on their website here:
+http://www.scanalert.com/site/en/pci/intro/
+
+For more information please read the section below. 
+
+</div>
+</aside>
+
+
+
+
+
+</article>
+
+<article>
+<h2>SSLv2 Vulnerability</h2>
+Several 3rd party security scanners claim Zoovy supports SSL 2.0 -- what exactly are they complaining about?
+
+<br>
+
+I just want to clarify -- Zoovy webservers support SSLv2, SSLv3 and TLSv1 --
+Any browser which supports higher grade protocols will automatically use SSLv3 or TLSv1 -- so only people which don't support SSLv3 or TLSv1 will use SSLv2.
+
+<br>
+
+To summarize: If nobody uses SSL 2.0 - then why do they care?
+
+<br>
+
+See the problem is that people who do not have SSLv3.0/TLS will NOT be able to connect to your site, it will result in some obscure error or just a blank page, or possibly even a screen full of line noise. But what happens next is really fun -- 
+
+<br>
+
+The customer won't be able to checkout - at all. Again, if it's nobody - then that's not a problem, but if it's somebody (even one customer) then here is what will happen: you (the merchant) is going to get the call from a customer who desperately wants to buy from your site -- and then you're going to refer it to our technical support team and they're not going to be able to solve it and we at Zoovy are going to look like idiots and waste a lot of technical resources doing tests because the customer neglected to mention they were accessing your site from their Macintosh and AOL version 2.0 browser that son gave them that can't have anything upgraded because it's not supported anymore.  This is a lose lose for everybody involved.
+
+<br>
+
+Basically 3rd party security scanners want us to make the Zoovy product work for less customers.  They don't care about how disruptive it is when customers can't purchase from you.
+Apparently they don't realize that that 2.0% of internet users still uses IE5 - and another 1.6% of all Internet users use "Other" http://www.w3schools.com/browsers/browsers_stats.asp -- which means that as many as 1.6% of your customers may not be able to use your site -- and that's not to mention the other computer neophytes which had their friendly (but uneducated) neighborhood computer guy come and "reconfigure" their browser security settings to turn of TLS/1.0 and SSLv3 (yep - IE 6 still had that option!) -- sadly that is what a lot of your less savvy computer consultants do when they don't know what something means. 
+
+<br>
+
+Finally it's worth mentioning the vulnerability they are talking about is a theoretical exploit - not a giant backdoor for viruses or worms.
+It requires the "hacker" intercept a TCP stream and then have the computing horsepower to decrypt an SSL 2.0 (which is no easy feat, as far as we know it was only ever done in a lab, under controlled circumstances by researchers, there is no known security intrusion as a result of this). Hackers generally wouldn't do this, because for most part I'd say 99.9% of the sessions on the Net don't use SSL v2.0 (because they support stronger crytographic levels v3 or TLS)
+
+</article>
+
+<article>
+<h2>Zoovy is CISP compliant</h2>
+
+Zoovy disables the ability to accept credit cards when in SSL 2.0 sessions (so the customer cannot pay via an alternate payment method) - customers can still pay by cash, money order, paypal, or any other non-credit card method you support. 
+<br>
+
+
+
+
+</article>
+
+

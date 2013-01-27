@@ -1,0 +1,129 @@
+<meta type="filename" id="ticket/159333">
+
+<h1>Issue #159333: Unable to receive email</h1>
+
+<article>
+<h2>Issue</h2>
+Issue: UNABLE TO RECEIVE E-MAIL
+
+<br>
+
+ERROR TRANSFERRING TO MX.FUSEMAIL.NET; SMTP PROTOCAL RETURNED A PERMANENT ERROR 550 RELAY NOT PERMITTED
+
+</article>
+
+<article>
+<h2>Resolution</h2>
+### Tech Notes ###
+
+I am able to send test emails from admin@username.zoovy.com.
+I am NOT able to send test email TO admin@username.zoovy.com:
+
+Email error:
+<aside class="html">
+<h6></h6>
+<code>
+This message was created automatically by mail delivery software.
+
+A message that you sent could not be delivered to one or more of its
+recipients. This is a permanent error. The following address(es) failed:
+
+  admin@koie.zoovy.com
+
+------ This is a copy of the message, including all the headers. ------
+
+Return-path: <xxxx@zoovy.com>
+Received: from mailanyone.net
+	by smtp-gw8.mailanyone.net with esmtp (MailAnyone extSMTP zoovyinc)
+	id 1Iiy92-0004Rj-0z
+	for admin@koie.zoovy.com; Fri, 19 Oct 2007 15:08:32 -0500
+Received: by mail2.zoovy.com (Postfix, from userid 502)
+	id A14D74F6FC; Fri, 19 Oct 2007 13:06:41 -0700 (PDT)
+Received: from smtp-gw8.mailanyone.net (smtp-gw8.mailanyone.net [208.70.128.73])
+	by mail2.zoovy.com (Postfix) with ESMTP id 0CEC74F6D2
+
+</code>
+</aside>
+
+
+</article>
+
+<article>
+<h2>Solution #1</h2>
+
+Due to the fact that you are doing a 301 redirect on your koie.zoovy.com domain which is permanent. Your mail will no longer function for that domain. This is due to the fact of when your redirecting a domain you are telling everyone this domain is no longer valid. Therefore your domain will not be able to receive mail. If you have further questions or concerns please let us know by reopening this ticket. 
+
+</article>
+
+<article>
+<h2>Problem #2</h2>
+This does not address the problem.  Our customer is sending the emails to user@mydomain.com.  Please see email thread below and update status.  Thanks.
+
+<aside class="html">
+<h6></h6>
+<code>
+
+----- Original Message ----- 
+From: <Postmaster@xxx.com>
+To: <somebody@xxx.com>
+Sent: Friday, October 19, 2007 3:31 PM
+Subject: DELIVERY FAILURE: Error transferring to mx.fusemail.net; SMTP Protocol Returned a Permanent Error 550 relay not permitted
+
+
+> Your message
+>
+>  Subject: Testing
+>
+> was not delivered to:
+>
+>  <user@domain.com>
+>
+> because:
+>
+>  Error transferring to mx.fusemail.net; SMTP Protocol Returned a Permanent Error 550 relay not permitted
+>
+>
+
+</code>
+</aside>
+
+ 
+Our email server administrator advises us the email was rejected by your email server.  
+So you need to have your email server administrator to investigate.  Below email message indicates the reason for rejection.
+
+</article>
+
+<article>
+<h2>Solution #2</h2>
+
+<aside class="hint">
+<h6></h6>
+<div>
+The sub-user on the zoovy side doesn't have email enabled.
+
+</div>
+</aside>
+
+
+<br>
+
+This problem seems pretty obvious (unless I'm missing something) - the user you are trying to access is not a valid alias for admin@username.zoovy.com and does not have a separate mailbox.
+
+<br>
+
+There are two ways this can be corrected:
+
+<br>
+
+<ol>
+<li> You can create an alias for user@yourdomain.com in the admin@username.zoovy.com -- OR --
+<li> You can login to the zoovy site as the administrator, go to setup / user logins
+delete the user, and then re-add this account with email. 
+This will create a separate email mailbox for subuser@username.zoovy.com along with aliases for all your domains.
+
+<br>
+
+If you need assistance you can contact us by phone on Monday, or if you'd like me to do it - I'd be happy to, just let me know which route you'd like to take.
+
+</article>
+

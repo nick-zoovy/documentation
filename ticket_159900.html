@@ -1,0 +1,54 @@
+<meta type="filename" id="ticket/159900">
+
+<h1>Issue #159900: eBay Error #12305 during Refresh/Revise of listing</h1>
+
+<article>
+<h2>Issue #159900: eBay Error #12305 during Refresh/Revise of listing</h2>
+
+
+<article>
+<h2>Issue</h2>
+I started updating (refreshing) some of my existing listings and this is the error message I got:
+
+<aside class="html">
+<h6></h6>
+<code>
+Error[#12305]: The flag ThirdPartyCheckout for this item is on.
+ThirdPartyCheckout is incompatible with Live Auctions, 
+Ad format, Merchant Tool, Motors, and Immediate payment, however.
+Revise/Relist item failed.
+
+</code>
+</aside>
+
+
+I ran the Default profile and refeshed all items with that profile using:  UTILITIES > EBAY ACCOUNT SETUP > PROFILES > REFRESH LISTINGS.  I let the system do them all.  About 30% Changed and about 70% I got that error message on.
+
+</article>
+
+
+<article>
+<h2>Resolution</h2>
+This is probably because you've turned on auto-pay in your profile since those listings were created. This can be found in the shipping portion of your profile at:
+"Ebay Account Setup" >> "Profiles" >> "((shipping)) PROFILENAME"
+
+<br>
+
+Auto-pay (Instant-pay) + Checkout Redirect are incompatible. If a listing was launched without auto-pay you can't revise the listing and add it - since Zoovy has tagged the listing for checkout redirect (which unfortunately can't be removed once it's been added)
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

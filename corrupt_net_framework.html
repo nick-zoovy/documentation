@@ -1,0 +1,71 @@
+<meta type="filename" id="Corrupt .NET framework">
+
+<h1>Corrupt .NET framework</h1>
+
+<article>
+<h2>Issue</h2>
+
+When I click on order manager I get "zoovy common auth has encountered a problem and needs to close" </article>
+
+<article>
+<h2>Resolution</h2>
+The error received is caused by corrupt .NET framework.  Up until recently, this was a difficult fix, as there was no "real" way to remove .NET from your system.  The add/remove did not actually remove it, and any uninstall provided by Microsoft were unsuccessful as well.  The steps to correcting this issue are as follows.  Please follow directly:  
+
+<br>
+
+-Close all programs and save any work you do not want to loose.
+<br>
+-Go to Start > control Panel > Add/remove programs
+<aside class="hint">
+<h6></h6>
+<div> VISTA USERS:   Start > Computer > add/remove programs
+</div>
+</aside>
+
+<br>
+-Remove any and all installations of ZID or ZOM you have. Once completed, close.
+<br>
+<aside class="hint">
+<h6></h6>
+<div> VISTA USERS:  The UAC (user access control) can cause confusion in your install.  If it is a must that you have it on, please be sure It is on at the time of ZID installation, and is not turned off at any point afterwards.  If you plan on having it off, please be sure it is off Before your re installation of ZID.
+</div>
+</aside>
+
+<br>
+- go to My computer click on c:\Program files\  
+There should still be a Zoovy folder in here.  Rename that folder to "Z1"
+
+<aside class="hint">
+<h6></h6>
+<div> VISTA USERS:  IF YOUR ZID HAD BEEN INSTALLED WITH YOUR UAC ON, your ACTUAL Zoovy folder will be located in the following directory:
+c:\Users\(User Name)\AppData\Local\VirtualStore\Program Files\Zoovy
+</div>
+</aside>
+
+<br>
+Follow this link to download the .NET clean up tool:<br>
+http://tinyurl.com/a9t3x<br>
+**Note: This tool is not guaranteed to work. It has simply been determined through our testing to be the most effective tool to resolve this particular issue.
+<br>
+Install the tool.  You will use it to remove .NET 2.0 ONLY, if you have previous releases such as 1.1 or 1.0 please leave those installed.
+<br>
+After removing .NET 2.0, restart your computer.
+Check to make sure it was uninstalled by going to your add/remove programs again.
+.NET 2.0 should no longer be in the list.
+<br>
+You can download .NET 2.0 from here:
+http://www.microsoft.com/downloads/details.aspx?FamilyID=0856EACB-4362-4B0D-8EDD-AAB15C5E04F5&displaylang=en
+.NET 3.5 is currently available and does work with ZID, but it is suggested that you install 2.0 first to confirm the correction of the error, than update if necessary.
+<br>
+Download and install the latest version of ZID at http://www.zoovy.com/biz/downloads/
+<br>
+<aside class="caution">
+<h6></h6>
+<div>
+BEFORE LOGGING IN be sure to go to the Admin tab and Database Config according to your setup.  (SOHO being standard) using your Zoovy login information.  Do the same for the Account Security.  You should be able to log in at this point.  
+</div>
+</aside>
+
+<br>
+</article>
+

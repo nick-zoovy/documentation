@@ -1,0 +1,305 @@
+<meta type="filename" id="hide/integrated_desktop_release_notes">
+<h1>Integrated Desktop Client v7 Release Notes</h1>
+
+<article>
+<h2>Overview</h2>
+
+The Zoovy Integrated Desktop (ZID) is the new name for the combined Order Manager and Warehouse Manager products.  This document tracks the changes in each new version as well as any known critical issues in a current or recent release. 
+
+<br>
+
+The 7.056 will be the last release in the ZID 7.0 series. Version 8.0 will be released in Q1 with a new database (non-Access). 
+
+<br>
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+Releases ending in an odd number e.g. 7.005 are considered BETA or "less stable", whereas releases ending in an even number e.g. 7.006 would be considered RELEASE-CANDIDATES or "more stable". The entire 7.xxx series is a development branch which means it's releases will undergo less testing in an effort to get features into the application at a faster pace. 
+
+</div>
+</aside>
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+Integrated Desktop Clients can be installed concurrently with Order Manager, and Warehouse Manager however companies should avoid processing orders or managing products concurrently due to the potential for data corruption issues. 
+
+<br>
+
+PLEASE DO NOT PROCESS CONCURRENTLY: The risk of data corruption when concurrently processing is VERY REAL. Users which are found to be concurrently processing may be charged for additional support time, lose BPP eligibility, and may have either version 6 or 7 locked out of their account. We take this very seriously, we don't like doing unnecessary data recoveries. 
+
+<br>
+
+Our implementation team is always ready to assist you with your conversion questions. Please schedule an appointment with someone if you are at all uncomfortable with upgrading alone. 
+
+</div>
+</aside>
+
+
+<br>
+
+Discussion of specific enhancements which are intended to be incorporated into the 7.xxx series are available to BPP Clients who have executed a non-disclosure agreement during their quarterly reviews. 
+
+</article>
+
+<article>
+<h2>Zoovy Integrated Desktop (ZID) Release Notes</h2>
+
+<section>
+<h3>Version 7.056 - 11/18/08</h3>
+			
+		
+<li> CORRECTED: Application only prints one invoice instead of "all invoices" when user clicks "Print All Invoices" button. 
+<li> CORRECTED: Error Unknown column 'LOC' - occurred when editing location of inventory record in Warehouse Manager.
+<li> IMPLEMENTED: Added new indexes to the PRODUCTS table which will improve performance for clients with large product databases.
+<li> IMPLEMENTED: Added custom inventory disposition report for client discountgunmart.
+<li> CORRECTED:  Error "Item has already been added. Key in dictionary." when uploading images
+<li> CORRECTED: Appplication would not display the options for the supply chain products
+<li> CORRECTED: Application would remove additional requested products as line item if already contain in kit
+<li> CORRECTED: Clean up the syncing message when an error occurs. In the hint said Warehouse Manager even if it was Order Manager issue
+<li> CORRECTED: Clean up some of  UI in ZID (the create invoice, shipping quote , edit company information, edit company logo, Fedex Setup)
+<li> CORRECTED: Searching a product with lower case z , nothing would happen
+<li> IMPLEMENTED: Added shp_carrier to the shipping export file
+<li> CORRECTED: Add some more validation on the address when creating a FedEx Label - ie remove "" from the address field
+<li> CORRECTED: ZID was creating blank orders. This was happening because merchanf was sending email from the OSPLIT template
+<li> IMPLEMENTED: Added support custom forms for APO address in the Endicia Dazzle Intergration
+<li> IMPLEMENTED: Added order notes to the shipper export file
+<li> CORRECTED: South Korea translates to Republic of Korea for the Endicia Dazzle Integration
+<li> CORRECTED: Special methods and totals were not displaying on the invoice as line item
+<li> CORRECTED: Preorder template was not working when you move an order to preorder status
+<li> CORRECTED: Edit a product inside edit orders, the qty description, price was blank
+<li> CORRECTED: System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection when using the shipper export file functionality
+<li> CORRECTED: System.InvalidCastException: Conversion from type 'DBNull' to type 'String' is not valid when using the shipper export file functionality
+<li> CORRECTED: Inventory was coming down corrupt when the number of inventory records was past 32K
+<li> CORRECTED: Edit a product inside the edit order screen was blank 
+<li> CORRECTED: 'Web DB Sync' is not performed as expected when the 'Sync' button in the toolbar is clicked for the Order Manager application after launching the application for the first time
+<li> CORRECTED: An exception message is displayed when tried to launch Order Manager Application of ZID as SOHO Client in the secondary machine
+<li> CORRECTED: 'Email Templates' dialog does not display the list of email templates created using the 'Add' functionality. Instead 'Email templates' are displayed only when the 'Add' button is clicked and closed again
+<li> CORRECTED: An empty email template is saved without any prompt message that it is an empty template. 
+<li> CORRECTED: When website sync error happens, the successive website sync operations are not performed until the ZID product exited and restarted
+<li> CORRECTED: An exception message appears when tried to create an email template for new custom profile with the profile name length 11 or more than 11 characters. Instead a valid error message should be displayed as 'the length of the profile name should be less than
+<li> CORRECTED: Kit and Assembly products were corrupt when adding as a new line item in the order
+<li> CORRECTED: Error DBNULL  on NAVCATS when adding new website categories (Enterprise Only)
+<li> CORRECTED: Add virtual and virtual_ship as part of the order 
+<li> IMPLEMENTED: Add filter for products by supplier for discountgunmart project
+<li> IMPLEMENTED: Implemented the ability to automatically create purchase orders in the Quickbooks Integration for ibuystores project
+<li> CORRECTED: When uploading invoices, was getting a sync 2025, XML corrupt error. This was behavior was caused by changes in 7.043
+<li> IMPLEMENTED: Added the ability to auto add products and vendors that are not in Quickbooks 
+<li> IMPLEMENTED: Add more functionality the puchase orders in Quickbooks
+<li> CORRECTED: Tracking UI was only allowinng a length of 25 for the tracking
+<li> IMPLEMENTED: Added sdomain as part of the shipper export file
+<li> CORRECTED: Version check not working because WMI (Machine specific)
+<li> CORRECTED: Add so it only selects one row of the ORDERS so I would know what field names are in the database
+<li> IMPLEMENTED: Change UI to reflect Quickbooks 2009 support
+<li> IMPLEMENTED: Added sales tax prefix to Quickbooks integration to support multiple sales tax ie different county taxes for the state of NY
+<li> CORRECTED: Added more debugging to the auto create products for the quickbooks integration
+<li> CORRECTED: MySql.Data.MySqlClient.MySqlException: There is already an open DataReader associated with this Connection which must be closed first.  
+
+</section>
+
+
+<section>
+<h3>Version 7.030 - 5/08/08</h3>
+
+<aside class="caution">
+<h6></h6>
+<div>
+Version 7.030 contains a correction for a inventory issue that affects users who are editing or creating orders offline. We will be doing another subsequent release very soon which contains mostly new feature enhancements. 
+
+</div>
+</aside>
+
+
+<li> CORRECTED: Severe inventory issue when manually adding items to an invoice, without using the "add product" dialog.  Caused inventory counts to be decremented twice for each new item, due to a previously unknown behavior in our 3rd party grid control. 
+<li> IMPLEMENTED: Added the zoovy order # into the reference field for "Receive Payment" function in Quickbooks to make reconciling credit card deposits easier. 
+<li> CORRECTED: 
+Error during adding a tracking number manually using "OTHER" carrier and error "System.Data.OleDb.OleDbException: The field is too small to accept the amount of data you attempted to add.  Try inserting or pasting less data." 
+
+<li> CORRECTED: Order notes were printing on packing slips if the "print notes on packing slips checkbox" was unchecked.
+
+<li> CORRECTED: Tracking numbers can no longer be deleted (they are hidden instead)
+
+<li> CORRECTED: Prevented access denied message when accessing OrderIDS.ini in vista, bu the next available order id from the OrderIDs.ini file into the database. 
+<li> CORRECTED: Shipping address was not auto-populating if "same as billing" feature we enabled during invoice edit. 
+
+<li> CORRECTED: Error "System.InvalidCastException: Conversion from string "" to type 'Boolean' is not valid." when closing FedEx Ground packages.
+
+<li> CORRECTED: "Msgsubject is blank" error when sending email (enterprise only)
+<li> CORRECTED: Emails messages were corrupted/not sent when moving orders to the processing tab
+<li> IMPLEMENTED: Added an ability to increase the search string length (before auto-populate starts) when adding products to an invoice. Helps clients with larger databases. 
+<li> CORRECTED: Added database indexes to the SKULIST to speed up searching when adding products to an invoice.
+<li> CORRECTED: Error message "Product :xyx does not exist in the order. Please double check the item" caused when scanning item, in package verification. 
+<li> CORRECTED: Error message "System.NullReferenceException: Object reference not set to an instance of an object." when trying to edit description in an order. 
+<li> CORRECTED: Customer notes not syncing to the zoovy servers. 
+<li> IMPLEMENTED: Added the po number on the printed invoice.
+<li> IMPLEMENTED: PO number exports to quickbooks.
+<li> CORRECTED: Phantoms SKU appearing when printing the invoice (Enterprise only)
+<li> IMPLEMENTED: Ability to see the entire customer note for notes exceeding 80 characters. 
+<li> CORRECTED: Error message "MySql.Data.MySqlClient.MySqlException: Unknown column 'cust_order_count' in 'field list'", when running Dashboard reports in Enterprise
+<li> CORRECTED: Addresses and names were "blending" when exporting to Quickbooks. 
+<li> CORRECTED: Searching fullname (e.g. "Homer Simpson") would return nothing, when searching INVOICES and CUSTOMERS. This is because it was using Homer Simpson as the last name versus the name split apart. 
+
+<li> CORRECTED: Package verification would report that the "SKU was not found" when scanning the UPC.
+<li> CORRECTED: Error message "System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\tmp\stspyfeednhsil.jpg'."  (Enteprise Only)
+7.0270	
+<li> CORRECTED: Error message "System.ArgumentOutOfRangeException: Index was out of range." when going Tools -> Scale Setup and putting in an invalid value. 
+<li> IMPLEMENTED: Orders are coming down blank. This was caused by improperly formatted price or cost field : e.g. "0,0" usually from an CSV import. 
+<li> CORRECTED: Ireland was not exporting to Dazzle correctly
+<li> CORRECTED: Error message "System.Data.OleDb.OleDbException: Syntax error in UPDATE statement." caused when syncing products warehouse manager. This was due to bad csv upload in the base_cost field and base_price.
+<li> IMPLEMENTED: ZPL printer support for the UPS Online tools Integration.
+<li> IMPLEMENTED: Quickbooks issue with products that do not exist, Merchant was receiving the error "product does not exist" and instead letting Order Manager create the product, the merchant would create the product while trying to export an the order.
+<li> CORRECTED:  Error message "InvoiceLineTotal is not allowed for this shipment" when shipping orders in the UPS Online Tools.  This was caused when ship country was not Canada or Puerto Rico.
+<li> CORRECTED: Main window in Order Manager would remember size "0,0" after minimizing Order Manager then exiting. 
+
+<li> CORRECTED: Custom forms weight was being sent as "1#" versus translating to ounces in Endicia Dazzle
+<li> IMPLEMENTED: Added support for large rate box in Endicia Dazzle
+<li> CORRECTED: Blank emails would halt sync process - Enteprise only
+<li> CORRECTED: The manufacturer SKU was not exporting in the shipper export file cause by referencing a legacy variable name.
+<li> CORRECTED: Combining orders would loose the description if the items had options, (beta only- caused by ZID 7.027)
+<li> CORRECTED: Missing email templates within profiles when hint was longer than the max length in the databases.
+<li> CORRECTED: When creating a product using the Quickbooks integration, ZOM did not bring the cost over correctly if the pid contained dashes.
+<li> CORRECTED: When exporting an invoice to quickbooks  that contain company name, contact , and second address, ZOM would only bring over company name in the address field.
+<li> CORRECTED: Inventory in warehouse manager not reflecting web even when the merchant did a refresh all data from Zoovy
+<li> IMPLEMENTED: Beginning in this version - software now only supports Quickbooks 2006 or higher. 
+<li> IMPLEMENTED: Removed menu option orders to Quickbooks 2001 and older
+<li> IMPLEMENTED: Removed the tab for setting Quickbooks 2001 and older from Tools -> Quickbooks Setup
+
+</section>
+
+
+
+<section>
+<h3>Version 7.020 - 2/12/08</h3>
+
+<li> IMPLEMENTED: warning message that database alters may take some time to hopefully dissuade users from shutting down order manager during upgrade process. 
+<li> IMPLEMENTED: simplified user interface to assist with selecting email message from list.
+<li> CORRECTED: System.data.oledb exception error / syntax error in query expression which happened when exporting more than one order in the shipping export file "items all in one box"
+<li> CORRECTED: Email substitution not happening when sending email - this only happened when editing the order then clicked email customer. 
+<li> CORRECTED: Admin email preferences would not display screen on enterprise sync manager.
+<li> CORRECTED: The email manager, "edit email" right click menu option did not work.
+
+</section>
+
+<section>
+<h3>Version 7.018 - 2/5/08</h3>
+<li> IMPLEMENTED: UPIC Insurance support
+<li> IMPLEMENTED: re-implemented earlier version of the shipper export file (formerly known as the UPS Worldship export) where all items are contained in one box.
+<li> IMPLEMENTED: if a payment is denied or cancelled, software will ask user if still want to print a shipping label and records override as an event. 
+<li> IMPLEMENTED: blank "smart address" now creates an invoice with no address rather than throwing an error.
+<li> IMPLEMENTED: new email editor, with support for profiles
+<li> IMPLEMENTED: email messages can now be added and edited within the ZID console. 
+<li> CORRECTED: new filters for dashboard were not saving. 
+<li> CORRECTED: "Billing Zip for this address is blank or invalid" error when creating an invoice.
+<li> CORRECTED: Rate shipment feature in the FedEx shipping module did not work for most clients.
+<li> CORRECTED: Only 3 characters were allowed in the product id search when adding a product to an invoice. 
+<li> CORRECTED: Inventory was increasing instead of decreasing when entering a quantity when editing a product via the invoice editor. 
+<li> CORRECTED: If a product does not exist, it can still be added to an order.
+<li> CORRECTED: System.null.reference exception: object reference not set to an instance of an object when clicking product categories, and all products are checked in warehouse manager.
+<li> CORRECTED: system.runtime.interop.services.externalexception a generic error occurred in gdi+ when editing the company logo in order manager.
+<li> CORRECTED: user could not delete outgoing email messages, the delete option was removed from toolbar and right click was non-functional. (Delete button keyboard was working)
+</section>
+
+<section>
+<h3>Version 7.016 - 12/09/07</h3>
+<li> IMPLEMENTED: Search by eBay # in the invoice search.
+<li> IMPLEMENTED: Exporting to Quickbooks now supports using manufacturer SKU or UPC instead of the Zoovy SKU.
+<li> CORRECTED: Error "The field is too small to accept the amount of data you attempted to add. Try inserting or pasting less data" during database upgrade from previous versions.
+<li> CORRECTED: "Active Reports Evaluation, Data Dynamics Ltd." appears at bottom of invoice.
+<li> CORRECTED: Not displaying 2"x1" logo properly.
+<li> CORRECTED: Shipper field not being imported during tracking CSV import.
+</section>
+
+<section>
+<h3>Version 7.012 - 12/04/07</h3>
+<li> ENHANCED: Added "compression" option to Enterprise client connect to improve performance for users on WAN connections. 
+<li> ENHANCED: When importing tracking information from a shipping file now has the ability to set a shipping carrier. Header is: Tracking #, Order #, Carrier, Cost, Actual Weight - Carrier can be UPS,FDX,USPS
+<li> ENHANCED: Added more data formatting intelligence to the smart address in order to support imports from Paypal.
+<li> ENHANCED: Added a new event to the order when a new order is created, or edited/saved via the desktop suite.
+<li> ENHANCED: Client now automatically skips corrupt Endicia Dazzle XML files and moves them to the "errors" folder.  Displays user a warning message when corrupt file is encountered, also creates a log: "dazzlecorruptfiles-YYYYMMDD.txt" which contains a list of corrupt files and how to fix them for a given date.
+<li> CORRECTED: Runtime error "Items in collection did not match" when saving customer info during saving a new invoice.
+<li> CORRECTED: Handling added more than once to an order when creating a brand new invoice and selecting shipping/payment more than once.
+<li> CORRECTED: Error message "Product XYZ does not exist in order please double check" when using package verification functionality. (Package verification now works properly)
+</section>
+
+
+<section>
+<h3>Version 7.010 - 11/28/07</h3>
+<li> This version contains no enhancements or patches since release candidate 7.009 
+</section>
+
+<section>
+<h3>Release Candidate 7.009 - 11/27/07</h3>
+<li> CORRECTED: sub-order status would disappear after syncing with sync manager (Enterprise only)
+<li> CORRECTED: selecting orders was slow when viewer was turned off
+<li> CORRECTED: error message "the command text property has not properly initialized" when changing payment status inside the edit orders screen (not confirmed)
+<li> CORRECTED: customer notes occurring on all orders not related to each-other which occurred when adding notes a invoice that did not have a customer record.
+<li> CORRECTED: error message "system.invalid operation exception: the microsoft oledb 4.0 jet provider is not registered on local machine" on 64-bit version of Vista
+<li> CORRECTED: added a fail-safe to verify tracking number was added to database before printing label, a message box is displayed when this error occurs.  (we are not sure how this can happen, but this check will help us diagnose it and make the merchant aware - since tracking #'s are required to receive payment from Amazon)
+<li> CORRECTED: system.data.oledb exception "no value given for one or more required parameters" which was caused by creating a new database under version 7.007.
+<li> IMPLEMENTED: resolution dialog to inform users why the "admin" user cannot login to the application.
+<li> CORRECTED: Product lost all information after a "clone" operation in warehouse manager.
+</section>
+
+
+<section>
+<h3>Release Candidate 7.007 - 11/22/07</h3>
+<li> CORRECTED: DataReader error when exporting paid invoices to Quickbooks with payment receipt option checked (Enterprise Only)
+<li> CORRECTED: DataReader error when order was not found when using keyed lookup (Enterprise Only)
+<li> CORRECTED: Fullname not showing in customer service or the customers table
+<li> CORRECTED: Error message: "The changes requested to the table were not successful because they would create duplicate values in the index,primary key, or relationship when splitting orders."
+<li> CORRECTED: Order status button in toolbar did not work.
+<li> CORRECTED: System.NullReferenceException object reference not set to an instance of an object when clicking on view incomplete url.
+<li> CORRECTED: Report by SKU in the processing tab did not display any data.
+<li> CORRECTED: Resizing window in email editor did not scale properly. 
+<li> IMPLEMENTED: Added ZPL support for FedEx label printers.
+<li> IMPLEMENTED: Added second media type label for FedEx Shipping that contains no doc-tab, label size is 4"x6" and the FedEx supplies # is 156297.
+<li> IMPLEMENTED: Added work-around for system.management critical exception error - for customers who are running computers on hardware with broken/buggy WMI (Windows Management) subsystems. -- Customers experiencing this error will need to contact support.
+<li> CORRECTED: Index was out of range must be non-negative and less than the size of the collection when pressing the cancel button during sync in sync manager. (Enterprise Only)
+<li> CORRECTED: Added Google,Paypal-EC support to batch credit card processing and edit payment screen.
+</section>
+
+
+<section>
+<h3>Release Candidate 7.005 - 11/13/07</h3>
+<li> ENHANCEMENT: Installer is now digital signed so should install correctly without admin privileges.
+<li> ENHANCEMENT: Unified database between Warehouse Manager and Order Manager, laying the foundation for data sharing. 
+<li> ENHANCEMENT: New database location (moved from the common directory) which should fix UAC "virtual file-system" installation issues on Vista Home Basic edition.
+<li> ENHANCEMENT: added the ability to print more than 3 commercial invoices.
+<li> ENHANCEMENT: added default values for contact names and description of goods so international labels will print in UPS without specifying a value.
+<li> ENHANCEMENT: added additional fields to the worldship export to better support additional carriers which use that file. 
+<li> ENHANCEMENT: added getUPC and BoxSize format to clsReports for use on custom invoices and packing slips. (Enterprise only)
+<li> CHANGE: The "worldship export" was renamed to simply "Shipping Export" to avoid confusion for integration with other applications.
+<li> CHANGE: Worldship import was renamed to simply "Shipping Import"
+<li> CHANGE: Internally replaced a variety of unmanaged COM objects to make the application almost 100% managed code (Quickbooks SDK is currently the only unmanaged library)
+<li> CORRECTED: When exiting out of an application the user is returned to the login screen which contains allows for easy switching between applications.
+<li> CORRECTED: Data reader error when running dashboard reports (Enterprise Only)
+<li> CORRECTED: Certain toolbar options would not move into the background after a selection was made.
+<li> CORRECTED: Value cannot be null error when adding a tracking number via the Edit Invoice.
+<li> CORRECTED: Do not print claims option was broken for invoices and packing slips.
+<li> CORRECTED: Monetary value must be greater than zero when printing international labels for UPS.
+<li> CORRECTED: order manager only displayed title bar when starting due to remembering the minimized settings.
+<li> CORRECTED: incomplete item and invoices would disappear if an invalid address was present and user pressed save+exit to cancel an action. 
+<li> CORRECTED: XML parsing error when exporting to Quickbooks via search when re-exporting invoices which were previously exported. 
+<li> CORRECTED: Order display listview did not update after sync without moving tabs.
+<li> CORRECTED: Logo was not appearing on SOHO client - customers will need to perform a company sync in order for the logo to be re-downloaded.
+<li> CORRECTED: SOHO Clients now verify the SOHONET bundle is installed on the account.
+<li> CHANGE: Removed the "COMPANYINFO" table and replaced with "COMPANY" table that contains the same information but in a different structure in preparation for partitions.
+
+</section>
+
+
+</article>
+
+
+<article>
+<h2>Additional Reading</h2>
+
+For those who are interested, there is a complete history of the desktop software releases at the link below.
+<a class="linkdoc" href="#?doc=50916">Doc 50916</a>
+
+</article>
+
+

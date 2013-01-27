@@ -1,0 +1,367 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/ebay_preview_error">
+<h1>eBay Troubleshooting</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<article>
+<h2>Concept Overview</h2>
+This document will review many of the most common errors that you can see when previewing a launch of a listing to ebay.  These errors all come directly from ebay, and can take a bit of interpretation, but usually outline the problem with the product or launch settings.
+</article>
+<br>
+<article>
+<h2>Syndication Inactive</h2>
+<br>
+If your syndication is inactive, go to Syndication > Ebay Account and click 'Save.' Your Syndication status readout should change from the orange message: "Inactive: No feeds will be processed," to something like:<br>
+<br>
+Status:<br>	
+Products Sent: 0<br>
+Product Errors: 0<br>
+Last Diagnostic Message:<br>
+Settings have changed since last publish. Please re-publish.<br>
+</article>
+<article>
+<h2>Syndication not running</h2>
+<br>
+If your syndication is not running and you see the following error message in Syndication > Ebay > History: <i>"Received STOP instruction: Previous job:######## is not yet completed"</i> You will need to refresh your Ebay token and then delete and restart your Ebay Syndication.<br>
+<br>
+<b>RESOLUTION:</b>
+<li>1. Refresh your Ebay Token: See "Refreshing your Ebay Token" below.</b>
+<li>2. Go to Syndication > Ebay > Edit Partition.</b>
+<li>3. Click Delete.</b>
+<li>4. Click Save.</b>
+<br>
+Your Syndication status should change from the orange message: "Inactive: No feeds will be processed," to something like:<br>
+<br>
+Status:<br>	
+Products Sent: 0<br>
+Product Errors: 0<br>
+Last Diagnostic Message:<br>
+Settings have changed since last publish. Please re-publish.<br>
+</article>
+<article>
+<h2>Syndication CRASHED!</h2>
+<br>
+If your syndication shows a message that it has crashed, go to Syndication > Ebay Account and click 'Delete.' Once the syndication has been deleted, go to Syndication > Ebay Account and click 'Save.' Repeat this. Your Syndication status readout should change to something like:<br>
+<br>
+Status:<br>	
+Products Sent: 0<br>
+Product Errors: 0<br>
+Last Diagnostic Message:<br>
+Settings have changed since last publish. Please re-publish.<br>
+</article>
+<br>
+<article>
+<h2>Product is not going up to Ebay</h2>
+<br>
+If your syndication is running correctly, but certain products are not going up to Ebay and are not receiving Ebay errors, these products may have been suspended by Zoovy. Zoovy will suspend products after they get an error from Ebay so that these products do not continue to try to syndicate to Ebay and fail over and over.<br>
+<br>
+<b>RESOLUTION:</b>
+<br>
+<li>1. Clear the feed errors by going to Syndication > Ebay > Feed Errors > Clear Feed Errors.
+<li>2. Go to Syndication > Ebay Diagnostics > click Debug. 
+<li>3. Note that your product should no longer have a suspension notice in the gray debug text. 
+</article>
+<br>
+<article>
+<h2>Refreshing your Ebay Token</h2>
+<br>
+If you get a CARP Ticket: <i>"eBay token has hard expired, and was removed,"</i> chances are all you need to do is refresh your eBay Authorization Token and/or map your eBay account to the profile you're trying to use.<br>
+<br>
+<b>RESOLUTION:</b><br>
+<li>1. Click on Setup > eBay Configuration > eBay account.
+<li>2. Enter your username.
+<li>3. Do NOT click the Sandbox checkbox, unless you know you have this rare account.
+<li>4. Log in to Ebay.
+<li>5. Click the 'I agree" button. 
+<li>6. Back in the Zoovy User Interface, go to Setup > eBay Configuration > Profiles
+<li>7. If there is no error message, you are done. If your profile now gives an error message similar to 'eBay user not configured' in red, Click on [Config] next to the profile or profiles that will be used to launch your item to eBay, then Scroll to the bottom of the page and click save.
+</article>
+<br>
+<article>
+<h2>Variations Specifics and Item Specifics entered for a Multi-SKU item should be different.</h2>
+If you get the error: <i>"Variations Specifics and Item Specifics entered for a Multi-SKU item should be different."</i> it means that Ebay has determined that one of your product's options groups is relaying the same information as one of your item specifics. Hint: Static item specifics are not allowed in listings for many ebay categories. Static item specifics are the ones that are set using a drop-down box. custom item specifics are set using the fields that appear when you click "Add a custom detail." <br>
+<br>
+<b>RESOLUTION:</b><br>
+Find and remove the duplicate item specific:<br>
+<li>1. Eliminate static Item Specifics (Ebay 2.0 > Category1 [Choose] > select the option for no choice on every static item specific, usually the dash "-")
+<li>2. Run a syndication test for that product (Ebay 2.0 > Test Syndication). Once you have eliminated the offending Item Specific, the product should syndicate correctly.
+</article>
+<br>
+<article>
+<h2>Package weight is over the weight limit</h2>
+If you get the error: <i>"ERROR.MKT.eBay.219021: Package weight is over the weight limit for service USPS First Class Package."</i> it means that your shipping profile is set to offer USPS First class as a shipping option, but the weight you have configured on this product exceeds the maximum for that shipping type. You can either:
+1. Remove the First Class shipping option from the launch profile you have selected for this product. 
+- or - 
+2. Create a new company profile that does not have the first class shipping option and use it for your heavier products. You can copy the one you used to get the error and then just delete the First Class option. <br>
+<br>
+<b>RESOLUTION:</b><br>
+Find and remove the duplicate item specific:<br>
+<li>1. Eliminate static Item Specifics (Ebay 2.0 > Category1 [Choose] > select the option for no choice on every static item specific, usually the dash "-")
+<li>2. Run a syndication test for that product (Ebay 2.0 > Test Syndication). Once you have eliminated the offending Item Specific, the product should syndicate correctly.
+</article>
+<br>
+<article>
+<h2>When specifying SKU for InventoryTrackingMethod, the SKU must be unique within your active and scheduled listings</h2>
+If you get the error: <i>"When specifying SKU for InventoryTrackingMethod, the SKU must be unique within your active and scheduled listings"</i> it means that Zoovy has determined that you already have a listing for this product on Ebay and Zoovy is protecting you from listing a duplicate. If you see this error, but see no active listings in Ebay 2.0, the connection between the Zoovy product and the listing on Ebay may have been broken (See: "Ended listing in Zoovy still live on Ebay" below)<br>
+</article>
+<br>
+<article>
+<h2>This Listing is a duplicate of your item: ... Use multi-quantity fixed price listing to list these items</h2>
+If you get the error: <i>"This Listing is a duplicate of your item: ... Use multi-quantity fixed price listing to list these items"</i> it means that Zoovy has determined that you already have a listing for this product on Ebay and Zoovy is protecting you from listing a duplicate. If you see this error, but see no active listings in Ebay 2.0, the connection between the Zoovy product and the listing on Ebay may have been broken (See: "Ended listing in Zoovy still live on Ebay" below)<br>
+</article>
+<br>
+<article>
+<h2>Ended listing in Zoovy still live on Ebay</h2>
+If your Zoovy-launched listing is still active on Ebay, but that same listing appears to be ended according to Ebay 2.0, the connection between the Zoovy product and the listing on Ebay may have been broken. This is due to an occasional disconnect between Ebay and Zoovy that has not yet been resolved.<br>
+<br>
+<b>RESOLUTION:</b> <br>
+<li>1. LESS than 11 affected listings: End the listing on Ebay and test the product to make sure that it is ready to go up to Ebay on the next syndication run. <I>Note:</I> You can send products up to Ebay one at a time through syndication by entering the Product ID into the field at Syndication > Ebay > Diagnostics and then clicking "Debug."<br>
+<br>
+<li>2. MORE than 10 affected listings: Put a ticket into the support queue with the subject "Please perform an Ebay Sync" 
+<br>
+</article>
+<br>
+<article>
+<h2>Category ### only accepts custom item specifics</h2>
+If you get the error: <i>"Category [#####] only accepts custom item specifics"</i> it means that you are trying to list to a category that only allows custom item specifics according to Ebay. If you attempt to send static (non-custom) item specific code, Ebay will block your listing and deliver this error message.<br>
+<br>
+<b>RESOLUTION:</b>
+<br>
+<li>1. Go to Ebay 2.0 > Category1 > Choose<br>
+<li>2. Remove any static item specifics by selecting the dash from the drop down menu. Static item specifics are the pre-set specifics info that contained in drop-down style boxes.<br>
+<li>3. Add any Custom Item Specifics that you like. Custom Item Specifics are those that are stored in the free-form input boxes that appear when you click "Add Custom Detail."<br>
+<li>4. Click 'Save Category and Item Specifics.'
+</article>
+<br>
+<article>
+<h2>Listing is missing required item specific(s):</h2>
+If you get the error: <i>Listing is missing required item specific(s):</i>(followed by a list of specifics, such as: "US Shoe Size (Women's), Brand.")<i>Please provide the required item specifics."</i> it means that you are trying to list to a category that requires your product use one or more custom item specifics that match the pre-set specifics for that category.<br>
+<br>
+<b>RESOLUTION:</b>
+The good news is that Ebay has listed those pre-set specifics in the error itself. Just create custom item specifics with the name exactly matching the name in the error. <a class="linkdoc" href="#?doc=51546">Doc 51546</a><br>
+<br>
+<b>Note:</b> At this time, Ebay has not regulated the values following these names, only the names themselves. So, you could create the Item Specific "Brand: Adidas," or "Brand, Various," or "Brand: There is no brand," or whatever you like.  <br> 
+</article>
+<br>
+<br>
+<aside class="hint">
+<h6></h6>
+<div> You should configure Custom Item Specifics to replace any static item specifics that you just removed.
+
+</div>
+</aside>
+ 
+<br>
+<article>
+<h2>The item cannot be listed or modified. The title and/or description may contain improper words, or the listing or seller may be in violation of eBay policy</h2><br>
+<br>
+If you get the error: <i>"The item cannot be listed or modified. The title and/or description may contain improper words, or the listing or seller may be in violation of eBay policy"</i> it means that Ebay does not like something about your store setup and they are warning you about this during your listing attempt.<br>
+<br>
+<b><i>Common reasons for this are:</i></b><br>
+<li> 1. Store policies that contain words eBay has determined should not be used in your policy section <br>
+<li> 2. Attempting to list in excess of any dollar or listing number limits eBay has set for your account<br>
+<br>
+<aside class="hint">
+<h6></h6>
+<div>
+A combination of two words may cause this error. For example:<br>
+lets say the word "YUMMY" was banned. If you had a phrase like "This widget was signed by Sammy Ummy" it would be flagged. eBay doesn't give a clue about which words are banned.  We've seen the phrase "Google Checkout" in product descriptions cause this error.  Why?  Probably because Google Checkout is a direct competitor to eBay's Paypal. Keep in mind the list of banned words changes weekly - so what is a problem today may not be tomorrow.
+
+</div>
+</aside>
+
+<br>
+Unfortunately if you don't see anything obvious, the only way to troubleshoot this is to systematically go through and remove half the text, try a launch, see if it happens, if it doesn't add half the text back..  a huge waste of time.  If you'd like - as a service we offer our customers; we have staff on this side who can do this for a very nominal fee, if this is something you'd like us to assist with please contact support.<br>
+<br>
+<b>RESOLUTION:</b> 
+<br>
+Ebay usually outlines the problem clearly in a warning. Make the necessary adjustments to the listing profile you are using for that product at: Setup > eBay Configuration > Profiles. If you are hitting the eBay listing limits, give your eBay representative a call. They will usually increase your limits if you take the time to ask them.<br>
+<br>
+</article>
+<br>
+<article>
+<h2>Orders not coming down from Ebay</h2>
+If your orders are occasionally not coming down from Ebay this may be because you do not have the "Import/Track eBay Listings Automatically" option selected.
+<br>
+<b>RESOLUTION:</b><br>
+<br>
+1. Go to Setup > Ebay Config > Checkout and select the "Import/Track eBay Listings Automatically" option.<br>
+2. From the "Ignore Orders Before:" drop down box select the date of the oldest order you want to pull into Zoovy.<br>
+3. Click 'Save.'<br>
+<br>
+Note: This option will attempt to pull ALL orders down to your Zoovy account. It grabs all the orders stored in your Ebay account, (up to 90 days back) so the OCREATE (new order) email will automatically go out to those customers, even if that order was already processed previously. The "Ignore Orders Before:" drop down box should limit the old orders brought down by Ignoring the orders prior to the date you select.<br>
+<br>
+Note: Whenever your Ebay token expires, you will need to reset the "Import/Track eBay Listings Automatically" checkbox.<br>
+<br>
+If all orders stop coming down from Ebay abruptly, and you had already had the "Import/Track eBay Listings Automatically" checkbox selected, then place a support ticket, or call technical support for help.<br>
+</article>
+<br>
+<article>
+<h2>Product with one option out of stock not syndicating</h2>
+You may need a Support Inventory Cleanup if you are syndicating a product with options and one of the options runs out of stock before you get the following message in Syndication Debug:
+Product #######:AO01 is insufficient - 0 in inventory
+INFO: After processing filterLaunch we have: 0 products.
+PAUSE: Seems no products require syndication at the moment
+<br>
+<b>RESOLUTION:</b><br>
+<br>
+1. Open a support ticket
+2. Make the subject line read Ebay option out of stock error
+3. In the ticket, request an Inventory Cleanup and provide the SKU for the product that is failing.
+</article>
+<br>
+<article>
+<h2>For more information on other eBay Issues</h2>
+Please visit <a class="linkdoc" href="#?doc=50887">Doc 50887</a>
+</article> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,58 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/grouping">
+<h1>Grouping</h1>
+
+<article>
+<h2>Grouping Overview</h2>
+
+
+
+
+
+Merchandising can be difficult when dealing with several different marketplace. Grouping provides some solutions to merchandising complications. Grouping will allow individual option choices to appears in searches. For example, if a customer searches for "red bikini" they can find "red bikini" rather than a generic bikini that may have an option to select "red" but the customer will never know without first clicking on it. Grouping allows easier syndication into eBay for merchants who use options. Also, grouping allows you to display multiple options on Amazon, limiting the option choice to which color and size are available and in stock.<br>
+<aside class="hint">
+<h6></h6>
+<div> Grouping is one of many ways of handling options. It is not the only way. 
+</div>
+</aside>
+
+
+</article>
+
+<article>
+<h2> Fields</h2>
+<section>
+<h3>Fields Assigned to the Parent</h3>
+<li> zoovy:grp_type - This should be set to PARENT for the parent product. It defines the role of the product. If you set zoovy:grp_parent first it should automatically set this field on the product.
+<li> zoovy:grp_children - You populate this field with the Product IDs of the children, separate by commas.
+</section>
+
+<section>
+<h3>Fields Assigned to the Child</h3>
+<li> zoovy:grp_type - This should be set to CHILD for the child products. It defines the role of the product. If you set zoovy:grp_parent first it should automatically set this field on the product.<br>
+<li> zoovy:grp_parent - You populate this field with the Product ID of the parent.
+</section>
+
+<aside class="hint">
+<h6></h6>
+<div> By populating the field zoovy:grp_parent on the children, you can automatically create the parent Product ID with all appropriate fields set for grouping. 
+</div>
+</aside>
+
+<br>
+
+<section>
+<h3>Amazon Fields</h3>
+<li> amz:grp_varkey - This is the variation keyword that represents the group on Amazon. For example, "APPAREL: Color". <b>This field should be set on both the parent and children.</b>
+<li> amz:grp_varvalue - This is the name of this option when displayed on Amazon. For example, you would not want to display the entire product name when the "Black Suede Boots" are on Amazon. You would simply show the choice "Black". <b>This field should be set on the child products.</b>
+</section>
+
+</article>
+
+
+
+
+
+
+
+

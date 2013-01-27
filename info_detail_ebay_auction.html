@@ -1,0 +1,80 @@
+<meta type="filename" id="info/detail/ebay-auction">
+<h1>eBay Auction</h1>
+<article>
+<h2>Overview</h2>
+
+<table>
+<tr>
+	<td>Marketplace:</td>
+	<td><b>eBay (but supported by Zoovy)</b></td>
+</tr>
+<tr>
+	<td>Definition:</td>
+	<td><b>eBay Auction (New Format)</b></td>
+</tr>
+<tr>
+	<td>Fees:</td>
+	<td><b>eBay Fees Apply (<a href="http://pages.ebay.com/help/sellerguide/selling-fees.html">click here to learn more</a>)</b></td>
+</tr>
+<tr>
+	<td>To Register:</td>
+	<td><a href="http://www.qksrv.net/click-1102387-1643272" target="_blank" onmouseover="window.status='http://www.ebay.com';return true;" onmouseout="window.status=' ';return true;">
+<img src="http://www.qksrv.net/image-1102387-1643272" width="88" height="31" alt="Click here for your favorite eBay items" border="0"></a>
+</td>
+</tr>
+</table>
+<br>
+</article>
+<article>
+<h2>About this Tool</h2>
+
+The eBay Auction (New Format) channel is designed to list a single listing on eBay, and at your discretion re-list it one time if it
+does not sell. In order to participate you will need to have an eBay ID which you can get by going to <a href="http://www.ebay.com">www.ebay.com</a>,
+and you will also need to register to sell.<br>
+
+
+</article>
+<article>
+<h2>Operational Details</h2>
+
+This channel will typically go from pending to active within 30 minutes of being created. Once it has been picked up by the
+eBay system it will say it is "Loaded into the Todo Queue" which basically means that it is waiting for something before it can
+launch (such as a window of time). Auctions launch within the timeframe allocated for them.<br>
+<br>
+Revoking this channel will cause Zoovy to stop tracking the auction. It will NOT remove the auction from eBay.<br>
+Removing the channel will cause Zoovy to close the auction immediately, the highest bidder will be selected and processed - if your
+auction has bids, you should remove them using eBay.com first.<br>
+<br>
+A the end of this channel, it will be moved to completed and an External Item will be created. External Items appear in the
+"Incomplete" section of the order manager (both Windows and Web versions). For more information on external items and claims
+please review the documentation in the help area.<br>
+<br>
+</article>
+<article>
+<h2>Special Notes</h2>
+
+Under normal circumstances eBay will notify Zoovy when a listing is completed via Buy it Now, this notification occurs at the
+same time the eBay End of Auction Winner email is sent. However this notification is "unreliable" meaning that if the eBay system
+becomes too busy it may discard the notifications. In these circumstances, Zoovy has a backup system which polls all listings
+every 24 hours, and if any missed listings are found, then the interval is decreased to four hours for the next few days.
+
+You can shorten the polling interval to 6 hours by creating an eBay gallery channel.
+In the event that an Incomplete item is not created, you should send a buyer to the instant checkout link:<br><br>
+http://ebayapi.zoovy.net/checkout.cgi<br><br>
+
+Or click the instant checkout button in your listing, this will attempt to close the
+listing immediately.
+
+If you notice that none of your listings are being closed, and more than 24 hours has elapsed please notify Zoovy immediately
+and we will make eBay engineering aware of the problem. Be sure to include a relevant eBay ID which has been closed for more than
+24 hours.
+<br>
+This channel is NOT compatible with eBay motors, or eBay stores categories [they have their own channels]<br>
+Per eBay Rules - You must have a rating (feedback) of 10 or higher to use the "Buy It Now" feature.<br>
+Per eBay Rules - You must have a rating (feedback) of 50 or higher to dutch (multiple) item sales.<br>
+<br>
+
+</article>
+
+
+

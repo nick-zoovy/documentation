@@ -1,0 +1,585 @@
+<meta type="filename" id="info/guide/convert-auctionworks">
+<h1>Converting from AuctionWorks to Zoovy</h1>
+<article>
+<h2>Data Import</h2>
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+If you're feeling exceptionally lazy you can might consider simply requesting an import of your running eBay auctions.
+Please read the details on importing listings from eBay.com
+<a taget="_top" href="http://webdoc.zoovy.com/info/index.php?GOTO=guide/convert-ebay.php">Click Here</a>
+This probably won't get all your data, but at least it will provide a starting point.
+
+</div>
+</aside>
+
+
+
+
+Once you have exported your Customers and/or Products using the Export feature in AuctionWorks you will need to remove AuctionWorks header
+and replace it with a Zoovy header. AuctionWorks regularly changes it's export format, and so it's very difficult (if not impossible) to keep 
+this file up to date. In general it is safe to assume that you can ignore new fields by simply leaving the header field blank.<br>
+<br>
+If you need assistance please contact your assigned implementation technician.<br>
+<br>
+<aside class="caution">
+<h6></h6>
+<div>
+
+Auction Works regularly changes it's export format. 
+We recommend you import the AuctionWorks CSV file into Excel and verify the column orders are still correct.
+Zoovy makes no warranty with regards to accuracy of this information.
+
+</div>
+</aside>
+
+
+
+</article>
+<article>
+<h2>AuctionWorks Customers</h2>
+
+<table>
+<tr>
+	<td><b>AUCTION WORKS</b></td>
+	<td><b>ZOOVY FIELD</b></td>
+	<td><B>NOTES</b></td>
+</tr>
+<tr>
+	<td>AWCUSTNUM</td>
+	<td></td>
+</tr>
+<tr>
+	<td>FIRSTNAME_NOUPDATE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>LASTNAME_NOUPDATE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>COMPANYNAME_NOUPDATE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>EMAILADDRESS</td>
+	<td>%EMAIL</td>
+</tr>
+<tr>
+	<td>ALTEMAILADDRESS</td>
+	<td></td>
+</tr>
+<tr>
+	<td>BILLTOFIRSTNAME</td>
+	<td>bill_firstname</td>
+</tr>
+<tr>
+	<td>BILLTOLASTNAME</td>
+	<td>bill_lastname</td>
+</tr>
+<tr>
+	<td>BILLADDRESSLINE1</td>
+	<td>bill_address1</td>
+</tr>
+<tr>
+	<td>BILLADDRESSLINE2</td>
+	<td>bill_address2</td>
+</tr>
+<tr>
+	<td>BILLCITY</td>
+	<td>bill_city</td>
+</tr>
+<tr>
+	<td>BILLSTATECODE</td>
+	<td>bill_state</td>
+</tr>
+<tr>
+	<td>BILLSTATEABBR_NOUPDATE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>BILLPROVINCE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>BILLZIPCODE</td>
+	<td>bill_zip</td>
+</tr>
+<tr>
+	<td>BILLCOUNTRYCODE</td>
+	<td>bill_country</td>
+</tr>
+<tr>
+	<td>BILLCOUNTRY_NOUPDATE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>BILLPHONENUMBER</td>
+	<td>bill_phone</td>
+</tr>
+<tr>
+	<td>BILLFAXNUMBER</td>
+	<td></td>
+</tr>
+<tr>
+	<td>SHIPTOFIRSTNAME</td>
+	<td>ship_firstname</td>
+</tr>
+<tr>
+	<td>SHIPTOLASTNAME</td>
+	<td>ship_lastname</td>
+</tr>
+<tr>
+	<td>SHIPADDRESSLINE1</td>
+	<td>ship_address1</td>
+</tr>
+<tr>
+	<td>SHIPADDRESSLINE2</td>
+	<td>ship_address2</td>
+</tr>
+<tr>
+	<td>SHIPCITY</td>
+	<td>ship_city</td>
+</tr>
+<tr>
+	<td>SHIPSTATECODE</td>
+	<td>ship_state</td>
+</tr>
+<tr>
+	<td>SHIPSTATEABBR_NOUPDATE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>SHIPPROVINCE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>SHIPZIPCODE</td>
+	<td>ship_zip</td>
+</tr>
+<tr>
+	<td>SHIPCOUNTRYCODE</td>
+	<td>ship_country</td>
+</tr>
+<tr>
+	<td>SHIPCOUNTRY_NOUPDATE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>SHIPPHONENUMBER</td>
+	<td>ship_phone</td>
+</tr>
+<tr>
+	<td>SHIPFAXNUMBER</td>
+	<td></td>
+</tr>
+<tr>
+	<td>CREATIONDATE_NOUPDATE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>NOTES</td>
+	<td></td>
+</tr>
+<tr>
+	<td>LASTSALEDATE_NOUPDATE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>LASTITEMNUMBER_NOUPDATE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>LASTTITLE_NOUPDATE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>TOTALSALES_NOUPDATE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>TOTALITEMS_NOUPDATE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>OPTIN</td>
+	<td>%LIKESSPAM</td>
+</tr>
+<tr>
+	<td>NICKNAME</td>
+	<td></td>
+</tr>
+<tr>
+	<td>FULLNAME_NOUPDATE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>SHIPCOMPANYNAME</td>
+	<td>ship_company</td>
+</tr>
+</table>
+
+</article>
+<article>
+<h2>AuctionWorks Products</h2>
+
+CSV Options:<br>
+<li> Check "Advanced Product"
+<li> Uncheck all other options<br>
+<br>
+Replace each of the following fields in your AuctionWorks Product file with the equivalent Zoovy fields.
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+Since the auctionworks file changes regularly (every 3-6 months) this mapping may be out of date. 
+If you have questions pertaining to fields refer to the CSV documentation, or contact your implementation technician.
+
+</div>
+</aside>
+
+
+
+<table>
+<tr>
+	<td>AWINVNUM</td>
+	<td></td>
+</tr>
+<tr>
+	<td>TITLE</td>
+	<td>zoovy:prod_name</td>
+</tr>
+<tr>
+	<td>DESCRIPTION</td>
+	<td>zoovy:prod_desc</td>
+</tr>
+<tr>
+	<td>INFINITESUPPLY</td>
+	<td></td>
+</tr>
+<tr>
+	<td>AVAILABLEINSTOREFRONT</td>
+	<td></td>
+</tr>
+<tr>
+	<td>FOLDERNAME_NOUPDATE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>AVAILABLE</td>
+	<td>%INVENTORY</td>
+</tr>
+<tr>
+	<td>DEFAULTLAUNCHQTY</td>
+	<td>ebay:quantity</td>
+</tr>
+<tr>
+	<td>INVENTORYNUMBER</td>
+	<td></td>
+</tr>
+<tr>
+	<td>KEYWORDS</td>
+	<td>zoovy:keywords</td>
+</tr>
+<tr>
+	<td>MINIMUMBID</td>
+	<td>ebay:startprice</td>
+</tr>
+<tr>
+	<td>RESERVEPRICE</td>
+	<td>ebay:reserve</td>
+</tr>
+<tr>
+	<td>BUYPRICE</td>
+	<td>ebay:buyitnow</td>
+</tr>
+<tr>
+	<td>RETAILPRICE</td>
+	<td>zoovy:base_price</td>
+</tr>
+<tr>
+	<td>SHIPPINGPRICE</td>
+	<td>zoovy:ship_cost1</td>
+</tr>
+<tr>
+	<td>SHIPPINGPRICEADDITIONAL</td>
+	<td>zoovy:ship_cost2</td>
+</tr>
+<tr>
+	<td>CANADASHIPPINGPRICE</td>
+	<td>zoovy:ship_can_cost1</td>
+</tr>
+<tr>
+	<td>CANADASHIPPINGPRICEADDITIONAL</td>
+	<td>zoovy:ship_can_cost2</td>
+</tr>
+<tr>
+	<td>INTLSHIPPINGPRICE</td>
+	<td>zoovy:ship_int_cost1</td>
+</tr>
+<tr>
+	<td>INTLSHIPPINGPRICEADDITIONAL</td>
+	<td>zoovy:ship_int_cost2</td>
+</tr>
+<tr>
+	<td>YOURCOST</td>
+	<td>zoovy:base_cost</td>
+</tr>
+<tr>
+	<td>EBAYCATEGORY1</td>
+	<td>ebay:category</td>
+</tr>
+<tr>
+	<td>EBAYCATEGORY2</td>
+	<td>ebay:category2</td>
+</tr>
+<tr>
+	<td>EBAYSTORESCATEGORY</td>
+	<td>ebay:storecat</td>
+</tr>
+<tr>
+	<td>YAHOOCATEGORY</td>
+	<td>yahoo:category</td>
+</tr>
+<tr>
+	<td>AMAZONCATEGORY</td>
+	<td>amazon:category</td>
+</tr>
+<tr>
+	<td>IMAGEURL1</td>
+	<td>%IMGURL=zoovy:prod_image1</td>
+</tr>
+<tr>
+	<td>IMAGEURL2</td>
+	<td>%IMGURL=zoovy:prod_image2</td>
+</tr>
+<tr>
+	<td>IMAGEURL3</td>
+	<td>%IMGURL=zoovy:prod_image3</td>
+</tr>
+<tr>
+	<td>IMAGEURL4</td>
+	<td>%IMGURL=zoovy:prod_image4</td>
+</tr>
+<tr>
+	<td>IMAGEURL5</td>
+	<td>%IMGURL=zoovy:prod_image5</td>
+</tr>
+<tr>
+	<td>IMAGEURL6</td>
+	<td>%IMGURL=zoovy:prod_image6</td>
+</tr>
+<tr>
+	<td>IMAGEURL7</td>
+	<td>%IMGURL=zoovy:prod_image7</td>
+</tr>
+<tr>
+	<td>IMAGEURL8</td>
+	<td>%IMGURL=zoovy:prod_image8</td>
+</tr>
+<tr>
+	<td>IMAGEURL9</td>
+	<td>%IMGURL=zoovy:prod_image9</td>
+</tr>
+<tr>
+	<td>IMAGEURL10</td>
+	<td>%IMGURL=zoovy:prod_image10</td>
+</tr>
+<tr>
+	<td>INVENTORYLOCATION</td>
+	<td>%LOCATION</td>
+</tr>
+<tr>
+	<td>CONDITION</td>
+	<td>zoovy:prod_condition</td>
+</tr>
+<tr>
+	<td>GRADE</td>
+	<td>zoovy:prod_grade</td>
+</tr>
+<tr>
+	<td>ISBN</td>
+	<td>zoovy:prod_isbn</td>
+</tr>
+<tr>
+	<td>SKU</td>
+	<td>%SKU</td>
+</tr>
+<tr>
+	<td>UPC</td>
+	<td>zoovy:prod_upc</td>
+</tr>
+<tr>
+	<td>WIDTH</td>
+	<td>zoovy:prod_width</td>
+</tr>
+<tr>
+	<td>HEIGHT</td>
+	<td>zoovy:prod_height</td>
+</tr>
+<tr>
+	<td>DEPTH</td>
+	<td>zoovy:prod_depth</td>
+</tr>
+<tr>
+	<td>WEIGHT</td>
+	<td>zoovy:base_weight</td>
+</tr>
+<tr>
+	<td>WEIGHTTYPECODE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>WEIGHTTYPE_NOUPDATE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>COLORCODE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>COLOR_NOUPDATE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>COLOROTHER</td>
+	<td></td>
+</tr>
+<tr>
+	<td>SIZECODE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>SIZE_NOUPDATE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>SIZEOTHER</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STYLE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>ITEMDATE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>UPSELLITEM1</td>
+	<td>zoovy:prod_related</td>
+</tr>
+<tr>
+	<td>UPSELLITEM2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>UPSELLITEM3</td>
+	<td></td>
+</tr>
+<tr>
+	<td>UPSELLITEM4</td>
+	<td></td>
+</tr>
+<tr>
+	<td>ONHOLD_NOUPDATE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>ATAUCTION_NOUPDATE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>ATAWSTOREFRONT_NOUPDATE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>ATPENDING_NOUPDATE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STOREFRONTTITLE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STOREFRONTDESC</td>
+	<td></td>
+</tr>
+<tr>
+	<td>AUCTIONTEMPLATE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>SHIPPROFILECODE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>SHIPPROFILENAME_NOUPDATE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>FOLDER_CODE</td>
+	<td></td>
+</tr>
+</table>
+
+</article>
+<article>
+<h2>Getting Acclimated</h2>
+
+<li> AuctionWorks calls them "Auctions" whereas Zoovy calls them "Channels"
+<li> LaunchBots are called "Scheduled Channels"
+<li> You'll find a lot of the equivalent reports that AuctionWorks offers in the Order Manager - we do not offer web based equivalents.
+<br>
+<br>
+<b>Avoiding Culture Shock:</b><br>
+In general you'll find Zoovy is much more flexible than AuctionWorks with regards to how "you want to run your business" - but this is not necessarily a good thing!
+In our experience AuctionWorks offers a program which is designed to be a "one size fits all sellers" - this is particularly well suited for getting sellers started.
+Unfortunately as sellers become more and more advanced they find the "one size fits all" approach more restrictive and cumbersome.
+Zoovy was built with fundamentally different assumptions than AuctionWorks, we are much more focused on branding, and encouraging repeat business. 
+Zoovy looks at Auctions such as eBay as a terrific way to generate additional brand exposure and find new customers, not necessarily as "a pure auction tool"
+(not that you can't use Zoovy that way, but it's important to understand we started from a different place).<br>
+<br>
+Zoovys #1 priority in design is flexibility and the ability to adapt to specific business models.
+At the same time a lot of sellers migrating from AuctionWorks find Zoovys unstructured approach towards listings very frustrating, 
+especially when compared to AuctionWorks highly structured and rigid approach. 
+For this we can only offer the following advice:<br>
+<br>
+Just remember why you're switching!
+There is nothing you can do on AuctionWorks that you can't do on Zoovy - whereas there are lots of things you can do with Zoovy that you can't
+do with AuctionWorks! Be patient - be willing to "think outside the box" and you'll do fine!<br>
+<br>
+<!--
+We specifically mention being courteous because AuctionWorks customers have a nefarious reputation of being rude and impatient.
+We're not sure why this is - 
+perhaps it's because by the time they find Zoovy they've already outgrown their current solution, 
+perhaps it's something to do with their previous experiences dealing with AuctionWorks technical support,
+perhaps it's something to do with the amount of money they pay versus the value they get, 
+perhaps it's the <a target="_player" href="alec.mp3">CEO</a>,
+but to be honest we're not sure what the reason is!<br>
+<br>
+<br>
+But you should be aware that Zoovy technical support does not operate anything like AuctionWorks - we are different company and we'd
+appreciate if you'd leave your baggage at the door.
+We also believe that when a merchant is abusive towards us, they are likely the same way toward their customers, 
+and that ultimately reflects poorly on all Zoovy merchants. Simply put: we have a zero tolerance policy for rude behavior.
+
+Each seller is an adult who is responsible for their own words in the forums and support tickets, 
+and as such we do not moderate [remove/edit] posts - but based on those posts we do take action.
+We also want you to recognize that it is not our business plan "to be like auction works".
+If you are not happy here at Zoovy, we'd rather see you to leave and come back when you've grown to a size that our tools are the correct fit.
+<br>
+<br>
+We encourage you to purchase Zoovy ONLY after evaluating all possible platforms for your business and deciding Zoovy is the right one for you.
+Go ahead check out Andale, Channel Advisor, Vendio, Turbo Lister, Seller Assistant Pro, and any other solutions you have may come across in your travels.
+Once you have made the decision that Zoovy is the best fit - then recognize we're here to help you! 
+-->
+<br>
+
+</article>
+
+
+ 

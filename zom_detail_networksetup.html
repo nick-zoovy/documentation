@@ -1,0 +1,99 @@
+<meta type="filename" id="zom/detail/networksetup">
+<h1>Order Manager - NETWORK</h1>
+<article>
+<h2>NETWORK Overview</h2>
+
+With the NETWORK bundle, the Zoovy Order Manager can be installed on multiple computers and all stations may utilize a common database. There are two ways to get multiple user support: Multi-User Network, and Enterprise.
+
+<br>
+
+NETWORK allows the Order Manager database to be installed on a shared network drive and then be accessed by multiple installations of the software. A single workstation is designated as the primary station, the primary station is the one which is allowed to synchronize and make changes to the company configuration. Additional stations can be used by customer service personnel, but those personnel should not synchronize.
+</article>
+<article>
+<h2>Considerations</h2>
+
+The station with sync manager is the only station which that needs to sync, the client machines do not need to sync as they will read the database from the syncing machine. 
+At this time you cannot switch which station is considered the primary (we plan to support this in a future build).
+If you are operating the primary station - you should not synchronize while people are logged in to the database, doing so could cause corruption.
+
+
+</article>
+<article>
+<h2>NETWORK config</h2>
+
+There are different configuration steps depending on your Operating System.  Please follow accordingly.
+
+<br>
+
+<aside class="caution">
+<h6></h6>
+<div>
+<b>ALL MACHINES ARE REQUIRED TO HAVE THE SAME VERSION OF ZID RUNNING</b>
+
+</div>
+</aside>
+
+
+<br>
+
+<section>
+<h3>Windows XP for ZID</h3>
+<aside class="cbc">
+<h6>Windows XP Master machine</h6>
+<div>
+<li> Install ZID to the default Directory
+<li> Run ZID.  You will be prompted to configure the Database. Log in the NETWORK tab using your Zoovy login information.  Once done, at the log in screen, click admin > account security.  Log in using your Zoovy log in information.  Exit ZID
+<li>Log into ZID
+
+</div>
+</aside>
+
+
+<aside class="cbc">
+<h6>Windows XP Client Machine for ZID</h6>
+<div>
+<li> Install ZID to default directory.  Be sure it is the same version as the Master
+<li> Run ZID.  When Prompted to set up Database Config, click on NETWORK.  You will be asked for the Zoovy store (login) name.  There will be a field for the IP Address of the server. Fill in your servers IP Address.
+<li> Click "Save"
+
+</div>
+</aside>
+
+<aside class="cbc">
+<h6>Installing Sync Manager</h6>
+<div>
+<aside class="caution">
+<h6></h6>
+<div>
+Zoovy support should help with this install to ensure proper installation. To schedule an appointment go to: support tab and under appointment section select GEEK.
+
+</div>
+</aside>
+
+For Sync Manager installation see <a class="linkdoc" href="#?doc=50735">Doc 50735</a>
+<aside class="cbc">
+<h6>To schedule an appointment go to:</h6>
+<div>
+<li>support tab 
+<li>under appointment section 
+<li>select GEEK
+<li>select a time
+
+</div>
+</aside>
+
+</section>
+
+<br>
+
+<section>
+<h3>Windows Vista</h3>
+<aside class="caution">
+<h6>Installation</h6>
+<div>
+Please contact Zoovy support for assistance.
+</article>
+
+
+
+

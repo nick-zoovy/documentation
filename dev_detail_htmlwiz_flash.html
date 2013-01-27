@@ -1,0 +1,162 @@
+<meta type="filename" id="dev/detail/htmlwiz-flash">
+<h1>Flash Tools</h1>
+
+
+<p>Most of the flash based elements use variables for things like username and the product id.  Place the following four read only elements at the top of any wizard you create to make sure the necessary variables are set.</p>
+
+<aside class="html">
+<h6></h6>
+<code>
+
+<ELEMENT ID="CQHREXI" SUB="SKU" TYPE="READONLY" DATA="FLOW::SKU"></ELEMENT>
+<ELEMENT ID="CQHREXJ" SUB="PRODUCT" TYPE="READONLY" DATA="FLOW::PROD"></ELEMENT>
+<ELEMENT ID="CQHREXK" SUB="USERNAME" TYPE="READONLY" DATA="FLOW::USERNAME"></ELEMENT>
+<ELEMENT ID="CQHREXL" SUB="MERCHANT" TYPE="READONLY" DATA="FLOW::USERNAME"></ELEMENT>
+
+</code>
+</aside>
+
+
+<a name="ship_calc"></a>
+
+<article>
+<h2>Shipping Calculator</h2>
+
+
+Paste the following object tag into the HTML of your Wizard for the flash based shipping calculator.  This piece of flash is 500x160, so keep in mind your Wizard must support a fairly wide object.  There are several parameters that can be passed into the flash to change the color scheme.  Be sure to change those attributes in both the PARAM NAME area and the EMBED area so that it works in both Internet Explorer and Mozilla based browsers.<br>
+
+<aside class="html">
+<h6></h6>
+<code>
+<OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" WIDTH="500" HEIGHT="160" id="shipping" ALIGN="">
+<PARAM NAME=movie VALUE="http://gfx.zoovy.com/shipcalc/intlcalc.swf?theme=glass&merchant=%USERNAME%&product=0*%SKU%&type=0&bg_color=0x990000&text_color=0xffffff&alt_text_color=0x000000&theme_color=0xFFB7B7"> 
+<PARAM NAME=quality VALUE=high> 
+<PARAM NAME=bgcolor VALUE=#ffffff>
+<EMBED src="http://gfx.zoovy.com/shipcalc/intlcalc.swf?theme=glass&merchant=%USERNAME%&product=0*%SKU%&type=0&bg_color=0x990000&text_color=0xffffff&alt_text_color=0x000000&theme_color=0xFFB7B7" quality=best bgcolor=#F3F3F3 WIDTH="500" HEIGHT="160" NAME="shipping" ALIGN="" TYPE="application/x-shockwave-flash" PLUGINSPAGE="http://www.macromedia.com/go/getflashplayer">
+</EMBED>
+</OBJECT>
+
+
+</code>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Newsletter Subscription</h2>
+
+
+Paste the following piece of code into the HTML of your Wizard.  Currenlty, the subscription piece of flash only comes in this color scheme. 
+
+<aside class="html">
+<h6></h6>
+<code>
+
+
+<OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" WIDTH="300" HEIGHT="150" id="subscribe" ALIGN="">
+<PARAM NAME=FlashVars VALUE="merchant=%USERNAME%">
+<PARAM NAME=movie VALUE="http://gfx.zoovy.com/subscribe/sleekbeige.swf">
+<PARAM NAME=quality VALUE=high> <PARAM NAME=bgcolor VALUE=#F0F0F0>
+<EMBED src="http://gfx.zoovy.com/subscribe/sleekbeige.swf" quality=high bgcolor=#F0F0F0 WIDTH="300" HEIGHT="150" NAME="subscribe" ALIGN="" TYPE="application/x-shockwave-flash" PLUGINSPAGE="http://www.macromedia.com/go/getflashplayer">
+</EMBED></OBJECT>
+
+
+</code>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Auction Gallery</h2>
+
+
+Paste the following piece of code into your HTML Wizard.  You can use the variables listed below to set the color scheme:
+
+<table><tr>
+
+	<td>Face</td>
+
+	<td>Changes the background color behind each of the thumbnails and the large image.  It also changes the color of the scrollbar and the scroll buttons.</td>
+
+</tr><tr>
+
+	<td>Background</td>
+
+	<td>No effect at this time.  This should still be set, as it may be used in future versions.</td>
+
+</tr><tr>
+
+	<td>Arrows</td>
+
+	<td>Changes the color of the arrows that appear in the scroll buttons.</td>
+
+</tr><tr>
+
+	<td>Darkshadow</td>
+
+	<td>Changes the color of the outline around the thumbnail and the large image window pane.  It also changes the shadow color on the scroll bars, pane, and buttons (right and bottom strokes).</td>
+
+</tr><tr>
+
+	<td>Highlight</td>
+
+	<td>Changes the color of the inside highlights in the scroll bars, pane and buttons (the inner-stroke on the top and left).</td>
+
+</tr><tr>
+
+	<td>Highlight3d</td>
+
+	<td>Changes the color of the outside highlights in the scroll bars, pane and buttons (the outer-stroke on the top and left).</td>
+
+</tr><tr>
+
+	<td>Scrolltrack</td>
+
+	<td>Changes the color of the scroll pane.</td>
+
+</tr><tr>
+
+	<td>Selection</td>
+
+	<td>Changes the stroke and background color of the thumbnail that is currently selected.</td>
+
+</tr><tr>
+
+	<td>Textselected</td>
+
+	<td>No effect at this time.</td>
+
+</tr><tr>
+
+	<td>Textcolor</td>
+
+	<td>Changes the color of the product names that appear below each thumbnail.</td>
+
+</tr><tr>
+
+	<td>Textsize</td>
+
+	<td>Changes the size of the product name font.</td>
+
+</tr></table>
+
+At this time, there is no way to change the font face or font color of the details that appear below the gallery images.
+
+<aside class="html">
+<h6></h6>
+<code>
+
+<OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0"  WIDTH="616" HEIGHT="364" id="auction_gallery" ALIGN="">
+ <PARAM NAME=movie VALUE="http://gfx.zoovy.com/gallery/auction_gallery.swf"><PARAM NAME=FlashVars VALUE="merchant=esales&thumbcols=1&limit=8&face=0xcccccc&background=0xCCCCCC&arrow=0x333333&darkshadow=0xAAAAAA&highlight=0xEFEFEF&highlight3d=0xAAAAAA&scrolltrack=0x333333&selection=0xAFAFAF&textselected=0x000000&textcolor=0x000000&textsize=10">
+<PARAM NAME=quality VALUE=high> <PARAM NAME=bgcolor VALUE=#FFFFFF><PARAM NAME=quality VALUE=high> <PARAM NAME=bgcolor VALUE=#FFFFFF> <EMBED src="http://gfx.zoovy.com/gallery/auction_gallery.swf" quality=high bgcolor=#FFFFFF  WIDTH="616" HEIGHT="364" NAME="auction_gallery" ALIGN="" TYPE="application/x-shockwave-flash" PLUGINSPAGE="http://www.macromedia.com/go/getflashplayer"></EMBED>
+</OBJECT>
+
+</code>
+</aside>
+
+
+
+</article>
+

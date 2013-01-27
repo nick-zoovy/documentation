@@ -1,0 +1,77 @@
+<meta type="filename" id="info/diagnostics">
+<h1>Website Diagnostics</h1>
+
+<article>
+<h2>Concept Overview</h2>
+
+This guide is primarily intended as reference material for Zoovy Technical support, but may also be useful to customers.
+
+<section>
+<h3>How to Determine Which Server You're Using</h3>
+
+Zoovy has hundreds of servers, each server is configured and assigned to handle one or more service. 
+
+Zoovy breaks services into the following categories:
+<li> Image "Static" servers: this group of servers is used to load site graphics, stock template graphics, navigation buttons, and other static files.
+<li> Vstore servers: this group of servers is used to render a customers website. (These also used to host some site graphics, but now perform http 302 redirects for images to the static servers).
+<li> SSL servers: this group of servers are what render a customers checkout and secure pages.  
+<li> WWW servers: this group of servers provide www.zoovy.com and the user interface
+<li> Webapi: this is a modified version of the www servers specifically for synchronization by desktop clients. 
+
+
+It's also worth mentioning that ssl servers act as a backup for vstore, and vstore servers act as a backup for ssl. In addtion www servers act as a backup for webapi, and vice versa. There are never less than three primary servers assigned to a given service at any time, in addition multiple "spare" servers which can be reconfigured and assigned to perform service are always ready in a hot-standby configuration. 
+
+Zoovy employs a pair of cisco CSS11150 load balancers that dynamically route requests to servers which are assigned to the appropriate service. Once a request is made by a user/browser to one server, then all future requests from the same ip address will be sent to the same server - UNLESS - the server in question  experiences high load, or goes down in which case the requests will be transparently forwarded to another server.  (This is handled automatically and is not something the customer can control).  
+
+<aside class="hint">
+<h6></h6>
+<div>
+Once a user/browser been assigned a server for a service, then all requests will almost certainly continue to be serviced by that same server.  (Unless the server goes down, or the workload becomes to large). 
+
+</div>
+</aside>
+
+
+Newer cluster servers have names like dNN (e.g. d01), whereas old apache 1.3 servers have names like wwwN (the older apache servers are being phased out). 
+
+For vstore, and ssl servers it's very easy to tell which server a page was rendered from - just go to the HTML source code of the page, go to the very bottom and you'll see a variety of useful information about the page including the server name it was rendered by.
+
+For www servers, go to the Zoovy interface and click on the Zoovy logo which will take you to the recent news/login page. In the title bar of the browser (which is above File, up by the Firefox, or IE icon at the very very very top of the window), you'll see a message that says "welcome to Zoovy, you are connected to server dNN.zoovy.com"
+
+
+For image servers the only way to tell which server an image was served from is to look at the HTTP headers. This is not an easy task - but here is how to tell which server you're on. First, you must be using firefox.
+
+First go here:
+http://livehttpheaders.mozdev.org/installation.html
+Download the .xpi file
+In firefox go to File | Open and load the .xpi file
+(sorry the Live Headers software doesn't auto-install)
+
+
+Then go to:
+https://addons.mozilla.org/firefox/575/
+Download and install
+
+
+Restart Firefox
+
+
+Go to Tools | Header Monitor (this will appear after the plugin is installed)
+When choosing the "HTTP Header" select X-Powered-By
+Check the "Display statusbar if exist header" box
+
+
+Okay now go to a webpage OR image
+e.g. http://static.zoovy.com/img/proshop/logos/zoovy.jpg
+Look in the lower right hand corner of your browser and you will see something like:
+X-Powered-By: ZOOVY/v.d10
+
+
+The server name is "d10"
+
+</section>
+
+</article>
+
+
+

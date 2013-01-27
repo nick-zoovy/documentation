@@ -1,0 +1,119 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/guide/ebaycor">
+<h1>eBay Checkout Redirect</h1>
+<article>
+<h2>Overview</h2>
+
+eBay Checkout Redirect is a new way for eBay Buyers to pay Zoovy sellers
+for their eBay items.
+With Checkout Redirect, after an eBay Auction, Fixed Price, Store Listing,
+or Second Chance listing is finalized and the buyer clicks the "Pay Now"
+button they are automatically transported to an eBay-ified version of the
+Zoovy checkout. <br>
+<br>
+This feature is automatically enabled for all 2.0 customers.
+We encourage you to watch the video presentation to see an example
+of how this feature appears to the consumer. 
+
+</article>
+<article>
+<h2>Checkout Difference</h2>
+
+When a buyer is paying via Checkout Redirect there is no need for them
+to provide their email address, the "Pay Now" functionality goes directly
+into the Zoovy checkout.<br>
+<br>
+If multiple products are won, then all non-checked out items will be 
+merged into a single cart together.<br>
+<br>
+If one or more products has non-inventoriable options, then the buyer 
+will still need to utilize the "claim" page (in future releases we 
+plan to address this). For now, these items will be listed without the
+Checkout Redirect feature enabled.<br>
+<br>
+If a customer already has an account with your store, they will 
+automatically be logged in. They will not need to provide a username/
+password - as long as their email address, or eBay username on file with 
+eBay is the same as the one in your store (if not, then a new account will
+be created for them, based on your checkout setup).<br>
+<br>
+The buyers name, shipping address, and email will automatically be populated
+with the information on file at eBay.<br>
+<br>
+In the eBay Checkout mode, if Paypal is available as a payment option it 
+will appear as the first payment option and be the "preferred" payment method.
+If a merchant account/credit card payment option is  available
+it appear below paypal (normally credit cards would appear before Paypal).<br>
+<br>
+During an eBay checkout the default wrapper for your store is changed to 
+an wrapper that resembles the eBay site. This increases buyer confidence, 
+however this wrapper also does not have any navigation so it is not possible
+for the buyer to add additional store items to their cart.<br>
+<br>
+In the future eBay will allow us to allow the buyer to navigate through
+your Zoovy store and purchase additional items (which will also be reported
+to eBay and included in the final value fee total). This will be a 
+configurable option - which you can choose to enable or disable. At this
+time we have no ETA for this feature. 
+
+</article>
+
+<article>
+<h2>Disable use eBay rates in Zoovy checkout for claim</h2>
+If you wish not to use eBay rates in Zoovy checkout for a particular claim that was created please do the following:
+<aside class="cbc">
+<h6></h6>
+<div>
+<li>1. click on orders > incomplete
+<li>2. click on the claim link 
+<li>3. click on edit attribs
+<li>4. remove the data that is in field zoovy:virtual_ship
+
+</div>
+</aside>
+
+<aside class="hint">
+<h6></h6>
+<div>
+If you want to have a fixed price for the shipping rate you must enter the fixed shipping price in the field zoovy:virtual_ship. It must be entered like this FIXED 1.00 as an example. You could make the price whatever you want as long as you have fixed typed out like FIXED then the price without a dollar sign. You can not enter the fixed price like this; FIXED 1 or FIXED $1 or FIXED $1.00 it has to be FIXED 1.00
+</div>
+</aside>
+
+</article>
+
+<article>
+<h2>When error messages appears from eBay checkout redirect</h2>
+<br>
+Please send your customer a payment reminder email or checkout URL. This will allow the customer to complete the checkout process without incident.
+<aside class="cbc">
+<h6></h6>
+<div> 
+Steps to either send a reminder email or checkout URL:
+<li> Step 1. Go to Orders > Incomplete
+<li> Step 2. Hit [Ctrl] + F, and enter the ebay item ID number and search for the
+incomplete item
+<li> Step 3. Click on the Claim number that is next to the Market (ebay number)
+<li> Step 4. This point you can either email the customer the "Checkout URL:" link that
+appears here, or, you can click on the "Send Reminder" link to send the
+customer the link directly
+
+</div>
+</aside>
+
+
+</article>
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+

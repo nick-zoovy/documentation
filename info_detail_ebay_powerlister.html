@@ -1,0 +1,509 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/detail/ebay-powerlister">
+<h1>eBay Powerlister Concepts</h1>
+<article>
+<h2>Overview</h2>
+
+<table>
+<tr>
+	<td>Marketplace:</td><td><b>eBay (but supported by Zoovy)</b></td>
+</tr>
+<tr>
+	<td>Definition:</td><td><b>eBay PowerLister</b></td>
+</tr>
+<tr>
+	<td>Fees:</td><td><b>eBay Fees Apply (<a target="_blank" href="http://pages.ebay.com/help/sellerguide/selling-fees.html">click here to learn more</a>)</b></td>
+</tr>
+<tr>
+	<td>To Register:</td>
+	<td><a href="http://www.qksrv.net/click-1102387-1643272" target="_blank" onmouseover="window.status='http://www.ebay.com';return true;" onmouseout="window.status=' ';return true;">
+	<img src="http://www.qksrv.net/image-1102387-1643272" width="88" height="31" alt="Click here for your favorite eBay items" border="0"></a></td>
+</tr>
+</table>
+<br>
+</article>
+<article>
+<h2>About this Tool</h2>
+
+The eBay Power Lister is designed to automatically list auctions as they expire.<br>
+<br>
+NOTE: The Power Lister trigger launch feature - which launches another listing when a specific bid price is reached will not function
+unless the customer has a eBay Gallery Channel enabled. This is because on non-gallery auctions the current price and number
+of bids is not updated until the auction is closed.
+<br>
+</article>
+<article>
+<h2>Operational Details</h2>
+
+<b>ATTENTION: PowerLister is a Special Type of Channel</b> - it does not follow the rules of other channels.<br>
+<br>
+&nbsp;&nbsp;&nbsp;
+This channel will typically go from pending to active within 30 minutes of being created. Once it has been picked up by the
+eBay system it will say it is "Active" which basically means that it is waiting for something before it can
+launch (such as a window of time). During the normal operation of this channel, the channel status may say Completed, this is
+because the channel keeps the value of the last auction it processed. Effectively if a powerlister has created and is tracking
+3 auctions, and one of them ends with a buy it now, the channel will say completed until the next auction is verified at which
+point the status will change from Completed to Active. (In other words, don't trust the channel status - it won't always be right
+since there can only be one status, for many auctions).<br>
+<br>
+Revoking this channel will cause Zoovy to stop relisting the auctions. It will NOT remove the auction from eBay,
+any running auctions will be processed normally. Please note that the channel status will say "Revoke Processed" however
+the actual channel status will change from Revoke (R) to Active (A) while the remaining auctions are being monitored.
+When the powerlister is completed, and all auctions have been processed it will appear in Completed. Any fee credits
+which may have been attempted will NOT be attempted. - As long as you see the message "Revoke Processed" in the status
+messages, then the channel has been revoked and is simply winding down.
+<br>
+Remove is not currently implemented. If you want to remove the auctions from eBay you should do the following: #1. Revoke
+the channel, #2. Go to the eBay site and end the auction(s) you want to cancel using the eBay interface,
+#3. Wait until Zoovy picks up the changes, and processes the remaining auctions.<br>
+<br>
+Attempting to delete this channel before all remaining auctions have been processed, will cause any remaining
+auctions to cease being tracked - wait until all status messages say "Completed" or "Relisted" before attempting to delete
+this channel.<br>
+<br>
+To Make changes to a powerlister channel you must first revoke the existing channel,  clone it, and then relaunch it under
+a new channel number. Do not attempt to edit a running powerlister, it is not supported and unspecified errors can occur.<br>
+<br>
+At the end of this channel, it will be moved to completed and an External Item will be created. External Items appear in the
+"Incomplete" section of the order manager (both Windows and Web versions). For more information on external items and claims
+please review the documentation in the help area.<br>
+<br>
+</article>
+<article>
+<h2>Known Bugs</h2>
+
+There is a known bug which can occur when attempting to revoke a powerlister. This problem typically occurs
+if you run several consecutive auctions and can cause a revoke request to be missed. This happens when
+the status of the channel is being updated by the powerlister itself and powerlister overwrites the revoke you saved.
+After revoking you should always wait 10 to 15 minutes and verify that the channel has the words "revoke processed" in the status.<br>
+<br>
+</article>
+<article>
+<h2>Special Notes</h2>
+
+This is NOT compatible with eBay motors, or eBay stores.<br>
+Per eBay Rules - You must have a rating (feedback) of 10 or higher to use the "Buy It Now" feature.<br>
+Per eBay Rules - You must have a rating (feedback) of 50 or higher to dutch (multiple) item sales.<br>
+<br>
+</article>
+<article>
+<h2>Support</h2>
+
+<b>Support:</b><br>
+For support please visit <a href="http://support.zoovy.com">http://support.zoovy.com</a>.<Br>
+<a href="#" onClick="javascript:openWindow('http://www.zoovy.com/helper?DEFINITION=ebay.password&TYPE=G');">Click Here to Change your eBay Password</a><br>
+
+</article>
+<article>
+<h2>Power Lister Scenarios</h2>
+
+<table width='80%' align='center'>
+<tr><td>
+<b>
+I want to launch one item every day. This powerlister should run indefinitely. I like my auctions to close in the evenings.
+</b><br><br>
+
+<table align='center' width='%50' border='1'>
+<tr><td>
+Total Quantity to Sell:
+</td><td>
+9999
+</td>
+<tr><td>
+Maximum Listings on eBay:
+</td><td>
+-1
+</td>
+<tr><td>
+Trigger Price to Relaunch:
+</td><td>
+999999
+</td>
+<tr><td>
+Minimum CONCURRENT listings:
+</td><td>
+7
+</td>
+<tr><td>
+Maximum CONCURRENT listings:
+</td><td>
+7
+</td>
+<tr><td>
+Minimum Interval:
+</td><td>
+1 Day
+</td>
+<tr><td>
+Time to Live:
+</td><td>
+Indefinitely
+</td>
+<tr><td>
+Launch Time:
+</td><td>
+Optimal (3:00pm - 9:00pm PST)
+</td>
+<tr><td>
+Duration:
+</td><td>
+7 Days
+</td>
+</table>
+
+</td></tr>
+<tr><td>
+<br>
+<b>
+I have 50 Items in stock. I don't want more than 2 items up at a time. I want the items closing at least 3 hours apart in the evening. I want to sell no more than I have in stock ebay.
+</b><br><br>
+
+<table align='center' width='%50' border='1'>
+<tr><td>
+Total Quantity to Sell:
+</td><td>
+50
+</td>
+<tr><td>
+Maximum Listings on eBay:
+</td><td>
+-1
+</td>
+<tr><td>
+Trigger Price to Relaunch:
+</td><td>
+999999
+</td>
+<tr><td>
+Minimum CONCURRENT listings:
+</td><td>
+2
+</td>
+<tr><td>
+Maximum CONCURRENT listings:
+</td><td>
+2
+</td>
+<tr><td>
+Minimum Interval:
+</td><td>
+3 hours
+</td>
+<tr><td>
+Time to Live:
+</td><td>
+Indefinitely
+</td>
+<tr><td>
+Launch Time:
+</td><td>
+Optimal (3:00pm - 9:00pm PST)
+</td>
+<tr><td>
+Duration:
+</td><td>
+7 Days
+</td>
+</table>
+
+</td></tr>
+<tr><td>
+<br><b>
+I have an unlimited supply of a certain item. I like to keep one of these up on ebay all the time. Usually my auctions are bought with a "buy it now". Soon after one is bought I want another to take it's place.
+</b><br><br>
+
+<table align='center' width='%50' border='1'>
+<tr><td>
+Total Quantity to Sell:
+</td><td>
+9999
+</td>
+<tr><td>
+Maximum Listings on eBay:
+</td><td>
+-1
+</td>
+<tr><td>
+Trigger Price to Relaunch:
+</td><td>
+999999
+</td>
+<tr><td>
+Minimum CONCURRENT listings:
+</td><td>
+1
+</td>
+<tr><td>
+Maximum CONCURRENT listings:
+</td><td>
+1
+</td>
+<tr><td>
+Minimum Interval:
+</td><td>
+Immediately
+</td>
+<tr><td>
+Time to Live:
+</td><td>
+Indefinitely
+</td>
+<tr><td>
+Launch Time:
+</td><td>
+Anytime - As soon as possible
+</td>
+<tr><td>
+Duration:
+</td><td>
+7 Days
+</td>
+</table>
+
+</td></tr>
+<tr><td>
+<br><b>
+I want to run a campaign of 25 listings on ebay. I list these items with a starting bid of $1. Sometimes my items have a rush of bidders. If an auction gets above $20 I want to increase the number of auctions for this item on ebay. I need a minimum of 3 items up, and want a maximum of 7. Just a few minutes apart is fine. I really don't care when they list.
+</b><br><br>
+
+<table align='center' width='%50' border='1'>
+<tr><td>
+Total Quantity to Sell:
+</td><td>
+25
+</td>
+<tr><td>
+Maximum Listings on eBay:
+</td><td>
+-1
+</td>
+<tr><td>
+Trigger Price to Relaunch:
+</td><td>
+20
+</td>
+<tr><td>
+Minimum CONCURRENT listings:
+</td><td>
+3
+</td>
+<tr><td>
+Maximum CONCURRENT listings:
+</td><td>
+7
+</td>
+<tr><td>
+Minimum Interval:
+</td><td>
+5 minutes
+</td>
+<tr><td>
+Time to Live:
+</td><td>
+Indefinitely
+</td>
+<tr><td>
+Launch Time:
+</td><td>
+Anytime - as soon as possible</td>
+<tr><td>
+Duration:
+</td><td>
+7 Days
+</td>
+</table>
+
+</td></tr>
+<tr><td>
+<br><B>
+I want to have a dutch auction of 20 items active on ebay all the time. I want the powerlister to stop after 5 auctions. I like these to run around midnight (I sell goth clothing).
+</b><br><br>
+
+<table align='center' width='%50' border='1'>
+
+<tr><td>
+Total Quantity to Sell:
+</td><td>
+9999
+</td>
+<tr><td>
+Maximum Listings on eBay:
+</td><td>
+5
+</td>
+<tr><td>
+Trigger Price to Relaunch:
+</td><td>
+999999
+</td>
+<tr><td>
+Minimum CONCURRENT listings:
+</td><td>
+1
+</td>
+<tr><td>
+Maximum CONCURRENT listings:
+</td><td>
+1
+</td>
+<tr><td>
+Minimum Interval:
+</td><td>
+Immediately
+</td>
+<tr><td>
+Time to Live:
+</td><td>
+Indefinitely
+</td>
+<tr><td>
+Launch Time:
+</td><td>
+Anytime - as soon as possible</td>
+<tr><td>
+Duration:
+</td><td>
+7 Days
+</td>
+</table>
+
+</td></tr>
+<tr><td>
+<br><b>
+I am a very picky person. Here are my requirements: I want to run a 4 week campaign on ebay. I have 30 items and I can't over sell. I don't want auctions listed less than 30 minutes apart. I like my auctions listed in the evenings. I don't want more than 7 auctions up at a time, and I want at least 3 always active. At a bid price of $30 I want another auction triggered to be listed.
+</b><br><br>
+
+
+<table align='center' width='%50' border='1'>
+<tr><td>
+Total Quantity to Sell:
+</td><td>
+30
+</td>
+<tr><td>
+Maximum Listings on eBay:
+</td><td>
+-1
+</td>
+<tr><td>
+Trigger Price to Relaunch:
+</td><td>
+30
+</td>
+<tr><td>
+Minimum CONCURRENT listings:
+</td><td>
+3
+</td>
+<tr><td>
+Maximum CONCURRENT listings:
+</td><td>
+7
+</td>
+<tr><td>
+Minimum Interval:
+</td><td>
+30 minutes
+</td>
+<tr><td>
+Time to Live:
+</td><td>
+1 Month
+</td>
+<tr><td>
+Launch Time:
+</td><td>
+Optimal (3:00pm - 9:00pm PST)
+</td>
+<tr><td>
+Duration:
+</td><td>
+7 Days
+</td>
+</table>
+
+</article>
+<article>
+<h2>Steps for updating eBay powerlister password</h2>
+
+1.	Go to the Manage / Product Power Tool<br>
+2.	on step 1 - Do a "select products by channel" and select ebay.powerlister from the channel list.<br>
+3.	on step2 - select "custom attribute" and put in "ebay:password"<br>
+4.	on step3 - select "set value", either enter the password, or simply set the field blank. (A blank password will default to using the last known GOOD password)<br>
+5.	on step 4 - select "channels only"<br>
+6.	Press continue.<br>
+
+</article>
+<article>
+<h2>Configuring Powerlister to check Store Inventory</h2>
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+At this time the technique to utilize store inventory IS NOT COMPATIBLE with dutch auctions. (Dutch Auctions are auctions which sell more than 1 product per listing)
+
+</div>
+</aside>
+
+
+
+Powerlister can be configured to "sell to zero", or more specifically to sell anything on the website -
+while it is on the website, and continue selling until the quantity reaches zero.
+This technique is also useful in situations where merchants do not list items on their website,
+but simply want to maintain inventory from their store rather than editing the powerlister channels.<br>
+<br>
+To use this it is assumed the customer has their website inventory configured as follows:
+<li> track reserved inventory is enabled.
+<li> revoke channels when the actual inventory reaches zero is enabled
+<li> don't allow customer to purchase more than actual - reserved is enabled.
+<li> Inventory must be enabled for the product being sold.
+<li> The product must not utilize product options (or at least should not track inventory by product option)
+<br>
+<Br>
+After you have configured your inventory as outlined as above then simply set the powerlister quantity to sell to "-1" (sell infinity).<br>
+<br>
+When the powerlister channel is created it will reserve zero inventory.
+As auctions are launched the powerlister program will change the channel to reserve the total quantity available for sale on eBay.<br><Br>
+<b>NOTE:</b> by setting the quantity to sell to "-1" it will implicitly enable the powerlister program to only reserve the actual quantity for sale on eBay - this behavior is effective 12/30/03.<br>
+<b>NOTE:</b> If you are NOT tracking inventory, do NOT use set quantity to sell to "-1".  Instead, set this value to "9999" to keep Powerlister running.<br>
+<br><br>
+If at any time the actual quantity in inventory in the store hits zero the powerlister will exit.
+To start the powerlister again you receive more inventory you will need to create another powerlister.<br>
+<br>
+However if there is not enough inventory in the store to launch,
+but the actual quantity is still greater than zero then powerlister will wait (for up to 30 days)
+until the inventory is available again, or the actual inventory hits zero.<br>
+<br>
+This means that to increase the amount powerlister will sell you simply need to update your store inventory.
+Powerlisters with -1 in the quantity to sell will not sell more than your store inventory.<br>
+<br><br>
+
+<li><b>Important:</b> If you have outstanding offers on Second Chance Offers (Personal Offers), Powerlister considers it an open
+auction and will not relist until the auction actually closes.
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+Powerlister doesn't check the general inventory setting it checks the product
+setting.  If you had inventory enabled on your site, and you disabled it - without disabling it
+on the products first it would cause a scenario where Powerlister would think that product inventory
+was still enabled and would honor inventory settings, stop listing, and revoke channels based on your
+original inventory settings when inventory reached 0.  A workaround to get Powerlister to begin listing again would be to enable inventory 
+for the products in question, set an inventory value, save the product information, and then go back and turn inventory
+for that product off.
+
+
+</div>
+</aside>
+
+
+
+
+</article>
+
+
+
+
+

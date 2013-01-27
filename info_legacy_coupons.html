@@ -1,0 +1,102 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/legacy_coupons">
+<h1>Legacy Coupons</h1>
+
+
+
+
+<article>
+<h2>Legacy Coupon Behavior and Use Overview</h2>
+This document will go over the behavior and use of the older legacy "coupon".
+
+<aside class="caution">
+<h6></h6>
+<div>
+Be advised that if you choose to use this way, it is not supported. To add a coupon field to your cart, choose a layout that has the field.
+
+</div>
+</aside>
+
+</article>
+
+<article>
+<h2>Behavior</h2>
+Legacy "coupons" are not really coupons at all.  They simulate coupons by adding a "coupon" product into the shopping cart, then you setup rules/promotions that would give a desired effect if the "coupon" product was in the cart.  This requires having a "coupon" field in the cart page that would add a product to the cart as well as the creation of a special "coupon" product in the Product Editor area.
+</article>
+
+<article>
+<h2>Legacy Coupon Creation</h2>
+Here is a step by step flow of how to create a legacy style coupon:
+
+<aside class="cbc">
+<h6>Legacy Coupon Creation</h6>
+<div>
+<li> Step 1 - Product > New Product
+<li> Step 2 - Create a new product with the "coupon" name that you will be using, well call our example "COUPON"
+<li> Step 3 - Setup > Coupons/Promotions - Uber Promotions > Add New
+<li> Step 4 - Create Promotion for coupon, for example "If product in cart matches COUPON modify value -20%"
+<li> Step 5 - Setup > Site Builder > Shopping Cart Page [Edit]
+<li> Step 6 - You will now need to [Edit] a text box on the cart page to include the form for entering in the "coupon" code (actually for adding the product we created above to the cart).  Here is the code that you will need to add:
+<aside class="html">
+<h6></h6>
+<code>
+<form action="/cart.cgis">
+<input type="hidden" name="add" value="yes">
+<input type="hidden" name="override" value="1">
+Coupon Code: <input type="textbox" name="product_id" size="10">
+<input type="submit" value=" Add to Cart ">
+</form>
+
+
+</code>
+</aside>
+
+
+
+</div>
+</aside>
+
+<aside class="caution">
+<h6></h6>
+<div>
+You can place both the old coupon type entry box and the new in the same cart, but this can be confusing to customers.  If you decide to go this route, you will at the very least want to rename the older legacy style "coupon" box label to something else.  Perhaps "Promotional Code" or something of that nature for example.
+
+</div>
+</aside>
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+ALWAYS with ANY coupon or promotion test thoroughly before pushing the promotion out to your customers.  We also always recommend setting up an appointment with a member of our Implementation Team to help you if you are unfamiliar with coupons or promotions.
+
+</div>
+</aside>
+
+
+</article>
+
+<article>
+<h2>References</h2>
+Please see also the following webdocs regarding coupons and promotional rules:<br>
+
+<a class="linkdoc" href="#?doc=50313">Doc 50313</a><br>
+<a class="linkdoc" href="#?doc=50339">Doc 50339</a><br>
+<a class="linkdoc" href="#?doc=50337">Doc 50337</a><br>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

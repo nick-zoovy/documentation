@@ -1,0 +1,177 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/guide/launchingauctions">
+<h1>Guide to Launching Auctions</h1>
+<article>
+<h2>Overview</h2>
+
+Using Zoovy you create auctions by first creating products, then setting those products up in Ebay 2.0 under the Auction Configuration section. Note: Products with options are only able to be sent to Ebay through fixed price syndication.
+<br>
+After an auction closes Zoovy will automatically contact the winning bidder for an auction (you can customize the message sent in Setup > Edit Email Messages > OCREATE [edit]). You can manage the Ebay invoices using the Zoovy website, or using the Zoovy order manager.
+
+</article>
+<article>
+<h2>Bulk Listing Auctions by CSV</h2>
+Using the csv import feature, you can list a batch of auctions all at once. To do this, follow this 4 step process. <br>
+<br>
+<b>STEP 1: Prepare your products for auction listing:</b><br>
+1. Export your products to a csv file: Specify all the ebay columns.<br>
+2. Open this csv file as a spreadsheet (View file > click the csv button)<br>
+3. If you don't already have the following headers on your csv file, add them:<br>
+<br>
+HEADERS:<br> ebay:buyitnow_price,ebay:category,ebay:duration,ebay:qty,ebay:reserve_price,ebay:start_price,ebay:title,ebay:ts<br>
+<br>
+<b><i>What do these headers mean?:</i></b><br>
+ebay:buyitnow_price: This is the Buy It Now price. Note: The QTY must be set to '1' if you will include a Buy It Now price.<br>
+ebay:category - This is the numerical value for the ebay category you are listing in. (Get these numbers by clicking the "Choose" button in Ebay 2.0.)<br>
+ebay:duration - Enter 3, 5, 7, or 10 here to specify auction length.<br>
+ebay:qty - How many are you listing? Enter that number in this column. Note: The QTY must be set to '1' if you will include a Buy It Now price.<br>
+ebay:reserve_price - Set your reserve price as a number here. (No dollar sign). Ebay may charge extra fees for a reserve price. For none, enter 0.<br>
+ebay:start_price - Set your Auction starting price as a number here. (No dollar sign).<br>
+ebay:title - Up to 80 characters.<br>
+ebay:ts - This indicates syndication setting. 1 (or higher) = on, 0 = off. If you do not wish to duplicate syndication listings with your auctions, change this number to 0. If you do not care, remove this header from your import.<br>
+<br>
+<b>STEP 2: Upload Your Product csv</b>
+Once you have this data filled out upload this product import (Setup > CSV Import Utility > Products > De-select "Configure Management Categories using Navigation Categories schema." Select "Do not Encode Categories, they are already encoded as safe names." and be sure to leave selected "Perform Non-Destructive Import.")<br>
+Now you are ready to launch the auctions.<br>
+<br>
+<b>STEP 3: Create Your Auction Listings csv</b><br>
+Create a new csv file with the following headers:<br>
+PRODUCT<br>
+VERB<br>
+TARGET<br>
+QTY<br>
+<br>
+<b><i>What do I put under the headers?:</b></i><br>
+PRODUCT - The product ID<br>
+VERB - In this column, enter the word "INSERT" for every product.<br>
+TARGET - In this column, enter the word "EBAY.AUCTION" for every product.<br>
+QTY - The number of products per auction listing. (You must have an available quantity equal to or greater than this number for a successful listing to be created. Note: The QTY must be set to '1' if you will include a Buy It Now price.<br>
+<br>
+<b>STEP 4: Upload Your <u>Listings</u> csv</b><br>
+Once you have saved this file as a csv, upload it <b><u>as a Listing csv</u></b> upload (Setup > CSV Imports > Linstings). Your products will be queued for ebay listings. A message should appear in your product editor, under the Listing Events section like this:<br>
+EBAY.AUCTION	INSERT	CSV	PENDING	IN QUEUE: 20111121 09:45:05<br>
+<br>
+<aside class="hint">
+<h6>Exporting before Importing</h6>
+<div>
+<b>Exporting before Importing</b><br>
+Before importing any csv, it is always a good idea to export an archive copy of your products, in case unexpected changes occur. You may also wish to export the products to help you sort out the products that you want to include in your import. To export your products to a csv file:<br>
+Go to Utilities > Product Export<br>
+Step 1: Select Products<br>
+Step 2: Specify Export Columns (Doing nothing will export all fields. Selecting certain fields will creating a smaller, more focused report. Use the Analyze Fields button for help with your column header names.)
+Step 3: Option/Variation Formatting<br>
+Step 4: Choose Export Options<br>
+Step 5: Create File<br>
+<br>
+Click 'Export Now' and your batch job will start. Your job will be available under Reports > Batch Jobs.
+
+</div>
+</aside>
+
+</article>
+<aside class="cbc">
+<h6>To choose an HTML Wizard please do the following.</h6>
+<div> <li> Click on setup <li> Click on company profile <li> Click on eBay template not set <li> Select a HTML Wizard <li> Click on exit. Don't forget to add your company Logo to the template! 
+</div>
+</aside>
+
+
+<article>
+<h2>Closing</h2>
+
+Zoovy completely automates auctions!
+Normally within a few minutes of the auction closing Zoovy will automatically contact the winners and invite them
+to come back to your store. Once at your store they will have the opportunity to purchase additional items or
+proceed directly through a secure checkout. The order will appear just like any other order, except the item
+will have a * in the SKU and the description will have the auction ID in it. You can then automatically print
+invoices, shipping labels and more using Zoovy's advanced order management system. The best part is that the auction
+winner is now part of your customer database and you can use Zoovy's advanced CRM tools to track purchase
+habits, send promotional marketing materials and more.
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+eBay notificiation service is not 100% reliable.
+Under a variety of circumstances eBay will RANDOMLY go through periods where they will notify Zoovy of closed listings
+(this could be all listings, or any combination of chinese, dutch, fixed price, motors and store listings).
+In these circumstances you can either WAIT or manually close the listing.<br>
+<br>
+If you choose to wait you should be aware that these listings will be closed as part of a normal polling process and
+may take up to 24 hours (but will usually take less than 6 hours).
+To manually close listings you should use the "Instant Checkout button" which is included as part of the auction listing,
+if you cannot find the button you may also visit http://ebayapi.zoovy.net/checkout.cgi<br>
+<br>
+We apologize for this inconvenience, but the solution for this issue is well beyond our scope of influence.
+
+</div>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Incomplete Items</h2>
+
+Incomplete Items  are special items which have a predetermined buyer and price.
+A 'not available' is a message displayed to a customer once the item has been successfully purchased.
+This message will also displayed if the claim number is trying to be purchased through the wrong store.
+</article>
+<article>
+<h2>Inputting winners from non-supported auction sites</h2>
+
+If you use 3rd party auction sites and want Zoovy to process winners then you should create incomplete sales for Auctions winners.
+To create incomplete sales go on the Website to the Incomplete tab and click "Create new" - (be careful, there is also a
+"Create Order" button which is different - thats to convert an Incomplete sale into an Order).
+</article>
+<article>
+<h2>Tracking Live Listings</h2>
+
+You can see the status of your live auctions by going to Manage, and using the Channel Summary feature.
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

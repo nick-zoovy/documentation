@@ -1,0 +1,58 @@
+<meta type="filename" id="webmgr/detail/yahoo-ordersync">
+<h1>Yahoo Order Synchronization</h1>
+<article>
+<h2>Receiving Order Info</h2>
+
+First of all it should be mentioned that this feature is designed to receive order information entered into a Yahoo Store. Data does not flow back into the Yahoo database. Zoovy customers must purchase a yahoo store from yahoo to use these features.  Once the Yahoo store is setup, follow the instructions below.
+</article>
+
+<aside class="cbc">
+<h6>'Instructions'</h6>
+<div>
+<li> enable the "Real Time Link" link,
+<li> under the "Order Settings" heading in your Yahoo Store Manager.
+This is not enabled on Yahoo stores by default.
+<li> This is an advanced feature,
+ and is not available to all Yahoo stores,
+<li> If you do not have this option in your store, please contact yahoo support and ask them to enable the "Real Time Link" feature for your store.
+<li> Once the feature is enabled, then login to Zoovy and go into the Setup->Checkout Properties area.
+<li> Grab the Synchronization URL from the example at the bottom of the page.
+<li> Click save when you are done.
+<li> Next go into the Real Time Link in the Yahoo store manager.
+<li> Paste the Synchronization URL from the Zoovy store into the Orders section of the Yahoo Stores Real Time Delivery area.
+<li> Verify the format on the Yahoo Real Time Delivery is set to the default that is "Yahoo! Format".
+<li> Also make sure you change the PASSWORD portion of the Synchronization URL with your Yahoo synchronization password from above.
+<li> When you are finished, publish the order settings.
+
+</div>
+</aside>
+
+<article>
+<h2>Accepting Orders</h2>
+
+From this time on, all orders placed in the Yahoo store will be submitted and created in your Zoovy Management interface.  If you have difficulty with this feature it is provided as level 2 support within Zoovy, and is available to active fast tracks only.
+</article>
+<article>
+<h2>Debugging</h2>
+
+Retrying an Order Post can be done in Yahoo Store Manager by opening the order (upper "Process" hit the "Orders" link. Click "view", and clicking the "Post to https://www.zoo..." link in the right hand menu bar under the "Send" heading.
+</article>
+<article>
+<h2>FAQ</h2>
+
+<b>Question:</b> I can manually post orders from Yahoo to Zoovy but they are not automatically posted as customers order.  What is the Problem?<br><br>
+<b>Answer:</b> make sure you have published your Order Settings in the Yahoo store.
+In the main Yahoo Store Manager click "Publish Order Settings*" (the "*" indicates you have made changes and not yet published.)
+</article>
+<article>
+<h2>Yahoo Orders do not automatically post</h2>
+
+<b>Question:</b> When I try to manually post an order the bottom of the page says "Delivery failed" and displays a "Bad Request" page. What is wrong?
+<br><br>
+<b>Answer:</b> Your password or username specified in the synchronization URL is probably wrong.
+If you look closer at the error page you should see "Bad header=" and the error returned by our system.
+For example - "order pass is invalid" means your password is invalid.
+</article>
+
+
+

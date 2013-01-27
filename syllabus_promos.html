@@ -1,0 +1,139 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="syllabus/promos">
+<h1>Syllabus: Coupons and Promotions (Optional)</h1>
+
+<article>
+<h2>Promotions Training</h2>
+
+
+
+
+
+
+
+This is an optional training session required only for Zoovy store owners with special promotions.
+<aside class="caution">
+<h6></h6>
+<div>Promotions create an exception to how your online store normally would behave. It is therefore important to thoroughly test your promotions to catch any unexpected behavior before your customer does.
+</div>
+</aside>
+
+</article>
+<article>
+<h2>PREREQUISITES</h2>
+Before you go into training, please have a clear idea of how you would like your promotions to work. You may need to write it out on a piece of paper or even construct a chart in order to clarify how promotions needs to be calculated for you.
+
+</article>
+<article>
+<h2>Promotion Construction</h2>
+<section>
+<h3>Discount Code</h3>
+This code will help you to group rules related to each other.
+</section>
+<section>
+<h3>Discount Description</h3>
+The Discount Description will display to the customer in the shopping cart. Use something pertinent to the promotion being offered (e.g., "Discount for Returning Customers!").
+</section>
+<section>
+<h3>Use Rule If</h3>
+This is the condition by which some action will occur.
+</section>
+<section>
+<h3>Action If Match</h3>
+This is the result that occurs if the condition is met.
+</section>
+<section>
+<h3>Modify Value</h3>
+If a value is necessary, fill in this box.
+</section>
+</article>
+<article>
+<h2>Example: 10% Off Coupon</h2>
+In this example, I will show you how to do a simple 10% off coupon.
+<aside class="cbc">
+<h6>10% Off Coupon</h6>
+<div>
+<li> Log in and go to Setup > Coupons and Promotions.
+<li> Click on the Coupons tab at the top of the screen.
+<li> Enter the five digit coupon code that you want the customer to enter in order to redeem their discount. I am calling mine "10OFF" I enter "10OFF" and click the blue ADD button. Call your coupon whatever you like.
+<li> The Coupon Title appears in the cart along with the products. It is customer facing so make sure it is friendly and clear. Something like, "Congratulations! You get 10% off this purchase!"
+<li> You can click on the EDIT link to upload an image relevant to this coupon for use with image carts. I am using a little image of party balloons to emphasize the "Congratulations!" text. (You do not have to use an image for your coupon to work. It is purely for aesthetics.)
+<li> I enter the dates that I want this coupon valid from and until. I will do mine from today until the end of the month.
+<aside class="hint">
+<h6></h6>
+<div>
+If you want a coupon to take effect immediately, set the beginning date to the day before the actual date you are creating it.
+
+</div>
+</aside>
+
+<li> Profile will indicate for which store this coupon will be valid. When in doubt, select ALL.
+<li> Then click on the Add New link under Behavior. This is where we construct the rule that actually gives your customer 10% off.
+<li> Under "Hint" give yourself a reminder what this coupon is doing. For example: "10% off."
+<li> Next to the "Use Rule If" select "ANY product in cart matches filter"
+<li> Leave the Match Value blank. You won't need it for this coupon.
+<li> Since this applies to every product you offer, in the "Filter Criteria" just enter a single asterisk (*). An asterisk is a wild card, meaning that anything meets our criteria when this coupon is entered.
+<aside class="hint">
+<h6>ONLY EFFECT CERTAIN PRODUCTS</h6>
+<div>
+If you would only like the coupon to take effect when a particular product or range of products is in the cart, set the "Match Value" to %SKU.  In the "filter Criteria" enter each SKU you would like to use, separated by commas as so:
+<br>
+prod1,prod2,prod3..
+<br>
+If you have a range of products with similar starting characters you can also do:
+<br>
+Prod*
+<br>
+That effects all SKU's with PROD at the beginning.  There are more advanced rules that can be set to your coupon.  Please schedule an Implementation meeting to discuss these if necessary.  Be sure to test your coupon once complete as well!
+
+</div>
+</aside>
+
+<li> The "Action If Match" will be "SET Discount to modify value."
+<li> The "Modify Value" will be "-10%"
+<li> Save your work and you are done.
+
+</div>
+</aside>
+
+</article>
+<article>
+<h2>Homework</h2>
+Test your rules thoroughly by checking out from your online store as if you were a customer. Try to catch any possible problems before your customer does.
+<aside class="caution">
+<h6></h6>
+<div>If you find that a promotion is not acting as expected, you can always disable that promotion. Every promotion rule has a "Use Rule If: Never (DISABLED)." This would turn that specific rule off until you can narrow down what is wrong.
+</div>
+</aside>
+
+</article>
+<article>
+<h2>Further Details</h2>
+<a class="linkdoc" href="#?doc=50313">Doc 50313</a><br>
+<a href="http://support.zoovy.com/schedule/index.cgi?CLASS=IMP">Schedule Training Appointment</a>
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

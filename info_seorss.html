@@ -1,0 +1,126 @@
+<meta type="filename" id="info/SEORSS">
+<h1>SEO & RSS Properties</h1>
+
+<article>
+<h2>Concept Overview</h2>
+
+SEO Page Title:  This is blank unless you enter something into it
+manually.  If you do not enter anything into it, the system will load the
+product name into the title tag for the browser when the page is displayed.
+ If you enter something into this field, it will pull that information and
+display it instead.
+<br>
+RSS Feed Title:  This is also blank by default.  It works exactly the same
+way as the SEO Page Title except it is for RSS feeds instead.
+<br>
+RSS/Meta Short Description:  This is for RSS feeds.  This also is blank
+unless you enter something into it.  If you do not enter data into this
+field, then the RSS feed will take the first 256 characters of the product
+description instead.  Enter data here if you want something other that the
+product description in your RSS feeds.
+<br>
+RSS/SEO Keywords:  This is a new location for you to put your product META
+Tags.  The meta tags that you already have in place, should display here
+automatically.
+</article>
+
+<article>
+<h2>Syndicating non-Product Content</h2>
+At this time it is not possible to present non-product content via RSS. We hope to have this in early 2008.
+</article>
+
+<article>
+<h2>Product Exhibitor / Deal of the Day / Flash RSS Feed Consumer</h2>
+
+For more information on the Zoovy Product Exhibitor (Deal of the Day Flash Applet) please visit:
+
+<br>
+
+http://proshop.zoovy.com/product/CSTM_EXHIBITOR/Zoovy_Product_Exhibitor.html
+
+</article>
+
+
+<article>
+<h2>Presenting RSS Feeds to Users</h2>
+Adding one line of code to your page header will make it easier for people to subscribe to your RSS feed. Here's how just copy and paste the HTML code below in the HEAD section of any page (just edit the META properties of the page in the website builder)
+
+<aside class="html">
+<h6></h6>
+<code>
+<link rel="alternate" type="application/rss+xml" 
+title="RSS Feed for YOURDOMAIN.com"
+href="http://link_to_rss_feed_from_zoovy" />
+
+</code>
+</aside>
+
+
+The above link tag should be added inside the head tag of your HTML document.
+<aside class="hint">
+<h6></h6>
+<div>
+You will of course need to change the value of the title and href attributes to fit your needs.
+
+</div>
+</aside>
+
+
+<br>
+
+If your feed is an ATOM feed you will want to change the type to application/atom+xml.
+(Zoovy does not support ATOM feeds at this time)
+
+<section>
+<h3>RSS Caching</h3>
+If affiliates aren't getting updates to your RSS feed then chances are they are loading a cached file. A good trick would to have the affiliate request a different URL each time to circumvent any caching which might be happening -- e.g.:
+
+<aside class="html">
+<h6></h6>
+<code>
+http://static.zoovy.com/rss/username/RSS.xml?time=YYYYMMDDHHMMSS
+
+</code>
+</aside>
+
+
+where YYYY=year, MM=month, DD=day, HH=hour, etc.
+</section>
+
+</article>
+
+
+
+<aside class="html">
+<h6></h6>
+<code>
+
+</code>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

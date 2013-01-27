@@ -1,0 +1,466 @@
+<meta type="keywords"></meta>
+
+<meta type="filename" id="ordermgr/detail/quickbooks">
+<h1>Quickbooks</h1>
+<article>
+<h2>Quickbooks 2006 and higher Support</h2>
+
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+Quickbooks does not support 64bit XP, Vista, Windows 7.
+
+</div>
+</aside>
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+Microsoft Windows Vista compromised the compatibility between Quickbooks and its SDK-based applications such as Zoovy Order Manager. For this reason Zoovy will only be able to support Quickbooks 2007 If you are using the Windows Vista Platform. We will not support 
+version 2006 if you are using Vista. 
+For more information, please visit:<br>
+<br>
+http://developer.intuit.com/developer/newsletter.asp?id=504
+
+</div>
+</aside>
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+Intuit discontinued support for QuickBooks 2005 and older.  IDN no longer provides developers with technical support for issues specific to QuickBooks 2005 and older.<br> 
+For this reason Zoovy also discontinued support for Quickbooks 2005 and older. 
+
+</div>
+</aside>
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+Zoovy tends to push Quickbooks to its capacity -
+to learn more about the maximum capacity of each Quickbooks version, please visit:<br>
+<br>
+http://www.quickbooks.com/support/faqs/qb2004/100876.html?source=4<br>
+(note these are for Quickbooks 2004)
+
+</div>
+</aside>
+
+
+
+
+
+</article>
+<article>
+<h2>About this Feature:</h2>
+
+
+With the Quickbooks integration feature, invoices that have been changed or updated can be easily exported from the Zoovy store directly into the Quickbooks Pro database.
+
+<a name="QBXMLRP2">
+
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+<b>Attention Quickbooks 2005 (no longer supported) users:</b><br>
+
+<a target="_blank" href="http://www.zoovy.com/biz/support/beta/QBXMLRP2Installer.exe">Order manager v5.90 and higher require that you download and install the file below to be compatible with the Quickbooks SDK version 4.0</a><br>
+
+<a target="_blank" href="http://www.zoovy.com/biz/support/beta/QBFC4_0Installer.exe">QBFC4_0Installer.exe</a><br>
+
+<br>
+
+You should not download and install this file more than once.
+
+In addition, after installing the file you should make sure you have the Quickbooks update service enabled.
+
+
+</div>
+</aside>
+
+
+</article>
+<article>
+<h2>Quickbooks Version Compatibility</h2>
+
+
+<br>
+
+Quickbooks 2005 (no longer supported) has major improvements from previous versions:<br>
+
+<li> Improved user interface for setting up the link between Zoovy and Quickbooks
+
+<li> Bi-directional Modifying invoices and sales receipts
+
+<li> Capability to import eBay Fees and Paypal fees directly into Quickbooks
+
+<li> Reconciliation with Quickbooks merchant services (and upcoming online Quickbooks merchant account support)
+
+<li> Support sales orders
+
+
+
+</article>
+<article>
+<h2>New Features and Improvements in Order Manager</h2>
+
+
+<li>Choose order of customer name i.e.: Last name, Firstm name
+
+<li>Email added to customer record
+
+<li>Multiple company file support for multiple Zoovy accounts
+
+<li>Set lengths to Quickbooks maximum length
+
+
+<b>New features in Quickbooks export (ZOM version 4.43b or greater):</b><br>
+
+<ol><li>Ability to export customer credit card.
+
+<li>Adds phone number into customer export
+
+<li>Percentage discount now brings only the amount of the discount
+
+<li>The ability not to create customer accounts is available. Note this is only for Sales Receipts export. To turn this feature on, go to Tool-> Quickbooks Seup, then click on do not create customers.
+
+</ol>
+
+
+
+NOTE: There is now a place to choose the account name into which paid sales are deposited. It
+
+is located in Tools-> Quickbooks Setup. Then select the Quickbooks (version #)
+
+tab and you will see the account tab.
+
+<br>
+
+<br>
+
+In Order Manager version 4.28 and higher, you may also select the type export - either Accrual or Cash.
+
+The method chosen is important in order to successfully reconcile your books later - consult your
+
+accountant.
+
+The accrual export uses the date the invoice was created (in Zoovy) for the created date in Quickbooks.
+
+The Cash export uses the date the invoice was paid (in Zoovy) for the created date in Quickbooks (if no paid date is set,
+
+the current date is used).<br>
+
+<br>
+
+Order Manager v4.28 also adds support for ClassName. ClassName is typically used by accountants or users to classify the
+
+invoices/sales receipts in a class account. (E.g. Website Sales, or Zoovy Website Sales)<br>
+
+<br>
+
+Order Manager v4.28 lets you specify an account name for products. In versions prior to 4.28, if you attempted
+
+to synchronize invoices with products which are not in Quickbooks, you would receive an error and the synch would stop.
+
+In newer versions you will be prompted to create the product, or to map the product to a product in a subcategory.
+
+Once a product is mapped to a product in a subcategory, Order manager will remember that association.
+
+<p>
+
+<b>New Features in Order Manager 5.145 or greater.</b><p>
+<ol>
+<li> Receive Payment has been added to the Quickbooks Integration
+<li> Invoices can now be marked "paid" using receive payment
+<li> Integration with Quickbooks Merchant Account Services for reconcilation purposes (for both invoices and sales receipts).<br>
+<i>Note: must have the latest Quickbooks dll that supports the credit card information </i>
+</ol>
+
+</article>
+<article>
+<h2>Operational Details of Quickbooks ronization:</h2>
+
+
+Before you start using this feature, it will be helpful if you know a few operational details:<br>
+
+<li>The current version exports to Invoices, Customers and Sales Recipts, it will prompt you to
+
+create products if the products do not exist in Quickbooks.
+
+
+
+<li>Order Manager versions prior to 4.28 assumes that your product SKUs in your Zoovy invoices are the
+
+same product skus (items & services) inside the Quickbooks company file.
+
+<br>
+
+NOTE: If your product SKU is not located within Quickbooks, you will receive an error message like this:
+
+<br><br>
+
+Create this new invoice failed: Not Available<br>
+
+QB returns: There is an invalid reference to QuickBooks Item "IRON108" in the<br>
+
+SalesReceipt line.  QuickBooks error message: Invalid argument.  The specified<br>
+
+record does not exist in the list.<br><br>
+
+
+
+<li>You must choose the Quickbooks company file before you start. To choose a Quickbooks company file,
+
+go to Tools -> Quickbooks Setup. If you do not choose
+a company file, you will get error when attempting to export into Quickbooks.
+
+
+
+<li>To minimize any problems that may occur, please setup the Synchronization with a test invoice.
+
+Instructions for initial setup are given below.
+
+
+
+<li>Finally: YOU SHOULD ALWAYS BACKUP YOUR QUICKBOOKS DATABASE before syncing with any Quickbooks
+
+compatible application including the Zoovy Order Manager.
+
+</article>
+<article>
+<h2>Quickbooks and Verisign</h2>
+
+
+If you have a Verisign gateway account through Quickbooks, then orders must be processed for payment
+
+through Quickbooks.<br>
+
+<br>
+
+A regular Verisign Payflow Pro account is compatible with Zoovy's online processing engine,
+
+but the Verisign Quickbooks gateway is setup differently and requires the orders be processed
+
+through Quickbooks.<br><br>
+
+
+
+You can export your orders from the web to order manager, then into Quickbooks,
+
+or you can switch to another gateway.  Please contact your account manager if you need help
+
+getting set up for Quickbooks integration.
+
+</article>
+
+<article>
+<h2>Initial Setup Steps:</h2>
+
+
+Please follow the steps below for Exporting to Quickbooks:<br>
+
+<li>First open the Quickbooks company file as a user who has access to add new invoices.
+
+<li>Next startup the Zoovy Windows Order Manager.
+
+<li>Select a test invoice in the Zoovy Windows Order Manager by highlighting it and then select the option File -> Export to Quickbooks 2006 or higher from the menu.
+
+<li>Quickbooks will display an authentication window.
+
+<li>Next go to the Quickbooks software, select to Edit -> Preferences.
+
+<li>Click on the Integration Applications button in the left hand toolbar. Then click on the Company Preferences tab. Highlight Zoovy Order Manager and click on the Preferences button as shown in the pictures below.
+
+<li>On the Access Rights tab, please verify that both the "Allow this Application to access the company file" and "Allow this Application to Login Automatically" are checked, as shown below. When you are done press the OK button.
+
+<li>When you are done then press be sure to finish OK one more time in the preferences dialog to save the export settings.
+
+</article>
+<article>
+<h2>Export to Quickbooks Usage Instructions</h2>
+
+
+After you have completed the initial setup steps outlined above, then you can follow the following steps below to easily synchronize invoices from your Zoovy store into Quickbooks.<br>
+
+
+
+<li>1.	Load the Windows Order Manager. Note: Quickbooks does not have to be open.
+
+<li>2.	Select then invoices that you want to export to Quickbooks. To select a range of invoices clicking on the first invoice you want to export then hold down the shift key, and click on the last invoice you want to select.
+
+<li>3. In Order Manager, Right Click -> Export to Quickbooks 2006 or higher.
+
+<li>4. When prompted review your settings and press okay to start. NOTE: If any errors are encountered, then Order Manager will save a QbooksError file in the directory Order Manager is installed in.
+
+</article>
+
+<article>
+<h2>Synchronization of non inventoriable options</h2>
+<aside class="caution">
+<h6></h6>
+<div>
+In Order Manager version 6 or higher we have changed quickbooks integration with regard to synchronization of non inventorial options.<br> 
+When exporting products to Quickbooks that have non-inventorial options only the original product id and inventorial options will be sent to Quickbooks (we will no longer transmit the inventorial portion of the product as was done in OM versions 5.xxx)
+ 
+
+</div>
+</aside>
+
+</article>
+
+<article>
+<h2>Common Questions</h2>
+
+
+What does the Convert Underscores to Dashes option do?<br><br>
+
+If you have existing SKU's from Quickbooks which you have imported, or are planning to import into Zoovy then you may notice that Zoovy translates those dashes to underscores when creating product id's. If you plan on correlating those product id's back from Zoovy then you need to convert the underscores back to dashes (or go into quickbooks and rename all your products to use underscores rather than dashes).
+
+Zoovy provides extensive consultative help for businesses that need to synchronize with Quickbooks (in fact we use Quickbooks ourselves) so if you have any questions please feel free to contact Zoovy technical support and arrange an appointment with a Quickbooks expert.
+
+If you use another accounting package besides Quickbooks, please contact zoovy technical support to learn when your accounting package will be directly supported.
+
+</article>
+<article>
+<h2>Troubleshooting Synchronization Errors:</h2>
+
+
+If you experience errors when exporting invoices, you will able to view in the QbooksError file.<br><br>
+
+
+
+<b>Example Errors:</b><br><br>
+
+<li>Create this new invoice failed: 2002-01-78<br>
+
+QB returns: There is an invalid reference to QuickBooks<br>
+
+InvoiceLineItem Item "asdf" in the Invoice line list.<br>
+
+QuickBooks error message: Invalid argument.<br>
+
+The specified record does not exist in the list.<br>
+
+<li>Explanation of Error:<br>
+
+1.	Create this invoice failed: 2002-01-78.<br>
+
+This denotes the Zoovy Invoice number that did not export successfully.<br>
+
+2.	QB returns: There is an invalid reference to QuickBooks InvoiceLineItem Item "asdf" in the Invoice line list.<br>
+
+QuickBooks error message: Invalid argument.  The specified record does not exist in the list.<br><br>
+
+
+
+Translated: This invoice failed because the SKU "asdf" does not exist inside the Quickbooks file. Quickbooks tried adding the invoice but since the "asdf" sku did not exist. It could not export successfully.<br>
+
+<li>Create this new invoice failed: Not Available<br>
+
+QB returns: There is an invalid reference to QuickBooks Ship Method "Shipping"
+
+in the Invoice.<br><br>
+
+
+
+This error occurs because the shipping method is blank. To fix this issue
+
+double click on the invoice and click on shipping. Change the Current Shipping
+
+method to something other than blank and hit save, then exit out of all screens.<br><br>
+
+
+
+<b>Important:</b>  If you are having difficulty importing orders into Quickbooks and have already received training from Zoovy,
+
+please open a support ticket and attach the qbsdklog.txt to the ticket. This file is typically located in C:\Program Files\Intuit\Quickbooks Pro. Also, please report your settings under Tools -> Quickbooks Setup.
+
+
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

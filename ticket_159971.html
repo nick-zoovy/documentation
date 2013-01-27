@@ -1,0 +1,70 @@
+<meta type="filename" id="ticket/159971">
+
+<h1>Issue #159971: Excel corrupts data when being imported</h1>
+
+<article>
+<h2>Issue #159971: Excel corrupts data when being imported</h2>
+
+Issue: Product Export Generating Return Characters
+
+<br>
+
+Recently, the product Export function has been exporting any return characters that may exist within the product data fields. This looks to be an unannounced change from the earlier function, but I do not know how to import this into Excel now. 
+
+<br>
+
+When a product contains the return character, subsequent lines are in the wrong columns which would cause product corruption if it were to be re-imported.
+
+<br>
+
+Even if I were to attempt to remove the return characters manually (which also disables WIKI), the ebay:attributeset field is still coming in with returns.
+
+<br>
+
+I am actually not sure if the change happened in the Zoovy export function or if it was my upgrade to Office 2007 about a month ago, but it's only this week that I've observed the issue. I don't think it's Excel 2007 because if I look at the exported files in Windows Notepad, the return characters are there, and I was always under the impression that the Zoovy export would not export those characters.
+
+<br>
+
+Is there a work-around for this to allow an easy export and import as before?  
+</article>
+
+
+<article>
+<h2>Resolution</h2>
+I was able to export this and did not see any break that were skewing the export. However I do not have office 2007. I select the products from list and left the fields empty to get a full export of all attributes of those products. Then I chose export to csv. You should just be able to download this file from the ticket then open excel and click open and browse for the file. Please let me know if you are still having a problem and we can troubleshoot further. I can test with 2007 but with 2003 this worked fine. 
+
+</article>
+
+<article>
+<h2>Customer Follow Up</h2>
+I see what you are seeing. However, I have to "import" the file into Excel, setting Zip Codes, PIDs, and UPCs for example to Text fields so the leading zeros will not be converted to numbers and dropped by Excel. If I simply tried to open the file as you suggest and re-import the file, the data of certain products would be corrupted. This is where the difference is being seen.
+</article>
+
+<article>
+<h2>Resolution</h2>
+We've actually contacted Microsoft about this in the past - you know what they told us:
+
+<aside class="html">
+<h6></h6>
+<code>
+Excel is not a database, it's a spreadsheet.
+
+</code>
+</aside>
+
+
+My understanding is Microsoft has no intention of "fixing it" because it's not broken, and they don't want people using Excel like that.  
+
+<aside class="hint">
+<h6></h6>
+<div>
+You can setup various column types from number to text to work around a few of the issues you mentioned. 
+
+</div>
+</aside>
+
+
+We use Open Office (www.openoffice.org) internally - it's free, and it doesn't have those limitations (it has a few others though).  You might try importing the data into Access as well.
+
+</article>
+

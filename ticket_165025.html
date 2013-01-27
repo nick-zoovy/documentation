@@ -1,0 +1,86 @@
+<meta type="filename" id="ticket/165025">
+
+<h1>Issue #165025</h1>
+
+<article>
+<h2>Issue</h2>
+Issue: properly setting up shipping methods
+
+<br>
+
+Platform: na
+Topic: web_manager
+We started receiving orders with multiple items and noticed a problem in our shipping configuration...
+<br>
+If an order has multiple light-weight items, and the "Quote as a multibox shipment (each SKU in its own box)" in Setup  » Shipping  » UPS Shipping is ENABLED, site charges customer a lot more money for shipping, because these light items are combinable. But if the order has multiple heavy items, then site charges customer too little, thinking that it can combine large/heavy items, but in reality they cannot be combined.
+<br>
+Here is a scenario...
+<br>
+Quote as a multibox shipment (each SKU in its own box) ON:
+<br>
+Add 1 x SKU# ABC (widget, weights 1#) to cart = $7.97 shipping to 90210 zip
+<br>
+Add 5 x SKU# ABC to cart = $37.85 shipping
+<br>
+Add 10 x SKU# ABC to cart = $75.20 shipping
+<br>
+as you can see, these are ridiculous quotes
+<br>
+<br>
+Now if you Add 1 x SKU# DEF (Heavy Widget, shipping weight 28#, Do not combine with other packages (EXPERIMENTAL) enabled) to cart = $30.33 shipping to 90210 
+<br>
+Add 5 x SKU# DEF to cart = 95.64 shipping
+<br>
+note: these are good quotes, because items cannot be combined and have to be shipped/quoted separately anyway
+<br>
+Add 10 x SKU# DEF to cart = $4 handling and customer gets "free shipping"
+Combined weight of orders gets too heavy for UPS, and my site switches to a customer Free Shipping I have setup to use as a promotion for certain items listed in that custom method's rules. But this should not be happening with these items.
+<br>
+Quote as a multibox shipment (each SKU in its own box) OFF:
+<br>
+<br>
+Add 1 x SKU# ABC to cart = $7.97 shipping
+<br>
+Add 5 x SKU# ABC to cart = $10.37 shipping
+<br>
+Add 10 x SKU# ABC to cart = $12.78 shipping
+<br>
+<br>
+note: these are good quotes because items are light-weight and can be combined
+<br>
+<br>
+and the below quotes are bad because the site is trying to combine heavy items that cannot be combined in reality...
+<br>
+<br>
+Add 1 x SKU# DEF, you still pay $30.33 shipping
+<br>
+Add 5 x SKU# DEF, you will pay 95.64 (cheaper for customer, but 5x items cannot be combined, and I have to pay out of pocket)
+<br>
+Add 10 x SKU# DEF to cart = $4 handling and customer gets "free shipping"
+<br>
+Combined weight of orders gets too heavy for UPS, and my site switches to a customer Free Shipping I have setup to use as a promotion for certain items listed in that custom method's rules. But this should not be happening with these items.
+<br>
+<br>
+</article>
+
+
+
+<article>
+<h2>Resolution</h2>
+
+First off - the each item ships as it's own box isn't really intended for companies which combine *anything* .. there are a lot of warehouses where everything is already in closed boxes ready to ship and they just stick a label on the side and out the door it goes -- that's who uses that behavior.
+<br>
+There are a variety of approaches which I think could work to accomplish what you want here are a handful - and I'd be happy to discuss any of these in more detail (though a phone appointment might be better)
+<br>
+1. Use rules - rules allow you to create classes of combinable items
+<br>
+For example I think we should rework your free shipping rule so it implicitly triggers only when the appropriate TYPES of items are in the cart (e.g. using shipping sort class), and I think that could very quickly address a large part of the problem. 
+<br>
+Also when the weight gets "too heavy" having a different set of logic, e.g. being able to flip over to LTL shipping, etc. is something that we can do using rules. 
+<br>
+2. shipping api
+<br>
+This is a custom piece of software, it basically gets a full copy of the cart, and then it has it's own custom designed shipping engine with your particular business logic -- the upside is that it can literally compute *ANYTHING* .. the problem is that it's expensive to design, and maintain over time.  
+<br>
+
+</article>

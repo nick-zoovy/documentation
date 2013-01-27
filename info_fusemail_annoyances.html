@@ -1,0 +1,40 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/fusemail_annoyances">
+<h1>Mail Solutions</h1>
+
+<article>
+<h2>Common Mail Annoyances</h2>
+
+
+
+
+Here are some easy solutions to common email annoyances.
+</article>
+<article>
+<h2>Outlook IMAP error</h2>
+We used to occasionally see errors when people use Outlook to read their messages via IMAP.  The old advice was to keep the number of message in their Inbox down and occasionally refile them to another folder after reading them.  FuseMail took some steps to make their server behave better for Outlook, but we will still sometimes see the error.  The IMAP cache helps keep your mail from being dog slow when they read it or search through it.  If it gets out of sync with the actual messages, it causes problems.  I suspect, but don't know for sure, that people who use webmail + Outlook at the same time or multiple Outlook clients at the same time on the same account might run into this more than others.  We would typically have to open a ticket with FuseMail to get them to reset the IMAP cache. afterwards, their mail would work again as expected.  You can now do this yourself:<br>
+<li>1. Login to webmail.zoovy.com.
+<li>2. Go to "Mail" to look at your folders.
+<li>3. Right-click on the "Inbox" folder.
+<li>4. Click on "Reset Cache"
+<li>5. Logout and go back to Outlook.<br>
+<aside class="hint">
+<h6></h6>
+<div>If it keeps happening often enough that it's becoming a nuisance for them, make sure they've gone to officeupdate.microsoft.com and click "Check for free updates".  If it's still a problem, we recommend that you either switch to Thunderbird for your email (there are many good reasons for this) or that you change your account to access our servers using POP (fixes problem, but has some drawbacks).
+</div>
+</aside>
+<br>
+
+<aside class="caution">
+<h6></h6>
+<div>We don't support Outlook Express.
+</div>
+</aside>
+
+</article>
+<article>
+<h2>Thunderbird timeout when sending email</h2>
+By default, Thunderbird saves a copy of all messages sent in the "Sent" folder on the IMAP server.  Sometimes I see my Thunderbird hang when sending a message.  Other customers have seen this too.  Their fix for it is changing a setting in Thunderbird.<br>
+<li>1. Go to Tools -> Account Settings and select the "Server Settings" under the correct IMAP account.
+<li>2. Click on the "Advanced" button, then change the "5" to a "1" and hit OK.<br>
+</article>

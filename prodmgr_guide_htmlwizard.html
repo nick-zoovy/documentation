@@ -1,0 +1,380 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="prodmgr/guide/htmlwizard">
+<h1>Guide to Custom HTML Wizards</h1>
+<article>
+<h2>Overview</h2>
+
+An HTML wizard
+can include information from the merchants profile, from the product being
+used, and from the channel it is being created in.&nbsp; HTML Wizards typically
+combine data like the product name, description, along with merchant shipping
+policy, and payment details.&nbsp;</font>
+<p><font face="Verdana, Helvetica, Arial">The Zoovy Product Manager comes
+pre-packaged with many HTML Wizards which are classified as either SIMPLE
+or ADVANCED. For the merchants that have special requirements, or just
+want their very own look, Zoovy provides a method for creating custom HTML
+Wizards.</font><br><br>
+NOTE: If you remove the email address from any of the pre-formatted HTML Wizards, the system will remove your customer service email address from your company information.  Please select an HTML Wizard that does not contain a field for your email address if you do not wish to include your email in the auction.
+</article>
+<article>
+<h2>Components</h2>
+
+Each HTML Wizard has three files:</font>
+<li> A TXT file - (called the definition file) which describes the data that should be provided to complete the HTML Wizard.
+<li> A HTML File - contains the HTML content which will be interpolated with the data that is entered from the definition file.
+<li> A Thumbnail (optional) - used to provide a preview of the HTML Wizard for users.</font></li>
+</article>
+<article>
+<h2>Editing an Existing HTML Wizard</h2>
+
+
+<li>
+Start the Product Manager, open an auction template (drag and drop a product onto a channel from within the "product/channel creation" tab).
+
+<li>
+Click the "Html Wizard" button next to the description. Here you will find the default HTML Wizards. Select one that fits your needs best.
+
+<li> Use Windows Explorer and browse to the C:\Program Files\Zoovy\ProdMgr\HtmlWiz directory.
+If during setup, you installed the Product Manager in a different location, navigate there.
+
+From either the "Advanced","Layout1","Custom",
+or "Simple" directories select a set of HTML Wizard files to copy. You
+should be able to find files named after the default templates with ".txt",
+".html", and ".gif" extensions.<br>
+
+The next step is to edit the index.txt file found within the "Custom" directory.
+Open this file with a simple text Editor. In it you will see content which looks like:
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;STUFF&gt;
+&lt;TEMPLATE NAME="NAME1"&gt;Description...&lt;/TEMPLATE&gt;
+&lt;TEMPLATE NAME="NAME2">Description...&lt;/TEMPLATE&gt;
+&lt;/STUFF&gt;
+
+</code>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Editing the Definition</h2>
+
+The process
+of creating or editing a custom HTML auction template requires 2 files,
+and if you want things to look pretty a thumbnail. The first file is a
+".html" that contains the actuall template HTML and comment tags. The comment
+tags are specially formatted to be replaced later with actual product data.
+The second file is a ".txt" that contains HTML'ish code used to define
+the data inputted into the ".html" file. The last ".gif" file is used to
+display a thumbnail from within the Product Manager. In the following example
+(continuation the above) we will add a simple text box that is used to
+relay the quality of the item going up for auction.
+
+</article>
+<article>
+<h2>Editing the HTML</h2>
+
+
+Open the ".html" file and enter make any changes to the templates HTML you like.
+Note the existence of comments such as &lt;!-- SUPPORT_EMAIL --&gt; or
+&lt;!-- PRODUCT_DESCRIPTION --&gt;. <br>
+<br>
+<aside class="caution">
+<h6></h6>
+<div>
+
+If you are cutting and pasting HTML, do not use Microsoft Office HTML (Word). The Office specific unicode
+tags will cause garbage (foreign characters such as "�" to be entered into your HTML.  This is also true if
+you add HTML to your product descriptions.
+</div>
+</aside>
+
+
+<br>
+These will on launch be switched out with data specified in the ".txt" file.
+We entered the following HTML just above the Payment Policy section.
+The Zoovy HTML Wizard allows you to easily generate custom HTML pages for
+insertion into marketplaces that allow HTML listings. The HTML Wizard has
+three easy steps to it:<br>
+
+<li> Step 1: Select a Template - Choose from a variety
+of pre-designed templates which are included with Product Manager.
+<li> Step2:
+Review/Edit Data - Product Manager will prompt you to review and enter
+various pieces of information which is required for the HTML template,
+in most cases the information you enter will be saved into your product,
+or your company profile.
+<li> Step 3: Review Output - after pressing save on
+the edit screen you will have the opportunity to view the final output,
+and to save the HTML generated code into the Channel. <br>
+<Br>
+Advanced Users:
+Make your own custom template that only asks you for the information that is
+different on every auction.
+<li>
+Load up Windows Explorer (not Internet Explorer)  a quick and easy way to do this is to
+go to the Start Button then Run and then type in C:\ and finally press
+Ok. There will a total of three files for each HTML wizard theme eg: GREYBOX1.html
+GREYBOX1.txt GREYBOX1.gif<br>
+<br>
+Congratulations you've just added your own custom HTML Wizard,
+you can repeat the steps above over and over again,
+
+The three files we copied earlier, have the following:<br>
+<br>
+<section>
+<h3>Thumbnail</h3>
+
+GREYBOX1.gif is the thumbnail preview of what the template looks like,
+if you don't want to make your own thumbnail then just use a graphic that
+lets you know what it is, or disregard it completely.
+</article>
+<section>
+<h3>Definition</h3>
+
+GREYBOX1.txt is the list of information needed
+by the HTMLWIZ that is then combined with the contents of GREYBOX1.html
+to create the final HTML for your listing. You can edit the GREYBOX1.txt
+and change the list of information needed, for example you could remove
+it so it does not prompt you for your logo, payment policy, return policy,
+etc. and then you could edit GREYBOX1.html and design it so payment policy,
+return policy, etc. are not part of the auction. In the GREYBOX1.txt you
+might find the following tag:
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;input TYPE="TEXTBOX" NAME="merchant:zoovy:prod_desc"
+	PROMPT="Product Description" SUB="FOO"&gt;&lt;/input&gt;
+
+</code>
+</aside>
+
+
+The TYPE= parameter tells it what type of input element you are dealing with,
+valid types are TEXTBOX, TEXTAREA, and IMAGE The NAME= tells the product
+manager which data attribute to load the data from, obtain a list of commonly
+used field names, or create your own. In the following example replace
+yourname with your username, then somename with a valid tag name which
+can be any combination of letters or numbers. You can create global fields
+by going: merchant:yourname:somename , or fields which are associated with
+a product by using the format: product:yourname:somename The PROMPT field
+is what is displayed to you, the user of the HTML Wizard that tells you
+want to put in that field. Finally, the SUB= field tells the HTML Wizard
+to substitute the contents of what you entered into the GREYBOX1.html file.
+
+</article>
+<section>
+<h3>HTML File</h3>
+
+In the GREYBOX1.html file you would have the following code:
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;!-- FOO --&gt;
+
+</code>
+</aside>
+
+
+would be replaced with whatever data was entered into the
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;input SUB="FOO" .. &gt; tag.
+
+</code>
+</aside>
+
+
+
+The name isn't important, just make sure whatever is inside the data of the SUB= also appears inside an HTML comment in the .html file.
+</article>
+</article>
+<article>
+<h2>Supported Properties</h2>
+
+
+Here is a table of all supported
+INPUT TYPES and their respective properties.
+<table BORDER valign="top" >
+<tr>
+	<td VALIGN=TOP>INPUT TYPE</td>
+	<td VALIGN=TOP>PROPERTIES</td>
+	<td VALIGN=TOP>SUB BEHAVIOR</td>
+</tr>
+<tr>
+	<td VALIGN=TOP>(any input type)</td>
+	<td VALIGN=TOP>
+	<b>PROMPT</b> - the prompt displayed to the user. e.g. "Enter Something Here" <br>
+	<b>SUB</b> - the name of the variable to be replaced in the text. (read	the SUB VALUES) in the adjacent columns for more info how substution works.<br>
+	<b>TYPE</b> - specifies the input type (choose from the values below) e.g. INPUT="TEXTBOX"
+	<b>NAME</b> - the namespace:owner:attribute to save/load data from.<br>
+	<b>LOADFROM</b> - the default value to load from if NAME= is not populated, in namespace:owner:attribute. Can accept a comma separated list of values<br>
+	<b>READONLY</b> - values are 0 or 1 makes a field non-editable, this is especially useful if you are referencing data on the parent form, such as channel:ebay:title, or do not want to allow the user to accidentally edit the information e.g. product:zoovy:prod_name<br>
+	<b>VALUE</b> - the default value, if nothing can be found in NAME, or LOADFROM values.<br>
+	<b>PRETEXT</b> - a text string which is prepended to the input if the data is not a blank.<br>
+	<b>POSTTEXT</b> - a text string which is appended to the input string if the data is not a blank.<br>
+	<b>URLENCODE</b> - if 1 then performs url encoding (&amp; becomes %37), encodes all non-alpha numeric characters. (used for passing data to another program via an HTTP GET)<br>
+	<b>ENTITYENCODE</b> - if 1 then performs basic entity encoding (&amp; becomes &amp;amp;, &lt; becomes &amp;lt;, &gt; becomes &amp;gt;  &quot; becomes &amp;quot;) handy for escaping forms inside forms, etc.<br>
+	</td>
+	<td VALIGN=TOP>By default all INPUT's replace their substitute (SUB) name.
+		For example: SUB="FOO" would replace all occurances of &lt;!-- FOO --&gt; throughout the HTML. Other special input type's such as IMAGE also create additional SUBNAME_VALUE variables which can be used.
+	</td>
+</tr>
+<tr>
+	<td><b>SKU</b></td>
+	<td VALIGN=TOP>
+	</td>
+	<td valign=TOP>
+		Places the SKU of the current product (in focus)
+	</td>
+</tr>
+<tr>
+	<td><b>SELECT</b></td>
+	<td VALIGN=TOP>
+	<b>LIST</b> - references a &gt;LIST&lt; element, uses the same format as the channel definition input type.
+	</td>
+	<td valign=TOP>
+	</td>
+</tr>
+<tr>
+	<td VALIGN=TOP><b>IMAGE</b></td>
+	<td VALIGN=TOP>
+		<b>ZOOM</b> - values are 0 or 1; if 1 the SUBNAME image tag zoomable, effectively this places a href tag around the &lt;IMG&gt; tag which links to the source image url (RAWURL) <br>
+		<b>BORDER</b> - values are 0 or greater; determines of the image has a border around it (only appears if the image is Zoomable)
+		<b>SUFFIX</b> - when an image is imported it is automatically renamed to the SKU, SUFFIX should be used if more than one image file is being imported. e.g. SUFFIX="-2" and a SKU of ABC would produce an image named ABC-2.jpg.
+		<b>EDITOR</b> - if 1 automatically loads the photo editor before importing the image, allows images to be easily cropped or resized, etc.
+		<b>POSTCMD</b> - runs a batch file, or executable program which can modify an image. 
+	</td>
+	<td VALIGN=TOP>
+		&lt;!-- SUBNAME --&gt; - is a fully qualified HTML Image tab<br>
+		&lt;!-- SUBNAME_URL --&gt; - fully qualified URL including the height and width of image specified<br>
+		&lt;!-- SUBNAME_RAWURL --&gt; - references the original (master) image&nbsp;
+	</td>
+</tr>
+<tr>
+	<td VALIGN=TOP><b>TEXTBOX</b></td>
+	<td VALIGN=TOP>
+		<b>COLS</b> - contains the number of columns to allow input from.<br>
+		<b>SPELL</b> - if "Y" will enable a spell checker.<br>
+		<b>FORMATHTML</b> - automatically substitutes a &lt;BR&gt; for each CR or CR/LF combination so users don't have to "think in HTML".
+		</td>
+	<td VALIGN=TOP>&lt;!-- SUBNAME --&gt; - contains whatever is stored in the textbox.&nbsp;</td>
+</tr><tr>
+	<td VALIGN=TOP><b>TEXTLIST</b></td>
+	<TD VALIGN=TOP><strong>READONLY</strong> - Must be set to 1 for this to work properly.<br>
+		<strong>LINEPRETEXT</strong> - text or html that appears before each line item.<br>
+		<strong>LINEPOSTTEXT</strong> - text or html that appears after each line item.
+		</TD>
+</tr>
+<tr>
+	<td VALIGN=TOP><b>TEXTAREA</b></td>
+	<td VALIGN=TOP>
+		<b>COLS</b> - contains the number of columns to allow input from.<br>
+		<b>ROWS</b> - number of rows to allocate for input.<br>
+		<b>SPELL</b> - if "Y" will enable a spell checker.<br>
+		<b>FORMATHTML</b> - automatically substitutes a &lt;BR&gt; for each CR or CR/LF combination so users don't have to "think in HTML".
+	</td>
+	<td VALIGN=TOP>
+		&lt;!-- SUBNAME --&gt; - contains whatever is stored in the textarea.
+	</td>
+</tr><tr>
+	<td><b>DISPLAYVALUE</b></td>
+	<td><b>LIST - </b> The list in the HTML wizard that you want it to reference.
+	</td>
+</tr>
+<tr>
+	<td VALIGN=TOP><b>COLOR</b></td>
+	<td VALIGN=TOP>None</td>
+	<td VALIGN=TOP>&lt;!-- SUBNAME --&gt; - contains an RGB Color (e.g. FFFFFF = white)</td>
+</tr>
+<tr>
+	<td VALIGN=TOP><b>CHECKBOX</b></td>
+	<td VALIGN=TOP>
+		ON="value if checked"<br>
+		OFF="value if not checked"<br>
+		VALUE="on/off value"<br>
+	</td>
+	<td VALIGN=TOP>
+		To default the checkbox to on you must have the VALUE= set to the exact same value as the ON="" otherwise if no selection.
+	</td>
+</tr><tr>
+	<td valign="top"><b>IF</b></td>
+	<td><strong>TRUE</strong> - Content displayed if value is set.<br>
+		<strong>FALSE</strong> - Content displayed if value is false or if undefined in a NB statement.<br>
+		<strong>UNDEF</strong> - Content displayed if value is not set (undefined).<br>
+		<strong>NAME</strong> - field checked to see if value is set.<br>
+		<strong>OPERATION</strong> - currently supports NB for Not Blank (uses TRUE and FALSE) and TFU for True, False, Undefined.
+	</td>
+</tr>
+</table>
+
+
+
+
+</article>
+<article>
+<h2>Reserved Substitution Names</h2>
+
+The following variables are always available, and should be considered reserved:<br>
+<table>
+	<tr>
+		<td><!-- USERNAME --></td>
+		<td>The username of the currently logged in user.</td>
+	</tr>
+	<tr>
+		<td><!-- SKU --></td>
+		<td>The SKU of the product which is currently in context.</td>
+	</tr>
+</table>
+
+</article>
+<article>
+<h2>Shipping Calculator</h2>
+
+Accounts with the EBAY bundle can include a link to the shipping calculator by simply linking to:
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;a target="_blank" href="http://&lt!-- USERNAME --&gt;.zoovy.com/shipquote.cgis?product=0%2A<!-- SKU -->"&gt;Get a Shipping Quote&lt;/a&gt;
+
+</code>
+</aside>
+
+
+
+You can also allow the user to enter a zip code, or other information. Refer to the Shipping Calculator Developer Guide for more information.
+
+</article>
+<article>
+<h2>More Information</h2>
+
+
+<p>For more information on channel and product attributes see the developers
+documentation, and the information on creating a custom channel definition.
+
+</article>
+<article>
+<h2>Default Zoovy Merchant Fields</h2>
+
+&lt;INPUT COLS="80" ROWS="5" SUB="ABOUT" TYPE="TEXTAREA" NAME="merchant:zoovy:about" PROMPT="Company Information"&gt;&lt;/INPUT&gt;<br>
+&lt;INPUT COLS="80" ROWS="5" SUB="CONTACT" TYPE="TEXTAREA" NAME="merchant:zoovy:contact" PROMPT="Contact Information"&gt;&lt;/INPUT&gt;<br>
+&lt;INPUT&nbsp;COLS="80"&nbsp;ROWS="5"&nbsp;SUB="SHIPPING"&nbsp;TYPE="TEXTAREA"&nbsp;NAME="merchant:zoovy:shipping_policy"&nbsp;PROMPT="Shipping&nbsp;and&nbsp;Tax"&gt;&lt;/INPUT&gt;<br>
+&lt;INPUT COLS="80" ROWS="5" SUB="PAYMENT" TYPE="TEXTAREA" NAME="merchant:zoovy:payment_policy" PROMPT="Payment Policy"&gt;&lt;/INPUT&gt;<br>
+&lt;INPUT COLS="80" ROWS="5" SUB="RETURNS" TYPE="TEXTAREA" NAME="merchant:zoovy:return_policy" PROMPT="Return Policy"&gt;&lt;/INPUT&gt;<br>
+&lt;INPUT COLS="80" ROWS="5" SUB="CHECKOUT" TYPE="TEXTAREA" NAME="merchant:zoovy:checkout" PROMPT="Checkout Instructions"&gt;&lt;/INPUT&gt;<br>
+</article>
+
+
+
+
+
+
+

@@ -1,0 +1,38 @@
+<meta type="filename" id="ticket/159810">
+
+<h1>Issue #159810: Checkout appearing insecure / crossed-out lock since installation of Google Analytics</h1>
+
+<article>
+<h2>Issue #159810: Checkout appearing insecure / crossed-out lock</h2>
+
+I want to have a Secure order form, where do I go from here?
+
+<br>
+
+I need some sort of logos or something showing them that the page is secure when they are ready to checkout, it seems to NOT do that now.
+
+<br>
+
+well I just reviewed it again, I do have logo's etc. but at the bottom it shows a CROSSED-OUT lock, then I highlight that and it says something like "warning unauthorized content"
+</article>
+
+<article>
+<h2>Resolution</h2>
+This is because you failed to properly follow the instructions when implementing Google Analytics.  
+
+<br>
+
+ANALYTICS DOCUMENTATION:
+<a class="linkdoc" href="#?doc=50595">Doc 50595</a>
+
+<aside class="hint">
+<h6></h6>
+<div>
+Referencing ANY non-secure javascript include tags will make your checkout insecure. We recommend having Zoovy Implementation assist with the integration of ANY 3rd party javascript.
+
+</div>
+</aside>
+
+
+</article>
+

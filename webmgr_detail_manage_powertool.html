@@ -1,0 +1,189 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="webmgr/detail/manage-powertool">
+<h1>Product Power Tool</h1>
+<article>
+<h2>Product Power Tool</h2>
+<section>
+<h3>Overview</h3>
+
+Examples are provided here as an introduction to see how this tool can be used. 
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+The Product Power Tool has the ability to make a lot of changes across a lot of products at one time.  It is not designed to "add" to existing content but rather replace what is existing.  
+ie: If you are trying to add additional keywords to zoovy:keywords, if you do not include what is already existing, any new data added to the "Set Value" will replace what is there.  Adding to existing content
+is better done through CSV.
+
+
+</div>
+</aside>
+
+
+</section>
+<section>
+<h3>There are 3 steps to the Product Power Tool</h3>
+<li>1.  Choose Products<br>
+<li>2.  Choose an Attribute and Action<br>
+<li>3.  Put the Hammer Down<br>
+</section>
+
+<aside class="caution">
+<h6></h6>
+<div>
+There is no preview section to review changes after you run the power tool so be sure to back up your data prior to making any changes.
+
+
+</div>
+</aside>
+
+
+
+
+<section>
+<h3>How can I enable/disable A LOT of products for syndication</h3>
+<li> Choose products<br>
+<li> Select the drop down menu for the attribute you wish to change and look under the Syndication for a specific marketplace<br>
+<li> If the marketplace is missing choose "custom attribute" and type in the box below ie: marketplace:ts (if supported by Zoovy)<br>
+<li> Under Now What Shall We Do?, select the Set Value radio button and enter in 1 to enable or -1 to disable<br>
+<li> Hit Add Action and run job<br>
+<br>
+<li>Examples of listed marketplaces:<br>
+Google Merchant Center = gbase:ts,
+ebay stores = ebaystores:ts, 
+ebay core = ebay:ts, 
+pricegrabber.com = pricegrabber:ts, 
+nextag.com = nextag:ts, 
+Amazon Product Ads = amzpa:ts, 
+bizrate/shopzilla = bizrate:ts, 
+yahoo shopping = yshop:ts, 
+shopping.com = dealtime:ts, 
+amazon @merchant = amazon:ts,
+<br>
+<br>
+
+
+<section>
+<h3>How can I search and replace a specific phrase in a product description?</h3>
+<li> Choose product(s)<br>
+<li> Select the drop down menu and choose the relevant description attribute zoovy:prod_desc or custom<br>
+<li> Select the search and replace radio button under "Now What Shall We Do"<br>
+<li> "Search For" - enter in the text you wish to remove (ie. Free Shipping)<br>
+<li> "Replace with" - enter in the text you want to replace with (leave blank if you do not wish to replace with anything)<br>
+<li> Hit Add Action and run the job<br>
+<br>
+<br>
+<section>
+<h3>How can I increase my prices by a certain $ or %?</h3>
+<li> Choose product(s)<br>
+<li> Select the drop down men and select the relevant price field (ie. zoovy:base_price)<br>
+<li> Select the Add to Value radio button<br>
+<li> In the Add to Value box, put in the dollar amount you want to increase/decrease (+2 = add $2.00 to all prices or -10 = subtract $10.00,<br>
+or +10% to increase prices by 10%, etc.)<br>
+<li> Hit add action and run batch job<br>
+<br>
+<br>
+<section>
+<h3>Can I change my prices but not lose what I have currently set for zoovy:base_price?......YES and it is recommended</h3>
+<li> Choose product(s)<br>
+<li> Select the drop down menu and choose zoovy:base_price<br>
+<li> Select Copy to Attribute radio button and put in the attribute you want to copy it to (ie: store:price)<br>
+<li> Hit add action
+<li> Then, select zoovy:base_price in the attribute drop down (yes, there are 2 actions to this)<br>
+<li> Select the Add to Value and change the price (ie: +10%)<br>
+<li> add action and run batch job<br>
+<li> To change the prices back, start a new batch job<br>
+<li> Select product(s) that were changed<br>
+<li> Select Custom attribute (ie: store:price)<br>
+<li> Select the Copy To Attribute and put in zoovy:base_price<br>
+<li> Add action<br>
+<li> Select custom attribute (ie: store:price)<br>
+<li> Select the Delete from Product Record to remove this attribute (if you want to)<br>
+<li> Add action and run batch job<br>
+<br>
+<br>
+<section>
+<h3>How Can I enable/disable options from my products?</h3>
+<li> Choose product(s)<br>
+<li> Select the Enable Finder Option radio button<br>
+<li> Next to Finder Option: put in the value of the option you wish to enable<br>
+<aside class="hint">
+<h6></h6>
+<div>
+HINT: use SSVV where SS is the SOG ID, and VV is the Option Value.
+
+</div>
+</aside>
+
+<li> Add Action, run batch job<br>
+<li> to remove, you would Select the Disable Finder Option radio button<br>
+<li> Next to Finder Option: put in the value of the option you wish to disable<br>
+<aside class="hint">
+<h6></h6>
+<div>
+When Removing you can use either SS or SSVV syntax. If no options are available on a product after a finder option is removed then the<br> 
+finder SOG is cleaned from the product as well.<br>
+
+</div>
+</aside>
+
+<br>
+<br>
+<section>
+<h3>Enabling options based on an attribute</h3>
+<li> Choose product(s)<br>
+<li> Select Enable Option radio button<br>
+<li> Put in the option value (XXYY)<br>
+<li> Under Optional, "When shall we do it", instead of the default selection of "perform action on every product", choose the option below<br>
+"When Attribute"...fill in the attribute (ie: zoovy:prod_name, etc.), choose the match type (contains, equals, greater then, less then, etc.)<br>
+<li> Add action and run job<br>
+<aside class="hint">
+<h6></h6>
+<div>
+This is especially useful when updating a product finder with the option groups necessary, these batch jobs will be saved until the "Clean up/Remove"<br>
+option is selected when the batch job is finished running.  Each job can be titled under the "Let's Do This Button" for future reference.
+
+</div>
+</aside>
+
+<br>
+<aside class="caution">
+<h6></h6>
+<div>
+The actions added to the batch job work in hiearchy format in that you can add an action based on a completed action that was finished above it.
+
+</div>
+</aside>
+
+<br>
+<br>
+<section>
+<h3>How Can I Remove HTML from my product descriptions?</h3>
+<li> Choose product(s)<br>
+<li> Select attribute (ie: zoovy:prod_desc)<br>
+<li> Select the Remove HTML radio button<br>
+<li> Add action and run batch job<br>
+<br>
+<br>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,292 @@
+<meta type="filename" id="dev/detail/wrappers-config">
+<h1>Theme Configuration</h1>
+
+<article>
+<h2>CSS</h2>
+The CSS attribute is a node for your CONFIG element.  This css will be output in your HEAD element when the theme renders.  You can have your own styles in the theme itself (or an external style sheet) as needed, but you should not add your own styles or css attributes to the zoovy styles.
+
+<aside class="html">
+<h6></h6>
+<code>
+<CSS><![CDATA[.zbody { background-color: #ffffff; }
+.zborder { border: 1px solid #EDF2FD; }
+.zbox { border: 1px solid #C0C0C0; }
+.zbox_body { background-color: #EDEEEF; color: #515151; font-family: verdana, arial, helvetica; font-size: 8pt; }
+.zbox_head { background-color: #DBDDDF; color: #959B9E; font-family: verdana, arial, helvetica; font-size: 10pt; }
+.zcolor { background-color: #3568CE; color: #ffffff; }
+.zcolor_contrast { background-color: #EE5E02; color: #FFFFFF; }
+.zcolor_dark { background-color: #003364; color: #ffffff; }
+.zcolor_light { background-color: #EDF2FD; color: #515151; }
+.zform_button { border: 1px solid #3366CE; background-color: #4C7FE7; color: #444444; font-size: 8pt; font-family: verdana, arial, helvetica; }
+.zform_select { border: 1px solid #8099B4; background-color: #FFFFFF; color: #000000; font-size: 8pt; font-family: verdana, arial, helvetica; }
+.zform_textarea { border: 1px solid #8099B4; background-color: #FFFFFF; color: #000000; font-size: 8pt; font-family: verdana, arial, helvetica; }
+.zform_textbox { border: 1px solid #8099B4; background-color: #FFFFFF; color: #000000; font-size: 8pt; font-family: verdana, arial, helvetica; }
+.zhint { color: #666666; font-family: verdana, arial, helvetica; font-size: 7pt; }
+.zlink { color: #4b3803; }
+.zsmall { color: #515151; font-family: verdana, arial, helvetica; font-size: 7pt; }
+.ztab0 { background-color: #EDF2FD; color: #515151; font-family: verdana, arial, helvetica; font-size: 8pt; }
+.ztab1 { background-color: #F65500; color: #ffffff; font-family: verdana, arial, helvetica; font-size: 8pt; font-weight: bold;}
+.ztabbody { background-color: #FDEFE5; color: #515151; font-family: verdana, arial, helvetica; font-size: 8pt; }
+.ztable_head { background-color: #3F72CF; color: #FFFFFF; font-family: verdana, arial, helvetica; font-size: 9pt; }
+.ztable_row {color: #666666; font-family: verdana, arial, helvetica; font-size: 8pt; }
+.ztable_row0 { background-color: #FFFFFF; color: #666666; font-family: verdana, arial, helvetica; font-size: 8pt;}
+.ztable_row1 { background-color: #EDF2FD; color: #666666; font-family: verdana, arial, helvetica; font-size: 8pt;}
+.ztable_row_small { color: #666666; font-family: verdana, arial, helvetica; font-size: 7pt; }
+.ztable_row_title { font-weight: bold; color: #666666; font-family: verdana, arial, helvetica; font-size: 9pt; }
+.ztitle { font-weight: bold; color: #7497E7; font-family: verdana, arial, helvetica; font-size: 11pt; }
+.ztitle2 { font-weight: bold; color: #666666; font-family: verdana, arial, helvetica; font-size: 9pt; }
+.ztxt { color: #515151; font-family: verdana, arial, helvetica; font-size: 9pt; }
+.zwarn { color: #FF0000; font-weight: bold; }]]></CSS>
+
+</code>
+</aside>
+
+
+<br>
+Where are these used?  There is no specific set of rules but below are a list of guidelines.  The styles, in most cases, are not used within the theme, but in the layouts themselves.  This is done so that if the theme is changed, the layouts will adopt the color properties of the new theme and have a pretty good chance of looking good.  Some styles have specific uses as well.
+
+<br>
+
+ztable_... - these are used in 'lists', such as product lists, category lists and in the shopping cart elements.  The row0 and row1 are the alternating colors that get used if the list spec supports that feature.  Typically, row0 would get used as the first row, then alternate from 1 to 0 for all the remaining rows.  ztable_row_small would get used when smaller text is needed and ztable_row_title would get used for titles.
+
+<br>
+zform... - these styles are used in the various forms output by Zoovy.  Going forward, these styles will be applied to all forms. Which class is assigned to which form element is pretty straightforward.  In some cases, additional classes or ID's are present so that specific buttons can have a separate style associated.<br>
+
+<br>
+ztab... - Used in cases where 'tabs' are present, such as in product layouts and, someday, perhaps one page checkout. tab0 is the 'off' class and tab1 is the 'on' class. ztabbody is the class that would be on the content of the tabbed data.
+
+<br>
+ztxt - this is the default class that will be applied to body copy. All TEXT elements are output with a font tag with ztxt class set (unless FONT="0")<br>
+ztitle &amp; ztitle2 - often used for styling on headings and sometimes for wiki.<br>
+zwarn - used for error handling.<br>
+
+
+
+</article>
+
+
+<article>
+<h2>Wrapper 'hinting' for layouts</h2>
+Currently, there is one supported hint to let a layout know something about the wrapper around it. This was introduced for One Page Checkout (1PC) but will likely grow beyond it.
+<br>
+
+set IHAVEJQUERYUICSS="1" on the config element of the wrapper.  This lets the checkout layouts know that jquery ui css is loaded and to not load the layout default (which is most likely cupertino).
+<br>
+
+</article>
+
+
+<article>
+<h2>Overload - forcing or defaulting page layouts and/or features</h2>
+
+<p>In your config element, you can specify overloads which will change the default behavior of certain actions of the Zoovy system.
+Product List Overrides:
+<ul>
+ - prodlist.add_url :  <br>
+ - prodlist.field :  <br>
+ - prodlist.link :  <br>
+ - prodlist.button :  <br>
+ - prodlist.add_button_options :  <br>
+ - prodlist.add_link_options :  <br>
+</ul>
+Developer (site configurator) Overrides:
+<ul>
+ - dev.no_subcategories :  set to 1 to disable subcategories inside layouts.<br>
+<!-- - dev.no_home :  set to 1 to disable home link in category elements <br> -->
+ - dev.no_continue :  set to 1 to disable continue button on cart AND cancel button on product page.<br>
+ - dev.softcart :  set to 1 to enable softcart<br>
+ - dev.softcart_referrers :  set to 1 to enable softcart referrer tracking<br>
+ - dev.killframes :  set to 1 to put target="_top" on category links (if category element is properly configured)<br>
+ - dev.ssl_only :  force entire store to SSL (not recommended) <br>
+ - dev.search_bounce :  do not bounce to search.cgi page when no results are returned from query on results.cgi<br>
+ - dev.customer_management :  set to private to require login<br>
+ - dev.login_form_suppress : set to 1 to not display the login form on the login page (allows you to customize the appearance/placement of the form in the layout).
+</ul>
+Misc:
+<ul>
+ - site.css :  set to 1 or 0 and it will disable/enable autogenerated font tags site wide. (outside of specs)<br>
+ - flow.product :  set to document id for force that document as a layout on product pages<br>
+ - flow.category :  set to document id for force that document as a layout on category pages<br>
+ - flow.homepage :  set to document id for force that document as a layout on homepage. you can pass flow.search, flow.returns or any other zoovy page as well. flow.checkout is NOT SUPPORTED.<br>
+ - defaultflow.c : default all category pages to a specific layout.<br>
+ - defaultflow.p : default all product pages to a specific layout.
+ </ul>
+<aside class="caution">
+<h6></h6>
+<div>
+404 page - this page does NOT do any cart updating, therefore you can NOT do any ajax or element updates that save to the CART: namespace. Post the form to the cart page.
+
+</div>
+</aside>
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+Consistency is key to a website.  For products, we recommend you force the same layout in your wrapper so that all of your product detail pages look the same. <br>
+For category pages, use the defaultflow overload, but never force them. Category pages need flexibility because they're used not just for pages that feature subcategories and/or product, but for any 'other' type of page that is needed.
+
+</div>
+</aside>
+
+
+</article>
+
+
+<article>
+<h2>Sitebuttons</h2>
+
+
+There are 9 sitebuttons that are used in your Zoovy store (listed below).  Your buttons can be either JPG, PNG, GIF or a combination thereof.  Buttons should be named as domaincom_ + the name of the button (where domaincom is the domain of the store they're going to be used on. ex: autopartscom_).  For instance, domaincom_add_to_cart.gif.  The text on the button itself can read differently (ex: forward could say 'next') but the buttons MUST be named as follows (case sensitive):
+
+<aside class="html">
+<h6></h6>
+<code>
+
+add_to_cart
+add_to_site (used for JEDI)
+back         
+cancel       
+checkout   
+continue_shopping
+empty_cart
+forward          
+update_cart
+
+
+</code>
+</aside>
+
+
+<p>Once you have the buttons created, upload them to your public files directory (go to setup, then 'public files directory' under the media heading).  Once uploaded, go in to your custom theme and remove any reference to existing sitebuttons from the config element. If your buttons are all the same size and format (jpg, png or gif) then you can use this code:
+
+</p>
+<aside class="html">
+<h6></h6>
+<code>
+<SITEBUTTONS><![CDATA[default=~domaincom|gif|99|22]]></SITEBUTTONS>
+
+</code>
+</aside>
+
+
+<p>If your button sizes or extensions vary, use this code:</p>
+<aside class="html">
+<h6></h6>
+<code>
+
+<SITEBUTTONS>
+<![CDATA[forward=~domaincom|gif|80|22&add_to_cart=~domaincom|gif|105|22&back=~domaincom|gif|80|22&default=~domaincom|gif|99|22&add_to_site=~domaincom|gif|122|32&checkout=~domaincom|gif|86|22&continue_shopping=~domaincom|gif|156|22&update_cart=~domaincom|gif|109|22&cancel=~domaincom|gif|67|22]]>
+</SITEBUTTONS>
+
+</code>
+</aside>
+
+
+<p>Replace domaincom with the prefix you used on all the images, all lower case. Modify each button= so that the last two integers are the width|height of your buttons.  If your buttons appear stretched or squished in your store, it's likely that you haven't specified the correct width and height for the button in question.</p>
+
+<p> The SITEBUTTONS attribute should appear between the open and close ELEMENT tags of the CONFIG element, like so:<br />
+<aside class="html">
+<h6></h6>
+<code>
+<ELEMENT TYPE="CONFIG">
+<SITEBUTTONS></SITEBUTTONS>
+</ELEMENT>
+
+</code>
+</aside>
+
+</p>
+
+
+
+</article>
+
+
+
+
+
+<article>
+<h2>Sitebutton Strategies</h2>
+
+<section>
+<h3>Button Text</h3>
+The buttons can say whatever you want, however it should be indicative of what the button does.  Changing the text will NOT change the action of the button.  The button 'empty cart' should probably always read 'empty cart' or 'empty'.  However, the 'continue shopping' button could read 'shop more'.  The forward button can, and probably should, read 'next' as that is more familiar.  It is also common, for some industries, for the 'add to cart' button to read 'add to shopping bag'.
+
+<br>
+It is important that you are consistent in your naming.  So if the add button reads 'add to shopping bag', then all other references to the cart page should be changed to 'shopping bag' so that you are consistent.  This will help your customers identify what the 'bag' is and it will appear more professional.
+
+</section>
+
+
+<section>
+<h3>Button Color</h3>
+In most cases, the sitebuttons appear in groups of two or four/five.  The groups are as follows:
+<br>
+Product detail page: add to cart and cancel<br>
+Checkout: forward and back<br>
+Cart: empty cart, update cart, continue shopping, checkout and add to store.<br>
+
+
+Each of these sets of buttons will have one button that, most likely, you want clicked more than the rest.  For instance, on the cart page you want 'checkout' to be clicked. So it stands to reason that the checkout button should stand out more than the other buttons.  The same is true for the add to cart and next buttons.
+
+</section>
+
+
+<section>
+<h3>Dimensions</h3>
+Depending on the layout you have selected for the various pages, the sitebuttons will appear in a horizontal row or on top of each other. Since this is the case, the best aesthetic for these will typically have all the buttons in a given group share the same dimensions.  A row of buttons looks funny if one button in the row is a different height.  Vertical buttons don't look as nice when they don't share the same width.
+
+</section>
+
+
+
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

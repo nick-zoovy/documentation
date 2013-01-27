@@ -1,0 +1,127 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="Elastic Search">
+<h1>Elastic Search</h1>
+
+
+<article>
+<h2>What is elastic search</h2>
+Elastic search is the latest search algorithm implemented across the Zoovy system.  It is currently used both on Zoovy websites and in the UI (product, order, customer search).  It has been implemented  to replace substring search.  Substring search would return results with some accuracy, but would regularly include results that may have been far too broad or unrelated to the origin search term. We found that with elastic search you can always count on getting relevant returns for the user.  The end result is a more reliable search providing a better, faster user experience.
+<br>
+Search set on the front end is giving your customers a similar search experience to Google with elastic, the customers can pull up full SKU's if they know them or describe something and it will pull up with relevance.  Substring is a search that throws wild-cards anywhere there is a blank space. A wild card is anything and everything. So if your customer puts in "white glove" substring would bring EVERYTHING with "white" and/or "glove" in it, muddying their results. 
+Example substring results would be:
+<br>
+<li> white dress
+<li> white hat
+<li> white tie
+<li> white shoes
+<li> white lace
+<li> white flower
+<li> red gloves
+<li> black gloves
+<li> orange gloves
+<li> glove necklace
+<li> boxing glove
+<li> white gloves
+<br>
+Using Elastic search, "White gloves" would return  gloves that are white and maybe some things that are bought with the gloves or related to them.
+</article>
+<article>
+<h2>Configuration</h2>
+Elastic search requires minimum configuration. The highest amount of and most intuitive returns will be on the elastic catalog, "COMMON".  The custom catalogs that are set should be left as they are, by removing them they could very well break other things like finders if they are tied to a catalog name. If you have excess unused catalogs it is recommended to remove them (by unused i mean that nothing is specifically pointed to that catalog). Elastic search is always present in every catalog, In most cases the best way to get returns is to delete your primary catalog. By doing this you will be using an elastic catalog without restriction. When you do build a catalog using specified fields, elastic search will be used within the boundaries of what is configured.  This would be ideal on sites with detail or keyword heavy descriptions.
+<br>
+<section>
+<h3>Too Many Returns</h3>
+In some cases a merchant may have certain fields they may return undesirable results as elastic search will index everything by relevance to the search terms entered.
+If you have an item that is a lamp Your description may say:
+"This Lamp has a polished steel finish, stands 12 inches tall, can use Eco friendly lighting. It is perfect for sitting in your lounge chair and reading the newspaper or your favorite book on a relaxing Sunday morning while you sip your coffee."
+A description like this could cause elastic search to think other search terms are relevant, which in most cases is great!, it creates a product relation to mugs if the store has "coffee mugs", and racks for newspapers and magazines, if your store has them. Now imagine you have a very large product database, if all your items had descriptions that set a scene or use many other terms that would work as key terms for your product database you would get too many returns that would over shadow the direct search of what people actually wanted.
+<br>
+To correct this issue you would then want to build a primary catalog. By naming a catalog "PRIMARY" and selecting the fields you would like indexed, such as keywords, prod name, detail description, etc. you can avoid this issue. 
+
+<aside class="hint">
+<h6></h6>
+<div>
+Most merchants will not need to do this.  The "Common" catalog will provide proficient results.
+
+</div>
+</aside>
+
+</section>
+<section>
+<h3>Tuning</h3>
+
+<b>Synonyms</b><br>
+
+Using =,<= , =>, you are able to specify how synonyms generate results.  Here are some examples using the "Tipman" brand paintball gun, against the A5 model Tipman gun.
+<br>
+To match multiple terms to one result set, enter you value as:
+a-5, a5, a 5 =>Tipman
+<br>
+In this example, a-5, a5, or a 5 will generate the same results as searching for "Tipman" but searching for "Tipman" will not always generate results for "a5".
+<br>
+Tipman => a-5, a5, a 5
+<br>
+This example would make "Tipman" always generate results for "a-5", "a5", and "a 5".  Searching for "a5" will not search all Tipman.
+(Any terms to the left of the => will pull returns from the right, but the Terms to the right of the => will not always pull up terms to the left (depending on how you have other terms configured))
+<br>
+If everything needs to be equal:
+<br>
+a-5, a5, a 5, Tipman a5 => a-5, a5, a 5, Tipman a5
+this means all values are equal all around and is best for only referring to 1 item specifically or 1 manufacturer just remember this makes any term searched equal to any term you include.
+<br>
+If you wanted to find the "A5" and make synonyms for "A5" only, then you would use the all is equal EX:<br>
+A5, A 5, AA5, TIPMAN A5, TIPPMAN A5 => A5, A 5, AA5, TIPMAN A5, TIPPMAN A5
+Notice that Tipman is mentioned but with an A5 next to it, that makes it so it's not pulling random other Tipman products when they only want the A5
+
+<aside class="hint">
+<h6>Stop words</h6>
+<div>
+There shouldn’t be a need for many stop words to be mapped as elastic search is programmed with an entire catalog of the most common American language stop words. Stop words should only be used in special cases or with words that are not in the standard dictionary.
+
+</div>
+</aside>
+
+
+<b>Product Character map</b><br>
+(Please do not use currently) <br>
+
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+DO NOT ENTER SPECIAL CHARACTERS IN ANY OF THE TUNING FIELDS!<br>
+Special characters can bring down your entire site and cause it to show an internal server error. If this does happen, all fields from tuning must be cleared and technical support called to do an "ELASTIC REBUILD"
+<br>
+Wild Cards (*) should also be avoided at all times. Elastic search should have a different way to get the desired results. By using a wild card in elastic search you are essentially dumping anything that the wild card has to reference. This will eliminate many relevant searches.
+
+</div>
+</aside>
+
+</section>
+
+<section>
+<h3>Why aren't my changes being applied to the search function?</h3>
+It may take up to 24 hours for changes in the tuning section to show, but any changes should already be indexed by your first save on any product edit. Any time you click save on a product page, this cues elastic search to re-index.<br>
+If you still don't see results after 24 Hours, a tech will need to review your case to do an elastic rebuild, at this point they must check all your fields in tuning to be valid, then do an "ELASTIC REBUILD."
+</section>
+</article>
+<br>
+
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+FLEX FIELDS will not be added to what is indexed unless done so by a Support Tech.
+<br>
+MUST BE ADDED BY TECH EXAMPLE:
+<br>
+      "index" : "prod_volume",
+      "type" : "textbox",
+      "title" : "Volume",
+      "id" : "user:prod_volume"
+
+
+</div>
+</aside>

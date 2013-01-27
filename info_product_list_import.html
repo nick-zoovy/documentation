@@ -1,0 +1,60 @@
+<meta type="filename" id="info/product_list_import">
+<h1>Product List Import</h1>
+
+<article>
+<h2>Concept Overview</h2>
+This page is regarding importing products to a specific product list that you have created within Zoovy.</article>
+
+<aside class="caution">
+<h6></h6>
+<div> If this is your first time importing products to the product list, please schedule a training session to prevent data corruption. 
+</div>
+</aside>
+
+<aside class="cbc">
+<h6>Product List Import Steps</h6>
+<div>
+<li> Step 1. Products should already appear in the database.
+<li> Step 2. The product list should already be created prior to importing products.
+<li> Step 3. Click on Setup > Data Import Utility
+<li> Step 4. Categories+Products: EXPORT
+<aside class="hint">
+<h6></h6>
+<div>
+Make a mental note that Column "A" is used for the safe name. Your products lists safe names will appear on the rows above *CART. The product list safe names should appear  with a $ in front of the safe name. "Example ($zoovytest)" 
+
+</div>
+</aside>
+
+<li> Step 5. Remove all rows below the last product list safe name you are modifying. Your file should not include *CART and any rows below *CART.
+<aside class="hint">
+<h6></h6>
+<div> Column "B" is used for the pretty name or the name that will appear in the UI. 
+</div>
+</aside>
+
+<aside class="hint">
+<h6></h6>
+<div> Column "D" is used for the product skus. The product SKUs will have to be entered without spaces and separated by comas. Example (Product SKU 115, 120, and 125 should be typed as 115,120,125) 
+</div>
+</aside>
+
+<li> Step 6. Enter the product SKUs for the product list
+<li> Step 7. Save the file as CSV to the desktop
+<li> Step 8. Click on Setup > Data Import Utility
+<li> Step 9. Select the radio button for Category - used to create navigation categories
+<li> Step 10. Do not make any other changes
+<li> Step 11. Scroll down to CSV File and click browse
+<li> Step 12. Browse to your desktop to upload the file
+<li> Step 13. Click load from CSV
+
+</div>
+</aside>
+
+<br>
+
+<aside class="caution">
+<h6></h6>
+<div> If you do a Destructive Overwrite (nukes all categories before running) category import you will loose your product data. To recover the backup up from the servers will be billable at $150 per hour. You have the ability to attach the file to the ticket and have support upload the products to the product list for you at no cost.
+</div>
+</aside>

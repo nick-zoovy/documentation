@@ -1,0 +1,245 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/guide/ebaycheckout">
+<h1>Guide to using eBay/Paypal Checkout</h1>
+<article>
+<h2>Overview</h2>
+
+This guide is designed to discuss the various ways of accepting payment from eBay Buyers. 
+There are two fundamentally competing approaches towards accepting payment. 
+The first is Zoovy Checkout, and the second is eBay/Paypal Checkout. 
+We hope to provide an impartial look at the two technologies and show how they can be integrated into your website. 
+While reading this document you should be aware that you can utilize both eBay Checkout and Zoovy Checkout simultaneously however you will need to plan carefully and recognize that it may lead to buyer confusion, and possibly errors if not configured with a meticulous attention to detail. 
+
+</article>
+<article>
+<h2>Paypal/eBay Checkout</h2>
+
+
+eBay/Paypal Checkout is enabled in an auction by having "Enable Checkout" along with the Paypal Automatic Logo Insertion 
+configured in your eBay.com account preferences, and checking the box "I prefer Paypal" in your eBay listing, and providing a Paypal email. 
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+The Automatic Logo insertion can also be enabled in your Paypal.com account (the setting is the same on both eBay.com and Paypal.com). 
+You can tell if this is enabled by looking for the Paypal banner at the bottom of your listing. 
+
+</div>
+</aside>
+
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+If you attempt to check "I prefer Paypal" in your eBay listing and you do not have Automatic Logo 
+Insertion enabled you will receive an error from eBay when trying to launch auctions.
+
+</div>
+</aside>
+
+<aside class="caution">
+<h6></h6>
+<div>PayPal is only available as a payment option for customers with the EBAY flag on their accounts (i.e., the Auction Bundle).
+</div>
+</aside>
+<br>
+
+When using eBay/Paypal Checkout after the auction is over the buyer simply clicks on the "Pay Now" button and they are taken directly to Paypal to pay. 
+If you specified shipping and tax details on your eBay listing then the buyer will be forced to use those values. 
+
+<section>
+<h3>eBay/Paypal Checkout Advantages</h3>
+
+Using eBay/Paypal checkout has several advantages including:
+<ul>
+<li>	This is very simple and familiar to most eBay buyers since it is follows how most eBay transactions are done. 
+<li>	The buyers "my eBay" area on eBay.com it displays that the item has been paid for.	
+<li>	The buyer does not have to wait or click anything after a Buy It Now or fixed price transaction is completed.
+<li>	If enabled properly places the $500 fraud insurance logo on the listing.
+<li>	Listings appear when the "Only include items which prefer Paypal" checkbox is enabled on the detailed search on eBay.com
+</ul>
+</article>
+<section>
+<h3>eBay/Paypal Checkout Disadvantages</h3>
+
+Using eBay/Paypal checkout has several disadvantages including:
+<ul>
+<li>	Shipping rates provided by eBay are limited (no rules, FedEx, or multi-item combinations)
+<li>	No UPS Address Validation (nobody likes $12 address correction fees)
+<li>	Allows people to specify destinations of PO Boxes. 
+<li>	No opportunity to cross sell additional items using your store.
+<li>	No advanced Tax (by zip code)
+<li>	If a buyers email address differs from their eBay.com registered email address then you may need to manually re-create the order. (discussed later)
+<li>	Buyer never receives an order # from Zoovy at time of purchase (which means they will likely use the eBay item # for most questions)
+<li>	Only works well with Paypal (no money orders, checks or credit cards). - requires buyers have or setup a Paypal account. 
+<li>	Not validated - customers can modify the shipping price (unless it is locked, in which case you can't support customer pickup). 
+</ul>
+
+</article>
+
+If a person goes directly to Paypal to pay there are two ways to create your order into Zoovy. 
+The first is to create the order by hand - this involves using either the website or order manager and going into the incomplete area, 
+locating the respective claim numbers and then copying and pasting the billing and shipping and billing into Zoovy. 
+The second is to use the Paypal IPN feature of Zoovy. The Paypal IPN feature can be configured by logging into your account at Zoovy.com 
+and going to setup / payment settings / Paypal. 
+The IPN system basically lets you configure your Paypal.com account to transmit a copy of all payments to Zoovy, 
+and then Zoovy will attempt to correlate payments based on eBay item # and email address, order totals and shipping to create orders. 
+Full coverage of the IPN feature is beyond the scope of this document, if you plan to use this then refer to the Paypal IPN guide. 
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+The Paypal IPN feature is exclusive to Zoovy, and can save literally hundreds of hours of employee time each month. 
+BUT the Paypal IPN system is not perfect - 
+you should plan on creating at least 10% of your orders by hand since not all orders can be correlated due to incomplete 
+information from Paypal (provided by the buyer).  If you want a perfect solution - then stop selling on eBay, because there isn't one.
+
+</div>
+</aside>
+
+
+
+Once the order has been created; either by the IPN system or by hand; then you will be able to treat the item as a regular order. 
+The customer will receive an order number, and all the confirmations and emails along the way.
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+When manually creating an order (or letting IPN create phantom orders) - if you do not associate the claim number with the order then Zoovy will not be able to leave feedback, and your customers will continue to get payment reminders.
+
+</div>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Zoovy Checkout</h2>
+
+Zoovy checkout uses the shopping cart and secure checkout feature built into your Zoovy e-commerce store to let buyers pay for their listings. 
+A product is selected, and a channel is created. The channel is dispatched to eBay, and launches and one or more winner is selected. 
+For each unique winner a incomplete item (claim #) is created. 
+The buyer can either click the Instant Checkout Link on the auction or wait for the End of Auction Email (which is also called the Incomplete Item Created email). 
+The buyer clicks on the link in the auction (or email) and ends up with the item in their cart in your store. 
+They can then either add additional items, or click the "Checkout" button to go through the normal checkout. 
+
+<section>
+<h3>Zoovy Checkout Advantages</h3>
+
+
+The Zoovy Checkout has several advantages:
+<ul>
+<li>	Supports merchant accounts, as well as e-checks, money orders, and customer pickup. 
+<li>	Features cross selling, and up selling along with coupons and promotions. 
+<li>	Supports multiple item checkout. 
+<li>	Familiarizes people with your e-commerce store (thereby reducing your dependence on eBay)
+<li>	Provides Address Validation from UPS (matches Zip and city, etc.) also can filter PO Boxes. 
+<li>	Support for selecting options (e.g. size and color) before purchase. - [note: this is nearly always a violation of eBay rules, but still technically possible]
+<li>	Compatible with more than just eBay (e.g. Yahoo)
+<li>	Additional items sold directly through your store have no eBay fees. 
+<li>	Support for collecting phone number as a required field. 
+</ul>
+
+</article>
+<section>
+<h3>Zoovy Checkout Disadvantages</h3>
+
+
+The Zoovy Checkout has several disadvantages:
+<ul>
+<li>	Confuses buyers who want to go directly to Paypal to pay. 
+<li>	End of Auction Emails rely on eBay API "Platform Notifications" which are not reliable (eBay limitation) thereby occasionally causing substantial delays in processing. 
+<li>	Instant Checkout Link may not be functional for up to 5 minutes after a listing closing (eBay limitation). 
+<li>	May not flag the item as paid in the sellers my eBay.com area (on some multiple item purchases, not all items.)
+</ul>
+
+You don't need to do anything to enable Zoovy checkout - it is already enabled by default.  
+It's also worth mentioning that you can't technically disable Zoovy checkout but you can reduce the chance of a customer using it by using the following steps. 
+
+<aside class="cbc">
+<h6>'To Disable Zoovy Checkout'</h6>
+<div>
+<li>	Remove the pay now link the Incomplete Item Created message by going to Setup / Email / Incomplete Item Created
+<li>	Place the "click here for instant checkout" link at the bottom of your listing (in the future you will be able to disable this). Alternatively you can also hide a 1x1 blank gif that links to http://ebayapi.zoovy.net/checkout.cgi in your auction HTML, this will disable the button being added to the listing.
+<li>	Disable the payment reminder by going into Setup / Site Automation
+<li>	If you have Zoovy Developer you can change the default flow for the claim page so that it uses a flow without an add to cart button.
+
+</div>
+</aside>
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+Disabling Zoovy Checkout is not a recommended configuration.
+If you choose to proceed please take special care to configure the Paypal IPN feature since that is how all orders will be created by the system.
+
+</div>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Compatibility Issues</h2>
+
+
+In some cases you may want to use both Zoovy checkout and Paypal checkout together. 
+While this is not a recommended configuration it is possible. 
+The reason it is not recommended is you must take special care to ensure that your eBay shipping matches your store shipping.  
+If eBay doesn't match your store shipping then the IPN feature will not be able to create incomplete items. 
+
+</article>
+
+
+<article>
+<h2>Known issues</h2>
+
+
+<section>
+<h3>Paypal Italy + Large Orders</h3>
+
+Paypal in general has timeout issues when you have too many items.
+But it seems Paypal Italy has more than their fair share. 
+Basically Paypal requires we pass them eBay information (if the items are pertaining to an eBay item). 
+Paypal goes and tries to lookup each eBay item.
+eBay's API is slow to turn things around. 
+The session times out.
+
+<br>
+
+If you save the HTML landing page generated before the redirect, and go in and view the source you can see the items which are being passed. If you remove items from the order (be sure to edit the order totals to reflect the changes) when you get down to around 10-16 it will start to work.
+
+<br>
+
+I have definitely seen this issue *specifically* with Paypal Italy before.  
+I have notified Paypal of this issue in the past and they are aware of it, but did not provide an ETA on a resolution.
+
+<aside class="hint">
+<h6></h6>
+<div>
+Converting over to Paypal EC and disabling Legacy Paypal *should* solve this issue since Paypal EC uses a totally different protocol. 
+
+</div>
+</aside>
+
+
+</section>
+
+
+</article>
+
+
+
+ 
+
+
+
+

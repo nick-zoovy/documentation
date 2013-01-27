@@ -1,0 +1,97 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="NETWORK CLIENTS">
+<h1>NETWORK CLIENT SETUP</h1>
+
+<article>
+<h2>Concept Overview</h2>
+
+
+
+
+
+
+
+<aside class="hint">
+<h6></h6>
+<div> If you are not unsure what you are doing you might want to consider scheduling with our GEEK SERVICES to do this for you.
+<aside class="caution">
+<h6></h6>
+<div> GEEK SERVICES is billable however still cheaper than if Zoovy support is called after an attempt to install ZID is made on your own and we need to fix it. (Does not apply to Enterprise) 
+
+</div>
+</aside>
+
+
+
+</div>
+</aside>
+
+
+
+<section>
+<h3>For each client</h3>
+On each machine you want to use Order Manager / Warehouse Manager:
+Download and install the following:
+<li>.Net 3.5 Framework sp1 (reboot the computer).
+<li>Windows Installer 4.5 (may require rebooting the computer).
+<li>MySQL Connector/Net 5.2.5 (should be around 3.3-3.9MB file)
+<li>ZID (Order Manager) 8.xx
+<br>
+<aside class="hint">
+<h6></h6>
+<div>
+If you have a network folder, a folder that is shared across all computers on your network, to save time on downloading you should save these files to the network folder. They can be install from the network folder to the computers that can reach the folder.
+
+</div>
+</aside>
+
+<br>
+
+</section>
+<section>
+<h3>Set up of Network Client</h3>
+
+<aside class="caution">
+<h6></h6>
+<div>
+You need to have a network or VPN set up in order for this to work. (i.e. your computers need to talk to each other)
+
+</div>
+</aside>
+
+After you have successfully install the software and components including ZID follow the next step to connect to your server:
+<li>Open ZID by double clicking on the icon or right clicking on the icon a selecting open
+<li>In the top left select Admin (A pull down menu will appear)
+<li>Select Database Config and click on it
+<li>A Window will open with a tab that says 'Standalone' and a tab that says 'Network'
+<li>Select the Network tab
+<li>Now enter your Username and the IP address of your server
+
+<aside class="hint">
+<h6></h6>
+<div>
+You need to get your IP address from your server in the cmd prompt with ipconfig
+
+</div>
+</aside>
+
+
+<li>Now click save and log into ZID.
+
+<br>
+
+<aside class="hint">
+<h6></h6>
+<div>
+If you are getting an error on a client but not on the server, you should check to make sure that all of the software is installed. You can check this in 'add/remove programs' in Control Panel. Also check if there have been any changes to the Managed Users section of your Zoovy account. A nuke config may be needed if there has. Contact Zoovy support if you need assistance. Check port 3306 on server.
+
+</div>
+</aside>
+
+
+</section>
+<br>
+
+
+</article>
+

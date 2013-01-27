@@ -1,0 +1,210 @@
+<meta type="filename" id="ordermgr/detail/tools-scalesetup">
+<h1>Order Manager Tools - Scale Setup</h1>
+<article>
+<h2>Overview</h2>
+
+
+You must be using a scale which is compatible with order manager.
+
+If you already own a scale that you would like us to be compatible with then please follow the instructions later
+
+in this document to send us the output from your specific scale. 
+
+</article>
+<article>
+<h2>Compatible Scales</h2>
+
+
+<li> Scales-R-Us SE 20i (Weigh-Tronix/NCI 7010 compatible) -- also compatible with Endicia DaZzle.
+
+<li> Mettler - Toledo Scale PS60 (This scale requires special programming please refer to the bottom of this doc for details)<br> *Note: this scale is only compliant with Order Manager v5.127 and higher
+
+<li> Fairbanks Model SCB - 2453-1
+
+<li> Endicia ES 2200 (Weigh-Tronix/NCI 7010 compatible)
+
+</article>
+<article>
+<h2>Usage</h2>
+
+
+To setup your scale it must be connected to a work serial port on your computer. 
+
+You must designate which serial port the scale is on, and the type of scale and then press the setup button, which will
+
+test to see if your scale is working properly. 
+
+When you press the weigh button it will cause the software to read the weight of whatever is currently on the scale.
+
+
+
+</article>
+<article>
+<h2>Troubleshooting</h2>
+
+
+<table>
+
+	<tr>
+
+		<td valign='top'>Invalid Port number. PLease a different communication port</td>
+
+		<td valign='top'>The com port you selected does not exist on your computer, or is not seen by your operating system.
+
+Consult the computer manufacturer to determine which is the correct com port.</td>
+
+	</tr>
+
+	<tr>
+
+		<td valign='top'>Please turn on the scale. If the scale is on, then please check the connection.</td>
+
+		<td valign='top'>The software did not see the scale, or the scale is not properly connected (e.g. loose or malfunctioning serial
+
+cable, or possibly you are using a null modem cable when none is needed.)</td>
+
+	</tr>
+
+	<tr>
+
+		<td valign='top'>Successful Communication</td>
+
+		<td valign='top'>The system was able to read data from an unknown scale, read the section on "Getting your scale support" below</td>
+
+	</tr>
+
+	<tr>
+
+		<td valign='top'>Unsuccessful Communication</td>
+
+		<td valign='top'>Order Manager was unable to read data from the unknown scale. Make sure you have the scale setup for 9600 baud, 8 bits, 1 stop bit, No Parity and all forms of flow control disabled.</td>
+
+	</tr>
+
+</table>
+
+
+
+</article>
+<article>
+<h2>Getting your scale supported</h2>
+
+
+Order manager has the ability to capture data coming from an unknown scale. This data can be sent to the Zoovy developers
+
+and may be included in a future release of our product. Zoovy makes a best effort to provide support for all make and models
+
+of serial driven scales - however we encourage our merchants to use scales which are already compatible. 
+
+<br>
+
+<br>
+
+To grab the output from a scale, select "New/Unknown Scale Model" from the list and press the setup button.
+
+If the scale is turned on, and sending data to the computer the order manage will display "Successful Communication". 
+
+Located in the order manager subdirectory you will find a scaledebug.txt, please create a support ticket and upload
+
+that file along with a make and model of the scale, and if possible a link where to purchase the scale. <br>
+
+<br>
+
+If the message "Unsuccessful communication" is displayed, then you should check the scale to make sure it is properly
+
+connected, and if it is configurable that it is operating at 9600 baud, No Parity, 8 bits, 1 stop bit. 
+
+If you are still unable to get the scale working, you may be able to send the scale to with Zoovy with shipping paid 
+
+by you, both directions and we will attempt to get it working on our end - no guarantee of compatibility is made, but
+
+we're pretty good at this stuff. ;-)
+
+</article>
+<article>
+<h2> Mettler - Toledo Scale PS60 Configuration Setup</h2>
+
+
+
+
+The Mettler - Toledo Scale PS60 Must be configured and programmed properly before connecting to your serial port (i.e. COM1, COM2....etc.) of your workstation. Please follow the Click-by-Click steps below for programming your Mettler - Toledo Scale PS60 to communicate with your Zoovy Order Manager.
+
+<br>
+
+<br>1. Confirm that the scale is plugged in and turned on
+
+<br>2. Confirm that the cables underneath the scale are plugged in properly
+
+<br>3. Hold the left button labeled "METTLER� down for 8 seconds this will prompt the "SETUP" menu
+
+<br>4. Once you see the "Setup" prompt click the "METTLER" button 3 times through the menu until you reach "BAUD"
+
+<br>5. Once you reach "BAUD" click the "TOLEDO" button through the menu until you find the correct baud setting "9600"
+
+<br>6. Now click "METTLER" button to save and it will prompt you to the next menu item "ASCII"
+
+<br>7. Once at "ASCII" click the "TOLEDO" button until you find the correct ascii setting which is "SEVEN"
+
+<br>8. Now click the "METTLER" button to save and it will prompt you to the next menu item "PAR"
+
+<br>9. Once at "PAR" click the "TOLEDO" button until you find the correct parity setting which is "EVEN"
+
+<br>10. Now click the "METTLER" button to save and it will prompt you to the next menu item "STOP"
+
+<br>11. Once at "STOP" click the "TOLEDO" button until you find the correct stop setting which is "2"
+
+<br>12. Now click the "METTLER" button to save and it will prompt you to the next menu item "PROTO"
+
+<br>13. Once at "PROTO" click the "TOLEDO" button until you find the correct proto setting which is "TOLEDO"
+
+<br>14. Now click the "METTLER" button to save proto setting.
+
+<br>15. Now you will need to click the "METTLER" button twice until you reach the menu item "END"
+
+<br>16. The menu item "END" is where we save the programming changes.
+
+<br>17. To save your changes when in "END" click  the "TOLEDO" button 3 times until you are prompted with "SAVE" 
+
+<br>18.  Click the �METTLER" button to save and at this point your scale will restart and calibrate it self again.
+
+<br>19. Once your scale has restarted you may connect the scale to your workstation via the serial port.
+<break>
+<br>
+<br>
+USING THE METLER TOLEDO PS 60 SCALE with ENDICIA DAZZLE: <br>
+<br>
+Once your scale is programmed as detailed above:<br>
+
+In Dazzle Designer goto Postage Options / Rate Tab / Scale Setup button.<br>
+On the scale setup page choose, Serial Connection and appropriate COM port.<br>
+Select scale type "Mettler Toledo PS Series" (NOT other M. Toledo PS UPS or
+FEDEX types)<br>
+Click "Always use these settings"<br>
+Click "OK" button to save your settings.<br>
+
+Your PS 60 scale should now work with Dazzle.<br>
+<aside class="hint">
+<h6></h6>
+<div>
+You don't actually need a weight in ZOM before printing postage in Dazzle.<br> 
+Just right click an order in ZOM and select Endicia Dazzle.<br>
+Click Print on the first window that comes up (even if the weight is not valid).<br>
+Then in the "Print List of Addresses" window, select Mail class and click Weigh.<br>
+The scale should import the weight. 
+
+</div>
+</aside>
+ 
+
+</article>
+
+
+
+
+
+
+
+
+
+
+

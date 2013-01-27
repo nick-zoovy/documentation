@@ -1,0 +1,100 @@
+<meta type="filename" id="dev/detail/webapi-skulist">
+<h1>Merchant Webapi: skulist.cgi</h1>
+<article>
+<h2>Parameters</h2>
+
+
+Purpose: 	to allow download's of the stores SKU list.<br>
+Parameters: on GET pass USERNAME, PASSWORD, METHOD=|LIST|DOWNLOAD
+<br>
+<br>
+</article>
+<article>
+<h2>METHOD=DOWNLIST</h2>
+
+Also pass TIMESTAMP= (if not passed, then TIMESTAMP is assumed to be zero). 
+Returns a list of all products which have changed since TIMESTAMP. Response Format:<br>
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;PRODLIST&gt;
+&lt;P ID="ABC"/&gt;
+&lt;P ID="DEF"/&gt;
+&lt;/PRODLIST&gt;
+
+</code>
+</aside>
+
+
+
+</article>
+<article>
+<h2>METHOD=PRODLIST</h2>
+
+Also pass LIST=ABC,DEF (which <br>
+<br>
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;ZOOVY&gt;
+&lt;product name="prod1"&gt;
+&nbsp;&lt;web&gt;[0|1]&lt;/web&gt;
+&nbsp;&lt;sku name="sku1"&lt;
+&nbsp;&lt;name&gt;the products name&lt;/name&gt;
+&nbsp;&lt;weight&gt;weight in ounces&lt;/weight&gt;
+&nbsp;&lt;price&gt;retail price&lt;/price&gt;
+&lt;/sku&gt;
+&nbsp;&lt;sku name="sku2"&lt;
+&nbsp;&lt;name&gt;the products name&lt;/name&gt;
+&nbsp;&lt;weight&gt;weight in ounces&lt;/weight&gt;
+&nbsp;&lt;price&gt;retail price&lt;/price&gt;
+&lt;/sku&gt;
+&lt;/product&gt;
+&lt;/ZOOVY&gt;
+
+</code>
+</aside>
+
+
+
+</article>
+<article>
+<h2>METHOD=  (blank)</h2>
+
+<i>This version is now supported in legacy mode. Please upgrade to LIST/DOWNLOAD methods</i><br>
+<br>
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;ZOOVY&gt;
+&lt;product name="prod1"&gt;
+&nbsp;&lt;web&gt;[0|1]&lt;/web&gt;
+&nbsp;&lt;sku name="sku1"&lt;
+&nbsp;&lt;name&gt;the products name&lt;/name&gt;
+&nbsp;&lt;weight&gt;weight in ounces&lt;/weight&gt;
+&nbsp;&lt;price&gt;retail price&lt;/price&gt;
+&lt;/sku&gt;
+&nbsp;&lt;sku name="sku2"&lt;
+&nbsp;&lt;name&gt;the products name&lt;/name&gt;
+&nbsp;&lt;weight&gt;weight in ounces&lt;/weight&gt;
+&nbsp;&lt;price&gt;retail price&lt;/price&gt;
+&lt;/sku&gt;
+&lt;/product&gt;
+&lt;/ZOOVY&gt;
+<Br>
+
+</code>
+</aside>
+
+
+<br>
+<a target="_top" href="http://webapi.zoovy.com/webapi/merchant/skulist.html">test skulist.cgi</a>
+
+
+</article>
+
+
+

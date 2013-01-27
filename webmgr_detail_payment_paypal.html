@@ -1,0 +1,564 @@
+<meta type="keywords"></meta>
+[TAG]paypal pay later]<meta type="filename" id="webmgr/detail/payment-paypal">
+<h1>Setup / Payment Methods / Paypal</h1>
+<article>
+<h2>Overview</h2>
+
+When you use Zoovy you're business is really payment agnostic.
+Zoovy can accept and track payments via PayPal.
+This document pertains to the Paypal feature and how it integrates within Zoovy Checkout.
+
+</article>
+<article>
+<h2>What is Paypal?</h2>
+
+<aside class="hint">
+<h6></h6>
+<div>
+Portions of this document discuss the legacy Paypal integration developed back in the year 2000. These days using Paypal Express checkout is a good idea since Paypal will transmit the shipping address (on file in their Paypal account) to Zoovy as part of the checkout process, so the buyer can't have one shipping address at Zoovy and another at Paypal, this will also proactively solve a variety of potential shipping issues.
+
+<a class="linkdoc" href="#?doc=50910">Doc 50910</a>
+
+
+</div>
+</aside>
+
+
+Zoovy supports Paypal which is the largest person to person payment system.
+Services like paypal offer an inexpensive and secure alternative to Merchant Accounts.
+Paypal has no long term commitments, and reasonable rates.
+If you don't have a Paypal account go to Paypal.com to setup one up.<br>
+<br>
+
+Paypal is a micro payment service that provides secure transactions for small dollar items.
+If your average sale is going to be less than $250 and your transaction rate is less than a
+thousand transactions per month then Paypal may provide an acceptable alternative to a merchant account. <br>
+<br>
+Main reasons to use Paypal: No monthly fees, reasonable business rates, friendly towards eBay users. <br>
+<br>
+Main reasons not to use Paypal: Paypal requires that customers have a Paypal account
+before they can transfer money, setting up a Paypal account can be a frustrating
+experience and may leave your customers with a bad feeling from the transaction. 
+Getting approval for large dollar amounts for new customers can take upwards of a 
+week which causes delays in ordering.
+Fraud and having to deal with Confirmed Addresses can be very confusing to buyers, 
+less competitive rates than a merchant account.<br>
+
+<aside class="caution">
+<h6></h6>
+<div>PayPal is only available as a payment option for customers with the EBAY flag on their accounts (i.e., the Auction Bundle).
+</div>
+</aside>
+<br>
+
+</article>
+<article>
+<h2>Paypal Payments via Zoovy Checkout</h2>
+
+
+Once a buyer has gone through Zoovy Checkout and has been given an order # 
+they are provided with a link to pay for the order via Paypal system.
+For orders which are created via Zoovy Checkout and which are paid by clicking on the 
+"Paypal Pay Now" button that is displayed at the end of Zoovy Checkout;
+Zoovy will automatically receive a notification from Payapl that payment 
+was in fact received (keep in mind that customers may go through Zoovy 
+checkout but then not proceed through Paypal checkout, thereby leaving 
+an unpaid order in your order manager).
+
+Payments normally clear in 24 hours, however certain events such as clearing 
+of checks can often take up to 3 or 4 days, large dollar items may cause 
+PayPal to flag the buyers account as fraudulent.
+You should always wait to ship until Zoovy receives a notification from Paypal 
+that the order has been paid and the funds are in your account.<br>
+<br>
+It's important to realize that if a person goes directly to PayPal to pay rather 
+than using the link provided by Zoovy then no payment notification will occur.
+In these circumstances you will need to go to Paypal.com and research the 
+payment and then manually flag the order as paid,
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+<b>RECOMMENDED:</b> If you only plan to use Zoovy checkout you can also prevent people 
+from directly transmitting you money without using the link
+provided in Zoovy checkout by configuring "block payments from send money tab" 
+in your account via Paypal.com.<br>
+
+</div>
+</aside>
+
+</article>
+
+
+<article>
+<h2>Paypal IPN Features</h2>
+<aside class="cbc">
+<h6>Steps to Configuring IPN in your Paypal account</h6>
+<div>
+<li> 1. Login to your Paypal account
+<li> 2. Click on the "Profile" link
+<li> 3. Under Selling Preferences you will see a link for "Instant Payment Notification Preferences". Click that link.
+<li> 4. Click "edit link" and place the URL "http://paypal.zoovy.com/webapi/paypal/ipn.pl/username" (without the quotes) into the space provided. Click the ON radio button. 
+<li> 5. Now go to Profile / Shipping Calculations
+<li> 6. Select any Shipping Methods under "Domestic Shipping Methods" and click "Edit."
+<li> 7. Verify that "Override shipping methods per transaction" is set to "Yes.
+<li> 8. Repeat Steps 6 and 7 for your International Shipping Methods.
+
+</div>
+</aside>
+
+
+<br>
+
+<section>
+<h3>Correlates Payment from similar email addresses</h3>
+
+The Paypal IPN feature is smart enough to correlate many sales even when the eBay registered email address does not match the Paypal email address. 
+This is important because it means you won't have to waste time figuring out which transactions to leave feedback on. Zoovy automatically flags the appropriate winning items as paid in full.
+
+</section>
+<section>
+<h3>Creates Customer Accounts</h3>
+
+The Paypal IPN feature automatically creates customer accounts so buyers can come back to your Zoovy hosted website (included with every account) and 
+check order status, and grab tracking numbers. The IPN feature even automatically opts the buyers into your mailing list so you can contact them later
+with special offers using the Order Manager bulk email tool.
+</section>
+<section>
+<h3>Handles Dutch/Fixed Price Listings</h3>
+
+Unlike many inferior tools which claim to do the same thing as the Zoovy IPN feature. Zoovy's intelligent IPN feature can deal with both dutch and fixed price listings - even if the email addresses don't exactly match! 
+
+</section>
+<section>
+<h3>Combines Items</h3>
+
+The Zoovy IPN feature saves time by automatically determining if a buyer is paying for more than one item. It can automatically correlate those items, and save valuable staff time by putting them into one order together.
+
+</section>
+<section>
+<h3>Audits Shipping</h3>
+
+The Paypal IPN feature automatically verifies the shipping paid via Paypal is the correct 
+amount. Anytime the buyer has paid the wrong amount it flags the sale as "REVIEW".
+
+</article>
+</article>
+
+
+<article>
+<h2>Understanding Acceptance Policy</h2>
+This setting configures the which of your customers will be given the option to pay using  PayPal.  There are five options available to you:
+<li>Do not allow customers to choose this payment type - this will effectively "disable" paypal as customers will not be given the paypal option in checkout.
+<li>Allow for United States Destinations Only - fairly straightforward, this will only display the paypal option to US based customers.
+<li>Allow for United States and Canada Destinations Only - as above, but includes Canadian customers.
+<li>Allow for United States + Low Risk International Destinations - allowed for US, Canadian, Western European and other "low risk" countries.
+<li>Allow for United States + Low & High Risk International Destinations - will display paypal option to all customers, regardless of destination.
+</article>
+
+
+
+<article>
+<h2>Understanding Confirmed Addresses</h2>
+
+According to PayPal's rules - a merchant MUST ship to a confirmed address to be covered against fraud.<br>
+<br>
+It is RECOMMENDED you configure your Paypal account (via Paypal.com) to not accept money from UNCONFIRMED
+addresses.<br>
+<br>
+BUT realize when your customers use Zoovy checkout and pay with Paypal, 
+Zoovy will automatically import confirmed addresses as the "Ship To Address".<br>
+<br> 
+This means the address that was provided by the customer during Zoovy Checkout, and was used to 
+quote shipping/tax/handling and insurance IS NOT necessarily the same address the customer confirmed with PayPal.
+<br>
+<br>
+
+Importing the Confirmed Shipping address can cause tax calculations to be off (especially zipcode based ones). 
+It means PO Boxes can slip through, even if you don't ship to them. 
+It means you can get charged for Home Delivery even though a commercial address was provided.
+Finally it also means that Address Validation is worthless since the Shipping Address on file with Paypal
+is *NOT* guaranteed to be a valid address. It's important to realize that a CONFIRMED address is NOT guaranteed
+to be a SHIPPABLE address -- which can be very frustrating if you process a high volume of packages.<br>
+<br>
+
+<aside class="caution">
+<h6></h6>
+<div>
+At this time Paypal does NOT have a work around, you either ship to a confirmed address and are covered against fraud, or you ignore confirmed addresses (see configuration below) and you are not protected against fraud. If you don't like it, don't accept Paypal.  
+NOTE: Paypal Express checkout solves this problem elegantly by only allowing buyers to select a confirmed address at checkout.
+
+<a class="linkdoc" href="#?doc=50910">Doc 50910</a>
+
+
+</div>
+</aside>
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+If an order is marked as a Payment: 401 "Review" status - that is because the shipping address supplied to Zoovy doesn't match the confirmed address in the Paypal account.
+
+<br>
+
+The "REVIEW" status is the same as "PAID" it just means you should review the transaction for fraud before shipping it.  (Most Paypal sellers will ONLY ship to the confirmed address)
+
+</div>
+</aside>
+
+</article>
+
+
+<article>
+<h2>The Paypal IPN Feature - overview</h2>
+<aside class="caution">
+<h6></h6>
+<div>
+
+The Paypal IPN feature is NOT compatible with virtual products (e.g. alldropship)
+Orders containing virtual products will not be properly handled.
+
+</div>
+</aside>
+
+
+
+The basic idea of the Paypal IPN feature is that you let customers send you money for stuff via Paypal.com
+and then Zoovy will attempts to "Guess" what the money was for. <br>
+<br>
+Guessing includes figuring out which items, as well as breaking out the shipping and tax into their 
+own column (and auditing it). This is normally a job you would have to pay an employee to do, so it 
+goes without saying that this can be a huge time saver and literally eliminate one or more fulltime 
+positions in some companies. But the IPN feature is ultimately still a computer program, one which 
+errs on the side of safety (since generating an order with the wrong contents would cause immeasurably 
+more harm than good). If an order cannot be correlated the system will do nothing except send you an 
+email telling you to "figure it out".<br>
+<br>
+It's important to realize that IPN is effectively a computer program which is guessing 
+(computers are ideal for summarizing large volumes of data, they are notoriously bad at 
+deducing conclusions from that data). But we think our's is pretty darn amazing here's an example:<Br>
+<br>
+Under perfect circumstances: single ebay item, flat shipping, out of state, paid via ebay.com, repeat buyer,
+and the buyer is using the same email address on both eBay.com 
+and Paypal.com the system will have a 100% correlation rate.<br>
+<br>
+Under the worst circumstances: dutch listings (more than one winner), 
+each winner with two or more items, first time buyer, variable shipping, in state tax, 
+and different paypal and ebay email addresses the system will probably have a 25% (1 in 4) correlation rate. <br>
+<br>
+
+
+</article>
+<article>
+<h2>Reporting</h2>
+
+In the Utilities area you can look up a list of recently received paypal payments to check and see which
+payments have been received by Zoovy but have not yet been processed. 
+
+</article>
+<article>
+<h2>Tuning</h2>
+
+There are a number of behaviors you can tune to make the Paypal IPN processor more closely match your business
+logic. 
+
+<section>
+<h3>Correlate exact and reasonable matches</h3>
+
+<a name="correlate"></a>
+Enabling this will cause the system to match by email / item number.
+Recommendation: Enable this to cause the system to process IPN requests.
+If you disable this, all other settings will be ignored.
+
+<a name="notify"></a>
+</article>
+<section>
+<h3>Notify me of unknown payments</h3>
+
+This will send you an email if we receive notification of a payment which could not be processed.
+These emails can be used to help research a transaction so you can manually create an order.<br>
+<Br>
+
+Recommendation: Enable this, notifications will be sent to your paypal account.
+If you don't have phantom order creation enabled, and you are using another service with the same paypal account then you're probably going to receive a lot of emails.
+
+<a name="guess"></a>
+</article>
+<section>
+<h3>Attempt to correlate unknown payments.</h3>
+
+Enabling this will cause the system to attempt to match funds which are sent to you without an associated listing id.
+The system will attempt to look up the person by email and see which item they've won.
+(Keep in mind if the buyer has won more than one item, with similar prices it's going to have a hard time figuring out which item they meant to pay for).
+<br>
+<br>
+Recommendation: If most buyers only win one item at a time then enable this, otherwise leave it disabled.
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+You can configure your Paypal account so people can ONLY send you money by using a Zoovy or eBay provided link.
+To do this login to Paypal.com, go to My Account / Profile / Payment Receiving Preferences.
+Check the box which says "Initiate payments from the Pay Anyone subtab of the Send Money tab" then in the alternate URL put
+"http://ebayapi.zoovy.net/checkout.cgi"
+
+
+</div>
+</aside>
+
+
+
+
+<a name="chinese"></a>
+</article>
+<section>
+<h3>Assume everything is a Chinese Listing</h3>
+
+Chinese Listings will have only one winner per listing id.
+Dutch Listings (listings which sell more than one item per listing) will have multiple winners per eBay Id.
+If you only do chinese listings then enable this and the system will assume that there will only ever be one Paypal
+payment per eBay listing #. However if you enable this and you do a dutch listing, then the system is liable to match
+payments with the wrong person (this feature basically turns off email match checking).
+
+<a name="phantom"></a>
+</article>
+<section>
+<h3>Create phantom orders for unknown items</h3>
+
+When Zoovy can't match an eBay item to an incomplete item, but you still received money the system will create an order using the item number as the SKU. This can screw up inventory, since the item doesn't technically exist so you'll need to correlate it by hand. Turn this off if you are using the same paypal account with more than one store, or auction service or Zoovy will process transactions from your other service. <br>
+<br>
+Recommendation: For advanced users only.<br>
+<br>
+
+This is terrific feature if you want to use a tool such as Turbo Lister to launch your auctions, and then use Zoovy to close them.
+Zoovy will automatically create orders for each Paypal payment you receive, then the orders can be managed via order manager.
+Do not enable this if you are concurrently using another auction management solution or the Paypal orders will appear as paid in both Zoovy and the other service (which can lead to accidental double-shipping if you're not careful!)<br><br>
+
+If you wanted to use a service outside of Zoovy to launch auctions and wanted Zoovy to create orders for those auctions based on Paypal payments received, you could disable your Ebay Account on Zoovy from the Ebay Account Manager and enable 
+"phantom orders" from the Paypal payment configuration.
+
+<a name="dropship"></a>
+</article>
+<section>
+<h3>DO NOT Automatically change orders shipping location to the confirmed address</h3>
+
+Avoiding fraud is a part of life. Paypal says you must ship orders to a confirmed address in order to 
+be protected from fraud. During Zoovy checkout a customer may specify an address that is NOT the same
+as their confirmed address, this setting will update that address with whatever was given to Paypal.<br>
+<br>
+<aside class="caution">
+<h6></h6>
+<div>
+
+If you are a wholesaler who drop ships orders to your customers then you should enable this feature.
+Otherwise the package will be shipped to the person who owns the paypal account. 
+
+</div>
+</aside>
+
+
+
+<a name="shipping"></a>
+</article>
+<section>
+<h3>Audit shipping</h3>
+
+Paypal allows a user to re-enter the shipping amount. This can lead to problems, since even though you quoted $10 for shipping, the buyer
+can decide that "it actually only costs $6" and change the price.<br>
+<br>
+This will attempt to match shipping from your store to the order, and then warn you if the buyer underpaid.
+As the accuracy improves, this will also notify the buyer that they underpaid. <br>
+<br>
+Recommendation: If you do not enable this, you should manually verify each shipping amount.
+Do NOT enable this if you have different shipping on your eBay and store items since it will likely confuse the IPN system.
+<br>
+
+<a name="promotions"></a>
+</article>
+<section>
+<h3>Process Promotions</h3>
+
+This will run the promotion rules and add them to the order. This is useful if for example if you assess a handling fee as a promotion rule.
+Recommendation: Leave this disabled, unless you have a reason to use it.<br>
+
+</article>
+</article>
+<section>
+<h3>Return a billing address</h3>
+
+If you are noticing that Paypal orders are not returning billing address information and phone number here is what you can do on the Paypal side to enable this.<br>
+Edit profile > Selling Preferences > Website Payment Preferences > Contact
+Telephone Number > (then switch to required)
+<br>
+
+</article>
+<article>
+<h2>Paypal Pay Later</h2>
+
+<b>Paypal Pay Later is still experimental</b> - meaning that Paypal is still revising
+it's guidelines, and as such as we don't consider it a "generally available
+feature". 
+<br>
+<br>
+To answer questions:
+<li>1. Yes we support it, the checkbox in the payment setup area changes the stock
+paypal graphics with the "no payments for 90 days" one. It also intelligently
+subs out the buttons based on the totals in the cart when they match the
+qualifying amounts. 
+<br>
+<li>2. There are no stock layouts that support pay later currently. It is unlikely
+we would ever incorporate this into stock layouts as the Paypal requirements
+frequently change their requirements, in some cases it seems the branding
+requirements change on a client by client basis.
+<br>
+<li>3. I would be happy to convert this ticket into a project, and have a member of
+our design team reach out to your paypal person and work through your
+integration issues.  Since it would likely exceed two billable hours I need to
+get your approval.
+<br>
+<br>
+We can't say specifically how long it will take - the initial integration we've
+done took around 30 hours, since then other integrations have taken between 2
+and 8 hours depending on the level of existing customization in the site.
+</article>
+<article>
+<h2>Additional Hints</h2>
+<section>
+<h3>PayPal Order Notes</h3>
+
+First - our recommendation regarding PayPal order notes is that you can/should disable notes on the paypal side so the customer can't enter them in both locations.  Suffice to say that a lot of people who use suppliers don't want ANY order notes.<br>
+<br>
+However, a lot of merchants allow for PayPal order notes and will experience the issue of lost order notes so we have made an update which will start appending PayPal order notes to the order with PAYPAL: note for PayPal EC payments.<br>
+<br>
+We have also made an update which also updates Review status based on Protection
+Eligibility/Unconfirmed/Confirmed.
+</article>
+<section>
+<h3>Confirmed/Verified Addresses</h3>
+
+Paypal only insures sellers for pages shipped to a confirmed shipping address.
+You can either enable the "Allow customers to checkout directly through Paypal" feature AND
+we recommend you add a message to the Zoovy Checkout billing/shipping address pages.
+The message should read: "PAYPAL CUSTOMERS - please provide your verified address".
+This will dramatically cut down the amount of time you spend contacting customers requesting address information.
+You can customize the checkout messages by going to Setup / Checkout Properties / Checkout Messages
+
+</article>
+<section>
+<h3>Customer Accounts</h3>
+
+The system will create customer accounts when the Customer Account behavior is set to "Passive" in Setup / Checkout Properties.
+In all other circumstances no customer accounts will be used, or associated.
+However if you create an account for a customer, you can go into the online invoice editor and click "edit customer" this will
+attempt to reassociate the invoice with the customer record. If you do not manually associate the invoice, then the order will not
+appear in the customers order area online.
+
+<a name="cart_checkout"></a>
+</article>
+<section>
+<h3>Bypassing Zoovy Checkout via Paypal - Cart Quote Shipping</h3>
+
+NOTE: This setting is no longer recommended. It is recommended you have your customers go through
+Zoovy checkout.<br>
+<br>
+
+This setting allows customers to bypass Zoovy checkout and pay via Paypal directly from the cart page. 
+To use this you must have configured the Zoovy cart to quote shipping and Paypal IPN, 
+there may be one additional step you need to take in order for Paypal to procces any 
+shipping charges that were added to the Zoovy cart.<br>
+<br>
+Go to your Paypal account, in your profile settings
+in the Shipping Calculations check the box at the bottom of the page that says:<br><br>
+<br>
+Click here to allow transaction-based shipping values to override the profile
+shipping settings listed above (if profile settings are enabled). <br><br>
+<br>
+This should allow Paypal to recognize the shipping value added to the cart from Zoovy.
+
+</article>
+</article>
+<article>
+<h2>Payment Reminders</h2>
+
+If you accept Paypal through Zoovy Checkout (not via the Paypal IPN, or Paypal Button on Cart Page) 
+then you may have a problem with people going through Zoovy checkout, and then not proceeding to got 
+Paypal and actually send the funds.
+
+If you have a standard payment reminder message you send to folks who have selected paypal,
+but have not paid, you can send the people directly to
+<aside class="html">
+<h6></h6>
+<code>
+
+http://YOURNAME.zoovy.com/paypal.cgis?orderid=%order_id%&email=%bill_email%
+
+</code>
+</aside>
+
+
+The message above works in both online emails, as well as emails in order manager.
+The %order_id% and %bill_email% fields will be automatically populated with the correct values for each customer in the email.
+Be sure to change the "YOURNAME" in the url to your zoovy username.
+
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

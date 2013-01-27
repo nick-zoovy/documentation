@@ -1,0 +1,471 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="webmgr/detail/setup-yahoofeed">
+<h1>Yahoo Shopping Syndication</h1>
+
+
+
+<article>
+<h2></h2>
+
+<aside class="caution">
+<h6></h6>
+<div>
+IMPORTANT<br>
+As of March 11, 2010, Yahoo Shopping merged with Pricegrabber.  Merchants are now required to set up a Pricegrabber account in order to list their products on Yahoo Shopping.  For details please visit this <a href"http://help.yahoo.com/l/us/yahoo/ysm/ps/partnership/partnership01.html">link</a><br>
+
+</div>
+</aside>
+
+
+
+
+
+NOTE: In order to get this started you will be required to make a $50 deposit into your Yahoo account for a marketing budget.<br>
+<br>
+For more information on the rules of the Yahoo Shopping marketplace please visit:
+http://help.yahoo.com/l/us/yahoo/ysm/ps/index.html. 
+<br>
+
+<aside class="cbc">
+<h6>'Setting up an Account'</h6>
+<div>
+<li> Go to http://searchmarketing.yahoo.com/shopsb/index.php
+<li> If you don't already have a Yahoo account you will need to create one. 
+(Once you've created one successfully then return to http://searchmarketing.yahoo.com/shopsb/index.php/ to sign in)
+<li> Click the "Sign Up Today" button and select "Using existing Yahoo ID", which should deliver you to "Yahoo! Ad Central - Product Submit"
+<li> Store Name: Your business name 
+<li> Store Category: The category of products you will be selling.
+<li> Store Description: a brief summary of your store. Hint: using keywords in your description will cause you to appear higher in some types of searches.
+<li> Homepage URL: YOURDOMAIN (ex. http://YOURNAME.zoovy.com)
+<li> Privacy Policy URL: YOURDOMAIN/privacy.cgis (ex. http://YOURNAME.zoovy.com/privacy.cgis)
+<li> Customer Service URL: YOURDOMAIN/contact_us.cgis (ex. http://YOURNAME.zoovy.com/contact_us.cgis)
+<li> Customer Service Email: Your email address
+<li> Customer Service Phone: a phone this is NOT required - but highly recommended.
+<li> Order Methods: Online
+<li> Payment Methods: be sure to check visa, and mastercard (they may reject your feed otherwise)
+<li> Select the appropriate Shipping methods (at a minimum select Ground), and if you have a print catalog.
+<li> For order tracking select YES, and enter YOURDOMAIN/login.cgis (ex. http://YOURNAME.zoovy.com/login.cgis)
+<li> .. Follow the remainder of the steps, including making your initial deposit and agreeing to the terms of service.
+
+</div>
+</aside>
+
+
+<br>
+Once you have completed the registration process you will be asked to setup your tax and shipping, along with uploading your product feed.
+Follow the steps below to configure your product feed.
+<aside class="cbc">
+<h6>'Setting up a Feed'</h6>
+<div>
+<li> From the Upload products page - select "Self-categorization of products" (you can also select auto, but self will get you online faster)
+<li> Skip step 2 "Complete Product Feed" and proceed straight to Step 3.
+<li> For Step 3: Upload Product Feed - write down the ftp server, ftp username, and ftp directory.
+<li> Login to Zoovy.com
+<li> Go to Setup / Syndication / Yahoo Shopping Feeds
+<li> Edit the desired Profile
+<li> Put in the FTP Server, FTP Username, Yahoo Password, and FTP Directory (be sure to include the leading / in the directory).
+<li> You will also need to determine which categories from your website will be submitted to Yahoo, and how those categories will map to Yahoo.
+<li> Now, within the next 24 hours Zoovy will upload the batch to Yahoo
+<li> You will receive an email once the upload is completed, you will need to login to your Yahoo account and go through the upload product steps again.
+<li> But this time at Step 3 when you press continue it will be able to detect the uploaded file and let you continue.
+
+</div>
+</aside>
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+A copy of the file uploaded to Yahoo is saved in your Custom Files directory named "yahooshop.txt"
+
+</div>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Special Considerations</h2>
+
+For Books: You should always set zoovy:prod_isbn<br>
+For DVD and Video you should always set zoovy:prod_upc<br>
+<br>
+
+The DVD and Video category requires that the zoovy:prod_format be set to one of the following:
+VHS, Beta, 8mm, Laser Disc, DVD, VCD <br>
+<br>
+
+The Music cateogry requires that the zoovy:prod_format be set to one of the following:
+CD, Cassette, MiniDisc, LP, EP, 45 <br>
+<br>
+
+Unless otherwise specified all products are transmitted as "NEW" - to specify otherwise you must either set 
+zoovy:prod_condition to "New" or "Used", or yshop:prod_condition to any of the following: 
+new, like new, very good, good, acceptable.<br>
+<br>
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+
+If some of your images are blank in your Yahoo listing, it is most commonly an issue at Yahoo.
+Yahoo caches the images on their servers and when they have a problem downloading an image they
+put a blank one in it's place.  If this happens contact Yahoo technical support and ask them 
+to flush the image cache.
+
+
+</div>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Advanced Users</h2>
+
+Zoovy supports every one of the optional Yahoo shopping fields. If you are an advanced user who wants to specify additional
+Yahoo fields using a CSV below is a mapping of Zoovy fields to Yahoo Shopping fields.
+
+The following custom Yahoo fields are supported:<br>
+<table border='1'>
+	<tr>
+		<td valign="top"><b>Yahoo Field</b></td>
+		<td valign="top"><b>Zoovy Field</b></td>
+		<td valign="top"><b>Description</b></td>
+	</tr>
+	<tr>
+		<td valign="top">code</td>
+		<td valign="top">Product Id</td>
+		<td valign="top"> A merchant-specific identifier or SKU. A unique code must be used for each entry. A given code should correspond to the same item for every feed you upload. Do not ever reuse codes for different items. </td>
+	</tr>
+	<tr>
+ 		<td valign="top">product-url</td>
+		<td valign="top">auto generated</td>
+		<td valign="top"> The URL that links to the specific product at the merchant's site. 
+			NOTE: Zoovy will automatically add a "meta=yahoo_shopping" to the site so the orders created from yahoo shopping can be tracked.
+		</td?
+	/tr>
+	<tr>
+		<td valign="top">name</td>
+		<td valign="top">zoovy:prod_name</td>
+		<td valign="top">
+		 The product name, with no control characters or embedded HTML. Though there are no length requirements, we truncate on the search results page after the first 45 characters or so. 
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">price</td>
+		<td valign="top">zoovy:base_price</td>
+		<td valign="top"> Price, in US dollars, with a decimal point and no $ sign. </td>
+	</tr>
+	<tr>
+		<td valign="top">medium</td>
+		<td valign="top">zoovy:prod_format</td>
+		<td valign="top">
+			Required for Music and Video products only. 
+			* Please leave this field blank for all other product types. 
+			For Music, must be one of (case sensitive): 
+			CD, Cassette, MiniDisc, LP, EP, 45 
+
+			For Video, must be one of (case sensitive): 
+			VHS, Beta, 8mm, Laser Disc, DVD, VCD  
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">shopping-category </td>
+		<td valign="top">yshop:category</td>
+		<td valign="top">NOTE: This is automatically pulled from the category. However if you specify a value in the product, then that will override the value in the category.<br>
+				The Yahoo! Shopping Category into which the product falls. 
+				Please choose the most specific category possible for each product 
+				If your product does not fall into one of of the lower-level categories, simply use the broad category (such as Electronics or Home, Garden and Garage) 
+				Yahoo! may change these categories from time to time. Please ensure you keep your product feed updated. 
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">description</td>
+		<td valign="top">zoovy:prod_desc</td>
+		<td valign="top">The product description, with no control characters or embedded HTML. Though there are no length requirements, we truncate on the search results page after the first 350 characters or so. </td>
+	</tr>
+	<tr>
+		<td valign="top">image-url </td>
+		<td valign="top">zoovy:prod_image1</td>
+		<td valign="top">The URL to where the image is sitting on the Zoovy servers. </td>
+	</tr>
+	<tr>
+		<td valign="top">merchant-category</td>
+		<td valign="top"></td>
+		<td valign="top">
+		Zoovy will automatically select one of the navigation categories from your website to populate this field.
+		The category you use on your own site for each product. These may be different from how Yahoo would categorize your product. 
+		Please include hierarchy for each entry and separate the different levels of your hierarchy with " &gt; ". 
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">shipping-price </td>
+		<td valign="top">zoovy:ship_cost1</td>
+	 	<td valign="top">The cost of shipping the item anywhere in United States, in US dollars, with a decimal point and no $ sign. </td>
+	</tr>
+	<tr>
+		<td valign="top">shipping-weight </td>
+		<td valign="top">zoovy:base_weight</td>
+		<td valign="top">The weight of the item in pounds, up to one decimal place. <br>
+		Required if you wish to compute shipping costs based on weight or standard UPS ground rates. </td>
+	</tr>
+	<tr>
+		<td valign="top">shipping-surcharge </td>
+		<td valign="top">zoovy:prod_handling</td>
+		<td valign="top">An additional surcharge placed on the total shipping cost, in US dollars, with a decimal point. </td>
+	</tr>
+	<tr>
+		<td valign="top">shipping-class </td>
+		<td valign="top">yshop:shipping_class</td>
+		<td valign="top">User-defined shipping class, up to 15 alphanumeric characters. 
+			Required if you with to calculate different shipping charges based on product type. DVDs cost $2.99 to ship, whereas the shipping charges for electronics depends on the item price, etc. 
+			(For example: dvd, cd, computers, media, other)  
+		</td>
+	</tr>
+        <tr>
+		<td valign="top">Shipping Class</td>
+		<td valign="top">zoovy:ship_sortclass</td>
+		<td valign="top">For creating shipping rules for your
+products. By default, the shipping rules you enter for your products will apply
+to all the items in your product feed. If the shipping charge for an item can vary depending on product type, you will need to define your different shipping classes using the shipping-class field. For instance, you may charge a flat shipping rate of $2.50 for all CDs, but $3.50 for all DVDs, in the shipping-class field for all CDs, etc. You will need to create as many shipping classes as necessary to account for all the variations in your shipping charges. (This field is optional)</td>
+	</tr>
+        <tr>
+		<td valign="top">Shipping Surcharge</td>
+		<td valign="top">zoovy:ship_surcharge</td>
+		<td valign="top">If certain items in your feed required an additional surcharge (oversized, heavy, etc.), you should use the shipping-surcharge field. This field is meant to be used in conjunction with our shipping rules interface section of Product Submit, which is used to create shipping rules for your products. The amount in the shipping-surcharge field will be added to any shipping rules already applied to that item. (Note: If you plan to use the shipping-price field instead of the shipping rules interface within Product Submit, you should already include any additional surcharges within the shipping-price amount. Shippingsurcharge will not be added to shipping-price. Also optional.)</td>
+	</tr>
+        <tr>
+		<td valign="top">Promo Text</td>
+		<td valign="top">yshop:promo_text</td>
+		<td valign="top">Providing this data allows Yahoo! to relay any special promotions you are currently running for a product. This may help increase the chance of a user clicking on your listing.</td>
+	</tr>
+        <tr>
+		<td valign="top">Availability</td>
+		<td valign="top">yshop:availability</td>
+		<td valign="top">Providing availability data for your products will allow Yahoo! to relay to users estimated shipping dates for your products.</td>
+	</tr>
+        <tr>
+		<td valign="top">In-stock</td>
+		<td valign="top">zoovy:qty_instock</td>
+		<td valign="top">Providing in-stock information can help Yahoo! give users the best idea of your product's availability before they click over to your site. This may help decrease the number of clicks sent to your site that do not result in a sale. For instance, if a user clicks on one of your listings only to find it is out-of-stock, they are likely to try to puchase the item from another merchant. Meanwhile, you have still been charged for a click.</td>
+	</tr>
+        <tr>
+		<td valign="top">Gender</td>
+		<td valign="top">yshop:gender</td>
+		<td valign="top">Gender information can be used by Yahoo! to help determine the most appropriate areas of Yahoo! Shopping to display your products. Please provide this data to ensure the widest possible exposure for your products in Yahoo! Shopping. This field is particularly important for Apparel products.</td>
+	</tr>
+        <tr>
+		<td valign="top">Age Group</td>
+		<td valign="top">yshop:age_group</td>
+		<td valign="top">Age group information can be used by Yahoo! to help determine the most appropriate areas of Yahoo! Shopping to display your products. Please provide this data to ensure the widest possible exposure for your products in Yahoo! Shopping. This field is particularly important for Apparel products.</td>
+	</tr>
+        <tr>
+		<td valign="top">Age Range</td>
+		<td valign="top">yshop:age_range</td>
+		<td valign="top">Age range information can be used by Yahoo! to help determine the most appropriate areas of Yahoo! Shopping to display your products. Please provide this data to ensure the widest possible exposure for your products in Yahoo! Shopping. This field is particularly important for Toy products.</td>
+	</tr>
+        <tr>
+		<td valign="top">Size</td>
+		<td valign="top">yshop:size</td>
+		<td valign="top">Size information can be used by Yahoo! to help determine the most appropriate areas of Yahoo! Shopping to display your products. Please provide this data to ensure the widest possible exposure for your products in Yahoo! Shopping. This field is particularly important for Apparel products.</td>
+	</tr>
+        <tr>
+		<td valign="top">NRF Size</td>
+		<td valign="top">yshop:nrf_size</td>
+		<td valign="top">NRF standard size codes can be used by Yahoo! to help determine the most appropriate areas of Yahoo! Shopping to display your products. Please provide this data to ensure the widest possible exposure for your products in Yahoo! Shopping. This field is particularly important for Apparel products.</td>
+	</tr>
+        <tr>
+		<td valign="top">Color</td>
+		<td valign="top">yshop:color</td>
+		<td valign="top">Color information can be used by Yahoo! to help determine the most appropriate areas of Yahoo! Shopping to display your products. Please provide this data to ensure the widest possible exposure for your products in Yahoo! Shopping. This field is particularly important for Apparel products.</td>
+	</tr>
+        <tr>
+		<td valign="top">NRF Color</td>
+		<td valign="top">yshop:nrf_color</td>
+		<td valign="top">NRF standard color codes can be used by Yahoo! to help determine the most appropriate areas of Yahoo! Shopping to display your products. Please provide this data to ensure the widest possible exposure for your products in Yahoo! Shopping. This field is particularly important for Apparel products.</td>
+	</tr>
+	<tr>
+		<td valign="top">BOOKS: isbn</td>
+		<td valign="top">zoovy:prod_isbn</td>
+		<td valign="top">The International Standard Book Number for the product.</td>
+	</tr>
+ 	<tr>
+		<td valign="top">BOOKS: condition</td>
+		<td valign="top">zoovy:prod_condition<br>
+			yshop:prod_condition
+		</td>
+		<td valign="top">Must be one of: new, like new, very good, good, acceptable. (case sensitive)</td>
+	</tr>
+	<tr><td colspan='3'><b>BOOK SPECIFIC FIELDS</b></td></tr>
+	<tr>
+		<td valign="top"> classification</td>
+		<td valign="top">yshop:prod_class</td>
+		<td valign="top">Must be one of: new, overstock, damaged, returned, refurbished, open box, liquidation, used. (case sensitive)</td>
+	</tr>
+	<tr>
+		<td valign="top"> availability</td>
+		<td valign="top">yshop:prod_avail</td>
+		<td valign="top">A number of days, or a pair of numbers of days separated by a hyphen. </td>
+	</tr>
+	<tr>
+		<td valign="top"> ean </td>
+		<td valign="top">yshop:prod_ean</td>
+		<td valign="top">The fully qualified, 13-digit European Article Numbering code for the product.</td>
+	</tr>
+	<tr>
+		<td colspan='3'><b>MUSIC AND VIDEO SPECIFIC FIELDS</b></td>
+	</tr>
+ 	<tr>
+		<td valign="top"> upc</td>
+		<td valign="top">zoovy:prod_upc</td>
+		<td valign="top">The fully qualified, 12-digit Universal Product Code for the product.</td>
+	</tr>
+ 	<tr>
+		<td valign="top"> condition</td>
+		<td valign="top">zoovy:prod_condition,<br>
+			yshop:prod_condition
+		</td>
+		<td valign="top">zoovy:prod_condition supports "New" and "Used", yshop:prod_condition must be one of: new, like new, very good, good, acceptable. (case sensitive)</td>
+	</tr>
+	<tr>
+ 		<td valign="top"> classification</td>
+		<td valign="top">yshop:classification</td>
+		<td valign="top">Must be one of: new, overstock, damaged, returned, refurbished, open box, liquidation, used. (case sensitive)</td>
+	</tr>
+ 	<tr>
+		<td valign="top"> availability</td>
+		<td valign="top">yshop:prod_avail</td>
+		<td valign="top">A number of days, or a pair of numbers of days separated by a hyphen. </td>
+	</tr>
+	<tr>
+		<td valign="top"> ean </td>
+		<td valign="top">yshop:ean</td>
+		<td valign="top">The fully qualified, 13-digit European Article Numbering code for the product.</td>
+	</tr>
+ 	<tr>
+		<td colspan='3'><b>COMPUTERS, ELECTRONICS, AND VIDEO GAME FIELDS</td>
+	</tr>
+	<tr>	
+		<td valign="top">upc</td>
+		<td valign="top">zoovy:prod_upc</td>
+		<td valign="top">The fully qualified, 12-digit Universal Product Code for the product.</td>
+	</tr>
+ 	<tr>
+		<td valign="top">manufacturer</td>
+		<td valign="top">zoovy:prod_manufacturer</td>
+		<td valign="top">The manufactuer of the product.</td>
+	</tr>
+	<tr>
+ 		<td valign="top">manufacturer-part-no</td>
+		<td valign="top">zoovy:prod_mfgid</td>
+		<td valign="top">The manufacturer's identification for the product. If the manufacturer's identification for the product is not available, as may sometimes be the case, the UPC may be put in this field.</td>
+	</tr>
+	<tr>
+ 		<td valign="top">model-no</td>
+		<td valign="top">zoovy:prod_mfgid</td>
+		<td valign="top">The model number for the product.</td>
+ 	</tr>
+		<td valign="top"> condition</td>
+		<td valign="top">zoovy:prod_condition,<br>
+			yshop:prod_condition
+		</td>
+		<td valign="top">zoovy:prod_condition supports "New" and "Used", yshop:prod_condition must be one of: new, like new, very good, good, acceptable. (case sensitive)</td>
+	</tr>
+	<tr>
+		<td valign="top">classification</td>
+		<td valign="top">yshop:prod_class</td>
+		<td valign="top"> Must be one of: new, overstock, damaged, returned, refurbished, open box, liquidation, used. (case sensitive)</td>
+	</tr>
+ 	<tr>
+		<td valign="top"> availability</td>
+		<td valign="top">yshop:prod_avail</td>
+		<td valign="top">A number of days, or a pair of numbers of days separated by a hyphen. </td>
+	</tr>
+</table>
+
+<!--
+SPEC: http://productsubmit.adcentral.yahoo.com/sspi/us/spec<br>
+<br>
+-->
+
+</article>
+<article>
+<h2>How to test your Yahoo Shopping FTP</h2>
+<aside class="cbc">
+<h6>Advanced FTP Test</h6>
+<div>
+<li>To check your login information for Yahoo shopping you should open an ftp connection by going to Start>> run >> and type "cmd" (without the quotes) once the command prompt opens.
+
+<li>Type "ftp" (without quotes)
+
+<li>Once the ftp program is opened type: "open" (without quotes)
+
+<li>For Yahoo! shopping type
+"open ftp.productsubmit.adcentral.yahoo.com" (without quotes)
+<li>Enter your username and password
+
+<li>If you can't login you probably have an incorrect username or password.
+
+</div>
+</aside>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

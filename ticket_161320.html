@@ -1,0 +1,71 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="ticket/161320">
+
+<h1>Issue #161320 - Sync Error Unhandled Exception</h1>
+
+
+
+
+
+
+<article>
+<h2>Issue - WMI caused Sync Errors</h2>
+
+WMI (Windows Management Interface) can cause a variety of sync errors to occur in Zoovy Integrated Desktop. Below are two snippets that are WMI related:<br>
+
+<li>Error #1:
+<aside class="html">
+<h6></h6>
+<code>
+************** Exception Text **************
+System.Runtime.InteropServices.COMException (0x80010002): Call was canceled
+</code>
+</aside>
+
+<aside class="html">
+<h6></h6>
+<code>by the message filter.(Exception from HRESULT: 0x80010002 (RPC_E_CALL_CANCELED))
+
+</code>
+</aside>
+
+
+<li>Error #2:
+<aside class="html">
+<h6></h6>
+<code>
+************** Exception Text **************
+System.Management.ManagementException: Provider failure 
+
+</code>
+</aside>
+
+
+</article>
+
+<article>
+<h2>Resolution</h2>
+
+The issue is caused by the applications inability to access the WMI (Windows
+Management Interface) which is used to create a fingerprint digest your machine
+prior to syncing data.	To create this fingerprint we need to access the MAC
+address on your network card, motherboard serial number, and other system
+characteristics to help us identify data issues between clients who have
+installed the software on multiple machines behind a firewall. <br>
+
+There are a variety of issues which can cause WMI issues:
+<li>1. Running as a restricted user which does not have WMI access.
+<li>2. Virus scanners which block applications from accessing the WMI. 
+<li>3. But most commonly certain machines apparently have "buggy" WMI interfaces -
+as indicated by the Microsoft forums below:<br>
+http://forums.microsoft.com/MSDN/ShowPost.aspx?PostID=2349677&SiteID=1
+<br>
+In order to get around this you will need to first download the newest release of 
+Zoovy Integrated Desktop Suite. Please login to Zoovy.com then goto "Downloads" then it should be the top download. The new unified desktop includes both warehouse manager and Zoovy Order Manager in one Application. <br>
+
+Next, once you get this installed you will need to place a blank/empty file named "fingerprint.ini" into your C:\program files\zoovy\Desktop\**merchantname** (merchant name represents your assigned folder) directory. Simply open up a text editor, then "Save As" the filename fingerprint.ini into that directory as type "Any".  Then restart your ZID application and the sync should proceed correctly.
+
+</article>
+
+
+

@@ -1,0 +1,67 @@
+<meta type="filename" id="dev/detail/flows-prodlists">
+<h1>Product Lists</h1>
+<article>
+<h2>Overview</h2>
+
+
+Overview: Product lists can be used on product, category, cart, search results or homepage flows.  How the products are displayed in a product list is known as the 'listing style'.  Some of the default Zoovy listing styles include: thumb, plain and detail.
+
+
+
+</article>
+<article>
+<h2>Default Product List:</h2>
+<aside class="html">
+<h6></h6>
+<code>
+
+
+&lt;ELEMENT TYPE="PRODLIST" NAME="PRODLIST1"&gt;
+PRETTY=Product Listing
+ABOUT=You can add products to your homepage, when you do they will appear below.
+MULTIPAGE=1
+DEFAULT=THUMB,1,2,NONE
+&lt;/ELEMENT&gt;
+
+
+</code>
+</aside>
+
+</article>
+<article>
+<h2>Default Product List Parameters</h2>
+
+<p><strong>Multipage:</strong> Can be set to '1' or '0' where 1 is on and 0 is off.  This gives the page developer the ability to give the user the option to have a mutliple page product list.  This is very handy on category pages.  Home and Cart pages should almost always have multipage set to 0.  Search results pages should ALWAYS have this set to 0, turning it on will cause the page not to function properly.</p>
+<p><strong>Default:</strong> This line contains a variety of 'default' behaviors.
+<table width="500"><tr>
+	<td valign="top">Listing Style: </td>
+	<td>Set to THUMB in the example above, can be any of these: PLAIN, THUMB, BIGTHUMB, THUMBMSRP, DETAIL, DETAIL2, MULTIADD, PLAINMULTI, SMALLMULTI, BIG, BIG2, PLAINMSRP. This determines what the default listing style is.  Can be changed by user in the website buidler unless FORCEFORMAT=1 is set (see custom product lists for more information).</td>
+</tr><tr>
+	<td valign="top"># of Columns: </td>
+	<td>The first integer in the default determines the default number of columns that will be set to the product list.  You can also force this number by using 'FORCECOLUMNS=1' (see custom product lists for more information).</td>
+</tr><tr>
+	<td valign="top">Row&nbsp;Background&nbsp;Color: </td>
+	<td>There are several options for setting the row background color.<br>
+0<br>
+1<br>
+2<br>
+3<br>
+4<br>
+5<br>	</td>
+</tr><tr>
+	<td valign="top">Sort Order: </td>
+	<td>Set to NONE in the example, this determines the default sorting order for the product list.  If set to none, then the products will display in the order set in the product chooser in the website builder.  Other options are ALPHABETICAL, PRICE, and RANDOM.</td>
+</tr></table></p>
+</article>
+<article>
+<h2>Custom Product List</h2>
+<aside class="html">
+<h6></h6>
+<code>
+
+
+</code>
+</aside>
+
+</article>
+

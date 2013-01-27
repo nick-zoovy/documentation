@@ -1,0 +1,263 @@
+<meta type="filename" id="ordermgr/detail/ship-ups">
+<h1>Order Manager: UPS Shipping</h1>
+<article>
+<h2>Overview</h2>
+
+The UPS Shipping feature lets you print UPS&reg; airbills directly from the Zoovy Order Manager 
+without needing another helper application such as UPS Worldship, or UPS.com. 
+There are several key advantages that this feature provides to your business:<br>
+<li> Zero Integration Effort - this feature requires no technical expertise to setup or get working. 
+Simply enable UPS Shipping and/or Address Validation on your Zoovy.com website and this feature is automatically setup. 
+
+<li> Faster Shipping - because you print the airbills from directly within order manager, 
+there is no need to export shipping information, or even change applications, this means you can ship more packages in the same 
+amount of time.
+
+<li> Automatic Tracking Import - Tracking numbers are automatically stored in Order Manager, and the orders are automatically
+moved to completed once they are shipped. 
+Because the tracking numbers are automatically imported back into Zoovy it means the customer can then lookup tracking information 
+using their order number on your website rather than going to the UPS site. 
+
+<li> More Professional Emails - Order Manager can automatically send out HTML Emails that include tracking numbers, 
+graphics such as your company logo, links to your website, and personalized marketing messages to your customers. 
+This is considerably more professional than the default plain-text emails sent by UPS Worldship.
+
+<li> User Accountability - for multi-user versions of order manager, you can know exactly which employee shipped each package.
+Use this information to create reports to gauge employee productivity, and to back-track employee errors. 
+
+<li> More Accurate - No more waiting till the end of the day to import your tracking numbers.
+The UPS Shipping feature in Order Manager automatically sets the ship date in the order to the actual date and time the airbill was printed.
+
+</article>
+<article>
+<h2>Usage Considerations</h2>
+
+<li> To use this feature you must have either a daily pickup account, or plan on using a drop off location. 
+<li> At this time only EPL and ZPL Based printers are supported, we plan to release Laser Labels in a future release based on customer demand.
+The supported printer is a Zebra/Eltron LP2844 which can be purchased here: http://proshop.zoovy.com/product/ZEBRA2824LP<br>
+*NOTE: The Zebra/Eltron LP2844 is the standard thermal label printer used throughout UPS, it also uses standard UPS labels - 
+*most* merchants do not need to purchase this equipment it can be obtained free of charge
+from UPS for customers who do sufficient shipping volume - contact your UPS Account Manager.
+
+<li> Shipping COD packages is not supported, and probably never will be.
+<li> At this time Multi-Package Shipments are not supported - this is planned for a future version.
+<li> There is no unattended "batch processing" mode - 
+you can select multiple orders to ship, but you will be prompted to verify each package 
+(even if the weight in the order is correct).
+<li>The order total is reported within the UPS interface in Order Manager. The utility will round up to the next $100 for insured values, so please be aware of this if you do not wish to insure your packages for more than $100, or have control over how much for which the package is insured. <br>
+<br>
+
+<aside class="hint">
+<h6></h6>
+<div>Your UPS carrier maybe expecting a "customs form" or "commercial invoice".  You can inform him that as you are using software that sends this information up to UPS directly, and it is on file for the package already.<br>
+<br>
+
+Our UPS certification does not require a Commercial Invoice for international shipping with this certification. If it did, that would be required in our interface.  <br>
+<br>
+
+Commercial Invoices (customs forms) are required for international shipping.  Most countries require 3, some 5. We automatically send an electronic version to UPS who then prints the appropriate number. <br>
+<br>
+
+If you do speak to a UPS employee who will not let you ship without the physical paperwork there are two options: <br>
+1. Try to escalate through UPS to get it approved. <br>
+2. Configure a printer for Commercial Invoices (Tools >> Commercial Printer Setup). The default number of copies (3) can be changed here as well. Check the Print CI box in the International Tab of the UPS Interface. ("Print CI" is a little vague on purpose.  If it was "Print Customs Paperwork" many merchants would be needlessly printing this info for every international order.)
+</div>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Deployment Considerations for Worldship Users</h2>
+
+
+As customers deploy the UPS Shipping feature, we do run into some operational and communication issues with the daily pickup customers.
+UPS daily pickup customers are mostly using UPS WorldShip. 
+Part of the Worldship routine entails the UPS Driver to walk in, scan a Driver Summary Barcode, 
+which tells the driver how many packages he needs to pickup, and than he counts and picks up the packages.
+<br>
+<br>
+With the UPS Shipping feature, there is no Driver Summary Barcode. 
+Each package is considered a pre-paid package.
+The driver only has the responsibility to pick up the package, and put it into the package car.
+Drivers sometimes get confused, and have occasionally refused a pickup, or delayed a pickup because of the break in routine.
+Though, they should not do this, it does sometimes happen.
+We recommend to each merchant, who is converting from WorldShip to the Ship API, 
+that they notify the Driver that there will be a new routine. 
+Merchants should notify the driver the day before the switch.
+<br>
+<br>
+For the UPS Shipping tool, each new package has a Billing: P/P located at the bottom of the label and this indicates that the package is prepaid.
+The driver is instructed to look for this on the label. The driver's only obligation is to put the package into the package car.<br>
+<br>
+NOTE: Occasional customers do not have an issue because they are responsible for dropping the package into the UPS system 
+(e.g. at a UPS Store), themselves.<br>
+
+You may also want to consult... <a class="linkdoc" href="#?doc=50956">Doc 50956</a>
+
+</article>
+<article>
+<h2>Configuration</h2>
+<section>
+<h3>Enabling this Feature</h3>]
+
+If you already have UPS Online tools features enabled on your Zoovy account then there is no configuration.<br>
+<Br>
+<aside class="cbc">
+<h6>'To Enable UPS Online Tools in your Zoovy Account'</h6>
+<div>
+<li> Using your web browser login to Zoovy.com
+<li> Go to Setup / Shipping 
+<li> Select UPS Online Tools
+<li> Agree to the license and provide your UPS account number.
+*NOTE: You do not need to enable UPS Rating for this feature to work.
+<li> Under the "Airbill printing" header - Check the box which says "Designate UPS as my primary shipping provider"
+<li> Switch back to Order manager
+<li> Re-download your Website configuration into order manager by loading Order Manager and going to Admin | Company Synchronization
+<li> Click the "Synchronize" button
+
+</div>
+</aside>
+
+
+</section>
+<aside class="caution">
+<h6></h6>
+<div> If you have Package Verification checked on your user account then you will not be able to print UPS Airbills until the contents of the order have been entered. 
+</div>
+</aside>
+
+<aside class="hint">
+<h6></h6>
+<div>
+If your printer does not generate an error, but also does not respond when attempting to process a shipment, it's possible the wrong printer language is enabled.<br>
+Login to ZID Order Manager:  Admin >> Setup >> UPS (or FedEx) Account Setup >> Printer Language.   Select the EPL2 radio button.
+
+</div>
+</aside>
+
+</article>
+<article>
+<h2>Using non-UPS rating with UPS Airbill Printing</h2>
+
+By default any UPS service which is rated by Zoovy will automatically be mapped to the appropriate shipping type in order manager during airbill printing.  However you may choose to use a Rating service other than UPS (for example if you offer free shipping) -- in
+these circumstances you will want to map your shipping description to a UPS service so you don't need to select the shipping
+service for every airbill.. <br>
+<br>
+It is possible to map any shipping method (with the exception of USPS/FedEx or DHL services) to UPS service types. 
+To do this simply prepend a code to the front of the shipping description (the 4 digit code and pipe symbol will NOT be displayed the customers).
+A list of valid codes along with their UPS service names are as follows:
+<table border=1>
+<tr><td>UGND|UPS Ground</td></tr>
+<tr><td>U3DS|UPS 3 Day Select</td></tr>
+<tr><td>U2DA|UPS 2nd Day Air</td></tr>
+<tr><td>U2DM|UPS 2nd Day Air A.M.</td></tr>
+<tr><td>U1DP|UPS Next Day Air Saver</td></tr>
+<tr><td>U1DA|UPS Next Day Air?</td></tr>
+<tr><td>U1DM|UPS Next Day Air Early A.M.</td></tr>
+<tr><td>USTD|UPS Standard to Canada</td></tr>
+<tr><td>UXPR|UPS Worldwide Express</td></tr>
+<tr><td>UXDM|UPS Worldwide Express Plus</td></tr>
+<tr><td>UXPD|UPS Worldwide Expedited</td></tr>
+</table>
+
+
+
+<aside class="html">
+<h6></h6>
+<code>
+
+Example: to create a weight based shipping type named "Regular Shipping" and map it to
+the UPS Domestic Ground service simply enter the shipping description as:
+UGND|Regular Shipping
+
+</code>
+</aside>
+
+
+
+
+</article>
+<article>
+<h2>Using this feature</h2>
+
+From the main order manager view, 
+select one or more orders and either Right click, or from the Menu Bar select File | Shipping Labels.
+Select the "UPS Online Tools" menu choice.
+All the information will be automatically populated from your order.
+The residential/commerical address will automatically be populated based on the presence of a company name.
+The required fields are in blue, when you are ready to ship the package select "Process Shipment"
+If you have selected multiple orders the next order will automatically come up.
+
+</article>
+<article>
+<h2>Keyed Lookup Mode</h2>
+
+The Keyed Lookup Mode is intended for use by customers who print out their invoices or 
+packing slips in order manager, then pick out the items, and who want to avoid the extra step of finding the 
+invoice to print out the shipping label.
+
+The Keyed Lookup Mode allows you to simply enter a fully qualified order # (e.g. 2004-10-1234), which can be done
+either via the keyboard or more commonly by using a barcode scanner connected to the shipping pc. 
+
+By default the invoices and packing slips printed by Zoovy automatically contain a industry standard "3 of 9" barcode 
+at the bottom which can be scanned by virtually any PS2 or USB Barcode scanner.<br>
+<br>
+Keyed Lookup Mode simply saves the extra step of re-finding the order # in order manager if you already have the invoice
+or packing slip in front of you (e.g. you have different people picking and shipping). If you ship dozens of packages a day
+this probably isn't a big deal, if you ship thousands of packages a day this is a huge time saver.<br>
+<br>
+<br>
+To enable keyed lookup mode simply go to Tools on the menu bar and select "Keyed Lookup".
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+To purchase a compatible barcode scanner please visit:
+http://proshop.zoovy.com/product/SYMBOL2208USB<br>
+*NOTE: For customers who do sufficient shipping volume with UPS 
+it is common practice for UPS to provide barcode scanners 
+along with free personal computers and label printers along with labels for shipping (even ground). 
+Contact your UPS Account manager for more information.
+
+</div>
+</aside>
+
+
+
+
+
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

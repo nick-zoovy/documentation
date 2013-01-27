@@ -1,0 +1,238 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/integration">
+<h1>Integration Recipes for the Zoovy Platform</h1>
+
+<article>
+<h2>Concept Overview</h2>
+
+
+This document is intended to describe the various integration possibilities with Zoovy.  Please understand, it is not possible to provide a comprehensive list, rather this is a cookbook of recipes based on existing system capabilities and based on our experience doing these types of projects.
+
+If you are looking for more technical "what is possible" you might want to review 
+<a class="linkdoc" href="#?doc=51560">Doc 51560</a>.
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+Just because "you can" doesn't mean "you should". Many of the recipes in this document can significantly harm a business by impacting it's ability to adapt quickly to change or to inexpensively try new initiatives. 
+We are appalled by the multitude of disreputable companies in the e-commerce space who routinely sell bolt-on applications describing the integration as "easy".  These companies do not properly inform them of the risks and downsides associated with the integration ahead of time (for example the tedious steps involved in synchronizing unsubscribe/opt-out data across applications). 
+We encourage clients to search webdoc for a vendor, and application type, and possibly even contacting Zoovy via ticket before attempting integration, Zoovy internally maintains a list of "Known issues" for both specific applications, as well as application types. As they say .. "knowing is half the battle".
+
+
+</div>
+</aside>
+
+
+
+</article>
+
+<article>
+<h2>Why custom software</h2>
+
+Many business owners fail to properly assess the role custom software can play in their business. When done correctly custom software can be major success for a company, but when done incorrectly it can also be a considerable burden. 
+
+<br>
+
+<aside class="caution">
+<h6></h6>
+<div>
+Failing to properly assess risk of failure and difficulty is a highly common trait among successful entrepreneurial types  - let's face it: if you knew how hard something ACTUALLY was going to be, you would never do it, and you would have never gotten into business in the first place. 
+
+</div>
+</aside>
+
+
+<br>
+<section>
+<h3>Good Reasons for Custom Software</h3>
+<li> Reducing Human Error: Custom software that models your business and can reduce human error for frequent business issues should be the most common reason for deploying custom software in a business. 
+<li> Increasing Human efficiency: A report that makes employees not have to search through thousands of invoices is a good investment. 
+<li> Automation/Increased Functionality: A button that did "xyz" function automatically would save 3+ staff hours per day.
+<li> Proprietary Business Logic: industry specific, or regulatory requirements.
+</section>
+
+<section>
+<h3>Bad Reasons for Custom Software</h3>
+<li> Emotional Attachment: Some businesses believe their customer software is a trade secret, or their "DNA" and that they must control it, protect it, and that it will give them a competitive edge.  This might be true for a particular piece of machinery, or even a set of instructions on a computer operated assembly line - but it's false for e-commerce software.  Software is only a trade secret if no other software performs the same function, then it's just re-inventing the wheel. 
+<li> Increased Valuation: Some business principals have been mistaken lead to believe that custom software increases their valuation. This might have been true in 2000 before the dot-com bubble popped but is absolutely false today.  This myth was perpetuated mostly be custom software firms.
+<li> Because it'd be fun/different/nobody else has done it: Unless it can be demonstrated how it works *better* then it's not worth doing differently.  It's also good to ask what will work *worse*, and why haven't other people been doing it that way. 
+<li> Fear of change/unknown: 
+<li> Over Automation: Automation has a substantial overhead cost to develop, test, deploy and maintain. In general automating processes which take less than 3 hours per day are a mistake. 
+<li> Software as an Investment: This was true in the 1980s when no off-the-shelf software was available, and systems were regularly fixed. Any software which connects to the Internet has a lifespan associated with it. Change is mandated for a variety of reasons: OS/Security updates, compatibility, 3rd party API updates/enhancements, or business process needs change -- for this reason we generally recommend that automation software should be projected to achieve ROI within at least 1/3 of period of the most likely change.  (This is using the rationale that the project will probably be at least twice as hard as it's anticipated to be). 
+</section>
+
+<section>
+<h3>Things you forgot</h3>
+<li> Security: This item is rarely considered by business owners UNTIL it's too late. Who will have access to your data, have all their employees had background checks? If you're hosted at another ISP - how many techs have access to your equipment? 
+<li> Maintenance Concerns: The only thing constant in business is change, no matter how perfect the software is - suppliers go out of business, developers get hit by buses, companies get sold, etc. How would the business be impacted if the software were to stop working? 
+<li> Focus: Before embarking on a development project - consider what the maintenance and upkeep of this software be stealing focus from? 
+<li> Details: The devil is in the details, a project that seems simple on the surface rarely is - what details are being missed? 
+</section>
+
+
+
+<section>
+<h3>What to Ask For --- aka "Why we need a business case?"</h3>
+
+<aside class="hint">
+<h6></h6>
+<div>
+When time and money (ROI) isn't an issue - then you can have whatever you want. 
+
+</div>
+</aside>
+
+
+A lack of business case / understanding of the offerings available results in requests that while may seem feasible, when applied to ROI don't really hold up.  We routinely see clients asking for solutions which are well outside their budget and/or don't address what they are actually trying to accomplish. As part of our ethical standards towards ensuring ROI - as part of any integration quote we make our own determination about the business case/merits.   Please don't send us a "this is what I want solution, and exactly how it should work".  By all means we want to know specifics of you'd like it to work, or how you see it working, but we'd like to understand how this application/solution fits into your business process before we will even consider building it.
+
+<br>
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+Before telling us how you'd like it to work - it's often better to say "this is what I'd like to accomplish" and work backwards towards the most efficient solution.  See if we reach the same conclusion you do as to the best way to proceed. 
+
+</div>
+</aside>
+
+
+</section>
+
+
+<section>
+<h3>Universal Project Constraints</h3>
+
+<li> Budget: What is your realistic budget for this project? What price would make this project a "no brainer", typically use that when asked by a developer.  
+
+<li> Time Constraints: Are there specific time constraints on the project, can the project be broken up into phase 1, 2, 3, etc.  How much money from the budget needs to be spent up front?  
+
+<li> Complexity/Automation: Is this automated enough, or too automated? How would this project work without automation? How soon will automation be required?
+
+<li> Success: How will success for this project be measured? If the project can be broken into phases/milestones - what are those? 
+
+</section>
+</article>
+
+
+
+<article>
+<h2>Example Projects and Budget Ranges</h2>
+
+<section>
+<h3>External CRM Application</h3>
+<li> Ranges anywhere from $500 to $15,000 depending on number of data touch points.
+</section>
+
+
+<section>
+<h3>External Website as an order source</h3>
+<li> Can be done via CSV import for free
+<li> Can be done via REST API for free (setup a wholesale account for website, then pay a developer of the external website to transmit orders)
+<li> FTP Pickup, or Amazon SQS are two other common ways to accept orders can be arranged typical cost is $500 - $1,500 depending on format.
+<li> Flat file or XML are the most common formats.
+<li> Email orders are more expensive due to loose parsing rules and inherent transport reliability issues (mta's + spam filters) when dealing with email.
+</section>
+
+<section>
+<h3>Shipping Integration</h3>
+<li> Tables can be created via CSV import/export for free
+<li> 3rd party API for calculating shipping rates via supply chain typical range is $500 - $2,500 (or more depending on complexity)
+</section>
+
+<section>
+<h3>Supplier/Warehouse Integration</h3>
+<li> Generic supplier integration can push *ZOOVY FORMATTED* orders to an FTP site, send via email or push via HTTP/S REST API.  It can also pickup inventory files from an FTP site.  Suppliers who wish to code to this standard often appreciate the assistance of Zoovy development and so we recommend a budget of $0 - $500.
+<li> Custom supplier integration (where Zoovy converts a proprietary supplier format into ours) have substantial ranges based on a number of parameters including File format type: Flat File/CSV/XML/EDI/Other,  Transport type: FTP/SFTP/EMAIL/EDI+VAN/HTTP REST/SOAP, and level of integration being performed: Orders Out Only, Orders Out + Tracking In, Orders Out + Tracking In + Daily Inventory, Orders Out + Tracking + Inventory + Product Feeds.
+<li> Planning which level of integration, and future integration levels can alter the price substantially.
+<li> Example Flat File/CSV performing Orders Out w/Tracking IN via FTP is typically between $500 and $2,500 out the door.
+<li> Example XML performing Orders + Tracking + Inventory using SOAP or HTTP REST would typically be between $1,500 and $5,000 out the door.
+<li> * Exact estimates are impossible since projects are billed hourly and often require coordination with a 3rd party (which is an uncontrollable unknown). We do not provide fixed cost supplier integrations.
+</section>
+
+<section>
+<h3>Direct Database Integration</h3>
+<li> Integrate your own desktop application to the Order Manager Microsoft SQL Server or MYSQL database for free (read access) - however you may need to retain the developer of the software as you could be required to update your database up to four times per year and adapt to new data formats/changes as we enhance our backend. 
+<li> If you plan to write data back we require you work with our development team to prevent data corruption.  The certification process varies by application and the sensitivity level of data it modified.  Costs can be anywhere from a couple of hours, to substantially more based on the skillset of your developer. 
+</section>
+
+<section>
+<h3>Point of Sale Integration</h3>
+<li> As most POS applications are desktop based, this is typically done as a direct database integration.  There are a variety of ways to do this, and depends heavily on the software in use and how well it plays with others, as well as the number of data touchpoints (inventory, products, orders, customers).  
+
+<aside class="hint">
+<h6></h6>
+<div>
+We regret that Zoovy does not recommend, prefer, refer, or endorse any Point of Sale application that is already integrated (this is because most POS applications have very limited integration capabilities, and the ones that do tend to be highly specialized to a specific industry)
+
+</div>
+</aside>
+
+
+</section>
+
+<section>
+<h3>3rd Party Fulfillment Software</h3>
+<li> We prefer clients utilize our Order Manager for printing airbills
+<li> Integrations are handled on a one off basis based on needs and prior experience, please contact us for a quote. 
+</section>
+
+<section>
+<h3>Payment Gateways</h3>
+<li> These are typically credit card gateways run by MSPs (Merchant Service Providers).
+<li> Clients are told their monthly fees will be waived by the MSP if they can just get Zoovy to integrate. 
+<li> MSP's are offer these gateways to clients at a lower price than Authorize.net or Paypal Payflow Pro (because they have a lower cost basis for the MSP)
+<li> MSP owned gateways routinely have questionable security practices, and more outages than the other gateways do, subsequently these have a substantially higher support cost than Zoovy.
+<li> At the moment these must be built into the core and aren't pluggable (even if they were pluggable, MSP's generally lack development resources or initiative to make such a piece happen).
+<li> As such Zoovy charges MSP's (or their clients) a $10,000 one time integration fee, plus possibly yearly maintenance fees (which is reduced based on the number of users).
+<li> Integration fees will be refunded one the application hits 100 users on the platform.
+<li> All future fees will be waived if the integration can refer more than 50 users, or gain more than 100 users in the existing base. 
+<li> As per Zoovy development policy any "CORE integration" which fails to maintain 2% of user-base, is subject to removal (if frequent updates are required or the application fails to maintain acceptable reliability)
+</section>
+
+</article>
+
+
+
+<article>
+<h2>3rd Party CMS Integration</h2>
+<section>
+<h3>Scenario</h3>
+Client Story: 
+Already built a website and just need to "link in" a shopping cart. Only requires simple
+hooks into an ecommerce system - first, a simple 'Add to Cart' link (based
+on unique SKU shared between CMS and ecommerce system) that will add product to the cart, and two, a simple cart view that will list the current items in cart/price totals/etc. with a button that begins a standard checkout process.
+</section>
+
+<section>
+<h3>Solution</h3>
+Zoovy has the ability to link bi-directionally to websites, our site wrappers can match a custom CMS.  The parameters to add products to the cart are simple, and well documented. Multiple items can be added to the cart at the same time as well.
+
+<a class="linkdoc" href="#?doc=50110">Doc 50110</a>
+
+In addition Zoovy can support "soft adds" - where we don't have a database of the individual SKU's. An optional MD5 digest can be passed for security, and other fields such as cost can also be passed (in the clear, or through controlled sessioning).
+
+</section>
+<section>
+<h3>Known Issues</h3>
+
+<ol>
+<li> There are SEO ramifications, the Zoovy CMS was designed from the ground up with SEO in mind - we have yet to see a system which even compares (all links are plain text, masking for googlebot, permanent maintenance of links, complaint 404 pages, auto-google sitemap generation, full analytics integration)
+<li> The business is maintaining two separate systems - which means everything takes twice as long.
+<li> The client will still need to setup the categories/taxonomies in the Zoovy system to take advantage of the marketplace syndication (and marketplace syndication which drives traffic to the Zoovy site is incompatible with 3rd party CMS's) -- even if Zoovy could link to a third party website, features such as analytics, differentiated pricing, etc. would not work. 
+<li> Features like integrated product reviews, dynamic product cross selling, etc. don't work/aren't available - unless they are re-invented on the 3rd party system. 
+<li> Any changes to the primary website design have to be reimplemented on the Zoovy side to maintain a transparent look and feel - effectively doubling the cost of any updates, thereby increasing both the time and difficulty associated with them.
+<li> A variety of domain/dns/linking issues can arise if not implemented correctly - the complexity of planning this requires Zoovy dedicate additional technical resources which raises the price even for the most simple integration. 
+<li> Lack of bi-directional linking (customer logs in, looks at order history and wants to get back to the same product again) - which means we need to be able to provide links back to your system.
+<li> The zoovy system works "cookie-less" which means we can track buyers using session id's across domains, etc.  as soon as you're integrating two different sites, this really isn't possible. Around 3% of the Internet browsers don't accept/allow cookies thanks mostly hyperactive overly sensitive privacy software from companies like Norton and McAfee.
+<li> Feature like the "mini-cart" which show a realtime display of shipping costs and items in the cart can have a dramatic increase in sales, this is not possible (or at least not EASILY) possible.
+<li> Zoovy offers our clients a very flexible/robust and subsequently complicated product option model, which also has support for kit-ing, and assemblies - these are not going to be compatible with a 3rd party CMS. 
+<li> The specialty site feature of the Zoovy platform can't be used by the business, this is one of the most compelling features of the Zoovy platform and gives Zoovy businesses a clear advantage in search engine rankings, and Adwords campaigns.
+<li> Features such as call center integration, etc. are designed to integrate with our CMS.  Integrated partners often give Zoovy clients special pricing because sites are built the same way which makes integration a snap - you would be ineligible for those programs.
+</section>
+
+
+</article>
+
+

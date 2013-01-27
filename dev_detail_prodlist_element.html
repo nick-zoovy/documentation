@@ -1,0 +1,263 @@
+<meta type="filename" id="dev/detail/prodlist_element">
+<h1>PRODLIST and PRODSEARCH elements</h1>
+
+<article>
+<h2>PRODLIST and PRODSEARCH - what's the difference?</h2>
+
+Not much.  These two elements work in nearly the same manner.  The difference is that the PRODSEARCH element should be used to display a search results set and a PRODLIST element should be used to display any other list of products.
+<br>
+There are a few differences between what parameters these two elements will accept, however the variables used within the spec itself are identical.
+
+</article>
+
+<article>
+<h2>Element Parameters</h2>
+In this section, unless otherwise noted, the parameters listed will work with either the PRODLIST or PRODSEARCH elements.  All the key/value pairs of parameter ARE case sensitive.
+
+<br>
+
+<ul>
+
+
+<li>ALTERNATE - set to 0-5 to force row background color style.<br>
+0 means color 1 only<br>
+1 means alternate colors 1 and 2<br>
+2 means color 2 only<br>
+3 use content bg<br>
+4 use transparent bg</li>
+
+<li>COLS - set to an integer to force the number of columns </li>
+
+<li>DATA - Typically, a unique field id (page, product or profile, depending on where the list is being displayed) which stores user-defined settings (not products). page:prodlist_custom is the default DATA for a custom prodlist and page:prodlist is the default for a non-custom (if FORMAT="CUSTOM" then DATA="page:prodlist_custom").  The data field should be unique for each prodlist/prodsearch element on the page. (page:prodlist2_custom, page:prodlist3_custom).</li>
+
+<li>DEFAULT - Comma separated lists of key/value pair options for default behavior in this order: listing style, columns, alternating colors, sort method (for use on default listing style only - allows user to overwrite through user interface.) </li>
+
+<li>DISABLEPRODUCTS - set to 1 to turn off the 'products' link in the editor. Should be done on all product lists after the first in a page layout. should be on all product lists in a product detail page layout</li>
+
+<li>DIVIDER - In a multi-column format, the divider will appear between each column (does NOT get used to display content between each row).</li>
+
+<li>HTML - the 'spec' for the custom listing style</li>
+
+<li>EMPTY_MESSAGE - Is displayed if no products are present in list/results.  Handy on PRODSEARCH elements (0 results found), most of the time this will be omitted from a PRODLIST element.</li>
+
+<li>FORMAT - set to one of the default zoovy listing style to force layout to implicitely use that listing style. If a custom listing style is defined, set to CUSTOM.</li>
+
+<li>ID - should be unique per page.  All uppercase.  No special characters (underscores ok)</li>
+
+<li>INVENTORY - This feature could cause a performance hit.<br>
+0 = no inventory count or filter. FASTEST.<br>
+1 = Filter items not available for purchase. Will impact performance<br>
+2 = No filter and return inventory values. Will impact performance
+
+</li>
+
+<li>MAX - the maximum number of products that can be displayed on a page. Set to 500 by default. 2000 is the current system MAX (if you set it to over 2000, the system will still cap). In most cases, you should NOT use this on a category or search results page. The MAX is applied BEFORE sorting occurs.</li>
+
+<li>MULTIPAGE - turned on by default. Set to 1 to force on or set to 0 to disable multipage feature. Product detail page prodlists and homepages should have multipage turned off.</li>
+
+<li>MULTIPAGE_FOOTER - code for passing a custom multipage footer</li>
+
+<li>MULTIPAGE_HEADER - code for passing a custom multipage header</li>
+
+<li>PRODUCTS_SKIP - set to an integer to jump to that product in the list (ex: set to 4 and the list will start at product 4). </li>
+
+<li>SHOWDEFAULT - for use with related items and recently viewed. If set to 0, will NOT show homepage products by default. </li>
+
+<li>SIZE - the maximum number of products to be displayed on a page before going into multipage mode. </li>
+
+<li>SORTBY - set to RANDOM to force product list to sort items randomly. Set to attribute to sort by that value (ex: SORTBY="zoovy:base_price" or SORTBY="!zoovy:prod_name" to reverse sort). Supported sorting attributes are:<br>
+zoovy:prod_name<br>
+zoovy:prod_mfg<br>
+zoovy:prod_salesrank<br>
+zoovy:base_price
+</li>
+
+
+<li>TYPE - should be set to either PRODLIST or PRODSEARCH.</li>
+
+<li>SHOWSKU - Will force sku to the beginning of the product name.</li>
+
+<li>SHOWNOTES - deprecated</li>
+
+<li>SHOWPRICE - deprecated</li>
+
+</ul>
+
+<section>
+<h3>PRODLIST specific parameters</h3>
+<ul>
+<li>SRC - determine where the products are loaded from. To load from the page default (such as the items on the category page currently being viewed) do NOT set this attribute.  This also forces the source, so it can no be overwritten through the user interface. Most often, do NOT set this attribute.<br>
+
+SMART:VISITED - recently viewed items<br>
+SMART:ADDEDCART - ????<br>
+SMART:BYCATEGORY - Based on items in the cart, will display a list of other products that are also in those categories.<br>
+SMART:BYPRODUCTS - ?????<Br>
+SMART:ACCESSORIES - will load a list of accessories for items that are in the cart<br>
+NAVCAT:.category.safe.id - will load products from a specific category.<br>
+LIST:$listname - will load products from a specific list<br>
+CSV:sku,sku2,sku3 - will load a comma separated list of products (by ID)
+</li>
+
+<li>EDITOR - Set to "INLINE" for a better user experience within the user-interface. Should always be set to inline.</li>
+
+<li>DISABLEPRODUCTS - If set to 1, will hide the 'products' link in the editor. This is useful for product lists which have a specific source set or for product 
+layouts (you can NOT choose related items through that interface). </li>
+
+<li>PROMPT - this is what shows up in the user interface (editor) to let the merchant know what element they're going to edit.  Prompts should be short and concise, but clearly indicate what it is.</li>
+
+<li>SHOWDEFAULT - Set to 0 to NOT show the default products associated with a page or product.  Why would you use this?  When multiple product lists are present on a page, SHOWDEFAULT would get used to not use the same list multiple times.  Also, by defualt, if no products are set as related items for a product, the homepage products are used.  set SHOWDEFAULT="0" to disable that behavior.</li>
+
+</ul>
+
+<aside class="hint">
+<h6></h6>
+<div>
+If you do not have an attribute, the system will (most of the time) default to the OFF behavior or set some default. DATA should always be set.
+
+</div>
+</aside>
+
+
+</section>
+
+
+<section>
+<h3>PRODSEARCH specific parameters</h3>
+<ul>
+<li>KEYWORDS - set to the value of what you want searched (ex: KEYWORDS="blue" would return a result set for blue)</li>
+
+<li>MODE - the search mode.  Values can be and, or, exact, finder or subtring</li>
+
+<li>CATALOG - the search catalog to be used</li>
+
+</ul>
+
+<aside class="hint">
+<h6></h6>
+<div>
+You do NOT have to set the keywords, mode and catalog.  Only set them if you are forcing the layout to display a specific result set.  Otherwise, don't set those parameters and they'll be read off of a URL.
+
+</div>
+</aside>
+
+
+
+</section>
+
+</article>
+
+<article>
+<h2>Element variables</h2>
+The following variables are standard in all PRODSEARCH and PRODLIST elements.
+<ul>
+
+<li>$COLWIDTH - The width of the column (if COLS="5", this is 20%, COLS="3" this is 33%)</li>
+
+<li>$FORM - outputs the open form tag. Typically, you'll add this once at the top of the element, not for each product.  Don't forget to close it at the bottom with a normal form close tag.</li>
+
+<li>$PRODUCT_ID - displays the product id</li>
+
+<li>$PROD_URL - Outputs the product url (changes to # in the UI)</li>
+
+<li>$NOTES - Outputs the product notes textarea if enabled on the product</li>
+
+<li>$POGS - Product options as form HTML</li>
+
+<li>$ADD_URL - Ouputs a URL for use inside an href around a link or button.</li>
+
+<li>$ADD_BUTTON - Creates an add to cart button (turns into a Choose Options... link when the product has either notes or POGs)</li>
+
+<li>$ADD_LINK - Outputs an entire add to cart link with predefined styling</li>
+
+<li>$ADD_FIELD - Outputs a field for adding to cart (either a qty number box, or a checkbox depending on SHOWQUANTITY) </li>
+
+<li>$ADD_FIELD_DETAILS - Same as add_field but will be overridden if pogs or product notes are present (turns into a Choose Options... link when the product has either notes or POGs) </li>
+
+<li>$VIEW_DETAILS - The "View Details" link (if VIEWDETIALS is true, otherwise blank). </li>
+
+<li>$COUNT - Numerical index, starting at 0, and counting up with each product that is displayed. </li>
+
+<li>$row.alt - will output a 0-4 depending on what the ALTERNATE attribute is set to and what row is in focus.</li>
+
+<li>$username - will insert your username. Handy when you need to target a path to the custom files directory.</li>
+
+<li>$TOTALCOUNT - The total number of products in the list. </li>
+
+</ul>
+In addition, any product field can be loaded as follows:
+<aside class="html">
+<h6></h6>
+<code>
+<% load($zoovy:prod_name); print(); %> or <% load($zoovy:base_price); format(money); print(); %>
+
+</code>
+</aside>
+
+
+</article>
+
+<article>
+<h2>Disecting the element</h2>
+
+A simple product list element might look like so:
+
+<aside class="html">
+<h6></h6>
+<code>
+
+<ELEMENT TYPE="PRODLIST" ID="PRODLIST_BEST" DATA="page:prodlist_custom" COLS="4" FORMAT="CUSTOM" PROMPT="Product List: Best Sellers">
+<HTML><![CDATA[
+
+<div class='ztitle'>Best Sellers</div>
+
+<table border='0' cellpadding='0' cellspacing='10' align='center'>
+<!-- ROW -->
+<tr>
+<!-- PRODUCT -->
+	<td class='ztable_row ztable_row<% print($row.alt); %>' valign='top'>
+	
+	<div style='margin-bottom:3px;'><a href="<% load($PROD_URL);  default("");  print(); %>"><% load($zoovy:prod_thumb);  default("");  default($zoovy:prod_image1); image(w=>"100",h=>"100",bg=>"ffffff",tag=>"1",alt=>$zoovy:prod_name);  print(); %></a></div>
+	
+	<div><a href="<% load($PROD_URL); default(""); print(); %>"><% load($zoovy:prod_name); default(""); print(); %></a></div>
+	
+	<div class='ztable_row_small'><%
+load($zoovy:base_price); default(""); 
+format(money); 
+format(pretext=>"only <span class='ztable_row_title'>",posttext=>"</span>");
+print();
+	%></div>
+
+	</td>
+<!-- /PRODUCT -->
+</tr>
+<!-- /ROW -->
+</table>
+
+]]></HTML>
+<BLANK><![CDATA[
+<td class='ztable_row ztable_row<% print($row.alt); %>'> </td>
+]]></BLANK>
+</ELEMENT>
+
+
+</code>
+</aside>
+
+
+Starting at the top with the parameters, you can see that the type is a PRODLIST, so it will most likely be used on a category page layout.  An ID is set as well as a DATA as they should be.   The various parameters are covered in detail above.
+
+<br>
+
+The first line with the HTML parameter is just a title.  Simple html used to let shoppers know what they're looking at.  In this case, it is a list of best sellers.
+<br>
+After the title is the start of a table. Since most product lists are going to be in a grid format, a table is used to easily organize (floating divs are possible, but MUCH harder to work with).  After the table tag is a ROW in html comments.  The html that appears below the ROW comment and above the PRODUCT comment is what gets output at the beginning of every row of products.
+<br>
+The information that appears after the PRODUCT comment and before the /PRODUCT comment is what appears for each product/column.  If COLS="3", this section gets repeated three times per row, once for each product.
+
+The information that appears after /PRODUCT and before /ROW is what gets output at the end of each row.
+[[/BREAK]]
+After the /ROW tag is what gets output once all the products have been output.  Typically used to close the table, as it is here in the example.
+<br>
+The BLANK parameter gets used when an empty occurs.  For instance, if there are 8 products in a 3 column format, in row 3, spot 3 (the ninth spot overall) will be empty. In this case, the value of BLANK is output. This is handy to ensure there are no orphans in your tables.
+</article>
+

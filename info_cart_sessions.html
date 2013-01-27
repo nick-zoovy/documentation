@@ -1,0 +1,161 @@
+<meta type="filename" id="info/cart_sessions">
+<h1>Understanding Sessions in Cart / Variables</h1>
+
+
+<article>
+<h2>Concept Overview</h2>
+
+Session id's are used by Zoovy to track buyers as they move from page to page.
+Sessions are stored in both cookies, and sometimes on the URL.
+Sessions on the URL take appear like:
+http://www.yourdomain.com/c=xxxxxxxxxxxxx/url
+
+where xxxxxxxxx is a 20 digit alphanumeric, case sensitive token that is unique to your store.
+
+<section>
+<h3>Why sessions</h3>
+Inserting sessions into the URL is necessary in the following cases:
+* anytime shoppers do not have cookies
+* when it is necessary to detect that buyers do not have cookies
+* when transferring sessions across domains (cookies cannot move across domains for security reasons) -- read more about "domain funny business" below
+* anytime we are on a secure/SSL url
+
+</section>
+
+<section>
+<h3>Search Engines and Spiders</h3>
+A lot of merchants get worried about the use of sessions and that they will adversely affect page ranking. The zoovy website rendering engine automatically detects over 100 different types of spiders and turns off session rewriting for them. 
+
+<aside class="hint">
+<h6></h6>
+<div> 
+You can download a special plugin for firefox that allows you to change your User Agent, if you put the word "googlebot" in your user agent, you'll find that you NEVER get a session id in a URL. 
+
+</div>
+</aside>
+
+
+
+</section>
+
+<section>
+<h3>Domain Funny Business</h3>
+Cookies are restricted to a specific domain.  For example:
+www.yourname.com
+and www.yourname.zoovy.com (which is part of .zoovy.com) both have their own unique set of cookies.
+It is necessary to "synchronize" cookies, meaning necessary to make sure the buyer has the same 
+cookie on both domains in order for the products added to the cart on one domain, to be visible on the other domain.
+
+<aside class="hint">
+<h6></h6>
+<div>
+Merchants will often run into situations where they visit domain A, then visit domain B, and get totally separate cookies from one domain to the other. 
+In a properly designed site this should NEVER happen to a real buyer.
+To make sure your site is properly designed you need to make sure you are adding session id's to any URL link that you put in HTML that could transfer a buyer across a domain. 
+
+</div>
+</aside>
+
+
+</section>
+
+
+<section>
+<h3>Turning them ON</h3>
+Using HTML in your product descriptions is generally bad. 
+You should be using wiki text, but if you absolutely find it necessary then you should always include a %SESSION% in your urls when linking from one zoovy hosted domain to another. Example: http://www.mydomain.com/%SESSION%/category/some.thing
+
+<aside class="caution">
+<h6></h6>
+<div>
+If you neglect to include the session in your url links then you will have sporadic reports of people having their cart emptied while surfing your site. You may also
+have reports of people having random items show up in their cart, or previous versions of their cart reappear, or even different versions of their cart appear during checkout.
+(This all stems from the way that browsers secure cookies - it is NOT a zoovy issue so don't ask us to fix it - because we can't!)
+
+</div>
+</aside>
+
+
+
+
+Sessions are only inserted in the URL when absolutely necessary. 
+Attempting to turn off sessions will cause the Zoovy shopping cart to not operate properly. 
+</section>
+
+
+
+<section>
+<h3>Turning them off</h3>
+You cannot turn off sessions. 
+Sessions are only inserted in the URL when absolutely necessary. 
+Attempting to turn off sessions will cause the Zoovy shopping cart to not operate properly. 
+</section>
+
+
+</article>
+
+
+<article>
+<h2>Using Variables to populate Links</h2>
+
+<aside class="caution">
+<h6></h6>
+<div>
+Using wrapper or layout variables in product descriptions or other custom HTML that is NOT part of the layout or wrapper they were designed in - can lead to unpredictable results when changing wrappers/layouts. (Specifically variables are NOT guaranteed to be present in all wrappers/layouts) -- this is fine if you custom code everything yourself, but will probably break over time if you use any of the built-in Zoovy layouts. 
+
+</div>
+</aside>
+
+
+Each wrapper creates a series of variables that are used as part of the Zoovy rendering engine. For example a popular variable is the %HOME_URL% which will always link to the homepage of the current site.
+
+<aside class="caution">
+<h6></h6>
+<div>
+Variables should almost never be used in products, in fact HTML should almost never be used in products (use wiki text instead). If you use variables in products and then your data is syndicated to a marketplace - the variables WILL NOT RENDER, and your descriptions will look very bad. Use wikitext in all your product descriptions to prevent this!
+
+</div>
+</aside>
+
+
+<section>
+<h3>Variables and Specialty sites</h3>
+
+Using variables is the ONLY way to future proof your site. Even though you may not need the functionality today - it's entirely possible you'll need to implement something tomorrow that does. 
+
+We've already explained why creating custom links that do not contain session id's is bad and can lead to negative buyer shopping experiences. 
+But another negative experience is when a customer gets bumped from one specialty site to another without warning (by simply clicking on a link). By using variables rather than hard coding domains you can be sure that all your links keep the buyer on the same domain, regardless of what domain that is. 
+
+This can be confusing, so lets try an example: Lets say you have two specialty domains - one is "www.cheapstuffexpensiveshipping.com" and the other is "www.expensivestufffreeshipping.com" - obviously having the buyer move from one company to the other is a bad idea since they will see one of two things:
+<li> If the buyer added something to their cart, they'll see the wrong logo, and the pricing from the old site.
+<li> If the buyer did not add something to their site then they'll be rudely taken to a completely different specialty site with no way to get back to the original site. 
+
+</section>
+
+
+</article>
+
+<article>
+<h2>Add to Cart Buttons</h2>
+The "add to cart" buttons that can be created by the online product editor do not include session id's. They are not designed to be used on a Zoovy site. 
+
+<aside class="hint">
+<h6></h6>
+<div>
+The "add to cart" button is designed to be a drop in replacement for the paypal shopping cart, or other "soft cart" solutions such as Mal's e-commerce. This enables customers to more easily transition to Zoovy. It does not take into account cookie handling (neither of those carts work without cookies anyway) but should not be viewed as a long term solution on anybodies website.  
+
+</div>
+</aside>
+
+
+</article>
+
+
+<article>
+<h2>Getting Help</h2>
+Hey this stuff is complex - it's really hard for a lot of people to grok. 
+It requires you to understand how cookies work, and how the zoovy rendering engine manages to do what it does. 
+
+If you need help, setup time with a trainer (for simple stuff) or a graphic designer for more complex questions. 
+</article>
+

@@ -1,0 +1,60 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/syndication_log">
+<h1>Ebay Store Syndication Log</h1>
+
+
+
+
+
+
+<article>
+<h2>Overview</h2>
+This document will introduce the Ebay Store Syndication Log and a general overview on how to interpret it.
+</article>
+
+<article>
+<h2></h2>
+Basically for every attempted launch of a product you will usually see three lines of log that should be grouped together:
+<br>
+~~~~~~~~~~
+<br>
+WARN	Z60-2140-5	RESULT[5] Sorry, insufficient inventory QTY: 0 - RESERVE: 0 <= 0	Sun 22-Apr-2007 22:20 PDT<br>
+WARN	Z60-2140-5	Inventory mode [1] qty=0, res=0, loc= for merchant/Z60-2140-5	Sun 22-Apr-2007 22:20 PDT<br>
+WARN	Z60-2140-5	VER=2f / PRODTS=1177003654 / STORECAT=2713589 / EBAYCAT=15687	Sun 22-Apr-2007 22:20 PDT<br>
+~~~~~~~~~~
+<br>
+The first column will tell you the type of message.  The "WARN" flag are the ones that you should be concerned with, as these are entries that could be errors causing launch failure. A status of "WARN" will be color coded pink allowing you to easily pick them out.
+<br>
+The first line read top to bottom of a group is the one pertinent to most users.  It states either the detail of the error/warning, or that the item was created and the ebay number that was assigned. 
+<br>
+The second line lists the inventory values for the product at the time it attempted to launch.
+<br>
+Finally the third line in the group is generally more useful to support and development that the merchant.  It basically lists some launch data like product timestamp, launch engine version, and ebay categories.
+<br>
+You will also see a few system and information messages in the log (SYS and INFO) that again are mostly used for support to tell them if/when the profile was last manually pushed to syndication and if any changes were made to the syndication settings.
+</article>
+
+<article>
+<h2>Error Messages</h2>
+<aside class="hint">
+<h6></h6>
+<div>This section is a work in progress and will provide a more complete list as time goes by.
+</div>
+</aside>
+
+
+<li>RESULT[5] Sorry, insufficient inventory QTY: 0 - RESERVE: 0 <= 0
+<br>
+As indicated, this error is due to having insuffiecient inventory to launch.  It displays the quantity on hand minus the reserve quantity, which must be greater than or equal to zero.
+<br>
+
+</article>
+
+For more information, please see also:
+<a class="linkdoc" href="#?doc=50380">Doc 50380</a> 
+<br>
+<br>
+<br>
+
+
+

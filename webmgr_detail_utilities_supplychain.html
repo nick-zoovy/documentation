@@ -1,0 +1,145 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="webmgr/detail/utilities-supplychain">
+<h1>Supply Chain JEDI</h1>
+<article>
+<h2>JEDI Overview</h2>
+
+
+
+
+
+
+The supply chain integration currently allows you to easily add inventory and/or subscribe to direct product feeds from suppliers.  
+
+<aside class="caution">
+<h6></h6>
+<div>
+JEDI has been deprecated and is no longer available.
+
+</div>
+</aside>
+
+
+JEDI (Just Easy Data Interchange) is available when both a retailer and a supplier are Zoovy Stores.
+
+This document is designed as a guide for both the retailer (using the Supply Chain bundle) and the supplier (using the Wholesale Bundle) to learn how this is configured.
+
+
+More information about the entire Supply Chain Feature Set can be found:
+<a class="linkdoc" href="#?doc=50694">Doc 50694</a>
+
+More information about the entire Wholesale Feature Set can be found:
+<a class="linkdoc" href="#?doc=50512">Doc 50512</a>
+
+Products which are created using the Zoovy JEDI (Just Easy Data Integration) functionality are automatically setup to check real-time inventory from suppliers. Additionally any ship rate quotes will be automatically loaded from the suppliers store. Finally, paid orders that contain one or more items from a JEDI compliant supplier will appear in the Suppliers tab as awaiting approval. Once approved these orders are automatically transmitted to the JEDI compliant supplier.<br>
+<br>
+
+<b>JEDI vs Non-JEDI Generic Supply Chain</b><br><br>
+
+JEDI (Just Easy Data Interchange) Supply Chain is intended specifically for Zoovy to Zoovy supplier to retailer relationships. JEDI allows two Zoovy stores to transparently share inventory, rates, ordering, and tracking information. To use this functionality the supplier must have enabled your account for JEDI integration - the store name, store MID and email are provided when you login to their store.<br><br>
+
+A Generic supplier is any supplier that is not currently using the Zoovy platform.<br><br>
+
+<b>Add a New Supplier</b><br><br>
+
+To add a new supplier to your account, click on the Add New Supplier hyperlink. You will be prompted to enter a Supplier ID for identifying this supplier in our system and a default markup to configure a price.<br><br>
+
+You must then choose whether this is a JEDI or Generic Supplier and populate the appropriate fields. For Generic Suppliers, this information is purely for your records.<br><br>
+
+<b>JEDI Supply Chain Management as a Supplier</b><br><br>
+
+The lists that you publish will be available to your retailers.<br><br>
+
+The Product ID must be unique for every product from every supplier. That is to say, if two of your suppliers have the same Product ID this will create confusion in a retailers account. For suppliers, this means making an effort to ensure that the products in your accounts have PID's that are not likely to be duplicated by another supplier. Try to avoid using simplified PID's like "1", "2", "3", etc.<br><br>
+
+Further, changing the Product ID after you have established a Supply Chain is not recommended.<br><br>
+
+The Wholesale Customers that you have given some customer access will have access to the lists that you publish.<br><br>
+
+<b>JEDI Supply Chain Management as a Retailer</b><br><br>
+
+To add products from your supplier to your Zoovy account, login to your account on your suppliers website. You should see a link to add this Zoovy user as a supplier. Click the link and you will be logged into your Zoovy account under Supply Chain Management. The suppliers Zoovy store name, MID, and email address should be automatically populated. You can also add the supplier manually through the hyperlink in Utilities > Supply Chain Management.<br><br>
+
+Then when you log into your account on your suppliers website, you should see the lists that supplier has published with an adjacent link to add these products. By clicking on the link, those products will be added to your Zoovy database. Unlike other products in your database, you will not be able to edit inventory or shipping costs on these products. Inventory and shipping will be handled automatically through the Supply Chain feature.<br><br>
+
+<b>Using Generic Supply Chain</b><br><br>
+
+A Generic supplier is any supplier that is not currently using the Zoovy platform<br><br>
+
+<b>Inventory Updates:</b><br><br>
+
+Here you are mapping the file that your supplier generates to fields in your Zoovy account. Map the columns in the file so Zoovy can automatically pick them up. The first column is number 1, the second is number 2, so on. Set columns you do not want to use to zero.<br><br>
+
+SKU Column # - The Product ID for purposes of identifying this product in your database. Only lines which contain a valid SKU will be imported. All other lines will be ignored.<br>
+In-Stock Qty. Column # - This is the available inventory that your supplier has for sell. Inventory will be imported on a nightly basis.
+Fixed Shipping Column # - This is the flat rate shipping cost of the item.<br>
+Availability Column # - For some suppliers an item is not tracked by inventory but by whether an item is available or not. This field will be set to either "true" or "false", "0" or "1", "no" or "yes"<br>
+Cost Column # - The cost of the item that is used in the equation for determining your sell for price.<br><br>
+
+</article>
+
+
+<article>
+<h2>Avoiding Odd Behaviors</h2>
+<aside class="caution">
+<h6></h6>
+<div>Major changes made to the supplier's product database can adversely affect the retailer. It is best to coordinate major changes so that supply chain runs smoothly.
+</div>
+</aside>
+
+<section>
+<h3>Products appear blank on retailers site</h3>
+
+When a JEDI product is copied over it retains the product layout used by the supplier.
+Normally if the supplier is using one of the default Zoovy layouts then everything goes fine because that layout is available to both the supplier and retailer.
+
+If the supplier is using a custom layout AND using JEDI, they should also provide any custom layouts they have created to their retailers.
+
+<aside class="hint">
+<h6></h6>
+<div>
+Alternatively the retailer can go into their product editor - and select an alternate layout.
+
+</div>
+</aside>
+
+
+JEDI won't automatically the layout files since it's custom work that belongs to the supplier. 
+
+</section>
+
+</article>
+
+<article>
+<h2>Further information</h2>
+<a class="linkdoc" href="#?doc=50854">Doc 50854</a>
+</article>
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

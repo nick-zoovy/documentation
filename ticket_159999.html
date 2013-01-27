@@ -1,0 +1,54 @@
+<meta type="filename" id="ticket/159999">
+
+<h1>Issue #159999: Image changes not propagating</h1>
+
+<article>
+<h2>Issue #159999: Image changes not propagating</h2>
+
+I have updated as an image on my site.  
+How long will it take for this image to propagate across all of your servers?
+
+<br>
+
+To me these show as 2 different images:
+<aside class="html">
+<h6></h6>
+<code>
+http://static.zoovy.com/merchant/xxx/checkout.jpg
+https://static.zoovy.com/merchant/xxx/checkout.jpg
+
+</code>
+</aside>
+
+
+</article>
+
+<article>
+<h2>Resolution</h2>
+They show as the same to me. 
+
+You might try shift refreshing, or possibly changing the image name.  The caching servers shouldn't hold cache through a SHIFT -Refresh
+
+<br>
+
+<aside class="hint">
+<h6></h6>
+<div>
+Zoovy returns HTTP headers that state the images will *never* change, we do this for Search Engine Optimization reasons, and have no intention of changing it - so don't ask.
+
+</div>
+</aside>
+
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+YOU SHOULD ALWAYS RENAME YOUR IMAGES IF POSSIBLE!  Several larger (and smaller) ISP's now implement their own transparent caches which ignore and/or do not relay the flush request to Zoovy.
+
+</div>
+</aside>
+
+
+</article>
+

@@ -1,0 +1,108 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/known_ebay_issue">
+<h1>Known eBay Issues</h1>
+
+<article>
+<h2>Zoovy Instant Checkout Link</h2>
+We had some HTML Wizards, as well as three of our newer HTML Wizards (sirius, isotope and brandx) and some older custom layout had a hard coded text link for Zoovy Instant Checkout link that was not working correctly. <br>
+We've correct this and it should now list to ebay with a viable link (08/13/07).  Listings prior to this can be refreshed.  If you are using an older custom HTML Wizard layout, please notify Zoovy Technical Support.
+</article>
+
+
+<article>
+<h2>eBay Shipping Error</h2>
+
+
+We are dedicated to serving you to the best of our abilities. We regretfully have to inform you regarding an error in shipping rates being reported by eBay and given to Zoovy. 
+<aside class="html">
+<h6></h6>
+<code>
+
+</code>
+</aside>
+
+<section>
+<h3> - Actual Cost To Be Determined $0.00 Details</h3>
+After eBay updated their shipping API to be complaint to the USPS rating system Zoovy customers have been receiving shipping error "Actual Cost to Be Determined $0.00". This problem affects Zoovy customers who use USPS and/or UPS service in conjuction with eBay.
+This does not affect all transactions coming over from eBay, only a small percentage. This error only affects eBay listings that launched via a profile with "Use eBay Shipping Rates in Zoovy Checkout" enabled.
+<aside class="html">
+<h6></h6>
+<code>
+
+</code>
+</aside>
+
+The 1st thing to understand is that when "Use eBay Rates in Zoovy Checkout" is enabled eBay populates the shipping price along with the final listing price during the handshake that eBay gives Zoovy to notify us that the listing has ended and that we can create an incomplete order.
+<aside class="html">
+<h6></h6>
+<code>
+
+</code>
+</aside>
+
+Our eBay Developer at Zoovy captured the error that eBay is broadcasting. We opened up a support ticket with eBay. This is an eBay caused issue. As some of our long time customers know eBay does not always take ownership for their bugs that 3rd party companies such as Zoovy have to deal with. This time they have taken ownership for their bug. You can review the status on this bug here in eBay developers forum http://dev-forums.ebay.com/thread.jspa?threadID=600003137
+It may take some time for eBay to fix this error, they do not have a ETA.
+<aside class="html">
+<h6></h6>
+<code>
+
+</code>
+</aside>
+
+ In an effort to work around this issue Zoovy has made a modification to filter this shipping error. When our system captures an order with this specific error Zoovy will default to your website store shipping rates.
+<aside class="html">
+<h6></h6>
+<code>
+
+</code>
+</aside>
+
+  Please understand this is not a perfect solution to our problem. Your Zoovy store shipping rates will not be the same as eBay always, thus your customer may be charged a little more or little less. 
+<aside class="html">
+<h6></h6>
+<code>
+
+</code>
+</aside>
+
+ If this works around does not suite you please contact a Zoovy support technician to figure out a work around that will work for you.
+<aside class="html">
+<h6></h6>
+<code>
+
+</code>
+</aside>
+
+Best Regards,
+Zoovy Support
+<aside class="html">
+<h6></h6>
+<code>
+
+</code>
+</aside>
+
+</section>
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

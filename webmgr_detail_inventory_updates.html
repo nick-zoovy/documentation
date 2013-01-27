@@ -1,0 +1,94 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="webmgr/detail/inventory-updates">
+<h1>Inventory Updates</h1>
+<article>
+<h2>Create a Spreadsheet</h2>
+
+
+
+
+Using the CSV import utility in Setup/CSV Import Utility/Inventory makes it possible to update your inventory with a simple spreadsheet program such as Microsoft Excel.  The format for this file is simple.  In the first row of the first column place %SKU, in the second column first row, place %INVENTORY.
+On each subsequent row of the spreadsheet you will put the actual SKU or product ID and the actual inventory count.
+</article>
+<article>
+<h2>Import</h2>
+
+<li>To import your updated inventory, go to Setup -> CSV Import Utility and select Inventory.  If you are simply performing an update, do not select the options.
+<li>Next locate the CSV file you created by using the browse button.  
+<li>Hit the load from CSV file button.
+</article>
+
+<article>
+<h2>Incremental update through CSV</h2>
+
+You can now update your inventory incrementally in bulk through CSV.  The process is a lot like the standard import, with a few modifications to the final file.
+Incremental updating allows you to add or subtract numbers from your current standing inventory numbers.  For instance, if you have a product with 10 currently in stock, your CSV can add 3  to it, or subtract 3 depending on what you want done.  You can add and subtract for each line item in the CSV.
+<br>
+The necessary change to the actual file is to add the header "#INCREMENTAL=1" to line one, moving your standard headers %SKU,%INVENTORY to line 2. "=1" being on "=0" or leaving the header out all together is off (standard import).
+<br>
+Your CSV should look like this:
+<br>
+<table>
+	<tr>
+		<td valign='top' nowrap>#INCREMENTAL=1</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap>%SKU</td>
+		<td valign='top' nowrap>%INVENTORY</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap>PRODUCT1</td>
+		<td valign='top' nowrap>-3</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap>PRODUCT2</td>
+		<td valign='top' nowrap>+24</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap>PRODUCT3</td>
+		<td valign='top' nowrap>+5</td>
+	</tr>
+</table>
+<br>
+No particular options are necessary when importing this file.  Select Inventory import for CSV import utility, browse for your file and load.  The default option (user specified headers) should work fine.
+
+<aside class="caution">
+<h6></h6>
+<div>
+This import WILL modify all SKUs listed.  If a value does not specify + or -, it will default to a + and add the given number to your inventory.  Only list the SKUs you want to effect.
+
+</div>
+</aside>
+
+
+</article>
+<article>
+<h2>Options</h2>
+
+There are two options available for the CSV Inventory import:
+<li>Enable inventory for each SKU imported<br>
+This should only be done on a first time import.  As it sounds, it will enable inventory tracking for each product that is imported.  If the product does not exist, it will create a blank product and enable inventory.  Specifically this will go through and set the zoovy:inv_enable field on each product to 1. If the product has a dash in the SKU, it will set the item to 2.  NOTE: product options are identified with dashes.
+<li>Strip Dashes from SKU field<br>
+  This is a handy feature if you receive inventory lists from drop shippers who 
+  use dashes in their SKU's. Just name your product ID's to be the same as the 
+  SKU's, but substitute underscores _ for the dashes -. Create one product for 
+  each item, then when you import simply check the box and the SKU will be translated 
+  from ABC-123 to ABC_123. This can greatly simplify your ordering process if 
+  your SKU's match that of your drop shipper. 
+</article>
+<article>
+<h2>Product Manager Inventory</h2>
+
+  The Zoovy Product Manager will incrementally update your inventory unless you 
+  check absolute inventory to change what the number on the website is. It is 
+  important to realize that Product Manager is incremental because it works offline. 
+  For example, if you synchronize product manager, it says the inventory of product 
+  X is 10. Then you sell 3 items to the business next door without creating a 
+  Zoovy order. So you go into Product Manager and adjust the quantity to 7. This 
+  will subtract 3 from the quantity on the website. This keeps you from unknowingly 
+  changing the quantity to a wrong number because orders have been placed for 
+  the item. When your numbers don't match and you sync, Product Manager will give 
+  you a notice. 
+  </article>
+
+

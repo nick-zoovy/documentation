@@ -1,0 +1,56 @@
+<meta type="filename" id="info/payflow">
+<h1>Verisign/Paypal Payflow Pro</h1>
+
+<article>
+<h2>Concept Overview</h2>
+
+Zoovy supports the Paypal Payflow Pro gateway (formerly Verisign Payflow Pro). Zoovy does not support Payflow Link. 
+
+<br>
+<aside class="hint">
+<h6></h6>
+<div>
+The management interface is located at https://manager.paypal.com
+</div>
+</aside>
+
+
+<section>
+<h3>Configuration</h3>
+4 Pieces of information are required:
+
+Username & Password is the username and password you use to login to the management interface. 
+
+<br>
+
+Partner: This is typically either "verisign" or "wfb" (Wells Fargo Bank)
+<br>
+
+Vendor: Vendor is generally set to the same as the Username field. 
+
+</section>
+
+<section>
+<h3>IP Address Security</h3>
+Paypal Payflow Pro allows restricting of requests to allowed IP addresses.
+The IP addresses that Zoovy utilizes for outbound requests are:
+
+<aside class="html">
+<h6></h6>
+<code>
+208.74.184.51
+66.240.244.211
+[[/HTML]
+
+<aside class="caution">
+<h6></h6>
+<div>
+These IP addresses may change in the future - without notice.
+
+</div>
+</aside>
+
+
+</section>
+
+</article>

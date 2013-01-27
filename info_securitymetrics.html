@@ -1,0 +1,92 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/securitymetrics">
+<h1>Security Metrics PCI Scan</h1>
+
+
+
+
+<article>
+<h2>Concept Overview</h2>
+
+SecurityMetrics is a PCI/DSS compliance scan vendor who is heavily promoted by a variety of merchant banks.
+
+</article>
+
+<article>
+<h2>Compatibility</h2>
+
+Unfortunately Zoovy does not work with security metrics. SecurityMetrics is not aware of the specific counter measures that we have installed. 
+
+</article>
+
+<article>
+<h2>Why doesn't Zoovy have a relationship with SecurityMetrics</h2>
+
+In the past every attempt to outreach to them lead to a major communication breakdown.  We take offense when somebody says our system is insecure, especially without proof.  Their position was that any connection of SSLv1 was insecure, and our position was that SSLv1 connections should be "allowed" but not be able to transmit any secure data. 
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+The whole debate was somewhat ludicrous. Here's the theoretical problem: when you consider that a customer who's neighbors, sisters, kid (aka "the computer guy") incorrectly configures their browser to only allow SSLv1 connections. 
+Zoovy's position is the customer SHOULD be able to finish checkout (but not pay by credit card).  SecurityMetrics thinks the browser should return some sort of "SSL translation" error, or 'connection refused' message (varies by implementation).
+Given the difficulty of troubleshooting - we still think we clearly have the higher moral ground.  We explained this position to HackerSafe and McAfee and they have verified it works as we stated, and so no issue. 
+
+</div>
+</aside>
+
+
+<br>
+
+When we pointed out the mistake - they refused to admit their scanner was incorrect. The matter was eventually escalated directly to Visa (by SecurityMetrics) in an attempt to get Zoovy "shut down" because they would not admit their mistake and we would not "break" our software so it would pass their scan. Needless to say, we're still here, and we're never going to be working with them.
+
+<br>
+
+<aside class="caution">
+<h6></h6>
+<div>
+Specifically SecurityMetrics (last check) still reports that Zoovy allowsSSLv1 and SSLv2 connections as a failure.  However they fail to realize Zoovy doesn't allow SSLv1 users to pay by credit card (check, paypal only).  SecurityMetrics refuses to modify their scanner even though we are completely secure!
+
+<a class="linkdoc" href="#?doc=50876">Doc 50876</a>
+
+</div>
+</aside>
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+Please consider changing merchant banks if they insist you use securitymetrics. Technically your merchant bank is prohibited by PCI/DSS regulations from preferring one provider over another.
+
+</div>
+</aside>
+
+
+</article>
+
+<article>
+<h2>Alternatives</h2>
+Zoovy works closely with McAfee (who both offers discounted PCI scans to Zoovy clients) to mitigate the list of false positives that can result on those scans.  We also have special rules set aside for them to conduct their scans -- so that our IDS system does not shut them down since they impersonate hackers and generate substantial server load during their scans. Bottom line: Please do not use the securitymetrics with a Zoovy website. 
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

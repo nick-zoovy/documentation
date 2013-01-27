@@ -1,0 +1,81 @@
+<meta type="filename" id="webmgr/detail/import">
+<h1>Import Overview</h1>
+<article>
+<h2>Overview</h2>
+
+Zoovy can perform CSV Imports of Products, Categories, and more.
+Review the help file for the type of import you want to do.
+
+</article>
+<article>
+<h2>Avoiding Errors - removing CR/LFs</h2>
+
+The "Carriage Return" and "Line Feed" (CR and LF) are the characters which get
+put in when you hit "Enter" on your keyboard. If you are generating your own CSV file, 
+use whatever editor you're using to make the CSV file to remove CR and LF characters from the columns.
+
+<br>
+
+
+Unfortunately, Excel and Access are completely capable of adding the CR and LF characters into
+files, but lacks the ability to easily search and replace those specific character codes.	
+The message that pops up and says "There are features of excel that are incompatible with the format you are saving in" comes up for a reason, and that
+reason is it is excel (and access) support CR/LF in files, and CSV does not. 
+CSV is a standard format that we can import from, and Excel is a proprietary
+closed format that Microsoft does not make the specs publically available for.
+
+<br>
+
+
+Actually we found a possible solution for you but we can't make any
+guarantees...  this page http://www.j-walk.com/ss/excel/eee/eee009.txt has a
+VBA script which may help.  Press Alt-F11 in Excel with the CSV file loaded and
+then paste everything between the two sets of three dashes into the window:
+
+<aside class="html">
+<h6></h6>
+<code>
+
+Sub CleanUp()
+Dim TheCell As Range
+For Each TheCell In ActiveSheet.UsedRange
+    With TheCell
+    If .HasFormula = False Then
+	.Value = Application.WorksheetFunction.Clean(.Value)
+    End If
+    End With
+Next TheCell
+End Sub
+
+</code>
+</aside>
+
+
+
+Then press the "play" button on the
+toolbar, and hit the "run" button when the screen to play the macro pops up. 
+The program will go through and clean up tabs and CR/LFs from the file.
+<p>
+
+You can also use the SUBSTITUE function in Excel to clear carriage returns and line feeds. For those of you familiar with Excel functions
+you simply replace ##COL## in the formulas below with column that has the original text.  These two function have to be run independently.<p>
+=SUBSTITUTE(##COL##,CHAR(10),"")   --linefeed<br>
+=SUBSTITUTE(##COL##,CHAR(13),"")   --carraige return<p>
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+This is how it worked for us in Excel 2000, you may have a different version. 
+The program above is provided with no warranty, and is NOT SUPPORTED by Zoovy. 
+ALWAYS MAKE A BACKUP FIRST.
+
+</div>
+</aside>
+
+
+
+</article>
+
+
+

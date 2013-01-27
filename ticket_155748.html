@@ -1,0 +1,98 @@
+<meta type="filename" id="ticket/155748">
+
+<h1>Issue #155748: Reports of search not working properly</h1>
+
+<article>
+<h2>Issue #155748: Reports of search not working properly</h2>
+
+Have had a couple of calls. - customers say the search runs and runs then redraws the front page without any search results.  One user was in North Carolina using firefox.  I cannot create here but user said any and all search terms did this.  Gloves, tape, hats etc.
+
+</article>
+
+<article>
+<h2>Clarification: AJAX + Evolution</h2>
+
+The search box evolution gives you never comes up.
+The 'recent searches' portion doesn't update either.
+
+</article>
+
+<article>
+<h2>Resolution</h2>
+
+If your customers have Javascript disabled (Firefox: Tools: Options: Content: Enable Javascript), the evolution search does not work as intended.
+
+Our developer is going to change the wrapper so it messages your customers to this affect.
+</article>
+
+
+<article>
+<h2>Resolution</h2>
+
+Evolution and our other ajax themes rely heavily on javascript.  When I built them, I did not design them in such a way as to be backward compatible with non-js browsers.  I will, going forward, try to build our ajax applications to be more graceful when handling issues like this.
+
+<br>
+
+As a solution for evolution, I have added a piece of text that warns users that the site is javascript heavy.  You can customize the text through the wrapper editor (site builder - edit theme) to read as you would prefer.
+
+<br>
+
+You can create a new profile with a subdomain that uses a non-ajax theme and link to that (using wiki) in the noscript tag so that your customers can have a good shopping experience.
+
+</article>
+
+<article>
+<h2>Resolution</h2>
+But this person that send the video has used our search for over a year and this started happening Friday evening???  She updates her java regularly.
+</article>
+
+<article>
+<h2>Resolution</h2>
+
+Okay well then we must have misdiagnosed the issue (that's what would have happened if js was disabled).
+
+I have tested this on IE and Firefox on a pc.
+I have tested this on Safari and Firefox on a mac.  
+
+In all cases, it worked fine for us. I replicated her actions as closely as I could and could not duplicate the issue.  While I can clearly see it IS happening, I can't duplicate the issue to troubleshoot WHY it is happening.
+
+</article>
+
+<article>
+<h2>Resolution</h2>
+We are getting more reports of this.  You type in a search item.  Hit the magifying glass and rather than getting search results, the home page redraws.
+
+<br>
+
+I never see this URL on other computers with our searching.  Javascript is enabled on this computer in particular.  Can't speak for sure about our customers.  
+
+<br>
+
+Any advice is appreciated.  This is a customer service computer and she needs to be able to search our own website.  Could McAfee have changed something to make this happen?  We did run full scans yesterday... but they run weekly anyway??
+
+</article>
+
+<article>
+<h2>Resolution</h2>
+I have managed to fix the computer in house so you can close this ticket.  Thanks.
+</article>
+
+<article>
+<h2>Resolution</h2>
+Just curious - for our knowledgebase - what resolved this?
+
+</article>
+
+<article>
+<h2>Resolution</h2>
+For us it was an advanced Javascript setting.  The user never touched it to our knowledge - as no one, except me, knows what or where these are.  But it appeared to be the "Move or Resize windows" setting was off in Firefox.  How or why that happened overnight while the computer was off, we have no clue.  Unless updating McAfee and running full scans did it.  
+
+As far as our customers, we never know for sure.  We tell them to enable Java and they go 'huh?'  
+</article>
+
+<article>
+<h2>Resolution</h2>
+McAfee *might* have done it -- but it's unlikely. 
+
+</article>
+

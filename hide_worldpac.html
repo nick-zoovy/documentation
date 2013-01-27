@@ -1,0 +1,254 @@
+<meta type="filename" id="hide/worldpac">
+<h1>Worldpac Guide - DEPRECATED</h1>
+
+<article>
+<h2>Overview</h2>
+
+The Worldpac functionality is no longer offered by Zoovy, all sites which integrated this technology have long since gone out of business and created virtually zero sales during their tenure. Despite the best of intentions we have found that Worldpac customers have experienced a much lower than anticipated level of success with the Worldpac platform. We will consider future Worldpac integrations on a case by case basis, although it is very likely we will not integrate this into future sites. 
+
+<br>
+Although there are many reason for this, we believe these outline the primary reasons for this decision:
+<li> Too much competition, Worldpac pricing not competitive.
+<li> Zoovy site wrapper and layouts must be "crippled" to be Worldpac compatible, this inevitably hurts sales of non-Worldpac products. 
+<li> Worldpac is not compatible with the built-in cross selling, search, or product option features of Zoovy, and further requires that they must all be disabled and/or not used. Worldpac does not provide it's own equivalent. 
+<li> Many Zoovy features such as Amazon, eBay, Googlebase, Google sitemaps, etc. are not compatible with Worldpac because of the way Worldpac require integration.
+<li> Zoovy hosted products do not appear in the worldpac catalog.
+<li> The worldpac database has millions of SKU's, but those SKU's are not visible by Zoovy, it is not possible to import the Worldpac database (they don't even offer it).
+<li> It is very difficult (expensive) to program the worldpac JSP (java server pages) to integrate with the Zoovy platform. Keep those changes up to date is very hard, and debugging is tedious and very difficult to accurately predict the hours required.  Customers do not want to give an "open" budget, but it is not possible to provide a reliable fixed price budget due to unforseen circumstances which seem to arise in each configuration. 
+
+<li> Zoovy is developing it's own catalog application which does not have these limitations which we may selectively release in the future. Some vertical industries are already supported, please consult the Zoovy sales team. 
+
+</article>
+
+<article>
+<h2>About Worldpac</h2>
+
+WORLDPAC imports, distributes and delivers automotive original equipment quality replacement parts for the import repair specialty market. 
+They offer the import specialist 'one source' for over 20 import car makes with 60,000+ specific parts and over one million unique 
+catalog applications. The Worldpac database lookup can be integrated with a Zoovy site in a very "loose" way. 
+You can learn more at <a target="_blank" href="http://www.worldpac.com">http://www.worldpac.com</a>.
+
+</article>
+<article>
+<h2>Configuration and Installation</h2>
+
+The prerequisite to getting going is a username and password which must be assigned by WorldPac. You typically have to pay some sort of 
+membership fee (around $1,000). The installation steps are pretty simple:<br>
+
+<li> You must build or select a Zoovy wrapper.
+<li> You go into developer and click "enable soft cart" - and input "ANY" into the Allowed Referrers list.
+<li> You must install the Zoovy wrapper into the worldpac site via FTP.
+<li> You customize the worldpac site so submits products to the Zoovy cart.
+<li> You must create categories for each brand you want to carry 
+<li> You then paste HTML into the each category which links to the worldpac site.
+<li> Thats it, you're done.
+
+</article>
+<article>
+<h2>Setting up the Worldpac end</h2>
+
+<section>
+<h3>A sample welcome letter</h3>
+
+I am pleased to inform you that your WebParts account is ready for use.
+Your catalog is accessible to the public at:
+<br>
+http://catalog.eautopartscatalog.com/USERNAME<br>
+<br>
+
+You and your technical staff can maintain your .jsp catalog pages by
+accessing catalog.worldpac.com via active FTP, using the following FTP
+account:
+
+<!--
+user=twentyfour7
+password=0496mFKW
+-->
+
+Your Worldpac WebParts drop-ship account is #xxxxx.  
+The password for this account is xxxxxx.  
+You may log into speedDIAL using this account and password to view your cost under the WebParts program.  
+This is also  the account and password that you must provide to the fulfillment API to electronically create drop-ship orders.  
+You must not change this password without informing me: your web catalog and fulfillment services will become unusable should you do so.<br>
+<br>
+You can access your invoices for drop-shipments using speedDIAL.  <br>
+We also offer a specialized invoice search for the use of our WebParts partners, at http://catalog.worldpac.com/accounts/drop-ship.jsp <br>
+<br>
+Please make sure that you have reviewed the WebParts documentation at http://catalog.worldpac.com/webparts-overview.html.   
+Most of the items marked "Provide to Worldpac" in red you are now expected to implement yourself by modifying your catalog pages via FTP.  
+You may send your packing slip logo to me if you have not done so already.<br>
+<br>
+</article>
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+catalog.worldpac.com requires passive FTP.
+
+</div>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Setting up the Categories</h2>
+
+In each category you must paste the HTML block into each category. 
+Before you paste the block you must change the USERNAME to be whatever the worldpac assigned username is, and the
+make= to correct manufacturer codes for each vendor. (note the block below contains AC or "Acura")<br>
+<br>
+List vendor codes:<br>
+<table>
+<tr>
+	<td>CODE</td>
+	<td>MANUFACTURER</td>
+	<td>THUMBNAIL IMAGE</td>
+</tr>
+<tr>
+	<td>AC</td>
+	<td>Acura</td>
+	<td>http://webdoc.zoovy.com/developer/images/ac.jpg</td>
+</tr>
+<tr>
+	<td>HO</td>
+	<td>Honda</td>
+	<td>http://webdoc.zoovy.com/developer/images/ho.jpg</td>
+</tr>
+<tr>
+	<td>MO</td>
+	<td>Mazda</td>
+	<td>http://webdoc.zoovy.com/developer/images/mo.jpg</td>
+</tr>
+<tr>
+	<td>NI</td>
+	<td>Nissan</td>
+	<td>http://webdoc.zoovy.com/developer/images/ni.jpg</td>
+</tr>
+<tr>
+	<td>SU</td>
+	<td>Subaru</td>
+	<td>http://webdoc.zoovy.com/developer/images/su.jpg</td>
+</tr>
+<tr>
+	<td>TO</td>
+	<td>Toyota</td>
+	<td>http://webdoc.zoovy.com/developer/images/to.jpg</td>
+</tr>
+<tr>
+	<td>VW</td>
+	<td>Volkswagen</td>
+	<td>http://webdoc.zoovy.com/developer/images/vw.jpg</td>
+</tr>
+</table>
+
+
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;font color="#000000" face="Arial, Helvetica" size="2"&gt;&lt;b&gt;Please choose a Year:&lt;/b&gt;&lt;br&gt;
+&lt;SCRIPT&gt;
+&lt;!--
+
+var wpWindow;
+if (document.all || document.layers) { 
+	var w = screen.availWidth;
+	var h = screen.availHeight;
+	var popW = 580; popH = 400;
+	var leftPos = ((w-popW)/3)*2;
+	var topPos = ((h-popH)/3)*2;
+	}
+
+
+function openWindow(query) {
+	wpWindow = window.open('http://catalog.eautopartscatalog.com/USERNAME/'+query,'wpWindow','width='+popW+',height='+popH+',top='+topPos+',scrollbars=1,left='+leftPos); 
+	wpWindow.focus(); 
+	}
+if (top.location != location) { top.location.href=document.location.href; }
+//--&gt;
+&lt;/SCRIPT&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=2003&make=AC');"&gt;2003&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=2002&make=AC');"&gt;2002&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=2001&make=AC');"&gt;2001&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=2000&make=AC');"&gt;2000&lt;/a&gt;
+&lt;br&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1999&make=AC');"&gt;1999&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1998&make=AC');"&gt;1998&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1997&make=AC');"&gt;1997&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1996&make=AC');"&gt;1996&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1995&make=AC');"&gt;1995&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1994&make=AC');"&gt;1994&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1993&make=AC');"&gt;1993&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1992&make=AC');"&gt;1992&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1991&make=AC');"&gt;1991&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1990&make=AC');"&gt;1990&lt;/a&gt;
+&lt;br&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1989&make=AC');"&gt;1989&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1988&make=AC');"&gt;1988&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1987&make=AC');"&gt;1987&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1986&make=AC');"&gt;1986&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1985&make=AC');"&gt;1985&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1984&make=AC');"&gt;1984&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1983&make=AC');"&gt;1983&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1982&make=AC');"&gt;1982&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1981&make=AC');"&gt;1981&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1980&make=AC');"&gt;1980&lt;/a&gt;
+&lt;br&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1979&make=AC');"&gt;1979&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1978&make=AC');"&gt;1978&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1977&make=AC');"&gt;1977&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1976&make=AC');"&gt;1976&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1975&make=AC');"&gt;1975&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1974&make=AC');"&gt;1974&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1973&make=AC');"&gt;1973&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1972&make=AC');"&gt;1972&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1971&make=AC');"&gt;1971&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1970&make=AC');"&gt;1970&lt;/a&gt;
+&lt;br&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1969&make=AC');"&gt;1969&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1968&make=AC');"&gt;1968&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1967&make=AC');"&gt;1967&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1966&make=AC');"&gt;1966&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1965&make=AC');"&gt;1965&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1964&make=AC');"&gt;1964&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1963&make=AC');"&gt;1963&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1962&make=AC');"&gt;1962&lt;/a&gt;
+&lt;a href="javascript:openWindow('model.jsp?partner=USERNAME&year=1961&make=AC');"&gt;1961&lt;/a&gt;
+&lt;/font&gt;
+
+</code>
+</aside>
+
+
+
+
+</article>
+<article>
+<h2>Bugs and Caveats</h2>
+
+
+<li> Worldpac requires a popup, and does not work on browsers which block popups.
+<li> Worldpac parts are *NOT* Zoovy products, they are hosted by Worldpac. They cannot be put into product lists, intelligently upsold,
+launched to eBay, or anything like that - they are simply there for cross selling.
+<li> Zoovy does not support automatic ordering. 
+If you receive orders for worldpac, you can order them via the phone, fax or via their SpeedDial application.
+
+</article>
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+This integration is not part of the standard Zoovy offering.  
+A minimum budget / spending commitment of $15,000 in custom development is necessary to begin discussions. All developer time spent during the planning phase is considered billable (sorry - no free quotes). 
+
+</div>
+</aside>
+
+
+
+
+ 

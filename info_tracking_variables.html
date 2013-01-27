@@ -1,0 +1,104 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/tracking_variables">
+<h1>Analytics/ROI Javascript Developer Reference</h1>
+
+<article>
+<h2>Concept Overview</h2>
+
+
+
+
+This document outlines many of the variables you can access for integration with various analytics packages.
+</article>
+
+
+<article>
+<h2>Macros</h2>
+
+In our general theme of making "the easy things easy, and the hard things possible" the following is a list of built-in macros, along with their associated SPECL code.  You can simply put a MACRO into any message and it will be translated into a message/document.
+
+<br>
+
+
+<MODULE></MODULE>
+
+<aside class="hint">
+<h6></h6>
+<div>
+It is better to use the MACRO whenever possible, since internal system variables may change without notice.  MACRO's above are designed to work with the CART, not orders (so they won't necessarily work at the end of checkout)
+
+</div>
+</aside>
+
+
+</article>
+
+<article>
+<h2>Outputting variables using SPECL</h2>
+
+The following shows an example snippet of SPECL which would output the currently selected shipping method:
+
+<aside class="html">
+<h6></h6>
+<code>
+<% loadurp("CART::ship.selected_method"); default(""); print(); %>
+
+</code>
+</aside>
+
+
+
+</article>
+
+<article>
+<h2>Looping through products</h2>
+<aside class="html">
+<h6></h6>
+<code>
+<%
+
+loadurp("CART::chkout.order_id");
+set($order_number=>$_);
+loadurp("CART::data.order_total");
+set($order_total=>$_);
+
+pull(stack=>>$stack,format=>"src",src=>"CART::STUFF");
+
+goto(ifempty=>$stack,label=>"END");
+:LOOPSTART();
+pop(stack=>>$stack,namespace=>"item");
+print($item.qty);
+print($item.stid);
+print($item.price);
+print($order_number);
+print($order_total);
+goto(ifmore=>$stack,label=>"LOOPSTART");
+:END();
+
+%>
+
+</code>
+</aside>
+
+</article>
+
+
+<article>
+<h2>Examples</h2>
+
+<table>
+<tr>
+ <td>CART::data.order_total</td>
+ <td>Order Total</td>
+</tr>
+<tr>
+ <td>CART::chkout.order_id</td>
+ <td>Order Number</td>
+</tr>
+<tr>
+ <td>CART::ship.selected_method</td>
+ <td>Outputs the text of the currently selected shipping method e.g. UPS Ground</td>
+</tr>
+</table>
+
+</article>

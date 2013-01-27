@@ -1,0 +1,48 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/zoovy_html">
+<h1>Product attribute "zoovy:html"</h1>
+
+<article>
+<h2>Concept Overview</h2>
+Product attribute "zoovy:html" is a legacy attribute that can cause unwanted display behaviors when launching eBay listings. This will only effect customers who were using the attribute prior to implementation of HTML Wizards and profiles for eBay listings.
+</article>
+
+<article>
+<h2>Concept Detail</h2>
+When a listing is sent to ebay, zoovy currently uses the HTML Wizard that is configured to the profile the product is using to determine what the layout will be for the listing.  Prior to having HTML Wizards and profiles, we used an attribute called "zoovy:html" that would set the layout display behavior.  As we have customers who have not yet switched over to the new HTML Wizard/profile configuration, we have not yet eliminated the use of the attribute fully.<br>
+
+<section>
+<h3>How to tell if zoovy:html is set for a product</h3>
+Issue comes into play on those customers who used to use zoovy:html to configure their listing display, but have now setup a profile, and selected a HTML Wizard to go with that profile, and expect to see the wizard they selected appear on eBay when the listing is launched.<br>
+Symptomatically this breaks down to seeing the correct layout (based on the HTML Wizard selected) in the "Launch Preview" area, but when the product gets to eBay, the layout is different from that of the preview.  What is happening is the preview mechanism draws from the HTML Wizard layout, while the launch mechanism still checks for a zoovy:html attribute and will use that first if available.<br>
+To ensure that zoovy:html is at cause, select the product in Product Editor, scroll to bottom of the page and click the "Debug" button to bring up the attributes for the product.  If there is a "zoovy:html" attribute listed, it is likely to be the cause of the  undesirable display behavior.
+</section>
+
+<section>
+<h3>How to correct a zoovy:html display issue</h3>
+To correct the above issue, you need to remove the zoovy:html attribute for the product using the Product Power Tool.  To learn more about using the tool, see: <a class="linkdoc" href="#?doc=50287">Doc 50287</a>.
+You need to delete the attribute from the product that you want to change.  This will allow the profile to determine the HTML Wizard and subsequent layout of the listing. 
+<aside class="caution">
+<h6></h6>
+<div> EXPERIMENTAL WARNING: the product Power Tool allows you to make a lot of changes all at once. Just like any Power Tool, it should be used responsibly, and only be experienced folks with proper training. If you'd like to learn more about using the tool, please schedule time with one of our training staff.
+</div>
+</aside>
+
+</section>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

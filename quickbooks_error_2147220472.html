@@ -1,0 +1,121 @@
+<meta type="filename" id="Quickbooks Error 2147220472">
+<h1>Quickbooks Error 2147220472</h1>
+
+<article>
+<h2>Issue</h2>
+When trying to export an order to Quickbooks, I get an error:<br>
+<b>"Could not start Quickbooks,--2147220472"</b>
+</article>
+<aside class="caution">
+<h6>Please note</h6>
+<div>
+This is not a Zoovy error.  This is an error Intuit recently explained as an issue with recent Windows updates.  This error has been seen to effect both XP and Vista Systems, and is now know to be an issue with .NET framework.  Zoovy can attempt to troubleshoot this issue for you, but the service is billable as NZPS (Non-Zoovy Problem Solving).  For information regarding billing rates for this issue, please refer to this webdoc:
+<a class="linkdoc" href="#?doc=50551">Doc 50551</a>
+<br>
+The instructions below are a suggested method of correction have not not be proven to work on all systems.  It is recommended that you contact Intuit support in regards to this issue and reference the error code provided.
+<br>
+Intuit Phone Support: 1-800-428-3170
+
+</div>
+</aside>
+
+<article>
+<h2>Before you Proceed</h2>
+This Correction process has potential for causing issues with other programs, or possibly your operating system if not performed correctly. Please read the process first, and should you not feel comfortable, contact our Tech support line and a representative can assist you.
+</article>
+<article>
+<h2>Uninstall</h2>
+In this process, you are going to uninstall all related files.
+<aside class="hint">
+<h6></h6>
+<div>
+<li>Windows XP users will click on Start, Control Panel, Add/ Remove programs.  
+<li>Windows Vista users Click Start, Computer, Add/Remove Programs.  
+
+</div>
+</aside>
+
+-Please remove the following:
+<br>
+<li>All versions of Zoovy Integrated Desktop, Zoovy Order Manager, Zoovy Warehouse manager
+<li>Quickbooks
+<li>Quickbooks Patches (QBXMLRP2, QBFC4_0)
+<li>Microsoft .NET Framework (All Versions)
+<br>
+<section>
+<h3>Further Deletion</h3>
+Depending on the size of your Database, you may choose to either Delete the remaining Zoovy folders, or relocate your Database Folder to save initial Sync time.  If your Syncing time has seen an hour plus, I strongly suggest relocating, or you may also choose to do this during company down time. PLEASE READ THIS ENTIRE SECTION ONCE BEFORE FOLLOWING.
+<br>
+-XP users go to C:\Program Files\ and delete the Zoovy Folder
+<br>
+<b>XP Database Relocating</b>
+Go to C:\Program Files\Zoovy\Desktop\ And move the folder titled your company Name to your desktop.  Delete the rest of the Zoovy folder.
+<br>
+-Vista Users Go to C:\Program Files\ and delete the Zoovy Folder
+<br>
+<b>Vista Database Relocating</b>
+If you have your UAC ON, Zoovy will actually install in 2 different places. The Program Files, as posted above, and a virtual drive created by Windows.  If off, your company database file will simply be in C:\Program Files\Zoovy\Desktop\. 
+<aside class="caution">
+<h6></h6>
+<div>
+Windows Vista users must have the UAC turned ON and left on in order to prevent issues with the integration.
+
+</div>
+</aside>
+
+The virtual drive Zoovy database location is as follows:<br>
+C:\Users\(User Name)\Appdata\local\virtual store\program files\Zoovy\desktop\(Account name)
+<aside class="hint">
+<h6></h6>
+<div>
+If you do not see the Appdata folder, you have hidden folders enabled.  In a folder window, click on Organize, Folders and search options, View, and Toggle to make hidden folders visible
+
+</div>
+</aside>
+
+Create a new folder on the desktop and Call it "Z1"(or something distinguishing).  Relocate the company folder from the virtual directory to this new folder.  Delete the rest of the Zoovy Folder, as well as the one in the standard Program files directory.
+</section>
+<section>
+<h3>.NET Further Deletion</h3>
+Follow this link to download the <a href="http://cid-27e6a35d1a492af7.skydrive.live.com/self.aspx/Blog_Tools/dotnetfx_cleanup_tool.zip?sa=69362661">.NET clean up tool</a><br>
+
+<br>
+Install the Tool and run.  You are going to REMOVE ALL VERSIONS of .NET from your system.  The program will tell you when it is complete.  Close when done, Restart your computer.
+</article>
+<aside class="caution">
+<h6></h6>
+<div>
+Please note your system activities during the restart.  Keep watch for any unusual events or errors.  If any occur, please note in detail the issue and contact us.
+
+</div>
+</aside>
+
+<article>
+<h2>Reinstall</h2>
+Please follow the links in the Downloads section of your Zoovy Account for the latest release of Microsoft .NET Framework and ZID to your desktop.
+<br>
+<section>
+<h3>Installation process</h3>
+<aside class="caution">
+<h6></h6>
+<div>
+<b>Vista Users</b> Please be sure you have the UAC (User Access Control) Enabled.  Check this by going into your control panel, clicking on User accounts, and you will see the toggle link for the UAC.
+
+</div>
+</aside>
+
+Aside from the agreement, .NET Should install straight forward.  It should not require a reboot.
+<br>
+Install ZID next.  Once the installation is complete, you will be prompted to set up SOHO.
+Click the SOHO tab, and log in here using your Zoovy login information.  Once complete, it will leave you at the login screen. DO NOT LOGIN YET. Click on the Admin tab, and log in here using your Zoovy login information as well.  
+<br>
+<b>If you deleted your initial Database Folders</b> You should simply be able to login to ZID and sync.  Be sure you do a company sync, and enable your email as you may have done in your previous install.
+<br>
+<b>If you saved your initial Database folders</b> Please close ZID, and move your company file from the "Z1" folder back into the same virtual directory as before, overwriting any folder created under the same name.  Logging into Zoovy, you should see your orders if done correctly.
+<br>
+Once this is confirmed to work right, you should be fine to install Quickbooks.
+Assuming you have had training in the integration of Quickbooks, after the install, you should be able to map Zoovy to your QB company file and configure Quickbooks to allow the integration.  If you need assistance with this, please set up an implementation meeting.
+<br>
+Try to export an order to Quickbooks, the error should be corrected now.
+</section>
+</article>

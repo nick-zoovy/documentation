@@ -1,0 +1,91 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/bulk_image">
+<h1>Bulk Image Upload</h1>
+
+<article>
+<h2>Bulk Image Upload Methods</h2>
+
+
+
+
+
+
+
+There are several ways to upload images in mass. The best method depends on the information that you have available.<br>
+<section>
+<h3>Zoovy Warehouse Manager</h3>
+Zoovy Warehouse Manager, part of the Zoovy Integrated Desktop, allows you to do bulk image uploads. 
+
+<aside class="cbc">
+<h6>Bulk Upload with ZWM</h6>
+<div>
+<li> Log in to Zoovy Warehouse Manager.
+<li> Click on the Images tab.
+<li> Select (or create) a folder into which you would like to load images.
+<li> Right-click and select Insert Image.
+<li> Browse to an image you would like to upload.
+<li> Use the SHIFT key on your keyboard to select a range of images. Use the CTRL key to "cherry-pick" the images you want to upload.
+<li> Click the OPEN button to have the images appear in the proper folder in ZWM.
+<li> Sync Warehouse Manager to have these images uploaded to your Media Library.
+
+</div>
+</aside>
+
+</section>
+<section>
+<h3>Zip File</h3>
+You can zip a file containing several images and upload that zip file to your media library. The images will be automatically extracted.
+<aside class="caution">
+<h6></h6>
+<div> The downside of this method is that while you can have a lot of images in your Media Library very quickly, they are not associated to any products. 
+</div>
+</aside>
+
+Typically, merchants also upload a CSV spreadsheet separately in which the name of the uploaded images are associated to the appropriate SKU's in your products database. For example, you uploaded an image named "diamond_ring.jpg" in your zip file that is intended for use on the Product ID DIAMOND. In your CSV file you would have a column with the header "zoovy:prod_image1". For Product ID DIAMOND the contents of "zoovy:prod_image1" would be "diamond_ring".<br>
+For more on how to format your CSV file, please consult the... <a class="linkdoc" href="#?doc=50285">Doc 50285</a>
+</section>
+<section>
+<h3>URL</h3>
+If you know the exact URL location of your images you can include that URL in a CSV file and Zoovy will copy the picture into your Media Library. This is one of the easiest ways of getting your images uploaded and associated to the correct product but it presumes that you have access to a list of image URL's.
+<aside class="caution">
+<h6></h6>
+<div> The URL provided in the CSV spreadsheet must be the exact location of the image. It cannot be the page that contains the image. The URL should end in some kind of image extension, such as .jpeg, .gif, .png, etc. 
+</div>
+</aside>
+
+
+<b>NOTE:</b> This process will create folders in your media library alphanumerically and sort the images accordingly.  If you require the media library to be organized with a specific folder structure, you should consider one of the other methods.<br>
+
+The header for this image URL follows the format: "%IMGURL=owner:attrib". In other words, if you wanted to load Image 1 from a remote URL, the header would be "%IMGURL=zoovy:prod_image1"
+<br>
+This is a memory-intensive process. If you have hundreds of products to upload in this manner, you may need to divide it up into several smaller files to prevent your browser frm timing out.<br>
+For more on how to format your CSV file, please consult the... <a class="linkdoc" href="#?doc=50285">Doc 50285</a>
+</section>
+
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

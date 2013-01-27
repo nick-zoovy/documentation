@@ -1,0 +1,383 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/wholesale">
+<h1>Wholesale Feature Bundle</h1>
+<article>
+<h2>Overview</h2>
+
+
+
+
+
+
+
+The wholesale bundle allows Zoovy store operators to utilize the same storefront for both wholesale and retail. 
+
+The benefits are:
+<li> enables the ability to offer quantity discounts to all customers (quantity pricing aka "wholesale to the public")
+<li> enables the ability to offer different prices to customers based on login (schedule pricing)
+<li> enables the ability to accept and process drop ship orders more effective
+<li> includes functionality to make it easier for wholesale businesses to recruit and support drop ship retailers.
+
+<aside class="caution">
+<h6></h6>
+<div>
+Quantity Pricing and Wholesale Pricing Schedules can be used at the same time, but there are some requirements.  By default a qty pricing configuration will override a wholesale pricing schedule.  This can be resolved by configuring a wholesale pricing schedule specific qty pricing formula at the product level, which in effect overrides the override.<br>
+In order to have access to the option for pricing schedule specific qty pricing in product editor, your wholesale pricing schedule MUST begin with either the letters MP, or QP.  So if you had a pricing schedule named SALE, and you wanted access to the qty pricing specific to the SALE schedule in product editor, you would need to rename the schedule to MPSALE or QPSALE.<br>
+
+</div>
+</aside>
+
+
+</article>
+
+
+<article>
+<h2>Configuring Pricing Schedules</h2>
+
+A pricing schedule is a special set of prices given to a user when they login. 
+Once a customer has logged in, on the product lists they will see retail pricing but on the product page they will see the retail price, and their price displayed next to it. 
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+We intend to introduce a "B2B" set of branding packages in the future which include modified product lists that will enable customers to only see their pricing. 
+These will be included free with the B2B Package, but also available for purchase separately by customers who have the eBay Seller, Storefront, Apparel and Media editions. <br>
+<br>
+This only applies to product lists in categories - the customer will always be displayed their price in the cart, and on the actual product page.
+
+</div>
+</aside>
+
+
+
+To configure pricing schedules login to www.zoovy.com, go to Utilities and click the 
+"Wholesale Pricing Schedules" link.
+
+<br>
+
+
+When creating a new schedule you will need to specify an ID - this is an 4 digit alphanumeric code that will be used throughout the system to identify the pricing schedule. Once you have created the schedule you cannot change the ID - so choose carefully. If you delete a schedule, all customers associated with that schedule will default back to retail pricing.
+
+<br>
+
+
+Once you have created a schedule, the ability to enter a unique price for that item will appear in the online product manager. In addition if you utilize CSV files you may also upload the price using the attribute "zoovy:schedule_#####" - where ##### is the schedule id. 
+
+<br>
+
+
+The following properties are configurable:
+<table>
+	<tr>
+		<td>&nbsp;&nbsp;</td><td valign='top'><b>Default Discount:</b><br>
+Use the default discount if you do not plan to configure unique prices for all items.
+		By specifying a default discount you can easily apply a global discount to all items. 
+		You may still go in and change specific products at your discretion. If a separate schedule price is
+		set for a product then the default discount is ignored.
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;&nbsp;</td><td valign='top'><b>Skip default store promotions:</b><br>If you utilize Zoovy promotions, then you can disable them for customers who are already receiving special pricing.
+
+<aside class="caution">
+<h6></h6>
+<div>If you forget that you have this turned on when you are creating and activating promotions, you will likely come to the belief that "my promotions are not working". Make sure you keep this in the back of your mind if you see promotions not being applied to certain customers.
+</div>
+</aside>
+</td>
+	</tr>
+	<tr>
+		<td>&nbsp;&nbsp;</td><td valign='top'><b>Use special promotions:</b><br>
+			You may also create separate promotions for customers who receive these pricing schedules. 
+			This enables you to craft custom pricing rules, or create promotions that target a specific class of customer.
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;&nbsp;</td><td valign='top'><b>Skip default shipping rules:</b><br>
+If you have specialized shipping rules that do not apply to wholesale customers you can disable them here.</td>
+	</tr>
+	<tr>
+		<td>&nbsp;&nbsp;</td><td valign='top'><b>Use special shipping rules:</b><br>
+You can also configure separate rules. If you have separate rules configured, 
+		those rules will run AFTER the normal rules (assuming they aren't disabled)
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;&nbsp;</td><td valign='top'><b>Disable Special pricing for incomplete items:</b><br>
+If a customer goes to a marketplace such as eBay and makes a purchase, 
+		this will determine if they receive their price, or the price negotiated by the marketplace.
+
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;&nbsp;</td><td valign='top'><b>Allow participation in rewards program:</b><br>
+The rewards program is part of the CRM Feature Bundle. 
+For more information please visit <a href="/info/guide/bundle-crm.php">The CRM Bundle documentation</a>
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;&nbsp;</td><td valign='top'><b>Allow customers to export/print out a complete inventory list:</b><br>
+This gives customers who login to their account on your store the ability export a current product list, 
+with their pricing, retail pricing, and urls to images for the product, along with current inventory. 
+
+</td>
+	</tr>
+	<tr>
+	 	<td>&nbsp;&nbsp;</td><td valign='top'><b>Give customers EDI/XML inventory access.:</b><br>
+Zoovy will be providing a set of PHP, and Perl examples that 
+	customers can use to integrate into their websites to check realtime inventory of your website. This gives them 
+	access to download the examples, and also a key to be able to access the API's.
+
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;&nbsp;</td><td valign='top'><b>Accept EDI/XML Orders from customers:</b><br>
+		Zoovy will be providing a set of PHP and Perl examples that customers can use to 
+automatically and securely send orders to you from their website. This checkbox gives all customers the 
+ability to download the examples, and also a key to be able to access the API's. 
+
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;&nbsp;</td><td valign='top'><b>Allow customers to provide their own packing slip/invoice and logo information for dropship orders:</b><br>
+An upcoming release of order manager will support the ability to automatically print out packing slips
+and shipping labels with your customers company information and logo on them. This is a unique feature that sellers 
+who drop ship on behalf of their retailers can offer to encourage retailers to do business with you.
+
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;&nbsp;</td><td valign='top'><b>Welcome message:</b><br>
+The message you put in here is displayed at the top of the customer login page. 
+We will also be adding even more control to this page in the future.
+	</tr>
+</table>
+
+
+</article>
+<article>
+<h2>Pricing Formulas</h2>
+
+
+Formulas are supported in both products and the default discount. Using formulas it is possible to have one price be based off another price. For example the formula :COST*1.1 is effectively saying base cost + 10%. You can do complex formulas such as :(COST+3)*1.1 which would add $3, and then 10% to the cost of the item(s).<br>
+<br>
+The following variables are supported:<br>
+BASE:  the zoovy:base_price field<br>
+COST:  the zoovy:base_cost field<br>
+MSRP:  the zoovy:prod_msrp (manufacturer suggested retail)<br>
+SHIP : the zoovy:ship_cost1 field (the first shipping price)<br>
+<br>
+Using formulas makes it easy to manage pricing because all you need to do is maintain the correct values in the product price and you don't need to re-compute all the prices. The more schedules you plan to have, the more important formulas will be. The following mathematical operators are supported:
+<li> +   (sum)
+<li> -   (difference, minus)
+<li> *  (product, multiplication)
+<li> / (division)
+
+</article>
+<article>
+<h2>Using the Qty Price Feature</h2>
+
+
+The quantity price is often used by wholesalers who also do "wholesale to the public", specifically
+those who wish to easily offer quantity discounts based on purchase volume.
+This offers a much easier to manage syntax than promotions, and also makes it incredibly easy to display
+the accurate price to a customer. 
+
+<br>
+
+
+Example: Imagine we have a product which is $13.99 when purchased individually, but is also sold in 2 packs, and
+4 packs, and that we want to give the customer a discount anytime they buy 10 or more.<br>
+<br>
+So the base Price is $13.99<br>
+The Qty Price might be set to: 2/20,4/30,10=3.50<br>
+<Br>
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+Be sure to list the lowest quantity first along with its price, separated by an equal sign. If there additional discounts, separate this quantity and price by a comma. <br><br>
+<B>Wrong:</B><br>
+Qty Pricing: 100=.17,50=.18,5=.2
+<br><br>
+<B>Right:</B><br>
+Qty Pricing: 5=.2,50=.18,100=.17
+<BR>(customer purchases 5 at $0.20 each; purchases 50, they are $0.18 each; purchases 100, they are $0.17 each)
+
+
+</div>
+</aside>
+
+
+
+
+<br>
+
+
+In the above example sets say the base price for the item is $13.99 each.
+
+The above example means if a pack is purchased, it's $20 (or $10 per product) or if a 4 pack is purchased
+then it's $30 dollars ($7.50 a unit), 
+if the customer buys 10 or more then the price is $3.50 each. 
+If the customer attempts to buy 5, then they would be charged for 4 @ $30, and 1 at $13.99 = resulting in
+an average of $8.79 per unit.<br>
+<br>
+
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+The zoovy:base_price is always used for individual items. 
+If you use qty pricing to offer "case pricing" be sure to consider having a stepped down base price after
+a reasonable quantity to keep your customers happy.
+
+</div>
+</aside>
+
+
+
+
+<br>
+
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+This feature is compatible with product options which set the price, but not compatible with product options
+which modify the price (so use a % instead of $ in the option modifier and you'll be fine).
+If the option modifies the price, then the base price will be used (for individual items), 
+and the qty price will be used for any discounts for each unique option (product) selected.
+For example, if you have an option for size and a quantity price such as 10/$25.00, if the customer 
+adds 5 small and 5 large to the cart, the quantity price will not apply as each is a unique SKU and 
+line item in the cart. Remember quantity pricing is per unique product and each option creates a unique product.
+When you go to fill the order, if they've purchased 5 small and 5 large, you have to pull two different
+products, which is just how they are treated in the cart.
+
+</div>
+</aside>
+
+
+
+If you use CSV's to manage your products, the qty price field is stored in zoovy:qty_price.
+The values can be separated by commas, or returns (newlines)
+
+
+
+</article>
+
+<article>
+<h2>Adding a Customer to a Wholesale Schedule</h2>
+Adding your customers to a wholesale schedule is very easy. Please follow my steps below.
+<aside class="cbc">
+<h6>Adding Customers to Wholesale Pricing</h6>
+<div>
+<li>1. Go to Utilities
+<li>2. Click on Customer Manager
+<li>3. Find the customers account
+<li>4. Click edit for the customer account
+<li>5. Under "General Account Information" locate "Wholesale Schedule"
+<li>6. In the drop down box for "Wholesale Schedule" select the Wholesale Schedule that
+       applies
+
+</div>
+</aside>
+
+
+</article>
+
+
+
+<article>
+<h2>Customer/dealer create account page</h2>
+
+A customer/dealer account form can be enabled and configured. The settings are currently global and can not be configured per profile.
+
+<aside class="cbc">
+<h6>Enabling a customer/dealer account creation page</h6>
+<div>
+
+<li>Go to Utilities</li>
+<li>Click on wholesale schedules</li>
+<li>Click on the 'sign up form' link</li>
+<li>Check the 'Enable signup form...' checkbox</li>
+<li>Save</li>
+
+
+</div>
+</aside>
+
+
+The fields that appear in the form can be removed by editing the JSON object at the top of the page. If you are not familiar with JSON, please contact technical support with your list of change requests.
+
+</article>
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

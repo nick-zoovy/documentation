@@ -1,0 +1,539 @@
+<meta type="filename" id="dev/detail/flows-category">
+<h1>Reference - Page Layout Categories</h1>
+<article>
+<h2>Overview</h2>
+
+The information on this page is deprecated. The updated information can be found at the link below:
+<a class="linkdoc" href="#?doc=50156">Doc 50156</a> 
+
+</article>
+
+
+
+<article>
+<h2></h2>
+
+If you want a block of text to appear on your category page, use the element below.  
+For multiple texts on various parts of the page, change the element line NAME="DESCRIPTION" 
+to NAME="DESCRIPTION2" and the SAVETO line to match the name. 
+It is important to remember that category pages must ALWAYS save data to either page: or merchant: namespace.
+
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;ELEMENT TYPE="TEXT" NAME="DESCRIPTION"&gt;
+PRETTY=Category Description
+ABOUT=Please describe this category and why it is unique
+SAVETO=page:description
+HELPER=Remember to keep this text short and to the point.  
+If this is too long the products will be hard to find. &lt;br&gt;
+&lt;/ELEMENT&gt;
+
+</code>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Page Title</h2>
+
+Sometimes it is more convenient to have a page title in the flow, instead of the wrapper.  
+To do this, place the following piece of code into the flow.
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;ELEMENT TYPE="READONLY" NAME="TITLE"&gt;
+LOAD=FLOW::TITLE
+&lt;/ELEMENT&gt;
+
+
+</code>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Default Product List:</h2>
+
+
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;ELEMENT TYPE="PRODLIST" NAME="PRODLIST1"&gt;
+PRETTY=Product Listing
+ABOUT=You can add products to your homepage, when you do they will appear below.
+DEFAULT=&FORMAT=THUMB&COLS=3&ALTERNATE=0
+SAVETO=page:prodlist
+&lt;/ELEMENT&gt;
+
+</code>
+</aside>
+
+
+Also, you can add a SRC=NAVCAT:.safe.page.path to reference another pages prodlist which gives you the ability to have multiple product lists on a single page*.
+safe.page.path is the safe page name/path of the prodlist you are referring to.  For instance, if you had a category shoes with a subcategory of red, the URL would look like:  http://YOURUSERNAME.zoovy.com/category/shoes.red the path would be .shoes.red<br>
+*If you want to use the LIST features, do not specify a source.
+
+</article>
+<article>
+<h2>Custom Product Listing Style</h2>
+
+
+<aside class="html">
+<h6></h6>
+<code>
+
+
+&lt;ELEMENT TYPE="PRODLIST" NAME="PRODLIST1"&gt;
+PRETTY=Product Listing
+ABOUT=You can add products to your homepage, when you do they will appear below.
+SAVETO=page:prodlist
+FORMAT=CUSTOM
+COLS=3
+ALTERNATE=1
+MAX=10
+SIZE=10
+&lt;HTML&gt;=
+&lt;table border="0" cellpadding="0" cellspacing="0" width=100%&gt;
+&lt;!-- ROW --&gt;
+&lt;tr&gt;
+&lt;!-- PRODUCT --&gt;
+&lt;td align="center" valign="top" width="%COLWIDTH%" %bg%&gt;&lt;a href="%PROD_URL%"&gt;&lt;/td&gt;
+&lt;td  %bg%&gt;%zoovy:prod_thumb/default-zoovy:prod_image1/image-w:100-h:100-b:FFFFFF-alt:prod_name%&lt;/a&gt;&lt;br&gt;
+&lt;span style="color:#000000; font-size:12px;"&gt;&lt;strong&gt;%zoovy:prod_name%&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;
+MSRP:&nbsp;&lt;span style="color:#660000;text-decoration: line-through;"&gt;$%zoovy:msrp%&lt;/strong&gt;&lt;/span&gt;
+Price:&nbsp;&lt;strong&gt;$%zoovy:base_price%&lt;/strong&gt;&lt;/span&gt;
+&lt;/td&gt;
+&lt;!-- /PRODUCT --&gt;
+&lt;!-- BLANK --&gt;
+&lt;td width="%COLWIDTH%" %bg%&gt;&lt;/td&gt;
+&lt;!-- /BLANK --&gt;
+&lt;/tr&gt;
+&lt;!-- /ROW --&gt;
+&lt;/table&gt;
+&lt;/HTML&gt;=
+&lt;/ELEMENT&gt;
+
+
+</code>
+</aside>
+
+
+
+Explanation of fields:<br>
+<table>
+	<tr>
+		<td valign="top">INVENTORY</td>
+		<td>if 1, causes the list to check inventory of products before display - does not show products with no inventory.</td>
+	</tr>
+	<tr>
+		<td valign="top">GALLERY</td>
+		<td>Value can be 1, behavior undefined (currently in development)</td>
+	</tr>
+<!--	<tr>
+		<td valign="top">FORCESORT</td>
+		<td>Forces the system to reset a category sort to the specified sort method when the page is saved.</td>
+	</tr>
+
+	<tr>
+		<td valign="top">FORCECOLUMNS</td>
+		<td>overrides the number of columns, regardless of what the user specifies in the website builder.</td>
+	</tr>
+
+	<tr>
+		<td valign="top">FORCEFORMAT</td>
+		<td>overrides the format chosen, regardless of what the user specifies in the website builder.. 
+		Something like a laser printer has embedded type faces, the Zoovy system contains a number of built in product listing formats.
+		The FORCEFORMAT parameter is mostcommonly used with CUSTOM which in turn tells the system to ignore all built-in listing styles
+		and load one from the HTML variable.
+		<br>
+		However any Zoovy default format may be specified: PLAIN, CUSTOM, THUMB, BIGTHUMB, THUMBMSRP, DETAIL, DETAIL2, MULTIADD, PLAINMULTI, 
+		SMALLMULTI, BIG, BIG2, PLAINMSRP.
+		</td>
+	</tr>
+-->
+	<tr>
+		<td valign="top">FORMAT</td>
+		<td>If set in the DEFAULT line, it will use this format unless the user chooses something different in the website builder.  The default Zoovy formats are:
+		<br>
+		PLAIN, CUSTOM, THUMB, BIGTHUMB, THUMBMSRP, DETAIL, DETAIL2, MULTIADD, PLAINMULTI, 
+		SMALLMULTI, BIG, BIG2, PLAINMSRP.
+		</td>
+	</tr>
+<!--	<tr>
+		<td valign="top">DEFAULT</td>
+		<td>*This value is reserved for Zoovy internal use only*. Specifically to provide a more intelligent default for the product list when the 
+		editor is loaded. If no other value is specified, then the page flow default will be used, if the page layout is not set, then the system default will be used. The format is comma separated:<br>
+		<li> FORMAT - refers to an internal built in Zoovy product list style (system default is: PLAIN) possible values are: 
+		<li> COLS - number of columsn to display (system default is: 1)
+		<li> ALTERNATE - should we alternate row colors (system default is: 1)
+		<li> SORTBY - how should we sort the category (system default is not set e.g. '' which is manual)
+		<li> PARAMETERS - which are the values such as SHOWPRICE,SHOWNOTES, etc.
+		<br>
+		You must keep in mind, that all of the parameters are designed to modify built-in system product listings styles.
+		They are not necessary if you plan to create your own product listing style, since you'll likely want to simply set on the options you need.</td></tr><tr>
+			<td>LOADMERCHANT</td>
+			<td>If set to 1, will allow you to call from the merchant namespace.  For instance, you could set a field to default to merhcant:username:foo which would allow you to change 'foo' universally throughout your store.</td></tr>
+			<tr>
+				<td valign="top">MULTIPAGE</td>
+				<td>If set 1, then allows the user to enter the number of products on a page</td>
+			</tr>
+			<tr>
+				<td valign="top">SMARTSOURCE</td>
+				<td>
+					Intended for use on CART page only. Can be one of the following:<br>
+					<li> BYCATEGORY - load products from related products in the same category
+					<li> BYPRODUCT - loads a list of related products from each product in the cart.
+				</td>
+			</tr>
+			<tr>
+				<td>SMARTMAX</td>
+				<td>the maximum number of products which will be returned from a smart source.</td>
+			</tr>
+			<tr>
+				<td>VIEWDETAILS</td>
+				<td>Show the View Details link in the list, this is placed into the %VIEW_DETAILS% value in a custom product list.</td>
+			</tr>
+			<tr>
+				<td>SHOWSKU</td>
+				<td>Determines if/where the SKU will be shown with the product name</td>
+			</tr>
+			<tr>
+				<td>SHOWQUANTITY</td>
+				<td>Add a quantity textbox for multiple-add to cart (otherwise it will simply be a checkbox)</td>
+			</tr>
+			<tr>
+				<td>SHOWNOTES</td>
+				<td>Have the ability to edit product notes right inside the prodlist element</td>
+			</tr>
+			<tr>
+				<td>SHOWPRICE</td>
+				<td>Show prices (on by default)</td>
+			</tr>
+-->			
+<tr>
+	<td valign="top">SRC</td>
+	<td>You'll have more flexibility not setting this in the layout and allowing a user to set it through the builder, but there are times this comes in handy.  set SRC=<br>
+list:$listname - where listname = a list in your store.<br>
+navcat:.category.safe.name	where category.safe.name = the category safe name (use the url and add a preceding period).
+	</td>
+</tr><tr>
+	<td valign="top">DEFAULT</td>
+	<td>On this line, you can specify what you want the default format, columns and colorscheme to be as seen above in the 'default product list' example.</td>
+</tr><tr>
+				<td>SHOWDEFAULT</td>
+				<td>Defaults to 1 if not set.  If set to 0, will not show homepage products by default (useful on product layouts with related items)</td>
+			</tr><tr>
+	<td>MAX</td>
+	<td>If set, will limit the number of products on a page.  So MAX=8 would only allow 8 products to be displayed on that page.  However, a user can still select more than 8 products in that list.  The products shown will be based on the sort order selected.  Works well with a random sort order.</td>
+</tr><tr>
+	<td>SIZE</td>
+	<td>Size determines how many products will be displayed on a page before it breaks the list into a multipage product list.  If you want multipage disabled set size to be great than the number of products on the page.</td>
+</tr><tr>
+	<td>SORTBY</td>
+	<td>Set to RANDOM for random, otherwise will use store settings.</td>
+</tr>		</table>
+		</td>
+	</tr>
+	<tr>
+		<td>HTML</td>
+		<td>this contains a custom product list which overrides one of the default embedded styles</td>
+	</tr>
+</table><br>
+<br>Here are some things that you can toss into the listing itself:<br>
+
+<table>
+<tr>
+	<td>%COLWIDTH%</td>
+	<td>       The width of the column (if there are 5 columns, this is 20%, 3 columns this is 34% or 33%)</td>
+</tr>
+<tr>
+	<td>%PRODUCT_ID%     </td>
+	<td>Adds the product ID.</td>
+</tr>
+<tr>
+	<td>%PROD_URL%      </td>
+	<td> Changes to # upon preview mode</td>
+</tr>
+<tr>
+	<td>%NOTES%          </td>
+	<td>Product notes HTML textarea</td>
+</tr>
+<tr>
+	<td>%POGS%           </td>
+	<td>Product options as form HTML</td>
+</tr>
+<tr>
+	<td>%ADD_URL%</td>
+	<td>Set the "Add to cart" URL for this particular product</td>
+</tr>
+<tr>
+	<td>%ADD_BUTTON%</td>
+	<td>Creates an add to cart button (turns into a Choose Options... link when the product has either notes or POGs)</td>
+<tr>
+	<td>%ADD_LINK%       </td>
+	<td>Link to add to cart</td></tr>
+<tr>
+	<td>%ADD_FIELD%      </td>
+	<td>Field for adding to cart (either a qty number box, or a checkbox depending on SHOWQUANTITY)</td>
+</tr>
+<tr>
+	<td>%ADD_FIELD_DETAILS%</td>
+	<td>Same as add_field but will be overridden if pogs or product notes are present (turns into a Choose Options... link when the product has either notes or POGs)</td>
+</tr>
+<tr>
+	<td>%VIEW_DETAILS%   </td>
+	<td>The "View Details" link (if VIEWDETIALS is true, otherwise blank)</td>
+</tr><tr>
+	<td>%COUNT%   </td>
+	<td></td>
+</tr>
+</table>
+
+</article>
+<article>
+<h2>Custom Product Listing Style Image Manipulation</h2>
+
+In a product listing style, you can set various attributes of the images being used.  For instance, the height, width, background color (padding), and the alt tag.
+
+<table>
+<tr>
+	<td>W:</td>
+	<td>Sets the maximum width of the image.</td>
+</tr><tr>
+	<td>H:</td>
+	<td>Sets the maximum height of the image.</td>
+</tr><tr>
+	<td>M</td>
+	<td>Minimal mode (do not pad image to full dimensions specified in the prodlist).</td>
+</tr><tr>
+	<td>B:</td>
+	<td>Sets the background color (and padding) of the image to specified HEX#.</td>
+</tr><tr>
+	<td>ALT:</td>
+	<td>Sets the alt tag of the image to the specified zoovy product field.</td>
+</tr><tr>
+	<td>default-</td>
+	<td>Sets the image to default to another if the image isn't specified.</td></tr>
+</table>
+For example:<br>
+%zoovy:prod_thumb/default-zoovy:prod_image1/image-w:200-h:100-m-b:FFFFFF-alt:prod_name%
+<br>
+This would display the thumbnail at a max. height of 100 and a max. width of 200.  The 'm' means it would not pad itself to exactly 200x100 and the b sets the background color to white (FFFFFF).  The alt tag on the product would display the product name.
+</article>
+<article>
+<h2>Custom Product Listing Style Field Manipulation</h2>
+
+
+In many cases, when you are creating a product listing style, you'll want a break tag or a space to appear only if the field contains data.  For instance, if you have a prodlist that displays a name, description and price and you set it up as follows:
+
+<aside class="html">
+<h6></h6>
+<code>
+
+
+%zoovy:prod_name%&lt;br&gt;
+%zoovy:prod_desc%&lt;br&gt;
+Price: $%zoovy:base_price%
+
+
+
+</code>
+</aside>
+
+
+What if there was no description for one of the products?  Then you would have a blank line between the product name and the price.  Also, if there was no price (say it was a redirect instead of a purchasable item) then it would say 'Price: $' with nothing to follow. Instead, you could set it up as follows:
+
+<aside class="html">
+<h6></h6>
+<code>
+
+
+%zoovy:prod_name/noblank:break%
+%zoovy:prod_desc/noblank:break%
+%zoovy:base_price/money%
+
+</code>
+</aside>
+
+
+This would accomplish the same effect as the top listing style, however it would only put in the break tags if the space was not blank.  Here are several other rules you can apply to the name fields:
+
+<table>
+<tr>
+	<td valign="top">%zoovy:foo/if-zoovy:bar%</td>
+	<td>This will output the contents of zoovy:foo only if zoovy:bar IS NOT blank or 0.</td>
+</tr><tr>
+	<td valign="top">%zoovy:foo/unless-zoovy:bar%</td>
+	<td>This will output the contents of zoovy:foo only if zoovy:bar IS blank or 0.</td>
+</tr><tr>
+	<td valign="top">%zoovy:foo/pretext-zoovy:bar%</td>
+	<td>This will prepend the contents of zoovy:bar on zoovy:foo, only if zoovy:foo is not blank.</td>
+</tr><tr>
+	<td valign="top">%zoovy:foo/posttext-zoovy:bar%</td>
+	<td>This will postpend the contents of zoovy:bar onto zoovy:foo only if zoovy:foo is not blank.</td>
+</tr><tr>
+	<td valign="top">%zoovy:base_price/subtract-field-zoovy:prod_msrp/money%</td>
+	<td>This will do some math for you.  It will subtract the base price from the MSRP and return the difference.  It's a 'You Save' function, more or less.</td>
+</tr><tr>
+	<td valign="top">%zoovy:base_price/percent-value-80/money%</td>
+	<td>This is another math function that will return a percentage of the original ammount.  In this case, if the items original base price is $10.00, this will return a value of 8.</td>
+</tr><tr>
+	<td valign="top">Characters, spaces, and breaks</td>
+	<td>By using any of of the following as seen in the example below, you can add them to a prodlist with rules associated to them.  For instance:<br>%username:msrptext/if-zoovy:msrp/noblank-space:after%%zoovy:msrp/money/noblank-break:after%<br>
+This would add the user-specific msrptext field (such as 'retail price:' or 'msrp:') and then add a space after it, but only if there is an MSRP price set in the system for this product.  If a price is set, it would add both of these two fields, followed by a break tag.  If no MSRP is set, it would not add either of these two items, or the break tag.
+	<table>
+	<tr>
+		<td>slash</td><td>Will add a '/' as specified.</td>
+	</tr><tr>
+		<td>bar</td><td>Will add a '|' as specified.</td>
+	</tr><tr>
+		<td>space</td><td>Will add a ' ' as specified.</td>
+	</tr><tr>
+		<td valign="top">break</td><td>Will add a '&lt;br&gt;' as specified.</td>
+	</tr><tr>
+		<td valign="top">money</td><td>Will treat the field as a dollar value and format it accordingly.</td>
+	</tr>
+	<tr>
+		<td valign="top">strip</td>
+		<td>Will truncates and strips breaks and other HTML from the field.  If no_strip_breaks is 1, it doesn't strip breaks.  if no_strip_html is 1 it doesn't strip html.</td>
+	</tr>
+	<tr>
+		<td valign="top">hidezero</td>
+		<td>If the value is set to zero, then it will set the value to zero.</td>
+	</tr>
+	</table>
+</td>
+</tr>
+</table>
+</article>
+<article>
+<h2>SUBCAT ELEMENT</h2>
+
+
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;ELEMENT TYPE="SUBCAT" NAME="SUBCAT"&gt;<br>
+MODE=<br>
+PRETEXT= text which appears at the beginning if the list is not blank<br>
+POSTTEXT= text which appears at the end if the list is not blank<br>
+DEFAULT= text which is displayed if there are no sub categories.
+&lt;/ELEMENT&gt;<br>
+
+</code>
+</aside>
+
+
+
+This element has three basic modes of operation: PLAIN, BUTTONS, LIST<br>
+<br>
+<b>MODE=PLAIN</b><br>
+Plain generates the default plain style, with text links, no graphics, it is simple, but not configurable.<br>
+<Br>
+
+<b>MODE=BUTTONS</b><br>
+Use MODE=BUTTONS if you want to display graphic buttons to your user as part of the page flow.<br>
+In addition if you set the following in the element tag:
+<aside class="html">
+<h6></h6>
+<code>
+
+BUTTONINI=name of ini file
+-- the following optional button properties apply: --
+FORCEWIDTH=, FORCEHEIGHT=
+
+</code>
+</aside>
+
+
+<br>
+<b>MODE=LIST</b><br>
+The LIST mode provides you with the ability to do single, or multi-column (but not multi-page) category lists, as well
+as the ability to customize virtually any aspect of the appearance of a subnav cat.<br>
+
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;HTML&gt;=
+Put a category list specification here. (discussed below)
+&lt;/HTML&gt;=
+FORCECOLUMNS=1
+
+</code>
+</aside>
+
+
+<br>
+
+<br>
+Zoovy uses a LIST specification to format table data. 
+For more information on list specifications review the list specification syntax.
+<br>
+If you are already familiar with lists then you should know that the following special variables 
+apply within &lt;!-- CATEGORY --&gt; tags:<br>
+<br>
+cat_url = the full url (with http://) to category<br>
+cat_pretty = the pretty name <br>
+cat_safe = the safe name (without the leading period)<br>
+cat_num = the unique number of this item in the list (starts at 1)
+cat_thumb = The thumbnail associated with the category
+wrapper_url = path to your custom files directory
+graphics_url = path to the Zoovy default graphics library
+image_url = path to your image libary up to the image attributes
+<br>
+In addition all the standard theme variables are available, however merchant and product namespace data is not.<br>
+<br>
+An example of an HTML list is given below and would product a tab effect.  With DESCENDTREE=1 if you clicked on a category, and no subcategories were present, it would remember the most recent set of categories and continue to display them.  This feature does NOT work on product pages.
+<aside class="html">
+<h6></h6>
+<code>
+
+&lt;ELEMENT TYPE="SUBCAT" NAME="SUBCAT"&gt;
+MODE=LIST
+DESCENDTREE=1
+FORCECOLUMNS=6
+&lt;HTML&gt;=
+&lt;table cellspacing=0 cellpadding=0 border=0&gt;
+&lt;!-- ROW --&gt;
+&lt;tr&gt;
+&lt;!-- CATEGORY --&gt;
+
+&lt;td width=&quot;33%&quot; align=&quot;center&quot; %bg% &gt;&lt;a href=&quot;%cat_url%&quot;&gt;
+&lt;img src=&quot;http://static.zoovy.com/img/%username%/W180-H180/%cat_thumb%.jpg&quot; height=180 width=180 alt=&quot;%cat_pretty%&quot; border=0&gt;&lt;/a&gt;
+&lt;br&gt;&lt;font color=&quot;#%fg_spec%&quot; face=&quot;%font%&quot; size=&quot;%size%&quot;&gt;&lt;font size=&quot;+1&quot;&gt;
+&lt;a href=&quot;%cat_url%&quot; class=&quot;subcat&quot;&gt;&lt;strong&gt;%cat_pretty%&lt;/strong&gt;&lt;/a&gt;&lt;/font&gt;&lt;/font&gt;&lt;/td&gt;
+
+&lt;!-- /CATEGORY --&gt;
+&lt;/tr&gt;
+&lt;!-- /ROW --&gt;
+&lt;/table&gt;
+&lt;/HTML&gt;=
+&lt;/ELEMENT&gt;
+
+</code>
+</aside>
+
+
+
+
+
+
+</article>
+
+
+
+
+
+
+
+
+
+

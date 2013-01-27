@@ -1,0 +1,194 @@
+<meta type="filename" id="enterprise/detail/hardware">
+<h1>Enterprise Hardware Requirements</h1>
+<article>
+<h2>Enterprise Hardware Requirements</h2>
+
+Last Updated: March 12th, 2004
+
+</article>
+<article>
+<h2>Overview</h2>
+
+
+The minimum specifications below are intended to comfortably accommodate up to 6 concurrent users running the current build of the Enterprise code base. Future builds of Enterprise may require more powerful hardware, so overbuying to plan for future growth is encouraged. However in all cases under buying will cause the software to simply run slower, it will not crash.
+<br>
+<br>
+<b>Minimum server Specifications:</b><br><br>
+<li>2ghz Pentium IV processor<br>
+<li>512mb of RAM<br>
+<li>ATA/SCSI firmware-based RAID controller (Compaq Smart Array, American Megatrends (AMI))<br>
+<li>(2x) Mirrored SCSI-2/IDE or better 9gb or better. <br>
+<li>10/100mbps network card<br>
+<li>Basic video<br>
+<li>Tape Backup - DAT, DLT, AIT, or QIC<br>
+<li>Monitor optional (remotely managed)<br>
+An always on high speed internet connection, along with a static IP address for the Enterprise server is required.<br>
+<br>
+</article>
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+<i>Zoovy encourages customers to purchase Compaq/HP Proliant class servers. </i><br>
+Logic: We are familiar with the hardware, we have an excellent relationship and history with Compaq service,
+and we internally keep abreast of things such as firmware updates and compatibility.
+
+</div>
+</aside>
+
+
+<article>
+<h2>Other Brands</h2>
+
+Based on the recommendations of your IT-staff Zoovy is willing to support hardware from any
+major vendor such as Dell and IBM provided that all components are certified by the vendor as
+compatible with RedHat Linux 7. We will not support clone hardware - so please don't ask.
+<br>
+<br>
+eBay is an excellent source of good deals on both new, and used equipment.
+At the customers request we will attempt to locate compatible equipment which fits within the customers budget on eBay.
+
+</article>
+<article>
+<h2>Operating System</h2>
+
+
+Customers who wish to run operating systems or hardware platforms other than Linux/x86 should consult with Zoovy. Future platforms supported will include Windows 2000/XP, Novell Netware 6, and Sun Solaris
+All of the operating systems have been tested in the lab, or deployed to limited client sites.<br>
+
+</article>
+<article>
+<h2>Recommended Upgrades</h2>
+
+The following upgrades are recommended to a server:<br>
+<li> <b>Disk:</b> SCSI-3 Ultra/Wide, since Enterprise is highly dependent on the database more spindles = better performance. Also choosing 10k RPM, or 15k RPM drives over slower drives will dramatically improve performance for large database queries.
+If very large queries are planned, then having alternate "scratch" disks for temporary tables which are either on the same, or alternate SCSI buses can also offer an increase in performance.
+<li> <b>RAM:</b> as with most applications the more the better.
+The database will be configured based on the amount of RAM in the server.
+The more RAM the more of the database that can be kept in memory and the resulting searches will be much faster.
+Also choosing RDRAM instead of SDRAM will result in higher performance for queries on data in memory.
+<li> <b>Higher Performance Processor:</b> In database applications the bottleneck is usually the disk, not the CPU.
+As you increase the disk, you should also plan on increasing processor performance.
+<li> <b>Caching RAID Controller:</b> increase the on board memory, and add an on-board battery backed write cache.
+<li> <b>UPS:</b> (Uninterruptable Power Supply),
+The Enterprise server can be configured to automatically shut down if connected to a Smart UPS. A minimum of 250kva
+Customer should take care to determine sizing requirements based on needed runtime.
+In theory if the network hub, the wireless system, and the server are all battery backed the company
+could continue to work through a power outage. (Assuming the warehouse is reasonably well lit).
+<li> <b>Redundant Power Supplies:</b> after disk failures, power supplies are the second more common reason for system failures. Many server class machines support two or more power supplies.
+
+
+</article>
+<article>
+<h2>Optional Upgrades</h2>
+
+
+<li> <b>Multiple Processors:</b> Linux is fully capable of supporting up to 4 processors (actually 32 - but try finding hardware).
+These do not offer redundancy, but do allow the server to do more tasks at once.
+Unless you plan on having 20+ concurrent users, this is probably a non-issue.
+
+<li> <b>Hot swappable drives / Standby Spare drive:</b> when one disk fails, statistics state that the other disk is very likely to fail.
+That is because the mirrored disk generally comes from the same yield as its counterpart, and has been subject to the
+same vibrations and temperatures as the first disk. Having a standby spare drive, or hot-swappable drives will
+remain turned down, and can be brought online as soon as any disk in the mirrored set detects an error.
+
+<li> <b>Modem + Phone Line + Dialup ISP Account:</b> A backup connection to be which can be brought up in the event
+that the primary Internet connection is down. Customers who have DSL circuits should consider this option
+since many DSL contracts have no guaranteed service level agreement so having a backup connection can be
+an inexpensive insurance policy. In our experience most T1 circuits have a 72 hour service level agreement,
+but you should always confirm with your circuit provider.
+
+<li> <b>Redundant Network Card:</b> a spare network card can be configured in either a load balanced,
+or active/passive configuration based on customer needs.
+
+<li> <b>Standby Server:</b> at the customers request a standby server can be
+configured (additional charges will apply) in a primary/second configuration
+and most of the applications can be configured to fail over in the event of
+the primary server going down.
+
+</article>
+<article>
+<h2>Example Recommended System</h2>
+
+	Compaq/HP Proliant ML350 G3 Intel Xeon 2.20ghz Array Tower Model<br>
+	No second processor.<br>
+	Integrated Smart Array 532 controller<br>
+	1gb RAM<br>
+	Drive 1: 36gb 10,000 RPM drive<br>
+	Drive 2: 36gb 10,000 RPM drive<br>
+	20/40gb DAT drive<br>
+	15" CRT Monitor<br>
+	Hot Plug Redundant Power Supply (NEMA power cord)<br>
+	No operating system<br>
+	Service Contract: 9 hour x 5 day - 4 hour response time<br>
+	UPS Model T700<br>
+	Quote from www.compaq.com <br>
+	Base Price on 3/18/03: $5,324.00 not including tax/shipping.<br>
+<br>
+TIP: Always remember to purchase backup media that matches your drive. Tapes are always purchased separately.<br>
+
+</article>
+<article>
+<h2>Label Printers (for barcoding)</h2>
+
+Zoovy supports Dymo (all models), along with Zebra EPL2 compatible printers.
+<br>
+With all equipment, especially those that will have to sustain daily abuse it is our
+recommendation to have at least one spare unit. Not only does having a spare aid in
+any troubleshooting of the primary unit, it also lets the business keep functioning in the event of a failure. <br>
+<br>
+Ink vs. Thermal Barcode Printers: <br>
+Zoovy does not have a preference on Thermal vs. Ink - both suit a specific task.<br>
+<Br>
+<b>Zebra Thermal Printers: </b><br>
+<li> Benefits: Nothing produces a better quality barcode than thermal printing, not even laser. The better the barcode quality, the easier it is to scan. This prevents employees from retrying if a scan does not succeed (a failure will not result in a partial result, rather the employee will have to continue scanning until the label is ultimately scanable).<br>
+<li> Negatives: Thermal printers are fed on a thermal ribbon that works something like carbon paper that can only be used once. If the ribbon breaks then repairing it is a bit tricky, and just replacing a new roll can be expensive. Breaks do not occur often, generally only if a label jam occurs. Depending on the amount of handling a product must go through thermal labels also tend to smear. For example shipping carriers such as FedEx and UPS hate thermal labels because by the time the package reaches the destination the label is often smeared. On that note we have found that different types of media will determine how much the label will smear, generally the higher quality the media - the less likely it is to smear.
+<br>
+<br>
+<b>Zebra Ink Printers:</b><br>
+Zoovy does not have extensive experience with the Ink versions of the Zebra printers.
+However our limited experience tells us they are less likely to smear, but again that
+could be entirely based on the media, and that the cost per print is equivalent to thermal.
+<br>
+<b>Dymo Thermal Printers</b><br>
+In April 2003 Zoovy announced full support for Dymo printers across it's entire line of products. <br>
+Dymo printers are a 2" label printers (as opposed to Zebra's 4" label).
+A 2" is printed horizontally, rather than vertically and is suitable for virtually all applications.
+Many customers are now choosing Dymo because it offers superior resolution, a lower cost per print, faster print speeds, and less expensive media.
+<br>
+<br>
+When evaluating any printer, remember that a substantial portion of the cost over the
+printer's lifetime will be the media costs. <br><br>
+Note: Zebra LP2844 Printers have been tested and confirmed to work with Product Manager and Order Manager.  There
+are, however, known issues with USB support using the generic/text driver which is required for sending raw EPL
+language commands to the printer from Order Manager.  When connecting your Zebra printer to a PC, you must use a Parallel port (not a USB port, or
+a USB port with a adapter) for the software to print bar codes and shipping labels using the EPL language and Order Manager.
+</article>
+<article>
+<h2>Barcode Scanners</h2>
+
+There are two types of barcode scanners Zoovy uses, one is PC attached and used to integrate with shipping stations (this is often supplied with the shipping station by the vendor such as FedEx or UPS),
+the second is a wireless symbol SPT1846 which an employee brings with them to scan in the location of inventory. The wireless client can be connected
+in either a live, or batch mode, but it must connect to the Enterprise server via an 802.11b wireless network.<br>
+<br>
+<li>Wireless Network: 802.11b - any vendor (Netgear, Symbol, Cisco) (approx $200 to $800 per access point)<br>
+<li>Handheld Wireless units: Symbol 1846 (approx $1700 per unit)<br>
+<li>Handheld Wireless Accessories: Charging/Synching Cradle, Boot, Spare Battery (so one can be charging while one is in use)<br>
+<li>Special Software: AppForge Booster Plus (license needed for each SP1846) ~ $25 per copy.<br>
+<li>Attached Scanners: Any PS2 or USB based scanner (approximate cost $100 to $200 per unit)<br><br>
+TIP: Remember to purchase printer cables, media, and stock spare ribbons or cartridges.<br>
+<br>
+<br>
+Getting all this stuff right can be a bit of a daunting task, especially if your new to it all. We have had good experiences with the following vendor:
+<br>
+&nbsp;&nbsp;&nbsp; Carl Shackelford (owner)<br>
+&nbsp;&nbsp;&nbsp; <a href="http://www.a1bar.com/"> A1 Barcode</a><br>
+&nbsp;&nbsp;&nbsp; 800 798-2042<br>
+<br>
+
+
+</article>
+
+
+

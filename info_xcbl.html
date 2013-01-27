@@ -1,0 +1,179 @@
+<meta type="filename" id="info/xcbl">
+<h1>XCBL Order Format</h1>
+
+<article>
+<h2>Concept Overview</h2>
+xCBL is a common platform neutral format that zoovy can export order data into. xCBL is used by a variety of EDI gateway systems such as eBridgeSoft.com
+</article>
+
+<article>
+<h2>API Dispatch</h2>]
+When xCBL orders are dispatched to an HTTP or HTTPS (recommended) URL then the payload is transferred in the "Contents" field.  Effectively the same as if the following code was posting it:
+<aside class="html">
+<h6></h6>
+<code>
+&lt;form action="" method="POST"&gt;
+&lt;textarea name="Contents"&gt;xcbl payload goes here&lt;/textarea&gt;
+&lt;/form&gt;
+
+</code>
+</aside>
+
+
+</article>
+
+<article>
+<h2>Sample</h2>
+
+<aside class="html">
+<h6></h6>
+<code>
+&lt;Order xmlns:core="rrn:org.xcbl:schemas/xcbl/v4_0/core/core.xsd" xmlns="rrn:org.xcbl:schemas/xcbl/v4_0/ordermanagement/v1_0/ordermanagement.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="rrn:org.xcbl:schemas/xcbl/v4_0/ordermanagement/v1_0/ordermanagement.xsd ../../schema/org/xcbl/path_delim/schemas/xcbl/v4_0/ordermanagement/v1_0/ordermanagement.xsd"&gt;
+    &lt;OrderHeader&gt;
+        &lt;OrderNumber&gt;
+            &lt;BuyerOrderNumber&gt;2007-11-3734&lt;/BuyerOrderNumber&gt;
+        &lt;/OrderNumber&gt;
+        &lt;OrderIssueDate&gt;2007-11-02T09:35:55&lt;/OrderIssueDate&gt;
+        &lt;OrderCurrency&gt;
+            &lt;core:CurrencyCoded&gt;USD&lt;/core:CurrencyCoded&gt;
+        &lt;/OrderCurrency&gt;
+        &lt;OrderLanguage&gt;
+            &lt;core:LanguageCoded&gt;en&lt;/core:LanguageCoded&gt;
+        &lt;/OrderLanguage&gt;
+        &lt;OrderDates&gt;
+            &lt;RequestedShipByDate&gt;1970-01-01T00:00:00&lt;/RequestedShipByDate&gt;
+        &lt;/OrderDates&gt;
+        &lt;OrderParty&gt;
+            &lt;BuyerParty&gt;
+                &lt;core:PartyID&gt;
+                    &lt;core:Ident&gt;Unused&lt;/core:Ident&gt;
+                &lt;/core:PartyID&gt;
+            &lt;/BuyerParty&gt;
+            &lt;SellerParty&gt;
+                &lt;core:PartyID&gt;
+                    &lt;core:Ident&gt;Unused&lt;/core:Ident&gt;
+                &lt;/core:PartyID&gt;
+            &lt;/SellerParty&gt;
+            &lt;ShipToParty&gt;
+                &lt;core:PartyID&gt;
+                    &lt;core:Ident&gt;Unused&lt;/core:Ident&gt;
+                &lt;/core:PartyID&gt;
+                &lt;core:NameAddress&gt;
+                    &lt;core:Name1&gt;zoovy, inc.&lt;/core:Name1&gt;
+                    &lt;core:StreetSupplement1&gt;&lt;/core:StreetSupplement1&gt;
+                    &lt;core:StreetSupplement2&gt;&lt;/core:StreetSupplement2&gt;
+                    &lt;core:PostalCode&gt;92014&lt;/core:PostalCode&gt;
+                    &lt;core:City&gt;del mar&lt;/core:City&gt;
+                    &lt;core:Region&gt;
+                        &lt;core:RegionCoded&gt;USCA&lt;/core:RegionCoded&gt;
+                        &lt;core:RegionCodedOther&gt;&lt;/core:RegionCodedOther&gt;
+                    &lt;/core:Region&gt;
+                    &lt;core:Country&gt;
+                        &lt;core:CountryCoded&gt;&lt;/core:CountryCoded&gt;
+                    &lt;/core:Country&gt;
+                &lt;/core:NameAddress&gt;
+                &lt;core:PrimaryContact&gt;
+                    &lt;core:ContactName&gt;brian  horakh&lt;/core:ContactName&gt;
+                    &lt;core:ListOfContactNumber&gt;
+                        &lt;core:ContactNumber&gt;
+                            &lt;core:ContactNumberValue&gt;858-724-8585&lt;/core:ContactNumberValue&gt;
+                            &lt;core:ContactNumberTypeCoded&gt;TelephoneNumber&lt;/core:ContactNumberTypeCoded&gt;
+                        &lt;/core:ContactNumber&gt;
+                        &lt;core:ContactNumber&gt;
+                            &lt;core:ContactNumberValue&gt;brian@zoo.com&lt;/core:ContactNumberValue&gt;
+                            &lt;core:ContactNumberTypeCoded&gt;EmailAddress&lt;/core:ContactNumberTypeCoded&gt;
+                        &lt;/core:ContactNumber&gt;
+                    &lt;/core:ListOfContactNumber&gt;
+                &lt;/core:PrimaryContact&gt;
+            &lt;/ShipToParty&gt;
+            &lt;BillToParty&gt;
+                &lt;core:PartyID&gt;
+                    &lt;core:Ident&gt;Unused&lt;/core:Ident&gt;
+                &lt;/core:PartyID&gt;
+                &lt;core:NameAddress&gt;
+                    &lt;core:Name1&gt;zoovy, inc.&lt;/core:Name1&gt;
+                    &lt;core:StreetSupplement1&gt;445 marine view #200&lt;/core:StreetSupplement1&gt;
+                    &lt;core:StreetSupplement2&gt;&lt;/core:StreetSupplement2&gt;
+                    &lt;core:PostalCode&gt;92014&lt;/core:PostalCode&gt;
+                    &lt;core:City&gt;del mar&lt;/core:City&gt;
+                    &lt;core:Region&gt;
+                        &lt;core:RegionCoded&gt;USCA&lt;/core:RegionCoded&gt;
+                        &lt;core:RegionCodedOther&gt;&lt;/core:RegionCodedOther&gt;
+                    &lt;/core:Region&gt;
+                    &lt;core:Country&gt;
+                        &lt;core:CountryCoded&gt;&lt;/core:CountryCoded&gt;
+                    &lt;/core:Country&gt;
+                &lt;/core:NameAddress&gt;
+                &lt;core:PrimaryContact&gt;
+                    &lt;core:ContactName&gt;brian  horakh&lt;/core:ContactName&gt;
+                    &lt;core:ListOfContactNumber&gt;
+                        &lt;core:ContactNumber&gt;
+                            &lt;core:ContactNumberValue&gt;858-724-8585&lt;/core:ContactNumberValue&gt;
+                            &lt;core:ContactNumberTypeCoded&gt;TelephoneNumber&lt;/core:ContactNumberTypeCoded&gt;
+                        &lt;/core:ContactNumber&gt;
+                        &lt;core:ContactNumber&gt;
+                            &lt;core:ContactNumberValue&gt;brian@zoo.com&lt;/core:ContactNumberValue&gt;
+                            &lt;core:ContactNumberTypeCoded&gt;EmailAddress&lt;/core:ContactNumberTypeCoded&gt;
+                        &lt;/core:ContactNumber&gt;
+                    &lt;/core:ListOfContactNumber&gt;
+                &lt;/core:PrimaryContact&gt;
+            &lt;/BillToParty&gt;
+        &lt;/OrderParty&gt;
+    &lt;/OrderHeader&gt;
+    &lt;OrderDetail&gt;
+        &lt;ListOfItemDetail&gt;
+            &lt;ItemDetail&gt;
+                &lt;BaseItemDetail&gt;
+                    &lt;LineItemNum&gt;
+                        &lt;core:BuyerLineItemNum&gt;B2BTEST/.35869&lt;/core:BuyerLineItemNum&gt;
+                    &lt;/LineItemNum&gt;
+                    &lt;ItemIdentifiers&gt;
+                        &lt;core:ItemDescription&gt;B2BGw test&lt;/core:ItemDescription&gt;
+                    &lt;/ItemIdentifiers&gt;
+                    &lt;TotalQuantity&gt;
+                        &lt;core:QuantityValue&gt;2&lt;/core:QuantityValue&gt;
+                        &lt;core:UnitOfMeasurement&gt;
+                            &lt;core:UOMCoded&gt;Other&lt;/core:UOMCoded&gt;
+                        &lt;/core:UnitOfMeasurement&gt;
+                    &lt;/TotalQuantity&gt;
+                &lt;/BaseItemDetail&gt;
+                &lt;PricingDetail&gt;
+                    &lt;core:ListOfPrice&gt;
+                        &lt;core:Price&gt;
+                            &lt;core:UnitPrice&gt;
+                                &lt;core:UnitPriceValue&gt;5.00&lt;/core:UnitPriceValue&gt;
+                                &lt;core:Currency&gt;
+                                    &lt;core:CurrencyCoded&gt;USD&lt;/core:CurrencyCoded&gt;
+                                &lt;/core:Currency&gt;
+                            &lt;/core:UnitPrice&gt;
+                        &lt;/core:Price&gt;
+                    &lt;/core:ListOfPrice&gt;
+                &lt;/PricingDetail&gt;
+                &lt;LineItemNote&gt;Description: B2BGw test. Notes: &lt;/LineItemNote&gt;
+            &lt;/ItemDetail&gt;
+        &lt;/ListOfItemDetail&gt;
+    &lt;/OrderDetail&gt;
+    &lt;OrderSummary&gt;
+        &lt;ListOfTaxSummary&gt;
+            &lt;core:TaxSummary&gt;
+                &lt;core:TaxTypeCoded&gt;Other&lt;/core:TaxTypeCoded&gt;
+                &lt;core:TaxFunctionQualifierCoded&gt;Other&lt;/core:TaxFunctionQualifierCoded&gt;
+                &lt;core:TaxCategoryCoded&gt;Other&lt;/core:TaxCategoryCoded&gt;
+                &lt;core:TaxAmount&gt;0.00&lt;/core:TaxAmount&gt;
+            &lt;/core:TaxSummary&gt;
+        &lt;/ListOfTaxSummary&gt;
+        &lt;OrderSubTotal&gt;
+            &lt;core:MonetaryAmount&gt;10.00&lt;/core:MonetaryAmount&gt;
+        &lt;/OrderSubTotal&gt;
+        &lt;OrderTotal&gt;
+            &lt;core:MonetaryAmount&gt;10.00&lt;/core:MonetaryAmount&gt;
+        &lt;/OrderTotal&gt;
+        &lt;SummaryNote&gt;&lt;/SummaryNote&gt;
+    &lt;/OrderSummary&gt;
+&lt;/Order&gt;
+
+</code>
+</aside>
+
+</article>
+

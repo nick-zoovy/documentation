@@ -1,0 +1,70 @@
+<meta type="filename" id="ticket/159744">
+
+<h1>Issue #159744: Correcting the Mysql "max_allowed_packet" error messages on Enterprise</h1>
+
+<article>
+<h2>Issue #159744: Correcting the Mysql "max_allowed_packet" error messages on Enterprise</h2>
+
+When running Enterprise sync manager I am trying to sync images and am receiving the error "packets larger than max packet are not allowed.  I also cannot see any image in warehouse manager
+
+</article>
+
+<article>
+<h2>Resolution</h2>
+
+Here are the steps to correct the "Packet too large", "max allowed packet exceeded", or "packets larger than max_allowed_packet are not allowed" error messages. 
+
+<br>
+
+<aside class="cbc">
+<h6>Increasing the max_allowed_packet size on Mysql</h6>
+<div>
+<li> Make sure all Enterprise clients are disconnected and sync manager is turned off.
+<li> On the database server type Start | Run | type "cmd" then at the dos prompt type "net stop mysql"
+<li> Open a copy of notepad and navigate to C:\program files\mysql\mysql server 5.0\ and open the file "my.ini"
+<li> search for a line that appears like:<br>
+max_allowed_packet=1M
+
+<aside class="hint">
+<h6></h6>
+<div>
+the 1M means 1 megabyte, your number may be different depending on your configuration
+
+</div>
+</aside>
+
+
+The max_allowed_packet= will likely be below the entry:
+<aside class="html">
+<h6></h6>
+<code>
+[mysqld]
+
+</code>
+</aside>
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+If the max_allowed_packet=1M line does not appear, then you will need to add it on it's own line, immediately below the [mysqld] line. If you don't have a [mysqld] line then you're looking at the wrong file.
+
+</div>
+</aside>
+
+
+To complete the step change the max_allowed_packet=1M from 1M (1 megabyte) to something larger such as 16M (16 megabytes). This number will need to be larger than your largest possible image.
+
+<li> When you are done - save the my.ini
+<li> from the dos command window opened in step 2 - type "net start mysql"
+<li> restart sync manager
+
+More details can be found on the mysql website: 
+http://dev.mysql.com/doc/refman/5.0/en/packet-too-large.html
+
+</article>
+
+
+
+
+

@@ -1,0 +1,71 @@
+<meta type="filename" id="ordermgr/detail/paymentstatus">
+<h1>Order Manager: Payment Status Guide</h1>
+
+<article>
+<h2>Payment Overview</h2>
+
+Zoovy Order Manager includes full payment support. Using the software you can flag orders as PAID, DENIED, CANCELED, or PENDING based on your payment status.
+
+If your store is configured to use a Payment Gateway you will see a Realtime Credit Card tab when editing Payment information. 
+In the Payment area you can edit customer payment information such as credit card numbers, and expiration dates. 
+You can also perform common actions such as settling any order which has been AUTHORIZED but not SETTLED. 
+If a card is settled successfully the order PAYMENT STATUS should change to PAID rather than PENDING, 
+in addition the TRANSACTION STATUS will denote it is paid. 
+
+<aside class="caution">
+<h6></h6>
+<div>
+
+If you create a new order in order manager and attempt to process the card it will do an
+immediate settlement (order manager will never attempt to authorize a card - regardless of your gateway settings on Zoovy.com).
+
+</div>
+</aside>
+
+
+
+</article>
+<article>
+<h2>Transaction Status</h2>
+
+<li>UNAVAILABLE - Transaction failed because the card processor or bank could not be contacted.
+<li>SUCCESS - Everything is fine, the funds have been captured and you should ship the order within 24 hours.
+<li>DECLINED - The transaction failed due to approval being denied by the processor.
+<li>PENDING - The transaction failed BUT may be completed by submitting a manual authorization (eg: voice authorization)
+<li>BAD - The transaction failed due to badly formatted data, you should check the credit card and expiration date to make sure they are correct.
+<li>DISALLOWED - The transaction failed because the requested payment type is not recognized eg: it's an american express and you don't accept american express. In some cases this error may occur when you request an authorization for more than the authorized amount.
+<li>UNRECOGNIZED - The transaction failed because the processor or bank did not recognize the merchant information.
+<li>CRITICAL - The transaction failed due to an internal inconsistency error, this is an error from Zoovy that can occur checking for an approval on an order which has already been approved, requesting payment on an order which has already been paid for.
+<li>UNKNOWN -
+<li>AUTHORIZED - The card has been authorized, but not necessarily captured.
+<li>IMPORTANT: DO NOT SHIP ORDERS PAID BY CREDIT CARD UNTIL THE TRANSACTION STATUS IS A SUCCESS
+</article>
+<article>
+<h2>Editing Payment Type</h2>
+
+You can easily edit a payment type for an order. Payment types can be setup by the administrative user. Zoovy currently supports the following payment types by default:<br>
+	<li>* CREDIT: a manual offline (non-linkpoint) credit card transaction<br>
+		NOTE: Will automatically prompt for additional information including Credit Expiration Month/Year and Credit Card Number.
+	<li>* COD: Cash on Delivery
+	<li>* CHECK: Company/Personal Check
+	<li>* CHKOD: Check on Delivery
+	<li>* CASH: Cashiers Check or Money Order
+	<li>* VERISIGN: Verisign Payment Gateway Transaction (LINKPOINT)
+	<li>* PO: purchase order
+	<li>* PAYPAL: Paypal Order
+	<li>* MONEYZAP: Money Zap
+	<li>* PICKUP: Customer will pay at Pickup<br>
+		NOTE: Will automatically prompt for additional information including Credit Expiration Month/Year and Credit Card Number, Verisign Approval Code and Processor Auth Code.
+	<li>* CARDSERVICE: Cardservice Payment Gateway Transaction (LINKPOINT)
+		+ Will automatically prompt for additional information including Credit Expiration Month/Year and Credit Card Number, Verisign Approval Code and Processor Auth Code.
+	<li>* Note: Other native payment types are expected in future releases of this client.
+</article>
+<article>
+<h2>Special Notes:</h2>
+
+You can create your own custom payment types, for example "BARTER" or "TRADEIN" something like that. These special payment types will appear on reports later, so if you plan on regularly using a special payment type then you should add a custom PAYMENT type in the admin setup area.
+</article>
+
+
+
+

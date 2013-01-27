@@ -1,0 +1,217 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="webmgr/detail/usermanager">
+<h1>Manage User Logins</h1>
+<article>
+<h2>Overview</h2>
+
+
+
+
+
+
+Manage User Logins allows an administrative user to create sub-accounts for employees and specify which portions of this site each employee may access. 
+Throughout this document the term "Master Account" or "Master User" refers to logging in to Zoovy without any specific user.
+The master account cannot be deleted, and always implicitly contains administrative priviledges. 
+
+All User Accounts are created by first logging into the Master Account. 
+The Master Account is always the same as the Zoovy store name. 
+For example if the Zoovy store name is "ACMEINC" and is located at http://acmeinc.zoovy.com then the Master User is simply "ACMEINC".
+
+<br>
+
+
+If the Master User creates 3 separate employee logins for Phil, Bob, and Sharon then those logins would be "ACMEINC*PHIL", "ACMEINC*BOB",
+and "ACMEINC*SHARON" respectively. Each User account should have a different password than the Master Account. 
+Access to the Master Account should be limited only to the business owner, or primary account contact for Zoovy. 
+When adding a new user you can select which privileges that user needs to complete their job.
+Trusted employees can be given "Is Administrator" access (discussed later) so they do not need to login to the Master Account.
+
+</article>
+<article>
+<h2>What is this and why did this change?</h2>
+
+<i>If there is one thing constant in business, it's change.</i><br>
+<br>
+As the sophisitication of Zoovy has continued to advance, the profiles of businesses using Zoovy has changed as well.
+An overwhemling majority of Zoovy customers have multiple employees who access the Zoovy account on a daily basis. 
+With this comes the need to track who is logging in, and what they are doing while they are logged in. <br>
+<br>
+This feature will make both our customers, and Zoovy operate more efficiently. Here's what this does for you:<br>
+
+<li> <b>Accountability</b> - under the old system, it was impossible to tell which employee made changes to things like inventory. 
+This means tracking down mistakes after happened, and more importantly taking steps to prevent them in the future was pretty much impossible.
+If the employee who made the mistake can be easily identified so they can be made aware, and then properly trained as to how to use
+the system to prevent future issues - it will save customers hours of frustration trying to figure out how mistakes happen.
+Ultimately this translates into savings of thousands dollars in lost productivity by being able to more quickly identify mistakes and correct them.
+
+<li> <b>Reduced Errors</b> - as we've learned with our Enterprise customers, as soon as employees know that a detailed log is available
+of all their actions their productivity increases, and they also make fewer mistakes. 
+As absurd as this sounds, it's seems everybody tends to doublecheck their work when they know any mistake will swifty and immediately 
+end up back on their desk. 
+
+<li> <b>Better Support</b> - Zoovy support currently spends more than half our day tracing down what eventually end up being 
+determined are employee errors. 
+The auditing makes it easier than ever to identify when changes happen and who made them - thereby assisting us in providing
+all customers with faster and more accurate support.
+This also means that Zoovy staff has more time to spend doing stuff that actually benefits you such as improving documentation, 
+and adding features. Even if you don't have multiple users - this change will have an impact on you!
+
+<li> <b>Reduced Exposure</b> - Using the account manager you can restrict employees to specific areas of the site that are necessary to do their
+jobs, and nothing more. This reduces you and your customers exposure to threats from disgrunted employees. It also makes it easier to 
+terminate employees because you only need to suspend their account - you don't need to change everybodies password. 
+
+<li> <b>Contractor Access</b> - Do you have an SEO firm, or website designer who is working with you and needs temporary access to your site?
+You can set expirations on logins so you don't have to worry about removing them later. 
+Plus since the expiration is displayed when they login, they know they better finish the project on time or else!
+
+<li> <b>Increased Productivity</b> - in the past, in multi-user configurations anytime somebody accidentally pressed the logout button everybody 
+would be logged out -- this resulted in hours of lost work every week. 
+
+<li> <b>Enhanced Security</b> - because only one person may access an account at the same time, Zoovy is now able to expire authentication tokens
+quicker (every 24 hours) thereby closing the gap where a person could attempt to fraudulently access your account. 
+It also means that users can actually use the logout button which ensures if their computer or laptop is accidentally stolen, that the 
+thief won't have access to their business. 
+<br>
+<br>
+Planned Enhancements:<br>
+
+<li> <b><i>Required Training:</i></b> In the future when creating new accounts new employee will be prohibited from accessing
+a specific area of functionality until AFTER they've completed the requisite self-paced multimedia training, and successfully completed a short 
+competency test afterwards (this is optional, but recommended). 
+These multimedia training videos will be provided free of charge to all customers, and we hope they will dramatically reduce training costs 
+for new employees.
+
+<li> <b><i>Multi-Account Login:</i></b> For customers with multiple stores with Zoovy - in the future this feature will also allow specific employees 
+to seamlessly move between stores.
+
+
+</article>
+<article>
+<h2>Creating Users</h2>
+
+Creating users is easy, just go to Setup / My Account Settings / Manager User Logins. From there click the "Add New User" link, you will need to provide the following
+information:<br>
+<li> Login Name: maximum 10 characters, consisting of letters A-Z and 0-9, the user will login STORE*LOGIN -- so if your Zoovy username is "ACME" and 
+you create user "BOB" then on the zoovy homepage the login would be "ACME*BOB"
+<li> Password: create a password for the user, if you enter the password of "password", or leave the field blank then the user will be prompted to 
+change the password after their first login.
+<li> Full Name: The individuals Full Name, or Nick Name this will eventually be displayed to customers when emails are sent by this user.
+<li> Job Title: This will be included as part of the upcoming "Signature" feature, and will also be included as a part of a Virtual Card for emails sent.
+<li> Email: This is the email address that you would like Zoovy to send email *FROM* and *TO* when this user is working in the account. 
+<li> Phone: This phone number is included in the Virtual Card attachment in emails (so cellphones are probably a bad idea)
+<li> Is Administrator: This grants the user all the same priviledges as the Master Account, EXCEPT the ability to add/remove the Administrator flag from other accounts.
+<li> Is Customer Service: (NOTE: This feature is NOT YET IMPLEMENTED but will be relased in Q1 2005)
+Emails sent to the designated customer service email will be sent in a round robin fashion to an employee. 
+The advantage of this is it means multiple customer service people don't need to share a single email address.
+You can configure this feature now, it will start working once the feature is released.
+
+<li> Expires: Enter a MM/DD/YY format date that the account should become inactive. Use this to give limited time access to contractors. 
+DO NOT USE THIS TO TERMINATE EMPLOYEES - since the date the account will expire is displayed to the user when they login.
+
+<li> Setup Area:
+<table>
+	<tr>
+		<td valign='top'>Grant Full Access</td>
+		<td valign='top'>Gives perpetual access to all Setup features, even new ones which are introduced later.</td>
+	</tr>
+	<tr>
+		<td valign='top'>Allow: Update Website</td>
+		<td valign='top'>Gives access to change categories, update meta tags, edit pages, and add/remove products from the website.</td>
+	</tr>
+	<tr>
+		<td valign='top'>Allow: Manage Images</td>
+		<td valign='top'>Gives access to list, add, update, and remove images. This is needed to access *any* images including company logos, and product images as well.</td>
+	</tr>
+	<tr>
+		<td valign='top'>Allow: Payment/Shipping/Checkout</td>
+		<td valign='top'>Gives access to most configuration settings throughout the system. The notable exceptions are the Account credit card area, and Billing History both which require Admin access.</td>
+	</tr>
+</table>
+<li> Products:<br>
+<table>
+	<tr>
+		<td valign='top'>Grant Full Access</td>
+		<td valign='top'>Gives perpetual access to anything having to do with editing products (also gives access to manage images)</td>
+	</tr>
+	<tr>
+		<td valign='top'>Add/Update</td>
+		<td valign='top'>Gives access to add and edit products, along with inventory, edit options, and create store option groups. This does not give access to manage images.</td>
+	</tr>
+	<tr>
+		<td valign='top'>Remove</td>
+		<td valign='top'>Allows a user to delete a product.</td>
+	</tr>
+	<tr>
+		<td valign='top'>Create Channels</td>
+		<td valign='top'>Gives access to create channels (but not manage them).</td>
+	</tr>
+	<tr>
+		<td valign='top'>Syndication Setup</td>
+		<td valign='top'>Gives access to all syndication settings, and map categories.</td>
+	</tr>
+</table>
+<li> Order Area:<br>
+<table>
+	<tr>
+		<td valign='top'>Grant Full Access</td>
+		<td valign='top'>Gives perpetual access to anything having to do with orders.</td>
+	</tr>
+	<tr>	
+		<td valign='top'>Allow: View Orders</td>
+		<td valign='top'>Gives access to view orders and to update tracking numbers.</td>
+	</tr>
+	<tr>	
+		<td valign='top'>Require Package Verification</td>
+		<td valign='top'>This will require that a user scan the proper product before proceeding to airbill printing in Order Manager.</td>
+	</tr>
+
+	<tr>
+		<td valign='top'>Allow: Add/Update Invoices</td>
+		<td valign='top'>Gives access to create new invoices, and update the properties of any invoice EXCEPT the payment status.</td>
+	</tr>
+	<tr>
+		<td valign='top'>Allow: View/Update Payment Detail</td>
+		<td valign='top'>Gives access to view credit card information, and to manually override payment status.</td>
+	</tr>
+</table>
+
+<li> Manage/Reports:<br>
+<table>
+	<tr>
+		<td valign='top'>Grant Full Access</td>
+		<td valign='top'>Gives perpetual access to all management features.</td>
+	</tr>
+	<tr>
+		<td valign='top'>Allow: Reports</td>
+		<td valign='top'>Allows the user to view/access reports.</td>
+	</tr>
+	<tr>
+		<td valign='top'>Allow: Channel Management</td>
+		<td valign='top'>Allows the user to edit/cancel channels.</td>
+	</tr>
+	<tr>
+		<td valign='top'>Allow: Customer Management</td>
+		<td valign='top'>Provides access to the customer management features.</td>
+	</tr>
+	<tr>
+		<td valign='top'>Allow: CSV Import/Export</td>
+		<td valign='top'>Provides access to all import/export functionality.</td>
+	</tr>
+</table>
+<br>
+<i>NOTE: throughout this document the word "perpetual" is means that as new features are introduced/changed over time, 
+if the "Full Access" is checked, then the user will instantly have access to any new features added to that section.</i><br>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+

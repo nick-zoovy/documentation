@@ -1,0 +1,178 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/commission_junction">
+<h1>Commission Junction Affiliate Tracking</h1>
+
+
+
+<article>
+<h2>Concept Overview</h2>
+
+Zoovy does not have a strategic relationship with Commission Junction at this time. To a certain extent this limits how much integration support we are able to provide.  We have created this page as a way to track information related to the integration of commission junction tracking pixels. 
+
+<aside class="hint">
+<h6></h6>
+<div>
+Feed Specs<br>
+http://help.cj.com/downloads/tech/product_data_transfer.pdf
+
+</div>
+</aside>
+
+
+
+
+</article>
+
+<article>
+<h2>Known Issues</h2>
+Commission Junction does not accurately track phone sales, or google checkout sales. We have informed Commission Junction of these technical issues, however they apparently charge clients additional integration fees to track these actions. 
+
+<aside class="hint">
+<h6></h6>
+<div>
+According the integration technician we spoke with Commission Junction said "most clients do not want us to track this since they don't pay us, and our fees assume a certain level of non-tracked sales". Unbelievable but true!
+
+</div>
+</aside>
+
+
+Advertisers should recognize that CJ sales will not be accurate if they take phone orders, or process google checkout orders. 
+
+</article>
+
+</article>
+<article>
+<h2>How to test your Commission Junction FTP</h2>
+<aside class="cbc">
+<h6>Advanced FTP Test</h6>
+<div>
+<li>To check your login information for Commission Junction you should open an ftp connection by going to Start>> run >> and type "cmd" (without the quotes) once the command prompt opens.
+
+<li>Type "ftp" (without quotes)
+
+<li>For Commission Junction type
+"datatransfer.cj.com" (without quotes)
+<li>Enter your username and password
+
+<li>If you can't login you probably have an incorrect username or password.
+
+<li>Transfer method will use CJ's FTP server
+
+
+</div>
+</aside>
+
+<aside class="caution">
+<h6></h6>
+<div>
+Required Product Info:<br>
+TITLE, KEYWORDS, DESCRIPTION, SKU, PRODUCT URL, AVAILABLE, PRICE
+
+</div>
+</aside>
+
+</article>
+
+<article>
+<h2>Integration Questionnaire</h2>
+
+CJ has a standard integration questionnaire that is sent out to all clients, we have attempted to answer all questions below:
+
+<aside class="hint">
+<h6></h6>
+<div>
+You will need to customize answer #4.
+
+</div>
+</aside>
+
+
+<aside class="html">
+<h6></h6>
+<code>
+
+When you have a chance, can you please reply to the answers I am attaching?  I know your
+ answers to the questions but we do like keeping a file for our records.  Once you have 
+answered the questions, I will create the action, and send you the technical integration
+ guide to move forward.
+
+Please let me know if you have any questions.
+
+ 1- What type of commissionable action are you attempting to track? An
+ online purchase (sale) OR an online acquisition (lead)? 
+Sale
+
+ 2- What is the name of the action or actions you would like to have
+ created? 
+Website Purchase
+
+ 3- What is the generating criteria for each action? Example, the
+ customer must complete an online purchase within our shopping cart. 
+The customer must complete a purchase using our online shopping cart.
+
+ 4- Will this action be integrated on a shopping cart or acquisition
+ collection system that you have developed? If not, what shopping cart or
+ acquisition collection system are you using? 
+Shopping cart.
+
+ 5- What is the exact URL, of the confirmation location, where the
+ commission based tracking integration will be completed? 
+https://secure.domain.com/*
+https://ssl.zoovy.com/*
+https://secure.domain.com/* (if you have a private ssl)
+
+ 6- Can you confirm that the Order Identifiers or OID values you will be
+ sending to our transaction processing system will be unique and will not
+ contain duplication? 
+Yes.
+
+ 7- Are you a "Gateway" advertiser? 
+ * YES, I am a Gateway advertiser and I will set a cookie that is
+ designed to match the duration of my Action Referral Period or longer. I
+ will identify all returning customers referred by Commission Junction,
+ if they were to leave my Web site and return within a minimum of 24
+ hours. I also understand the only types of links you can have as a
+ Gateway advertiser are banner ads and text links. 
+Yes we are a gateway advertiser, however we would appreciate if you could pass standard 
+j* variables to us so we can also track the orders on this side.
+
+ * NO, I am not a Gateway advertiser. I understand that I need to ensure
+ that all the confirmation pages of my shopping cart will have the
+ Commission Junction tracking pixel code within them.<br>
+
+
+
+</code>
+</aside>
+
+
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

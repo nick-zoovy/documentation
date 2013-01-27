@@ -1,0 +1,229 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="webmgr/detail/amazon-reports">
+<h1>Amazon Part 5B - Amazon Error Codes</h1>
+<article>
+<h2>Amazon Error Codes</h2>
+
+
+
+
+
+
+
+
+
+
+<aside class="hint">
+<h6></h6>
+<div>
+Zoovy syndication sends products to Amazon in batches of up to 100. If there is an XML error in a batch, the entire batch will fail to be submitted. In short, it is in your best interests to correct all of the errors that appear in your Logs. By correcting just one error, you are potentially freeing up to 100 products.
+
+</div>
+</aside>
+
+
+<br>
+
+<b>ZOOVY ERRORS/WARNINGS</b> (SKU errored before syndication)<br>
+<li><b>WARN: Looks like a duplicate UPC: ?????????? for ??????????</b>Be careful with your UPCs. SKUs with the same UPC will sometimes be automatically "merged" by Amazon. ie they are assumed to be the same product, with title and images merged. This can cause your SKUs to be sold at the wrong price.<br>
+
+<LI><B>ERROR: No Product Type for ????</B> - each product needs an Amazon Product Type declared<BR>
+
+<LI><B>ERROR: Invalid Variation Keyword</B> - This means that you have an option associated to the Product ID that is not configured for Amazon. Options that you want sent to Amazon need to be inventorial Store Options (not Product Options) with a variation keyword selected. The variation keyword must be valid for the category used by that product.<br>
+
+<LI><B>WARN: Image [???] is too small for ???</B> - This warning indicates that one of the images associated with this SKU is too small to be accepted by Amazon. All images submitted to Amazon must be at least 110 x 11 pixels. This is not an error, it is only a warning message. http://static.zoovy.com/img/MERCHANT/-/IMAGE<br>
+
+<LI><B>Warning no new products to syndicate</B> - This warning indicates that there have been no changes in your Zoovy products that need to be submitted to Amazon. Amazon syndication will only run when there has been a change in products. This is not an error. It is only a warning / status message.<br>
+
+
+
+<br><br>
+
+<b>AMAZON ERRORS</b> (Errors returned by Amazon)<br>
+
+<LI><B>401 Authorization Required</B>  - The username, merchant token and/or password that you are attempting to use is not valid. Please verify the information entered under the Config tab.<BR>
+
+<LI><B>Seller is not authorized to sell products in this category. Please contact your Amazon account manager.</B> - This error indicates that you are attempting to submit products to a category that you are not allowed to sell on in Amazon. Try submitting to another category or contact your Amazon representative.<br>
+<aside class="hint">
+<h6></h6>
+<div>Amazon frequently adds categories to it's "restricted list", especially during the holidays.  If you believe you are permitted to sell in this restricted category, Contacting Amazon immediately is Critical.<br>
+Amazon is  generally not swift to act in dealing with these issues, so the less time wasted the better.
+</div>
+</aside>
+
+<li><b>Message:Value ### is not in enumeration</b>  This indicates that 'XXX' is not a recognized Amazon term for that field.
+
+<li><b>Required attribute ### was not provided</b> This required field 'XXX' was not populated with an Amazon term. Contact support@zoovy.com for further assistance.
+
+<li><b>The value ### is not valid. Please consult your thesaurus for the valid values for the field 'ItemType'</b> Your Item Type for this product/thesaurus is not valid.
+
+<li><b>ERROR: No ToysBaby Product Type</b> For a product set to Amazon category "Amazon Toys and Baby", you need a product type attribute set for it.  Specifically either "ToysAndGames" or BabyProducts".
+
+<li><b>2005: This is a fatal message indicating that Amazon have completely rejected the feed due to server issues at their end.</b> - We automatically resend the feed when this error is received.<br>
+
+<LI><B>6001: XML parse error at line ??, column ??: Datatype error: Type:InvalidDatatypeValueException, Message:Value '??' is not in enumeration .</B>  - You have assigned a value to one the Product Specifics or Thesaurus values that Amazon does not find valid.<BR>
+
+<LI><B>6001: XML parse error at line ??, column ??: Element
+'??' is not valid for content model:
+'(ClothingType, Department, Department?, Department?, Department?, Department?, Department?, Department?, Department?, Department?, Department?, StyleKeywords,...</B> - ClothingType, Department and StyleKeywords are required for the Apparel Product Type.<BR>
+
+<LI><B>6001: XML parsing fatal error at line ??, column ??: The prefix 'dt' has not been mapped to any URI</B> - You have unicode characters in the description of your SKU.<BR>
+
+<LI><B>8004: The Product with SKU [??] may be identical to existing ASINs ([?, ?, ]) See full explanation below.<br>
+
+<li><b>8008:We cannot recognize your child SKU: [???]</b> An option or related item that is assigned to this product could not be found on Seller Central.<br>
+- If the SKU refers to an option, you need to figure out why the option did not syndicate.<br>
+- If the SKU refers to a related item (which it most likely does,) you should either:<br>
+a. Syndicate the related item to Amazon (if you want the item to remain related) and then save the parent product so that it re-syndicates.<br>
+b. Removed the related item from the Related products list in the product editor (If you longer want it to remain related) and then save the product so that it re-syndicates<br>
+
+<li><b>8041: </b> See error message 8004 below for details<br>
+
+<li><b>8057: ConditionType for SKU [P10819U] cannot be modified because it has saleable inventory</b> You currently have this SKU in stock with a different ConditionType. Remove the SKU from SellerCentral, so it can be reloaded with the current ConditionType.<br>
+
+<LI><B>8060: SKU [??????] cannot be matched to an existing product for the following reason: [NOT PROVIDED standard_product_id , ]. </B> - Category requires UPC codes assigned to each product. If you have these codes, you should assign them to your products.
+Otherwise, they will automatically be created for you by Zoovy (via a "fake" UPC generation script).<BR>
+
+<li><b>8060: SKU [???????] cannot be matched to an existing product for the following reason: [INVALID VALUES upc , ]</b> Your UPC is invalid. UPCs cannot be "made up", they must be 12 digits long and pass a checksum. If you have these valid UPCs, you should assign them to your products. Otherwise, they will automatically be created for you by Zoovy (via a "fake" UPC generation script).<br>
+
+<li><b>8108: Invalid StandardProductID value for SKU [??????]</b> - The UPC you provided for the SKU is invalid.<br>
+
+<li><b>8121: Unauthorized value for missing_keyset_reason.</b> - Your store is no longer UPC exempt. Please submit a ticket to tech support with this information.<br>
+
+<li><b>8123: The item with SKU ????? cannot be modified because it matches a deleted item.</b> - The item that is being syndicated has the same ASIN as a product that has been deleted from Amazon. To rectify this issue, delete the ASIN from the product and re-syndicate. 
+
+<li><b>13013: SKU provided was not active; price was not updated.</b> - SKU didn't load properly, so the price did not load</b><br>
+
+<li><b>13013: This SKU does not exist in the Amazon.com catalog. Your inventory data was not processed.</b> - SKU didn't load properly, so the inventory did not load<br>
+
+<li><b>20005: Cannot associate image with an existing product.</B> - SKU didn't load properly, so the image(s) did not load.<br>
+
+<article>
+<h2>Amazon ASIN error:8004</h2>
+8004: The Product with SKU [??] may be identical to existing ASINs ([?, ?, ]) based on these attributes: </B><br>
+
+This ASIN error is usually caused when an identical or similar product exists
+on Amazon.<br>
+<br>
+
+When this error occurs, you should do a search on Amazon.com
+for that ASIN.	If the product that is returned is the same as the product you
+are listing, you simply add that ASIN to the product and the issue should be
+resolved. If that doesn't resolve the issue you will need to change the values of your product to match that of the product already on Amazon. Amazon should also have returned error message 8041 which will detail the differences between your value and the value in the Amazon catalog.<br>
+<br>
+
+If the product returned from the ASIN search is not the same as the product
+you're attempting to list, then you must change something in your Amazon
+product description to differentiate your product from the existing Amazon
+product.<br>
+<br>
+
+If you run a search for the ASIN on Amazon.com and the return is No Match, it
+indicates that the ASIN existed on Amazon at some point, but was removed, or
+deleted, and the database has not yet recognized the removal. In this case contact Amazon through Seller Central.<br>
+<br>
+
+The solution here is the same as when a search returns a dissimilar product. 
+You must change your Amazon product description to differentiate your product
+from the one that was using that ASIN.	Add or remove manufacturer name, or
+product specifics so that it is no longer considered by Amazon to be identical
+to the product using that ASIN.<br>
+<br>
+
+Once the Amazon product description has been changed, the product should launch
+successfully.
+</article>
+
+<article>
+<h2></h2>
+
+<b>Fatal Errors</b>
+<li><b>5002</b> Amazon send fatal error messages when they simply reject a feed. We
+automatically resend the feed in these circumstances but on some occasions it
+requires further investigation.<br>
+<br>
+
+The 5002 error messages fall into this category. As this is an Amazon server issue there is nothing we can do to increase the number of feeds that get processed on the first attempt. It is still important to display these messages to you as they communicate that Amazon are having issues at a given time. If your feed has taken a particularly long time to process and you have received many of these messages, you know the issue is at the Amazon end.
+
+<br>
+
+</article>
+
+
+<br>
+Note: Unfortunately, not all errors are returned with the SKU in question. We
+are working with Amazon to get this data.
+<br><br>
+
+<br>
+
+<aside class="hint">
+<h6></h6>
+<div>
+
+<b>Ever wonder why certain products don't syndicate?</b><br>
+Please look at Syndication -> Amazon -> Logs. This report only shows errors and warnings. If you ever need help tracking down a particular "problem" product, please submit a ticket to Tech Support. 
+
+
+</div>
+</aside>
+
+
+Inventory is updated on Amazon on an hourly basis for products that have had their inventory modified in the last hour.
+<?
+
+webdoc_detail_content_end();
+webdoc_detail_footer();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,89 @@
+<meta type="keywords"></meta>
+<meta type="filename" id="info/kpi">
+<h1>Key Performance Indicators (KPI) + Dashboards</h1>
+
+<article>
+<h2>Concept Overview</h2>
+
+
+
+<div class="beta"></div>
+
+</article>
+
+<article>
+<h2>About this feature</h2>
+
+We are proud to announce the experimental availability of our new Key Performance Indicators / Dashboards module to the Zoovy.com Admin Interface.  This is an open pilot and we encourage users to go in and experiment.  At this time KPI is limited to sales data since Dec 25th, 2010 however we will fully load it with data for clients prior to it's final release. 
+
+<br>
+
+The KPI functionality includes the ability to visualize sales by:
+<li> Overall
+<li> Customer: repeat/new
+<li> Shipping: expedited/ground
+<li> Partition
+<li> Domain
+<li> Schedule
+<li> Over 60 Marketplaces: eBay, Amazon, Buy.com, Sears.com, NexTag, Shopping.com, Shopzilla, etc. 
+<li> Product Tags: fresh, needs review, has errors, pre-order, discontinued, special order, best seller, sale, free shipping, new arrival, and 8 other user defined tags.
+<br>
+<br>
+In addition all data-sets include three data columns: gross merchandise sales (gms), # of orders, # of units.  Graphs can summed, average, or view min/max values of a variety of periods of time from days, weeks, months, years.  All dashboards use relative dates and automatically update on boundaries such as weeks, months, quarters or fiscal years.
+<br>
+<br>
+Finally graphs can be visualized as either: area, bar, column, area spline, line, or pie charts. 
+</article>
+
+
+<article>
+<h2>Dashboards vs. Business Intelligence</h2>
+Dashboards create visual representations (charts) based on real-time summarized data.  Often while viewing a dashboard you will want to explore the data further and create your own visualizations.   Interactively working with data can be done with the Zoovy Integrated Desktop Business Intelligence application. 
+
+<a class="linkdoc" href="#?doc=51602">Doc 51602</a>
+
+</article>
+
+</article>
+KPI records the statistics/properties of an order when it is placed. Subsequent edits to the order will NOT revise the KPI statistics downward, even if the order is cancelled within the same business day.  Once the KPI statistic is incremented it cannot be decremented, this is a design decision about how the KPI data is stored and will not be changed.  KPI is intended to provide useful trending information in aggregate over time - the totals aren't as useful. 
+</article>
+
+<article>
+<h2>Considerations: Splitting Orders</h2>
+The ability to split an order (and create a new order from an old order) will result in both the original order, and the subsequent new "split order" being tracked.  This is because KPI does not decrement numbers.  However not all hope is lost, graphs can be reconfigured to work on percentage instead of sales totals and that can still provide useful trending information.
+<aside class="hint">
+<h6></h6>
+<div>
+Ultimately we're trying to remove the need to split orders. Contact Zoovy implementation for assistance modifying your processes so you do not need to split orders. 
+
+</div>
+</aside>
+
+</article>
+
+<article>
+<h2>Business Intelligence</h2>
+Order Manager 11.100 will include a built-in business intelligence and data-mining engine that will be able to generate many of the same dashboard reports (although not as easily on the web) and it will work with cubes which contain snapshots of your database.  The BI component in order manager will use different data model (snapshot model) to assess the past (as it appears from the present) instead of a odometer model (the past as it happened).  This will result in variances in numbers between BI and KPI which may make one, or the other more or less useful for you. 
+</article>
+
+
+
+<article>
+<h2>Additional Parameters</h2>
+
+The charts generated are powered through 'highcharts' which offers a variety of optional parameters for graph types.  For example, you can turn the legend off by adding this code:
+
+<aside class="html">
+<h6></h6>
+<code>
+{"legend": {
+        "enabled": false
+    }}
+
+</code>
+</aside>
+
+
+
+</article>
+
