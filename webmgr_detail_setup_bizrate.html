@@ -1,0 +1,181 @@
+<meta type="tag" id="biz">
+<meta type="tag" id="bizrate">
+<meta type="tag" id="rate">
+<meta type="docid" id="50374">
+<meta type="docid" id="50374">
+<meta type="docid" id="50374">
+
+<pre>
+**LEGACY CONTENT**
+
+[[FILENAME]webmgr/detail/setup-bizrate]
+[[TITLE]Shopzilla Syndication (formerly Bizrate)]
+[[SECTION]Overview]
+[[TAG]bizrate=1000]
+[[TAG]biz=500]
+[[TAG]rate=500]
+Shopzilla is a pay per click performance site (formally Bizrate).  The Shopzilla marketplace, is used to provide the world's 
+
+best shopping search engine, striving to list any store or product that is available on the Web.  By using Zoovy Syndication, 
+
+Merchants can submit all products on the website to Shopzilla.
+
+[[/SECTION]]
+[[STAFF]]
+Feed Specs (Last edited 1/11/11)
+https://merchant.shopzilla.com/pp/resources/us/OA_feed.doc
+
+shopzilla does not check inventory, products will be listed with or without stock
+
+[[/STAFF]]
+
+[[SECTION]In your Shopzilla account]
+<li>You will need to register for an account at www.Shopzilla.com
+<li>You will need to make a $100 deposit in order to register.
+<li>Once you have created your account, click on the "Manage Listings" tab, click on "Submit & Update Your Product Listings Datafeed". (If you already have a non-FTP feed configured, you'll need to click the "Would you like to change the method you use for delivering your products to Shopzilla? Click here", link).
+<li>Look for the "Programmatic Upload through FTP" option, and click "Go!"
+<li>In Step 2, click on Create on next to "Create delivery location for me"
+<li>Type: 	ftp (write down, need for Zoovy credentials)
+<li>Domain: 	ftp.shopzilla.com (write down, need for Zoovy credentials)
+<li>Username: 	the ftp username provided by Shopzilla (write down, need for Zoovy credentials)
+<li>Password: 	the ftp password provided by Shopzilla (write down, need for Zoovy credentials)
+<li>Port:	{leave blank}
+<li>Path: 	/
+<li>Filename:	DEFAULT-bizrate.txt (type in)
+<li>Unzipped Filename: {leave blank}
+<li>Once you've confirmed that the data entered in Shopzilla matches the data entered in Zoovy, click Submit (Feed Delivery 
+
+Location).
+<li>For this next step, you have to go back to the Zoovy interface.  In Syndication >> Shopzilla, click the Publish link for the 
+
+appropriate profile.
+<li>Now, back in your Shopzilla account:  Click DONE for step 3.
+<li>Step 4:  Click check feed for errors:  No errors?  Great! click the Back button.
+<li>Click Process button for step 5.  
+<li>Barring any issues, you should be good to go.
+
+[[/SECTION]]
+[[SECTION]In your Zoovy account]
+<li> At this point you open a new browser window and login to Zoovy.com  - then go to Setup | Syndication | Shopzilla | 
+
+[profile] edit.
+<li> Enter the user name and password assigned to you by Shopzilla.
+<li> Enter the FTP username and password assigned to you by Shopzilla.
+<li> Enter Shopzilla FTP Server:  ftp.shopzilla.com 
+<li> Enter Shopzilla FTP Filename:  specify profile-bizrate.txt  (Exp:  Default-bizrate.txt)
+<li> You will be notified by Shopzilla once your feed is accepted, after that you will need to setup the advertising budget for 
+
+each product, and your shipping policies. You will also need to upload a copy of your logo.
+
+
+[[/SECTION]] 
+[[SECTION]Mapping Categories]
+
+
+The system will only include products that appear on your website in your Shopzilla feed.
+You should map the categories on your website to Shopzilla category numbers by going to Setup | Syndication | Shopzilla | 
+
+Categories tab.
+Since Shopzilla category is a required field, if it is not specified for a product then the product will be excluded from the 
+
+feed.
+
+[[HINT]]
+
+You can override the default category for a product by setting the "bizrate:category" attribute in your product.
+[[/HINT]]
+[[CAUTION]]
+Shopzilla does not check inventory, therefore products that are sent up in the feed that are out of stock will not be removed from Shopzilla.  To remove products from a feed please set the bizrate:ts to -1.
+[[/CAUTION]]
+
+
+[[/SECTION]]
+[[SECTION]Debugging]
+
+Once a copy of the uploaded file "DEFAULT-BZR--data.txt" (http://static.zoovy.com/merchant/yourusername/DEFAULT-BZR--data.txt) 
+
+appears in your public files directory - you can use this to see what products
+are being included and sent to Shopzilla. If you have any questions please use the User Comment form below.
+<br>
+<br>
+The "Manufacturer" will default to the zoovy:prod_mfg, then zoovy:prod_mfgid, then to product sku if the field zoovy:prod_mfg is 
+
+not set. 
+The condition field is controlled by the "zoovy:prod_condition" field, we recommend you set this field to "New" if you know how.
+Typically people will use the Shopzilla specifics in the product editor to do this, or a CSV file to do this.
+
+[[/SECTION]]
+[[FOOTER]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>

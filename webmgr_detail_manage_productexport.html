@@ -1,0 +1,215 @@
+<meta type="docid" id="50365">
+<meta type="docid" id="50365">
+<meta type="docid" id="50365">
+
+<pre>
+**LEGACY CONTENT**
+
+[[FILENAME]webmgr/detail/manage-productexport]
+[[TITLE]Utilities / Product Export]
+[[SECTION]Overview]
+
+[[STAFF]]
+
+More Advanced Product Export Notes  (SEARS)
+
+@START
+@Item Id|%SKU
+@Action Flag
+@FBS Item
+@Variation Group ID
+@Title|zoovy:prod_name
+@Short Description|sears:prod_desc
+@Long Description
+@Seller Categories
+@Packing Slip Description
+@Category
+@UPC|zoovy:prod_upc
+@Manufacturer Model #|zoovy:prod_mfgid
+@Cost|zoovy:base_cost
+@Standard Price|zoovy:base_price
+@Sale Price
+@Handling Fee
+@Sale Start Date
+@Sale End Date
+@Promotional Text
+@Shipping Override
+@Shipping Override Start Date
+@Shipping Override End Date
+@Free Shipping Promotional Text
+@Low Inventory Alert
+@MAP Price Indicator
+@Brand Name|zoovy:prod_mfg
+@Shipping Length|zoovy:pkg_depth
+@Shipping Width|zoovy:pkg_width
+@Shipping Height|zoovy:pkg_height
+@Shipping Weight|zoovy:base_weight
+@Shipping Restrictions
+@Shipping Cost: Ground
+@Shipping Cost: Expedited
+@Shipping Cost: Premium
+@Choking Hazard: small parts
+@Choking Hazard: balloons
+@Choking Hazard: small ball
+@Choking Hazard: contains small ball
+@Choking Hazard: contains marble
+@Choking Hazard: other
+@Safety Warning: other
+@No Warning
+@Energy Star Compliant
+@Good HouseKeeping
+@Hazardous Material
+@Restricted Product
+@California Emissions
+@Web Exclusive
+@Food Item
+@Requires Refrigeration
+@Frozen Item
+@Alcohol
+@Tobacco
+@Product Image URL|%IMGURL=zoovy:prod_image1
+@Mature Content
+@Swatch Image URL
+@Feature Image URL #1|%IMGURL=zoovy:prod_image2
+@Feature Image URL #2|%IMGURL=zoovy:prod_image3
+@Feature Image URL #3|%IMGURL=zoovy:prod_image4
+@Feature Image URL #4|%IMGURL=zoovy:prod_image5
+@Feature Image URL #5|%IMGURL=zoovy:prod_image6
+@Feature Image URL #6|%IMGURL=zoovy:prod_image7		
+@END
+
+[[/STAFF]]
+
+The Product Export Tool allows you to export products to excel by going to Utilities | Product Export.  In order to use this utility, the CSV Bundle is required and must be active on the Zoovy Account.  This can be added by going to Setup | Account Settings | Add/Remove Features.
+[[/SECTION]]
+[[SECTION]CSV vs. Excel]
+
+Zoovy can export to Excel or CSV.
+Please note, due to a bug in Microsoft Excel 95, 2000, and Office XP versions, you should not attempt to do a CSV 
+import of product data, if your products contain any HTML.
+[[/SECTION]]
+[[SECTION]Common Practice]
+
+When you are first starting to create new products, it is recommended that you completely create one product and populate as many fields necessary.  This will include fields such as: Your Cost, Suggested Retail, Product Description and On Shelf Qty.  When exporting the single product to an Excel or CSV formatted file, the Zoovy Headings will auto-populate for all the fields that contain a value, thus making it much easier for products to be added to the Database. The user can simply copy/paste the values to each Heading Column, for each product, then re-import the file back into Zoovy.  Importing newly created products via Excel/CSV can be done by going to Setup | Advanced Features | CSV Import Utility.  This is intended for merchants with a large volume of products or for merchants that constantly edit products.<br><br>
+
+[[HINT]]
+Every field in Zoovy can be imported/exported.  Use the product debugger to discover new fields in your products.
+[[/HINT]]
+
+[[/SECTION]Special Export Options]
+[[SUBSECTION]Export Navigation Categories]
+Navigation (website) categories will be appended as data columns. 
+[[/SUBSECTION]]
+[[SUBSECTION]Export Management Categories]
+Management categories are used by the integrated desktop, to create a non-website oriented (management) hierarchy for products. A product may only be stored in one management category at a time. 
+[[/SUBSECTION]]
+[[SUBSECTION]Export Image URLs rather than Image Library names]
+This is particularly useful with dynamic headers, it will export both the image reference, and also provide a suitable URL.  It is equivalent to using %IMGURL= header to explicitly state that a column should include an image. 
+[[/SUBSECTION]]
+[[SUBSECTION]Strip Carriage Return/Line Feeds]
+If descriptions/text being exported has CR/LF's, these are technically not allowed in CSV files (although many applications will work with them), but if you're exporting to a system that does not - then you'll need to remove CR/LF. 
+[[/SUBSECTION]]
+[[SUBSECTION]Attempt to convert UTFx data to HTML]
+UTF8,UTF16,UTF32 characters are automatically put in by many editors such as microsoft word or internet explorers native HTML editor.  These characters are not allowed in ascii csv files and must be removed or they will appear as binary symbols. 
+
+[[/SUBSECTION]]
+[[SUBSECTION]Expand product option groups]
+If a product has one or more inventoriable option groups then this will export the SKU's, instead of the base product record.
+[[/SUBSECTION]]
+[[SUBSECTION]Enable the %PRODUCTURL header]
+This will add a column to the CSV file that contains a fully qualified SEO optimized URL for each product in the export. 
+[[/SUBSECTION]]
+[[SUBSECTION]Enable the %ADDTOCART header]
+This will add a header containing the generated ADD-TO-CART HTML. The HTML will generate a button, or link that is suitable for purchasing the product and putting the person directly into the cart with the specified quantity. 
+[[/SUBSECTION]]
+
+[[SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]Advanced Exports]
+In the "specify custom list of fields" you can also create an advanced export. 
+Advanced exports are "recipies" that are used to create a data file with pre-formatted headers that match a remote system (such as Sears or Buy.com).  The goal of an advanced import is to be able to generate a CSV file which does not require any additional reformatting before being sent to a marketplace.
+
+[[BREAK]]
+
+
+Advanced exports may NOT be used with standard exports, although they share the same custom fields field.  Advanced imports start with a @START in the first line, and end with a @END, each line also begins with a @.  Here is an example:
+[[BREAK]]
+[[HTML]]
+@START
+@seller-id|%TEXT=xyz
+@gtin|%TRY=zoovy:prod_upc,zoovy:prod_ean
+@isbn|zoovy:prod_isbn
+@mfg-name|zoovy:prod_mfg
+@mfg-part-number|zoovy:prod_mfg
+@description|zoovy:prod_desc
+@reserved|
+@END
+[[/HTML]]
+
+The example above will create a file with the headers:
+[[BREAK]]
+seller-id, gtin, isbn, mfg-name, mfg-part-number, description, reserved
+[[BREAK]]
+In the example above the seller-id will ALWAYS be set to the text "xyz", the gtin will be set to either the product upc, or if that is not available, the ean. The isbn, mfg-name, mfg-part-number, description, and reserved will be set to the appropriate value, or blank.
+[[BREAK]]
+The format is:
+header|%DIRECTIVE=...  or header|data:attribute
+[[BREAK]]
+[[SUBSECTION]Directive: %TEXT=constant_text]
+This will set the specified column in each_row to "constant_text", this is useful when the file being generated needs a fixed field such as "seller id" or even a more generic field such as "in stock" which will not change and is not pulled from the product database.  
+[[/SUBSECTION]]
+[[SUBSECTION]Directive: %WIKISTRIP=data:attribute]
+This will remove any wiki markup and convert to plain (formatted) text suitable for an HTML pre tag. Useful for marketplaces that do not support wiki markup or HTML. 
+[[/SUBSECTION]]
+[[SUBSECTION]Directive: %IMGURL=data:attribute]
+This will take a relative image attribute (such as zoovy:prod_image1) and convert it to a valid URL at it's original size/format. 
+[[/SUBSECTION]]
+[[SUBSECTION]Directive: %TRY=data:attribute1,data:attribute2]
+This directive go through each attribute until one is found. However it is important to note that "blank" is considered set (as in "set to blank").  Try will only go to the next value if the data:attribute specified is NOT set in the product (ex: not initialized).  This is useful for trying more specific values ex: buy:prod_condition, then proceeding to more generic attributes zoovy:prod_condition 
+[[/SUBSECTION]]
+
+[[/SECTION]]
+
+[[FOOTER]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>

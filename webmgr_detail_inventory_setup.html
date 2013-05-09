@@ -1,0 +1,308 @@
+<meta type="tag" id="debug">
+<meta type="tag" id="cgi">
+<meta type="tag" id="report">
+<meta type="docid" id="50310">
+<meta type="docid" id="50310">
+<meta type="docid" id="50310">
+
+<pre>
+**LEGACY CONTENT**
+
+[[FILENAME]webmgr/detail/inventory-setup]
+[[TITLE]Inventory Setup]
+[[SECTION]Overview]
+[[TAG]debug=2000]
+[[TAG]report=400]
+[[TAG]cgi=400]
+Your Zoovy store can track inventory for internal use or disclose inventory information to your customers.
+Designing an inventory system which is compatible with many diverse business models is very difficult for any
+business. We have attempted to design a system that is as easy to use, but still offers the most
+flexibility available. At Zoovy we have identified four distinctly different types of inventory users, who have
+extremely different inventory needs. Because Zoovy supports so many different types of businesses, it made supporting
+each of those inventory models a little bit tricky. The three types of users are:<br>
+<ul>
+<li> <b>TYPE 1 - Internal Only</b> - inventory is used for internal use only, such as re-ordering. They never want to tell a customer
+that an item is out of stock, because they can re-order any item they need. These businesses are equipped for 
+dealing with backorders and special orders on a regular basis (in fact they may not stock MANY of the items on their website.)</li><br>
+<br>
+
+<li> <b>TYPE 2 - Don't Promote</b> - items which are out of inventory should not be promoted (visible on the website), but customers which
+want that item may still checkout and the company will attempt to source additional units, or recommend alternatives. 
+In this case, we'll tell customers how many are in stock, but let them purchase more.
+These folks can deal with backorders, but don't like to because it's very time consuming. </li><br>
+<br>
+
+<li> <b>TYPE 3 - One of a Kind/Don't sell</b> - one of kind items which are out of stock cannot be replaced. 
+These folks are extremely sensitive and need the website to always error on the side of caution 
+when it comes to sell/don't sell decisions. </li><br>
+<br>
+
+<li> <b>TYPE 4 - Virtual Inventory</b> - these sellers don't mantain their own inventory, they use a shared inventory pool at their
+suppliers warehouse. Normally this requires regularly uploading an inventory CSV file only a daily or weekly basis.
+Since items can be sold out of the suppliers warehouse, without Zoovy being informed it is necessary to use safety margins and tell
+customers that items which do not have ample inventory are effectively out of stock. Using virtual inventory with channels is extremely
+risky since there is no way to actually reserve inventory from a supplier (most suppliers have a first come, first serve sort of attitude).
+<br>
+</ol><br>
+[[CAUTION]]
+
+Before proceeding use the guide above to determine which type of inventory model (TYPE 1, 2, 3, or 4) is the closest to your needs.
+[[/CAUTION]]
+
+
+[[/SECTION]]
+
+[[STAFF]]
+When reading the inventory logs from the product debug screen, here is a "decoder" to the action that adjusted the inventory: [[BREAK]]
+prototype = product editor UI adjustment[[BREAK]]
+main.cgi = csv import adjustment[[BREAK]]
+httpd = order placed on the web[[BREAK]]
+move.cgi = canceled order[[BREAK]]
+sync.cgi = order manager sync adjustment[[BREAK]]
+[[/STAFF]]
+
+[[SECTION]General Settings]
+
+
+To begin inventory setup, go to the Setup tab, then under Account Settings select Global Settings<br>
+<br>
+
+<li> <b>Inventory is for Internal Use Only</b> (REQUIRED: TYPE 1,4)<br>
+This disables any sort of display of inventory status to customers on the website. 
+This enables tracking, but a customer will ALWAYS be able to buy a product even if there is not enough inventory.<br>
+<br>
+
+<li> <b>Inventory Matters.</b> (REQUIRED: TYPE 2,3,4)<br>
+There are two options with Inventory Matters. The inventory on hand quantities are displayed on the web site or Status Messages are
+displayed. Customers can not purchase more product than you have in stock.
+Products will be removed from the website and any scheduled listings will be canceled when the inventory quantity reaches zero.  
+This will prevent you from overselling regardless of in how many market places you have your products.
+<br>
+
+[[/SECTION]]
+[[SECTION]Advanced Settings - Site Integrator Users Only]
+
+
+If you need more advanced inventory control you can have it by adding the "Site Integrator" bundle.  You must contact your Zoovy account manager
+at 1-877-966-8948 ext. 2 for assistance adding this feature.  It is an advanced developer feature.
+<p>
+These are the advanced inventory controls which are available:
+<br>
+
+<li> <b>Inventory is for Internal Use Only</b> (REQUIRED: TYPE 1)<br>
+This disables any sort of display of inventory status to customers on the website. 
+This enables tracking, but a customer will ALWAYS be able to buy a product even if there is not enough inventory.<br>
+<br>
+
+<li> <b>Disclose Inventory Status Messages to Customers.</b> (REQUIRED: TYPE 2)<br>
+The inventory status messages are configured below.  
+You want to use inventory status when you want to let your customer know that something is either in stock or 
+out of stock, but not how many are available.
+This does NOT stop a customer from purchasing, it only informs them that the item may be out of stock.<br>
+If you plan to disable purchasing, you should probably enable this as well in case a person has bookmarked the product page.<br>
+<br>
+<li> <b>Disclose Inventory Quantity to Customers</b> (REQUIRED: TYPE 3, RECOMMENDED TYPE 4)<br>
+This allows the inventory quantity to be displayed to customers on all products which have inventory enabled.
+This does NOT stop a customer from purchasing, it only informs them how many of a specific item are in stock, if the product
+has options it displays the total count for all options.<br>
+<br>
+<li> <b>Configure display settings for each product</b> (SPECIAL CASES ONLY)<br>
+This is a developer setting which allows you to enable/disable how inventory is displayed (none, messages, or quantity) on
+a product by product basis. Specifically the zoovy:inv_mode attribute can be set to 0 for none, 1 for display status, 
+and 2 for display quantity.<br>
+<br>
+<li> <b>Track Reserved Inventory</b> - (RECOMMENDED: TYPE 2, TYPE 4, REQUIRED: TYPE 3)<br>
+Reserved inventory keeps track of how many items are active or sold on auction. If you plan on using channels, and you plan on
+allocating and reserving portions of your inventory for those channels then you will want to enable this. 
+This will cause the website to display the actual count minus the reserved amount as the quantity available for purchase.
+
+[[/SECTION]]
+[[SECTION]Checkout Settings]
+
+<li> <b>Allow customers to purchase quantities larger than the inventory in stock</b> (REQUIRED: TYPE 1)<br>
+This will allow a customer to purchase an infinite supply of anything in your store, 
+nothing will stop them from adding an item to their cart.<br>
+<br>
+<li> <b>Reduce quantity in cart to match actual quantity available</b> (REQUIRED: TYPE 2)<br>
+When an item is added to the cart, the system will verify that the actual quantity is available.  
+This is not a terribly useful setting since it does not include anything which is reserved in channels.<br>
+<br>
+<li> <b>Reduce quantity in cart to match reserved quantity available</b> (REQUIRED: TYPE 3)<br>
+When an item is placed in the cart, the system will verify that the quantity the customer is 
+attempting to purchase is less than or equal to the actual quantity, minus the reserved quantity.<br>
+<br>
+<li> <b>Notifications: Send email on all inventory events</b> (RECOMMENDED: TYPES 1,2 and 3)<br>
+this will cause an email to be sent to you whenever one of the inventory events discussed below are performed.  
+This is a handy way of knowing when channels are revoked or when items are removed from the website.<br>
+<br>
+<li> <b>Verify Contents during Checkout</b> (REQUIRED: TYPE 3)<br>
+This can slow down checkout and possibly confuse the customer.
+Normally inventory is only verified when an item is added to the cart.  
+However customers can keep items in carts for up to 30 days after they have added an item to it.  
+The inventory is not decremented until after purchase, so it is possible for a situation where 
+two customers put the same item in their cart, but one does not checkout right away and then two of the same item are sold.
+
+[[/SECTION]]
+[[SECTION]Channel Settings]
+
+The settings here are independent of the scheduler settings. 
+Scheduler checks inventory before attempting to launch an auction, whereas this feature actually prevents the channel from being created.
+
+<li> <b>Always let me create channels regardless of inventory settings.</b> (REQUIRED: TYPE 1)
+Basically, disable the inventory checking for creating channels.
+
+<li> <b>Do not create channels when quantity exceeds actual inventory.</b> (REQUIRED: TYPE 2)
+The Actual count keeps track of the total number of units available, 
+but does not take into account any items which have been placed on marketplaces and may
+be sold through other channels.
+
+<li> <b>Do not create channels when quantity exceeds reserved inventory.</b> (REQUIRED: TYPE 3)
+The Reserved count is the actual count minus the number which are reserved for sale on marketplaces such as eBay. 
+If you utilize reserved inventory (so you don't oversell your items) then this is recommended. 
+
+[[/SECTION]]
+[[SECTION]Status Messages]
+
+
+Status messages are only displayed if the Disclose Inventory Status messages 
+to customers is enabled (see General Settings).<br>
+
+<li> In Stock Messages<br>
+Displayed when the actual inventory minus the reserved inventory is greater than zero.
+<li> Reserve Message<br>
+Displayed when the actual inventory minus the reserved inventory is less than zero.
+<li> Safety Message<br>
+Displayed when the actual inventory is greater than zero, but less than the safety quantity.  The safety quantity is configured later.
+
+[[/SECTION]]
+[[SECTION]Inventory Actions]
+
+
+Inventory actions allow the system to perform certain behaviors when a specific target quantity is reached.  
+There are two behaviors:<br>
+
+<li> Remove from website<br>
+This will cause the item to be stripped from the website navigation categories.  
+Customers who have bookmarked the item will still be able to get to the page - but the page will say out of stock.  
+Customers who have already added the items to their cart will be able to purchase the item, unless the verify contents during checkout flag is set to true.
+
+<li> Revoke any active channels<br>
+This will cause any channels that are related to the product to stop launching any new listings.
+Specifically this will not affect any running listings, but will stop things which are scheduled 
+to launch in the future from launching.
+
+<br>
+<br>
+The following actions are available, each can process either of the actions above:<br>
+<li> Reserve Exceeded: [ actual# - reserve# < 0 ]<br>
+The actions are performed if the amount reserved exceeds the available inventory.
+This is a safety net, in the unlikely event you list more on auction than you have available this will NOT 
+stop the running listings, but will prevent any further listings from being created (Unless you create more by hand).<br>
+REQUIRED: Remove/Revoke  Types 2,3, and 4.<br>
+
+<li> Reserve Met: [ actual# - reserve# < 1 ]<br>
+The actions are performed if the system has allocated, but not exceeded the inventory in all channels.
+There are very rare examples where this would be used. For example, if you wanted to remove the item from your website
+when the last item went up to auction.<br>
+RECOMMENDED: Remove from website - Type 2.
+
+<li> Safety Met: [ actual# - safety# < 1 ]<br>
+Safety inventory is really only useful for situations where inventory may be overstated e.g. drop shipping, and you 
+want to take extra precaution not to oversell.<br>
+RECOMMENDED: Remove/Revoke Type 4.
+
+<li> Out of Stock: [ actual# < 1 ]<br>
+The actions are performed when the actual inventory on hand drops to zero.<br>
+REQUIRED: Type 2, Type 4.<br>
+RECOMMENDED: Type 1, Type 3.<br>
+<br>
+
+[[/SECTION]]
+[[SECTION]Behaviors: Automatically Removing Products from Website]
+
+Website updates in Zoovy are NOT real-time,
+meaning that changes such as products being removed when they are out of stock are not instantly reflected on the website. 
+The inventory management system is designed so changes will occur within a few minutes. 
+In extreme cases, during maintenance windows, code updates, or other circumstances 
+it could take several hours for inventory changes to be reflected on the website. 
+The change in quantity takes affect within around 3 seconds of an order being placed.
+<br>
+<br>
+Even after a product is removed from the site navigation it can still be purchased by going directly to 
+http://yourname.zoovy.com/product/SKU, or by having already added the item to the cart.  
+If you are a one of a kind seller, or liquidator with limited quantities and cannot allow that - 
+you must specifically prohibit items from being purchased after they are out of stock using the "Verify Cart during Checkout" setting.
+<br>
+<!--
+<b>Should I use Inventory Management?</b><br>
+&nbsp;&nbsp;&nbsp;The decision to use Inventory Management is one that should not be taken lightly. If you have a good handle on what
+you have in your warehouse (or garage), and plan to keep it that way, then you're probably a good candidate for
+Inventory control. The funny part about Inventory control is that if customers don't see the inventory status on
+your site, they will have virtually no expectation about the time-frame to receive goods. This can be good since
+it gives you a larger window to find and correct inventory mistakes. However, in certain cases showing the
+customer that you have inventory (and in some cases how much inventory you have) will cause them to purchase
+from you since they are assured they will be given an allocation. When you disclose the fact that the item is in
+stock, the customer will have higher expectations, and you MUST be prepared to deliver to those expectations in
+order to gain that customer's repeat business. Remember: having an inaccurate inventory management system is MUCH
+worse than having no inventory management system at all.<br>
+-->
+<br>
+
+[[/SECTION]]
+[[SECTION]Safety Margins]
+
+<b>Safety Margin:</b> This feature is all about managing customers expectations, when this quantity is reached for any item
+the customer is shown the out of stock or reorder message (depending on the specific products Inventory settings).
+This allows you to under promise and over deliver, thereby providing excellent customer service. For example, if a product
+is out of stock but your inventory says 1 is in stock the customer will expect to receive the item in 1-2 days, whereas
+if you say that it's on order and will be delivered in 1-2 weeks and then find you actually have the product in stock
+and you deliver in the normal time of 1-2 days, you'll find you have a VERY satisfied customer. <br>
+<br>
+<b>Safety Message:</b> This message will be displayed when the item is in stock (technically)
+but has a quantity below the safety margin. Examples: "Supply Limited" or "On Order ships 1-2 weeks"<br>
+<br>
+<b>Available Message:</b> This message will be displayed as the shipping status when an item is configured as being
+in stock, and has a quantity available which is above the safety margin. Example: "Normally ships in 1-2 days"<br>
+<br>
+<b>Out of Stock Message:</b> This message will be displayed when the item is configured as out of stock.<br>
+<br>
+[[/SECTION]]
+
+
+[[TITLE]Inventory and Channels]
+[[SECTION]Reserving Inventory]
+
+When a channel is created, it will reserve inventory for that listing.  Some channels, such as eBay Power Lister reserve all the quantities they are allowed to sell.  Channels only reserve inventory when in active, existing or pending states.
+[[/SECTION]]
+[[SECTION]Channel Scheduler]
+
+If you are using channels to sell your inventory, and you have extremely limited quantities then you will want to investigate the channel scheduler.  Channel scheduler has several very innovative options.
+[[/SECTION]]
+
+[[SECTION]Remove from website]
+
+Remove from website before launch causes the channel scheduler to remove the product from the website navigation prior to launching a channel.  Here are some examples of how to use this setting:<br>
+<li>List an item in the store. If it does not sell, then launch to a marketplace.  Create the item, set the inventory to 1, add it to the store, and create a channel scheduled to launch 45 days in the future.  Sell the best items through the store at the highest price with no listing fees.  After 45 days they can go up for auction with much lower starting prices since they do not sell in your store.
+Repeat customers will recognize that the best items never seem to make it to the auctions which will help establish your web business.<br>
+<li>Pre-announce items.  Another good example of this is to set the price of the product to zero so it cannot be purchased.  Tell customers that the item will go up for auction in 45 days at a specific time.  for high-end listings this provides more exposure to customers who visit the storefront.
+[[/SECTION]]
+[[SECTION]Respect Inventory]
+
+This will cause the channel scheduler to verify that the inventory is available immediately before launching the channel.  Once the channel is launched, then the reserved inventory is allocated.
+[[/SECTION]]
+
+[[FOOTER]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>

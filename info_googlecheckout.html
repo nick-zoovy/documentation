@@ -1,0 +1,380 @@
+<meta type="tag" id="international">
+<meta type="tag" id="froogle">
+<meta type="tag" id="checkout">
+<meta type="tag" id="google">
+<meta type="tag" id="adwords">
+<meta type="docid" id="50737">
+
+<pre>
+**LEGACY CONTENT**
+
+[[FILENAME]info/googlecheckout]
+[[TITLE]Google Checkout]
+
+[[SECTION]Concept Overview]
+[[TAG]checkout=1000]
+[[TAG]google=3600]
+[[TAG]adwords=500]
+[[TAG]international=750]
+[[TAG]adwords=100]
+[[TAG]froogle=100]
+Zoovy offers full level 2 integration for Google Checkout, including support for zone/geography based shipping quotes with FedEx, UPS, and custom freight shipping applications.
+
+
+[[STAFF]]
+Zoovy dedicated support team is: ecommerce-select@google.com
+[[/STAFF]]
+
+[[CAUTION]]
+Failure to properly configure your Google Checkout Account in-line with
+Google's policies can result in your account being suspended/banned by Google. This specifically means, ensure the proper placement of Google Checkout Logos which can be coordinated through Google's Checkout team via the Zoovy Design Department.
+
+<br>
+NOTE: All Zoovy site themes are compatible with Google Checkout.
+<br>
+This page outlines Google's Checkout Program Policies and Guidelines, including branding requirements for the display of the Google Checkout Logos.<br>
+<a href='http://checkout.google.com/seller/policies.html' target="_blank">http://checkout.google.com/seller/policies.html</a>
+
+[[CAUTION]]
+Google Checkout can be used for international sales, but it must be enabled.  There is a check box to enable international orders in the Payment Methods | Google Checkout section.<br>
+Note:  READ THE INTERNATIONAL SHIPPING RESTRICTIONS LISTED IN THE GOOGLE CHECKOUT SECTION.
+[[/CAUTION]]
+
+[[BREAK]]
+[[HINT]]
+LET US HELP YOU! Knowing how to properly receive and process Google payments can be confusing. The Google Payments Gateway works differently than most merchant accounts and Paypal. For this reason we highly recommend scheduling a short 30 minute implementation session to go over this.
+[[/HINT]]
+
+[[BREAK]]
+[[CAUTION]]The most common way for a theme to fail to comply with Google Checkout policies is the appearance of a Checkout link. Every "Checkout" link must have a Google Checkout logo adjacent to it. Zoovy does this automatically for some templates (such as Evolution and Shoptastic) but a custom theme may need additional custom design to make it compliant.
+[[/CAUTION]]
+
+[[BREAK]]
+[[CAUTION]]
+Zoovy must provide a shipping "ESTIMATE" to Google prior to initiating a
+transaction, often before the destination zip code is known. Google gives us 3 seconds to send revised shipping before the transaction fails. This can be an issue if you are using calculated shipping. If the customer does not calculate the shipping (enter their zip code) before clicking the Google Checkout button then there is almost always not enough time for us to ask FedEx, UPS, etc what the correct rate is and get it to Google. In those cases Google will default to the list of shipping methods.
+
+If you use calculated shipping, and if payments occasionally timing out is not acceptable for you, then do not use Google Checkout.[[/CAUTION]]
+[[BREAK]]
+[[/CAUTION]]
+
+Since Zoovy must provide a shipping "ESTIMATE" to Google prior to initiating a
+transaction, if we do not know true destination zip code, we'll default to the zip code you entered for the Ship Quote Zip field, when configuring Google Checkout in Zoovy.
+
+We recommend you put in a far away zip code, because the estimate will be used
+in the event that Google Checkout is not able to obtain shipping rates from
+Zoovy once the customer has provided their shipping address.
+
+You may safely set this to 00000 if you use fixed price shipping and have no
+suppliers who use zone-based shipping.
+
+
+[[/SECTION]]
+
+
+[[SECTION]Google Account Setup Instructions]
+
+[[SUBSECTION]Establish a Google Checkout Merchant Account]
+
+Setup your Google Checkout Merchant Account using the link below.
+
+If you already have an existing Google Checkout Account, it is NOT necessary to set up a second account to use with Zoovy.
+
+Simply enter the data from your existing Google Checkout Account into the appropriate fields by going to:
+
+Setup/ Payment Methods/ Google Checkout[tab]:  
+
+Click Save once the data is entered.
+
+[[BREAK]]
+
+
+
+<a target="_blank" href="http://checkout.google.com/sell/?promo=szoovy">
+http://checkout.google.com/sell/?promo=szoovy
+</a><br>
+
+
+
+[[/SUBSECTION]]
+
+[[SUBSECTION]Configure Callback URL]
+[[/SUBSECTION]]
+
+The API callback URL tells Google Checkout where to send notifications about new orders,
+order state changes, and other events.  Zoovy supports a level two integration, you must
+specify a callback URL. The callback method should be XML. <br>
+
+[[HINT]]
+The API callback URL is automatically generated for you, and provided on the Google Checkout configuration page in Payment Methods.
+[[/HINT]]
+
+[[CBC]To add or edit your API callback URL]
+<li> Sign in to Google Checkout.
+<li> Click the Settings tab.
+<li> Click Integration.
+<li> Enter your callback URL in the 'API callback URL' box.
+<li> Callback contents must be set to:  Notification as XML
+<li> Confirm that API version 2.0 is selected.
+<li> Click Save
+[[/CBC]]
+
+[[SUBSECTION]Enable Enhanced Security]
+
+Also under settings -&gt; integration, check the "For extra
+security, my company will only post digitally signed XML shopping carts" box
+if applicable.
+
+[[/SUBSECTION]]
+
+[[SUBSECTION]Configuring Zoovy]
+
+[[CBC]Zoovy Setup Steps]
+<li> Go to Setup &gt; Payment &gt; Google Checkout 
+<li> Place your Google Merchant ID and Security Key in the fields provided.
+<li> Select "Production" Environment
+<li> Select "Enable" Google Analytics if you have Google Analytics configured in your site
+<li> Select "Enable" Merchant Calculations to ensure that your shipping settings are calculated correctly.
+<li> Input a Zip code which is geographically far from where your products ship (this will be used for default shipping rate quotes).
+<li> Press save.
+
+[[/CBC]]
+[[CAUTION]]
+If you are using Google Analytics and have enabled Google Analytics support with your Google Checkout configuration, you <b>must</b> make sure that your Google Analytics script is using the Secure Code.
+[[/CAUTION]]
+[[CAUTION]]
+If you are using multiple data partitions in your Zoovy store you will need to have a separate Google Checkout account for each partition.
+[[/CAUTION]]
+
+[[/SUBSECTION]]
+
+
+[[SUBSECTION]RECOMMENDED: Getting Adwords Badges]
+
+[[HINT]]
+The Google Checkout Accepted Logo can dramatically increase your click through rates, thereby increasing your effectiveness and lowering your overall Adwords costs. 
+[[/HINT]]
+
+After you have signed up for your Google Checkout Merchant Account, please
+be sure to link your Adwords account to your Google Account. 
+
+[[CBC]Adwords Badge Link Instructions]
+<li> Sign in to Google Checkout.
+<li> Click the Settings tab.
+<li> Click AdWords.
+<li> Enter your AdWords Customer ID in the box, then click Request link.
+[[/CBC]]
+
+
+[[CAUTION]]
+Please be aware, that you will not show badges on your Adwords Ads until you
+have processed one complete transaction with Google Checkout.
+[[/CAUTION]]
+
+[[/SUBSECTION]]
+
+
+
+[[SUBSECTION]RECOMMENDED: Integration with GoogleBase Product Feeds]
+
+Once you have Google Checkout on your own site, please make sure you've met
+the following requirements:
+
+<ul>
+<li> Your badges are marked as Active in the Google Checkout Merchant Center.
+<li> You've provided your public business website URL, and this URL exactly matches the registered URL in your Google Base account.
+<li> You've completely processed your first order (including capturing payment)
+</ul>
+
+[[HINT]]
+Having Google Checkout accepted on your products will increase click through response rates from customers, and could potentially help your position/ranking in the results page. 
+[[/HINT]]
+
+[[BREAK]]
+
+Even if you've met the above requirements, your badges may not
+necessarily appear. For example, if your badges are marked as Active, you
+may not see them if:
+
+<ul>
+<li> You've just recently completed your first order. You may need to wait several hours after completing your first order because the Google system has not updated. 
+<li> Your AdWords ads are being reviewed.
+<li> You've changed your URL. (Remember, your Google Base account URL must direct buyers to your public business website URL
+<li> Your badge activity is under review.
+</ul>
+
+For Google Wallet logo switch:
+1. Sign in to Google Checkout.
+2. Click the Tools tab.
+3. Click "Acceptance Logo."
+4. Copy the code snippet.
+5. Paste the code snippet into your Analytics and Plugins.
+
+
+[[/SUBSECTION]]
+
+[[/SECTION]]
+
+
+
+[[SECTION]Processing Payment]
+
+Google Checkout orders show as payment type "GOOGLE".
+[[BREAK]]
+Google Checkout orders should only be used with release 6.100 or higher of Order Manager.
+[[HINT]]Zoovy does not currently support partial refunds through our interface. A partial refund will need to be handled at Google Checkout itself.
+[[/HINT]]
+[[/SECTION]]
+
+[[SECTION]Google Checkout & Google Analytics]
+If you are using Google Analytics to track traffic it is recommended that you enable Google Analytics in the Google Checkout Payment Method section in order for orders to track in Google Analytics.
+
+There are 2 enable options, if this is a new account and you are using the analytics tracking code listed in the account you will need to select the Enable GAQ (ASYNC) option.  If you are unsure, leave the option on disable and contact Zoovy support, create a support ticket or schedule a marketing appointment to confirm which option you should select.
+[[CAUTION]]
+If the wrong option is selected you will see an error under Setup > Analytics & Plugins > Google Analytics section.  Choosing the wrong option could cause Google Checkout to not work on the site.  Make sure all websites on the same partition are using the same Analytics tracking code.
+[[/CAUTION]]
+
+[[SECTION]Logo Positioning]
+If you have custom design work you may need the assistance of the Zoovy Graphic Design team to place the Google Checkout logos in the proper position.
+
+[[/SECTION]]
+
+[[SECTION]Known Issues]
+
+[[SUBSECTION]Shipping Timeouts]
+Google Checkout requires that Zoovy present all possible shipping methods and rates prior to knowing the address of the customer, in case during Google Checkout the Zoovy servers cannot respond within Google's acceptable response time.
+
+[[BREAK]]
+
+Unfortunately Zoovy's servers often need to turn around and make specific requests of FedEx, and UPS servers to get shipping rates and this can take substantial time - especially in the case of Fedex which requires that Zoovy make one separate request per shipping method offered.  If Zoovy does not respond within the default period of 3 seconds, then Google will use the default rates.
+
+[[BREAK]]
+
+[[CAUTION]]
+You can easily determine if a default shipping rate was used by looking in the order event history for the line: Merchant Calculation Response[false] (default shipping rates were used)
+[[/CAUTION]]
+
+[[HINT]]
+Zoovy can contact Google and request that your timeout be increased to a maximum of 7 seconds, this is generally enough time to quote rates from ONE carrier (e.g. USPS, UPS, or FedEx -- but usually not more than one!)
+[[/HINT]]
+
+[[/SUBSECTION]]
+
+[[SUBSECTION]BuySafe]
+If you offer buySafe bonding to clients then you will need to make sure the site wrapper uses an intermediate "cart" stage where buyers can select bonding. Buyers will NOT be able to select buySafe bonding during GoogleCheckout.
+[[/SUBSECTION]]
+
+[[SUBSECTION]Affiliate Programs]
+If you use a 3rd party tracking system with Google Checkout you will need to make sure Zoovy has properly integrated that Affiliate program or your sales will not be tracked.
+Please contact Zoovy support for assistance with this. 
+[[/SUBSECTION]]
+
+
+[[/SECTION]]
+
+[[SECTION]Selling Banned Items]
+Set the field "gc:blocked" to 1 in all products which are not allowed to be sold via Google Checkout.  
+
+[[HINT]]
+HINT: Zoovy implementation staff can add the gc:blocked field as a checkbox in your product editor. 
+[[/HINT]]
+
+[[/SECTION]]
+
+[[SECTION]Troubleshooting]
+Google Account holders can create/manage a "READ ONLY" user login from within the Google Checkout integration console. A Read Only user is incredibly useful for Zoovy technical support since we will be able to see what is happening in your account without you needing to relay that information to us.
+
+[[HINT]]
+If you are going to submit a ticket which involves XML errors to Zoovy technical support we recommend you provide a Read Only login.
+[[/HINT]]
+
+
+[[/SECTION]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>

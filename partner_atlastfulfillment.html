@@ -1,0 +1,199 @@
+<meta type="tag" id="shipping">
+<meta type="tag" id="warehouse">
+<meta type="tag" id="at last">
+<meta type="tag" id="at last fulfillment">
+<meta type="tag" id="fulfillment center">
+<meta type="docid" id="51027">
+
+<pre>
+**LEGACY CONTENT**
+
+[[FILENAME]partner/atlastfulfillment]
+[[TITLE]AtLast Fulfillment Outsourcing Solutions]
+
+[[TAG]at last=5000]
+[[TAG]at last fulfillment=10000]
+[[TAG]fulfillment center=10000]
+[[TAG]shipping=5000]
+[[TAG]warehouse=5000]
+
+[[STAFF]]
+What is it?
+-A fulfillment center which will house all (or part) of the merchant's inventory and will perform the shipping <BR> of the products directly to the customer. 
+
+-Is it ready?
+Yes, is in place and ready to use. Melissa is currently using it with her store, so direct any questions to her initially.
+
+-How much does it cost?
+-Depends on how much you are storing there, and shipping. Negotiation is possible on rates based on volume. <BR>Fees for storage of product, receiving of product, picking/packing (Pick/Pack fees), and shipping all exist. <BR>Typically they get a little better rates on UPS/Fedex, and pass that on to you. Other hidden fees are there as well - <BR>be sure to have them discuss any other fees (such as ticketed invoices, bad sku invoices, bad address...etc) <BR>with the sales person representing At Last. Contact Atlastfulfillment.com for a quote, or see the section below on cost for more details.
+
+-How long does it take to setup?
+On the Zoovy side, it is done via Supply Chain. 
+On the At Last side, there are some configurations that need to be done. 
+All in all on the At Last side, less than 30 minutes of setup time is required. 
+Additional time to add all the products to At Last will be dependent on number of products
+hosted by At Last. Also manifests must be created in At Last interface when shipments are 
+expected to their warehouse. 
+
+-How do I sign up?
+Go to Atlastfulfillment.com and request a quote. 
+Someone from At Last will contact you to sign up. 
+
+-Who is the contact at the company?
+Jim Gardner 
+New Client Development 
+email: jgardner@atlastfulfillment.com
+11701 E 53rd Avenue Denver, CO 80239
+Tel - 303.662.1041 ext. 311  |  Fax - 303.531.6684
+
+marketing page: http://www.zoovy.com/atlastfulfillment
+
+[[/STAFF]]
+
+
+[[SECTION]Concept Overview]
+
+AtLast Fulfillment is a provider of outsourcing solutions for warehousing and fulfillment. Their services include warehousing, inventory management, custom packing solutions, returns management, logistics management and real-time online reporting. AtLast Fulfillment simplifies the entire fulfillment process by storing, picking, packing and shipping orders. Their centrally located secure facility in Denver, CO is fully equipped with the latest technology for automated packing of batched orders and semi-automated lines for pick-n-pack orders.
+[[/SECTION]]
+
+[[SECTION]Why should I use At Last Fulfillment?]
+Zoovy merchants can now utilize all of AtLast Fulfillment's key services which include warehousing, inventory management, custom packing solutions, returns management, logistics management and real-time online reporting. By leveraging AtLast's in-depth industry knowledge and leading edge technology, Zoovy merchants can benefit from more efficient operations, new ways of growing revenue, more satisfied customers and dramatic cost reductions.
+
+
+AtLast's quality control programs apply to all clients for all shipments, inventory and return processing.
+
+
+AtLast gives Zoovy merchants immediate access to business infrastructure capabilities and new strategic markets without the capital investment and time delays associated with creating in-house capability. As a virtual extension of your business, our solutions deliver a superior experience that allows your business to:
+[[BREAK]]
+
+    <LI>Increase Sales
+    <LI>Reduce operating costs
+    <LI>Enhance customer satisfaction and retention
+    <LI>Focus on core capabilities
+    <LI>Scale Resource Management
+    <LI>Gain Access to the Latest Technology
+[[BREAK]]
+
+[[HINT]]At Last offers the following key services:
+[[BREAK]]
+
+    <LI>Warehousing
+    <LI>Inventory Management
+    <LI>Pick, Pack and Ship
+    <LI>Custom Packaging Solutions
+    <LI>Returns Management
+    <LI>Logistics Management
+    <LI>Real-Time Online Reporting
+    <LI>Gift Wrapping
+    <LI>Kitting & Assembly
+
+[[BREAK]]
+Any or all of these can be used. Custom select from these services for the ideal solutions for your business![[/HINT]]
+
+[[/SECTION]]
+
+[[BREAK]]
+
+[[SECTION]How much does At Last cost?]
+
+Zoovy clients receive discounted set up fees and At Last offers a dedicated account manager to each account, at no additional cost as well.  
+At Last service is high touch, customer centric and extremely customizable. 
+
+[[BREAK]]
+
+Fulfillment fees start at $1 per order and they offer volume discounts for
+clients shipping 5000, 10000, and 20,000 orders per month.  
+At Last is better suited to work with clients processing higher volume shipments who need a full service, no headache fulfillment experience. 
+
+[[HINT]]
+
+Just like Zoovy, and virtually any other serious service provider. At Last has minimum fulfillment fees (usually $5000 per month, but only $1500 for Zoovy clients to make it  accessible to smaller clients) and setup fees ($2400, but for Zoovy clients it's $500 because there is no integration).  **These prices may not be the most up to date, please contact At Last Fulfillment for a complete pricing quote. 
+[[/HINT]]
+
+
+[[/SECTION]]
+
+[[BREAK]]
+
+[[SECTION]I have an account with At Last, now what?]
+[[CAUTION]]You must have the <B>Supply Chain (SC) bundle</B> added to your account in order to use this integration. Feel free to set up an appointment with an Implementation Specialist. They will be very happy to help you get this integrated. [[/CAUTION]]
+
+[[CBC]Setting up for Fulfillment with At Last]
+
+<li>Log into Zoovy.com and go to the Utilities Tab.
+<li>Click on Supply Chain Management.
+<li>Click on Add a New Supplier.
+<li>Enter supplier code (ATLAST would be a good code, but whatever you like will work).
+<li>Markup should be BASE*1.0, profile=DEFAULT
+<li>Enter the Supplier Information (all except website are required).
+<li>Ordering method: Select Fulfillment
+<li>Data Integration Type: ATLAST Fulfillment.
+<li>Click SAVE. 
+
+
+<li>On the next page, enter your ATLAST username and password. Save. 
+
+<li>Add your products, either one by one, or uploading a file. They can also be associated via CSV - ask your trainer for more help with this if you are uncertain how to associate products via CSV.
+
+[[STAFF]]
+csv uses the following fields:
+
+%SKU
+zoovy:virtual	 (value =PARTNER:ATLAST)
+zoovy:virtual_ship (value - depends on how they are <br>calculating shipping) LOCAL<=== to use store shipping settings
+zoovy:prod_supplier => ATLAST  (Supplier Code)
+[[/STAFF]]
+
+[[HINT]]If the id you have input in AtLast is different than that which is in Zoovy, use the supplier id (zoovy:prod_supplierid) field for this alternate sku to be sent over to AtLast.[[/HINT]]
+
+
+[[BREAK]]
+
+Once you are integrated with At Last, the orders will be automatically dispatched to their interface. Tracking will also automatically come back to Zoovy for the orders. 
+
+[[CAUTION]]Be sure to map your shipping in the AtLast Interface, so that the system will know how your orders are to be shipped. Typically they are shipped from AtLast within 24 hours.[[/CAUTION]]
+
+[[BREAK]]
+[[HINT]]The orders will NOT move from Recent to Completed automatically. This is currently the way that the integration works. If there are orders that have non-At Last items on them, the order will need to be split and the original order number should stay with the At Last items. Shipping comes over once per day, in the evening, pacific time. You will need to move the orders with tracking to completed so that the tracking emails will go out to your customers.[[/HINT]]
+[[/SECTION]]
+
+
+[[BREAK]]
+[[BREAK]]
+
+
+[[CAUTION]]It's our understanding that ATLAST doesn't ship on Saturday or Sunday, so new
+tracking information isn't uploaded on those two evenings.[[/CAUTION]]
+
+[[BREAK]]
+
+
+
+
+[[BREAK]]
+<a href="=http://www.zoovy.com/atlastfulfillment">Click here to learn more about AtLast Fulfillment</a>.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>

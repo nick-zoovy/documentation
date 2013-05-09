@@ -1,0 +1,269 @@
+<meta type="docid" id="50919">
+
+<pre>
+**LEGACY CONTENT**
+
+[[FILENAME]info/copyright]
+[[TITLE]Copyrights and the web]
+
+[[SECTION]Concept Overview]
+
+[[CAUTION]]
+&lt;DISCLAIMER&gt;We are not lawyers, you should consult with an Intellectual Property attorney before listening to us. Your local laws may supersede the advice given here. We are idiots, we have no clue what we're talking about on legal issues, you should not listen to us. &lt;/DISCLAIMER&gt;
+[[/CAUTION]]
+
+[[CAUTION]]
+If you're going to seek legal counsel (like we just told you to) then make sure you engage  a firm who SPECIALIZES in Intellectual Property and Internet Law.  We've seen A LOT of clients receive absolutely horrible advice from general counsel who do stuff like divorces, personal injury and even business contracts. Trademark, Copyright and Patent law  is a specialized branch of law which is RAPIDLY evolving thanks to the Internet, it's a very specialized subject matter!
+
+[[HINT]]
+We recommend Dozier Internet Law. (www.cybertriallawyer.com) -- from what we've seen of these guys, they know how to play the game. We don't use them, but we've run into them at tradeshows and reviewed articles they've published and been very impressed. 
+[[/HINT]]
+
+[[/CAUTION]]
+
+[[STAFF]]
+
+Check "S:\users\billing\20080523 - DMCA Counter Response Template.txt" 
+for sample letters to send to the customer, and to the person making the complaint.
+
+[[/STAFF]]
+
+
+With all that being said, we at Zoovy are on both sides of this subject.
+We have many clients who want to protect their information, and we have many clients who want to "borrow" content from others (heck - sometimes even other Zoovy customers).  
+
+[[BREAK]]
+
+Zoovy has a policy of not copying product data from one account to another, unless specifically REQUESTED by the source site owner (and even then we just provide assistance to export a CSV file).
+
+[[/SECTION]]
+
+[[SECTION]So what is a Copyright]
+
+[[HINT]]
+Wikipedia has an excellent and well balanced section on copyright, and if you're interested - we recommend you read more there. 
+[[/HINT]]
+
+But here are the basics:
+<li> A copyright is something which effectively gives the copyright holder the "right to control who can make copies, and how they can use them"
+<li> Any content created can be copyrighted by it's author, provided it is not based on a derivative work (and even then sometimes it can be).
+<li> To enforce a copyright you must state that information is copyrighted, however you do not need to register the copyright with the library of congress UNTIL such time as you wish to enforce the copyright. 
+<li> All copyrighted documents must state that they are copyrighted, along with the date the copyright is claimed.
+<li> In the event of a dispute you must be able to prove that you are the author and created content on or before a specific date it was infringed and that it always carried a copyright notice. 
+
+[[HINT]]
+BEWARE: There is a technique known as a "poor man's copyright" -- by printing the content to be copyrighted, then placing the printouts into a sealed envelope and mailing it to yourself certified (so it gets a FEDERAL POSTMARK DATE on it) and then NOT OPENING THE ENVELOPE until you are in front of a judge, in a courtroom.  
+THIS IS FALSE, IT DOES NOT WORK (OR AT LEAST IT HAS NEVER BEEN TESTED IN COURT). The post office will deliver open (unsealed) envelopes.
+[[/HINT]]
+
+[[/SECTION]]
+
+
+[[SECTION]Protecting your Content]
+
+Generally speaking it is impossible to protect your content from theft. The very nature of a web and the HTTP protocol is that information must be transmitted as HTML to a browser. HTML is human readable. There are a variety of obfuscation techniques which are commonly employed, and reasonably easily circumventable. They are discussed, along with their circumvention techniques below. 
+
+[[SUBSECTION]Javascript]
+There are snippets of javascript which disable the ability to right click and "view source" on a page, these are horrendously annoying for people who use right click to access plugins (like our tech support department)
+[[BREAK]]
+To circumvent this protection simply go into your browser and turn off javascript!
+[[/SUBSECTION]]
+
+[[SUBSECTION]Javascript with Obfuscator]
+More sophisticated sites encode the document using javascript document.write along with a simple encryption such as ROT13, this makes the source unreadable.  Unfortunately people without javascript won't be able to read your site, and search engines won't be able to spider the content AT ALL -- so it's suicidal from an SEO perspective.
+[[BREAK]]
+To circumvent disassemble the javascript, the decryption algorithm is in plain view. A person with a moderate level of javascript programming can chew through this in a couple of minutes to make a plugin, or possibly a PHP/Perl/ASP script to download and decode the content. 
+[[/SUBSECTION]]
+
+[[SUBSECTION]Flash]
+A Flash applet can load data from a URL - so it's possible to design a flash application which loads content from a remote (hidden/obfuscated) URL. Flash is not read by search engines, so this is basically SEO suicide - don't plan on Google ever sending anybody to your site unless you pay for it.
+[[BREAK]]
+To circumvent first look for the URL to the content the flash embed/object tags - there are a variety of common plugins that people use which all require the URL to the content be passed on the command line.  If the site owner had a custom flash applet designed obtain one of the .SWF disassemblers to generate the .FLA file - go in and look at the actionscript (which is basically like javascript) to see what's happening inside. Again a developer with a moderate level of flash experience will be able to do this in a couple of minutes. 
+[[/SUBSECTION]]
+
+[[SUBSECTION]Pictures/Images]
+Displaying your text as an image, makes your side slow and lethargic, it's horribly slow. The resolution is bad and the type must be huge.  Search engines can't crawl it.
+[[BREAK]]
+To circumvent download the image and run it through one of the 5,000 Optical Character Recognition applications on the market. 
+[[/SUBSECTION]]
+
+
+[[SUBSECTION]Conclusion]
+There is no way to protect content on the web.  Zoovy has developers on staff which can demonstrate how to circumvent *ANY* content protection scheme you can devise or may encounter - however we don't actually do this.
+[[BREAK]]
+Zoovy DOES have offshore companies we can refer clients to that develop web-scrapers. A web-scraper is a programs which connects to a web-server and acts like a web-browser and can download entire collections of data and format them for import into Zoovy - on a regular basis if necessary!
+[[BREAK]] 
+These scrapers can also be useful for developing competitive pricing information. If you are interested please contact your Account Manager for more information. 
+
+[[HINT]]
+Development of scrapers typically start around $5k/mo per site, with a 1 year annual contract. But the complexity depends on the site, and what type of information is being downloaded. 
+[[/HINT]]
+
+[[HINT]]
+Offshore companies may not be subject to the same copyright law that US based businesses are. At a minimum it will make litigating any infringement *exponentially* more difficult for a competitor. Isn't the Internet fun? 
+[[/HINT]]
+
+[[/SUBSECTION]]
+
+[[SUBSECTION]Watermarking Images]
+Please don't upload watermarked images to Zoovy - most marketplaces will kick you off if you accidentally send them a watermarked image. No exceptions.
+[[/SUBSECTION]]
+
+
+[[SUBSECTION]Using Timebombs]
+
+Just because content can be copied technically, doesn't mean that people can do it legally. This is where timebombs come in.  Once you've assembled your database (even if you copied public domain from other sources) -- it's a good idea to go through and randomly change around 5% of the manufacturers descriptions and write your own custom ones.  If possible replace some of the product images with your own. 
+
+[[BREAK]]
+It's good if you use phrases and patterns which are clearly identifiable as yours and easily search-able in Google. Make a note of which products you've modified so that you can see who built their website from your data. 
+
+[[BREAK]]
+
+Later on by entering those specific phrases you wrote into Google and seeing what other sites they appear on - you can see who's ripped off your content. 
+
+[[BREAK]]
+
+Now you and your attorney can inexpensively make your competitors life VERY difficult. 
+You can claim they stole your entire collection, and demand that their ISP turn off their website using the Digital Millennium Copyright Act. 
+
+If a competitor decides to swipe your content and merge it with their own, you can claim that they infringed your entire catalog, rather than just the infringing products and you can bring their entire website down.  
+
+[[HINT]]
+Be sure to read the section below explaining how a "collection" of public domain information can be copyrighted for this section to make sense. 
+[[/HINT]] 
+
+
+[[HINT]]
+You are not responsible for enforcing your copyrights immediately upon discovery of a transgression, you can enforce them at anytime. 
+For that reason it's usually best to wait about 60-90 days before a major "sales event" such as xmas, or back to school for your attorney to inform your competitor they need to remove all infringing products, or pay you a royalty for the continued use of your collection. HINT: In our experience a good IP attorney can be very creative (and vindictive) -- don't be afraid to have some fun. Always discuss licensing opportunities!
+[[/HINT]]
+
+[[HINT]]
+A derivative work is something which is generally 75% or more of the same composition as the original.  This is very subjective, and requires a content matter expert.  There are exceptions to this.  If you can demonstrate that a competitors site and products are a derivative of yours then you can require that they change 25% or more of their product descriptions (plus admit infringement and possibly pay a fee), license your data, or force their ISP to take down their site --- usually without even going to court. 
+[[/HINT]]
+
+[[/SUBSECTION]]
+
+[[/SECTION]]
+
+
+
+
+[[SECTION]Borrowing others Content]
+
+So in the last section we covered that it is *TECHNICALLY* impossible to protect content on the web. Which means that it can be copied, but you might not be able to do it legally. 
+
+[[BREAK]]
+
+[[SUBSECTION]Manufacturers Descriptions &amp; Images]
+
+[[HINT]]
+Just because you own an item which you legally purchased does not mean you have rights to any and all copyrighted content or trademarks associated with that product. This is a common misconception. 
+[[/HINT]]
+
+[[BREAK]]
+However manufacturers RARELY enforce their copyrights on content or images. 
+Even if they do assert their ownership they are required to have registered it with the library of congress before they can litigate, so unless it has an ISBN at the bottom of the document, it's not really copyrighted yet and you can use it.
+[[BREAK]]
+If a manufacturer gets angry at you and requests you stop using their information then all you have to do is write your own description and take your own images. Copyright litigation is VERY expensive most manufacturers can't/won't litigate for using their content without first notifying you that you're infringing. 
+
+[[BREAK]]
+This is because in order to get any sort of financial compensation the copyright holder must normally demonstrate a person is "willfully" infringing upon their rights (which only start once they've obtained an ISBN, which as the author are entitled to do at anytime). 
+[[BREAK]]
+
+[[HINT]]
+It's pretty rare for a manufacturer to start rattling their sabers and threatening legal action - in virtually all cases the manufacturer wants you advertising, promoting and selling their products.  
+[[/HINT]]
+
+[[CAUTION]]
+The exceptions to the content rule are most commonly found in the automotive, and books/movies/music/games - the information in these vertical industries is massive and requires a substantial endeavor to assemble and maintain.
+[[BREAK]]
+So although the information such as a movie description, length, format, etc. is generally regarded as being "in the public domain" by most studios - it is possible for other companies to copyright a "collection" of public domain information.  An example of this is that a list of names and phone numbers are public domain, however the collection of all the names and phone numbers in an alphabetical format such as the phone book can and generally is copyrighted by the phone company to block competitors from creating an identical book with their own advertisements.
+[[/CAUTION]]
+
+[[CAUTION]]
+The "pretty rare" statement was for people selling New items, in retail packaging, at retail prices. Virtually all manufacturers hate after-market and grey-market direct retailers. They also hate people who sell items below their minimum advertised price (MAP), especially if the manufacturer has a strong retail distribution network. If you fit into that category, and you're planning on being successful, you can expect to catch the attention of the manufacturer at some point in your operations. 
+
+[[HINT]]
+Don't be too eager to become an authorized retailer for a manufacturer. Manufacturers routinely contact grey market companies and seduce their ego's by telling them "wow you're a big success" .. "you've got this Internet thing down" .. "how'd you like to buy direct" offers.  If you sell a product, you obviously have respect for the manufacturer, and so it is only natural that you'd want to be aligned with them.
+[[BREAK]]
+However we've seen a lot of cases where the manufacturers counsel seduces the proprietor to sign distribution agreements (which then supersede copyright and trademark law) and then proceed to enforce draconian restrictions (such as minimum advertised price) to literally run the company out of business. We'd guess this happens on approximately 2 out of 3 of the distribution agreements we see executed .. usually the company is out of business within 4 months.  
+[[BREAK]]
+The business owner often feels pressured into signing the agreement, with no changes under threat of avoiding a huge court battle and giant legal costs.  Unfortunately it seems that in virtually all cases, the demands the manufacturer requested were completely unrealistic, bordering on laughable. WHICH IS WHY IT IS SO IMPORTANT TO TALK TO A GOOD ATTORNEY WHO UNDERSTANDS THEIR SUBJECT MATTER. 
+[[/HINT]]
+
+[[/CAUTION]]
+
+[[/SUBSECTION]]
+
+[[SUBSECTION]Reviews]
+Reviews are the intellectual property of the site they originate on, or a company which sells product reviews. You will usually find these on a competitors site - leave these alone! 
+
+[[/SUBSECTION]]
+
+[[SUBSECTION]Right to sell vs. Right to use]
+Just because you bought an item, and you have it in it's original packaging doesn't mean you have rights to the text or images on the packaging.  It's a very sticky subject in law, you can take a picture of the item and show people the picture, as long as the picture doesn't duplicate the image on the box (confused?) -- this subject is really complicated, and we're not going to do it justice here, we just mention it because it's a really common misconception that merchants have.  Talk with an Intellectual Property attorney for a more through discussion (it's really a fascinating subject). 
+[[/SUBSECTION]]
+
+[[/SECTION]]
+
+
+[[SECTION]Trademarks &amp; the Digital Millenium Copyright Act of 1999 (DMCA)]
+Trademark law is a whole other sticky wicket, well beyond the scope of this document.
+Consult an attorney. 
+
+[[BREAK]]
+
+Just because you own an item, and the item has a logo on it, doesn't mean you can use the logo, or even the name of the item in print.  If you do use it in print it's usually a good idea to include text stating that "ABC is a trademark of company XYZ, and we are not affiliated with company xyz in any capacity."  The text must be clearly visible on the page, in no less than an 8pt font. 
+
+[[HINT]]
+Remember: attorneys who are employed for companies can send you a letter ASKING for anything - even things they aren't entitled to. If you get a DMCA notice, consult with an IP attorney before responding! Do not ignore it - it won't go away.
+
+[[BREAK]]
+BUT that means that you don't have to stop selling and dispose of the item, or put trademarks disclaimers in a 12 point RED font on your website either. 
+[[/HINT]]
+
+
+[[HINT]]
+Copyright Law and Trademark law are two different beasts. Because copyright law basically requires an ISBN before anything substantial can be done - most companies prefer to use Trademark law as pointy stick of choice.
+[[/HINT]]
+
+
+[[/SECTION]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>

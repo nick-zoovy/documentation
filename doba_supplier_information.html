@@ -1,0 +1,43 @@
+<meta type="docid" id="51368">
+
+<pre>
+**LEGACY CONTENT**
+
+[[FILENAME]Doba Supplier Information]
+[[TITLE]Doba Supplier Information]
+
+[[STAFF]]
+
+Requires DOB flag set on zoovy account to see Doba Marketplace product panel.
+
+[[/STAFF]]
+
+[[HINT]]
+DOBA integration is currently in general availability, but is considered "experimental"
+
+[[/HINT]]
+
+[[SECTION]Configuration]
+
+Configuration page can be found in your Zoovy account at Syndication -> Doba.<br>
+<br>
+
+<b>FTP login/pass</b><br>
+-Doba uses FTP to accept new feeds. Your FTP logins can be different from web logins - please, re-check with your Doba contact-person.<br><br>
+
+<b>Create new Products File</b> and <b>Create new Images File</b> checkboxes<br>
+- Product feed happens by your request. All new requests are processed in batch, early morning (feed generation and upload to doba). We prepare and upload 2 files - products data and an archive with product images for doba to process.<br><br>
+- Inventory feeds are generated automatically, early morning if syndication is enabled (to reflect current quantity/availability of all properly configured items)<br>
+[[/SECTION]]
+
+[[SECTION]Product Attributes - "Doba Marketplace" panel in Zoovy product editor]
+<b>Enable/Reset Syndication to Doba.com</b><br>
+- Saves/re-sets 'doba:ts' attribute with the product - a value -1 means "disabled", 0 means "attempted, with errors", a value of 1 means "include in next batch", otherwise this property will contain the "upload batch number". To include this in the next product batch first uncheck, then re-enable.<br>
+<br>
+- You can set-up 'doba:ts=1' to many products at once using Product Power Tool.
+
+[[/SECTION]]
+
+
+
+</pre>

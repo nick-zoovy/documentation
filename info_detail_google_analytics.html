@@ -1,0 +1,308 @@
+<meta type="tag" id="analytics">
+<meta type="tag" id="google analytics">
+<meta type="tag" id="google">
+<meta type="tag" id="reporting">
+<meta type="docid" id="50595">
+<meta type="docid" id="50595">
+
+<pre>
+**LEGACY CONTENT**
+
+[[FILENAME]info/detail/google-analytics]
+[[TITLE]Google Analytics Setup]
+[[TAG]google analytics=1000]
+[[TAG]analytics=1000]
+[[TAG]google=500]
+[[TAG]reporting=500]
+
+[[STAFF]]
+
+Zoovy implementation/support/design staff:
+Please do NOT assist customers with debugging and tuning GA javascript.
+
+These code samples are provided to illustrate what is possible and to provide a 
+reference for us, and more "technically" minded clients.
+
+The only way these javascript code blocks are support is via Zoovy Marketing services.
+
+If you want to use these on your own store (without assistance) that is fine. 
+
+[[/STAFF]]
+[[CAUTION]]
+This webdoc is intended for basic setup instructions, for more advanced info please review the <a href"https://www.zoovy.com/webdoc/index.cgi?VERB=DOC&DOCID=50595">Advanced Google Analytics Webdoc</a>
+[[/CAUTION]]
+
+[[SECTION]Google Analytics Overview]
+Google Analytics gives insight into detailed information about how visitors found the website and how they interact with the site. This free program will provide the ability to focus on marketing resources, campaigns and initiatives that deliver ROI and improve the site to convert more visitors. To learn more visit <a href=http://www.google.com/analytics/>HERE</a>
+[[BREAK]]
+If you would like to sign up visit <a href=http://www.google.com/analytics/sign_up.html>HERE</a>
+[[/SECTION]]
+
+[[SECTION]Google Analytics Setup Steps]
+Setup is easy, once an account is registered for the Google Analytics service then simply follow the steps below.
+[[CBC]Enabling Google Analytics]
+<li>Log in to the Google account at <a href"http://www.google.com/analytics/">google.com/analytics</a></li>
+<li>Click on the Sign Up Button</li>
+<li>Input the website url (make sure to select http://) www.domain.com</li>
+[[HINT]]
+Zoovy redirects non www domains(http://domain.com) to www domains(http://www.domain.com)[[BREAK]]
+Input the website as follows: http://www.domain.com/
+[[/HINT]]
+<li>Name the Account (business name)</li>
+<li>Select Time Zone Country</li>
+<li>Select Time Zone</li>
+<li>Continue</li>
+<li>Input First and Last Name for contact info (if prompted)</li>
+<li>Continue and Agree to Terms of Service</li>
+[[HINT]]
+The Google Analytics Data Sharing Settings (just under Yes checkbox on Terms of Service page) default to Share data with other Google Products and Anonymously Share data with Google and others for Benchmarking purposes.  You can choose opt out of this by expanding this section and selecting Do Not Share My Analytics Data.  We typically leave the default settings as is.  This data helps other websites to anonymously compare itself to other business of similar industry and size.  Data is also shared with other products like Adwords, Checkout, etc.
+[[/HINT]]
+<li>Click on Create New Account</li>
+<li>The standard tracking across single domain is the basic setup.</li>
+<li>Copy this script, you will need to place it in the Zoovy UI.</li>
+<li>Save and Finish</li>
+<li>The account is directed to the overview page, you'll now need to edit the website profile settings.</li>
+<li>Under the Actions column of the new profile select the Edit link</li>
+<li>Edit the main profile information section</li>
+<li>Change the settings to an E-commerce website (defaults to Not Ecommerce)</li>
+<li>Change the site search settings to 'Do Track Site Search'</li>
+<li>In the query parameter type in 'keyword,keywords' (without apostrophes)</li>
+<li>Save Changes</li>
+[[/CBC]]
+
+[[SECTION]Zoovy Setup Steps]
+[[CBC]Enabling Google Analytics]
+<li>Log in to your zoovy account at www.zoovy.com</li>
+<li>Click on the Setup tab</li>
+<li>Click on Analytics & Plugins</li>
+<li>Select the Profile you wish to edit</li>
+<li>Click Google Analytics</li>
+<li>Place the secure version of the code only in the provided field (example below)</li>
+<li>Leave the RECOMMENDED Zoovy settings enabled</li>
+<li>Save changes</li>
+[[/CBC]]
+[[CAUTION]]
+If you offer Google Checkout as a payment method and wish to connect Google Analytics to Google Checkout, (in Zoovy) go to Setup>Payment Methods>Google Checkout>Select the Google analtyics drop down and select Async or Legacy code version.  The incorrect version will display a red error message in Analytics&Plugins>Google Analytics
+[[/CAUTION]]
+
+[[HINT]]
+Example of tracking code you copied earlier (DO NOT USE)
+[[HTML]]
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+[[/HTML]]
+[[/HINT]]
+
+
+
+[[CAUTION]]
+<li>REMINDER1: Secure urls MUST be https:// instead of http:// or users will receive SSL errors during checkout! URL for secure Google Analytics differs!! Please reference example.
+<li>REMINDER2: Referencing external javascript files or images to track visitors/traffic by linking to files hosted on other sites will negatively impact your website performance.
+[[/CAUTION]]
+
+[[/SECTION]]
+
+[[SECTION]Meta Verification]
+The page linked to below contains the information on how to set up the meta verification.
+[[LINKDOC]50596|filename]
+[[/SECTION]]
+
+
+[[SECTION]Support]
+If you have any question or need help with this procedure then please contact support via a call or via a support ticket.
+[[HINT]]
+If you have a private ssl certificate the default code provided by Google Analytics will need to be modified.  Zoovy's marketing services team can do this modification for you.  Please schedule an appointment or create a support ticket referencing marketing to optimize this code.  This will be a billable service.[[BREAK]]
+[[BREAK]]
+If you choose not to have the code modified, conversion sources will not track correctly in Google Analytics.
+[[/HINT]]
+
+[[CAUTION]]Be aware that in order for your web pages to render if you have GA enabled, it requires that Google's servers be able to return the javascript.  In the rare case where Google's servers go down, this could cause your page not to load in a timely manner.[[/CAUTION]]
+[[/SECTION]]
+
+[[SECTION]e-Commerce conversion tracking]
+
+Google Analytics uses cookies to track visitors. In order for cookie tracking to work properly customers must remain on the same domain during their entire session.  To get valid e-commerce conversion data you must:
+
+[[BREAK]]
+
+If you are using your own custom domain name, you must also purchase an SSL certificate for checkout. [[LINKDOC]50970]
+
+[[BREAK]]
+
+If you have traffic arriving on username.zoovy.com you must configure a redirect to www.domain.com for that domain.
+[[CAUTION]]
+username.zoovy.com is not an indexed site and cannot be marketed or found by search engines since this is a subdomain of Zoovy.  All merchants should purchase a domain for their website for optimal exposure and marketing.
+[[/CAUTION]]
+
+[[BREAK]]
+
+Private SSL certificates are unique per website.  This allows for increased conversion tracking for sources as Google Analytics can only track the last referrer.  If an SSL certificate is purchased your Google Analytics tracking code MUST be modified.
+
+[[/SECTION]]
+
+
+[[SECTION]Additional info on Site Search]
+
+<a href="https://www.google.com/support/googleanalytics/bin/answer.py?answer=75817&hl=en">More details.</a>
+
+[[BREAK]]
+
+The zoovy variable is "keyword,keywords"
+[[/SECTION]]
+
+[[SECTION]Configuring Mobile Analytics]
+[[CAUTION]]
+The following javascript code block is included for use by 
+Zoovy Marketing Services only and is NOT supported by Zoovy support technical, implementation or design services. Use at your own risk!
+[[/CAUTION]]
+[[BREAK]]
+This feature is still new and could change in the future.   In order to configure on the Zoovy platform, a mobile analytics account/profile has to be created first.    ***Remember to replace the analytic account number and mobile domain with merchant account information.
+
+[[BREAK]]
+var pageTracker = _gat._getTracker("UA-XXXXXX-X");
+[[BREAK]]
+=== becomes ===
+[[BREAK]]
+
+
+var uaaccount = "UA-XXXXXX-X";
+if ('<% loadurp("FLOW::SDOMAIN"); default(""); print(); %>' == 'm.domain.com') {
+  // use mobile analytics account (be sure to change domain name above)
+  uaaccount = "UA-XXXXXX-X";
+  }
+[[BREAK]]
+var pageTracker = _gat._getTracker(uaaccount); 
+
+[[/SECTION]]
+
+
+[[SECTION]Advanced Usage]
+
+[[CAUTION]]
+The following javascript code block is included for use by 
+Zoovy Marketing Services only and is NOT supported by Zoovy support technical, implementation or design services. Use at your own risk!
+[[/CAUTION]]
+
+[[SUBSECTION]Tracking Checkout Progress]
+By customizing the data passed to analytics by the trackPageview event, it is possible to track the individual steps in checkout. 
+
+[[HTML]]
+
+<script type="text/javascript">
+var pageVar = undefined;
+if ("<% loadurp("FLOW::PG"); default(""); print(); %>" == "*checkout") {
+pageVar = "checkout/<% loadurp("SREF::+stage"); default(""); print(); %>";
+}
+
+var pageTracker = _gat._getTracker("UA-XXXXXX-X");
+pageTracker._initData();
+pageTracker._trackPageview(pageVar);
+</script>
+[[/HTML]]
+[[/SUBSECTION]]
+
+[[SUBSECTION]Private SSL - Track Cart to Next Stage in Checkout]
+This code must be added if you have a private SSL this allows the data to be passed from cart to the other stages in checkout.  This only works below if you have a private ssl.  This will be the bottom portion of the script in your google analytics, and should be used in conjunction with tracking checkout process.
+
+
+[[HTML]]
+pageTracker._setDomainName(".domainname.com");
+pageTracker._setAllowHash(false);
+pageTracker._trackPageview(pageVar);
+</script>
+
+[[/HTML]]
+[[/SUBSECTION]]
+
+
+[[SUBSECTION]Tracking Referrers]
+By default all of Zoovy's syndication feeds refer back as "META=marketplace"
+
+[[HTML]]
+if ('<% loadurp("VAR::meta"); default(""); print(); %>' != '') {
+  // only override meta if it appeared in the URI.
+  pageTracker._setCampSourceKey("meta");
+  pageTracker._setCampTermKey("metacpg");
+  }
+[[/HTML]]
+[[/SUBSECTION]]
+
+[[SUBSECTION]SSL Certificates]
+Once you have an SSL certificate provisioned, you can use the following code to have google analytics cookies properly migrate across www.domain.com and secure.domain.com
+
+[[HTML]]
+pageTracker._setDomainName(".<% loadurp("SREF::+sdomain"); print(); %>");
+[[/HTML]]
+
+[[/SUBSECTION]]
+
+[[SUBSECTION]Identifying Newsletter referrals]
+[[HTML]]
+if ('<% loadurp("VAR::cpg"); default(""); print(); %>') {
+   // newsletter campaign code 
+   pageTracker._setCampNameKey('cpg');
+   pageTracker._setVar('newsletter-<% 
+loadurp("VAR::cpg"); 
+default(""); 
+print(); %>');    
+   }
+[[/HTML]]
+
+[[/SUBSECTION]]
+
+[[SUBSECTION]Identifying eBay referrals]
+
+[[HTML]]
+<script type="text/JavaScript">
+<!--
+
+
+if ("<% loadurp("FLOW::WRAPPER"); print(); %>" == "ebay") {
+   // check for eBay wrapper
+   pageTracker._setVar('eBayCOR');    
+
+   }
+else if (document.location.toString().indexOf("/claim")>0) {
+   // are we on the claim page link
+   pageTracker._setVar('eBayLegacy');    
+   }
+else if (document.location.toString().indexOf("%2A")>0) {
+   // does the url contain a * in it (redirect from claim page)
+   pageTracker._setVar('eBayLegacy');    
+   }
+else {
+   // normal checkout!
+   }
+
+//-->
+</script>
+
+[[/HTML]]
+[[/SUBSECTION]]
+
+
+
+[[/SECTION]]
+
+
+
+[[FOOTER]]
+
+
+
+
+
+
+
+</pre>

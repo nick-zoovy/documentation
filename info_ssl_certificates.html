@@ -1,0 +1,126 @@
+<meta type="tag" id="CERTIFICATE">
+<meta type="tag" id="GEOTRUST">
+<meta type="tag" id="secure">
+<meta type="tag" id="security">
+<meta type="tag" id="SSL">
+<meta type="docid" id="50970">
+
+<pre>
+**LEGACY CONTENT**
+
+[[FILENAME]info/ssl_certificates]
+
+[[TITLE]SSL Certificates]
+
+[[TAG]SSL=1000]
+[[TAG]CERTIFICATE=1000]
+[[TAG]GEOTRUST=1000]
+[[TAG]secure=500]
+[[TAG]security=500]
+
+[[STAFF]]
+Currently SSL certificate requests should be sent to billing@zoovy.com.  Billing will charge<br> and process this request.
+[[/STAFF]]
+
+[[SECTION]SSL Certificates]
+
+In order to have a private SSL Certificate - the following Zoovy account settings are required:
+
+<li> Configured to use Fusemail for email
+<li> You must host your domain with us
+<li> Review your company info and affirm it is correct (*must match WHOIS info for domain)
+
+[[HINT]]check WHOIS here: http://www.networksolutions.com/whois/index.jsp [[/HINT]]
+
+<li>Once everything is in place and the certificate is order please ignore all initial GEOTrust emails as Zoovy will be managing this initial process for you
+
+<li>In the ticket that is opened with Zoovy Support you must let Support know that you have verified that you meet all criteria or request assistance from us
+
+[[HINT]]
+Please make sure your company name, email and personal name on file with Zoovy is correct
+[[/HINT]]
+
+[[SUBSECTION]Dedicated IP Address]
+
+SSL Certificates cannot be virtually hosted and require one unique IP address per domain. Zoovy has already acquired a block of IPv4 addresses from the American Registry of Internet Numbers (ARIN) to accomplish this. 
+
+[[CAUTION]]
+SSL requires that zoovy allocate a private IPv4 address for your website.  You must purchase your SSL Certificate from Zoovy which includes the use of a dedicated IP address.
+[[/CAUTION]]
+
+[[/SUBSECTION]]
+
+[[/SECTION]]
+
+[[SECTION]SSL Providers and Pricing]
+
+At this time only certificates from GeoTrust are available. 
+
+[[HINT]]
+We feel GeoTrust has significant branding advantages over verisign, thawte, and komodo (to name just a few) because of the word "trust" in the logo.
+[[/HINT]]
+
+[[CAUTION]]
+Implementation Charges will apply to SSL certificate requests where dnsadmin@zoovy.com is not designated as the technical contact for the issuing domain.  More Information about this policy: [[LINKDOC]50551]
+
+[[BREAK]]
+HINT: If the domain has been transferred to Zoovy then dnsadmin@zoovy.com then dnsadmin@zoovy.com was setup as the designated technical contact automatically.
+
+[[/CAUTION]]
+
+[[/SECTION]]
+
+[[SECTION]RapidSSL for Checkout (secure.domain.com)]
+Zoovy reselles the RapidSSL certificate for $50/yr. which includes a managed IP address.  RapidSSL offers a site seal that will need to be hardcoded into your wrapper.  This work is completed at our hourly design rate.  The seal itself is just a .gif file, so if you click on it, nothing will happen.
+
+[[/SECTION]]
+[[SECTION]GeoTrust QuickSSL Premium for Checkout (secure.domain.com)]
+[[HINT]]
+-If you are looking to address ROI tracking with your analytics program, then QuickSSL is what you want to purchase. 
+[[/HINT]]
+Zoovy resells the GeoTrust QuickSSL Premium Certificates at $199/yr. which includes a managed IP address. If you do NOT want your SSL certificate to be renewed please email billing@zoovy.com 30 days before your certificate expires.
+[[CAUTION]]
+Your geotrust site seal will only appear in checkout on secure.domain.com.  If you want the geotrust premium seal to appear on your site then you will need to purchase another certificate for www.domain.com.  Unfortunately at this time we are unable to service checkout from www.domain.com.
+[[/CAUTION]]
+[[/SECTION]]
+
+[[HINT]]
+To find out more information on the differences between SSL certificates and their pricing, please check out [[LINKDOC]51432]
+[[/HINT]]
+
+
+[[SECTION]TrustWave SSL Certificates]
+We also offer TrustWave Premium and EV SSL Certificates - please contact billing@zoovy.com for current pricing.
+[[/SECTION]]
+
+[[SECTION]Can I Purchase my own SSL Certificate]
+Yes, and No.  Yes you can - however it will always be more expensive than purchasing one from us. There is a $200/yr. IP address rental, and $300 installation fee for customer purchased SSL certificates - these do not apply to SSL certificates purchased from us.<br>
+<br>
+Our policy regarding customers self-purchasing SSL certificates has been established to avoid the difficulties involved in attempting to assist customers in obtaining certificates.  As such, there is a minimum of $500 in fees for requesting client generated SSL certificates and to make certificates.<br>
+<br>
+SSL Certificates, and cryptography in general are one of the least understood subjects on the Internet.  Over the past 10 years we've found that the less we involve the store owner in the purchase and installation, the happier all parties involved are.  When merchants attempt to purchase their own SSL certificates it routinely leads to numerous complications which often result in a frustrated customer, and a bad customer service experience.  Since these routinely don't "go well" and we've ended up with upset clients who have been *adamant* that *ZOOVY* should have done more to inform and dissuade them.  We couldn't agree more - and we've decided to establish policies to make customer purchased certificates substantially more difficult, and less cost effective than their zoovy purchased counterparts. Effectively: we're telling you not to do this, because it probably won't go well, the tech support from CA's is horrid, getting certificates reissued is a pain, there are dozens of pitfalls with lots of snakes, and sharp pointy things at the bottom.  On the flip side - we offer wholesale purchasing rates on SSL Certificates through us to encourage clients to take "the easy route".<br>
+
+[[HINT]]
+Zoovy SSL Certificates are sold below retail rates, via our wholesale discount program with each Certificate Authority.  So purchasing from Zoovy not only saves money, but also substantial time and frustration. 
+[[/HINT]]
+
+[[CAUTION]]
+Zoovy will load SSL certificates -- however that is the extent of our involvement. However we will not generate a CSR for you, customers who want a CSR should download openssl and generate their own, then send that to the CA, and send a valid PEM encoded non-password protected private key + certificate to Zoovy in a support ticket issued for secure.domain.com. We will not help you do this, if you don't know how - then in our opinion you shouldn't be doing this. We don't know what format your CA wants the CSR in, nor will we ask them or have you cut paste their instructions (which are routinely wrong) into a ticket and expect us to figure out.  We will not play phone tag, or trade emails trying to divine what your certificate authority is asking for, or explain why you encoded the certificate incorrectly. We are not here to explain the nuiances of why SSL works the way it does, we didn't make the protocol, and in most cases you don't need to understand how it works anyway.  Each CA has a unique interface that they seem to change often, we don't use your CA, we have a reseller interface and we don't know what questions they are asking you.  The answer to all the questions above is: we'd love to get an SSL certificate issued and installed for you through our reseller program. 
+[[/CAUTION]]
+<br>
+If you do purchase from another Certificate Authority, not through Zoovy.  You will still need an IP address to host it on. Zoovy charges an IP fee of $200/yr. for rental of an IP address from our pool - this is necessary for an SSL certificate because each certificate requires it's own address.  You can't use an SSL certificate without and IP address. This fee does not apply to SSL certificates purchased from us - if you want to know why we have this fee, see the note above.<br>
+<br>
+There is also a $300 installation fee. If you encode the certificate in the wrong format, you will be charged additional hourly fees to cover the consulting involved in re-purchasing their SSL certificate (re-generating a CSR, securely transferring the certificate, and sometimes altering the format/encoding of the certificate).  In general this could run into the thousands of dollars (hint: we'd rather you didn't do this).<br>
+<br>
+Sorry to be so harsh here. We have developed this policy after years of dealing with difficulties in obtaining, and installing customer generated/purchased SSL certificates. 
+[[/SECTION]]
+
+
+
+
+
+
+
+
+
+</pre>

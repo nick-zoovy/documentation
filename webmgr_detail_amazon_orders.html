@@ -1,0 +1,175 @@
+<meta type="tag" id="amazon">
+<meta type="tag" id="order">
+<meta type="tag" id="orders">
+<meta type="docid" id="50392">
+<meta type="docid" id="50392">
+<meta type="docid" id="50392">
+
+<pre>
+**LEGACY CONTENT**
+
+[[FILENAME]webmgr/detail/amazon-orders]
+[[TITLE]Amazon Part 4 - Orders]
+[[TAG]orders=1000]
+[[TAG]amazon=5000]
+[[TAG]order=1000]
+[[SECTION]Amazon Orders]
+
+Orders are automatically downloaded from Amazon on an hourly basis. Amazon orderids are included in the Order Notes. Customers are created automatically. Keep in mind Amazon customers will not have billing information in their account (we don't receive this info from Amazon).
+
+[[BREAK]]
+
+[[HINT]]
+
+Starting May 15th 2006, Amazon orders will take additional 90 minutes (from
+creation) to be available from Zoovy. This additional time was added to improve
+Amazon customers' user experience (please see Amazon for more information about
+the benefits of this change).<br><br>
+
+Note: If you have time-sensitive shipping processes, you may need to adjust
+your methods to compensate for the new 90-minute window. Example: If you offer
+same-day service for orders placed by 5:00 p.m. PST, you should adjust your
+cut-off time to 3:30 p.m., and update your Web site shipping policies.
+[[/HINT]]
+
+[[BREAK]]
+
+[[SUBSECTION]Tracking Information]
+If you enter your Order Tracking info via Zoovy (on the web or Order Manager), this information is automatically sent to Amazon on an hourly basis (as available). An order confirmation w/tracking information is then sent to your customer from Amazon.<p>
+[[/SUBSECTION]]
+
+[[SUBSECTION]Charge When Ship]
+Charge When Ship is new functionality from Amazon that enables you to charge a customer when you ship an order. Per Amazon, the upgrade provides an improved experience for your customers, allows you to take advantage of new order management capabilities, and lowers the cost of doing business on Amazon.com by dropping order cancellation hold-back fees. Upgrading will enable you to:
+<li> Cancel an order before it ships without paying a refund holdback fee
+<li> No longer send ship confirmation emails - instead, after you confirm shipment Amazon.com will automatically e-mail customers notifying them that their order has shipped and been charged
+<li> Track order status within Seller Central
+
+To take advantage of these new capabilities, you'll need to upgrade your Seller Central account. Once upgraded, you are required to confirm shipment of all current and future orders.
+
+[[BREAK]]
+
+Zoovy supports "Charge When Ship" by sending Tracking automatically to Amazon on an hourly basis (as available). Zoovy has successfully supported "Charge When Ship" for numberous merchants for the last 6+ months. Note: Order cancellations still must be made manually in SellerCentral as appropriate.
+
+[[BREAK]]
+
+Go to SellerCentral (Help > Announcements > Important Information) to learn more and upgrade.
+
+[[CAUTION]]
+Per Amazon, on February 28th, 2007, your Amazon Seller Account will automatically change to "Charge When Ship".
+[[/CAUTION]]
+
+
+
+[[/SUBSECTION]]
+
+[[SUBSECTION]Promotion and Gift Wrap]
+An Amazon Promotion or Gift Wrap option becomes part of your Zoovy order. You can safely use these options on Amazon and know that you will see them on the Zoovy end.
+[[/SUBSECTION]]
+
+
+[[SUBSECTION] Missing Orders]
+
+You may run into times when for some reason orders are "missing", i.e. the orders are present on Amazon Seller Central, but are not showing up in Zoovy.  Please follow the steps provided below to troubleshoot anytime this occurs.
+
+[[CAUTION]]
+If you manually download your orders from Seller Central (Orders: Advanced Features: Download Orders File), Zoovy CAN NOT automatically retrieve them from Amazon.
+[[/CAUTION]]
+[[CAUTION]]
+Orders can sometimes be delayed for additional fraud checks, or to secure another payment instrument if the original fails. Amazon won't supply an order to a merchant until they're 100% ready for the merchant to begin fulfillment, so occasionally the 90 minute hold window is extended for these reasons. If you are missing a single order, this might be the cause and we suggest waiting a few hours and seeing it it comes across before reporting it.
+[[/CAUTION]]
+
+[[CBC]Trouble-shooting "missing" orders]
+<li> Wait 24 hrs after order has been submitted. Intermittent problems on the Amazon or Zoovy side could cause a delay. Although this is abnormal (it normally takes ~1hr), it can happen.
+<li> Double-check if your username/password is valid. Go to SellerCentral and try logging in with the username/password configured in Zoovy (Syndication: Amazon: Configuration).
+<li> If you have successfully received Amazon orders in the past, please note the date and time of the last successful transmission.
+<li> Submit a ticket to support as necessary. BE SURE to include all confirmation and notes from the steps above.
+
+[[/CBC]]
+
+
+[[STAFF]]
+If a new merchant hasn't seen _any_ of their Amazon orders in Zoovy, 
+it's possible that they may need to be switched to "XML Orders". 
+This process normally happens automatically but can be re-pushed 
+manually. Set AMAZON_FEEDS.XML_ORDERS=0 and run 
+'app6:/httpd/servers/amazon/switch_to_xml_orders.pl'. This will send 
+an email to Amazon asking for the switch to (re)occur. Normally, Amazon 
+makes the change very quickly and 'app6:/httpd/servers/amazon/amz_orders.pl 
+create merchant' can be rerun to see if orders are now created.[[/STAFF]]
+
+[[CAUTION]]
+Missing variation/option information on orders... this bug has been reported by various merchants. Best/quickest way to get it resolved is to open a case with SellerCentral with the sample ASIN that has variations but doesn't require the customer to select one.
+[[/CAUTION]]
+[[HINT]] Orders canceled in Zoovy are not automatically canceled on Amazon. You do need to cancel the order in both places separately. [[/HINT]]
+[[/SUBSECTION]]
+
+[[/SECTION]]
+[[SECTION]Shipping Map]
+You can map your Amazon shipping methods to specific methods of printing out airbills or postage in Order Manager under the Shipping Map tab.
+[[/SECTION]]
+<?
+
+webdoc_detail_content_end();
+webdoc_detail_footer();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>

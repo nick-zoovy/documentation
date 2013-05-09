@@ -1,0 +1,274 @@
+<meta type="tag" id="amazon">
+<meta type="tag" id="how">
+<meta type="docid" id="50791">
+
+<pre>
+**LEGACY CONTENT**
+
+[[FILENAME]syllabus/amazon]
+[[TITLE]Amazon Part 2 - Amazon Configuration]
+
+[[SECTION]Amazon Configuration]
+[[TAG]amazon=1000]
+[[TAG]how=1000]
+
+This training is the first step in getting your products on Amazon from Zoovy. It is highly recommended that you schedule training for the best results in getting your products over to Amazon's Seller Central platform correctly.
+[[BREAK]]
+[[HINT]]
+Here is a tutorial video from Amazon.  This tutorial is intended for merchants who are already setup with Amazon's services:<br>
+<a href="http://g-ecx.images-amazon.com/images/G/01/rainier/help/tutorials/OptimizeCustomerExperience.html">
+http://g-ecx.images-amazon.com/images/G/01/rainier/help/tutorials/OptimizeCustomerExperience.html
+</a>[[/HINT]]
+[[BREAK]]
+[[HINT]]Amazon varies in complexity depending upon what you are selling and how. Zoovy suggests that you start out by putting one product on Amazon to ensure you understand how the syndication works. Then, slowly ramp up the complexity of your products as your proficiency with the integration increases.[[/HINT]]
+
+[[BREAK]]
+[[SUBSECTION]PREREQUISITES]
+You must have a Seller Central account with Amazon before you can use Zoovy's integration. Be sure to have the email address and password that allows you access to sellercentral.com before scheduling this training. Without it, you will not get very far in the training. [[/SUBSECTION]]
+
+
+[[CBC]Three Keys to Amazon Syndication]
+<li> Configure Amazon account (email address and password)
+<li> Configure Thesaurus Profiles with correct product types
+<li> Check Amazon box on product level
+[[/CBC]]
+
+[[BREAK]]
+[[CAUTION]]
+
+Apparel is configured differently. Apparel for Amazon is discussed in Amazon 1B.
+
+[[/CAUTION]]
+[[BREAK]]
+
+[[HINT]]
+
+For your first attempt to launch a product on Amazon we recommend that you do not send a product with Options. You can use Options on Amazon but make sure you are comfortable with the basics first.
+
+[[/HINT]]
+[[BREAK]]
+
+[[CAUTION]]
+
+Watch out! If two or more of your products have the same UPC or manufacturer ID they can be merged together automatically when sent over to Amazon. 
+
+[[/CAUTION]]
+
+[[/SECTION]]
+
+
+[[SECTION] Zoovy/Amazon Handshake]
+
+[[CBC]Steps to connect Zoovy and Amazon]
+<li>Go to Setup > Amazon.com (under Integrated Marketplaces)
+<li>Enter your Merchant Name, as you would like it to be shown on Amazon.com
+<li>Enter your userid (usually an email address) for sellercentral.com access.
+<li>Enter the password (case sensitive!) for sellercentral.com access.
+<li>Copy your Merchant Token from Seller Central into Zoovy.
+[[HINT]] To get your merchant token, log into sellercentral.com. Click on the Settings Tab. Scroll to the bottom - your merchant token is 
+
+there in the form of M_CUSTOMER_######
+[[/HINT]]
+<li>Don't worry about your merchant id. It is also only completely necessary if you're using Checkout by Amazon.
+
+<li>AWS Access Key & Signing Secret Key are reserved for Checkout by Amazon. They will be covered in a different training. Skip 
+
+this for now.
+
+[[CBC]Retrieving your MWS Token]
+Zoovy is priviledged to use an advanced Amazon feed (used only by select companies) which requires an additional signup step. You 
+
+will need to sign up for MWS in order to syndicate your products to Amazon.
+
+[[CAUTION]]
+If your Marketplace account is also used for Checkout By Amazon (CBA) please ensure that you log in first and select 'www.amazon.com' from the website drop down list at the top left of the screen. If you do not use this account for CBA you will not see the drop down list. 
+
+[[/CAUTION]]
+
+[[BREAK]]
+
+[[STAFF]]
+##IMPORTANT - If you're currently logged into another merchant's
+Amazon account you must log out before moving onto the next step.
+If you fail to do so the orders from that merchant's Amazon
+account will download into this merchants Zoovy account.
+[[/STAFF]]
+
+[[BREAK]]
+
+<li>Click on 'Create/Verify MWS Token'. (You will be taken to the MWS sign up page. You may be required to log into your Seller 
+
+Central account if you have not already done so.)
+  
+<li>Click on the 'Amazon MWS License Agreement.' link
+<li>Once you have read the License Agreement check the check box to the left of it to confirm that you agree to the terms set forth in.
+<li>Check the other check box at the bottom of the page.
+[[HINT]]
+Zoovy requires access to your account in order syndicate your products and orders. Checking this box grants us access to do so. 
+[[/HINT]]
+<li>Click Submit.
+<li>Click continue to be directed back to the Zoovy Amazon Configuration page.
+<li>Click Save. 
+[[/SECTION]]
+
+
+
+[[BREAK]]
+
+
+[[SECTION]Amazon Thesaurus]
+Construction of your Thesaurus profiles is important to the success of your listings. Improper configuration will result in poor search results, as Amazon uses a Suggestive Search method. That is, if the search terms that are entered do not match any results, Amazon will suggest other items. Classify your items properly to be returned in those results.
+[[BREAK]]
+[[SUBSECTION]Online Item Classification Guide]
+You <b>must</b> use the terms in the Amazon Online Item Classification Guide (ICG) to construct your Thesaurus. (Only the Profile Name and the Search Terms are exceptions.) Any attempt to use terms <b>other</b> than those in the ICG, will result in errors![[/SUBSECTION]]
+[[CAUTION]]Be certain to copy and paste terms from the Online Item Classification Guide exactly as they appear in Amazon. There are no spaces in Amazon-land. The delimeter is a hyphen ( - ).[[/CAUTION]]
+
+[[/SECTION]]
+[[BREAK]]
+
+
+[[CBC]Steps To Set Up Your Thesaurus Profile]
+<li>Go to Syndication > Amazon > Thesaurus
+<li>Scroll down to the form for the profile entry.
+<li>Enter a name for your profile, something that you will know what the profile is all about. 
+<li>Open the Item Classification Guide (aka, ICG - link is on the thesaurus page) in a new window.
+<li>Select the category to which you will be sending this product on Amazon.
+[[HINT]]
+If you are not sure what category to use, type in what you are looking for in the blue window on the right of the ICG. It will return results with categories that you can use.[[/HINT]]
+<li>Select the most appropriate item type. Those with a + sign beside them have further clarification which will populate to the right - keep clicking until there is no + signs left.
+<li>Copy the term from the grey box below and paste into the item type field in Zoovy.
+<li>Repeat the process with the Used For, Other Item Attributes, Subject Content, Target Audience, ALL from the ICG. 
+[[HINT]]If there is nothing applicable for anything OTHER than item type, just leave it blank. Item type is required at the bare minimum.[[/HINT]]
+<li>Select yes/no for gift wrap/gift message.
+<li>Enter GENERAL search terms in the search field. Separate by commas. Don't be too specific. Keep it general to the profile, rather than a specific product.
+<li>Save your profile.
+[[/CBC]]
+
+
+
+
+[[SECTION]Amazon Marketplace]
+Each of your products has an Amazon Marketplace section. In this section, you will check the box and choose a Product Type in order to send a product over to Amazon. You can also select a Thesaurus in this section.
+
+[[CAUTION]]Only populate the UPC field if you are certain you know the UPC for the product.[[/CAUTION]]
+[[HINT]]Do not use the same UPC in two or more different products.[[/HINT]]
+[[/SECTION]]
+[[SECTION]Homework]
+Before continuing onto the advanced Amazon course, you must get at least one product over to Amazon successfully.
+[[CAUTION]]If you already use Amazon Seller Central, decide what to do with the products that are already up there. If you do not want to duplicate the products you will need to provide your Zoovy products with matching Product ID's or ASIN's or take down the existing products from Amazon.[[/CAUTION]]
+[[/SECTION]]
+[[SECTION]Further details]
+
+<a href="http://support.zoovy.com/schedule/index.cgi?CLASS=IMP">Schedule Training Appointment</a>
+
+[[/SECTION]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>

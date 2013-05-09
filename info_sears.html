@@ -1,0 +1,288 @@
+<meta type="tag" id="market place">
+<meta type="tag" id="syndication">
+<meta type="tag" id="sears">
+<meta type="tag" id="marketplace">
+<meta type="tag" id="marketing">
+<meta type="docid" id="51583">
+
+<pre>
+**LEGACY CONTENT**
+
+[[FILENAME]info/Sears]
+[[TITLE]Sears Marketplace (Production Ready)]
+[[STAFF]]
+
+##### Effective 5/24/12 - all Sears tickets / projects should get routed to Kim##
+
+
+<b>For Zoovy merchant Sears will waive the monthly fee of $40, for 6 mo. New accounts only. Any merchants currently selling on Sears are not eligible for this promotion. 
+(commission rates will remain the same)</b><br><br>
+This will not be automatic, so you may see the 1st month charge until it is processed.
+
+*Inventory updates sent every 4-6 hours daily
+*Order are pulled down hourly
+*Order tracking info is sent nightly
+
+
+
+#### Sears support 11.21.11
+Zoovy employees should access the Zoovy sears seller portal and submit questions via the support
+ / contact us link as opposed to sending an email to Sears support.
+
+Zoovy Sears Seller account info:
+email - jamie@zoovy.com
+pass- zmarketing1
+
+NEW email - kims@zoovy.com
+pass- zmarketing1
+
+
+Sears contacts:
+Jennifer Conroy (mktg) - 847-286-2378
+Lauren Marchese (mktplc manager) - 847.286.2265
+lauren.marchese@searshc.com
+
+
+
+
+[[/STAFF]]
+
+[[SECTION]Sears Marketplace]
+[[TAG]sears=1000]
+[[TAG]syndication=500]
+[[TAG]marketplace=500]
+[[TAG]market place=500]
+[[TAG]marketing=500]
+[[CAUTION]]Sears is considered <b>PRODUCTION READY</b>, any set up assistance will be billable.  Please see the following webdoc for more information on production ready programs:<br>
+www.zoovy.com/webdoc/index.cgi?VERB=DOC&DOCID=51571[[/CAUTION]]
+
+
+Zoovy has integrated with the Sell On Sears program.  Sears Marketplace allows merchants to advertise and sell products on Sears.com.  If assistance is need with set up, please create a support ticket titled Sears Marketplace
+[[HINT]]This program is not suitable for all merchants due to limitations.  Customers with lower volume sales may not see a positive ROI based on the effort needed to list.[[/HINT]]
+Sears Marketplace has a monthly fee of $39.99 and commission based on category of product sold.  <a href="https://seller.marketplace.sears.com/SellerPortal/d/help/vig.pdf">More Vendor Info</a>
+[[/SECTION]]
+
+[[SECTION]Account Set Up]
+There are 3 types of accounts so please be certain to set up account for <b>Sell On Sears</b>. <a href="https://seller.marketplace.sears.com/SellerPortal/d/account/register.jsp?atype=2" target="_blank">Sign Up Now</a>[[BREAK]]
+
+[[break]]
+You will receive an email from Sears.com once your account has been validated.
+[[SUBSECTION]Adding Products]
+There are 4 steps to getting products up on Sears.com
+
+<li>Download Tag Library (Category) - this gives the Sears Categories
+<li>Download Template (created based on the type of product you will be importing,
+drop down selections) - must leave all headers for import, leave blank if not specific to your product. Do not edit or delete pages or page names or it may cause an error during upload.  
+<li>Upload products & check for errors -an email will also be sent once products are uploaded and checked for errors
+<li>Publish Products - sets the products live on Sears Marketplace
+[[HINT]]Upload one product manually for category, then when downloading the template/catalog check the box to include items.  This will show you all the necessary headers with corresponding attributes[[/HINT]]
+[[CAUTION]]This is all done in the Sears Marketplace interface[[/CAUTION]]
+
+[[/SUBSECTION]]
+[[/SECTION]]
+
+[[SECTION]Zoovy Configuration]
+Under Syndication >> Sears
+Configure the following <br>
+* Sears API User (sears username login)<br> 
+* Sears API Password (sears password login)<br>
+* Sears Location ID  (found on Sears. Account settings >> Fulfillment Locations >> 9 digit #)<br>
+Save, Sears Account Configuration Complete
+[[BREAK]]
+[[CAUTION]]Zoovy only sends inventory, price, and order information updates send automatic.  All products must be manually added to the Sears Marketplace first[[/CAUTION]]
+[[SUBSECTION]Activating Products for Sears]
+To have products added to the outgoing inventory and pricing feed, you will need to enable the sears:ts for the products.  All items are turned off by default. This can be done by using csv, product power tool, or under product editor within the syndication section.  Products must be set to <b>(sears:ts 1)</b>. If a product is not enabled, updates will not be sent and any order information will not come down into Zoovy. To disable products from sending you will need to set the value of sears:ts to -1.
+
+[[CAUTION]] Do not enable products with the sears:ts attribute that have not been added to the Sears dashboard first. This will generate an error within Sears and could cause your feed go inactive. [[/CAUTION]]
+[[/SUBSECTION]]
+[[/SECTION]]
+[[SECTION]Required Data]
+[[CAUTION] Sears has a list recommended attributes that vary by category. Refer to your categories template for specifics.[[CAUTION]]
+These Zoovy attributes required across all Sears categories:
+<br>
+
+zoovy:prod_name<br>
+zoovy:prod_desc<br>
+zoovy:prod_mfgid<br>
+zoovy:base_cost<br>
+zoovy:base_price<br>
+zoovy:prod_mfg<br>
+zoovy:pkg_depth<br>
+zoovy:pkg_width<br>
+zoovy:pkg_height<br>
+zoovy:base_weight<br>
+%IMGURL=zoovy:prod_image1<br>
+[[BREAK]]
+Use the product export tool within Zoovy to export this attribute data for your product skus
+[[BREAK]]
+<a href="https://seller.marketplace.sears.com/SellerPortal/d/help/product_data_definitio
+ns.jsp" target="_blank">Sears Product Data Definitions</a>
+[[BREAK]]
+Sears only allows alphanumeric and hyphens(-) in item ids/skus. Any other character will generate an error within the feed. Zoovy has created a sku conversion, for all products with disallowed characters, called the SAFE SKU. Use the SAFE SKU in place of your normal sku for products with disallowed characters. 
+[[/SECTION]]
+[[SECTION]Listing Skus with Product Options]
+
+You can use the product export tool to export product options: 
+
+* Under Step number 3 check the ,"Expand product option groups" box. You will be provided SAFE SKUS with the option added to the end; i.e. Z-123ABC-D456.
+* Under the syndication tab, you must check the 'Use Safe SKU Algorithm' box under the Sears profile, so Zoovy is compatible.
+[[BREAK]]
+[[HINT]]Zoovy use the %SAFESKU in the outgoing Sears feed, but convert it back to the original sku when order come down. The %SAFESKU should be used on the Sears category template.
+[[/HINT]]
+
+[[/SECTION]]
+[[SECTION]Uploading New SKUs into Sears]
+Steps:
+[[BREAK]]
+1. To figure out which Sears category your products will be put into, Log in to
+Sears and go to the Products tab>Browse&Edit>Bulk, and click on the "Download
+Tag Library" button.<br>
+This will open a spreadsheet with the categories you can choose from and
+download blank templates from in Sears.
+[[BREAK]]
+2. Download the blank template for the correct category from Sears. In the same
+area in Sears (and just below the Download Tag Library button), you'll see 3
+dropdown menus. This is where you input the category and subcategories for the
+blank template (for the products you want to put on Sears). 
+For example, we put ForTheHome in the first one, Kitchen storage in the second,
+and NapkinHolders in the third.<br>
+Then click "download template" to download the blank template for the napkin
+holder category.
+[[BREAK]]
+3. Now you will need to export the product info from Zoovy. In Zoovy, go to the
+Utilities tab>Product Export, and click on the "Select by Navigation
+Categories" button to choose by category (or push the User Provided List button
+if you have a list of Skus). Check the correct category and click Save
+Selections. [[BREAK]]
+In the blank text box, add these headers:
+[[BREAK]]
+[[SUBSECTION]]
+@START<br>
+@Item Id|%SKU <br>
+@Action Flag <br>
+@FBS Item <br>
+@Variation Group ID <br>
+@Title|zoovy:prod_name <br>
+@Short Description|sears:prod_desc <br>
+@Long Description <br>
+@Seller Categories <br>
+@Packing Slip Description <br>
+@Category <br>
+@UPC|zoovy:prod_upc <br>
+@Manufacturer Model #|zoovy:prod_mfgid <br>
+@Cost|zoovy:base_cost <br>
+@Standard Price|zoovy:base_price <br>
+@Sale Price <br>
+@Handling Fee <br>
+@Sale Start Date <br>
+@Sale End Date <br>
+@Promotional Text <br>
+@Shipping Override <br>
+@Shipping Override Start Date <br>
+@Shipping Override End Date <br>
+@Free Shipping Promotional Text <br>
+@Low Inventory Alert <br>
+@MAP Price Indicator <br>
+@Brand Name|zoovy:prod_mfg <br>
+@Shipping Length|zoovy:pkg_depth <br>
+@Shipping Width|zoovy:pkg_width <br>
+@Shipping Height|zoovy:pkg_height <br>
+@Shipping Weight|zoovy:base_weight <br>
+@Shipping Restrictions <br>
+@Shipping Cost: Ground <br>
+@Shipping Cost: Expedited <br>
+@Shipping Cost: Premium <br>
+@Choking Hazard: small parts <br>
+@Choking Hazard: balloons <br>
+@Choking Hazard: small ball <br>
+@Choking Hazard: contains small ball <br>
+@Choking Hazard: contains marble <br>
+@Choking Hazard: other <br>
+@Safety Warning: other <br>
+@No Warning <br>
+@Energy Star Compliant <br>
+@Good HouseKeeping <br>
+@Hazardous Material <br>
+@Restricted Product <br>
+@California Emissions <br>
+@Web Exclusive <br>
+@Food Item <br>
+@Requires Refrigeration <br>
+@Frozen Item <br>
+@Alcohol <br>
+@Tobacco <br>
+@Product Image URL|%IMGURL=zoovy:prod_image1 <br>
+@Mature Content <br>
+@Swatch Image URL <br>
+@Feature Image URL #1|%IMGURL=zoovy:prod_image2 <br>
+@Feature Image URL #2|%IMGURL=zoovy:prod_image3 <br>
+@Feature Image URL #3|%IMGURL=zoovy:prod_image4 <br>
+@Feature Image URL #4|%IMGURL=zoovy:prod_image5 <br>
+@Feature Image URL #5|%IMGURL=zoovy:prod_image6 <br>
+@Feature Image URL #6|%IMGURL=zoovy:prod_image7	<br>	
+@END <br>
+[[BREAK]]
+Check the box to "expand product option groups" <br>
+Click Export Now <br>
+[[/SUBSECTION]]
+[[BREAK]]
+4. When the Zoovy export is done, it will open in your browser as a
+spreadsheet. You'll want to click the orange CSV button at the top right to put
+it into an excel spreadsheet so that you can control it better. 
+[[BREAK]]
+
+5. Take information from the export and put it into the Sears template.[[BREAK]]
+Notes:[[BREAK]]
+*Change image URLs from /-/ to /W400-H400/ [[BREAK]]
+*For cost, use formula =sum(N2-0.99) where N2 is the “Standard Price”, but copy/paste into notepad and copy that and paste it into the Sears template (because Sears can't use formulas)
+[[BREAK]]
+6.  Upload to Sears. Seller.marketplace.sears.com Products tab> Browse&Edit>Bulk. Go down to Step 3, find the file you saved and upload it. Check back for errors. 
+
+[[/SECTION]]
+[[SECTION]Troubleshooting Errors]
+You can see processing errors from a category template or feed upload in Sears under Seller tools->Processing errors->Check for upload errors.
+
+[[/SECTION]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>

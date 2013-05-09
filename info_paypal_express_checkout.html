@@ -1,0 +1,133 @@
+<meta type="tag" id="10417">
+<meta type="tag" id="error">
+<meta type="tag" id="EC">
+<meta type="tag" id="IPN">
+<meta type="tag" id="10438">
+<meta type="tag" id="10474">
+<meta type="docid" id="50910">
+
+<pre>
+**LEGACY CONTENT**
+
+[[FILENAME]info/paypal_express_checkout]
+[[TITLE]Paypal Express Checkout]
+
+[[SECTION]Concept Overview]
+[[TAG]error=1000]
+[[TAG]10417=2000]
+[[TAG]EC=1000]
+[[TAG]IPN=300]
+[[TAG]10438=2000]
+[[TAG]10474=2000]
+Paypal Express Checkout is one of the multitude of Paypal payment offerings. Zoovy supports Paypal Direct Payments, and Express Checkout, as well as the Payflow Pro gateway.
+
+[[/SECTION]]
+
+
+[[SECTION]Setup a Paypal Account]
+
+Please go http://altfarm.mediaplex.com/ad/ck/3484-23890-3840-36 and create an
+account. Once you have verified your account via the banking process.this could take a
+few business days for them to officially verify your account.
+
+[[CAUTION]]
+Do not setup your API access (next step) until after Paypal has verified your account (which can take 3-4 business days). 
+[[/CAUTION]]
+
+[[/SECTION]]
+[[SECTION]Setting up 3rd party credentials]
+The steps below are necessary for Paypal Express Checkout, or Paypal Website Payments Pro.
+
+[[CBC]Authorizing 3rd party credentials updated: 4/4/11]
+<li> Login to Paypal.com
+<li> Go to My Account | Profile | My Selling Tool | API Access | Update
+<li> Click the link Select option 1. Add or Edit Paypal API credentials and permissions
+<li> Enter API account username: paypal_api1.zoovy.com
+<li> Select Your API Access Level: (choose all, except "Consolidate funds from two or more accounts to a master account.")
+<li> The Third Party Permission setup requires full access in order to be able to process refunds, etc.  If you do not grant full access some features of Zoovy *will not work* properly. 
+<li> Press submit to save, then on the next step "Give Permission"
+<li> (optional) - Remove any API credentials that are not paypal_api1.zoovy.com
+
+[[/CBC]]
+
+[[HINT]]
+Always be sure to place a test order after changing payment settings. 
+[[/HINT]]
+
+[[/SECTION]]
+
+[[SECTION]Common Errors]
+
+[[SUBSECTION]Paypal Error 10417]
+[[STAFF]]
+Below is the information I received from MTS as a reply to our previous
+response.  This ticket was opened for NYC I Wear. 
+[[/STAFF]]
+
+According to Paypal: 
+"The reason that the 10417 error does not occur before the order is created 
+is because Paypal does not contact the account holder's bank or credit card 
+issuer (as appropriate) to determine transaction approval until the
+DoExpressCheckoutPayment request is made.  Therefore Paypal cannot know in advance
+whether or not the bank or card issuer will approve or decline the
+transaction, so we cannot return an error until that time.
+
+[[/SUBSECTION]]
+
+[[SUBSECTION]Paypal Error 10438]
+10438 errors are caused when the merchant's using a customized payment page, and the HTML color value that the merchant specified is too long. HTML colors are six digits in length, with two hexadecimal values for the Red, Green, and Blue intensities. For example, to make pure red, you would specify #FF0000. If you submitted #FFF0000, the 
+error 10438 would be generated.
+[[/SUBSECTION]]
+
+[[SUBSECTION]Paypal Error 10474]
+10474 errors are caused by the shipping address not matching the country of residence listed (for example, submitting a shipping address in Canada, but the PayPal account is a U.S. account). This is not permitted; the buyer will need to change the shipping address to match the country of his or her residence and reattempt payment.
+[[/SUBSECTION]]
+
+
+[[/SECTION]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>

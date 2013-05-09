@@ -1,0 +1,271 @@
+<meta type="tag" id="conversion">
+<meta type="tag" id="analytics">
+<meta type="tag" id="tracking">
+<meta type="tag" id="goals">
+<meta type="tag" id="reports">
+<meta type="tag" id="google analytics">
+<meta type="tag" id="google">
+<meta type="docid" id="50892">
+
+<pre>
+**LEGACY CONTENT**
+
+[[FILENAME]syllabus/google_analytics]
+[[TITLE]Google Analytics Advanced]
+
+[[SECTION]Google Analytics Advanced]
+[[TAG]analytics=1000]
+[[TAG]reports=1000]
+[[TAG]conversion=750]
+[[TAG]tracking=500]
+[[TAG]goals=500]
+[[TAG]google analytics=1000]
+[[TAG]google=500]
+
+[[STAFF]]
+
+Zoovy implementation/support/design staff:
+Please do NOT assist customers with debugging and tuning GA javascript.
+
+These code samples are provided to illustrate what is possible and to provide a 
+reference for us, and more "technically" minded clients.
+
+The only way these javascript code blocks are support is via Zoovy Marketing services.
+
+If you want to use these on your own store (without assistance) that is fine. 
+
+[[/STAFF]]
+[[CAUTION]]
+This webdoc is intended for advanced users, for basic set up instructions please visit the <a href"https://www.zoovy.com/webdoc/index.cgi?VERB=DOC&DOCID=50595>Google Analytics Setup Webdoc></a>
+[[/CAUTION]]
+Google Analytics is a free reporting tool that can be quickly and easily implemented into your website. While anyone can use Analytics it is especially useful to merchants also running Google Adwords campaigns.[[BREAK]]
+To sign up for Google Analytics go to <a href"http://www.google.com/analytics">www.google.com/analytics</a>[[BREAK]]
+The Google Analytics should use the same login information as Google Merchant Center and Google Webmaster Tools.[[BREAK]]
+[[CAUTION]]
+The same user/password allows for easy navigation between multiple Google products, you cannot be logged into 2 different Google products with different user and passwords.[[BREAK]]
+If you have multiple websites and multiple log ins, you may need to contact Google to request a merged account (Google Checkout, Google Merchant Center, Google Adwords)
+[[/CAUTION]]
+
+
+
+[[HINT]]Be certain to edit your Profile Information to turn on the E-Commerce Website option.[[/HINT]]
+
+[[CAUTION]]
+Make sure you enable Google Analytics in the Google Checkout Payment Method.  You will see an error in Analytics & Plugins if you don't.  There is a drop down menu with 2 options.  If you are using the script you pulled from your Google Analytics account select the Enable GAQ (ASYNC)option. Selecting the wrong option will also trigger an error in Analytics & plugins.  If you are unsure which option to select or need assistance please contact Zoovy support, submit a support ticket or schedule an appointment with the Marketing Department.
+[[/CAUTION]]
+[[CAUTION]]
+If you have Google analytics enabled under Google checkout you will need to make sure all websites on the same partition are using the same version of tracking code.  Marketing can assist you if you need assistance.
+[[/CAUTION]]
+
+
+
+[[/SECTION]]
+[[SECTION]How to Read Analytics]
+
+[[CAUTION]] Analytics gives you a lot of approximate information. It will give you an idea of what is happening on your site but should not be taken as the final word. There are several ways to get more accurate information for your webstore. [[/CAUTION]]
+[[SUBSECTION]Referrers]
+Direct - Visitors who typed the URL or used a bookmark to reach your site.[[BREAK]]
+Referral - Visitors referred by links that are not tagged.[[BREAK]]
+Organic - Visitors referred by an unpaid search engine result.[[BREAK]]
+Not Set - Referred by a campaign but that campaign name is not set.
+[[/SUBSECTION]]
+[[SUBSECTION]Bounce Rate]
+The Bounce Rate represent single visits to a page without clicking on any additional links. This is usually indicative that the customer did not find the content that they were looking for on the page and abandoned the page. You might ask yourself what content is missing on pages with high Bounce Rates that customers are expecting but not finding. On pages with high Bounce Rates, you might try to find ways to entice visitors to click further into your site.
+[[/SUBSECTION]]
+[[SUBSECTION]Time on Page]
+Time on Page is valuable for determining if customers are viewing the content on the page or immediately clicking through to other pages.
+[[/SUBSECTION]]
+[[SUBSECTION]% Exit]
+The number of people who leave your site immediately after viewing that page. This may mean that customers are being turned off and leaving the site or that they are completing their business on your site at that point.
+[[/SUBSECTION]]
+[[SUBSECTION]$ Index]
+The revenue earned by visits to that page.
+[[/SUBSECTION]]
+
+[[HINT]] Google Analytics may not accurately track sales on payment methods that take your customer off of your site, such as PayPal or Google Checkout. [[/HINT]]
+[[/SECTION]]
+[[SECTION]Google Analytics for Specialty Sites]
+We recommend to better organize your data that you setup a separate Google Analytics account for each of your Specialty Site Profiles. You can get data for all traffic to your site from one Analytics account but you may have difficulty deciphering which Specialty Site is generating traffic from syndication feeds.[[BREAK]]
+The good news is that Google Analytics allows you to share reports from different accounts to one account. Therefore, after setting up several different Google Analytics accounts, you can collect the data for all of these accounts in one primary account.
+[[CBC]How to share data with other Google Analytics Accounts]
+<li> Log in to Google Analytics.
+<li> Under Analytics Settings, find your URL and click on the Edit link under Settings.
+<li> In the "Users with Access to Profile" click on "+Add User."
+<li> Enter the email address of the primary Google Analytics account in which you would like to collect all of your reports.
+<li> Click Finish.
+[[/CBC]]
+[[/SECTION]]
+[[SECTION]Goals]
+Goals can be setup for specific pages that you want to track in your Google Analytics account. For more information on configuring goals, check this tutorial in the <a href="http://services.google.com/awp/en_us/breeze/2598755/index.html">Google Learning Center.</a>[[BREAK]]
+Analytics goals use regular expressions to dynamically replace the session ID generated by Zoovy for your customer. Use forward slashes to escape periods in your URL and an asterisk to replace the session ID. For example, if you wanted to set a goal for the Superman category at Uber Geek Comics, it would look like this:[[BREAK]]
+/category/superman
+[[/SECTION]]
+
+[[STAFF]]
+Marketing Team Only
+
+### either code will work, if using old code make sure everything in it is the old version and do not mix new with old.
+
+
+Old Code
+##########
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-xxxxxxx-x");
+
+// user defined variable for a/b SIDE.
+if ("<% loadurp("CART::multivarsite"); print(); %>" == "A") {
+   pageTracker._setVar("Site-A");
+   }
+else {
+   pageTracker._setVar("Site-B");
+   } 
+
+var pageVar = null;
+// special code for checkout page
+if ("<% loadurp("FLOW::PG"); default(""); print(); %>" == "*checkout") {
+  // this will override the URL in checkout to reflect the stage
+  // stages: PREFLIGHT, BILLING_LOCATION, SHIPPING_LOCATION,
+  // ORDER_CONFIRMATION, PAYMENT_INFORMATION, INVOICE_DISPLAY
+
+ pageVar = '/checkout/'+'<% 
+  loadurp("SREF::+stage"); default(""); print(); 
+  %>';
+   }
+
+if ("<% loadurp("FLOW::PG"); default(""); print(); %>" == "*missing404") {
+	// we emulate 404's so they are easy to search.
+	pageVar = "/404.html?page=" +
+	document.location.pathname + document.location.search + "&from=" +
+	document.referrer;
+	}
+
+
+pageTracker._setDomainName(".domain.com");
+pageTracker._trackPageview(pageVar);
+} catch(err) {}</script>
+
+
+
+New Code with banner event tracking script (Jamie is testing)
+1 domain with multiple subdomains (for private ssl, for shared zoovy ssl just take out the set domain line.
+#################
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-xxxxxxx-x']);
+  _gaq.push(['_setDomainName', '.domain.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function()
+
+// user defined variable for a/b SIDE.
+if ("<% loadurp("CART::multivarsite"); print(); %>" == "A") {
+  _gaq.push(['_setCustomVar',1,"Site","A",1]);
+  }
+else {
+  _gaq.push(['_setCustomVar',1,"Site","B",1]);
+  }
+ {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+//this function gets run on BANNER elements.
+//A = actions (banner id) and  L = labels (img id|destination url)
+function PleaseTrackClick(A,L) {
+ _gaq.push(['_trackEvent','Banner Click',A,L]);
+ }
+
+</script>
+
+
+
+
+[[/STAFF]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>

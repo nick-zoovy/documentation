@@ -1,0 +1,738 @@
+<meta type="tag" id="warehouse manager">
+<meta type="tag" id="order manager">
+<meta type="tag" id="11.x">
+<meta type="tag" id="release notes">
+<meta type="tag" id="zom">
+<meta type="tag" id="zid">
+<meta type="tag" id="10.x">
+<meta type="tag" id="9.x">
+<meta type="tag" id="version">
+<meta type="tag" id="8.x">
+<meta type="docid" id="51349">
+
+<pre>
+**LEGACY CONTENT**
+
+[[FILENAME]integrated_desktop_release_notes]
+[[TITLE]Integrated Desktop Client v11 Release Notes]
+
+[[TAG]zom=10000]
+[[TAG]zid=10000]
+[[TAG]order manager=10000]
+[[TAG]warehouse manager=10000]
+[[TAG]release notes=1000]
+[[TAG]version=1000]
+[[TAG]8.x=1000]
+[[TAG]9.x=1000]
+[[TAG]10.x=1000]
+[[TAG]11.x=1000]
+
+[[SECTION]Overview]
+
+The Zoovy Integrated Desktop (ZID) contains the Order Manager and Business Intelligence.  This document tracks the changes in each new version as well as any known critical issues in a current or recent release. 
+
+[[BREAK]]
+
+Version 11.0 includes substantially improved batch order capabilities, as well as support for the new multiple payments per order. In general customers are expected to upgrade every 3 months, and stay current with operating system patches, which is a required portion of every PCI Merchant processing agreement.  
+
+[[BREAK]]
+
+
+[[HINT]]
+Releases ending in an odd number e.g. 11.005 are considered BETA or "less stable", whereas releases ending in an even number e.g. 11.006 would be considered RELEASE-CANDIDATES or "more stable".
+[[/HINT]]
+
+[[CAUTION]]
+Please schedule a "Geek" appointment if you'd like somebody to perform an upgrade for you.
+[[/CAUTION]]
+
+[[/SECTION]]
+
+[[SECTION]Zoovy Integrated Desktop (ZID) Release Notes]
+
+[[STAFF]]
+Add known bugs / suggestions / sharp edges here.
+Warehouse Manager only supports partition 0.  (Order Manager supports all partitions).
+
+[[/STAFF]]
+
+[[SUBSECTION] Version 11.210 - 3/4/13]
+<li> CORRECTED: Order notes were saving properly, but would not display when viewing the order in the editor.  An error referring to po_number would generate on sync.
+<li> IMPLEMENTED: "AUTO" field added to OUTGOINGMAIL XML for message sourcing.
+<li> IMPLEMENTED: "donotsend" added to message formatting.
+[[CAUTION]]
+There is an issue seen when upgrading from a version of Sync manager and ZID prior to 11.204.  Database upgrades should occur on first run after instillation, but an error will generate stating "Conversion from type 'Queue' to type 'String' is not valid."  While this will be corrected in the next release, please contact support if it is necessary for you to upgrade before that release is available.
+[[/CAUTION]]
+[[/SUBSECTION]]
+
+[[SUBSECTION] Version 11.208 - 3/1/13]
+<li> CORRECTED: Changed DB fields to lowercase to comply with new order format. The two fields that were updated were batchid and qbook_export.
+<li> CORRECTED: Customs value required when printing to FedEx.
+<li> CORRECTED: Increased the erefid field length for the zid sync process.
+<li> CORRECTED: Increased the MSGID field length in the table OUTGOINGMAIL table to support the new email templates.
+<li> IMPLEMENTED: "Load Bar" nos displayed while the DB is being upgraded from pre-11.200 version to support country code, region and postal code.
+<li> IMPLEMENTED: Ship Phone Number added to the invoice search screen.
+<li> IMPLEMENTED: Exact order match added to the invoice search screen. Searching by the exact order id provides faster results
+<li> IMPLEMENTED: po_number added to the order.
+<li> IMPLEMENTED: Changed default email templates to match the new online templates. For example, OTRACK is now ORDER.SHIPPED.
+<li> IMPLEMENTED: Changed the Endicia partner id in the XML.  Endicia recently changed their partner id naming convention.
+<li> IMPLEMENTED: Removed Parcel Post from Endicia. Replaced with Standard Post. Note: You need to be approved for Standard Post by Endicia, otherwise you must use Parcel Post.
+<li> IMPLEMENTED: Changed the fields from assembly_master to asm_master in support of the new order format.
+[[/SUBSECTION]]
+
+[[SUBSECTION] Version 11.204 - 12/12/12]
+<li> CORRECTED: Country code "UK" not translating properly when exporting to Endicia
+<li> CORRECTED: Issue regarding "zoovy:mfgid exists" when highlighting an invoice
+<li> CORRECTED: Exporting to QuickBooks as sales receipt repeating the same sku. This was an issue only seen when exporting "sales receipts"
+<li> IMPLEMENTED: Carriage return and line feeds will now be stripped from the order_notes field when exporting to the shipper export file.
+[[/SUBSECTION]]
+
+[[SUBSECTION] Version 11.200 - 12/04/12]
+<li> CORRECTED: Cleaned up Sync Manager installation when creating a new database
+<li> CORRECTED: Duplicate column name 'XML' error- seen when creating a new database on ZID network installation
+<li> CORRECTED: Error - "Weight cannot exceed the origin limit of 0.99 LB limit of 0.99 LB". Decimal weights not read properly. Now defaults to closest pound (FedEx Smart Post Method Presorted Standard)
+<li> CORRECTED: Error - Exception of type 'Grapecity.ActiveAnalysis.UiCommandException' was thrown
+<li> CORRECTED: Error - System.NullReferenceException: Object reference not set to an instance of an object. - when shipping via FedEx international
+<li> CORRECTED: Error - Table "payments (and/or) partitions do not exist" when installing a new database for the ZID network installation
+<li> CORRECTED: Issue with online or marketplace created orders that contained line items with blank weights.  Now defaults blank values to "0". Orders would not display properly in Order Manager prior to fix
+<li> IMPLEMENTED: Added three new carrier codes: DAY1, DAY2, and DAY3
+<li> IMPLEMENTED: Added three new fields to access for customization of an invoice - meta, weight of an item, and specialty domain
+<li> IMPLEMENTED: Country to be set to the proper shipping country or valid country code depending on shipping company
+<li> IMPLEMENTED: Order Manager will now use country code versus full country in the order. This affects shipping, edit order, create order, QuickBooks integration
+<li> IMPLEMENTED: Removed Image sync, navigation category sync, upload product sync from Network Sync Manager
+<li> IMPLEMENTED: Removed leading and trailing spaces in the email to prevent sent email errors. Also remove tabs from the email address field
+<li> IMPLEMENTED: Removed "MFGSKU" from the INVENTORY table in the database and the sync process
+<li> IMPLEMENTED: Search by UPC field added to the invoice search ("EXPLICIT" SEARCH RECOMMENDED. FOR SPEED - USE BAR CODE SCANNER)
+<li> IMPLEMENTED: Streamlined the sync process by adding check for numeric values like weight and qty. (Will help with finding older orders not displaying due to missing weights)
+<li> IMPLEMENTED: Streamlined the sync process by setting the correct length for strings values such as "shipping method" and "profile"
+<li> IMPLEMENTED: Upgrade to ZID. Is now strictly using the new order format and sync process
+<li> IMPLEMENTED: Change in sync flagging of some order change fields. Will now send latest order change since "last sync" as opposed to all order changes (redundant) for events "SETSTUFFXML" and "QBOOK_EXPORT"
+
+[[/SUBSECTION]]
+
+[[SUBSECTION] Version 11.054 - 06/13/12]
+<li> CORRECTED: Duplicate entry '734626-BB-BS-BP1K77GSL-zoovy:virtual' for key 'PARENT'
+<li> CORRECTED: "No Shipments to Close For Date Provided" when closing Fedex ground packages
+<li> CORRECTED: Issue with duplicate refunds or charges. Note: This was an issue with the Network version only. Payment Sync and Order Sync sent the same payment information.
+<li> IMPLEMENTED: Added "PO Box" warning to UPS Online Tools
+<li> IMPLEMENTED: Added "ShowPostageAndFees" to Endicia Dazzle Integration. Note: This is a new feature different from stealth postage. Only works with custom forms 2976-A/ CP72
+<li> IMPLEMENTED: Added Saturday, Sunday, and Holiday Delivery Options to Endicia Dazzle Integration
+<li> IMPLEMENTED: Added International non-delivery options to Dazzle Integration: Return to Sender, Treat as Abandoned, Redirect to another address
+<li> IMPLEMENTED: Added COD options to Dazzle Integration: Restricted Delivery, Certificate of Mailing, Return Receipt , Adult Signature Required, Adult Signature Restricted
+<li> IMPLEMENTED: Added Hold for Pickup options with Facility information to Endicia Dazzle Integration
+<li> IMPLEMENTED: Upgraded FedEx Rate Library to version 10
+<li> IMPLEMENTED: Upgraded FedEx Ship Library to version 10
+<li> IMPLEMENTED: Upgraded FedEx Registration Library to version 3
+<li> IMPLEMENTED: Removed old FedEx code that used CTS transaction 
+<li> IMPLEMENTED: Change the FedEx UI to close automatically if merchant is pointed to old FedEx code. The user will be shown how to fix it before closing the window
+<li> IMPLEMENTED: Add Dymo M25 to as supported USB Scale
+
+[[/SUBSECTION]]
+
+[[SUBSECTION] Version 11.052 - 05/08/12]
+<li> CORRECTED: "Data too long for column 'bill_state' at row 1" and "Data too long for column 'bill_phone' at row 1"
+<li> CORRECTED: Corrected "Invalid or missing postal code" error seen in FedEx when using "Hold At Location" option.
+<li> CORRECTED: QB returns error: "There is an invalid reference to QuickBooks ItemSalesTax "" in theSalesReceipt."
+<li> CORRECTED: Changed wording on message sent to merchant when there are issues sending an email during a sync.
+<li> IMPLEMENTED: Upgrade to invoice and packing slip dependency libraries to 6.2.3681
+<li> IMPLEMENTED: Upgrade to BI dependency libraries to 2.1.766
+<li> IMPLEMENTED: Added support of three new fields for CUSTOM packing slips and invoices: Manufacturer id, Supplier, Supplier id
+<li> IMPLEMENTED: Added new payment filter "Checkout by Amazon"
+<li> IMPLEMENTED: Removed Warehouse Manager from the drop down (deprecated)
+<li> IMPLEMENTED: Add USB scale to supported list - Fairbanks Ultegra SCB-R9000
+<li> IMPLEMENTED: Change BI dependency from MySql ODBC library to MySql connector
+[[/SUBSECTION]]
+
+
+[[SUBSECTION] Version 11.048 - 04/04/12]
+<li> IMPLEMENTED: Added the ability to search partial invoice number by using the return key as the search button.
+<li> CORRECTED: Fixed the Clear All button on filters so it clears the filters and refreshes the order list window.
+<li> IMPLEMENTED: Added FedEx Legacy shipping label warning. Merchants must switch to new API by May 31, 2012.
+<li> IMPLEMENTED: Added all other payment methods to OTHER filter. This includes payments like BUY.
+<li> IMPLEMENTED: Added new filter for payment method MIXED.
+<li> IMPLEMENTED: Added new USB scale support from Vendor - Motion Marketing Inc, Model USB 10.
+<li> CORRECTED: System.MissingFieldException: Field not found: 'ZWeighButton.ScaleBtn.Vendor'
+[[/SUBSECTION]]
+
+[[SUBSECTION] Version 11.046 - 03/13/12]
+<li> IMPLEMENTED: Added carrier code support to shipper import file that imports tracking numbers into ZID
+<li> IMPLEMENTED: Suppress the assembly products for HSN packing slips
+<li> IMPLEMENTED: Clean up the interface for a standalone setup. Logins them automatically once the database is setup
+<li> IMPLEMENTED: Autoselects insurance type, signature type and insurance for FedEx and USPS. This is custom fields in the order that requires development time.
+<li> CORRECTED: Upgrade dependency dll for USB Scales. This caused the "Method not found: 'System.Collections.Hashtable USBScale.Scale.GetAllDevices()" error,  when you installed a new ZID over older version
+<li> IMPLEMENTED: Added disable inventory sync for those merchants who were getting time out issues
+<li> CORRECTED: Change taxable value for coupons to not taxable if the order did not have sales tax before exporting to Quickbooks
+[[/SUBSECTION]]
+
+[[SUBSECTION]Version 11.044 - 02/22/12]
+
+<li> CORRECTED: Error seen when creating new orders in ZID: "System.NullReferenceException: Object reference not set to an instance of an object."
+
+[[/SUBSECTION]]
+
+[[SUBSECTION]Version 11.042 - 02/15/12]
+
+<li> CORRECTED: Credit card refund sync process no longer syncs all order changes (much faster single-process sync)
+<li> CORRECTED: Issue seen when marking newly applied cash payment to "Paid"
+<li> CORRECTED: Error seen during final sync process: "You have an error in your SQL syntax..."
+<li> CORRECTED: Added STAX- in front of the sales tax code item when exporting to Quickbooks  - ie; STAX- Sales Tax
+<li> CORRECTED: Combine orders was double the quantity after the orders were combine to one order
+<li> IMPLEMENTED: Removed legacy code that added "@" in front of supply chain product, now indicating using the virtual field
+<li> IMPLEMENTED: Added "None" option the FedEx Home Delivery to help deselect any options for FedEx Home Delivery
+<li> IMPLEMENTED: Added calendar for the delivery date for FedEx Home Delivery
+<li> IMPLEMENTED: Added "Add Customer" button on the customer note tab
+<li> IMPLEMENTED: Added "Edit Customer" button on the customer note tab
+<li> IMPLEMENTED: Change the scale setup screen to two tabs, one for USB and one for Serial
+<li> IMPLEMNETED: Added USB scale detection function. This will detect an USB scale in the ZID supported list. If scale is not found automatically, it can be selected manually.  A ticket will be created with the Scale USB address to be added for support in future releases of ZID.
+
+[[/SUBSECTION]]
+
+[[SUBSECTION]Version 11.038 - 12/29/11]
+
+<li> CORRECTED: Error seen when exporting to Quickbooks: System.TypeLoadException: Could not load type 'QBXMLRP2Lib.IRequestProcessor5' from assembly 'Interop.QBXMLRP2Lib
+<li> CORRECTED: Privates notes not saving properly after syncing up to Zoovy
+<li> CORRECTED: Issue with Payment Override that caused caused 500 or 902 error for non-electronic payment types 
+<li> CORRECTED: Issue causing duplicated payments in the same order seen when adding a non-electronic payment
+<li> CORRECTED: Add payment macro line to state "amount=" as opposed to "amt="
+<li> CORRECTED: Can now properly set a check to paid without issue
+<li> IMPLEMENTED: Added a new order download process to help with missing orders that did not make to the database
+<li> IMPLEMENTED: Upgraded the library reference of the Quickbooks dll (was causing 'QBXMLRP2Lib.IRequestProcessor5' issue)
+<li> IMPLEMENTED: Stripped the UUID character length down to 32 and now alow for uppoercase letters in Payment Macro
+
+[[/SUBSECTION]]
+
+[[SUBSECTION]Version 11.036 - 12/16/11]
+
+<li> CORRECTED: System.InvalidOperationException: ExecuteReader: Connection property has not been initialized. (Seen when exporting to Quickbooks - Standalone version only)
+<li> CORRECTED: Order changes sync would queue entire order history.  Restricted to recent orders now (faster sync). 
+<li> CORRECTED: FedEx label printing the upside down when using a 4 by 6 with doctab. Note: Issue caused by FedEx API defaulting to wrong feed direction.
+<li> IMPLEMENTED: Added ability to compare/correct Orders DB to server by specified date range in Techincial Support Tool.
+<li> IMPLEMENTED: Added ability to compare/correct Customer DB to server by specified date range in Techincial Support Tool.
+<li> IMPLEMENTED: Added PartnerID field to Endicia integration
+<li> IMPLEMENTED: Added the ablity to edit the FedEx account and meter number in the FedEx setup area
+<li> IMPLEMENTED: Added the fedex_cfg fields for the new fedex webservices
+<li> IMPLEMENTED: Added Insurance dropdown on General tab when exporting to Endicia to display the selected insurance type for convenience
+<li> IMPLEMENTED: Added USB support scale model - Mettler - Toledo Scale PS 60
+<li> IMPLEMENTED: Added the ability to close BI report tabs [X]
+<li> IMPLEMENTED: Added the duties payor and duties payor account fields to FedEx International Shipping
+<li> IMPLEMENTED: Changed the private_notes marco from SETATTRS to ADDPRIVATE
+<li> IMPLEMENTED: Move all skus with negative dollar amounts after the postive skus when exporting to Quickbooks
+<li> IMPLEMENTED: Set Quickbooks export to order the negative dollar amounts (discounts) after the positives
+
+[[/SUBSECTION]]
+
+[[SUBSECTION]Version 11.034 - 10/25/11]
+
+<li> CORRECTED: "Error: Object reference not set to an instance of an object when exporting to Quickbooks invoice"
+
+[[/SUBSECTION]]
+
+[[SUBSECTION]Version 11.032 - 10/24/11]
+
+<li> CORRECTED: Added an encode method to OPTMODIFIER area of the products in the order
+<li> CORRECTED: "Error: WEBAPI ORDERPROCESS/XMLBATCH Failure - not well-formed (invalid token) at line 1, column 47, byte 47"
+
+Note: WEBAPI ORDERPROCESS/XMLBATCH Failure was fixed on the Zoovy servers. It did not require an upgrade to a new version of ZID
+
+[[/SUBSECTION]]
+
+[[SUBSECTION]Version 11.028 - 10/21/11]
+
+<li> CORRECTED: Adding additional freight charges to the commerical invoice
+<li> CORRECTED: Autoselecting FedEx SmartPost when shp_carrier in the order is set to FXSP
+<li> CORRECTED: "Error: Data too long for column 'ship_zip' at row 1" 
+<li> CORRECTED: Conversion from string "insert into INVENTORY_UPDATES (S" to type 'Double' is not valid. ---> System.FormatException: Input string was not in a correct format
+<li> CORRECTED: Sync issue when tracking notes had "&" in notes
+<li> CORRECTED: "Error: Data too long for column 'ship_city' at row 1" - character limit of ship_city set to 30 to match Web DB
+<li> IMPLEMENTED: Upgraded invoice, packing slip, and report control to latest version 6.1.2814
+<li> IMPLEMENTED: Autopopulate manufacturer country on the commerical invoice. In previous versions the only supported country was US
+<li> IMPLEMENTED: Ability to search invoices by company name
+<li> IMPLEMENTED: Last name character limit changed from 25 characters to 65 characters
+<li> IMPLEMENTED: Added changes to HSN packing slip; last name, first name, increase font sizes in select areas
+<li> IMPLEMENTED: MSGID character limit changed from 10 characters to 32 characters
+<li> IMPLEMENTED: Increase XCOMPACT character to 202 for the new MSGID length
+<li> IMPLEMENTED: Quickbooks export now passes different credit card types: VISA, MASTERCARD, AMEX and DISCOVER
+
+
+[[/SUBSECTION]]
+
+[[SUBSECTION]Version 11.022 - 4/15/11]
+
+<li> CORRECTED: Warns user if a tracking already exists in order. 
+<li> CORRECTED: Rate FedEx Smart Post error.
+<li> CORRECTED: Phone number printing twice on invoice display.
+<li> CORRECTED: Merchandise not setting correctly in the Endicia Custom Forms area.
+<li> IMPLEMENTED: Set ship carrier as method when shipping via UPS, FEDEX, and USPS.
+<li> IMPLEMENTED: Add new package types Flat Rate DVD Box and Flat Rate Large Video Box to Endicia Dazzle UI. * Note: These package types are Priority Mail International Only. *
+<li> IMPLEMENTED: Increase the batch size from 25 to 200 for the sync process Download Products from Website (Network Only).
+<li> CORRECTED: Duties not being set correctly.
+<li> CORRECTED: New orders created in ZID not associating to the customer account.
+<li> IMPLEMENTED: Add new split product feature which replaces the split order function.
+<li> IMPLEMENTED: Add supply chain filters to the viewer.
+<li> IMPLEMENTED: Add print by supplier. Note: Only orders have suppliers will be selected.
+
+
+[[/SUBSECTION]]
+
+[[SUBSECTION]Version 11.020 - 3/23/11]
+
+This version includes numerous data handling and user interface improvements, especially in batch processing.  Although version 11.020 is a 'stable' release for Order Manager and Warehouse Manager, it also includes an experimental release of a new application 'Business Intelligence' [[LINKDOC]51602]. The full list of changes/enhancements is below:
+<ul>
+<li> CORRECTED: Error: Data too long for column 'ship_lastname' at row 1
+<li> CORRECTED:  Error: Data too long for column 'prod_mfgid' at row 1 Sql: update PRODUCTS set
+<li> IMPLEMENTED: Save Filters. Save filters by the user login + remember the settings
+<li> CORRECTED:  Checkbox review was not saving correctly in the email interface
+<li> IMPLEMENTED: Add checking in shipping screens if an order has already been shipped, moved to completed, and other 'typical this order has already been processed' checks (similar to Key Lookup)
+<li> CORRECTED:  Error: Data too long for column 'prod_upc' at row 1 Sql: update PRODUCTS set
+<li> IMPLEMENTED: Pick lists for batch processing.
+<li> CORRECTED: SQL Error: The field is too small to accept the amount of data you attempted to add.  Try inserting or pasting less data. Sql: insert into PROFILE_ATTRIBS (PNAME,ATTRIB,ATTRIBVAL)  
+<li> IMPLEMENTED: Add ability to enable both FedEx and UPS shipping in the same UI, for debugging/migration as a ini setting.
+<li> IMPLEMENTED: Ability to skip Website Navigation Categories as part of sync in Sync Manager
+<li> IMPLEMENTED: Add generic carrier code support for the different market places (FAST, SLOW, etc.) - will map to recommended shipping carrier. 
+<li> IMPLEMENTED: Add support for new package types in the Endicia interface. The new package types are Regional Rate Box A, Regional Rate Box B, Flat Rate Giftcard Envelope,Flat Rate Window Envelope.Flat Rate Cardboard Envelope and Small Flat Rate Envelope.
+<li> IMPLEMENTED: Add HSN packing slip as standard packing slip in the installation
+<li> CORRECTED: Error: Data too long for column 'ws_state' at row 1
+<li> IMPLEMENTED: Add ability to edit the company information while registering FedEx Web services
+<li> CORRECTED: Clean up the UI when modifying the database to be more user friendly
+<li> CORRECTED: Prevents new clients from running if the database does not match the minimum version
+<li> IMPLEMENTED: A new application called Business Intelligence inside Zoovy Integrated Desktop
+<li> IMPLEMENTED: A webapi ticket is created when @ website category is corrupt versus throwing the error and stop syncing in Sync Manager
+<li> IMPLEMENTED: Added insurance and handling to ship total on the HSN (Home Shopping Network) packing slip
+<li> IMPLEMENTED: Add Merchandise as choice for the  Type of Contents in the Endicia UI Interface
+</ul>
+
+[[/SUBSECTION]]
+
+
+[[SUBSECTION]Version 11.008 - 12/17/10]
+<li> CORRECTED: System.ArgumentOutOfRangeException: StartIndex cannot be less than zero. Parameter name: startIndex
+<li> IMPLEMENTED: Cleaned up UI for Searching invoices (remove tool bar completely and added auto remember size)
+<li> CORRECTED: System.Data.OleDb.OleDbException: The Microsoft Jet database engine cannot find the input table or query 'PAYMENT_STATUS'.  (occurred on new database creation for standalone version only)
+<li> IMPLEMENTED: Batch credit card processing for payment status of 489, 479, 489 and 409
+<li> CORRECTED: Error: The field is too small to accept the amount of data you attempted to add.  Try inserting or pasting less data. Sql: insert into ORDER_TRACKING - (This was happening when tracking was added on the web that was too long for the ZID database.)
+<li> CORRECTED: Order number not auto populating when printing FedEx labels
+<li> IMPLEMENTED: Changed how tracking numbers are updated in the order sync process (they are no longer deleted, only appended if they do not exist)
+<li> CORRECTED: Error: Data too long for column 'ship_province' at row 1
+<li> CORRECTED: RECIPIENT STATE CODE MISSING when print FedEx Labels for Canada (Smart Post Intergration only)
+<li> CORRECTED: If check/cash paid, it would marked the create a paid transaction then a 500 payment
+<li> CORRECTED: Override issue that would mark paid as but create a 500 on the original payment ( Zoovy webapi server issue)
+<li> CORRECTED: #Z2000: API ERROR: ORDERPROCESS.ERROR-Unable to load information for merchantxyz  2010-12-1082 (undef on load)
+<li> IMPLEMENTED: Added override, refunds, capture and void in the payment screen
+<li> IMPLEMENTED: Split  and combine order  is fully incrementally. Please note the payment information does not transfer to the new order
+<li> IMPLEMENTED: Add an incremental event that is saved to when tracking is importing via CSV
+<li> IMPLEMENTED: Add more fields to the orders table for support of development of other 3rd party syndication
+<li> IMPLEMENTED: Search field for all the 3rd party syndication  like Sears, HSN, Buy.com using erefid
+<li> IMPLEMENTED Void for payment transactions for payment status 2xx  and 9xx series
+<li> IMPLEMENTED: Add payment or changing payment to void /override, now uploads the order changes to Zoovy
+<li> IMPLEMENTED: Add Order is paid to split orders for payments to show paid in new created split order
+<li> IMPLEMENTED: Combine orders now add contents, events, and payments information to the new created combine order
+[[/SUBSECTION]]
+
+
+
+
+[[SUBSECTION]Version 11.006 - 11/11/10]
+This version corrects minor issues reported by clients who were upgrading to version 11.  If you have version 11.000 you do not need to upgrade unless you are experiencing one of these errors:
+
+<li> CORRECTED: Processing emails being sent even when "do not send processing" email box was checked.
+<li> CORRECTED: Legacy FedEx Method not automatically moving orders to completed or adding a ship date. 
+<li> IMPLEMENTED: For split / combine order feature a new message will say "Due to the restructure of our payment system, this functionality has been removed temporarily"
+<li> IMPLEMENTED: Add more payment detail and transaction id to the payment window.
+<li> IMPLEMENTED: Change new orders to display VISA, MASTERCARD, AMEX, DISCOVER on the list, invoices. and packing slips. Note: This will only work when the payment_method is set to CREDIT and the order has been created or modified after you upgrade to 11.006.
+<li> CORRECTED: The new FedEx Shipping was not passing reference number to the FedEx API.
+[[/SUBSECTION]]
+
+
+[[SUBSECTION]Version 11.004 - 11/8/10]
+This version corrects minor issues reported by clients who were upgrading to version 11.  If you have version 11.000 you do not need to upgrade unless you are experiencing one of these errors:
+
+<li> CORRECTED: PAYPALEC orders not capturing funds.
+<li> IMPLEMENTED: Added one more payment_status for capturing funds 179. Currently capture funds only works on payment_status of 109, 179, 189, 199. 
+<li> CORRECTED: Order Status would display previous tab, order will still move in the right order status. IE. Move order to Approved, it would move to Approved but the tab display would Pending (Display Issue Only).
+<li> CORRECTED: When using FedEx Web Services (Smart Post), Fedex form did not close automatically. 
+<li> CORRECTED: Did not print commercial invoices if Print CI was checked (New FedEx Integration only issue).
+<li> IMPLEMENTED: Added custom order events to partial shipment of orders.
+
+[[/SUBSECTION]]
+
+[[SUBSECTION]Version 11.002 - 11/7/10]
+This version corrects minor issues reported by clients who were upgrading to version 11.  If you have version 11.000 you do not need to upgrade unless you are experiencing one of these errors:
+
+<li> IMPLEMENTED: Batch credit card processing in payment status 109 (NOAUTH_DELAY)
+<li> CORRECTED: System.InvalidCastException: Conversion from string "" to type 'Short' is not valid. --->  . On FedEx Rate button in the FedEx CTS 
+<li> CORRECTED: System.NullReferenceException: Object reference not set to an instance of an object.at OrderManager.fedexwebservicesrate.RatePackage . This was happening when rate a Smart Post package
+<li> IMPLEMENTED: Added more inituitive messaging for FedEx SmartPost
+<li> CORRECTED: Error: The INSERT INTO statement contains the following unknown field name: 'pstxt'.   (Standalone Versions Only)
+<li> CORRECTED: QB Returns: Cannot clear the element in the customer credit card month field
+
+[[/SUBSECTION]]
+
+
+[[SUBSECTION]Version 11.0 - 11/6/10]
+
+This version has a brand new interface for adding/capturing/modifying the multiple payment structure in an order object.  In addition this feature has support for FedEx SmartPost for small business (a discounted shipping option from FedEx) and support for batch order processing. 
+
+<ul>
+<li> CORRECTED: Invoices not displaying total correctly. This occurred when both buySafe and special fees were over zero dollar amount.
+<li> CORRECTED: Unable to load information for XXX 2010-05-1076 (undef on load)  on orders created with ZID with a shipping quote
+<li> IMPLEMENTED: Added additional messaging if order has shipping carrier CPU (Customer Pickup )
+<li> IMPLEMENTED: Updated FedEx wsdls to version 7
+<li> CORRECTED: MySql.Data.MySqlClient.MySqlException: There is already an open DataReader associated with this Connection which must be closed first. This was happening when you try to create an invoice from an incomplete
+<li> CORRECTED: Logo showing on partitions that had no logo. This only happened if multiple orders from different partitions were selected
+<li> IMPLEMENTED: Add Parcel Post to the Endicia Dazzle interface
+<li> CORRECTED: Sync timeout issue with uploading order incremental changes
+<li> IMPLEMENTED: Changed the wording in the search so cancelled orders say cancelled versus deleted
+<li> IMPLEMENTED: Batch order processing 
+<li> IMPLEMENTED: Partial Shipment of orders
+<li> IMPLEMENTED: New filters systems that filters different items in orders. Ie: expediated shipping, paid orders, google orders , and etc
+<li> IMPLEMENTED: Change the Main UI in Order Manager - remove the tool bar. Hint: All the functionality has been moved to both the menus and right click
+<li> IMPLEMENTED: FedEx Smart Post Integration
+<li> IMPLEMENTED: Checks to see if order has been changed on the web inbetween syncs. If changed it will download the order 
+<li> IMPLEMENTED: Keyed Lookup warns if order already has tracking number in it and the order is not in the completed stage
+<li> CORRECTED:  Webapi dump Error: Incorrect integer value: '' for column 'prod_is' at row 1
+</ul>
+[[/SUBSECTION]]
+
+
+
+
+
+[[SUBSECTION]Version 10.014 - 4/22/2010]
+
+<li>IMPLEMENTED: Sync to Quickbooks via ZID for QBMS (Quickbooks Merchant Services). If this is unchecked on the web it will not sync the additional 30 fields for QBMS. This is for Zoovy merchants who do have ability to export Quickbooks enabled in QBMS. It prevents getting this error "QB returns: In order to complete this request, the company data file has to be subscribed to QuickBooks Merchant Account Services.  QuickBooks error message: The company file is not enabled for Merchant Services."
+<li>IMPLEMENTED: Added a new payment status of new orders that payment method is credit. The new payment status is 599.
+<li>CORRECTED: Not passing weight and tax enabled for manually created orders from an incomplete item.
+<li>CORRECTED: Black logo printing on packing slips for blind drop ship orders.
+<li>IMPLEMENTED: Add better handling to #Z2025 parsing error from the Zoovy server.
+<li>IMPLEMENTED: Improved the sync error handling routine.
+<li>CORRECTED: Improved incremental uploads (orders changed during incremental uploads).
+
+[[/SUBSECTION]]
+
+[[SUBSECTION]Version 10.012 - 4/9/2010]
+
+<li>IMPLEMENTED: Creating orders inside ZID now uploads incrementally
+<li>IMPLEMENTED: Added Parcel Select to Endicia Mail Class selection
+<li>CORRECTED: Layout not changing when order to Endicia Dazzle
+<li>CORRECTED: Order notes not saving correctly when the order notes contain hard returns in it
+<li>CORRECTED: The following error occurred while processing the order:#ZU100. Exception has been thrown by the target of an invocation. This was happening when you highlight a drop ship invoice.
+<li>CORRECTED: Exporting to pdf from search invoices not printing the invoices that were highlighted in the search
+<li>IMPLEMENTED: Added a new field to the order called "private notes" Private notes are notes that are tied to an order. Private notes do not display to the customers nor print on packing slips or invoices
+<li>CORRECTED: Error: Item does not exist - Product : 787926115420 does not exist in the order. Please double check the item. 
+<li>IMPLEMENTED: The ability to set a default sales tax item for the Quickbooks integration. This is designed for orders like eBay where the order does not contain a tax zone field in the order
+<li>CORRECTED: Adding products with a price a zero did not upload the Zoovy servers
+<li>IMPLEMENTED: The shipper export file will use the bill phone number if the ship phone number is not set in the order. 3rd party integrations were not populating the ship phone number field
+<li>IMPLEMENTED: Add custom events for key lookup and package verification
+<li>IMPLEMENTED: Added the ablitity to copy the message from the history tab when editing an order
+CORRECTED: Orders change getting parsing error on orders created by ZID
+<li>IMPLEMENTED:  Added more information to the parsing error to help debug the issue better
+<li>CORRECTED: Split order not changing the date according to which radio button selected
+<li>CORRECTED: Split order not changing the ship carrier code to the new shipping method for the second order
+<li>IMPLEMENTED: Add "Create purchase orders on supply chain" setting for the Quickbooks integration
+<li>IMPLEMENTED: Add custom weights to be passed to Endicia Dazzle not matter if the setting "Specify the package weight in Dazzle" is checked
+<li>CORRECTED: Changed the messaging for enabling email in ZID. Now says to do Account Security instead of Company Sync. 
+<li>CORRECTED: Out of range value for column 'cust_order_count' at row 1 (Network version only)
+<li>CORRECTED:  Data too long for column 'prodname' at row 1 - Sql: insert into SKULIST
+<li>CORRECTED: UPS Next Day Saver not highlighted on orders that had Next Day Saver as shipping method when printing UPS label
+<li>IMPLEMENTED: Add even more information to the parsing error to help debug the issue better
+
+[[/SUBSECTION]]
+
+[[SUBSECTION]Version 10.002 - 1/5/2010]
+
+<li> CORRECTED: System.Exception: '1011' is is not a valid value for 'Value'. 'Value' should be between 'Minimum' and 'Maximum'.
+
+<li> CORRECTED: Cannot change Credit Card Expiration Year in ZID 10
+
+[[/SUBSECTION]]
+
+
+[[SUBSECTION]Version 10.0 - 1/4/2010]
+
+<li>IMPLEMENTED: Changed incomplete sync to use changed and acknowledges incompletes versus time stamp syncing
+<li>CORRECTED: Marketing messaging resetting after company sync
+<li>IMPLEMENTED: Add new fields in the product database for future use
+<li>IMPLEMENTED: Added search functionality in the website navigation categories
+<li>IMPLEMENTED: Improved the search functionality in Warehouse Manager for managing products
+<li>CORRECTED: System.InvalidCastException: Conversion from string "select ORDERID from ORDERS where" to type 'Double' is not valid.
+
+<li>CORRECTED: Error: Data too long for column 'card_number' at row 1
+<li>CORRECTED: Error: Data too long for column 'prod_mfg' at row 1
+<li>CORRECTED:  Long emails overlapping phone numbers on enhanced packing slip
+
+<li>CORRECTED: Inventory not displaying correctly on supply chain products - display issue only
+<li>CORRECTED: Resizing issue addressed on invoices
+<li>IMPLEMENTED: First stage of gift card payment support
+<li>IMPLEMENTED: Sync All Images from Zoovy servers (Stand alone version only, already implemented in Sync Manager)
+<li>IMPLEMENTED: Creates a ticket on 2025 XML Parsing error 
+
+<li>IMPLEMENTED: Beginning incremental order uploads on edits like shipping address , billing address, tracking, tax, and order notes
+<li>IMPLEMENTED: Support for 10.0 Endicia Dazzle Integration. Supports the new directory for the Vista and Windows 7 changes
+<li>CORRECTED: Error: Object reference not set to an instance of an object.
+<li>CORRECTED:  Added white background to company logo to fix the transparency issue with the gif logos
+
+[[/SUBSECTION]]
+
+
+[[SUBSECTION]Version 8.078 - 10/06/09]
+<li>CORRECTED: System.ArgumentOutOfRangeException: Index and length must refer to a location within the string. - when saving an order that has a blank sku (length of the sku is zero)
+<li>CORRECTED:  System.IO.IOException: Cannot create a file when that file already exists. - This was happening on Vista machines that had corrupt Endicia Dazzle xml files
+<li>CORRECTED: System.InvalidCastException: Conversion from string insert into INVENTORY_UPDATES (S to type 'Double' is not valid. ---> System.FormatException: Input string was not in a correct format - This happens when trying to update the location in Warehouse Manager
+<li>CORRECTED: MySql.Data.MySqlClient.MySqlException: Invalid attempt to access a field before calling Read()
+<li>CORRECTED: Sytem.IndexOutofRangeException: review_status when clicking on customer history
+<li>CORRECTED: .Net Framework error when searching eBay auction number on invoice search
+<li>CORRECTED: System.IO.IOException: Cannot create a file when that file already exists.  This was only happening on Vista machines and only when the Endicia Dazzle files were corrupt
+<li>IMPLEMENTED: Added a new table that combines customer shipping and billing into one table
+<li>IMPLEMENTED: Changed the customer search so it only searches from the left side of the term: i.e. - An , will return terms like Andrew, Andy. Searching for Ann will not return Joanne
+<li>IMPLEMENTED: The ability to only see the orders in one partition. This is for merchants who want warehouse B to only see warehouse B orders. This is not for those who process orders on all partitions
+<li>IMPLEMENTED: Weight not passed into the customs form for Endicia Dazzle when "Specify the package weight in Dazzle" is checked
+<li>IMPLEMENTED: Added the name of the partition on the create invoice screen
+<li>CORRECTED: Cleaned up the Sync UI so that Sync Order changes will update the status count when uploading order changes to the web
+<li>CORRECTED: Order notes printing on the enhanced packing slip when the setting "do not print order notes on packing slip" was checked
+<li>CORRECTED: Issue with deleting assembly kits
+<li>CORRECTED: Marketing message and title not saving correctly across multiple partitions
+<li>IMPLEMENTED: Added the ability to have multiple ini files for partition configuration
+<li>CORRECTED: Unable to archive COMPLETED orders in the invoice search window
+[[/SUBSECTION]]
+[[SUBSECTION]Version 8.074 - 8/11/09]
+<li> CORRECTED: Shipping carrier not being set when creating phone orders through ZID
+<li> IMPLEMENTED: New sort feature by item count for invoice and packing slip printing
+<li> IMPLEMENTED: Added two new order status  - Review and Hold
+<li> IMPLEMENTED: Partition support for invoice and packing slip printing. The ability to print a different logo and company information depending on what partition the order was created. Note: On Standalone veriosn only, it is recommend to do Admin -> Company Sync and completely restart ZID
+<li> IMPLEMENTED: Branding for the UPS Online Tools Integration
+<li> IMPLEMENTED: Add more wording to "Dear Zoovy Merchant" message when there is an issue with emails (Network version only)
+<li> CORRECTED: Duplicate skus being adding to an order when adding new product that had options to the order 
+<li> IMPLEMENTED:  Packing slips now have two templates: enhanced and basic by default enhanced is selected. Basic is previous version of the packing slip. Note: if you have a custom packing slip and want partition support, put in a support ticket.
+<li> IMPLEMENTED: Marketing message and text on the enchanced template
+<li> IMPLEMENTED: Partition support for creating new invoices 
+<li> IMPLEMENTED: Customer search is now partition aware. Customer search UI update. The search uses a different statement now and searches differenent tables.
+<li> IMPLEMENTED: Remove Admin -> Company Edit and Admin -> Company Logo since this information comes directly from site builder on zoovy.com
+<li> IMPLEMENTED: Add new field for tagging the orders
+<li> IMPLEMENTED: Adding tagging to split orders for reporting purposes
+<li> CORRECTED: 2025 Parsing error when importing invalid order numbers via CSV
+[[/SUBSECTION]]
+[[SUBSECTION]Version 8.062 - 8/06/09]
+<li> CORRECTED: Error: Data too long for column 'TAGVAL' at row 1
+<li> CORRECTED: Duplicate entry '0-SHKCYCLERADIOKIT250/#Z01-zoovy:ship_insurance' for key 'PARENT'
+<li> IMPLEMENTED: If the only change to an order is the status, only that will sync, rather than the full order
+[[/SUBSECTION]]
+[[SUBSECTION]Version 8.056 - 7/15/09]
+<li> CORRECTED: Tracking numbers not importing successfully through Endicia
+[[/SUBSECTION]]
+[[SUBSECTION]Version 8.054 - 7/14/09]
+<li> CORRECTED: Data too long for column 'support_phone' at row 1
+<li> CORRECTED: Invalid ship digest error when shipping UPS caused by UPS xml format change
+[[SUBSECTION]Version 8.052 - 7/02/09]
+<li> IMPLEMENTED: Ability to lower the number of invoices per customer per batch
+<li> IMPLEMENTED: Ability to increase the number of retries on sync errors
+<li> IMPLEMENTED: Changed the default shipping method to be either UPS Ground/FedEx Ground if the order does not have ship carrier set
+<li> IMPLEMENTED: Added some more background debugging to the sync process
+<li> CORRECTED: Customer creation inside Quickbooks flags the customer as either taxable or not taxable
+<li> CORRECTED: Insurance not display correctly on invoices
+<li> IMPLEMENTED:  Quickbooks customer creation nows filters when customer type "none" as the company name
+<li> IMPLEMENTED: Add new export (Sales Order) to the Quickbooks Integration
+<li> CORRECTED: Error: There is already an open DataReader associated with this Connection
+which must be closed first. Sql: delete from SETTINGS where TAGNAME='OrderTimeStamp'
+<li> CORRECTED: Blank location on inventory was setting to value of zero versus blank
+<li> IMPLEMENTED: Added more debug information (orderid, sub user) when modifying inventory using the Windows client 
+<li> IMPLEMENTED: Clean up the inventory module when adding/editing a product inside an order
+<li> IMPLEMENTED: On server side, checks to see if a payment status was changed by the Windows client
+<li> IMPLEMENTED: Changed where Endicia tracking files are saved to the All Users\ApplicationData\Zoovy folder
+<li> IMPLEMENTED: Move the tracking folder and sub folders to  All Users\ApplicationData\Zoovy folder . This should clean up any Vista write issues.
+<li> CORRECTED: Error: Out of range value for column 'HAS_NOTES' at row 1
+<li> CORRECTED: Special fees not exporting correctly into Quickbooks
+<li> CORRECTED: The following error occurred while processing the order: #ZU100 when viewing/editing an order from the customer history area
+
+[[/SUBSECTION]]
+
+
+[[SUBSECTION]Version 8.044 - 5/19/09]
+<li> CORRECTED: You have an error in  you SQL syntax near ? Where FORMAT='WRAPPER' (Network version Only)
+<li>  CORRECTED: Server Parsing error: Could not find beginning and ending ORDER tags
+<li> CORRECTED: Unknown column 'ATTRIBVAL' in 'field list'
+<li> IMPLEMENTED : Added "Are you sure you want to remove this" message when removing a product from an order
+<li> CORRECTED: System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> MySql.Data.MySqlClient.MySqlException: There is already an open DataReader associated with this Connection which must be closed first......at OrderManager.clsReports.TrackingInfo(String OrderID)...(only happens on network ZID when printing commercial invoices)  
+<li> CORRECTED: Lowercase the word PRT to prt in the order xml for syncing up to Zoovy servers (This is a backend change for server capability)
+<li> IMPLEMENTED: Increase length of ship_province and bill_province to 30 characters
+<li> CORRECTED: System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.InvalidOperationException: No data exists for the row/column.  (was happening to any order that had no items, now displays a message explaining what happened)
+<li> CORRECTED: Added claim to the order sync upload (This is a backend change for server capability)
+<li> CORRECTED: Path not found error when editing a product with images (standalone version)
+
+[[/SUBSECTION]]
+
+
+[[SUBSECTION]Version 8.038 - 5/7/09]
+<li>CORRECTED: System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.NullReferenceException: Object reference not set to an instance of an object.    at DataDynamics.ActiveReports.ReportScript.Detail_Format()
+<li>CORRECTED: MySql.Data.MySqlClient.MySqlException: Data too long for column 'SKU' at row 1
+<li>CORRECTED: Packing slip not displaying location correctly (only happen if location has a space in it)
+<li>CORRECTED: The field is too small to accept the amount of data you attempted to add.  Try inserting or pasting less data. Sql: update PROFILES set support_phone=
+<li>IMPLEMENTED: Shorten support phone number in profiles if longer than 20 characters
+[[/SUBSECTION]]
+
+[[SUBSECTION]Version 8.036 - 5/1/09]
+<li>CORRECTED: System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> MySql.Data.MySqlClient.MySqlException: There is already an open DataReader associated with this Connection which must be closed first.
+<li>CORRECTED: System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.Runtime.InteropServices.ExternalException: A generic error occurred in GDI+.
+
+
+[[/SUBSECTION]]
+
+[[SUBSECTION]Version 8.034 - 4/29/09]
+<li>IMPLEMENTED: Added shipping cost to the tracking window
+<li>IMPLEMENTED: Added the ability to delete more than one image at time in the image viewer
+<li>CORRECTED: Some images downloading as blank gif 1by1
+<li>IMPLEMENTED: Downloads images that do not exist when editing a product (Network version only)
+<li>IMPLEMENTED: Downloads an image when clicking on the image library if it does not exist (Network version only)
+<li>CORRECTED: Assembly kits pieces not being removed when you removed the assembly kit master
+<li>IMPLEMENTED: Upgraded all the reports to 3.0 version
+<li>IMPLEMENTED: Update to the latest ActiveReports Hotfix 03-02-2009
+<li>CORRECTED: The field is too small to accept the amount of data you attempted to add.  Try inserting or pasting less data.
+<li>CORRECTED: Buysafe charges not displaying on the invoices 
+<li>CORRECTED: Tax displaying Tax (0%)(0%) when editing the invoice in ZID
+<li>IMPLEMENTED: Added more messaging about the method used when adding a tracking number to the Windows client
+<li>IMPLEMENTED: Built beginning data support for partition and profiles in the Windows client
+<li>CORRECTED: Improved performance of image sync in the Sync Manager
+<li>CORRECTED: FedEx error call 8080 total customs value must be numeric
+<li>CORRECTED: Data too long for column 'PROMPTVAL' at row 1
+<li>CORRECTED: QB returns: The string "10133-ABCDE" in the field "RefNumber" is too long
+
+[[/SUBSECTION]]
+
+[[SUBSECTION]Version 8.032 - 3/19/09]
+<li>CORRECTED: Logo not appearing on invoice
+<li>CORRECTED: System.IndexOutOfRangeException: ship_date at System.Data.ProviderBase.FieldNameLookup.GetOrdinal(String fieldName) where searching an eBay item in the invoice search
+<li>CORRECTED: Revised orders are not showing the options the customer selected.  A colon is where the options should be.
+<li>IMPLEMENTED: Full screen support in main window in Warehouse Manager
+<li>IMPLEMENTED: Remember screen size for main window in Warehouse Manager
+<li>IMPLEMENTED: Clean up UI by adding + to the product categories
+<li>IMPLEMENTED: If there isn't a Shipping address phone number it will now autopoplulate in the label with your company phone number (555 555 5555 if your company phone number is not set). This will allow you to print FedEx Labels without an error
+<li>IMPLEMENTED: Alternative company name for FedEx Labels
+
+[[/SUBSECTION]]
+
+[[SUBSECTION]Version 8.030 - 3/11/09]
+<li>IMPLEMENTED : "Would you like to create a duplicate invoice?" message inside Quickbooks no longer displays if you have do not display message turned on.
+<li>CORRECTED: Customer state and zip code was missing. This would only happen if you created the customer in ZID for the first time during an order creation and paste the following format:<br>
+303 West Main St.<br>
+Ashland, WI, 54806<br>
+United States<br>
+<li>IMPLEMENTED: Added company phone number to both the invoice and packing slips
+<li>IMPLEMENTED: Added the ability to add/remove custom payment methods in the Network Sync Manager
+<li>CORRECTED: Missing orders on sync . The missing orders would come down in next sync
+<li>CORRECTED: Printing in bulk - customer footer does not print correctly (the network version issue)
+<li>CORRECTED: Printing insurance, handling, buysafe as zero dollar when their values were zero (the network version issue)
+<li>CORRECTED: System.IO.IOException: The file 'C:\Program Files\Zoovy\Desktop\xxxx.jpg' already exists.
+  at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+<li>CORRECTED:UPS Saturday Delivery labels would not print correctly
+<li>CORRECTED: Adding a customer note would not clear the message that was previously added 
+<li>CORRECTED: System.ObjectDisposedException: Cannot access a disposed object. Object name: 'frmSyncError'.
+<li>CORRECTED: MySql.Data.MySqlClient.MySqlException: SESSION variable 'max_allowed_packet' is read-only. Use SET GLOBAL to assign the value 
+at MySql.Data.MySqlClient.MySqlStream.OpenPacket() 
+at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+
+[[/SUBSECTION]]
+[[SUBSECTION]Version 8.028 - 2/22/09]
+<li>IMPLEMENTED: The only user that can sign into Standalone client is the admin.  If you require multiple users to access the client, book an appointment to upgrade to the Network version.
+
+[[/SUBSECTION]]
+[[SUBSECTION]Version 8.026 - 2/16/09]
+<li>CORRECTED: Error: Function ORDERLIST requires you pass a comma separated list of ids
+
+[[/SUBSECTION]]
+[[SUBSECTION]Version 8.024 - 2/13/09]
+
+<li>CORRECTED: Error: 9804 no shipments found for close to process, when trying to close Fedex Ground
+<li>IMPLEMENTED: Added a "Flat Rate Small Box" to package type in the Endicia Integration. 
+<li>IMPLEMENTED: Added a search by product when using search invoice feature
+<li>IMPLEMENTED: Shipment Date now displays with the list of the orders in the viewer
+<li>IMPLEMENTED: Created date now displays when viewing the tracking information
+<li>CORRECTED: Error: Data too long for column 'ship_state' at row 1, when created a US address order and spelling out the state name
+<li>CORRECTED: Amazon orders not totaling correctly on the dashboard reports
+<li>CORRECTED: Error: Could not find file "C:\Program Files\Zoovy\Desktop\Filters\No Filters Selected.txt when running a dashboard reports with no filters
+<li>CORRECTED: Email customer not working on the incomplete tab
+<li>CORRECTED: Renamed Product ID would still be in the list when add product to the order
+<li>IMPLEMENTED: Refactored some of the customer and order sync parsing process to make the syncing of these areas faster to download
+[[/SUBSECTION]]
+
+[[SUBSECTION]Version 8.020 - 1/22/09]
+<li>IMPLEMENTED: Shorten the automatic sync for the NETWORK version to 20 min (requires the Enterprise Support Bundle).
+<li>CORRECTED: Error "Location of company file is missing. Please setup location of the Quickbooks company file by going to tools --> QB Setup" when exporting to QuickBooks.
+<li>IMPLEMENTED: Changed the debugging routine for sql errors; to display a message box that will automatically closed after 15 seconds.
+<li>IMPLEMENTED: Creating a ticket automatically when encountering a sql update during the sync process.
+<li>CORRECTED: Error "E1C Declared value is not in the correct format" when insuring a package over $1000 using the Fedex Integration inside ZID.
+<li>CORRECTED: Error: Duplicate entry '0' for key 1 - During Sync in the Network version
+<li>CORRECTED: Duplicate entry '0-PB-EMPR-HPRED7:0207-zoovy:virtual' for key 2 - While creating an order that contains a Supply Chain product in the Network version.
+
+[[/SUBSECTION]]
+
+[[SUBSECTION]Version 8.016 - 1/14/09]
+<li> CORRECTED: Company logo not displaying on invoice and packing slips (Network version only)
+<li> CORRECTED: System.DllNotFoundException: Unable to load DLL 'iecore.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E) when trying to add company logo through the Network Sync Manager. 
+<li> CORRECTED: Order history was not displaying whether the time was AM/PM
+<li> IMPLEMENTED: Changed the debugging routine for sql update errors to display at end of the sync versus at the time an sql error occurred. 
+<li> IMPLEMENTED: Uses new WEBAPI call "ORDERLIST/CHANGED" which causes the Zoovy servers to keep track of orders which have changed on the web, even orders which were modified or created during a sync process.  This is intended to address issues caused by Paypal IPN, Amazon Checkout or Google Checkout to an order while the order is being synced. 
+[[CAUTION]]
+This does not address the issue where an order is modified on both the client and the Zoovy servers - that the clients changes will overwrite any changes made on the web during the next sync. 
+[[/CAUTION]]
+<li> IMPLEMENTED: The setting "enable email" is now turned on by default when a  first time installation of the Windows client is detected. 
+[[/SUBSECTION]]
+
+[[SUBSECTION]Version 8.012 - 1/6/09]
+<li> Initial release.
+<li> IMPLEMENTED: Added database compression on MySql Community Server
+<li> IMPLEMENTED: Added support for the new NETWORK solution to the database
+<li> CORRECTED:  User access to the database was not created in the network version
+<li> CORRECTED: Invalid date format when printing Fedex Label
+<li> CORRECTED: Fixed string.format functionality to VB.net versus VB6 compability . This affects Fedex printing, editing an order, Quickbooks Integration and reports
+<li> IMPLEMENTED: Added debugging routine for sql update errors
+
+[[/SUBSECTION]]
+
+[[/SECTION]]
+
+
+[[SECTION]Additional Reading]
+
+For those who are interested, there is a complete history of the desktop software releases at the link below.
+[[LINKDOC]50916]
+
+[[/SECTION]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>

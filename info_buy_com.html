@@ -1,0 +1,327 @@
+<meta type="tag" id="buy">
+<meta type="tag" id="buy.com">
+<meta type="tag" id="marketplaces">
+<meta type="tag" id="marketplace">
+<meta type="docid" id="50917">
+
+<pre>
+**LEGACY CONTENT**
+
+[[FILENAME]info/buy.com]
+[[TITLE]Buy.com Marketplace (Production Ready)]
+
+[[STAFF]]
+
+
+#### Effective 5/24/12- All Buy.com tickets for uploading products and troubleshooting issues should be routed to Shane####
+
+Selling on Japan info:
+merchant-info@buy.com
+
+support:
+mp-integration@buy.com
+
+Corporate account manager:
+Dereck Tabata (he will get on the phone with you)
+dereckt@buy.com
+
+
+Feed Specs:
+http://ak.buy.com/buy_assets/Marketplace/MP_Feeds.pdf 
+
+[3/1/2011 12:31:15 PM] Christy Dixon: [Tuesday, January 18, 2011 1:54 PM] Brian Horakh: 
+
+<<<  #Product-id is a unique identifier that is used to find the product you wish to list on the Marketplace. The product-id
+      # (1) ISBN must be 13 digits in length.
+      # (2) UPC must be 12 or 14 digits in length
+      # (0) Buy.com SKUs have variable lengths
+      # (3) Seller SKU have variable lengths
+      #Examples: 30764650 or 0066620996
+      #Note: ISBN will be used for Books and UPC will be used for electronics, hardware and software. The Buy.com SKU is unive
+
+      #if ($pid eq 'DW0280') {
+      #  die("SKU:$prodref->{'buycom:sku'}\n".Dumper($prodref));
+      #  }
+
+      if ($prodref->{'buycom:sku'} ne '') {
+         push @columns, $prodref->{'buycom:sku'};
+         push @columns, '0';
+         }
+      elsif ($prodref->{'zoovy:prod_isbn'} ne '') {
+         push @columns, $prodref->{'zoovy:prod_isbn'};
+         push @columns, 1;
+         }
+      elsif ($prodref->{'zoovy:prod_upc'} ne '') {
+         push @columns, $prodref->{'zoovy:prod_upc'};
+         push @columns, 2;
+         }
+      else {
+         push @columns, $pid;
+         push @columns, 3;
+         }
+
+** 6/21/11 Dbmaps are no longer supported and merchants should only be using the EXISTING dbmap, I removed the mention of new dbmap section from webdoc and placing it below so we can refer to it for future:
+
+Create EXISTING DB-Map
+Go to: Syndication  » Buy.com » DBMAP
+Set as follows:
+DBMAP ID:  EXISTING
+Buy.com Store ID: Generic(does not require storecode)
+Buy.com Category ID: 0
+
+MAP JSON:
+[{"id":"buycom:categoryid", "type":"textbox","title":"Category Id"}, 
+ {"id":"buycom:sku","type":"textbox","sku":"1","default":"-"}
+
+
+
+[[/STAFF]]
+ 
+[[SECTION]Concept Overview]
+[[TAG]buy.com=2000]
+[[TAG]buy=1999]
+[[TAG]marketplaces=1000]
+[[TAG]marketplace=1000]
+
+[[CAUTION]]
+Buy.com recently announced a deadline of Feb. 15th 2012 to set up a seller storefront. Storefronts offer branded product pages for the seller on Buy.com in addition to several customer enhancements like social shopping and a Facebook storefront as well.
+[[BREAK]]
+Failure to launch a storefront by this deadline will result in an inability to compete for the Buy Button on unified product pages resulting in missed sales.
+[[BREAK]]
+If you have considered selling on Buy.com we highly recommend getting some products up as soon as possible (~200).
+[[BREAK]]
+For a free consultation with a marketing specialist on storefront options please scroll down to the bottom of this doc for an add to cart button for a "free" consultation.  You may also submit a support ticket as well.
+[[/CAUTION]]
+
+Buy.com is a marketplace for merchants to sell products in the following categories:
+Clothes and Shoes, Bags and Luggage, Books, Camera, Computer and Office, DVDs, Electronics, Health and Beauty, Games, Home and Garden, Music, Networking, Software, Pet Supplies, Musical Instruments, Office Supplies and Toys & Baby.
+[[BREAK]]
+[[HINT]]This marketplace requires the Buy.com bundle to be added to the account, please create a support ticket requesting your account to be reviewed.  Once approved the bundle will be added at no additional charge[[/HINT]]
+There are no fees for listing your items on Buy.com. When an item is sold, sellers pay a commission of $.99 per item plus a percentage of the price. Buy.com covers the payment transaction, Tier 1 customer service and fraud review.[[BREAK]]
+For more info <a href="http://www.buy.com/retail/landing.asp?loc=67274" target="_blank">click here</a>
+
+[[CAUTION]]
+Zoovy supports the ability to list products on Buy.com that are already available on the Buy.com site.  Merchants needing new products added to Buy.com must work directly with Buy.com giving them detailed information to get the products listed. You may email them at mp-integration@buy.com.  This is a Product Ready module, so set up assistance will be billable.  <a href="http://www.zoovy.com/webdoc/?VERB=DOC&DOCID=51571" target="_blank">More info product ready</a> 
+[[/CAUTION]]
+
+[[SECTION]Zoovy's Buy.com Integration Policy]
+Zoovy DOES NOT send a product feed to Buy.com with product data similar to how Amazon or other syndication channels work.  
+[[BREAK]]
+Zoovy will only send inventory, pull down orders, and send up tracking & shipping information via ftp feeds. Cancellations & returns must be processed manually.
+[[BREAK]]
+The current integration is Buy.com's preferred method of integration.  All new items must be uploaded directly to Buy.com via email mp-integration@buy.com or via the Buy.com seller portal if the seller has been approved.
+[[BREAK]]
+Below is list of data included in an inventory feed[[BREAK]]
+<li>available inventory for purchase</li>[[BREAK]]
+<li>shipping price</li>[[BREAK]]
+<li>shipping latency (up to 9 days max)</li>[[BREAK]]
+<li>expedited shipping availability</li>[[BREAK]]
+<li>price of the product</li>[[BREAK]]
+<li>seller sku (reference ID)</li>[[BREAK]]
+<li>Buy.com sku (if enabled)</li>[[BREAK]]
+<li>UPC (if enabled)</li>[[BREAK]]
+[[HINT]]
+Note that any other product change will not get reflected on Buy.com, any change to other data like product title, description, image, etc.  should be uploaded directly to Buy.com
+[[/HINT]]
+
+[[SECTION]Registration]
+If you have not registered please <a href="http://www.buy.com/corp/support/marketplace_seller.asp" target="_blank">click here</a> 
+[[BREAK]]
+
+[[HINT]]
+The registration link is at the bottom of the very first section on the landing page.
+[[/HINT]]
+ 
+Immediately after registration, sellers should email marketplace@buy.com to say they are a Zoovy customer - this will expedite the approval process.  Also request an ftp account be created for you by Buy.com.  The ftp user and password is required to input into Zoovy in order for Zoovy to send up inventory and pull down orders.
+[[BREAK]]
+
+
+[[SECTION]Listing on Buy.com]
+Zoovy offers the ability to list on buy.com two ways.  
+[[BREAK]]
+<li>1. Listing to "EXISTING SKUS" which are items already listed on Buy.com system by another retailer.
+[[HINT]]
+This can be done by mapping to the existing Buy.com sku at the product level in the Zoovy UI under the Buy.com section.  ISBN is another field that you can map by or upc code.
+<li>2. Listing "NEW SKUS" which are items that do not already exist on Buy.com
+[[BREAK]]
+[[HINT]]
+**NEW SKUS will need to be added to Buy.com using the Buy.com New SKU Spreadsheets, which should be emailed to Buy.com integration team at mp-integration@buy.com.
+[[BREAK]]
+The New SKU spreadsheets vary depending on category
+<a href="http://www.buy.com/retail/toc_feature.asp?loc=67031" target="_blank">Buy.com Categories</a>
+[[/HINT]]
+[[CAUTION]]
+When submitting feeds to Buy.com make sure the file is a tab delimited txt file.  Buy.com will not accept any other format.  Buy.com will also respond with any errors.  Errors must be corrected before products can get uploaded.  Listings will not be live until an inventory feed successfully updates.
+[[/CAUTION]]
+Once products are live on Buy.com, Zoovy will be able to send product inventory updates (as well as price) and order information automatically.  
+
+[[HINT]]
+To do an advanced product export with the Buy.com headers in place of Zoovy headers please refer to this <a href="http://www.zoovy.com/webdoc/index.cgi?VERB=DOC&DOCID=50365" target="_blank">Advanced Product Export Webdoc</a> 
+[[/SECTION]]
+[[SECTION]New Product Sku Feed]
+This is not an automatic feed to get new products up. The necessary attributes will vary depending on the category.
+[[BREAK]]
+Instructions can be found <a href="http://www.buy.com/retail/toc_feature.asp?loc=67031" target="_blank">here</a>
+[[HINT]]Template for Zoovy Product Export
+[[LINKVIDEO]doc-50917-2010.11.10-newsku-coreattributes-zoovy-template.xls?TITLE=Zoovy Product Export-NewSku-Buy Core Attributes&][[/LINKVIDEO]]
+[[BREAK]]
+Make sure to replace the Zoovy attributes with the appropriate Buy.com header attribute.
+[[Hint]]
+As mentioned earlier you can use the Advanced Product Export feature to export the Zoovy data into Buy.com headers.
+[[/HINT]]
+[[CAUTION]]
+You should not delete any of the core attributes or change the order of the columns.  If it is not required for your category just leave it blank.
+[[/CAUTION]]
+[[BREAK]]
+Once the products are up, Zoovy will automatically send the inventory feed.  The products will match using your Zoovy SKU#.
+[[HINT]]
+To enable products for Buy.com in Zoovy[[BREAK]]
+<li>set buycom:ts to a value of 1</li>[[BREAK]]
+<li>set buycom:dbmap to a value of EXISTING</li>[[BREAK]]
+[[BREAK]]
+Both can be done with the Product Power Tool or by CSV
+[[/HINT]]
+
+Use this zoovy webdoc to find more Zoovy product attributes for exporting.
+[[LINKDOC]51274][[/LINKDOC]]
+[[/SECTION]]
+[[BREAK]]
+
+[[SECTION]Configuration in Zoovy]
+
+Configuration page can be found under Syndication->Buy.com.<br>
+<br>
+
+<b>Enabling Buy.com Syndication</b><br>
+[[HINT]]Must request the Buy.com bundle be added by Zoovy to enabled this feature[[/HINT]]
+Update the following information provided by Buy.com:<br>
+<li>Buy.com Seller ID: <br> 	
+<li>Buy.com Seller Password:<br> 	
+<li>FTP Username:<br> 	
+<li>FTP Password:<br>
+[[BREAK]]
+- Inventory feeds are generated automatically, every hour, if syndication is enabled (to reflect current quantity/availability of all properly configured items)<br>
+[[CAUTION]]Zoovy will only publish shelf inventory for existing Buy.com products, we will not send up new products in a feed[[/CAUTION]]
+[[/SECTION]]
+
+[[SECTION] Mapping Existing Buy.com Products]
+<b>Enable/Reset Syndication to Buy.com</b><br>
+- Saves/re-sets 'buycom:ts' attribute with the product - a value 0 means "disabled", a value of 1 means "include in inventory update".<br>
+<br>
+
+<b>Buy.com SKU</b> <i>(only required if you do not have the correct UPC/ISBN)</i><br>
+- Buy.com SKU is the unique SKU# assigned by Buy.com to this individual product.<br>
+- If you are using the Buy.com sku to map up inventory to existing listings populate 'buycom:sku' attribute.<br>
+<br>
+<b>Buy.com DB-Map</b> EXISTING
+-buycom:dbmap
+[[CAUTION]]Zoovy only lists to existing Buy.com products, EXISTING is the ONLY DB-Map option[[/CAUTION]]
+[[BREAK]]
+In the product editor UI in Zoovy under the Buy.com section EXISTING is the default value however, you may need to actually 'set' the attribute 'buycom:dbmap' to EXISTING by way of CSV or the Product Power Tool.
+[[BREAK]]
+
+[[/SECTION]]
+
+
+[[SECTION]Setting Shipping]
+[[CAUTION]]
+Merchants must set a value to avoid sending up free standard / expedited shipping
+[[/CAUTION]]
+
+Merchants can set shipping in 3 different ways[[BREAK]]
+[[BREAK]]
+<li>1. Use Buy.com product level shipping[[BREAK]]
+<li>a. Standard (buycom:ship_cost1)[[BREAK]]
+<li>b. Expedited (buycom:shipexp_cost1)[[BREAK]]
+[[BREAK]]
+<li>2. Use Buy.com marketplace global settings[[BREAK]]
+[[BREAK]]
+<li>3. Use Zoovy product level shipping[[BREAK]]
+<li>a. Standard (zoovy:ship_cost1)[[BREAK]]
+<li>b. Expedited (zoovy:ship_expcost1)[[BREAK]]
+[[BREAK]]
+
+[[SUBSECTION]Zoovy & Buy.com Shipping Logic]
+<li>*Standard[[BREAK]]
+<li>## look at buycom:ship_cost1 first[[BREAK]]
+<li>## if -1    => use marketplace[[BREAK]]
+<li>## if 0     => free (increment $ship_free_ctr) $self->increment("ship_free");[[BREAK]]
+<li>## if > 0   => use that[[BREAK]]
+<li>## if ''    => look at zoovy:ship_cost1[[BREAK]]
+<li>### keep in mind... zoovy:ship_cost1 undef sends 0 => free[[BREAK]]
+[[BREAK]]
+
+<li>*Expedited[[BREAK]]
+<li>##    - look at buycom:shipexp_cost1 first[[BREAK]]
+<li>##    - if -100   => do NOT offer[[BREAK]]
+<li>##    - if -1  => use marketplace[[BREAK]]
+<li>##    - if 0   => free (increment $ship_free_ctr)[[BREAK]]
+<li>##    - if > 0    => use that[[BREAK]]
+<li>##    - if ''  => look at zoovy:ship_expcost1[[BREAK]]
+<li>### keep in mind... zoovy:ship_expcost1 undef sends 0 => free[[BREAK]]
+[[BREAK]]
+[[CAUTION]]
+If Buy.com & Zoovy shipping attributes are all 'not set' Zoovy will send up Free Shipping both standard / expedited.  Sellers MUST set a value.
+[[/CAUTION]]
+[[/SUBSECTION]]
+
+
+
+
+
+
+[[SECTION]Options]
+Merchants should use the expanded options sku (NOT safe sku) to list options separately in the new sku feeds and use the product-set-id field to group these options into 1 listing.
+[[HINT]]
+We recommend using the parent sku for product-set-id to group the options.  If UPC and manufacturer part number are required for the category you're listing in make sure the data in these fields is unique and accurate.  Buy.com will error product for using data in multiple columns, ie: using the same mfg id for each option.
+[[/HINT]]
+[[/SECTION]]
+[[SECTION]Refunds / Canceled Orders]
+Refunds and canceled orders must be processed directly in Buy.com.  Zoovy will not send up refund / cancel reports.  Zoovy will pull down new orders and send up order tracking info.
+[[/SECTION]]
+[[SECTION]Removing Buy.com Listing]
+Buy.com listings must be removed manually or you can contact mp-integration@buy.com on how to mass remove listings.  Zoovy will continue to update inventory if the buycom:ts and buycom:dbmap are set.  If the listing has been removed than Buy.com will ignore the inventory for that item.  Ideally these deleted listings should also be turned off to go up in the Buy.com inventory feed.
+[[HINT]]
+If an item runs out of inventory, do not disable the buycom:ts value until Zoovy sends up an updated inventory feed.  0 inventory items will automatically get pulled down from Buy.com as active listings.  Merchants should then disable the ts value to stop the product from sending if this item will not have inventory anymore.
+[[/HINT]]
+[[/SECTION]]
+[[SECTION]Buy.com Interface]
+You can access the inventory feeds that Zoovy sends to Buy.com as well as Buy.com's response file within your Buy.com account.
+<li> Log into Buy.com
+<li> Upload Listing Batch Files (under Inventory Management)
+<li> Click Here to View Your File Uploads
+<li> \Inventory\Archive
+[[BREAK]]
+The .txt files are the inventory feeds from Zoovy and the .resp files are the response files from Buy.com.  These reports are very useful to identify any errors for products that are not being listed on Buy.com marketplace.  
+[[HINT]]
+Review this file for assistance with understanding the error codes:
+http://ak.buy.com/buy_assets/Marketplace/MP_Feeds.pdf
+[[/HINT]]
+[[BREAK]]
+Once inventory drops to 0 the product listing is taken down but not removed / closed.
+[[/SECTION]]
+[[SECTION]Troubleshooting]
+To troubleshoot skus use the Diagnostics tool:[[BREAK]]
+<li>Syndication > Buy.com > Edit > Diagnostics > Inventory Feed ONLY
+
+[[/SECTION]]
+
+[[SECTION]Buy.com Storefront]
+As mentioned above sellers have an advantage in competing for the buy button on unified product pages on Buy.com if they have a storefront.
+[[BREAK]]
+The deadline to get a storefront up and running is February 15, 2012.  Sellers who fail to launch a storefront by this date will lose the ability to compete for the buy button on unified product pages.
+[[BREAK]]
+Get a free consultation from our marketing team about Buy.com storefront template options by adding the product below to your shopping cart.  It's Free!
+[[BREAK]]
+[[PROSHOP]pid=BUYCOM_STORE&qty=1&notes=Buy.com Storefront][[/PROSHOP]]
+[[BREAK]]
+For additional information on the graphic design services & hourly rate please visit this doc
+[[LINKDOC]50551][[/LINKDOC]]
+
+[[SECTION]Further Assistance]
+If you want additional assistance from Zoovy to get product up on Buy.com or with mapping products, it will be done through the marketing department at the hourly rate.  Please create a support ticket.
+[[/SECTION]]
+
+
+
+</pre>

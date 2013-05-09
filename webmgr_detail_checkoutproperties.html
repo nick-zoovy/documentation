@@ -1,0 +1,170 @@
+<meta type="tag" id="checkout">
+<meta type="docid" id="50305">
+<meta type="docid" id="50305">
+<meta type="docid" id="50305">
+
+<pre>
+**LEGACY CONTENT**
+
+[[TAG]checkout][[FILENAME]webmgr/detail/checkoutproperties]
+[[TITLE]Checkout Setup]
+
+[[SECTION]Introduction]
+Found under Setup > Checkout Setup.
+
+[[YOUTUBE]dyUsl2OYG_M]
+[[CAUTION]Video Errata:"NICE"]
+<li> At around 2:10 the video states that NICE - "requires customers to login", that is incorrect, "NICE" allows somebody to purchase without an account.
+<li> At around 7:20 the video states that "no custom wrappers" will work, most custom wrappers built in 2011 use JQUERY or no AJAX and are compatible, advanced wrappers built between 2005-2011 specifically those which received a "future technology disclaimer" will not work.  The easiest way to find out if a wrapper will work is to test it!
+<li>The video says 'nice' or 'passive' for account behavior. This should be stated as 'nice' or 'standard'.
+[[/CAUTION]]
+
+[[/SECTION]]
+
+[[SECTION]Checkout Style]
+In December 2011 Zoovy announced a new one page checkout application that will offer
+a majority of buyers a superior checkout experience.  
+Unfortunately the new technology is not compatible with 100% of the wrappers and themes, so it cannot be used by all clients.   
+
+[[BREAK]]
+
+Our intention is to release additional functionality throughout the 2012 year that will enhance both the checkout and shopping experience and then terminate support for the 
+existing checkout on January 1st, 2013 - giving clients a full year to transition.
+
+[[BREAK]]
+
+One page checkouts utilize the new shopping "RIA" application framework. 
+[[LINKDOC]51695]
+
+[[SUBSECTION]Advantages of Legacy Checkout]
+<ul>
+   <li> Classic multi-step checkout process, javascript not required.
+   <li> Mandatory for sites which incorporate AJAX built on the prototype framework (Evolution, Shoptastic, Bluelicious &amp; so
+   <li> Compatible with all customer account behaviors, and Google Analytics funnels.
+   <li> Currently Deprecated, End of Support: January 1st, 2013.
+<li> 100% compatible with all browsers, devices
+   </ul>
+[[/SUBSECTION]]
+
+[[SUBSECTION]Advantages of One Page Checkout]
+   <ul>
+   <li> Single step checkout application, requires Javascript.
+   <li> Not compatible with all wrappers (specifically incompatible with prototype javascript framework)
+   <li> Requires Asynchronous Google Analytics code to be installed/configured properly.
+   <li> Requires Nice, or Standard Customer account behaviors (recommends Nice)
+   <li> Experimental - still in development may be modified without notice.
+<li> Could be incompatible with some browsers (unknown at this time)
+   </ul>
+[[HINT]]Additional one page checkout appliction releases are planned throughout the 2012 calendar year.
+[[/HINT]]
+
+[[/SUBSECTION]]
+
+ 
+
+
+[[/SECTION]]
+
+[[SECTION]General Settings]
+
+Provides the ability to configure cart/checkout "quote shipping" mode.  The modes are:
+<li> Do not quote shipping on shopping cart.
+<li> Quote without ZIP code - all available methods will be displayed.
+<li> Quote without ZIP code, lowest only.  Only the lowest shipping rates will be displayed.
+<li> Quote using Zip code - no shipping rates will be displayed until a zip code has been provided.
+
+[[/SECTION]]
+
+[[SECTION]Account Creation]
+
+In this area you will determine how you want your customers to interact with your store.  Some merchants sell wholesale and therefore
+will require the customers to have an account and be logged in before viewing anything.  In this case, you would set the account creation to private.
+
+If you do not want to capture customer information at all, you should select disabled.  Other settings are self explanatory and depend on your personal preferences for what sort of customer relation management or CRM you want to do.
+
+[[/SECTION]]
+
+[[SECTION]Require same ship to and bill to address]
+
+You can require the customer ship the product to the billing address by going to Setup and selecting the "Checkout Properties" link. If your customers cannot select an alternate shipping address, you should verify this setting is not enabled.
+[[/SECTION]]
+
+
+[[SECTION]Customer Admin]
+
+Customers can check order status and cancel an order by going to http://www.domain.com/customer  and logging in with their email address or password. 
+
+[[BREAK]]
+Once they are logged in they can cancel any order which is in RECENT status (this is configurable).<br>
+<br>
+If you do not want to let customers cancel orders then move the order to PENDING or
+customize the checkout properties so customers cannot cancel RECENT orders (you can also disable a customers
+ability to cancel a recent order by going to Setup | Checkout Configuration)<br>
+<br>
+Re-Order feature:  Enabling this feature adds a re-order functionality to a customer's account, so that a returning customer can simply select a previous order, click the "Re-order" button, and that order will be duplicated and moved directly to the checkout process.<br>
+<strong>Note:</strong>  If the original order contains SKUs with options, and those options have been modified since the original purchase, the current option definitions will be associated to the "Re-order".
+
+
+[[/SECTION]]
+
+
+[[SECTION]Known Compatibility Issues]
+Currently, there is only one known incompatible solution: webgains tracking.
+
+[[BREAK]]
+Any script that requires a 'reload' of the page will break not only one page checkout, but likely the legacy checkout as well.
+
+[[STAFF]]
+beautystoredepot. ticket 1150950
+[[/STAFF]]
+
+[[/SECTION]]
+
+
+[[FOOTER]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>

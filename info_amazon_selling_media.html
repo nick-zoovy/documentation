@@ -1,0 +1,117 @@
+<meta type="tag" id="amazon">
+<meta type="tag" id="books">
+<meta type="tag" id="dvds">
+<meta type="docid" id="51285">
+
+<pre>
+**LEGACY CONTENT**
+
+[[FILENAME]info/amazon_selling_media]
+[[TITLE]Selling Media on Amazon]
+
+[[SECTION]Concept Overview]
+[[TAG]amazon=1000]
+[[TAG]books=1000]
+[[TAG]dvds=1000]
+[[TAG]amazon=1000]
+[[TAG]amazon=1000]
+
+Amazon does not allow media to be uploaded via an XML feed. 
+The instructions here assume you have a Seller Central Media Account.
+
+[[/SECTION]]
+
+[[SECTION]Inventory Export]
+Zoovy can generate a CSV file suitable for import by Amazon.
+
+[[HINT]]
+Amazon Help
+https://sellercentral.amazon.com/gp/help/help.html?ie=UTF8&itemID=1641&language=en_US
+[[/HINT]]
+
+[[SUBSECTION]Inventory Loader File Format:]
+http://g-images.amazon.com/images/G/01/rainier/help/ff/release_1_4/Flat.File.InventoryLoader.xls
+[[/SUBSECTION]]
+
+[[SUBSECTION]Book Loader File Format:]
+http://g-images.amazon.com/images/G/01/rainier/help/ff/release_1_4/Flat.File.BookLoader.xls
+[[/SUBSECTION]]
+
+[[SUBSECTION]Price Inventory:]
+[[HINT]]
+http://g-ec2.images-amazon.com/images/G/01/rainier/help/ff/release_1_4/Flat.File.PriceInventory.xls
+[[/HINT]]
+
+Zoovy CSV Export Fields:<br>
+%SKU,zoovy:base_price,%INV_INSTOCK
+
+[[/SUBSECTION]]
+
+[[/HTML]]
+
+[[/SECTION]]
+
+[SECTION]Order Import]
+Zoovy can import an Amazon Order File
+
+[[HINT]Amazon Help]
+Help Documentation:<br>
+https://sellercentral.amazon.com/gp/help/help.html?ie=UTF8&itemID=28501&language=en_US<br>
+[[/HINT]]
+
+[[HINT]Sample File]
+http://sellercentral.amazon.com/help/merchant_documents/reports/flat_file_order_report.xls
+[[/HINT]]
+
+To Import an Amazon Order File you need to replace the Amazon Header with a Zoovy Import Header. The following header is believed to work:
+
+The file needs to have the header:
+#GROUP_BY=%EMAIL
+
+
+[[BREAK]]
+The following is a list of Amazon Fields to Zoovy Fields:
+
+[[STAFF]]
+Note: I'd like to improve this a bit, this is UNTESTED, but it gives a direction to go in, we can add custom header types and macros to better support Amazon orders.
+[[/STAFF]]
+
+[[HTML]]
+Amazon,Zoovy
+order-id=amz_orderid,
+order-item-id=
+purchase-date=%CREATE_DATE,
+payments-date=%PAID_DATE,
+buyer-email=%EMAIL
+buyer-name=%FULLNAME
+buyer-phone-number=bill_phone
+sku=%SKU
+product-name=%DESCRIPTION
+quantity-purchased=%QTY
+item-price=%PRICE
+item-tax=
+shipping-price=%SHIPPING_COST
+shipping-tax=
+gift-wrap-price=
+gift-wrap-tax=
+ship-service-level=shp_method
+recipient-name=ship_fullname
+ship-address-1=ship_address1
+ship-address-2=ship_address2
+ship-address-3=ship_address3
+ship-city=ship_city
+ship-state=ship_state
+ship-postal-code=ship_zip
+ship-country=ship_country
+ship-phone-number=ship_phone
+gift-wrap-type
+gift-message-text
+item-promotion-discount
+item-promotion-id
+shipping-promotion-discount
+shipping-promotion-id
+
+[[/HTML]]
+
+[[/SECTION]]
+</pre>

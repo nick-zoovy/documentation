@@ -1,0 +1,136 @@
+<meta type="tag" id="shipwire">
+<meta type="tag" id="fulfillment">
+<meta type="docid" id="51036">
+
+<pre>
+**LEGACY CONTENT**
+
+[[FILENAME]info/ShipWire]
+[[TITLE]ShipWire Integration]
+
+
+[[STAFF]]
+Business Dev Contact:
+Nate Gilmore (408)221-4429 nate@shipwire.com
+
+Merchant Boarding:
+'Gene Engelgau' gene@shipwire.com
+
+[[/STAFF]]
+
+[[SECTION]What is ShipWire?]
+[[TAG]shipwire=1000]
+[[TAG]fulfillment=1000]
+
+Running a retail business doesn't have to involve so much grinding work on storage and shipping. With a few clicks a growing business can arrange to have inventory sent to Shipwire warehouses, integrate Shipwire with their Zoovy Web site and start fulfilling customer orders in real-time.
+
+[[BREAK]]
+
+Shipwire handles the storage, the packing, the shipping and other logistical details from warehouses in Chicago, Los Angeles, and Toronto, with more scheduled to come online around the world.
+
+[[BREAK]]
+
+Once the domain of large enterprises, Shipwire enables garage startups, Web entrepreneurs, seasonal businesses and importers to have multiple warehouses and automated order fulfillment at their fingertips. Rather than deal with the hassles of storage and shipping, why not leverage Shipwire and start spending your valuable time growing your business.
+
+[[BREAK]]
+
+<a href="http://partner.shipwire.com/o.php?id=1900" target="_blank"> Click here to see more information on how ShipWire works</a>
+
+[[HINT]]
+Shipwire has the unique position of being able to accept clients with competitive pricing on extraordinarily small minimums (much smaller than most other fulfillment center). 
+And is a very good choice for clients who are new to fulfillment. 
+[[/HINT]]
+
+[[/SECTION]]
+
+
+[[SECTION]How do I sign up for a ShipWire account?]
+
+<a href="http://partner.shipwire.com/o.php?id=1900">Click here to go to the Zoovy & ShipWire signup page</a>
+
+[[/SECTION]]
+
+
+
+[[SECTION]How much does ShipWire Cost?]
+There are no integration fees from Zoovy to use ShipWire. 
+
+[[BREAK]]
+
+Shipwire is a usage based charge with plans that start at $30/month for all warehouses.  Shipwire offers a <a href="http://partner.shipwire.com/o.php?id=1900" target="_blank">free trial</a> if you want to test the Shipwire Zoovy connection.  All
+<a href="http://partner.shipwire.com/o.php?id=1900" target="_blank">pricing</a> is also available online.
+
+[[HINT]]
+Shipwire is not a normal fulfillment center, their business models means they may be able to price aggressively for larger clients, so we recommend contacting them. 
+[[/HINT]]
+
+[[/SECTION]]
+
+[[SECTION]How do I get support on a ShipWire related issue?]
+
+All Shipwire plans include customer support via phone and e-mail.  To contact shipwire call 888-Shipwire or <a href="http://help.shipwire.com/contact-shipwire/">http://help.shipwire.com/contact-shipwire/</a>
+
+[[BREAK]]
+
+If you have an integration or setup issue the Zoovy implementation will be able to assist you. 
+
+[[/SECTION]]
+
+
+[[SECTION]I have an account with ShipWire, now what?]
+[[CAUTION]]You must have the <B>Supply Chain (SC) bundle</B> added to your account in order to use this integration. Feel free to set up an appointment with an Implementation Specialist. They will be very happy to help you get this integrated. [[/CAUTION]]
+
+[[CBC]Setting up for Fulfillment with ShipWire]
+
+<li>Log into Zoovy.com and go to the Utilities Tab.
+<li>Click on Supply Chain Management.
+<li>Click on Add a New Supplier.
+<li>Enter supplier code (SHPWIR would be a good code, but whatever you like will work).
+<li>Markup should be BASE*1.0, profile=DEFAULT
+<li>Enter the Supplier Information (all except website are required).
+<li>Ordering method: Select Fulfillment
+<li>Data Integration Type: SHIPWIRE Fulfillment.
+<li>Click SAVE. 
+
+
+<li>On the next page, enter your SHIPWIRE username and password. Save. 
+
+<li>Add your products, either one by one, or uploading a file. They can also be associated via CSV - ask your trainer for more help with this if you are uncertain how to associate products via CSV.
+
+[[STAFF]]
+csv uses the following fields:
+
+%SKU
+zoovy:virtual	 (value =SHIPWIRE:SHPWIR)
+zoovy:virtual_ship (value=LOCAL) <=== to use store shipping settings
+[[/STAFF]]
+
+[[HINT]]If the SKU you have input into ShipWire is different than that which is used Zoovy, use the supplier id (zoovy:prod_supplierid) field for this alternate SKU to be sent over to ShipWire.[[/HINT]]
+
+
+[[BREAK]]
+
+Once you are integrated with ShipWire, the orders will be automatically dispatched to their interface. Tracking will also automatically come back to Zoovy for the orders. 
+
+
+[[BREAK]]
+
+[[HINT]]
+The orders will NOT move from Recent to Completed automatically. This is currently the way that the integration works. If there are orders that have non-ShipWire items on them, the order will need to be split and the original order number should stay with the ShipWire items. Shipping comes over once per day, in the evening, pacific time. You will need to move the orders with tracking to completed so that the tracking emails will go out to your customers.
+[[/HINT]]
+
+[[/SECTION]]
+
+
+
+
+<a href="http://www.zoovy.com/shipwire" target="_blank">Further ShipWire Information at Zoovy.com</a>
+
+[[HTML]]
+[[/HTML]]
+
+
+
+
+
+</pre>

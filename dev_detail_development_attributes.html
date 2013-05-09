@@ -1,0 +1,149 @@
+<meta type="docid" id="50158">
+<meta type="docid" id="50158">
+<meta type="docid" id="50158">
+
+<pre>
+**LEGACY CONTENT**
+
+[[FILENAME]dev/detail/development-attributes]
+[[TITLE]Unified Syntax - Element Attributes ( advanced )]
+
+[[CAUTION]]
+This code is no longer supported.
+[[/CAUTION]]
+
+[[CAUTION]]
+
+
+
+The elements and attributes described on this page are among the most complicated and advanced in the system. If you do not have a good understanding of the Zoovy syntax, you should read the beginner and advanced docs before trying to implement the items on this page.  Furthermore, any ticket that you submit regarding these features requires a member of the design or development team and the general support team will not likely be able to assist you.  You should specifically state in your ticket the issue you are having, the element and element ID in question, which feature from this page you are using, and what you are trying to accomplish.  This will make it easier for the designer/developer to track down and address what is happening.
+
+[[/CAUTION]]
+[[SECTION]Outputskip and Ouputfilter]
+
+
+By default, outputskip is turned off on every element.  When you enable it, you are letting the system know to SKIP that element when specific conditions are met.  You determine what those conditions are by what you set as the value for outputskip.
+[[BREAK]]
+Outputskip values are:
+<ul>
+1.	skip element on matching pages.<br>
+2.	skip element on secure pages.<br>
+4.	skip element on non-secure pages.<br>
+8.	skip element if logged out.<br>
+16.	skip element if logged in.<br>
+32.	skip element if cart is empty.<br>
+64. 	skip element if cart is not empty.<br>
+128. 	reserved.<br>
+256. 	A/B test - Skip element on A side<br>
+512. 	A/B test - Skip element on B side<br>
+
+2048.	skip element in wrappers.<br>
+4096.	skip element in page layouts.<br>
+8192.	skip element in html wizards.<br>
+16384.	skip element in emails (not supported as emails do not user toxml yet).<br>
+32768.	skip element in user interface.
+
+</ul>
+
+[[BREAK]]
+You can add these values together to meet multiple circumstances.  For instance, OUTPUTSKIP="12" would skip the element on non-secure pages AND if the user was logged out.
+
+[[BREAK]]
+
+If you set OUTPUTSKIP="1", then you need to also specify which pages.  You do this by setting the OUTPUTFILTER. Ouput filters are parsed from the first set to the last set.  Once a single match is made, then the rest of the list is not processed.
+
+[[BREAK]]
+
+You can add an exclamation point before the key to negate the values of a filter.  For instance, OUTPUTFILTER="!FS=C" will skip the element on all pages EXCEPT categories.  OUPUTFILTER="!NAVCAT=.something&amp;FS=C" could be used to say skip on every category page EXCEPT .something. You can also pass mulitple values in the same filter.  For instance, "FS=C,P".  Other parameters that you can pass are:
+	<ul>
+
+<li>NAVCAT=.safe.cat.path - will skip on a specific category page.</li>
+<li>NAVTREE=.safe - will skip within a specific category tree (all subcategories).</li>
+<li>NAVTREE=.safe. - will skip within a specific category tree (all subcategories) and the parent category.</li>
+<!-- FL= - flows (??)<br> -->
+<li>FS=C,P - will skip element on all Category and Product pages (pass C and/or P)</li>
+<li>SDOMAIN=yourspecialtydomain.com  - will skip if the specialty domain passed is the store this wrapper or layout is being viewed on.</li>
+<li>MARKET=ebay,aol,overstock - useful in wizards to skip an element if being launched to a specific marketplace.</li>
+<li>PG=cart,returns,homepage - will skip on specified pages. use a * for special pages, like checkout.</li>
+	</ul>
+
+[[/SECTION]]
+
+
+[[SECTION]CACHEABLE and CACHEZONE]
+
+[[SUBSECTION]Overview]
+In some cases, it's best to have an element cache so that site load time is improved.  For example, if you don't update your categories very often, it doesn't make sense to have a db lookup done on every page, especially if the element is in the wrapper and the categories are the same throughout the entire store anyway.  Setting CACHEABLE on the element lets you cache the element per page, store or by the url.
+
+[[BREAK]]
+
+Cacheable uses bitwise parameters as values.  Using the value or the sum of multiple values will allow you to set multiple parameters at the same time.  For instance, setting 3 will set values 1 and 2.  A list of the values and what they mean follows.
+
+[[BREAK]]
+
+When should this be used?  The 'practical examples' below give you specific instances of when to use combinations of bitwise values.  As a more high-level look at when to use caching is on any element that has a 'spec' and/or any element that contains content which doesn't change very often.  Subcategories and product lists are good examples of this.
+
+[[/SUBSECTION]]
+
+[[SUBSECTION]CACHEABLE bitwise values]
+
+1 = use this all the time as it gets set automatically anyway.[[BREAK]]
+
+2 = Timestamp of account.  The element will cache until the next time the account is edited.  This includes just about any change to your store from within the user interface. If you make changes to your store several times a day, you shouldn't use this value as the cache will need to get generated more frequently which could end up negatively effecting page load time.[[BREAK]]
+
+4 = Unique per page or product. This should be set for any element that is unique per page and the template is used on more than 1 page (like on prodlist elements on a category layout).[[BREAK]]
+
+8 = Use CACHEZONE parameters to determine caching. (NOT USED AT THIS TIME - 20100210)[[BREAK]]
+
+16 = Cache uniquely to domain (use when TOXML file is shared across stores - more for themes/wrappers than page layouts as the content of the page itself is likely the same across stores).[[BREAK]]
+
+256 = use query string (uri parameters). Use this on PRODLIST/SPECL elements where user sorting OR mutlipage lists are in use.[[BREAK]]
+
+512 = Cache for today.  Will update at midnight. [[BREAK]]
+
+1024 = cache on secure pages. DO NOT set this unless you have a specific reason. Elements with images referenced may get referenced from a non-secure location and cause SSL errors on secure pages[[BREAK]]
+
+[[/SUBSECTION]]
+
+
+[[SUBSECTION]CACHEZONE values]
+
+[[STAFF]]
+I looked in site.pm for this attribute and what the bitwise values mean and 
+couldn't find any docs on it.  not supported yet?  I think we started to 
+implement this for the query string and then set 256 as a bitwise value instead.
+[[/STAFF]]
+
+1 = [[BREAK]]
+2 = [[BREAK]]
+4 = [[BREAK]]
+8 = [[BREAK]]
+
+[[/SUBSECTION]]
+
+
+
+[[SUBSECTION]Practical Examples of when to use]
+Most elements in the wrapper/theme which have caching enabled will have it set to 3.  This means that elements like subcategories and product lists in that document will refresh each time a change is made to the account.
+[[BREAK]]
+A breadcrumb element is page specific, so even though it is in the theme, it should have a value of 7 set.
+[[BREAK]]
+
+PRODLIST elements that are within a page layout TOXML file should have the value of CACHEABLE set to 7 also.  In cases where a SPECL element is used to generate the product list (where sortable headers and items per page are present) CACHEABLE should be set to 263 so that they're cached per page by URI parameters and they'll update whenever the account is updated.
+[[BREAK]]
+A product list used for deal of the day or something similar should have the value set to 263, making it cache for the calendar day (not 24 hours, but for 1 given day).
+
+[[/SUBSECTION]]
+
+[[/SECTION]]
+
+
+[[SECTION]Overloads]
+The contents of this section have moved to the following doc:
+[[LINKDOC]50092]
+
+[[/SECTION]]
+[[FOOTER]]
+
+
+</pre>

@@ -1,0 +1,463 @@
+<meta type="tag" id="google product search">
+<meta type="tag" id="product">
+<meta type="tag" id="error">
+<meta type="tag" id="FTP">
+<meta type="tag" id="troubleshooting">
+<meta type="tag" id="googlebase">
+<meta type="tag" id="google products">
+<meta type="tag" id="feed">
+<meta type="tag" id="listing">
+<meta type="tag" id="google">
+<meta type="tag" id="base">
+<meta type="docid" id="50396">
+<meta type="docid" id="50396">
+<meta type="docid" id="50396">
+
+<pre>
+**LEGACY CONTENT**
+
+[[FILENAME]webmgr/detail/setup-googlebase]
+[[TITLE]Google Product Search / Google Merchant Center]
+[[TAG]FTP=500]
+[[TAG]google=1000]
+[[TAG]google product search=900]
+[[TAG]googlebase=800]
+[[TAG]google products=750]
+[[TAG]base=750]
+[[TAG]feed=100]
+[[TAG]product=100]
+[[TAG]listing=100]
+[[TAG]error=250]
+[[TAG]troubleshooting=500]
+
+[[SECTION]About Google Product Search (previously called Googlebase)]
+[[CAUTION]]
+Changes To Google Product Feed<br>
+Google has announced Google Product feed specification changes that will take effect Sept 22nd. You might be seeing emails or getting warning/errors in the merchant center, but these will not effect your listings yet. Zoovy development is currently working on the new feed changes, and will announce when the update is completed.<br><br>
+[[/CAUTION]]
+[[CAUTION]]
+Four new attributes are now REQUIRED for "Apparel and Accessories" categories.<br>
+- zoovy:prod_age_group or gbase:prod_age_group<br>
+- zoovy:prod_color or gbase:prod_color<br>
+- zoovy:prod_size or gbase:prod_size<br>
+- zoovy:prod_gender or gbase:prod_gender<br><br>
+NOTE: If you have enabled the "Google Variation Keyword" for either a "color" or "size" SOG, you will NOT need to set zoovy:prod_color/gbase:prod_color or zoovy:prod_size/gbase:prod_size respectively. Refer to the Grouping with Variations section below, for more details.
+[[/CAUTION]]
+[[BREAK]]
+Here is the Announcement: <a target="_blank" href="http://googlemerchantblog.blogspot.com/2011/07/important-changes-to-google-product.html">Google Product Feed Changes</a>
+[[BREAK]]
+Zoovy is enforcing these requirements therefore if your products have recently dropped in Google Merchant Center, your products may be missing the required information.  Download the validation error log to find a list of skus that are not being included in the feed.
+[[BREAK]]
+If you have received an exemption from Google, you will need to check the box "Googlebase Account has Unique Identifier Exemption" in Syndication > Googlebase > Edit Profile and hit save and republish.
+[[BREAK]]
+If you would like to apply for an Exemption from Google, please click on the link below:
+[[BREAK]]
+<a target="_blank" href="http://www.google.com/support/merchants/bin/request.py?contact_type=unique_id_exemption">Apply for Googlebase Exemption</a>
+[[BREAK]]
+Google Merchant Center makes it easy to upload and manage the Product listings you want to appear in Google Product Search, AdWords, and other Google properties.
+[[BREAK]]
+The Google Merchant Center provides optimized experience specifically for merchants. The Merchant Center is where Google will continue to add features and improving the tools for uploading and managing product listings.  Zoovy’s intention is to provide the best Google Product Search support possible and to assist our site our site owners in structuring their data so it is best suited for submission to Google Product Search.  Embracing emerging technologies and being in a position to react quickly has always been one of Zoovy’s greatest strengths.
+[[BREAK]]
+What happened to Google Base?
+[[BREAK]]
+The Google Base and the Google Base Data API was decommissioned and it is no longer possible to submit or access content through these services.
+If you've been using Google Base for Product listings, you are already using the Merchant Center; there's nothing you need to do.
+[[BREAK]]
+Setup steps at a glance:[[BREAK]]
+1. Create a Google Base account with the same login info as Analytics/AdWords[[BREAK]]
+2. Create FTP settings in Google Base[[BREAK]]
+3. Put those into Zoovy>Syndication>Google Base[[BREAK]]
+4. Using the product power tool, set gbase:ts to 1 on all products that you want syndicated.[[BREAK]]
+5. Map the categories [[BREAK]]
+6. Connect Google Checkout and Google AdWords accounts in Google Base account[[BREAK]]
+7. Verify the website in Google Base>Settings>General>Alternate Methods>Meta[[BREAK]]
+[[BREAK]]
+[[/SECTION]]
+[[SECTION]New to Google Merchant Center]
+
+
+[[HINT]]
+You should start by reading Google’s policies for Google Product Search
+[[BREAK]]
+<a target="_blank" href="http://www.google.com/support/merchants/bin/answer.py?hl=en&answer=188484">
+Google.com/Policies</a>
+[[/HINT]]
+[[BREAK]]
+[[HINT]]
+To set up an account for Google Merchant Center please visit:
+[[BREAK]]
+<a target="_blank" href="http://www.google.com/merchants">
+Google.com/merchants</a>
+[[/HINT]]
+[[BREAK]]
+[[SUBSECTION]Google Merchant Center Setup]
+Once you have registered a Google Merchant Center account, simply perform the following steps to add a file and setup the FTP account.
+[[BREAK]]
+<li>Log into the account <a target="_blank" href="http://www.google.com/merchants/">
+Google.com/merchants</a>
+<li>1. Select Target Country (U.S. is default)
+<li>2. Agree to Terms of Service
+<li>3. Configure Account
+
+[[HINT]]
+If you have more than one profile within the same account, you need to create a new filename within BOTH Zoovy and Google. For example, products2.xml in Zoovy and products2.xml in Google. 
+[[/HINT]]
+[[CAUTION]]
+Once you fill in the business information and hit ‘Save’ , return to Settings > General.  You need to claim and verify the domain you entered under Website URL.  You’ll see a little yellow triangle with an exclamation point if it is unclaimed.  In order to verify, you will need to have registered and verified the domain in Google Webmaster Tools with the same user and password.
+[[BREAK]]
+Your data feed will not process if this step is not completed.
+[[/CAUTION]]
+<li>4. Select FTP from left nav
+<li>5. Input a user name and password (write these down you’ll need them to plug into Zoovy)
+<li>6. Select Tax & Shipping to configure tax and shipping rates
+[[CAUTION]]
+Google is requiring Tax and Shipping be set at the account level or included in the data feed  at the product level beginning September 1st, 2011
+[[BREAK]]
+<a target="_blank" href="http://www.google.com/support/merchants/bin/answer.py?answer=160162">
+Tax & Shipping Requirements</a>
+[[/CAUTION]]
+<li>7. Adwords and Checkout areas are not required, you can select these options to connect your Google Merchant Center account to these other Google Products.  If you are engaging in these other products it is highly recommended that you connect them.
+[[BREAK]]
+[[/SUBSECTION]]
+[[BREAK]]
+[[SUBSECTION]Configuring Google Product Search in Zoovy]
+[[HINT]]
+Syndication is partition specific, make sure you're logged into the correct partition when configuring a profile.
+[[/HINT]]
+[[BREAK]]
+<li> 1. Go to Syndication > Google Product Search & edit the profile you'd like to configure.
+<li> 2. Plug in the FTP user and password you created in the Google Merchant Center Account.
+<li> 3. Input the server name: uploads.google.com
+<li> 4. File name: products.xml
+[[BREAK]]
+Once you have setup the feed, Zoovy will upload it to Google within 24 hours. Zoovy will continue to send the feed every 24 hours automatically.
+[[/SUBSECTION]]
+[[/SECTION]]
+
+[[SECTION]Syndicating to Google Product Search using Multiple Specialty Site/Domains/Profiles]
+Google accounts are free. Therefore the easiest solution for specialty site merchants is to make an additional Google account for each site. This will help you easily keep track of each site's Google Products, Google Analytics, Google Sitemaps, and Google Adwords.
+[[HINT]] Google does not allow duplicate products in the same account or between multiple accounts. If products are available on multiple sites under the same ownership, one site must be chosen to exclusively submit those products. <a target="_blank" href="http://www.google.com/support/merchants/bin/answer.py?hl=en&answer=188484">More Info
+</a> [[/HINT]]
+[[CAUTION]]
+The default profile will need to be eliminated from being the root category otherwise mapping categories for Google product type in specialty sites will also cause the hidden category to also be mapped for the default (root) profile.  Creating a new root will require 301 redirects as the url structure will change.
+[[BREAK]]
+Another option is to create a new partition
+[[/CAUTION]]
+[[/SECTION]]
+
+[[SECTION]Google Products Required Attributes]
+[[SUBSECTION]]
+[[STAFF]]
+
+New Google Mapping Doc released 6/21/11
+http://www.zoovy.com/webdoc/index.cgi?VERB=DOC&DOCID=51623
+
+Products will not appear in Google product search if quantity available is set to 0, item must be purchasable.
+
+
+Products with INVENTORIABLE options will syndicate to Google Base.
+
+
+Maximum # of Products for 1 feed file is 100,000 item limit, but you can submit up to 10 separate data feed files
+
+
+### Shipping notes
+Review the Google Mapping Doc# 51623 for shipping info
+
+** Per Google merchants need to include shipping in the data feed in order for this info to output on product listing and product comparison (by only setting it in the dashboard of google merchant center does not display it at the product level)
+
+free shipping US:::0.00
+
+
+[[/STAFF]]
+[[SUBSECTION]]
+
+
+Zoovy is currently sending all required fields to Google Products. Depending on the required attribute, Zoovy either defaults to a "safe" value or does not include the product in the feed (i.e. does not syndicate the product). 
+<br><br><br>
+Listed below are Google Products' current "required" attributes. If you have information in the Zoovy Product fields listed below, your bulk upload will have the corresponding Google Products information.<br><br>
+
+<b>brand</b><br>
+- Product Manufacturer (zoovy:prod_mfg) or Product Brand (zoovy:prod_brand)<br>
+note: if this field is not defined, the product will throw a validation error in Zoovy and the item will not syndicate.  Zoovy will look for zoovy:prod_brand first, if blank we will then look for zoovy:prod_mfg<br>
+- additional note: if Product Publisher (zoovy:prod_publisher) is filled out, brand is not defaulted
+<br><br>
+
+<b>condition</b><br>
+- Product Condition (zoovy:prod_condition)<br> 
+- note: this field defaults to "new"
+<br><br>
+
+<b>description</b><br>
+- Product Description (zoovy:prod_desc) or gbase:prod_desc<br> 
+<font color=red>note: If this field is not set, the product is not syndicated.</font>
+[[CAUTION]]HTML can not be uploaded to Google Products via XML. So the HTML will be stripped before the item is syndicated. Wiki and unicode are also stripped from the description.[[/CAUTION]]
+
+<br><br>
+
+<b>expiration_date</b><br> 
+- note: automatically pulls 30 days from the upload date<br> 
+<br>
+
+<b>id</b> <br>
+- note: automatically set to Product SKU<br> 
+<br>
+
+<b>image_link</b><br> 
+- note: automatically set to Product main image<br>
+- <font color=red>additional note: If this field is not set, the product is not syndicated.</font>
+<br><br>
+
+<b>link</b><br> 
+- note: automatically set to Zoovy Store link to Product<br> 
+<br>
+
+<b>price</b> <br>
+- Product Price (zoovy:base_price)<br> 
+- <font color=red>note: If this field is not set, the product is not syndicated.</font>
+<br><br>
+
+<b>product_type</b> <br>
+- Set this by going to syndication > Google > edit > Categories
+
+[[HINT]]
+Here is additional information regarding product_type, it is a recommended field. <a target="_blank" href="http://www.google.com/support/merchants/bin/answer.py?answer=160081">
+Google.com/product-type</a>
+[[/HINT]]
+
+<br>
+<br>
+<b>UPC</b> <br>
+-  (zoovy:prod_upc)<br> 
+
+[[CAUTION]]
+This field is required if sending Media type products (Video games, music, movies) Effective May 3rd, 2011
+[[/CAUTION]]
+<br>
+<b>MPN</b> (Manufacturer Part Number) <br>
+-  (zoovy:prod_mfgid)<br> 
+<br>
+
+[[HINT]]Here is two links to additional information on UPC and MSN requirements in Google Base:<br>
+<a target="_blank" href="http://www.google.com/support/merchants/bin/answer.py?answer=160161">
+New attribute requirements: MPN, Brand, UPC and ISBN</a><br>
+[[/HINT]]
+
+<br>
+<b>title</b> <br>
+- Product Title (zoovy:prod_name) or gbase:prod_title<br> 
+- <font color=red>note: If this field is not set, the product is not syndicated.</font>
+[[HINT]] Product Title has to be 70 characters or less.  An additional flex edit can be created to send a smaller title up to Google Products only.  Tech Support will have to add this.[[/HINT]]
+<br>
+<br>
+
+[[SUBSECTION] Grouping using Variations]
+Products with inventoriable options can now be grouped into variations using the store option groups field. To do so, from the product editor:<br>
+
+- Click on Store Option Groups<br>
+- Click edit for an inventoriable option, such as size<br>
+- Edit the "Google Variation Keyword" drop down menu and hit "Save Group" <br><br>
+
+NOTE: If you have enabled the "Google Variation Keyword" for either a "color" or "size" SOG, you will NOT need to set zoovy:prod_color/gbase:prod_color or zoovy:prod_size/gbase:prod_size respectively.<br><br>
+
+[[CAUTION]]
+Google Products is now requiring Brand (zoovy:prod_mfg or zoovy:prod_brand) data in the product feed.  Recently, Google began sending out warnings informing merchants that their products' listings would suffer in regards to search when this field is not included in the product feed.<br>In response, Zoovy has made zoovy:prod_mfg a required field.  This requirement can be overridden by enabling the Skip recommended validation logic, option in the Syndication >> Google interface.  Using this setting is absolutely NOT recommended by Zoovy, and will, in all likelihood, hurt product search rankings.
+
+[[CAUTION]]
+Products that are not currently listed on any of your website categories will not
+syndicate to Google Base.
+ [[BREAK]]
+Go to Zoovy: Product Editor: Website Navigation to view current listed
+categories. If the following phrase shows, <font color=red>(Warning: Product NOT linked on
+Website)</font>, the product will not syndicate to Google Base.
+[[/CAUTION]]
+
+[[/SECTION]]
+[[SECTION]Google Product Search Logs]
+<b>Zoovy: Syndication: Google Product Search: Logs</b>
+[[BREAK]]
+
+These logs describe how many products successfully syndicated to Google Products.  If there are skus missing from the feed, download the Validation Error Log to see if there are skus missing attribute information.
+[[BREAK]]
+
+
+[[/SECTION]]
+
+[[SECTION]Google Merchant Error]
+<b>Google Merchant Center: Data Feeds: click products.xml</b>
+[[BREAK]]
+
+This will list any item errors, if any.   If you have errors there will be an Item Errors section with one or all of the following:
+Prohibited word in attribute:
+Missing required attribute: 
+Invalid encoding:
+
+Google displays some examples with Item Nr listed. 
+
+[[HINT]] Zoovy has an attribute in the syndication file with
+<item id="#">  This is the item number, however commas are not in the zoovy file item id
+ex. 1,234 search for 1234
+[[/HINT]]
+[[/SECTION]]
+[[SECTION]Google Merchant Center Maximums]
+<li># there's a limit of 100000 items per feed-file --
+<li># there's a limit of 15mb for a scheduled upload;
+<li># there's a limit of 20mb for a web-based upload;
+<li># there's a limit of 1gb for an ftp-based upload;
+<li># there's a limit of 10 registered data-feed-files.
+<li># there's a limit of one upload per hour;
+<li># there's a limit of once every 24-hours for the same file being uploaded -- unless there are errors.
+<li># there's a limit of about 10000 random items within the dashboard.
+[[/SECTION]]
+[[BREAK]]
+
+[[FOOTER]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>

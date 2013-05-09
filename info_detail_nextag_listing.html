@@ -1,0 +1,150 @@
+<meta type="docid" id="50594">
+<meta type="docid" id="50594">
+
+<pre>
+**LEGACY CONTENT**
+
+[[FILENAME]info/detail/nextag-listing]
+[[TITLE]NexTag Syndication]
+
+
+
+[[SECTION]Overview]
+
+[[STAFF]Feed Specs]
+Last edited 1/11/11
+
+https://merchants.nextag.com/buyer/ProductFileInstructions.pdf
+
+NexTag does not check inventory, products will go up with or without stock
+[[/STAFF]]
+NexTag is a Cost Per Click (CPC) marketplace located at www.nextag.com. To generate a NexTag compatible feed with Zoovy you will need to have the Cross Selling Bundle on your account. 
+
+[[CAUTION]]Always thoroughly read documentation and instructions provided by the marketplace when configuring any syndication.[[/CAUTION]]
+[[/SECTION]]
+[[SECTION]Setup]
+
+You need to register for an account at Nextag <a href="http://merchants.nextag.com/serv/main/buyer/sellerprograms.jsp?mpc=17" target="blank">by clicking this link</a>
+<br><br> 
+Click "Get started now!"
+<br><br>
+Create a Username and Password
+<br><br>
+Fill out the information to create a merchant account.
+<br><br>
+When prompted to input how you'd like to send NexTag a Feed, click the FTP settings option. (If you already have an account, this can be found in Nextag: Set Listing Options>"Advanced" tab>Select "I will FTP my file to Nextag")
+<br><br>
+Take this information and plug it into Zoovy>Syndication>Nextag.
+<br><br>
+Note: Nextag generates a unique file in their server for your feed. When entering the FTP settings in Zoovy, use uploads.nextag.com as the FTP server, and enter your specific file path in the NexTag FTP folder box (Ex: Nextag FTP folder: /private/yourname)
+
+
+
+
+[[/SECTION]]
+[[SECTION]Operation]
+
+Zoovy will automatically generate the file needed whenever NexTag requests it. When the file is generated then Zoovy will also update the "Last Processed" counter in the NexTag Admin area. 
+
+[[/SECTION]]
+[[SECTION]Edit]
+
+In the NexTag Profiles, clicking Edit will provide an interface to enter your NexTag Username/Password.
+<br><br>
+Output File Format helps categorize your products in NexTag.  
+<br><br>
+"Tech Feed (Electronics Only)" - Relate to products that are electronic by nature, like cell phones.
+<br>
+"Soft Goods (RECOMMENDED)" - The other option which can be a combination of electronics and the rest.
+<br>
+"Syndicate Categories:" - Allows you to click on specific Zoovy Categories or Lists to be syndicated to NexTag.
+<br><br>
+
+[[/SECTION]]
+[[SECTION]Publish]
+
+Clicking on Publish will push your data feed to NexTag.
+
+[[CAUTION]]
+Nextag does not check inventory, so regardless if your products are sent up in the feed with "Out of Stock" they will not be removed from Nextag.  To remove these products from the data feed please set the nextag:ts on the out of stock products to -1.
+[[/CAUTION]]
+
+[[/SECTION]]
+[[SECTION]Custom NexTag Fields]
+
+You can customize special NexTag fields on a product by product basis by going into the online product editor and clicking the "Product Specifics" link.
+
+[[/SECTION]]
+
+[[SECTION] Order Tracking]
+
+[[HINT]]
+Make sure you install the ROI Tracking Optimizer code from Nextag into Zoovy (Analytics & Plugins > Nextag) and be sure to put in the variables in order for sales to track appropriately in the Nextag Dashboard. %SUBTOTAL% %ORDERID%.
+<br>
+Nextag also has a separate tracking code for Google Checkout. 
+[[/HINT]]
+<br><br>
+You may notice that some sales are tracking in Zoovy but not tracking in the Nextag Dashboard.  There are a few reasons why this may be happening.
+<br><br>
+1. Nextag orders are tracked via a cookie which expires after 30 days.  Zoovy's cookie doesn't expire until day 45.  If a customer comes back to purchase between 30 and 45 days the order will not be tracked in Nextag but will be tracked in Zoovy.
+<br><br>
+2. A customer checks out with an alternate form of payment that removes them from the site (Google Checkout, Paypal, Amazon Payments).  Nextag does have an alternate tracking code for Google Checkout but does not have a separate code for the others.
+[[/SECTION]]
+
+[[SECTION]Trouble Shooting:  I've uploaded my file but I don't see my products or changes]
+
+Updates to Nextag are not instantaneous.  Regular changes to prices, URLs, stock status can take up to 24 hours to be reflected everywhere on the site - longer if the products have not been listed at Nextag in the past.  Nextag only updates titles and descriptions of products for which you are the only seller.  If more than one seller is listing the product, then the title and description will not be updated.
+[[/SECTION]]
+[[FOOTER]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>

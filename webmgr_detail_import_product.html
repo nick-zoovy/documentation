@@ -1,0 +1,789 @@
+<meta type="tag" id="turbolister">
+<meta type="tag" id="channeladvisor">
+<meta type="tag" id="upload">
+<meta type="tag" id="CSV">
+<meta type="tag" id="excel">
+<meta type="tag" id="import">
+<meta type="tag" id="spreadsheet">
+<meta type="tag" id="andale">
+<meta type="docid" id="50285">
+<meta type="docid" id="50285">
+<meta type="docid" id="50285">
+
+<pre>
+**LEGACY CONTENT**
+
+[[FILENAME]webmgr/detail/import-product]
+[[TITLE]CSV Product Import Guide]
+[[SECTION]Overview]
+[[TAG]CSV=5000]
+[[TAG]spreadsheet=2000]
+[[TAG]import=2000]
+[[TAG]upload=1000]
+[[TAG]excel=1000]
+[[TAG]channeladvisor=1000]
+[[TAG]turbolister=1000]
+[[TAG]andale=1000]
+
+
+The CSV Product Import is easy to use. Just export your data to a CSV file, then put the appropriate headings in the first row (called the Header).
+Place one attribute in the following format in each column of the header to denote which field you will be saving. The import process is case sensitive.
+<br>
+
+
+[[CAUTION]]
+** Always test your imports. Data recoveries are possible, but aren't free.  
+If you aren't sure what you're doing ask support (an ounce of prevention is worth a pound of cure).<br><br>
+** If you've never worked with CSVs before, please schedule an appointment with Implementation. (Support >> Implementation)
+[[/CAUTION]]
+
+
+[[BREAK]]
+
+Example CSV File (as a spreadsheet):<br>
+<table>
+<tr>
+<td valign='top' nowrap bgcolor="EEEEEE">%PRODUCTID</td>
+<td valign='top' nowrap bgcolor="EEEEEE">zoovy:prod_name</td>
+<td valign='top' nowrap bgcolor="EEEEEE">zoovy:base_price</td>
+<td valign='top' nowrap bgcolor="EEEEEE">%IMGURL=zoovy:prod_image1</td>
+</tr>
+<tr>
+<td valign='top' nowrap bgcolor="EEEEEE">JELLYDO</td>
+<td valign='top' nowrap bgcolor="EEEEEE">"Jelly Filled Doughnut"</td>
+<td valign='top' nowrap bgcolor="EEEEEE">1</td>
+<td valign='top' nowrap bgcolor="EEEEEE">"http://www.doughnutsrus.com/images/jelly.jpg"</td>
+</tr>
+<tr>
+<td valign='top' nowrap bgcolor="EEEEEE">SPRINKLE</td>
+<td valign='top' nowrap bgcolor="EEEEEE">"Doughnut with Sprinkles on top"</td>
+<td valign='top' nowrap bgcolor="EEEEEE">1</td>
+<td valign='top' nowrap bgcolor="EEEEEE">"http://www.doughnutsrus.com/images/sprinkles.jpg"</td>
+</tr>
+</table>
+<br>
+
+<br>
+The example above would create two products JELLYDO, and SPRINKLE, a name of Jelly Filled Doughnut, and Doughnut with Sprinkles on Top respectively and with a price of $1 each. The Images would be downloaded into the Zoovy Image library from the URL's specified, and saved as image libraries in the zoovy:prod_image1 (the product's primary image attribute).
+<br>
+
+[[/SECTION]]
+[[SECTION]Special Column Headings]
+
+<table frame="box">
+	<tr>
+		<td valign='top' nowrap>%SKU or %PRODUCTID</td>
+		<td valign='top' bgcolor="EEEEEE">For inventory uploads, Use %SKU. For Product uploads, use %PRODUCTID.</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap>%INVENTORY</td>
+		<td valign='top' bgcolor="EEEEEE">a number which will be inserted into the inventory database for the particular SKU. You could also use %QTY</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap>%MIN_QTY</td>
+		<td valign='top' bgcolor="EEEEEE">
+Sets the Minimum Stock Quantity field for use with Stock Supply Chain.
+</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap>%LOCATION</td>
+		<td valign='top' bgcolor="EEEEEE">
+Sets the warehouse location for a product.
+The warehouse location is printed on the pick list.
+This can only updated along with inventory so if %INVENTORY is not set, then this column is ignored.
+If you specify a %LOCATION column, then leaving this field blank will always destructively overwrite the previous location value.
+</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap>%HOMEPAGE</td>
+		<td valign='top' bgcolor="EEEEEE">if non-blank will place the item onto the sites homepage</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap>%IMGURL=owner:attrib</td>
+		<td valign='top' bgcolor="EEEEEE">
+			will suck down an HTTP:// or FTP:// address and save it into the image library and place the
+			resultant name into the attribute named by owner:attrib (eg: zoovy:prod_image1, or zoovy:prod_thumb).
+		</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap>%DELETE</td>
+		<td valign='top' bgcolor="EEEEEE">
+		<br>
+		<li> 1 - to delete the product id from the database, and any related statistics on the website but nothing else.
+		<li> 2 - to delete the product from all navigation categories
+		<li> 4 - to remove any inventory associated with the product
+		<li> 8 - to delete any channels related to the product<br>
+		<li> 16 - to delete any images associated with the product<br>
+		(Note: All products share images, so if you delete an image using option 16, then you will be deleting it for all products with that image.)<br>
+		<Br>
+		To use the %DELETE function, it must be the FIRST column in a CSV file, if it is in any other column it will be ignored. The 2nd column should list your product SKUs and be headed %SKU.<Br>
+Example: If you want to delete the product, and make sure it has been removed from the website categories but leave the images in place, then you would simply add option +1 and option +2 together the result (3) would be placed in the %DELETE column.
+		</td>
+	</tr>
+
+		<td valign='top' nowrap>%UPC</td>
+		<td valign='top' bgcolor="EEEEEE">%UPC can be used in place of %SKU or %PRODUCTID. However, remember that you could have the same UPC on more than one product. It is best to use %SKU which will be unique per product.</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap>#ALLOW_CRLF</td>
+		<td valign='top' bgcolor="EEEEEE">This code is actually a macro that is passed to the import process rather than an actual attribute.  It tells the import process to pass any carriage returns or line feeds that may exist in the data through to the database field.  To use this macro, insert the code into the first line position of the CSV file, moving the header row to the second line in the file.
+		</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap>#SAFETY=3</td>
+		<td valign='top' bgcolor="EEEEEE">The SAFETY inventory setting will set any product which has 3 or less to zero,  and (based on their inventory settings) remove the ability to purchase that item. They can obviously adjust the 3 to be a different number as they desire.</td>
+	</tr>
+	<tr>
+<td valign='top' nowrap>#SUPPLIER=(supplier code)</td>
+		<td valign='top' bgcolor="EEEEEE">The SUPPLIER code will attach every product in the file to the supplier code that you put in the variable. So if you have a list of products from supplier XYZ, simply put the code #SUPPLIER=XYZ in the header.  This adds the products in the list and sets the necessary variable in the product to link it to that supplier correctly.</td>
+	</tr>
+        <tr>
+<td valign='top' nowrap>#NEW_ONLY</td>
+		<td valign='top' bgcolor="EEEEEE">This code is actually a macro that is passed to the import process rather than an actual attribute. It tells the import process to import products that do not already exist in the product database</td>
+	</tr>
+        <tr>
+<td valign='top' nowrap>#COLUMNS_ALLOWED</td>
+		<td valign='top' bgcolor="EEEEEE">This code is actually a macro that is passed to the import process rather than an actual attribute. It tells the import process to only import the product attributes that you desire.</td>
+	</tr>
+
+	<tr>
+		<td valign='top' nowrap>%CATEGORY</td>
+		<td valign='top' bgcolor="EEEEEE">%CATEGORY or %FOLDER can be used to place a product or SKU within a specific Management Folder on the products page.</td>
+	</tr>
+</table>
+
+[[/SECTION]]
+[[SECTION]Standard Zoovy Attributes]
+
+[[HINT]]
+This document contains only the most popular/commonly used fields. 
+A complete list of *ALL* fields can be found:
+[[LINKDOC]51274]
+[[/HINT]]
+
+<table>
+  <tr>
+    <td valign='top' nowrap>zoovy:prod_name</td>
+    <td valign='top' bgcolor="EEEEEE">the products short name or title, should be less than 100 characters</td>
+  </tr>
+  <tr>
+    <td valign='top' nowrap>zoovy:prod_desc</td>
+    <td valign='top' bgcolor="EEEEEE">the products description, should be less than 1024 characters.</td>
+  </tr>
+  <tr>
+    <td valign='top' nowrap>zoovy:prod_detail</td>
+    <td valign='top' bgcolor="EEEEEE">the detailed description (used in specific page layouts).</td>
+  </tr>
+  <tr>
+    <td valign='top' nowrap>zoovy:html</td>
+    <td valign='top' bgcolor="EEEEEE">an HTML description, used for Auctions (DEPRECIATED - do not use)</td>
+  </tr>
+  <tr>
+  <td valign="top" nowrap>zoovy:inv_enable</td>
+  <td valign='top' bgcolor="EEEEEE">Inventory is always enabled on all products.<br>
+		<li> +1 - the default setting - track inventory
+		<li> +4 - track inventory by product options
+		<li> +8 - INVALID (8, 9, 12, and 13 should never be used)
+		<li> +32 - unlimited inventory<br>
+		<br>
+		Example: If you want to set the product to the default (track inventory) then you will enter "1" for that product. All products
+		must have inventory tracking enabled, so "1" is the smallest value you can have. If you are are tracking inventory by product options, 
+		the value will be 1 for track inventory, PLUS 4 for track options, so you will enter the result of "5" in the inv_enable column. 
+		Unlimited inventory for a product is 1 plus 32, so you will enter "33"<br>
+<br>
+Some common settings for zoovy:inv_enable:<br>
+<br>
+1 = A product without options, limited inventory.
+5 = A product with options and limited inventory.
+33 = A product without options, unlimited inventory.
+37 = A product with options and unlimited inventory.
+<br></td>
+[[STAFF]] +8 for zoovy:inv_enable means that something went wrong. [[/STAFF]]
+  </tr>
+  <tr>
+    <td valign='top' nowrap>zoovy:inv_mode</td>
+    <td valign='top' bgcolor="EEEEEE">this field has been deprecated. Do not import this field.</td>
+  </tr>
+  <tr>
+    <td valign='top' nowrap>zoovy:taxable</td>
+    <td valign='top' bgcolor="EEEEEE">either a [Y|N] or [1|0] to represent if an item is taxable.</td>
+  </tr>
+  <tr>
+    <td valign='top' nowrap>zoovy:prod_image1</td>
+    <td valign='top' bgcolor="EEEEEE">a URL or Image Library name which represents the primary image for the
+      product, also use zoovy:prod_image2 .. etc. Reference folder name/file name. No need to use the delimiter (.jpg, .gif).</td>
+  </tr>
+  <tr>
+    <td valign='top' nowrap>zoovy:prod_image2</td>
+    <td valign='top' bgcolor="EEEEEE">a URL or Image Library name which represents the secondary image</td>
+  </tr>
+  <tr>
+    <td valign='top' nowrap>zoovy:prod_image99</td>
+    <td valign='top' bgcolor="EEEEEE">a URL or Image Library name which represents the 99th image for the product.
+      (There is no limit on the number of images)</td>
+  </tr>
+  <tr>
+    <td valign='top' nowrap>zoovy:prod_thumb</td>
+    <td valign='top' bgcolor="EEEEEE">a URL or Image Library name which represents the thumbnails</td>
+  </tr>
+  <tr>
+    <td valign='top' nowrap>zoovy:base_price</td>
+    <td valign='top' bgcolor="EEEEEE">the price, in US dollars without the dollar sign.</td>
+  </tr>
+ <tr>
+    <td valign='top' nowrap>zoovy:base_cost</td>
+    <td valign='top' bgcolor="EEEEEE">the cost of the item to you, in US dollars without the dollar sign.</td>
+  </tr>
+  <tr>
+    <td valign='top' nowrap>zoovy:base_weight</td>
+    <td valign='top' bgcolor="EEEEEE">the weight in ounces.</td>
+  </tr>
+  <tr>
+    <td valign='top' nowrap>zoovy:pkg_depth</td>
+    <td valign='top' bgcolor="EEEEEE">the depth or length of the package the product will ship in. (In inches)</td>
+  </tr>
+  <tr>
+    <td valign='top' nowrap>zoovy:pkg_width</td>
+    <td valign='top' bgcolor="EEEEEE">the width of the package the product will ship in. (In inches)</td>
+  </tr>
+  <tr>
+    <td valign='top' nowrap>zoovy:pkg_height</td>
+    <td valign='top' bgcolor="EEEEEE">the height of the package the product will ship in. (In inches)</td>
+  </tr>
+  <tr>
+    <td valign='top' nowrap>zoovy:profile</td>
+    <td valign='top' bgcolor="EEEEEE">This sets the ebay profile that will be used for syndication and channel listings. (Note: must be UPPERcase, i.e. DEFAULT)</td>
+  </tr>
+  <tr>
+    <td valign='top' nowrap>zoovy:ship_cost1</td>
+    <td valign='top' bgcolor="EEEEEE">the domestic fixed shipping price for quantity one of the item.</td>
+  </tr>
+    <tr>
+    <td valign='top' nowrap>zoovy:ship_cost2</td>
+    <td valign='top' bgcolor="EEEEEE">the domestic fixed shipping price additional quantities of the same item.</td>
+  </tr>
+    <tr>
+    <td valign='top' nowrap>zoovy:ship_markup</td>
+    <td valign='top' bgcolor="EEEEEE">the additional amount (if you wish to use it) added to zoovy:ship_cost1 for eBay listings.  
+	This amount is only added to the fixed shipping in eBay listings (never on your Zoovy store) and only
+	if you use fixed shipping as your shipping method for the listing.</td>
+  </tr>
+  <tr>
+    <td valign='top' nowrap>zoovy:ship_latency</td>
+    <td valign='top' bgcolor="EEEEEE">the fulfillment latency time for a product.</td>
+  </tr>
+  <tr>
+    <td valign='top' nowrap>zoovy:keywords</td>
+    <td valign='top' bgcolor="EEEEEE">the keywords published in the pages meta tags.</td>
+  </tr>
+  <tr>
+    <td valign='top' nowrap>zoovy:category</td>
+    <td valign='top' bgcolor="EEEEEE">THIS IS A RESERVE FIELD FOR ZOOVY USE - DO NOT ATTEMPT TO SET THIS FIELD.
+      (if you want to import categories, read the section on importing categories
+      below)</td>
+  </tr>
+<tr>
+    <td valign='top' nowrap>zoovy:prod_warning
+</td>
+    <td valign='top' bgcolor="EEEEEE">Display of appropriate cautionary statements
+relating to the choking hazards of toys and games intended for children 12 and
+under, Amazon requires and can find appropriate attribute in your seller central account ex. choking_hazard_small_parts</td>
+  </tr>
+</table>
+
+[[/SECTION]]
+[[SECTION]Common Marketplace Attributes]
+
+
+<table>
+	<tr>
+		<td valign='top' nowrap>ebay:title</td>
+		<td valign='top' bgcolor="EEEEEE">the eBay auction title</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap>ebay:quantity</td>
+		<td valign='top' bgcolor="EEEEEE">the quantity for sale in an eBay auction (more than one is dutch)</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap>ebay:startprice</td>
+		<td valign='top' bgcolor="EEEEEE">the starting bid price.</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap>ebay:reserve</td>
+		<td valign='top' bgcolor="EEEEEE">the eBay reserve price.</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap>ebay:buyitnow</td>
+		<td valign='top' bgcolor="EEEEEE">the eBay buy it now price.</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap>ebay:price</td>
+		<td valign='top' bgcolor="EEEEEE">the eBay Stores price if different than the price listed on your Zoovy webstore.</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap>ebay:category</td>
+		<td valign='top' bgcolor="EEEEEE">the eBay category number.</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap>ebay:category2</td>
+		<td valign='top' bgcolor="EEEEEE">the eBay secondary category number.</td>
+	</tr>
+	<tr>
+		<td valign='top' nowrap>ebay:base_weight</td>
+		<td valign='top' bgcolor="EEEEEE">Use this to set a different weight for use with eBay's shipping calculators.</td>
+	</tr>
+ <tr>
+    <td valign='top' nowrap>amz:ts</td>
+    <td valign='top' bgcolor="EEEEEE">the timestamp (checkbox) for Amazon syndication. Set in the user interface first and debug to get value.</td>
+  </tr>
+ <tr>
+    <td valign='top' nowrap>amz:catalog</td>
+    <td valign='top' bgcolor="EEEEEE">the Amazon category. Set in the user interface first and debug to get the value.</td>
+  </tr>
+ <tr>
+    <td valign='top' nowrap>amz:thesaurus</td>
+    <td valign='top' bgcolor="EEEEEE">the numerical value of the thesarus profile. Either set in the user interface or mouse over the edit link for the profile to get the number.</td>
+  </tr>
+</table>
+
+[[/SECTION]]
+[[SECTION]Locating other Attributes]
+
+
+Virtually any piece of information in a product can be accessed.
+For additional fields, set it in the user interface first. Then go to the bottom of the product page in the tools area, and click the debug button. The bold values on the left are the column headers (attributes) and the information to the right is the value of the attribute.
+
+[[/SECTION]]
+[[SECTION]Examples]
+
+[[HTML]]
+
+A Simple Product
+Fields: SKU, Name, Price, Weight in Ounces, Description, Image URL, Quantity, Category
+CSV Header: '%PRODUCTID','zoovy:prod_name','zoovy:base_price','zoovy:base_weight','zoovy:prod_desc','%IMGURL=zoovy:prod_image1','%INVENTORY','%CATEGORY1'
+
+Extended Product:
+Fields: SKU, Name, Price, Weight in Ounces, Description, Quantity, Image URL 1, Image URL 2, Image URL 3,  Image URL 4,  Image URL 5, Image Thumbnail URL, Category 1, Category 2, Category 3, Category 4, Category 5
+CSV Header: '%PRODUCTID','zoovy:prod_name','zoovy:base_price','zoovy:base_weight','zoovy:prod_desc','%INVENTORY','%IMGURL=zoovy:prod_image1','%IMGURL=zoovy:prod_image2','%IMGURL=zoovy:prod_image3','%IMGURL=zoovy:prod_image4','%IMGURL=zoovy:prod_image5','%IMGURL=zoovy:prod_thumb','%CATEGORY1','%CATEGORY2','%CATEGORY3','%CATEGORY4','%CATEGORY5'
+[[/HTML]]
+
+
+[[/SECTION]]
+[[SECTION]CSV Import Utility Configuration Options]
+
+
+[[SUBSECTION]Do not encode categories]
+
+Normally you can import categories with "pretty names" such as /level1/level2. Each category internally also has what is called a "safe name". If you want to upload categories such as "1/2 lots" or "tcp/ip books" then you can't
+use a slash, to work around this you can use the systems safe name, which is a period delimited version.
+Safe names may only contain URL safe characters including a-z 0-9 and underscores (dashes are reserved). For more information
+on safe names vs. pretty names read the section on importing categories.
+[[/SECTION]]
+
+
+
+[[SUBSECTION]Remote System Synchronization]
+
+A new option labeled "Remote System Synchronization" has been added to Data Import.
+This feature will delete products which were not found in the import file.
+This is very handy if you are issued a new CSV by a distributor,
+or another system such as a Point of Sale which will does not include a list of the products to be removed.
+This will remove any products which are not included in the import
+file thereby avoiding the need to tediously compare the Zoovy database, with the remote database by hand.
+[[/SECTION]]
+
+
+
+[[SUBSECTION]Configure Management Categories]
+
+Management categories are the structure you use to organize your data.
+They do not appear on the website. When you reach 50 products the online product editor will display items in folders
+which include ranges of products. You can create your own folders (called management categories) using the Zoovy product
+manager, or the CSV import.
+[[/SECTION]]
+
+
+[[SUBSECTION]Reorder navigation categories after import]
+
+This simply rebuilds the sort order for each navigation category.
+[[/SECTION]]
+
+
+[[SUBSECTION]Perform non-destructive import]
+
+Normally a import will delete the original product and the rebuild the product from the data contained on the row in the CSV.
+A non-destructive import will only update the fields which have columns in the CSV, all other fields will remain intact.
+Products track a considerable amount of data such as eBay preferences, and website display settings - if import in a non-destructive
+fashion then you will overwrite this data.
+[[/SECTION]]
+
+
+
+[[/SECTION]]
+[[SECTION]Frequently Asked Questions]
+
+
+<b>Q: How do I find a specific attribute that i'm looking for?</b><br>
+A: the easiest way to find specific attributes is to actually set them, then EXPORT the data using the Data Export tool in the Manage area of the site.<br>
+<br>
+
+<b>Q: Whats the difference between %INVENTORY and zoovy:inv_stock?</b><br>
+A: zoovy:inv_stock is a product attribute which enables inventory checking for the product,
+%INVENTORY tells the import process to create an actual inventory record.
+Both properties must be set properly in order for inventory to work correctly. <br>
+<br>
+
+<b>Q: How do I figure out the name for some specific Marketplace attribute?</b><br>
+A: You need to look in the channel definition. There are two ways to do this:<br>
+#1. Use the Zoovy Product Manager, go into the C:\program files\zoovy\data\templates and look for a filename named
+marketplace.definition.xml (for example ebay.auction.xml) then proceed to load the file up in an XML browser such as IE. The channel definition
+specifies the fields that are used with each channel definition. In each &lt;INPUT&gt; tag you will see a NAME="product:zoovy:field" the zoovy:field
+portion is the tag you are looking for. (Advanced users: You can actually edit the channel definition, by creating a directory called "custom"
+under the templates directory, and saving your channel definition there.)<br>
+#2. Go to Manage | Channel Manager, then select a channel you want to view, then click the "View Definition" link. <br>
+<br>
+
+<b>Q: How can I update the inventory for options?</b><br>
+A: Just use two columns %PRODUCTID, %INVENTORY<br>
+<br>
+
+<b>Q: Change All Product Flows</b><br>
+The easiest way to change all your product pages to one flow is to use the Product Power Tool.
+However it can also be done using the CSV Import utility.
+Simply create a list of your products (perhaps using the list all products link in the Product management area of the website), and then creating a CSV file with two columns:
+%SKU,zoovy:fl
+then simply put in the flow number or name (if it's a custom flow you've uploaded) and then perform a non-destructive import.<br>
+<br>
+
+<b>Q: How do I mass DELETE a group of products completely?</b><br>
+The fastest way to DELETE your products is through the csv import utility.
+<br>Do the following -- 
+<br>1.) Create a csv file with two columns: %DELETE, %SKU (in this order).
+<br>2.) The SKU column should be populated with products to delete.
+<br>3.) Populate the FIRST column (%DELETE) with the value: Y.
+<br> ** Uppercase Y deletes the products, associated images and inventory.<br>
+For example, the spreadsheet will look like this --<br>
+<table>
+<tr>
+<td valign='top' nowrap bgcolor="EEEEEE">%DELETE</td>
+<td valign='top' nowrap bgcolor="EEEEEE">%SKU</td>
+</tr>
+<tr>
+<td valign='top' nowrap bgcolor="EEEEEE">Y</td>
+<td valign='top' nowrap bgcolor="EEEEEE">SKU1</td>
+</tr>
+<tr>
+<td valign='top' nowrap bgcolor="EEEEEE">Y</td>
+<td valign='top' nowrap bgcolor="EEEEEE">SKU2</td>
+</tr>
+</table>
+<br>** 4.) Perform a product CSV import: 
+Setup >> CSV Import Utility >> Product
+<br> Uncheck all but the last option and upload your CSV.<br>
+
+<br>
+<b>Q: Why can't I update the reserved inventory quantities?</b><br>
+A: Reserved inventory quantities are calculated by the number of items reserved in channels plus the number of items reserved in external items.<br>
+It is automatically computed. If you want to reserve inventory create an external item and assign it to yourself.<br>
+<br>
+<b>Q: Importing Navigation Categories</b><br>
+Categories in Zoovy have two different names - Pretty Names, and Safe Names. As you might expect pretty names are what is displayed to a user.
+A pretty name can consist of any character including commas, slashes (e.g. TCP/IP) and pretty much any other character you can think of. Safe
+names are category names which do not contain any characters other than a-z0-9 and underscores. Safe names are used as part of the
+URL (e.g. http://yourname.zoovy.com/category/safe.name/). Save names are delimited by periods, for each branch in a tree. Safenames always
+start with a period. The formula used by Zoovy for generating safenames is to translate one or more occurance of any non-legal character to
+an underscore. e.g.: This is a Test 123!!!! would be translated to .this_is_a_test_123_ (notice how the trailing !!! was translated to a single
+underscore).<br>
+<br>
+When importing categories you have two options:<br>
+<br>
+<u>Method 1: Safenames</u><br>
+The easiest way to use safenames is to create the entire category hierarchy in the website builder and then simply use the safenames
+which are automatically generated. <br>
+In order to do this, you will need to enable the feature "Do Not Encode Categories" so that the categories
+are not encoded. Please note however, that you are responsible for ensuring that only valid safename characters appear.  "If you screw them
+up, then it can be a bit tricky to unscrew." .. it's also worth mentioning you can specify safenames which do not exist yet, and then simply
+go in and rename those categories with pretty names later. But be careful Zoovy will not create the tree, so if you specify a product in category
+.level1.level2.level3 and you don't create .level1 and .level1.level2 then you'll have mixed results trying to maintain .level1.level2.level3.
+If you've read this far, then it's also worth mentioning that sub categories are sorted by alphanumerically by safename. So for example
+.level1.asdf comes before .level1.foo. You can use stupid tricks here to sort categories by specifying safe names like 1first 2second 3third 4fourth
+<br>
+<u>Method 2: Pretty Names</u><br>
+The problem with pretty names is that you cannot specify multiple categories. We've had suggestions how to deal with multiple categories, using
+a variety of techniques such as comma delimted, slash delimited, etc. All this works fine until you have to import a category using a name such
+as "TCP/IP, and other stuff." .. so if you just pretty names you're going to be limited to importing into the first category.<br>
+<br>
+You can specify multiple categories to put a product in by using %CATEGORY1 %CATEGORY2 %CATEGORY3, etc. <br>
+%CATEGORY by itself is for the products management category, management categories are used by product manager and on the website to
+logically organize products, they don't have anything to do with navigation. Management categories must start with a / and are delimited
+by forward slashes (/). they can contain only the characters A-Z0-9 and underscores.<br>
+<br>
+If you're feeling exceptionally lazy you can also use %HOMEPAGE as a 1 or 0 to place a product on the homepage.<br>
+[[/SECTION]]
+
+
+[[SECTION]Custom Attributes]
+
+You can create your own custom attributes. Simply name the attributes username:whatever where username is your system assigned
+username, and whatever is the name of the tag. Tag names can be letters, numbers, and underscores. We recommend you review the
+list of system assigned attributes and attempt to map those those whenever possible, since they will ensure greater compatibility
+with other applications.
+
+[[SUBSECTION]Warehouse Manager]
+
+You can specify which custom attributes will be editable by editing the custom.xml file in the product manager. 
+The custom.xml file uses the same syntax as a channel definition.
+
+[[/SUBSECTION]]
+
+
+[[/SECTION]]
+[[FOOTER]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
