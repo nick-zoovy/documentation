@@ -29,7 +29,6 @@ $es->create_index(
 #my $xs = XML::Simple->new();
 
 
-
 sub parseElement {
 	my ($el,$meta) = @_;
 
@@ -72,6 +71,13 @@ sub parseElement {
 			my $tree = HTML::TreeBuilder->new(no_space_compacting=>1,ignore_unknown=>0,store_comments=>1); # empty tree
 			$tree->parse_content($html);
 			$el->replace_with($tree->elementify());
+			}
+		}
+	elsif ($el->tag() eq 'meta') {
+		print $el->attr('type')."\n";
+		if ($el->attr('type') eq 'tag') { push @{$meta->{'@TAGS'}}, $el->attr('id'); }
+		if ($el->attr('type') eq 'docid') { 
+			$meta->{'docid'} = $el->attr('id');
 			}
 		}
 
@@ -157,14 +163,20 @@ while ( my $file = readdir($D) ) {
 		open F, ">/httpd/static/webdoc/$file._html";
 		print F $html;
 		close F;
-
-		$es->index(
-			'index'=>'webdoc',
-			'type'=>'doc',
-			'id'=>"$file",
-			'data'=>{ 'body'=>$html }
-			);	
 		}
+
+	my $DOCID = 0;
+	if ($META{'docid'}) { $DOCID = $META{'docid'}; }
+
+	my $TAGS = ($META{'@TAGS'});
+	if (not defined $TAGS) { $TAGS = []; }
+
+	$es->index(
+		'index'=>'webdoc',
+		'type'=>'doc',
+		'id'=>"$file",
+		'data'=>{ 'docid'=>$DOCID, 'tags'=>$TAGS, 'body'=>$html }
+		);	
 
 	}
 closedir $D;
