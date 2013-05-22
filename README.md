@@ -2,12 +2,12 @@ zoovy admin-ui documentation
 ============================
 
 this repo hosts the documentation for the zoovy/anycommerce/commercerack admin-ui experience.
-we welcome (and appreciate) contributions using the issues feature.
+we welcome (and appreciate) contributions from anyone using the issues feature of github.
 
 these docs are updated with each release of the framework/admin-ui, and will eventually be branched 
 with each release (and independently searchable).
-we do not intend to go back and fix issues in prior versions unless it is a major issue.
-Here in our opinion is what qualifies as a 'major issue':
+we do not go back and fix mistakes in prior versions unless we find it's a major issue.
+A major issue is:
 
 1. a mistake that will likely cause data loss, or significant unrecoverable data corruption.
 2. incorrectly references a required file or misses a critical necessary (non-obvious) step.
