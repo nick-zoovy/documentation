@@ -1,0 +1,101 @@
+
+<meta type="docid" id="50675">
+<meta type="docid" id="50675">
+<meta type="filename" id="dev/detail/wrappers-basics">
+<h1>Decision Support Agents</h1>
+<article>
+<h2>Overview</h2>
+
+Decision Support Agents are an integral part of the Decision Support System (DSS).  
+
+There are three components to the DSS:
+
+<ul>
+<li> Data Monitoring & Recording (DMR) - monitors one or more marketplaces, competitors, or other external catalogs
+and acquires data that can be used for analysis by humans, or a decision support agent.
+
+<li> Decision Support Agents (DSA) - are small customizable scripts which analyze the data provided to it by the DMR.
+The Decision Support Agent can analyze current, and historical data and then choose to perform actions, or not.
+
+<li> Action Execution System (AES) - performs actions in a timely manner as instructed by the DSA.
+</ul>
+
+So in a normal configuration one or more DMR's is activated for a product, and in many scenarios if a DSA 
+is in use then the product will also be configured to exclude itself from normal pricing and shipping feeds 
+to the marketplace. The DMR's monitor the marketplace, or competitors pricing - when a change is detected the
+new information is sent to the DSA who performs business logic and renders decisions which are then 
+transferred to the AES. 
+
+
+<h2>DMR: Data Monitoring & Recording</h2>
+At this time only an Amazon DMR is available.  Custom DMR's can also be built by any developer who is familiar 
+with Javascript. Example programs are provided and can be customized to suite a variety of business needs, and 
+specialized versions may also be available for purchase.   Each DMR has a version, and the version is supported
+for a period of 1 year from the release date.
+
+<h2>DSA: Decision Support Agents</h2>
+Several demo "example" DSA's are provided for reference.  DSA's are small Javascript programs which are
+automatically run when new data is acquired by the DMR.
+
+<h2>AES: Action Execution System</h2>
+<ul>
+<li> logMessage("string") - creates an entry in the developers logbook, for diagnostic and tracing purposes.
+<li> makeUpdate("marketplace","verb",{additional:parameters}) - informs the AES to update a marketplace, for example
+makeUpdate("AMZ","update",{ price:1.00, shipping:5.95 })
+<li> saveNote("msgtype",{additional parameters}) - this 
+<li> updateProductRecord("attribute","value") - 
+<li> updateSKURecord("attribute","value") - 
+<li> playAgainInMinutes(15) - 
+</ul>
+
+   { 'id'=>'_VOYUER', 'title'=>'Watches prices, no interaction/updates.' },
+   { 'id'=>'_CAPTNEMO', 'title'=>'Keeps driving the price lower and lower till everbody is underwater.', },
+   { 'id'=>'_ROCKY', 'title'=>'Gets knocked down, comes back swinging. Attempts to match price for price.', },
+
+
+<h1>Example DSA: Nero</h1>
+//
+// Nero - the emperor who infamously set rome on fire just so he could watch it burn.
+//        this strategy is simple: beat any price, without any regard for safety. 
+//
+
+// step1: run 'init'
+//        this tells the DSA execution environment to bind release '201320' functions to the context.
+//        this is required - if it is omitted, the javascript program will not be able to receive data from the DMR
+//        or communicate with the AES.
+init(201320);   
+
+// step2:
+// at ths point the following objects have been created (by init)
+//   a 'dmr' object with historical pricing data
+//   a 'sku' object with data about the sku we're 
+//
+var lowprice = sku.priceAsInt();         // dma stores prices as integers, so we ask SKU for it's price as an Int.
+for (var snapshot in dmr.snapshots) {
+  if (snapshot.ours == 1) {
+    // never price match against ourselves, ain't nobody got time for that.
+    }
+  else if ((snapshot.msg == "LOW") and (snapshot.mkt == "AMZ")) {
+    // the item field holds the price of the item
+    var price_of_item = snapshot.item;
+    if (lowprice > price_of_item) {
+      lowprice = price_of_item - 1;   // remember: currencies are stored as integers so $1.00 = 100
+      }
+    }
+  }
+
+// step3: send the price (if necessary)
+if (lowprice == dmr.currentPriceAsInt()) {
+  // no need to make updates!
+  }
+else {
+  // now lets go play our fiddle
+  makeUpdate("AMZ","update",{"price":lowprice});
+  }
+
+
+<h1>Example DSA: Ranger</h1>
+<i>coming soon!</i>
+
+
+</article>
