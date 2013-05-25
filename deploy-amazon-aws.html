@@ -1,0 +1,52 @@
+<meta type="tag" id="Amazon">
+<meta type="keywords"></meta>
+<meta type="filename" id="Deploying CommerceRack into Amazon Web Services">
+<h1>Deploying CommerceRack into Amazon Web Servicess</h1>
+
+<h2>Preflight Considerations: VPC</h2>
+Using a VPC can be a 
+
+
+<h2>Single Box Route:</h2>
+<ol>
+<li>
+  Use select the proper AMI for the zone and start the instance.
+</li>
+
+<li> 
+  Create RDS / Mysql Instance - the primary consumer of disk space will be log files in general 5-10gb should be sufficient for most applications.
+we recommend "primary" as your db instance provider, you can make up a username and password, for the rest of this tutorial we will use "awsuser" and "mypassword" as the example.
+you should use your anycommerce assigned username for the database name in all caps.
+</li>
+<li>
+  MEMCACHED/ElasticCache - provides a fast in memory database for quick lookups like sessions, and other
+  frequently accessed hot objects that never saved to the disk.  (Since carts for example are intended to be 
+  persistent they are saved in Dynamo)
+  
+  For singleone server configurations we recommend running memcached on the EC2 node itself as a service rather than
+  using the AWS Elastic Cache interface.  A local version will be faster than accessing ElasticCache over a network.
+  Typically only 64 to 128mb of memory is ample for even a very high volume site, the exception to this is when the
+  user applications request a lot of 'hot data' (such as search results) to the server.   The primary advantage to 
+  using an ElasticCache server from Amazon is it is less expensive to have huge amounts of memory dedicated to elasticcache.
+</li>
+<li>
+  REDIS can be hosted on the single box.  REDIS is used for combined host/persistent storage of objects like carts,
+  and also for messaging queues.
+</li>
+<li>
+  ELASTICSEARCH - elastic search provides the backend search for product and order data.
+</li>
+<li>
+</li>
+</ol>
+
+
+
+<h1>VPC (multi-box) Route</b>
+<ul>
+<li> .. coming soon ..</li>
+<li>
+  ElasticCache - if you plan to expand to multiple nodes, or have a very high volume site you can use AWS elastic cache.
+</li>
+
+</ul>
