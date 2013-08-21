@@ -2,14 +2,14 @@
 <meta type="docid" id="50829">
 <meta type="keywords"></meta>
 <meta type="filename" id="info/paypal_payments_pro">
-<h1>PayPal Payment Pro</h1>
+<h1>PayPal Website Payments Pro</h1>
 
 
 
 <article>
 <h2>Overview: PayPal Website Payments Pro</h2>
 
-Zoovy is fully certified for Paypal Website Payments Pro.  
+Zoovy is fully certified for Paypal Website Payments Pro.
 
 </article>
 
@@ -18,16 +18,31 @@ Zoovy is fully certified for Paypal Website Payments Pro.
 <div>
 <li> Login to Zoovy.com
 <li> Click Setup | Payments
-<li> Select the Credit Card tab
-<li> Select Website Payments Pro
+<li> Select Credit Cards
+<li> Select an Availability for this payment type
+<li> Select Website Payments Pro from Gateway
+<li> Check the Credit Cards you want to accept and add any transaction fee or discount rate
+<li> Select your Capture Funds setting
+<li> Make any changes you would like to Fraud Result and Request Card Code
+<li> Save Changes
+</div>
 
+<div>
+<li> Login to Paypal.com
+<li> Go to My Account | Profile | My Selling Tool | Request API Credentials
+<li> Click the link for option 1 - Paypal API, number 2 Setup PayPal API credentials and permissions
+<li> Enter API account username: paypal_api1.zoovy.com
+<li> Select Your API Access Level: (choose all, except "Consolidate funds from two or more accounts to a master account.")
+<li> The Third Party Permission setup requires full access in order to be able to process refunds, etc. If you do not grant full access some features of Zoovy *will not work* properly.
+<li> Press submit to save, then on the next step "Give Permission"
+<li> (optional) - Remove any API credentials that are not paypal_api1.zoovy.com  
 </div>
 </aside>
 
 
 <article>
-<h2>Usage</h2>
-Refer to the Paypal Express Checkout (which shares settings with Paypal Website Payments Pro) for more configuration information.
+<h2>Important Tips</h2>
+Always be sure to place a test order after changing payment settings.
 </article>
 
 
